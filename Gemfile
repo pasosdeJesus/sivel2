@@ -57,6 +57,7 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 gem "unicorn", group: [:production]
+gem "rails_12factor", group: [:production]
 
 gem "rails-i18n"
 gem "simple_form"
