@@ -4,7 +4,7 @@ rvm:
         - rbx
 notifications:
         email: false
-script: CODECLIMATE_REPO_TOKEN=1486a4589ae9326a7a567e9599edd0ecd306c65e5f359cc724855c2a34efe67b xvfb-run rspec
+script: CODECLIMATE_REPO_TOKEN=d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a xvfb-run rspec
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
