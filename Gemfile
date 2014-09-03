@@ -50,7 +50,7 @@ group :development, :test do
   gem "factory_girl_rails"
 end
 
-gem "debugger", group: [:development]
+#gem "debugger", group: [:development]
 
 gem "tzinfo"
 gem "tzinfo-data"
