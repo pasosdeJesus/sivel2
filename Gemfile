@@ -48,8 +48,9 @@ group :development, :test do
   gem "capybara-webkit"
   gem "launchy"
   gem "factory_girl_rails"
-  gem "debugger"
 end
+
+gem "debugger", group: [:development]
 
 gem "tzinfo"
 gem "tzinfo-data"
