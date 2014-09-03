@@ -16,7 +16,7 @@ connection.execute(IO.read(Gem.loaded_specs['sivel2_gen'].full_gem_path +
 connection.execute("INSERT INTO usuario 
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
-	VALUES ('sivel2honduras', 'sivel2honduras@localhost', 
-	'$2a$10$uMAciEcJuUXDnpelfSH6He7BxW0yBeq6VMemlWc5xEl6NZRDYVA3G', 
+	VALUES ('sivel2', 'sivel2@localhost', 
+	'$2a$10$V2zgaN1ED44UyLy0ubey/.1erdjHYJusmPZnXLyIaHUpJKIATC1nG', 
 	'', '2014-08-26', '2014-08-26', '2014-08-26', 1);")
 
