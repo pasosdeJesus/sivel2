@@ -45,12 +45,15 @@ group :development, :test do
   gem "rspec-activemodel-mocks"
   gem "cucumber-rails", require: false
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
-  group :openbsd do
-    gem "capybara"
-    gem "capybara-webkit"
-  end
   gem "launchy"
   gem "factory_girl_rails"
+end
+
+group :test do
+  gem "capybara"
+  group :openbsd do
+    #gem "capybara-webkit"
+  end
 end
 
 #gem "debugger", group: [:development]

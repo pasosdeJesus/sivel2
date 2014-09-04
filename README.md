@@ -76,6 +76,20 @@ RAILS_ENV=test rake sivel:indices
 rspec
 ```
 
+### Desarrollo en codio.com
+
+Opera bien excepto porque no puede usarse capybara-webkit
+
+### Despliegue de prueba en heroku
+
+Hay uno en 
+	http://sivel2.herokuapp.com
+
+Los anexos son volatiles, se ubican en /tmp/ en heroku.  El uso de heroku
+se detecta en config/initializers/sivel2_gen usando una variable de entorno
+--que puede cambiar y debe examinarse con 
+	heroku config
+
 ### Despliegue en sitio de producción con unicorn:
 * Se recomienda que deje fuentes en /var/www/htdocs/sivel2
 * Siga los mismos pasos para configurar un servidor de desarrollo --excepto
