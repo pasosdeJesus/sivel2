@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 881595e085a84b134085b271f266920822d55cf6
+  revision: d08bce1ca77b32e1242b023fa6e33d7984b116cd
   specs:
     sivel2_gen (2.0.a1)
       capybara
@@ -187,9 +187,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.5)
       sprockets-rails (~> 2.0)
-    rails-i18n (4.0.2)
+    rails-i18n (4.0.3)
       i18n (~> 0.6)
-      rails (>= 4.0)
+      railties (~> 4.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging

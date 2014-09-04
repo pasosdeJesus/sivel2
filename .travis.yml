@@ -17,9 +17,7 @@ before_install:
         - psql -c 'CREATE DATABASE sivel2des_pru;' -U postgres
         - bundle install
         - cp db/structure.sql db/structure.sql.conlock
-        - cp db/datos-basicas.sql db/datos-basicas.sql.conlock
         - sed -e "s/SET lock_timeout = 0;//g" db/structure.sql.conlock >db/structure.sql
-        - sed -e "s/SET lock_timeout = 0;//g" db/datos-basicas.sql.conlock >db/datos-basicas.sql
         - cp config/database.travis.yml config/database.yml
         - rake db:setup
         - rake sivel2gen:indices
