@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/vtamara/cocoon.git
-  revision: d0630b3ea2974fed935d9d879f66501da64602a9
+  revision: 836a331276ea1452d63325a6662483b9f1cb28be
   specs:
     cocoon (1.2.5)
 
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: eb125190534fa1f49ea04f3dda89a7fa6225f0e5
+  revision: 857dee66c08b4406ae62fcc3a67515f06577cc78
   specs:
     sivel2_gen (2.0.a1)
       capybara
