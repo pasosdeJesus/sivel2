@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 857dee66c08b4406ae62fcc3a67515f06577cc78
+  revision: 35f429c5af4070fd1d720723d45a6d1527bf8d63
   specs:
     sivel2_gen (2.0.a1)
       capybara
@@ -213,7 +213,7 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
-    rspec-core (3.1.1)
+    rspec-core (3.1.2)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.0)
       diff-lcs (>= 1.2.0, < 2.0)
