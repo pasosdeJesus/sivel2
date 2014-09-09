@@ -82,8 +82,9 @@ Opera bien excepto porque no puede usarse capybara-webkit
 
 ### Despliegue de prueba en heroku
 
-Hay uno en 
-	http://sivel2.herokuapp.com
+[![heroku](https://www.herokucdn.com/deploy/button.svg)](http://sivel2.herokuapp.com) http://sivel2.herokuapp.com
+
+Para tener menos de 10000 registros en base de datos se han eliminado ciudades de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
 
 Los anexos son volatiles, se ubican en /tmp/ en heroku.  El uso de heroku
 se detecta en config/initializers/sivel2_gen usando una variable de entorno
