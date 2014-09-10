@@ -40,7 +40,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'spork', '~> 1.0rc'
-  gem 'debugger'
+  #gem 'debugger'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem "rspec-activemodel-mocks"
