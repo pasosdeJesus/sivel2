@@ -151,7 +151,6 @@ rc_cmd $1
 ```
   E incluya sivel2 en pkg_scripts en /etc/rc.conf.local
 
-
 ### Actualización de servidor de desarrollo
 
 * Detenga el servidor de desarrollo (teclas Control-C)
@@ -172,6 +171,14 @@ Son practicamente los mismos pasos que emplea para actualizar servidor
 de desarrollo, excepto que unicorn se detiene con pkill y se inica
 como se describió en Despliegue y que debe preceder cada rake con 
 	RAILS_ENV=production
+
+### Respaldos
+
+En el sitio de producción se recomienda agregar una tarea cron con:
+
+``` sh
+cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca 
+```
 
 ### Convenciones
 
