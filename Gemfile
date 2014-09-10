@@ -52,9 +52,7 @@ end
 
 group :test do
   gem "capybara"
-  if !ENV["HEROKU_POSTGRESQL_MAUVE_URL"]
-    gem "capybara-webkit"
-  end
+  gem "capybara-webkit"
 end
 
 #gem "debugger", group: [:development]
