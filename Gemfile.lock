@@ -1,15 +1,4 @@
 GIT
-  remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 4ba34024f026d44d0eeb4ea97e78914c3a9e0bf7
-  specs:
-    sivel2_gen (2.0.a1)
-      capybara
-      devise
-      factory_girl_rails
-      rails (~> 4.1.4)
-      rspec-rails
-
-GIT
   remote: git://github.com/vtamara/cocoon.git
   revision: 836a331276ea1452d63325a6662483b9f1cb28be
   specs:
@@ -21,6 +10,17 @@ GIT
   specs:
     jquery-ui-bootstrap-rails (0.1.1)
       rails
+
+GIT
+  remote: git://github.com/pasosdeJesus/sivel2_gen.git
+  revision: 4ba34024f026d44d0eeb4ea97e78914c3a9e0bf7
+  specs:
+    sivel2_gen (2.0.a1)
+      capybara
+      devise
+      factory_girl_rails
+      rails (~> 4.1.4)
+      rspec-rails
 
 GEM
   remote: https://rubygems.org/

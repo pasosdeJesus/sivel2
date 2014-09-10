@@ -52,7 +52,7 @@ end
 
 group :test do
   gem "capybara"
-  group :openbsd do
+  if !ENV["HEROKU_POSTGRESQL_MAUVE_URL"]
     gem "capybara-webkit"
   end
 end
