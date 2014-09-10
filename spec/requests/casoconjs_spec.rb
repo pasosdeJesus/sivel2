@@ -3,6 +3,7 @@
 require 'spec_helper'
 
 describe "Llenar caso con javascript", :js => true do
+
   before { 
     usuario = Usuario.find_by(nusuario: 'sivel2')
     usuario.password = 'sivel2'
@@ -67,7 +68,7 @@ describe "Llenar caso con javascript", :js => true do
         fill_in "Longitud", with: '-74.3'
         select('URBANO', from: 'Tipo de Sitio') 
       end
-      click_on "Añadir Sitio Geográfico"
+      click_on "Añadir Ubicación"
       su = "//div[@id='ubicacion']/div/div[2]"
       within(:xpath, su) do 
         select('COLOMBIA', from: 'País') 
