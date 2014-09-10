@@ -52,9 +52,7 @@ end
 
 group :test do
   gem "capybara"
-  group :openbsd do
-    gem "capybara-webkit"
-  end
+  gem "capybara-webkit"
 end
 
 #gem "debugger", group: [:development]

@@ -86,10 +86,13 @@ Opera bien excepto porque no puede usarse capybara-webkit
 
 Para tener menos de 10000 registros en base de datos se han eliminado ciudades de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
 
-Los anexos son volatiles, se ubican en /tmp/ en heroku.  El uso de heroku
-se detecta en config/initializers/sivel2_gen usando una variable de entorno
---que puede cambiar y debe examinarse con 
+Los anexos son volatiles, se ubican en /tmp/ en heroku.  
+En tiempo de ejecución el uso de heroku se detecta en config/initializers/sivel2_gen usando 
+una variable de entorno --que puede cambiar y debe examinarse con 
 	heroku config
+Para que heroku solo instale las gemas de producción:
+	heroku config:set BUNDLE_WITHOUT="development:test"
+
 
 ### Despliegue en sitio de producción con unicorn:
 * Se recomienda que deje fuentes en /var/www/htdocs/sivel2
