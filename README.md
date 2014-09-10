@@ -39,7 +39,7 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
   copia en config/database.yml y ejecute:
 ```sh
   rake db:migrate
-  rake sivel:indices
+  rake sivel2:indices
 ```
 * Si prefiere comenzar con una base en blanco, cree un superusuario para
   PostgreSQL, configure datos para este en ```config/database.yml``` 
@@ -50,7 +50,7 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
   exit
   vi config/database.yml
   rake db:setup
-  rake sivel:indices
+  rake sivel2:indices
 ```
 * Lancelo con:
 ```sh
@@ -72,7 +72,7 @@ Ejecutelas con:
 
 ```sh
 RAILS_ENV=test rake db:reset
-RAILS_ENV=test rake sivel:indices
+RAILS_ENV=test rake sivel2:indices
 rspec
 ```
 
@@ -163,7 +163,7 @@ rc_cmd $1
 ```
 * Aplique cambios a base de datos: ```rake db:migrate```
 * Actualice tablas básicas: ```rake sivel:actbasicas'''
-* Actualice índices: ```rake sivel:indices```
+* Actualice índices: ```rake sivel2:indices```
 * Lance nuevamente el servidor de desarrollo: ```rails s```
 
 ### Actualización de servidor de producción
