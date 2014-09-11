@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-# Rails
+# Rails (internacionalización)
 gem "rails", '~> 4.1.5'
+gem "rails-i18n"
 
 # Postgresql
 gem "pg"
@@ -40,21 +41,16 @@ gem "simple_form"
 # Formularios anidados (algunos con ajax)
 gem "cocoon", github: "vtamara/cocoon"
 
-# Internacionalización
-gem "rails-i18n"
-
-# Autenticación
+# Autenticación y roles
 gem "devise"
 gem "devise-i18n"
 gem "cancan"
-
-# Usar has_secure_password de ActiveModel
 gem "bcrypt"
 
 # Listados en páginas
 gem "will_paginate"
 
-# Maneja anexos
+# Maneja adjuntos
 gem "paperclip", "~> 4.1"
 
 # Zonas horarias
@@ -65,26 +61,16 @@ gem "tzinfo-data"
 gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'
 #gem 'sivel2_gen', path: '../sivel2_gen'
 
-
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails
-    gem "sdoc",          group: :doc, require: false
-end
-
-group :production do
-  # Para despliegue
-  gem "unicorn"
-
-  # Requerido por heroku para usar stdout como bitacora
-  gem "rails_12factor"
+    gem "sdoc", require: false
 end
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development, :test do
-  # Acelera desarrollo ejecutando en fondo.  Ver: https://github.com/jonleighton/spring
+  # Acelera desarrollo ejecutando en fondo.  https://github.com/jonleighton/spring
   gem "spring"
 
-  #gem "debugger", group: [:development]
   # Pruebas con rspec
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
@@ -119,5 +105,13 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
 end
 
+
+group :production do
+  # Para despliegue
+  gem "unicorn"
+
+  # Requerido por heroku para usar stdout como bitacora
+  gem "rails_12factor"
+end
 
 
