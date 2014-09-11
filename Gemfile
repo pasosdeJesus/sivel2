@@ -75,13 +75,6 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
 
-  # Monitor para lanzar pruebas automáticamente
-  gem "guard-rspec", group: [:development, :test]
-
-  # Un proceso para cada prueba -- acelera
-  gem 'spork', '~> 1.0rc'
-  gem 'guard-spork'
-
   # Maneja datos de prueba
   gem "factory_girl_rails", "~> 4.0", group: [:development, :test]
 
