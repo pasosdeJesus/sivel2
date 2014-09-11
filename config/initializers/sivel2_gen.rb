@@ -1,3 +1,5 @@
+require 'sivel2_gen/version'
+
 Sivel2Gen.setup do |config|
       config.ruta_anexos = "/var/www/resbase/anexos"
       config.ruta_volcados = "/var/www/resbase/sivel2_sjrven/"
