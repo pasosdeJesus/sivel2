@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e566a0ddb8da120357ca7084d27db31249d3433a
+  revision: 5e1fb7e7ac06168fe38c4c2d467e6822d1a756a0
   specs:
     sivel2_gen (2.0.a1)
       devise
@@ -85,7 +85,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-i18n (0.11.0)
+    devise-i18n (0.11.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (0.11.1)
@@ -160,9 +160,9 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
-    rspec-core (3.1.2)
+    rspec-core (3.1.3)
       rspec-support (~> 3.1.0)
-    rspec-expectations (3.1.0)
+    rspec-expectations (3.1.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.1.0)
     rspec-mocks (3.1.0)
