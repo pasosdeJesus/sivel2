@@ -35,3 +35,4 @@ if (test "$?" != "0") then {
 
 git push heroku master
 
+heroku run rake db:migrate
