@@ -402,6 +402,40 @@ CREATE TABLE anexo (
 
 
 --
+-- Name: anexoactividad; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE anexoactividad (
+    id integer NOT NULL,
+    actividad_id integer,
+    descripcion character varying(1500),
+    adjunto_file_name character varying(255),
+    adjunto_content_type character varying(255),
+    adjunto_file_size integer,
+    adjunto_updated_at timestamp without time zone
+);
+
+
+--
+-- Name: anexoactividad_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE anexoactividad_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: anexoactividad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE anexoactividad_id_seq OWNED BY anexoactividad.id;
+
+
+--
 -- Name: antecedente_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1340,12 +1374,12 @@ CREATE TABLE persona (
     id_departamento integer,
     id_municipio integer,
     id_clase integer,
-    tipodocumento character varying(2),
-    numerodocumento bigint,
+    numerodocumento character varying(100),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id_pais integer,
     nacionalde integer,
+    tdocumento_id integer,
     CONSTRAINT persona_check CHECK (((dianac IS NULL) OR ((((dianac >= 1) AND ((((((((mesnac = 1) OR (mesnac = 3)) OR (mesnac = 5)) OR (mesnac = 7)) OR (mesnac = 8)) OR (mesnac = 10)) OR (mesnac = 12)) AND (dianac <= 31))) OR (((((mesnac = 4) OR (mesnac = 6)) OR (mesnac = 9)) OR (mesnac = 11)) AND (dianac <= 30))) OR ((mesnac = 2) AND (dianac <= 29))))),
     CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
     CONSTRAINT persona_sexo_check CHECK ((((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar)) OR (sexo = 'M'::bpchar)))
@@ -1635,6 +1669,39 @@ CREATE TABLE tclase (
 
 
 --
+-- Name: tdocumento; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tdocumento (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    sigla character varying(100),
+    formatoregex character varying(500),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date
+);
+
+
+--
+-- Name: tdocumento_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tdocumento_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tdocumento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tdocumento_id_seq OWNED BY tdocumento.id;
+
+
+--
 -- Name: trelacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1903,6 +1970,13 @@ ALTER TABLE ONLY actividadareas_actividad ALTER COLUMN id SET DEFAULT nextval('a
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY anexoactividad ALTER COLUMN id SET DEFAULT nextval('anexoactividad_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY pais ALTER COLUMN id SET DEFAULT nextval('pais_id_seq'::regclass);
 
 
@@ -1911,6 +1985,13 @@ ALTER TABLE ONLY pais ALTER COLUMN id SET DEFAULT nextval('pais_id_seq'::regclas
 --
 
 ALTER TABLE ONLY rangoedadac ALTER COLUMN id SET DEFAULT nextval('rangoedadac_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tdocumento ALTER COLUMN id SET DEFAULT nextval('tdocumento_id_seq'::regclass);
 
 
 --
@@ -1991,6 +2072,14 @@ ALTER TABLE ONLY actocolectivo
 
 ALTER TABLE ONLY anexo
     ADD CONSTRAINT anexo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: anexoactividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY anexoactividad
+    ADD CONSTRAINT anexoactividad_pkey PRIMARY KEY (id);
 
 
 --
@@ -2410,6 +2499,14 @@ ALTER TABLE ONLY tclase
 
 
 --
+-- Name: tdocumento_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tdocumento
+    ADD CONSTRAINT tdocumento_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2508,6 +2605,13 @@ CREATE INDEX index_actividad_rangoedadac_on_actividad_id ON actividad_rangoedada
 --
 
 CREATE INDEX index_actividad_rangoedadac_on_rangoedadac_id ON actividad_rangoedadac USING btree (rangoedadac_id);
+
+
+--
+-- Name: index_anexoactividad_on_actividad_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anexoactividad_on_actividad_id ON anexoactividad USING btree (actividad_id);
 
 
 --
@@ -3242,6 +3346,14 @@ ALTER TABLE ONLY persona
 
 
 --
+-- Name: persona_tdocumento_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY persona
+    ADD CONSTRAINT persona_tdocumento_id_fkey FOREIGN KEY (tdocumento_id) REFERENCES tdocumento(id);
+
+
+--
 -- Name: persona_trelacion_id_trelacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3540,4 +3652,10 @@ INSERT INTO schema_migrations (version) VALUES ('20140901105741');
 INSERT INTO schema_migrations (version) VALUES ('20140901106000');
 
 INSERT INTO schema_migrations (version) VALUES ('20140909165233');
+
+INSERT INTO schema_migrations (version) VALUES ('20140918115412');
+
+INSERT INTO schema_migrations (version) VALUES ('20140922102737');
+
+INSERT INTO schema_migrations (version) VALUES ('20140922110956');
 
