@@ -1678,7 +1678,9 @@ CREATE TABLE tdocumento (
     sigla character varying(100),
     formatoregex character varying(500),
     fechacreacion date NOT NULL,
-    fechadeshabilitacion date
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 

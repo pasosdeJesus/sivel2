@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/pasosdeJesus/sivel2_gen.git
+  revision: 309e867a437be400112b17233e33b35a3fbd48e5
+  specs:
+    sivel2_gen (2.0.a1)
+      devise
+      rails (~> 4.1.4)
+
+GIT
   remote: git://github.com/vtamara/cocoon.git
   revision: 836a331276ea1452d63325a6662483b9f1cb28be
   specs:
@@ -10,13 +18,6 @@ GIT
   specs:
     jquery-ui-bootstrap-rails (0.1.1)
       rails
-
-PATH
-  remote: ../sivel2_gen
-  specs:
-    sivel2_gen (2.0.a1)
-      devise
-      rails (~> 4.1.4)
 
 GEM
   remote: https://rubygems.org/
@@ -78,13 +79,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    columnize (0.8.9)
-    debugger (1.6.8)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.5)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.5)
     devise (3.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -251,7 +245,6 @@ DEPENDENCIES
   cocoon!
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
-  debugger
   devise
   devise-i18n
   factory_girl_rails (~> 4.0)

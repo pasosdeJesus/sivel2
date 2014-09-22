@@ -58,8 +58,8 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 # Motor de SIVeL 2
-#gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'
-gem 'sivel2_gen', path: '../sivel2_gen'
+gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'
+#gem 'sivel2_gen', path: '../sivel2_gen'
 
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails
@@ -83,7 +83,7 @@ group :development, :test do
   gem "launchy"
 
   # Depurar
-  gem 'debugger'
+  #gem 'debugger'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
