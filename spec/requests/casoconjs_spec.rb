@@ -57,7 +57,11 @@ describe "Llenar caso con javascript", :js => true do
       end
       expect(page).to have_content "Añadir Ubicación"
       click_on "Añadir Ubicación"
+      if (!find_field('Latitud').visible?)
+        click_on "Añadir Ubicación"
+      end
       within ("div#ubicacion") do 
+        page.save_screenshot('au-pais.png')
         select('VENEZUELA', from: 'País') 
         select('ARAGUA', from: 'Estado/Departamento') 
         select('CAMATAGUA', from: 'Municipio') 
