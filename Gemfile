@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 4.1.5'
+gem "rails", '~> 4.2.0.beta2'
 gem "rails-i18n"
 
 # Postgresql
@@ -14,7 +14,7 @@ gem "foreman"
 gem "jbuilder"
 
 # SCSS para hojas de estilo
-gem "sass-rails", '~> 4.0.0.rc1'
+#gem "sass-rails"#, '~> 4.0.0.rc1'
 
 # Uglifier comprime recursos Javascript
 gem "uglifier", '>= 1.3.0'
