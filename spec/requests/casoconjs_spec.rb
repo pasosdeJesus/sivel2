@@ -58,7 +58,7 @@ describe "Llenar caso con javascript", :js => true do
       expect(page).to have_content "Añadir Ubicación"
       click_on "Añadir Ubicación"
       page.save_screenshot('au-pais.png')
-      if (!find_field('Latitud').visible?)
+      if (!page.has_content?('Latitud'))
         click_on "Añadir Ubicación"
       end
       within ("div#ubicacion") do 
