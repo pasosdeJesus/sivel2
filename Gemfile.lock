@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 237517a6bd939c390268f4676cc02862fdfb243c
+  revision: d76cede9e9b311c70a8c45e87153ccba017abe83
   specs:
     sivel2_gen (2.0.a2)
       devise
@@ -67,7 +67,7 @@ GEM
     builder (3.2.2)
     camertron-eprun (1.1.0)
     cancan (1.6.10)
-    capybara (2.4.3)
+    capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -104,7 +104,7 @@ GEM
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.2.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
@@ -171,7 +171,7 @@ GEM
     rails-i18n (4.0.3)
       i18n (~> 0.6)
       railties (~> 4.0)
-    rails_12factor (0.0.2)
+    rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.2)
