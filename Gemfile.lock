@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 95a8843c8118731d65cce56e3558dda6ce42ac99
+  revision: 123bc62e66341e3254d9de6b91af44f0158b9ffb
   specs:
     sivel2_gen (2.0.a2)
       devise
@@ -83,7 +83,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.1)
       simplecov (>= 0.7.1, < 1.0.0)
-    coffee-rails (4.0.1)
+    coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
     coffee-script (2.3.0)
@@ -162,8 +162,8 @@ GEM
       sprockets-rails (~> 3.0.0.beta1)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.3)
-      activesupport
+    rails-dom-testing (1.0.4)
+      activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.1)
@@ -203,7 +203,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    sass (3.4.5)
+    sass (3.4.6)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -271,7 +271,7 @@ DEPENDENCIES
   capybara-webkit
   cocoon!
   codeclimate-test-reporter
-  coffee-rails (~> 4.0.0)
+  coffee-rails (~> 4.1.0)
   devise
   devise-i18n
   factory_girl_rails (~> 4.0)

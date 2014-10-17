@@ -20,7 +20,7 @@ gem "jbuilder"
 gem "uglifier", '>= 1.3.0'
 
 # CoffeeScript para recuersos .js.coffee y vistas
-gem "coffee-rails", '~> 4.0.0'
+gem "coffee-rails", '~> 4.1.0'
 
 # jquery como librería JavaScript
 gem "jquery-rails"
