@@ -22,12 +22,10 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
 * Ubique fuentes por ejemplo en /var/www/htdocs/sivel2/
 * Instale gemas requeridas (como Rails 4.1) con:
 ```sh
-  sudo bundle install
   bundle install
 ```
 * Copie y modifique las plantillas:
 ```sh
-  cp config/secrets.yml.plantilla config/secrets.yml
   cp app/views/hogar/_local.html.erb.plantilla app/views/hogar/_local.html.erb
   cp config/database.yml.plantilla config/database.yml
 ```
@@ -53,7 +51,7 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
   rake db:setup
   rake sivel2:indices
 ```
-* Lancelo con:
+* Lance la aplicación en modo de desarrollo con:
 ```sh
   rails s
 ```
@@ -67,7 +65,7 @@ kill 323122
 
 ### Pruebas
 
-Dado que se hacen pruebas a modelos en sivel2_gen, aquí en sivel2
+Dado que se hacen pruebas a modelos en sivel2_gen, en sivel2
 se implementan algunas pruebas de regresión.
 Ejecutelas con:
 
@@ -79,7 +77,8 @@ rspec
 
 ### Desarrollo en codio.com
 
-Opera bien excepto porque no puede usarse capybara-webkit
+Opera bien excepto por la lentitud (aunque es más rápido que otros sitios
+de desarrollo) y porque no puede usarse capybara-webkit. 
 
 ### Despliegue de prueba en heroku
 
@@ -88,8 +87,9 @@ Opera bien excepto porque no puede usarse capybara-webkit
 Para tener menos de 10000 registros en base de datos se han eliminado ciudades de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
 
 Los anexos son volatiles, se ubican en /tmp/ en heroku.  
-En tiempo de ejecución el uso de heroku se detecta en config/initializers/sivel2_gen usando 
-una variable de entorno --que puede cambiar y debe examinarse con 
+En tiempo de ejecución el uso de heroku se detecta en 
+config/initializers/sivel2_gen usando una variable de entorno 
+--que puede cambiar y debe examinarse con 
 	heroku config
 Para que heroku solo instale las gemas de producción:
 	heroku config:set BUNDLE_WITHOUT="development:test"
