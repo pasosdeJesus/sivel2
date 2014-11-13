@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 4.2.0.beta2'
+gem "rails", '~> 4.2.0.beta4'
 gem "rails-i18n"
 
 # Postgresql
@@ -31,7 +31,7 @@ gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery
 gem "turbolinks"
 
 # Ambiente de CSS
-gem "twitter-bootstrap-rails", "=2.2.8"
+gem "twitter-bootstrap-rails"
 gem "bootstrap-datepicker-rails"
 gem "bootstrap-sass"
 
@@ -61,8 +61,8 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 # Motor de SIVeL 2
-gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'
-#gem 'sivel2_gen', path: '../sivel2_gen'
+#gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen', branch: 'aislado'
+gem 'sivel2_gen', path: '../sivel2_gen'
 
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails
@@ -71,7 +71,7 @@ end
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development, :test do
-  # Acelera desarrollo ejecutando en fondo.  https://github.com/jonleighton/spring
+  # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
   gem "spring"
 
   # Pruebas con rspec
@@ -86,7 +86,14 @@ group :development, :test do
   gem "launchy"
 
   # Depurar
-  #gem 'debugger'
+  # gem 'debugger'
+ 
+  #
+  gem 'byebug'
+
+  # Consola irb en páginas con excepciones o usando <%= console %> en vistas
+  gem 'web-console', '~> 2.0.0.beta4'
+
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

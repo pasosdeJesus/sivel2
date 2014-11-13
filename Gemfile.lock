@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 5f3e4761d62ffcf5213df5c1b6cd6050b5c7bbaa
-  specs:
-    sivel2_gen (2.0.a2)
-      devise
-      rails
-
-GIT
   remote: git://github.com/vtamara/cocoon.git
   revision: 836a331276ea1452d63325a6662483b9f1cb28be
   specs:
@@ -17,6 +9,13 @@ GIT
   revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
   specs:
     jquery-ui-bootstrap-rails (0.1.1)
+      rails
+
+PATH
+  remote: ../sivel2_gen
+  specs:
+    sivel2_gen (2.0.a2)
+      devise
       rails
 
 GEM
@@ -60,11 +59,17 @@ GEM
     addressable (2.3.6)
     arel (6.0.0.beta2)
     bcrypt (3.1.9)
+    binding_of_caller (0.7.3.pre1)
+      debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.3.0.2)
       railties (>= 3.0)
-    bootstrap-sass (3.3.0.1)
+    bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     camertron-eprun (1.1.0)
     cancan (1.6.10)
     capybara (2.4.4)
@@ -90,6 +95,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    columnize (0.8.9)
+    debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -215,6 +223,7 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    slop (3.6.0)
     spring (1.1.3)
     spring-commands-rspec (1.0.2)
       spring (>= 0.9.1)
@@ -232,11 +241,11 @@ GEM
     tilt (1.4.1)
     turbolinks (2.5.2)
       coffee-rails
-    twitter-bootstrap-rails (2.2.8)
-      actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
-      railties (>= 3.1)
+    twitter-bootstrap-rails (3.2.0)
+      actionpack (~> 4.1)
+      execjs (~> 2.2)
+      rails (~> 4.1)
+      railties (~> 4.1)
     twitter_cldr (3.1.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0.0)
@@ -255,6 +264,11 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
+    web-console (2.0.0.beta4)
+      activemodel (~> 4.0)
+      binding_of_caller (= 0.7.3.pre1)
+      railties (~> 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -266,6 +280,7 @@ DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
   bootstrap-sass
+  byebug
   cancan
   capybara
   capybara-webkit
@@ -283,7 +298,7 @@ DEPENDENCIES
   launchy
   paperclip (~> 4.1)
   pg
-  rails (~> 4.2.0.beta2)
+  rails (~> 4.2.0.beta4)
   rails-i18n
   rails_12factor
   rspec-rails
@@ -293,10 +308,11 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   turbolinks
-  twitter-bootstrap-rails (= 2.2.8)
+  twitter-bootstrap-rails
   twitter_cldr
   tzinfo
   tzinfo-data
   uglifier (>= 1.3.0)
   unicorn
+  web-console (~> 2.0.0.beta4)
   will_paginate
