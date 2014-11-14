@@ -1,8 +1,8 @@
 #!/bin/sh
 # Hace pruebas, pruebas de regresión, envia a github y sube a heroku
 
-bundle update
-bundle install
+NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake bundle update
+NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake bundle install
 grep "^ *gem *.sivel2_gen. *, *path:" Gemfile > /dev/null 2> /dev/null
 if (test "$?" = "0") then {
 	echo "Gemfile incluye un sivel2_gen cableado al sistema de archivos"
