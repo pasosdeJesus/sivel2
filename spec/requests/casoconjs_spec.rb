@@ -19,7 +19,7 @@ describe "Llenar caso con javascript", :js => true do
 
   describe "administrador llena" do
     it "puede crear caso" do
-      visit new_caso_path
+      visit "/casos/nuevo"
       @numcaso=find_field('Código').value
 
       # Datos básicos

@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/pasosdeJesus/sivel2_gen.git
+  revision: c77970a433a08f2b43e484533deca667829570a6
+  branch: aislado
+  specs:
+    sivel2_gen (2.0.a2)
+      devise
+      rails
+
+GIT
   remote: git://github.com/vtamara/cocoon.git
   revision: 836a331276ea1452d63325a6662483b9f1cb28be
   specs:
@@ -9,13 +18,6 @@ GIT
   revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
   specs:
     jquery-ui-bootstrap-rails (0.1.1)
-      rails
-
-PATH
-  remote: ../sivel2_gen
-  specs:
-    sivel2_gen (2.0.a2)
-      devise
       rails
 
 GEM
@@ -88,6 +90,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.1)
       simplecov (>= 0.7.1, < 1.0.0)
+    coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -125,7 +128,8 @@ GEM
       activesupport (>= 4.1.0)
     hike (1.2.3)
     i18n (0.7.0.beta1)
-    jbuilder (2.2.4)
+    interception (0.5)
+    jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
@@ -141,6 +145,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.1)
     minitest (5.4.3)
@@ -154,6 +159,16 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rescue (1.4.1)
+      interception (>= 0.5)
+      pry
+    pry-stack_explorer (0.4.9.1)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     rack (1.6.0.beta)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -211,7 +226,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    sass (3.4.7)
+    sass (3.4.8)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -298,6 +313,8 @@ DEPENDENCIES
   launchy
   paperclip (~> 4.1)
   pg
+  pry-rescue
+  pry-stack_explorer
   rails (~> 4.2.0.beta4)
   rails-i18n
   rails_12factor

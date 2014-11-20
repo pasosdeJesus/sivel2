@@ -61,8 +61,8 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 # Motor de SIVeL 2
-#gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen', branch: 'aislado'
-gem 'sivel2_gen', path: '../sivel2_gen'
+gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen', branch: 'aislado'
+#gem 'sivel2_gen', path: '../sivel2_gen_aislado'
 
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails
@@ -86,13 +86,15 @@ group :development, :test do
   gem "launchy"
 
   # Depurar
-  # gem 'debugger'
- 
-  #
   gem 'byebug'
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console', '~> 2.0.0.beta4'
+
+  # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
+
 
 end
 
