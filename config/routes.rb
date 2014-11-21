@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  #devise_for :users, {
-  #  class_name: 'Usuario',
-  #  module: :devise
-  #}
-
   devise_scope :usuario do
     get 'sign_out' => 'devise/sessions#destroy'
   end
