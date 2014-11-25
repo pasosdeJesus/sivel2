@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: db54e6cb99249eae12f725b8a26bf855627bb3cd
+  revision: 93bfcd3fafff2b03b44f44cbb1566ae554a76c82
   branch: aislado
   specs:
-    sivel2_gen (2.0.a2)
+    sivel2_gen (2.0.a3)
       devise
       rails
 
