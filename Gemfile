@@ -4,11 +4,14 @@ source 'https://rubygems.org'
 gem "rails", '~> 4.2.0.beta4'
 gem "rails-i18n"
 
+# Problemas con arel 6.0.0 al ejecutar rspec
+gem "arel", '6.0.0.beta2'
+
 # Postgresql
 gem "pg"
 
 # Maneja variables de ambiente (como claves y secretos) en .env
-gem "foreman"
+#gem "foreman"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
@@ -23,7 +26,9 @@ gem "uglifier", '>= 1.3.0'
 gem "coffee-rails", '~> 4.1.0'
 
 # jquery como librería JavaScript
-gem "jquery-rails"
+gem "jquery-rails", '3.1.2'
+# Problema al actualiza a 4.0.0, al lanzar servidor reporta que jquery no existe
+
 gem "jquery-ui-rails"
 gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
 
