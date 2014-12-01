@@ -1,14 +1,17 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 4.2.0.beta2'
+gem "rails", '~> 4.2.0.beta4'
 gem "rails-i18n"
+
+# Problemas con arel 6.0.0 al ejecutar rspec
+gem "arel", '6.0.0.beta2'
 
 # Postgresql
 gem "pg"
 
 # Maneja variables de ambiente (como claves y secretos) en .env
-gem "foreman"
+#gem "foreman"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
@@ -23,7 +26,9 @@ gem "uglifier", '>= 1.3.0'
 gem "coffee-rails", '~> 4.1.0'
 
 # jquery como librería JavaScript
-gem "jquery-rails"
+gem "jquery-rails", '3.1.2'
+# Problema al actualiza a 4.0.0, al lanzar servidor reporta que jquery no existe
+
 gem "jquery-ui-rails"
 gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
 
@@ -31,7 +36,7 @@ gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery
 gem "turbolinks"
 
 # Ambiente de CSS
-gem "twitter-bootstrap-rails", "=2.2.8"
+gem "twitter-bootstrap-rails"
 gem "bootstrap-datepicker-rails"
 gem "bootstrap-sass"
 
@@ -61,8 +66,8 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 # Motor de SIVeL 2
-gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'
-#gem 'sivel2_gen', path: '../sivel2_gen'
+gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen', branch: 'aislado'
+#gem 'sivel2_gen', path: '../sivel2_gen_aislado'
 
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails
@@ -71,7 +76,7 @@ end
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development, :test do
-  # Acelera desarrollo ejecutando en fondo.  https://github.com/jonleighton/spring
+  # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
   gem "spring"
 
   # Pruebas con rspec
@@ -86,7 +91,16 @@ group :development, :test do
   gem "launchy"
 
   # Depurar
-  #gem 'debugger'
+  gem 'byebug'
+
+  # Consola irb en páginas con excepciones o usando <%= console %> en vistas
+  gem 'web-console', '~> 2.0.0.beta4'
+
+  # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
+
+
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

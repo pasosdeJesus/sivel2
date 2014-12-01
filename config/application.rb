@@ -12,8 +12,6 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-platform = RUBY_PLATFORM.match(/(openbsd|linux|darwin)/)[0].to_sym
-Bundler.require(platform)
 
 module Sivel2
   class Application < Rails::Application
@@ -30,6 +28,6 @@ module Sivel2
     config.time_zone = 'America/Bogota'
     config.i18n.default_locale = :es
     config.active_record.schema_format = :sql
-    config.version = '2.0a1'
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

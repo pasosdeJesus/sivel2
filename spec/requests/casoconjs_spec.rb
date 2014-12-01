@@ -19,7 +19,7 @@ describe "Llenar caso con javascript", :js => true do
 
   describe "administrador llena" do
     it "puede crear caso" do
-      visit new_caso_path
+      visit "/casos/nuevo"
       @numcaso=find_field('Código').value
 
       # Datos básicos
@@ -28,6 +28,10 @@ describe "Llenar caso con javascript", :js => true do
 
       # Núcleo familiar
       click_on "Víctimas"
+      if (!find_link('Añadir Víctima').visible?)
+         click_on "Víctimas"
+      end
+      page.save_screenshot('vic.png')
       click_on "Añadir Víctima"
       within ("div#victima") do 
         fill_in "Nombres", with: 'Nombres V'
