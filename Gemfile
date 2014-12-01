@@ -1,11 +1,8 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 4.2.0.beta4'
+gem "rails", '~> 4.2.0.rc1'
 gem "rails-i18n"
-
-# Problemas con arel 6.0.0 al ejecutar rspec
-gem "arel", '6.0.0.beta2'
 
 # Postgresql
 gem "pg"
@@ -66,8 +63,8 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 # Motor de SIVeL 2
-gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen', branch: 'aislado'
-#gem 'sivel2_gen', path: '../sivel2_gen_aislado'
+gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'
+#gem 'sivel2_gen', path: '../sivel2_gen'
 
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails
