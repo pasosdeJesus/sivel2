@@ -27,12 +27,16 @@ describe "Llenar caso con javascript", :js => true do
       fill_in "Titulo", with: 'descripcion con javascript'
 
       # Núcleo familiar
+      #page.save_screenshot('vic-1.png')
+      #page.find(:xpath, "a[href='#victima']").click
       click_on "Víctimas"
+      #page.save_screenshot('vic0.png')
       if (!find_link('Añadir Víctima').visible?)
          click_on "Víctimas"
       end
-      page.save_screenshot('vic.png')
+      #page.save_screenshot('vic.png')
       click_on "Añadir Víctima"
+      #puts page.html
       within ("div#victima") do 
         fill_in "Nombres", with: 'Nombres V'
         fill_in "Apellidos", with: 'Apellidos V'
