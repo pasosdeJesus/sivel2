@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7b01ce446ea93c5b77589ccda23287642258482c
+  revision: 6b02ffc657e6f2d1a6e47b009fd9ff49e75c86c4
   specs:
     sivel2_gen (2.0.a3)
       devise
@@ -67,10 +67,6 @@ GEM
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     builder (3.2.2)
-    byebug (3.5.1)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
-      slop (~> 3.6)
     camertron-eprun (1.1.0)
     cancan (1.6.10)
     capybara (2.4.4)
@@ -97,9 +93,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    columnize (0.8.9)
     debug_inspector (0.0.2)
-    debugger-linecache (1.2.0)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -288,7 +282,6 @@ DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
   bootstrap-sass
-  byebug
   cancan
   capybara
   capybara-webkit
