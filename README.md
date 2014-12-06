@@ -7,7 +7,7 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 ### Requerimientos
 * Ruby version >= 1.9
-* PostgreSQL >= 9.3
+* PostgreSQL >= 9.3 con extensión unaccent disponible
 * Recomendado sobre adJ 5.5 (que incluye todos los componentes mencionados).  
   Las siguientes instrucciones suponen que opera en este ambiente.
 
