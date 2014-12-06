@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 4.2.0.rc1'
+gem "rails", '~> 4.2.0.rc2'
 gem "rails-i18n"
 
 # Postgresql

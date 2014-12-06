@@ -302,7 +302,7 @@ DEPENDENCIES
   pg
   pry-rescue
   pry-stack_explorer
-  rails (~> 4.2.0.rc1)
+  rails (~> 4.2.0.rc2)
   rails-i18n
   rails_12factor
   rspec-rails
