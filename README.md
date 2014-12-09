@@ -80,7 +80,7 @@ rspec
 Opera bien excepto por la lentitud (aunque es más rápido que otros sitios
 de desarrollo) y porque no puede usarse capybara-webkit. 
 
-### Despliegue de prueba en heroku
+### Despliegue de prueba en haroku
 
 [![heroku](https://www.herokucdn.com/deploy/button.svg)](http://sivel2.herokuapp.com) http://sivel2.herokuapp.com
 
@@ -90,9 +90,17 @@ Los anexos son volatiles, se ubican en /tmp/ en heroku.
 En tiempo de ejecución el uso de heroku se detecta en 
 config/initializers/sivel2_gen usando una variable de entorno 
 --que puede cambiar y debe examinarse con 
+```sh
 	heroku config
+```
 Para que heroku solo instale las gemas de producción:
+```sh
 	heroku config:set BUNDLE_WITHOUT="development:test"
+```
+
+Otras labores tipicas son:
+* Para iniciar interfaz Postgresql: ```heroku pg:psql```
+* Para ejecutar migraciones faltantes: ```heroku run rake db:migrate```
 
 
 ### Despliegue en sitio de producción con unicorn:
