@@ -19,8 +19,8 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
 
 
 ### Configuración y uso de servidor de desarrollo
-* Ubique fuentes por ejemplo en /var/www/htdocs/sivel2/
-* Instale gemas requeridas (como Rails 4.1) con:
+* Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
+* Instale gemas requeridas (como Rails 4.2) con:
 ```sh
   bundle install
 ```
@@ -28,6 +28,7 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
 ```sh
   cp app/views/hogar/_local.html.erb.plantilla app/views/hogar/_local.html.erb
   cp config/database.yml.plantilla config/database.yml
+  $EDITOR app/views/hogar/_local.html.erb config/database.yml
 ```
 * Establezca una ruta para anexos en ```config/initializers/sivel2_gen.rb```.  
   Debe existir y poder ser escrita por el proceso con el que corra el
@@ -47,27 +48,31 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
   sudo su - _postgresql
   createuser -h/var/www/tmp -Upostgres -s sivel2des
   exit
-  vi config/database.yml
+  $EDITOR config/database.yml
   rake db:setup
   rake sivel2:indices
 ```
 * Lance la aplicación en modo de desarrollo con:
 ```sh
   rails s
-```
+```sh
 * Examine con un navegador el puerto 3000 http://192.168.x.y:3000
 * Cuando requiera detener basta que de Control-C o que busque el
   proceso con ruby que corre en el purto 3000 y lo elimine con kill:
-```
+```sh
 ps ax | grep "ruby.*3000"
 kill 323122
+```
+* En este modo es recomendable borrar recursos precompilados 
+```sh
+rm -rf public/assets/*
 ```
 
 ### Pruebas
 
-Dado que se hacen pruebas a modelos en sivel2_gen, en sivel2
-se implementan algunas pruebas de regresión.
-Ejecutelas con:
+Dado que se hacen pruebas a modelos, rutas, controladores y vistas en 
+```sivel2_gen```, en ```sivel2``` sólo se implementan algunas pruebas 
+de regresión con capybara-webkit.  Ejecutelas con:
 
 ```sh
 RAILS_ENV=test rake db:reset
@@ -80,16 +85,18 @@ rspec
 Opera bien excepto por la lentitud (aunque es más rápido que otros sitios
 de desarrollo) y porque no puede usarse capybara-webkit. 
 
-### Despliegue de prueba en haroku
+### Despliegue de prueba en Heroku
 
 [![heroku](https://www.herokucdn.com/deploy/button.svg)](http://sivel2.herokuapp.com) http://sivel2.herokuapp.com
 
 Para tener menos de 10000 registros en base de datos se han eliminado ciudades de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
 
-Los anexos son volatiles, se ubican en /tmp/ en heroku.  
+Los anexos son volatiles pues tuvieron que ubicarse en /tmp/ (que se 
+borra con periodicidad).
+
 En tiempo de ejecución el uso de heroku se detecta en 
-config/initializers/sivel2_gen usando una variable de entorno 
---que puede cambiar y debe examinarse con 
+```config/initializers/sivel2_gen``` usando una variable de entorno 
+--que cambia de un despliegue a otro y que debe examinarse con 
 ```sh
 	heroku config
 ```
@@ -104,7 +111,7 @@ Otras labores tipicas son:
 
 
 ### Despliegue en sitio de producción con unicorn:
-* Se recomienda que deje fuentes en /var/www/htdocs/sivel2
+* Se recomienda que deje fuentes en ```/var/www/htdocs/sivel2```
 * Siga los mismos pasos para configurar un servidor de desarrollo --excepto
   lanzar
 * Configure la misma base de datos de un SIVeL 1.2 en sección production
@@ -113,8 +120,8 @@ Otras labores tipicas son:
   RAILS_ENV=production rake db:migrate
   RAILS_ENV=production rake sivel:indices
 ```
-* Recomendamos nginx, puede configurar un dominio virtual (digamos
-  sivel2.pasosdeJesus.org) con:
+* Como servidor web recomendamos nginx, puede configurar un dominio virtual 
+  (digamos sivel2.pasosdeJesus.org) con:
 ```
   server {
     listen 443;
@@ -150,9 +157,13 @@ Otras labores tipicas son:
   }
 ```
 * Precompile los recursos 
-```sh rake assets:precompile```
+```sh 
+rake assets:precompile
+```
 * Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con:
-```sh ./bin/u.sh```
+```sh 
+./bin/u.sh
+```
 * Para iniciar en cada arranque, por ejemplo en adJ cree /etc/rc.d/sivel2
 ```sh
 servicio="/var/www/htdocs/sivel2/bin/u.sh"
@@ -161,7 +172,8 @@ servicio="/var/www/htdocs/sivel2/bin/u.sh"
 
 rc_cmd $1
 ```
-  E incluya sivel2 en pkg_scripts en /etc/rc.conf.local
+  E incluya ```sivel2``` en la variable ```pkg_scripts``` de 
+```/etc/rc.conf.local```
 
 ### Actualización de servidor de desarrollo
 
@@ -169,11 +181,10 @@ rc_cmd $1
 * Actualice fuentes: ```git pull```
 * Instale nuevas versiones de gemas requeridas: 
 ``` sh
-  sudo bundle install
   bundle install
 ```
 * Aplique cambios a base de datos: ```rake db:migrate```
-* Actualice tablas básicas: ```rake sivel:actbasicas'''
+* Actualice tablas básicas: ```rake sivel:actbasicas```
 * Actualice índices: ```rake sivel2:indices```
 * Lance nuevamente el servidor de desarrollo: ```rails s```
 
@@ -194,4 +205,4 @@ cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca
 
 ### Convenciones
 
-Las mismas de sivel2_gen
+Las mismas de ```sivel2_gen```.  Ver https://github.com/pasosdeJesus/sivel2_gen
