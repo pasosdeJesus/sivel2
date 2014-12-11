@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b04b26e58c34b58d13b2760e23a8f92a6eee71df
+  revision: 2a93c5580158055d955caf0b076cd7f4d25b29a5
   specs:
     sivel2_gen (2.0.a3)
       devise
@@ -229,7 +229,7 @@ GEM
     simplecov-html (0.8.0)
     slop (3.6.0)
     spring (1.2.0)
-    spring-commands-rspec (1.0.2)
+    spring-commands-rspec (1.0.3)
       spring (>= 0.9.1)
     sprockets (2.12.3)
       hike (~> 1.2)
