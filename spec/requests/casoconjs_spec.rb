@@ -81,7 +81,7 @@ describe "Llenar caso con javascript", :js => true do
         select('URBANO', from: 'Tipo de Sitio') 
       end
       click_on "Añadir Ubicación"
-      su = "//div[@id='ubicacion']/div/div[2]"
+      su = "//div[@id='ubicacion']/div[2]"
       within(:xpath, su) do 
         select('COLOMBIA', from: 'País') 
         select('BOYACÁ', from: 'Estado/Departamento') 

@@ -1,1 +1,44 @@
+<% content_for :title do %>
+    <%= Sivel2Gen.titulo %>
+<% end %>
+
+<% content_for :menu do %>
+  <%= menu_group do %>
+    <% if !current_usuario.nil? %>
+      <%= menu_item "Casos", sivel2_gen.casos_path %>
+      <%= menu_item "Actividades", sivel2_gen.actividades_path %>
+    <% end %>
+  <% end %>
+  <%= menu_group :pull => :right do %>
+    <%= menu_item "Documentacion", sivel2_gen.acercade_path %>
+    <% if !current_usuario.nil? %>
+      <%= drop_down "Administrar" do %>
+        <%= menu_item "Clave", sivel2_gen.editar_registro_usuario_path %>
+        <% if session[:capturacaso_acordeon] %>
+          <li><a id="fichacasovertical" href="/fichacasovertical">Ficha caso vertical ✓</a></li>
+        <% else %>
+          <li><a id="fichacasovertical" href="/fichacasovertical">Ficha caso vertical</a></li>
+        <% end %>
+        <% if current_usuario.rol == Ability::ROLADMIN %>
+          <%= menu_item "Usuarios", sivel2_gen.usuarios_path %>
+        <% end %>
+        <% if current_usuario.rol == Ability::ROLADMIN %>
+          <%= menu_item "Tablas Básicas", sivel2_gen.tablasbasicas_path %>
+          <!-- %= #menu_item "Casos", admin_casos_path % -->
+        <% end %>
+      <% end %>
+      <%= menu_item "Salir #{current_usuario.nusuario}", sivel2_gen.sign_out_path %>
+    <% else %>
+      <%= menu_item "Acerca de", sivel2_gen.acercade_path %>
+      <%= menu_item "Iniciar Sesión", sivel2_gen.new_usuario_session_path %> 
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :footer do %>
+  <p><span class='derechos'>Dominio Público de acuerdo a Legislación Colombiana<br/>
+    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2014. 
+  </span></p>
+<% end %>
+
 <%= render template: "layouts/sivel2_gen/application" %>

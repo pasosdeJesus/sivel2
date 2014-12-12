@@ -46,7 +46,7 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
   e inicialice:
 ```sh
   sudo su - _postgresql
-  createuser -h/var/www/tmp -Upostgres -s sivel2des
+  createuser -h/var/www/tmp -Upostgres -s sivel2
   exit
   $EDITOR config/database.yml
   rake db:setup
@@ -114,14 +114,19 @@ Otras labores tipicas son:
 * Se recomienda que deje fuentes en ```/var/www/htdocs/sivel2```
 * Siga los mismos pasos para configurar un servidor de desarrollo --excepto
   lanzar
-* Configure la misma base de datos de un SIVeL 1.2 en sección production
-  de config/databases.yml y ejecute
+* Configure la misma base de datos de un SIVeL 1.2 en sección `production`
+  de `config/databases.yml` y ejecute
 ```sh
   RAILS_ENV=production rake db:migrate
   RAILS_ENV=production rake sivel:indices
 ```
-* Como servidor web recomendamos nginx, puede configurar un dominio virtual 
-  (digamos sivel2.pasosdeJesus.org) con:
+* Como servidor web recomendamos nginx, en la sección http agregue:
+```
+  upstream unicorns2 {
+	  server 127.0.0.1:2009 fail_timeout=0;
+  }
+```
+* Y agregue también un dominio virtual (digamos `sivel2.pasosdeJesus.org`) con:
 ```
   server {
     listen 443;
