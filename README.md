@@ -22,7 +22,11 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
 * Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
 * Instale gemas requeridas (como Rails 4.2) con:
 ```sh
-  bundle install
+  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle install
+```
+o emplee el script ```bin/gc.sh```, que además ejecutará pruebas de regresión, con:
+```sh
+SINAC=1 bin/gc.sh
 ```
 * Copie y modifique las plantillas:
 ```sh
