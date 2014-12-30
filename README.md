@@ -35,9 +35,9 @@ SINAC=1 bin/gc.sh
   $EDITOR app/views/hogar/_local.html.erb config/database.yml
 ```
 * Establezca una ruta para anexos en ```config/initializers/sivel2_gen.rb```.  
-  Debe existir y poder ser escrita por el proceso con el que corra el
-  servidor de desarrollo.
-* Las migraciones del directorio ```db/migrate``` permiten migrar una 
+  Debe existir y poder ser escrita por el dueño del proceso con el que corra 
+  el servidor de desarrollo.
+* Las  migraciones del directorio ```db/migrate``` permiten migrar una 
   SIVeL 1.2, actualizando estructura y agregando datos que hagan falta.
   Para actualizar un SIVeL 1.2 saque copia al a base, configure datos de la 
   copia en config/database.yml y ejecute:
@@ -59,7 +59,7 @@ SINAC=1 bin/gc.sh
 * Lance la aplicación en modo de desarrollo con:
 ```sh
   rails s
-```sh
+```
 * Examine con un navegador el puerto 3000 http://192.168.x.y:3000
 * Cuando requiera detener basta que de Control-C o que busque el
   proceso con ruby que corre en el purto 3000 y lo elimine con kill:
