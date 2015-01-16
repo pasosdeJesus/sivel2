@@ -37,8 +37,9 @@ SINAC=1 bin/gc.sh
 * Establezca una ruta para anexos en ```config/initializers/sivel2_gen.rb```.  
   Debe existir y poder ser escrita por el dueño del proceso con el que corra 
   el servidor de desarrollo.
-* Las  migraciones del directorio ```db/migrate``` permiten migrar una 
-  SIVeL 1.2, actualizando estructura y agregando datos que hagan falta.
+* Las  migraciones del directorio ```db/migrate``` de sivel2_gen permiten 
+  migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
+  falta.
   Para actualizar un SIVeL 1.2 saque copia al a base, configure datos de la 
   copia en config/database.yml y ejecute:
 ```sh
@@ -62,7 +63,7 @@ SINAC=1 bin/gc.sh
 ```
 * Examine con un navegador el puerto 3000 http://192.168.x.y:3000
 * Cuando requiera detener basta que de Control-C o que busque el
-  proceso con ruby que corre en el purto 3000 y lo elimine con kill:
+  proceso con ruby que corre en el puerto 3000 y lo elimine con ```kill```:
 ```sh
 ps ax | grep "ruby.*3000"
 kill 323122
@@ -112,7 +113,8 @@ Para que heroku solo instale las gemas de producción:
 Otras labores tipicas son:
 * Para iniciar interfaz Postgresql: ```heroku pg:psql```
 * Para ejecutar migraciones faltantes: ```heroku run rake db:migrate```
-
+* Para examinar configuración ```heroku config``` que entre otras mostrará URL y nombre de la pase de datos.
+* Heroku usa base de datos de manera diferente, para volver a inicializar base de datos (cuyo nombre se ve con ```heroku config```):  ```heroku pg:reset nombrebase```
 
 ### Despliegue en sitio de producción con unicorn:
 * Se recomienda que deje fuentes en ```/var/www/htdocs/sivel2```
@@ -181,8 +183,7 @@ servicio="/var/www/htdocs/sivel2/bin/u.sh"
 
 rc_cmd $1
 ```
-  E incluya ```sivel2``` en la variable ```pkg_scripts``` de 
-```/etc/rc.conf.local```
+  E incluya ```sivel2``` en la variable ```pkg_scripts``` de ```/etc/rc.conf.local```
 
 ### Actualización de servidor de desarrollo
 
