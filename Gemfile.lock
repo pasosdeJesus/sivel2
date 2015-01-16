@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a85b5097456943c492f7d6e8c82b88aa7b33437d
+  revision: 75d8a471930c2fe6688203a94ac203e02269b311
   specs:
     sivel2_gen (2.0.a3)
       devise
@@ -69,7 +69,7 @@ GEM
       sass (~> 3.2)
     builder (3.2.2)
     camertron-eprun (1.1.0)
-    cancancan (1.9.2)
+    cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -84,7 +84,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
-    codeclimate-test-reporter (0.4.4)
+    codeclimate-test-reporter (0.4.5)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -126,8 +126,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
-    json (1.8.1)
-    kgio (2.9.2)
+    json (1.8.2)
+    kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.1)
@@ -137,7 +137,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
-    minitest (5.5.0)
+    minitest (5.5.1)
     multi_json (1.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -147,7 +147,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    pg (0.17.1)
+    pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -159,7 +159,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     rack (1.6.0)
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
       actionmailer (= 4.2.0)
@@ -259,7 +259,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2014.10)
       tzinfo (>= 1.0.0)
-    uglifier (2.6.1)
+    uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicorn (4.8.3)
