@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e15e398329975257fdef25b703fe30d5b72328cf
+  revision: 59da0acc7eed57b12ff6c85c8a2cfa56413b9ee5
   specs:
     sivel2_gen (2.0.a4)
       devise
@@ -116,7 +116,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    globalid (0.3.2)
+    globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
     i18n (0.7.0)
