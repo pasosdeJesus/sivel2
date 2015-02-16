@@ -29,6 +29,14 @@ SERVIDOR SJR-552b2d:
 El mismo SJR-55 pero con
 * Plataforma: adJ 5.5, PostgreSQL 9.3.5, ruby 2.1.0, RoR 4.2.0.beta2, webricks modo desarrollo
 
+SERVIDOR AP-55p2r42d:
+* Intel(R) Core(TM) i7-4790 CPU @ 3.60GH, 8 núcleos
+* RAM: 12G
+* Disco: 1 discos de 2T
+* Plataforma: adJ 5.5p2, PostgreSQL 9.3.6, ruby 2.1.5, RoR 4.2.0, webrick
+* Conexión a Internet por Claro 12MB fibra óptica. 6M de subida.
+* Cortafuegos con adJ 5.5p2
+
 
 
 ## ESPECIFICACION DE CLIENTES
@@ -58,4 +66,16 @@ CLIENTE W-1:
 * Editar un caso: 5,1
 * Agregar etiqueta y guardar: 6,5
 * Editar de nuevo: 4,5
+
+
+### Fecha: 13.Feb.2015. Servidor: AP-55p2r22d. Cliente: AP-55p2r22d. Local
+* Autenticar: 2,5
+* Lista de actividades: 1,25
+* Editar una actividad: 1,11
+* Lista de casos: 1,18
+* Editar un caso: 1,48
+* Agregar etiqueta y guardar: 2,5
+* Editar de nuevo: 1,25
+
+
 
