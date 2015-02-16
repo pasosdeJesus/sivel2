@@ -8,8 +8,10 @@ Sistema de Información de Violencia Política en Línea versión 2
 ### Requerimientos
 * Ruby version >= 2.1
 * PostgreSQL >= 9.3 con extensión unaccent disponible
-* Recomendado sobre adJ 5.5 (que incluye todos los componentes mencionados).  
+* Recomendado sobre adJ 5.5p2 (que incluye todos los componentes mencionados).  
   Las siguientes instrucciones suponen que opera en este ambiente.
+
+Puede consultar como instalar estos componentes en: http://dhobsd.pasosdejesus.org/index.php?id=Ruby+on+Rails+en+OpenBSD
 
 
 ### Arquitectura
@@ -32,7 +34,7 @@ SINAC=1 bin/gc.sh
 ```sh
   cp app/views/hogar/_local.html.erb.plantilla app/views/hogar/_local.html.erb
   cp config/database.yml.plantilla config/database.yml
-  $EDITOR app/views/hogar/_local.html.erb config/database.yml
+  vim app/views/hogar/_local.html.erb config/database.yml
 ```
 * Establezca una ruta para anexos en ```config/initializers/sivel2_gen.rb```.  
   Debe existir y poder ser escrita por el dueño del proceso con el que corra 
@@ -50,18 +52,25 @@ SINAC=1 bin/gc.sh
   PostgreSQL, configure datos para este en ```config/database.yml``` 
   e inicialice:
 ```sh
-  sudo su - _postgresql
-  createuser -h/var/www/tmp -Upostgres -s sivel2
+  $ sudo su - _postgresql
+  $ createuser -h/var/www/tmp -Upostgres -s sivel2des
+  $ psql -h/var/www/tmp -Upostgres
+psql (9.3.6)
+Type "help" for help.
+
+postgres=# ALTER USER sivel2des WITH password 'miclave';
+ALTER ROLE
+postgres=# \q
   exit
-  $EDITOR config/database.yml
-  rake db:setup
-  rake sivel2:indices
+  $ vim config/database.yml
+  $ rake db:setup
+  $ rake sivel2:indices
 ```
 * Lance la aplicación en modo de desarrollo con:
 ```sh
   rails s
 ```
-* Examine con un navegador el puerto 3000 http://192.168.x.y:3000
+* Examine con un navegador el puerto 3000: ```http://127.0.0.1:3000```
 * Cuando requiera detener basta que de Control-C o que busque el
   proceso con ruby que corre en el puerto 3000 y lo elimine con ```kill```:
 ```sh
@@ -96,7 +105,7 @@ de desarrollo) y porque no puede usarse capybara-webkit.
 
 Para tener menos de 10000 registros en base de datos se han eliminado ciudades de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
 
-Los anexos son volatiles pues tuvieron que ubicarse en /tmp/ (que se 
+Los anexos son volatiles pues tuvieron que ubicarse en ```/tmp/``` (que se 
 borra con periodicidad).
 
 En tiempo de ejecución el uso de heroku se detecta en 
@@ -113,8 +122,13 @@ Para que heroku solo instale las gemas de producción:
 Otras labores tipicas son:
 * Para iniciar interfaz Postgresql: ```heroku pg:psql```
 * Para ejecutar migraciones faltantes: ```heroku run rake db:migrate```
-* Para examinar configuración ```heroku config``` que entre otras mostrará URL y nombre de la pase de datos.
+* Para examinar configuración ```heroku config``` que entre otras mostrará URL y nombre de la base de datos.
 * Heroku usa base de datos de manera diferente, para volver a inicializar base de datos (cuyo nombre se ve con ```heroku config```):  ```heroku pg:reset nombrebase```
+
+### Medición de tiempos
+
+En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de respuesta medidos con el inspector del navegador Chrome (una vez en la página de ingreso a SIVeL, botón derecho Inspeccionar Elemento, pestaña Network). En ese archivo se ha consignado el tiempo de cada prueba junto con el servidor y el cliente usado.
+
 
 ### Despliegue en sitio de producción con unicorn:
 * Se recomienda que deje fuentes en ```/var/www/htdocs/sivel2```
