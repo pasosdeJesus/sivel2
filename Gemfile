@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.1.5"
+
 # Rails (internacionalización)
 gem "rails", '~> 4.2.0'
 gem "rails-i18n"
