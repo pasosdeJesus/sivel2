@@ -30,6 +30,11 @@ o emplee el script ```bin/gc.sh```, que además ejecutará pruebas de regresión
 ```sh
 SINAC=1 bin/gc.sh
 ```
+o mejor para minimizar descargas vale la pena instalar como gemas del sistema la mayoría de estas, en adJ con:
+```sh
+  grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install --no-documentation
+```
+
 * Copie y modifique las plantillas:
 ```sh
   cp app/views/hogar/_local.html.erb.plantilla app/views/hogar/_local.html.erb
