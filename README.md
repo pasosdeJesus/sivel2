@@ -56,7 +56,6 @@ postgres=# \q
   exit
   $ vim config/database.yml
   $ rake db:setup
-  $ rake sivel2:indices
 ```
 * Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
@@ -67,7 +66,7 @@ postgres=# \q
   rake db:migrate
   rake sivel2:indices
 ```
-Lance la aplicación en modo de desarrollo con:
+* Lance la aplicación en modo de desarrollo con:
 ```sh
   rails s
 ```
