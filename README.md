@@ -26,10 +26,11 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
 ```sh
   NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle install
 ```
-o emplee el script ```bin/gc.sh```, que además ejecutará pruebas de regresión, con:
+o mejor antes para minimizar descargas vale la pena instalar como gemas del sistema la mayoría de estas, en adJ con:
 ```sh
-SINAC=1 bin/gc.sh
+  grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install --no-documentation
 ```
+
 * Copie y modifique las plantillas:
 ```sh
   cp app/views/hogar/_local.html.erb.plantilla app/views/hogar/_local.html.erb
@@ -39,15 +40,6 @@ SINAC=1 bin/gc.sh
 * Establezca una ruta para anexos en ```config/initializers/sivel2_gen.rb```.  
   Debe existir y poder ser escrita por el dueño del proceso con el que corra 
   el servidor de desarrollo.
-* Las  migraciones del directorio ```db/migrate``` de sivel2_gen permiten 
-  migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
-  falta.
-  Para actualizar un SIVeL 1.2 saque copia al a base, configure datos de la 
-  copia en config/database.yml y ejecute:
-```sh
-  rake db:migrate
-  rake sivel2:indices
-```
 * Si prefiere comenzar con una base en blanco, cree un superusuario para
   PostgreSQL, configure datos para este en ```config/database.yml``` 
   e inicialice:
@@ -64,7 +56,15 @@ postgres=# \q
   exit
   $ vim config/database.yml
   $ rake db:setup
-  $ rake sivel2:indices
+```
+* Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
+  migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
+  falta.
+  Para actualizar un SIVeL 1.2 saque copia al a base, configure datos de la 
+  copia en ```config/database.yml``` y ejecute:
+```sh
+  rake db:migrate
+  rake sivel2:indices
 ```
 * Lance la aplicación en modo de desarrollo con:
 ```sh
