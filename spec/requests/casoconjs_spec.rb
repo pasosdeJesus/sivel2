@@ -7,7 +7,7 @@ describe "Llenar caso con javascript", :js => true do
   before { 
     usuario = Usuario.find_by(nusuario: 'sivel2')
     usuario.password = 'sivel2'
-    visit new_usuario_session_path 
+    visit '/usuarios/sign_in'
     fill_in "Usuario", with: usuario.nusuario
     fill_in "Clave", with: usuario.password
     click_button "Iniciar Sesión"
