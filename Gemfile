@@ -93,7 +93,7 @@ group :development, :test do
   #gem 'byebug'
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
-  gem 'web-console', '~> 2.0.0.beta4'
+  gem 'web-console'
 
   # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
   gem 'pry-rescue'
