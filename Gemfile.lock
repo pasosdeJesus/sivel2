@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9bf562223af7fe991c438de4c006383ef10fca82
+  revision: d520cae4e7a8188025cdba706cafa5ca9f099665
   specs:
     sivel2_gen (2.0.a4)
       devise
@@ -273,10 +273,10 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
-    web-console (2.0.0)
-      activemodel (~> 4.0)
+    web-console (2.1.2)
+      activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
-      railties (~> 4.0)
+      railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.0.7)
     xpath (2.0.0)
@@ -323,5 +323,5 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   unicorn
-  web-console (~> 2.0.0.beta4)
+  web-console
   will_paginate
