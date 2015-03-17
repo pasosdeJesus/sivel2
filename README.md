@@ -33,9 +33,9 @@ o mejor antes para minimizar descargas vale la pena instalar como gemas del sist
 
 * Copie y modifique las plantillas:
 ```sh
-  cp app/views/hogar/_local.html.erb.plantilla app/views/hogar/_local.html.erb
+  cp app/views/sivel2_gen/hogar/_local.html.erb.plantilla app/views/sivel2_gen/hogar/_local.html.erb
   cp config/database.yml.plantilla config/database.yml
-  vim app/views/hogar/_local.html.erb config/database.yml
+  vim app/views/sivel2_gen/hogar/_local.html.erb config/database.yml
 ```
 * Establezca una ruta para anexos en ```config/initializers/sivel2_gen.rb```.  
   Debe existir y poder ser escrita por el dueño del proceso con el que corra 
