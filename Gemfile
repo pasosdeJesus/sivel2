@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+#ruby "2.1.5"
+
 # Rails (internacionalización)
 gem "rails", '~> 4.2.1'
 gem "rails-i18n"
@@ -12,9 +14,6 @@ gem "pg"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
-
-# SCSS para hojas de estilo
-#gem "sass-rails"#, '~> 4.0.0.rc1'
 
 # Uglifier comprime recursos Javascript
 gem "uglifier", '>= 1.3.0'
@@ -35,7 +34,6 @@ gem "turbolinks"
 # Ambiente de CSS
 gem "twitter-bootstrap-rails"
 gem "bootstrap-datepicker-rails"
-gem "bootstrap-sass"
 
 # Formularios simples 
 gem "simple_form"
@@ -91,7 +89,7 @@ group :development, :test do
   #gem 'byebug'
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
-  gem 'web-console', '~> 2.0.0.beta4'
+  gem 'web-console'
 
   # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
   gem 'pry-rescue'
