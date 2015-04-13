@@ -9,6 +9,8 @@ gem "rails-i18n"
 # Postgresql
 gem "pg"
 
+gem "sass"
+
 # Maneja variables de ambiente (como claves y secretos) en .env
 #gem "foreman"
 
