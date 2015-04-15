@@ -10,6 +10,9 @@
 
 connection = ActiveRecord::Base.connection();
 
+connection.execute(IO.read(Gem.loaded_specs['sip'].full_gem_path +
+                           "/db/datos-basicas.sql"));
+
 connection.execute(IO.read(Gem.loaded_specs['sivel2_gen'].full_gem_path +
                            "/db/datos-basicas.sql"));
 
