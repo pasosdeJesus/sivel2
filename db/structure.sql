@@ -532,7 +532,7 @@ CREATE SEQUENCE sip_clase_id_seq
 --
 
 CREATE TABLE sip_clase (
-    id_clalocal integer DEFAULT nextval('sip_clase_id_seq'::regclass) NOT NULL,
+    id_clalocal integer NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     id_tclase character varying(10),
     latitud double precision,
@@ -564,7 +564,7 @@ CREATE SEQUENCE sip_departamento_id_seq
 --
 
 CREATE TABLE sip_departamento (
-    id_deplocal integer DEFAULT nextval('sip_departamento_id_seq'::regclass) NOT NULL,
+    id_deplocal integer NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     latitud double precision,
     longitud double precision,
@@ -623,7 +623,7 @@ CREATE SEQUENCE sip_municipio_id_seq
 --
 
 CREATE TABLE sip_municipio (
-    id_munlocal integer DEFAULT nextval('sip_municipio_id_seq'::regclass) NOT NULL,
+    id_munlocal integer NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     latitud double precision,
     longitud double precision,

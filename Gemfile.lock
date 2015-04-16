@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: aef321509ad0fe66675a37ddadf81b86a20b7ef0
+  revision: 4cfa3d732ff1e6cc2cd2a132fbb93009d48ba50c
   specs:
     sip (2.0.a4)
       devise
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 53676a482cd3ac85c71dac2f0b683ff8c1c3a88b
+  revision: 4126b4c7bcb1c6e24c3ae2157398a133ec6cafb3
   branch: consip
   specs:
     sivel2_gen (2.0.a4)
@@ -260,7 +260,7 @@ GEM
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2015.2)
+    tzinfo-data (1.2015.3)
       tzinfo (>= 1.0.0)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
