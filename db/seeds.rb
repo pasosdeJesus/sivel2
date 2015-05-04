@@ -13,6 +13,7 @@ connection = ActiveRecord::Base.connection();
 connection.execute(IO.read(Gem.loaded_specs['sivel2_gen'].full_gem_path +
                            "/db/datos-basicas.sql"));
 
+# usuario sivel2 con clave sivel2
 connection.execute("INSERT INTO usuario 
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
