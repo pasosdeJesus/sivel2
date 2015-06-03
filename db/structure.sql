@@ -287,18 +287,6 @@ CREATE SEQUENCE etnia_seq
 
 
 --
--- Name: ffrecuente_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE ffrecuente_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
 -- Name: filiacion_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -455,6 +443,18 @@ CREATE SEQUENCE rangoedad_seq
 
 
 --
+-- Name: regimensalud_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE regimensalud_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: region_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -508,7 +508,9 @@ CREATE SEQUENCE sip_clase_id_seq
 --
 
 CREATE TABLE sip_clase (
+    id integer DEFAULT nextval('sip_clase_id_seq'::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    id_clalocal integer,
     id_tclase character varying(10) DEFAULT 'CP'::character varying NOT NULL,
     latitud double precision,
     longitud double precision,
@@ -517,8 +519,7 @@ CREATE TABLE sip_clase (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id_municipio integer,
-    id integer DEFAULT nextval('sip_clase_id_seq'::regclass) NOT NULL,
-    id_clalocal integer,
+    observaciones character varying(5000),
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -540,16 +541,17 @@ CREATE SEQUENCE sip_departamento_id_seq
 --
 
 CREATE TABLE sip_departamento (
-    id_deplocal integer NOT NULL,
+    id integer DEFAULT nextval('sip_departamento_id_seq'::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    id_pais integer NOT NULL,
+    id_deplocal integer,
     latitud double precision,
     longitud double precision,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id_pais integer NOT NULL,
-    id integer DEFAULT nextval('sip_departamento_id_seq'::regclass) NOT NULL,
+    observaciones character varying(5000),
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -583,6 +585,35 @@ CREATE TABLE sip_etiqueta (
 
 
 --
+-- Name: sip_fuenteprensa_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sip_fuenteprensa_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_fuenteprensa; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sip_fuenteprensa (
+    id integer DEFAULT nextval('sip_fuenteprensa_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    tfuente character varying(25),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT sip_fuenteprensa_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sip_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -599,8 +630,9 @@ CREATE SEQUENCE sip_municipio_id_seq
 --
 
 CREATE TABLE sip_municipio (
-    id_munlocal integer NOT NULL,
+    id integer DEFAULT nextval('sip_municipio_id_seq'::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    id_munlocal integer,
     latitud double precision,
     longitud double precision,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
@@ -608,7 +640,7 @@ CREATE TABLE sip_municipio (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id_departamento integer,
-    id integer DEFAULT nextval('sip_municipio_id_seq'::regclass) NOT NULL,
+    observaciones character varying(5000),
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -660,7 +692,8 @@ CREATE TABLE sip_pais (
     fechacreacion date,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    observaciones character varying(5000)
 );
 
 
@@ -747,6 +780,7 @@ CREATE TABLE sip_tclase (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT tclase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -763,7 +797,8 @@ CREATE TABLE sip_tdocumento (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    observaciones character varying(5000)
 );
 
 
@@ -826,6 +861,7 @@ CREATE TABLE sip_tsitio (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT tsitio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -874,6 +910,7 @@ CREATE TABLE sivel2_gen_actividadoficio (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT actividadoficio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -917,7 +954,7 @@ CREATE TABLE sivel2_gen_anexo (
     fecha date NOT NULL,
     descripcion character varying(1500) NOT NULL,
     archivo character varying(255),
-    id_ffrecuente integer,
+    fuenteprensa_id integer,
     fechaffrecuente date,
     id_fotra integer,
     created_at timestamp without time zone,
@@ -1050,22 +1087,6 @@ CREATE TABLE sivel2_gen_caso_etiqueta (
 
 
 --
--- Name: sivel2_gen_caso_ffrecuente; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE sivel2_gen_caso_ffrecuente (
-    fecha date NOT NULL,
-    ubicacion character varying(100),
-    clasificacion character varying(100),
-    ubicacionfisica character varying(100),
-    id_ffrecuente integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
 -- Name: sivel2_gen_caso_fotra; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1087,6 +1108,22 @@ CREATE TABLE sivel2_gen_caso_fotra (
 
 CREATE TABLE sivel2_gen_caso_frontera (
     id_frontera integer NOT NULL,
+    id_caso integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sivel2_gen_caso_fuenteprensa (
+    fecha date NOT NULL,
+    ubicacion character varying(100),
+    clasificacion character varying(100),
+    ubicacionfisica character varying(100),
+    fuenteprensa_id integer NOT NULL,
     id_caso integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -1154,6 +1191,7 @@ CREATE TABLE sivel2_gen_categoria (
     tipocat character(1) DEFAULT 'I'::bpchar,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT categoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT categoria_tipocat_check CHECK ((((tipocat = 'I'::bpchar) OR (tipocat = 'C'::bpchar)) OR (tipocat = 'O'::bpchar)))
 );
@@ -1238,6 +1276,107 @@ CREATE TABLE sivel2_gen_comunidad_vinculoestado (
 
 
 --
+-- Name: sivel2_gen_presponsable; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sivel2_gen_presponsable (
+    id integer DEFAULT nextval('presponsable_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    papa integer,
+    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT presponsable_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: victima_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE victima_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sivel2_gen_victima (
+    id_persona integer NOT NULL,
+    id_caso integer NOT NULL,
+    hijos integer,
+    id_profesion integer DEFAULT 22 NOT NULL,
+    id_rangoedad integer DEFAULT 6 NOT NULL,
+    id_filiacion integer DEFAULT 10 NOT NULL,
+    id_sectorsocial integer DEFAULT 15 NOT NULL,
+    id_organizacion integer DEFAULT 16 NOT NULL,
+    id_vinculoestado integer DEFAULT 38 NOT NULL,
+    organizacionarmada integer DEFAULT 35 NOT NULL,
+    anotaciones character varying(1000),
+    id_etnia integer DEFAULT 1,
+    id_iglesia integer DEFAULT 1,
+    orientacionsexual character(1) DEFAULT 'H'::bpchar NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('victima_seq'::regclass) NOT NULL,
+    CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
+    CONSTRAINT victima_orientacionsexual_check CHECK (((((((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar)) OR (orientacionsexual = 'B'::bpchar)) OR (orientacionsexual = 'T'::bpchar)) OR (orientacionsexual = 'I'::bpchar)) OR (orientacionsexual = 'H'::bpchar)))
+);
+
+
+--
+-- Name: sivel2_gen_conscaso1; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW sivel2_gen_conscaso1 AS
+ SELECT caso.id AS caso_id,
+    caso.fecha,
+    caso.memo,
+    array_to_string(ARRAY( SELECT (((departamento.nombre)::text || ' / '::text) || (municipio.nombre)::text)
+           FROM ((sip_ubicacion ubicacion
+             LEFT JOIN sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
+             LEFT JOIN sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
+          WHERE (ubicacion.id_caso = caso.id)), ', '::text) AS ubicaciones,
+    array_to_string(ARRAY( SELECT (((persona.nombres)::text || ' '::text) || (persona.apellidos)::text)
+           FROM sip_persona persona,
+            sivel2_gen_victima victima
+          WHERE ((persona.id = victima.id_persona) AND (victima.id_caso = caso.id))), ', '::text) AS victimas,
+    array_to_string(ARRAY( SELECT presponsable.nombre
+           FROM sivel2_gen_presponsable presponsable,
+            sivel2_gen_caso_presponsable caso_presponsable
+          WHERE ((presponsable.id = caso_presponsable.id_presponsable) AND (caso_presponsable.id_caso = caso.id))), ', '::text) AS presponsables,
+    array_to_string(ARRAY( SELECT (((((((categoria.id_tviolencia)::text || ':'::text) || categoria.id_supracategoria) || ':'::text) || categoria.id) || ' '::text) || (categoria.nombre)::text)
+           FROM sivel2_gen_categoria categoria,
+            sivel2_gen_acto acto
+          WHERE ((categoria.id = acto.id_categoria) AND (acto.id_caso = caso.id))), ', '::text) AS tipificacion
+   FROM sivel2_gen_caso caso;
+
+
+--
+-- Name: sivel2_gen_conscaso; Type: MATERIALIZED VIEW; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE MATERIALIZED VIEW sivel2_gen_conscaso AS
+ SELECT sivel2_gen_conscaso1.caso_id,
+    sivel2_gen_conscaso1.fecha,
+    sivel2_gen_conscaso1.memo,
+    sivel2_gen_conscaso1.ubicaciones,
+    sivel2_gen_conscaso1.victimas,
+    sivel2_gen_conscaso1.presponsables,
+    sivel2_gen_conscaso1.tipificacion,
+    to_tsvector('spanish'::regconfig, unaccent(((((((((((((sivel2_gen_conscaso1.caso_id || ' '::text) || replace(((sivel2_gen_conscaso1.fecha)::character varying)::text, '-'::text, ' '::text)) || ' '::text) || sivel2_gen_conscaso1.memo) || ' '::text) || sivel2_gen_conscaso1.ubicaciones) || ' '::text) || sivel2_gen_conscaso1.victimas) || ' '::text) || sivel2_gen_conscaso1.presponsables) || ' '::text) || sivel2_gen_conscaso1.tipificacion))) AS q
+   FROM sivel2_gen_conscaso1
+  WITH NO DATA;
+
+
+--
 -- Name: sivel2_gen_contexto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1263,6 +1402,7 @@ CREATE TABLE sivel2_gen_escolaridad (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT escolaridad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1278,6 +1418,7 @@ CREATE TABLE sivel2_gen_estadocivil (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT estadocivil_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1294,23 +1435,8 @@ CREATE TABLE sivel2_gen_etnia (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT etnia_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: sivel2_gen_ffrecuente; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE sivel2_gen_ffrecuente (
-    id integer DEFAULT nextval('ffrecuente_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    tfuente character varying(25) NOT NULL,
-    fechacreacion date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    CONSTRAINT ffrecuente_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -1352,6 +1478,7 @@ CREATE TABLE sivel2_gen_frontera (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT frontera_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1381,6 +1508,7 @@ CREATE TABLE sivel2_gen_iglesia (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT iglesia_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1412,6 +1540,7 @@ CREATE TABLE sivel2_gen_maternidad (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT maternidad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1450,22 +1579,6 @@ CREATE TABLE sivel2_gen_pconsolidado (
 
 
 --
--- Name: sivel2_gen_presponsable; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE sivel2_gen_presponsable (
-    id integer DEFAULT nextval('presponsable_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    papa integer,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    CONSTRAINT presponsable_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
 -- Name: sivel2_gen_profesion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1476,6 +1589,7 @@ CREATE TABLE sivel2_gen_profesion (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT profesion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1494,7 +1608,23 @@ CREATE TABLE sivel2_gen_rangoedad (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT rangoedad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: sivel2_gen_regimensalud; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sivel2_gen_regimensalud (
+    id integer DEFAULT nextval('regimensalud_seq'::regclass) NOT NULL,
+    nombre character varying(50) NOT NULL,
+    fechacreacion date DEFAULT '2013-05-13'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    CONSTRAINT regimensalud_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -1509,6 +1639,7 @@ CREATE TABLE sivel2_gen_region (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT region_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1540,6 +1671,7 @@ CREATE TABLE sivel2_gen_supracategoria (
     id_tviolencia character varying(1) NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT supracategoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1556,46 +1688,8 @@ CREATE TABLE sivel2_gen_tviolencia (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT tviolencia_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: victima_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE victima_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE sivel2_gen_victima (
-    id_persona integer NOT NULL,
-    id_caso integer NOT NULL,
-    hijos integer,
-    id_profesion integer DEFAULT 22 NOT NULL,
-    id_rangoedad integer DEFAULT 6 NOT NULL,
-    id_filiacion integer DEFAULT 10 NOT NULL,
-    id_sectorsocial integer DEFAULT 15 NOT NULL,
-    id_organizacion integer DEFAULT 16 NOT NULL,
-    id_vinculoestado integer DEFAULT 38 NOT NULL,
-    organizacionarmada integer DEFAULT 35 NOT NULL,
-    anotaciones character varying(1000),
-    id_etnia integer DEFAULT 1,
-    id_iglesia integer DEFAULT 1,
-    orientacionsexual character(1) DEFAULT 'H'::bpchar NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id integer DEFAULT nextval('victima_seq'::regclass) NOT NULL,
-    CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
-    CONSTRAINT victima_orientacionsexual_check CHECK (((((((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar)) OR (orientacionsexual = 'B'::bpchar)) OR (orientacionsexual = 'T'::bpchar)) OR (orientacionsexual = 'I'::bpchar)) OR (orientacionsexual = 'H'::bpchar)))
 );
 
 
@@ -1823,14 +1917,6 @@ ALTER TABLE ONLY sivel2_gen_caso_etiqueta
 
 
 --
--- Name: caso_ffrecuente_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY sivel2_gen_caso_ffrecuente
-    ADD CONSTRAINT caso_ffrecuente_pkey PRIMARY KEY (fecha, id_ffrecuente, id_caso);
-
-
---
 -- Name: caso_fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1975,14 +2061,6 @@ ALTER TABLE ONLY sivel2_gen_etnia
 
 
 --
--- Name: ffrecuente_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY sivel2_gen_ffrecuente
-    ADD CONSTRAINT ffrecuente_pkey PRIMARY KEY (id);
-
-
---
 -- Name: filiacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2103,6 +2181,14 @@ ALTER TABLE ONLY sivel2_gen_rangoedad
 
 
 --
+-- Name: regimensalud_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sivel2_gen_regimensalud
+    ADD CONSTRAINT regimensalud_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: region_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2167,6 +2253,14 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
+-- Name: sip_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sip_fuenteprensa
+    ADD CONSTRAINT sip_fuenteprensa_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_municipio_id_departamento_id_munlocal_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2188,6 +2282,14 @@ ALTER TABLE ONLY sip_municipio
 
 ALTER TABLE ONLY sip_municipio
     ADD CONSTRAINT sip_municipio_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT sivel2_gen_caso_fuenteprensa_pkey PRIMARY KEY (fecha, fuenteprensa_id, id_caso);
 
 
 --
@@ -2292,6 +2394,13 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 ALTER TABLE ONLY sivel2_gen_vinculoestado
     ADD CONSTRAINT vinculoestado_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: busca_sivel2_gen_conscaso; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX busca_sivel2_gen_conscaso ON sivel2_gen_conscaso USING gin (q);
 
 
 --
@@ -2402,19 +2511,19 @@ ALTER TABLE ONLY sivel2_gen_actocolectivo
 
 
 --
+-- Name: anexo_fuenteprensa_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_anexo
+    ADD CONSTRAINT anexo_fuenteprensa_id_fkey FOREIGN KEY (fuenteprensa_id) REFERENCES sip_fuenteprensa(id);
+
+
+--
 -- Name: anexo_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_anexo
     ADD CONSTRAINT anexo_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: anexo_id_ffrecuente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_anexo
-    ADD CONSTRAINT anexo_id_ffrecuente_fkey FOREIGN KEY (id_ffrecuente) REFERENCES sivel2_gen_ffrecuente(id);
 
 
 --
@@ -2591,22 +2700,6 @@ ALTER TABLE ONLY sivel2_gen_caso_etiqueta
 
 ALTER TABLE ONLY sivel2_gen_caso_etiqueta
     ADD CONSTRAINT caso_etiqueta_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES usuario(id);
-
-
---
--- Name: caso_ffrecuente_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_ffrecuente
-    ADD CONSTRAINT caso_ffrecuente_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: caso_ffrecuente_id_ffrecuente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_ffrecuente
-    ADD CONSTRAINT caso_ffrecuente_id_ffrecuente_fkey FOREIGN KEY (id_ffrecuente) REFERENCES sivel2_gen_ffrecuente(id);
 
 
 --
@@ -3058,6 +3151,22 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
+-- Name: sivel2_gen_caso_fuenteprensa_fuenteprensa_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT sivel2_gen_caso_fuenteprensa_fuenteprensa_id_fkey FOREIGN KEY (fuenteprensa_id) REFERENCES sip_fuenteprensa(id);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT sivel2_gen_caso_fuenteprensa_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
+
+
+--
 -- Name: supracategoria_id_tviolencia_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3221,7 +3330,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20131128151014');
 
@@ -3334,4 +3443,14 @@ INSERT INTO schema_migrations (version) VALUES ('20150416090140');
 INSERT INTO schema_migrations (version) VALUES ('20150503120915');
 
 INSERT INTO schema_migrations (version) VALUES ('20150505084914');
+
+INSERT INTO schema_migrations (version) VALUES ('20150510125926');
+
+INSERT INTO schema_migrations (version) VALUES ('20150521181918');
+
+INSERT INTO schema_migrations (version) VALUES ('20150602094513');
+
+INSERT INTO schema_migrations (version) VALUES ('20150602095241');
+
+INSERT INTO schema_migrations (version) VALUES ('20150602104342');
 
