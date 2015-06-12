@@ -9,7 +9,11 @@ gem "rails-i18n"
 # Postgresql
 gem "pg"
 
+# CSS
 gem "sass"
+
+# Color en terminal
+gem "colorize"
 
 # Maneja variables de ambiente (como claves y secretos) en .env
 #gem "foreman"

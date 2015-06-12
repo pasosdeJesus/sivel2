@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
-  root 'sivel2_gen/hogar#index'
+  get '/anexos/descarga_anexo/:id' => 'sivel2_gen/anexos#descarga_anexo'
   mount Sip::Engine => "/", as: 'sip'
   mount Sivel2Gen::Engine => "/", as: 'sivel2_gen'
 

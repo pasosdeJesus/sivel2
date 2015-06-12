@@ -1,6 +1,6 @@
 require 'sivel2_gen/version'
 
-Sivel2Gen.setup do |config|
+Sip.setup do |config|
       config.ruta_anexos = "/var/www/htdocs/sivel2/anexos"
       config.ruta_volcados = "/var/www/htdocs/sivel2/db"
       # En heroku los anexos son super-temporales
