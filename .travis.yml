@@ -19,5 +19,5 @@ before_install:
         - sed -e "s/SET lock_timeout = 0;//g" db/structure.sql.conlock >db/structure.sql
         - cp config/database.travis.yml config/database.yml
         - rake db:setup
-        - rake sivel2:indices
+        - rake sip:indices
 
