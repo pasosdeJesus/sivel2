@@ -9,7 +9,11 @@ gem "rails-i18n"
 # Postgresql
 gem "pg"
 
+# CSS
 gem "sass"
+
+# Color en terminal
+gem "colorize"
 
 # Maneja variables de ambiente (como claves y secretos) en .env
 #gem "foreman"
@@ -61,6 +65,10 @@ gem "paperclip", "~> 4.1"
 # Zonas horarias
 gem "tzinfo"
 gem "tzinfo-data"
+
+# Motor de sip
+gem 'sip', github: 'pasosdeJesus/sip'
+#gem 'sip', path: '../sip'
 
 # Motor de SIVeL 2
 gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'

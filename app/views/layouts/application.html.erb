@@ -1,4 +1,4 @@
-<% content_for :title do %>
+<% content_for :titulo do %>
     <%= Sivel2Gen.titulo %>
 <% end %>
 
@@ -6,7 +6,6 @@
   <%= menu_group do %>
     <% if !current_usuario.nil? %>
       <%= menu_item "Casos", sivel2_gen.casos_path %>
-      <%= menu_item "Actividades", sivel2_gen.actividades_path %>
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>
@@ -35,10 +34,10 @@
   <% end %>
 <% end %>
 
-<% content_for :footer do %>
+<% content_for :piedepagina do %>
   <p><span class='derechos'>Dominio Público de acuerdo a Legislación Colombiana<br/>
     Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2014. 
   </span></p>
 <% end %>
 
-<%= render template: "layouts/sivel2_gen/application" %>
+<%= render template: "layouts/sip/application" %>
