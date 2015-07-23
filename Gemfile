@@ -71,7 +71,7 @@ gem 'sip', github: 'pasosdeJesus/sip'
 #gem 'sip', path: '../sip'
 
 # Motor de SIVeL 2
-gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen', branch: 'consip'
+gem 'sivel2_gen', github: 'pasosdeJesus/sivel2_gen'
 #gem 'sivel2_gen', path: '../sivel2_gen'
 
 group :doc do
