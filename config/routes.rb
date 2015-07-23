@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_scope :usuario do
     get 'sign_out' => 'devise/sessions#destroy'
   end
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
-  get '/anexos/descarga_anexo/:id' => 'sivel2_gen/anexos#descarga_anexo'
+  root 'sivel2_gen/hogar#index'
   mount Sip::Engine => "/", as: 'sip'
   mount Sivel2Gen::Engine => "/", as: 'sivel2_gen'
 
