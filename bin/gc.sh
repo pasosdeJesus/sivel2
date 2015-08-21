@@ -28,6 +28,12 @@ if (test "$SINAC" != "1") then {
 if (test "$SININS" != "1") then {
 	NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle install
 } fi;
+if (test "$SINMIG" != "1") then {
+	(rake db:migrate sip:indices db:structure:dump)
+	if (test "$?" != "0") then {
+		exit 1;
+	} fi;
+} fi;
 
 RAILS_ENV=test rake db:drop db:setup db:migrate sip:indices
 if (test "$?" != "0") then {
