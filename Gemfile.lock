@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 353c66bf55af1fa4490119e31807909c80290a67
+  revision: 4051cc1cd04f3213561b32b11f8f8fdc7f5dd6c7
   specs:
     sip (2.0.a6)
       devise
@@ -83,7 +83,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.4.1)
+    capybara-webkit (1.6.0)
       capybara (>= 2.3.0, < 2.5.0)
       json
     cldr-plurals-runtime-rb (1.0.0)
@@ -290,7 +290,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   cancancan
   capybara
-  capybara-webkit (= 1.4.1)
+  capybara-webkit
   cocoon!
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)

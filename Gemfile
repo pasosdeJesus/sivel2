@@ -114,7 +114,7 @@ group :test do
   gem "capybara"
   
   # Pruebas de regresión que requieren javascript
-  gem "capybara-webkit", '1.4.1' # aun 1.5 no compila con qt4
+  gem "capybara-webkit" #, '1.4.1' # aun 1.5 no compila con qt4
 
   # Envia resultados de pruebas desde travis a codeclimate
   gem "codeclimate-test-reporter", require: nil

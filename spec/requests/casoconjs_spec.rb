@@ -54,11 +54,12 @@ describe "Llenar caso con javascript", :js => true do
         select('IGLESIA DE DIOS', from: 'Religión/Iglesia') 
         select('HETEROSEXUAL', from: 'Orientación Sexual') 
       end
-      click_button "Guardar"
-      expect(page).to have_content("2014-08-03")
+      #click_button "Guardar"
+      #expect(page).to have_content("2014-08-03")
 
       # Sitios Geográficos
-      click_on "Editar"
+      #click_on "Editar"
+      #page.save_screenshot('tmp/antes-ubi.png')
       click_link "Ubicación"
       if (!find_link('Añadir Ubicación').visible?)
         click_link "Ubicación"
