@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: bb915d81a525da46379e2060271c6891c532ba58
+  revision: 41a4025e4b3b4371be3227b9a55276751bfaac76
   specs:
     sip (2.0.a6)
       devise
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 5abff0e547afb1bf7f3ead620c00f49e0dd2905c
+  revision: 5c88b06950168cc9f28def61486a23d4f7cd6052
   specs:
     sivel2_gen (2.0.a7)
       devise
@@ -77,14 +77,14 @@ GEM
     builder (3.2.2)
     camertron-eprun (1.1.0)
     cancancan (1.12.0)
-    capybara (2.4.4)
+    capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.6.0)
-      capybara (>= 2.3.0, < 2.5.0)
+    capybara-webkit (1.7.0)
+      capybara (>= 2.3.0, < 2.6.0)
       json
     cldr-plurals-runtime-rb (1.0.0)
     climate_control (0.0.3)
@@ -228,7 +228,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    simple_form (3.1.0)
+    simple_form (3.1.1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simplecov (0.10.0)
