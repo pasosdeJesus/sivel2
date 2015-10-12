@@ -138,7 +138,7 @@ En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de respue
   de `config/databases.yml` y ejecute
 ```sh
   RAILS_ENV=production rake db:migrate
-  RAILS_ENV=production rake sivel:indices
+  RAILS_ENV=production rake sip:indices
 ```
 * Como servidor web recomendamos nginx, en la sección http agregue:
 ```
