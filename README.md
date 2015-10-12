@@ -90,7 +90,7 @@ de regresión con capybara-webkit.  Ejecutelas con:
 
 ```sh
 RAILS_ENV=test rake db:reset
-RAILS_ENV=test rake sivel2:indices
+RAILS_ENV=test rake sip:indices
 rspec
 ```
 
@@ -209,7 +209,7 @@ rc_cmd $1
 ```
 * Aplique cambios a base de datos: ```rake db:migrate```
 * Actualice tablas básicas: ```rake sivel:actbasicas```
-* Actualice índices: ```rake sivel2:indices```
+* Actualice índices: ```rake sip:indices```
 * Lance nuevamente el servidor de desarrollo: ```rails s```
 
 ### Actualización de servidor de producción
