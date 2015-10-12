@@ -70,7 +70,7 @@ postgres=# \q
 ```sh
   rails s
 ```
-* Examine con un navegador el puerto 3000: ```http://127.0.0.1:3000```
+* Examine con un navegador que tenga habilitadas las galletas (cookies) en el puerto 3000: ```http://127.0.0.1:3000```.  Por eso si usa el navegador ```w3m``` añada la opción ```-cookie``` 
 * Cuando requiera detener basta que de Control-C o que busque el
   proceso con ruby que corre en el puerto 3000 y lo elimine con ```kill```:
 ```sh
