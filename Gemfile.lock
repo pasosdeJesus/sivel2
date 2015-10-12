@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 423482499b18677f8cbc4dc48c81bad524d9b741
+  revision: 7d4cc9c35cd8087cd80b228776cd49cff5d4c433
   specs:
     sip (2.0.a6)
       devise
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 66379ef7185442422d57ad468754ac75242f4dff
+  revision: 4c1c7daee31c3d742f0996d580c084d13bc879b4
   specs:
     sivel2_gen (2.0.a7)
       devise
@@ -76,7 +76,7 @@ GEM
       railties (>= 3.0)
     builder (3.2.2)
     camertron-eprun (1.1.0)
-    cancancan (1.12.0)
+    cancancan (1.13.1)
     capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -124,7 +124,7 @@ GEM
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     interception (0.5)
-    jbuilder (2.3.1)
+    jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.5)
@@ -224,7 +224,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    sass (3.4.18)
+    sass (3.4.19)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -240,7 +240,7 @@ GEM
     spring (1.4.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.3.5)
+    sprockets (3.4.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
@@ -262,7 +262,7 @@ GEM
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2015.6)
+    tzinfo-data (1.2015.7)
       tzinfo (>= 1.0.0)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
@@ -327,3 +327,6 @@ DEPENDENCIES
   unicorn
   web-console
   will_paginate
+
+BUNDLED WITH
+   1.10.5

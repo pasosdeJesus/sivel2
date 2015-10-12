@@ -3406,7 +3406,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20131128151014');
 
@@ -3450,6 +3450,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140527110223');
 
 INSERT INTO schema_migrations (version) VALUES ('20140528043115');
 
+INSERT INTO schema_migrations (version) VALUES ('20140611110441');
+
 INSERT INTO schema_migrations (version) VALUES ('20140613044320');
 
 INSERT INTO schema_migrations (version) VALUES ('20140704035033');
@@ -3463,8 +3465,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140804202100');
 INSERT INTO schema_migrations (version) VALUES ('20140804202101');
 
 INSERT INTO schema_migrations (version) VALUES ('20140804202958');
-
-INSERT INTO schema_migrations (version) VALUES ('20140804210000');
 
 INSERT INTO schema_migrations (version) VALUES ('20140815111351');
 
@@ -3561,4 +3561,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150803082520');
 INSERT INTO schema_migrations (version) VALUES ('20150809032138');
 
 INSERT INTO schema_migrations (version) VALUES ('20150826000000');
+
+INSERT INTO schema_migrations (version) VALUES ('20151006105402');
 
