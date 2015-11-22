@@ -26,9 +26,8 @@ describe "Llenar caso con javascript", :js => true do
       fill_in "Fecha del Hecho", with: '2014-08-03'
       fill_in "Titulo", with: 'descripcion con javascript'
 
-      click_button "Guardar"
-      expect(page).to have_content("2014-08-03")
-      if false
+#      click_button "Guardar"
+#      expect(page).to have_content("2014-08-03")
         # Núcleo familiar
         #page.save_screenshot('vic-1.png')
         #page.find(:xpath, "a[href='#victima']").click
@@ -99,7 +98,6 @@ describe "Llenar caso con javascript", :js => true do
         end
         click_button "Guardar"
         expect(page).to have_content("2014-08-03")
-      end
     end
   end
 
