@@ -1,15 +1,27 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 51f6ab9ff0ce9dd9dad9a47f344975f79c05709d
+  revision: 3b66db324abfeec0090cdaeea1e8307c90e48b80
   specs:
     sip (2.0.a7)
+      bootstrap-datepicker-rails
+      cancancan
+      colorize
       devise
+      devise-i18n
       jquery-rails
+      jquery-ui-bootstrap-rails
+      jquery-ui-rails
+      paperclip
       rails
+      rails-i18n
+      simple_form
+      twitter-bootstrap-rails
+      twitter_cldr
+      will_paginate
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: c5f5646518894104f8d15a98ad30c0923e3677a7
+  revision: ad6318fb8e6757630b362ec7a40bd0fc5fb225e7
   specs:
     sivel2_gen (2.0.a7)
       devise
@@ -144,11 +156,11 @@ GEM
     method_source (0.8.2)
     mime-types (2.99)
     mimemagic (0.3.0)
-    mini_portile (0.6.2)
+    mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
-    nokogiri (1.6.6.4)
-      mini_portile (~> 0.6.0)
+    nokogiri (1.6.7)
+      mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     paperclip (4.3.2)
       activemodel (>= 3.2.0)
@@ -231,16 +243,16 @@ GEM
     simple_form (3.2.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    simplecov (0.10.0)
+    simplecov (0.11.0)
       docile (~> 1.1.0)
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.4.4)
+    spring (1.5.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.4.0)
+    sprockets (3.4.1)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)

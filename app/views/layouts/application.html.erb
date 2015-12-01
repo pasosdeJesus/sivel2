@@ -14,9 +14,9 @@
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", sivel2_gen.editar_registro_usuario_path %>
         <% if session[:capturacaso_acordeon] %>
-          <li><a id="fichacasovertical" href="/fichacasovertical">Ficha caso vertical ✓</a></li>
+          <li><a id="fichacasovertical" href="<%= sivel2_gen.fichacasovertical_path %>">Ficha caso vertical ✓</a></li>
         <% else %>
-          <li><a id="fichacasovertical" href="/fichacasovertical">Ficha caso vertical</a></li>
+          <li><a id="fichacasovertical" href="<%= sivel2_gen.fichacasovertical_path %>">Ficha caso vertical</a></li>
         <% end %>
         <% if current_usuario.rol == Ability::ROLADMIN %>
           <%= menu_item "Usuarios", sivel2_gen.usuarios_path %>
