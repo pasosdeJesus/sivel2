@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: ac223b00ad7dbc7af3c9525bc0b099419cad6790
+  revision: 3a40b5a62b1f4b31fe997966edc109a3c39c8e55
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 934193ce848cac174fc0fd1da7d078e00ad7857e
+  revision: c5ea192dc5398e869d4f86c92b5a2f12e7c98d5a
   specs:
-    sivel2_gen (2.0.a7)
+    sivel2_gen (2.0.a8)
       devise
       jquery-rails
       rails
@@ -296,11 +296,10 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.4)
       rack (>= 1.0)
-    web-console (2.2.1)
-      activemodel (>= 4.0)
-      binding_of_caller (>= 0.7.2)
-      railties (>= 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
+    web-console (3.0.0)
+      activemodel (>= 4.2)
+      debug_inspector
+      railties (>= 4.2)
     will_paginate (3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
