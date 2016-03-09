@@ -28,7 +28,7 @@ Ver https://github.com/pasosdeJesus/sivel2_gen
 ```
 o mejor antes para minimizar descargas vale la pena instalar como gemas del sistema la mayoría de estas, en adJ con:
 ```sh
-  grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install --no-documentation
+  grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install --no-document
 ```
 
 * Copie y modifique las plantillas:
