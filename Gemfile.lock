@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 7915a8e8f12d1a1d2d4e18900d1affe6010eb018
+  revision: f3616ec52f1e9f5eccd90a80cb994e66425df64e
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 24feddb1b4ff0a8001316ae10d629b733e60680d
+  revision: 6c056a5b37e831834368d64fb16fa614838c5d63
   specs:
     sivel2_gen (2.0.a8)
       devise
@@ -84,7 +84,7 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-datepicker-rails (1.6.0)
+    bootstrap-datepicker-rails (1.6.0.1)
       railties (>= 3.0)
     builder (3.2.2)
     camertron-eprun (1.1.0)
@@ -172,7 +172,7 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
-    paperclip (4.3.5)
+    paperclip (4.3.6)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
@@ -225,7 +225,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.16.0)
-    rake (11.0.1)
+    rake (11.1.1)
     rdoc (4.2.2)
       json (~> 1.4)
     responders (2.1.1)
@@ -287,7 +287,7 @@ GEM
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2016.1)
+    tzinfo-data (1.2016.2)
       tzinfo (>= 1.0.0)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
