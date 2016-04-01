@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: f3616ec52f1e9f5eccd90a80cb994e66425df64e
+  revision: 99893c18ed3461902eb4e7335ed738f689b6f5d6
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 6c056a5b37e831834368d64fb16fa614838c5d63
+  revision: 7a41e3142e11975d565c8a495a0b87a72e7b388b
   specs:
     sivel2_gen (2.0.a8)
       devise
@@ -96,7 +96,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.8.0)
+    capybara-webkit (1.9.0)
       capybara (>= 2.3.0, < 2.7.0)
       json
     cldr-plurals-runtime-rb (1.0.1)
@@ -161,10 +161,12 @@ GEM
       tilt
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.3)
-      mime-types (>= 1.16, < 3)
+    mail (2.6.4)
+      mime-types (>= 1.16, < 4)
     method_source (0.8.2)
-    mime-types (2.99.1)
+    mime-types (3.0)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0221)
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -218,17 +220,17 @@ GEM
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.4)
+    rails_stdout_logging (0.0.5)
     railties (4.2.6)
       actionpack (= 4.2.6)
       activesupport (= 4.2.6)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.16.0)
-    rake (11.1.1)
+    rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
-    responders (2.1.1)
+    responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
@@ -247,7 +249,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    sass (3.4.21)
+    sass (3.4.22)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -280,21 +282,19 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter_cldr (3.2.1)
+    twitter_cldr (3.3.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0.0)
       json
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2016.2)
+    tzinfo-data (1.2016.3)
       tzinfo (>= 1.0.0)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
-    unicorn (5.0.1)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
+    unicorn (5.1.0)
       kgio (~> 2.6)
-      rack
       raindrops (~> 0.7)
     warden (1.2.6)
       rack (>= 1.0)
