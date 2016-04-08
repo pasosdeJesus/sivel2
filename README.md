@@ -6,13 +6,16 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 
 ### Requerimientos
-* Ruby version >= 2.1
-* PostgreSQL >= 9.3 con extensión unaccent disponible
-* Recomendado sobre adJ 5.5p2 (que incluye todos los componentes mencionados).  
-  Las siguientes instrucciones suponen que opera en este ambiente.
 
-Puede consultar como instalar estos componentes en: http://dhobsd.pasosdejesus.org/index.php?id=Ruby+on+Rails+en+OpenBSD
+* Ruby version >= 2.3
+* Ruby on Rails 4.2.x
+* PostgreSQL >= 9.4 con extensión unaccent disponible
+* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados) usando
+  bundler con doas, ver [http://dhobsd.pasosdejesus.org/bundler-doas.html].  
 
+Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
+la instalación de Ruby on Rails en adJ en 
+[http://dhobsd.pasosdejesus.org/Ruby_on_Rails_en_OpenBSD.html]
 
 ### Arquitectura
 
@@ -226,6 +229,15 @@ En el sitio de producción se recomienda agregar una tarea cron con:
 ``` sh
 cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca 
 ```
+
+### Despliegue en un subdirectorio
+
+1. En config/routes.rb
+
+2. Crear config/initializers/mount
+
+3. Copiar home/index y modificar
+
 
 ### Convenciones
 
