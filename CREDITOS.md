@@ -17,6 +17,7 @@ Han apoyado financiando el desarrollo de componentes de dominio público:
 	Yenly Mendez y Leidy Romero
 * CODACOP desde comienzos de 2016 agradecimiento especial a 
 	Janeth Lozano
-
+* Marcha Patriotica desde comienzos de 2016 agradecimiento especial a 
+	Cristian
 
 Agradecimientos por el logo a William Rozo 
