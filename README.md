@@ -4,36 +4,28 @@
 
 Sistema de Información de Violencia Política en Línea versión 2
 
-
 ### Requerimientos
 
-* Ruby version >= 2.3
-* Ruby on Rails 4.2.x
-* PostgreSQL >= 9.4 con extensión unaccent disponible
-* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados) usando
-  bundler con doas, ver [http://dhobsd.pasosdejesus.org/bundler-doas.html].  
-
-Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
-la instalación de Ruby on Rails en adJ en 
-[http://dhobsd.pasosdejesus.org/Ruby_on_Rails_en_OpenBSD.html]
+Ver <https://github.com/pasosdeJesus/sip/wiki/Requerimientos>  
 
 ### Arquitectura
 
-Es una aplicación que emplea el motor genérico de SIVeL 2 ```sivel2_gen```
-Ver https://github.com/pasosdeJesus/sivel2_gen
+Es una aplicación que emplea los motores genérico de SIVeL 2 
+[sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen)
+y  [sip](https://github.com/pasosdeJesus/sip)
 
 
 ### Configuración y uso de servidor de desarrollo
-* Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
-* Instale gemas requeridas (como Rails 4.2) con:
-```sh
-  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle install
-```
-o mejor antes para minimizar descargas vale la pena instalar como gemas del sistema la mayoría de estas, en adJ con:
-```sh
-  grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install --no-document
-```
 
+Cree un usuario para la base de datos como se explica en 
+<https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
+(si deja el nombre sipdes se le facilitarán los siguientes pasos)
+
+* Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
+* Instale gemas requeridas con:
+```
+  bundle install
+```
 * Copie y modifique las plantillas:
 ```sh
   cp app/views/sivel2_gen/hogar/_local.html.erb.plantilla app/views/sivel2_gen/hogar/_local.html.erb
@@ -43,23 +35,6 @@ o mejor antes para minimizar descargas vale la pena instalar como gemas del sist
 * Establezca una ruta para anexos en ```config/initializers/sivel2_gen.rb```.  
   Debe existir y poder ser escrita por el dueño del proceso con el que corra 
   el servidor de desarrollo.
-* Si prefiere comenzar con una base en blanco, cree un superusuario para
-  PostgreSQL, configure datos para este en ```config/database.yml``` 
-  e inicialice:
-```sh
-  $ sudo su - _postgresql
-  $ createuser -h/var/www/tmp -Upostgres -s sivel2des
-  $ psql -h/var/www/tmp -Upostgres
-psql (9.3.6)
-Type "help" for help.
-
-postgres=# ALTER USER sivel2des WITH password 'miclave';
-ALTER ROLE
-postgres=# \q
-  exit
-  $ vim config/database.yml
-  $ rake db:setup
-```
 * Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
   falta.
@@ -73,7 +48,9 @@ postgres=# \q
 ```sh
   rails s
 ```
-* Examine con un navegador que tenga habilitadas las galletas (cookies) en el puerto 3000: ```http://127.0.0.1:3000```.  Por eso si usa el navegador ```w3m``` añada la opción ```-cookie``` 
+* Examine con un navegador que tenga habilitadas las galletas (cookies) en el 
+  puerto 3000: ```http://127.0.0.1:3000```.  Por eso si usa el navegador ```w3m``` 
+  añada la opción ```-cookie``` 
 * Cuando requiera detener basta que de Control-C o que busque el
   proceso con ruby que corre en el puerto 3000 y lo elimine con ```kill```:
 ```sh
@@ -89,7 +66,8 @@ rm -rf public/assets/*
 
 Dado que se hacen pruebas a modelos, rutas, controladores y vistas en 
 ```sivel2_gen```, en ```sivel2``` sólo se implementan algunas pruebas 
-de regresión con capybara-webkit.  Ejecutelas con:
+de regresión con capybara-webkit.  Si ya configuró el servidor de desarrollo
+como se explicó antes, basta ejecutarlas con:
 
 ```sh
 RAILS_ENV=test rake db:reset
@@ -104,9 +82,10 @@ de desarrollo) y porque no puede usarse capybara-webkit.
 
 ### Despliegue de prueba en Heroku
 
-[![heroku](https://www.herokucdn.com/deploy/button.svg)](http://sivel2.herokuapp.com) http://sivel2.herokuapp.com
+[![heroku](https://www.herokucdn.com/deploy/button.svg)](http://sivel2.herokuapp.com) 
 
-Para tener menos de 10000 registros en base de datos se han eliminado ciudades de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
+Para tener menos de 10000 registros en base de datos se han eliminado ciudades 
+de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
 
 Los anexos son volatiles pues tuvieron que ubicarse en ```/tmp/``` (que se 
 borra con periodicidad).
@@ -125,12 +104,19 @@ Para que heroku solo instale las gemas de producción:
 Otras labores tipicas son:
 * Para iniciar interfaz Postgresql: ```heroku pg:psql```
 * Para ejecutar migraciones faltantes: ```heroku run rake db:migrate```
-* Para examinar configuración ```heroku config``` que entre otras mostrará URL y nombre de la base de datos.
-* Heroku usa base de datos de manera diferente, para volver a inicializar base de datos (cuyo nombre se ve con ```heroku config```):  ```heroku pg:reset nombrebase```
+* Para examinar configuración ```heroku config``` que entre otras mostrará URL 
+  y nombre de la base de datos.
+* Heroku usa base de datos de manera diferente, para volver a inicializar 
+  base de datos (cuyo nombre se ve con ```heroku config```):  
+  ```heroku pg:reset nombrebase```
 
 ### Medición de tiempos
 
-En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de respuesta medidos con el inspector del navegador Chrome (una vez en la página de ingreso a SIVeL, botón derecho Inspeccionar Elemento, pestaña Network). En ese archivo se ha consignado el tiempo de cada prueba junto con el servidor y el cliente usado.
+En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de 
+respuesta medidos con el inspector del navegador Chrome (una vez en la página 
+de ingreso a SIVeL, botón derecho Inspeccionar Elemento, pestaña Network). 
+En ese archivo se ha consignado el tiempo de cada prueba junto con el servidor 
+y el cliente usado.
 
 
 ### Despliegue en sitio de producción con unicorn:
@@ -140,6 +126,7 @@ En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de respue
 * Configure la misma base de datos de un SIVeL 1.2 en sección `production`
   de `config/databases.yml` y ejecute
 ```sh
+  RAILS_ENV=production rake db:setup 
   RAILS_ENV=production rake db:migrate
   RAILS_ENV=production rake sip:indices
 ```
@@ -156,9 +143,6 @@ En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de respue
     ssl on;
     ssl_certificate /etc/ssl/server.crt;
     ssl_certificate_key /etc/ssl/private/server.key;
-    ssl_session_timeout  5m;
-    ssl_protocols  SSLv3 TLSv1;
-    ssl_ciphers  HIGH:!aNULL:!MD5;
     root /var/www/htdocs/sivel2/;
     server_name sivel2.pasosdeJesus.org
     error_log logs/s2error.log;
@@ -176,7 +160,7 @@ En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de respue
             proxy_set_header X-Forwarded-Proto $scheme;
             proxy_set_header Host $http_host;
             proxy_redirect off;
-            proxy_pass http://unicorn;
+            proxy_pass http://unicorns2;
             error_page 500 502 503 504 /500.html;
             client_max_body_size 4G;
             keepalive_timeout 10;
@@ -188,15 +172,25 @@ En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de respue
 ```sh 
 rake assets:precompile
 ```
-* Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con:
+* Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave):
 ```sh 
-./bin/u.sh
+USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
 ```
 * Para iniciar en cada arranque, por ejemplo en adJ cree /etc/rc.d/sivel2
 ```sh
-servicio="/var/www/htdocs/sivel2/bin/u.sh"
+
+servicio="USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
 
 . /etc/rc.d/rc.subr
+
+rc_check() {
+        ps ax | grep "[r]uby.*unicorn_rails .*sivel2" > /dev/null
+}
+
+rc_stop() {
+        p=`ps ax | grep "[r]uby.*unicorn_rails.*master .*sivel2" | sed -e "s/^ *\([0-9]*\) .*/\1/g"`
+	kill $p
+}
 
 rc_cmd $1
 ```
@@ -220,7 +214,9 @@ rc_cmd $1
 Son practicamente los mismos pasos que emplea para actualizar servidor 
 de desarrollo, excepto que unicorn se detiene con pkill y se inica
 como se describió en Despliegue y que debe preceder cada rake con 
-	RAILS_ENV=production
+```
+RAILS_ENV=production
+```
 
 ### Respaldos
 
@@ -230,15 +226,8 @@ En el sitio de producción se recomienda agregar una tarea cron con:
 cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca 
 ```
 
-### Despliegue en un subdirectorio
-
-1. En config/routes.rb
-
-2. Crear config/initializers/mount
-
-3. Copiar home/index y modificar
-
 
 ### Convenciones
 
-Las mismas de ```sivel2_gen```.  Ver https://github.com/pasosdeJesus/sivel2_gen
+Las mismas de ```sip```.  Ver <https://github.com/pasosdeJesus/sip/wiki/Convenciones>
+
