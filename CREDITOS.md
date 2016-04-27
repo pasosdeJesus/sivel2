@@ -11,7 +11,7 @@ Han apoyado financiando el desarrollo de componentes de dominio público:
 	Marlys Mosquera y Randolf Laverde
 * El SJR Colombia desde 2014, agradecimiento especial a 
 	Mauricio Garcia y Vera Samudio
-* El CINEP desde finales de 2015 agradeciento especial a 
+* El CINEP desde finales de 2015 agradecimiento especial a 
 	Luis Guillermo Guerra, Sergio Coronado y Alejandro Angulo.
 * ANZORC desde finales de 2015 agradecimiento especial a 
 	Yenly Mendez y Leidy Romero
