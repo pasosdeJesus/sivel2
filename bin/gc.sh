@@ -29,25 +29,25 @@ if (test "$SININS" != "1") then {
 	NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle install
 } fi;
 if (test "$SINMIG" != "1") then {
-	(rake db:migrate sip:indices db:structure:dump)
+	(bundle exec rake db:migrate sip:indices db:structure:dump)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
 } fi;
 
-RAILS_ENV=test rake db:drop db:setup db:migrate sip:indices
+RAILS_ENV=test bundle exec rake db:drop db:setup db:migrate sip:indices
 if (test "$?" != "0") then {
 	echo "No puede preparse base de prueba";
 	exit 1;
 } fi;
 
-rspec
+bundle exec rspec
 if (test "$?" != "0") then {
 	echo "No pasaron pruebas";
 	exit 1;
 } fi;
 
-RAILS_ENV=test rake db:structure:dump
+RAILS_ENV=test bundle exec rake db:structure:dump
 b=`git branch | grep "^*" | sed -e  "s/^* //g"`
 git status -s
 if (test "$MENSCONS" = "") then {
