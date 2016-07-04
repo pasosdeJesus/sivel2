@@ -35,7 +35,7 @@ gem "jquery-ui-rails"
 gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-gem "turbolinks"
+gem "turbolinks", "2.5.3"
 
 # Ambiente de CSS
 gem "twitter-bootstrap-rails"
