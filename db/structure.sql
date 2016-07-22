@@ -194,6 +194,22 @@ CREATE SEQUENCE antecedente_seq
     CACHE 1;
 
 
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
 --
 -- Name: caso_etiqueta_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
@@ -229,10 +245,6 @@ CREATE SEQUENCE sivel2_gen_caso_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
 
 --
 -- Name: sivel2_gen_caso; Type: TABLE; Schema: public; Owner: -
@@ -1751,6 +1763,40 @@ CREATE TABLE sivel2_gen_region (
 
 
 --
+-- Name: sivel2_gen_resagresion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sivel2_gen_resagresion (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_resagresion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sivel2_gen_resagresion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_resagresion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sivel2_gen_resagresion_id_seq OWNED BY sivel2_gen_resagresion.id;
+
+
+--
 -- Name: sivel2_gen_sectorsocial_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1960,6 +2006,13 @@ ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocume
 
 
 --
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_resagresion ALTER COLUMN id SET DEFAULT nextval('sivel2_gen_resagresion_id_seq'::regclass);
+
+
+--
 -- Name: actividadoficio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2029,6 +2082,14 @@ ALTER TABLE ONLY sivel2_gen_antecedente
 
 ALTER TABLE ONLY sivel2_gen_antecedente_victima
     ADD CONSTRAINT antecedente_victima_pkey PRIMARY KEY (id_antecedente, id_persona, id_caso);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
 
 
 --
@@ -2413,6 +2474,14 @@ ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
 
 ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
     ADD CONSTRAINT sivel2_gen_caso_fuenteprensa_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_resagresion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_resagresion
+    ADD CONSTRAINT sivel2_gen_resagresion_pkey PRIMARY KEY (id);
 
 
 --
@@ -3382,189 +3451,6 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20131128151014');
+INSERT INTO schema_migrations (version) VALUES ('20131128151014'), ('20131204135932'), ('20131204140000'), ('20131204143718'), ('20131204183530'), ('20131206081531'), ('20131210221541'), ('20131220103409'), ('20131223175141'), ('20140117212555'), ('20140129151136'), ('20140207102709'), ('20140207102739'), ('20140211162355'), ('20140211164659'), ('20140211172443'), ('20140313012209'), ('20140514142421'), ('20140518120059'), ('20140527110223'), ('20140528043115'), ('20140613044320'), ('20140704035033'), ('20140804194616'), ('20140804200235'), ('20140804202100'), ('20140804202101'), ('20140804202958'), ('20140804210000'), ('20140815111351'), ('20140815111352'), ('20140815121224'), ('20140815123542'), ('20140815124157'), ('20140815124606'), ('20140827142659'), ('20140901105741'), ('20140901106000'), ('20140909165233'), ('20140918115412'), ('20140922102737'), ('20140922110956'), ('20141002140242'), ('20141111102451'), ('20141111203313'), ('20141126085907'), ('20150313153722'), ('20150317084737'), ('20150413000000'), ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150416090140'), ('20150503120915'), ('20150505084914'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150602094513'), ('20150602095241'), ('20150602104342'), ('20150609094809'), ('20150609094810'), ('20150609094820'), ('20150616095023'), ('20150616100351'), ('20150616100551'), ('20150707164448'), ('20150710114451'), ('20150716171420'), ('20150716192356'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20150826000000'), ('20151006105402'), ('20151020203421'), ('20151124110943'), ('20151127102425'), ('20151130101417'), ('20160316093659'), ('20160316094627'), ('20160316100620'), ('20160316100621'), ('20160316100622'), ('20160316100623'), ('20160316100624'), ('20160316100625'), ('20160316100626'), ('20160519195544'), ('20160719195853'), ('20160719214520');
 
-INSERT INTO schema_migrations (version) VALUES ('20131204135932');
-
-INSERT INTO schema_migrations (version) VALUES ('20131204140000');
-
-INSERT INTO schema_migrations (version) VALUES ('20131204143718');
-
-INSERT INTO schema_migrations (version) VALUES ('20131204183530');
-
-INSERT INTO schema_migrations (version) VALUES ('20131206081531');
-
-INSERT INTO schema_migrations (version) VALUES ('20131210221541');
-
-INSERT INTO schema_migrations (version) VALUES ('20131220103409');
-
-INSERT INTO schema_migrations (version) VALUES ('20131223175141');
-
-INSERT INTO schema_migrations (version) VALUES ('20140117212555');
-
-INSERT INTO schema_migrations (version) VALUES ('20140129151136');
-
-INSERT INTO schema_migrations (version) VALUES ('20140207102709');
-
-INSERT INTO schema_migrations (version) VALUES ('20140207102739');
-
-INSERT INTO schema_migrations (version) VALUES ('20140211162355');
-
-INSERT INTO schema_migrations (version) VALUES ('20140211164659');
-
-INSERT INTO schema_migrations (version) VALUES ('20140211172443');
-
-INSERT INTO schema_migrations (version) VALUES ('20140313012209');
-
-INSERT INTO schema_migrations (version) VALUES ('20140514142421');
-
-INSERT INTO schema_migrations (version) VALUES ('20140518120059');
-
-INSERT INTO schema_migrations (version) VALUES ('20140527110223');
-
-INSERT INTO schema_migrations (version) VALUES ('20140528043115');
-
-INSERT INTO schema_migrations (version) VALUES ('20140613044320');
-
-INSERT INTO schema_migrations (version) VALUES ('20140704035033');
-
-INSERT INTO schema_migrations (version) VALUES ('20140804194616');
-
-INSERT INTO schema_migrations (version) VALUES ('20140804200235');
-
-INSERT INTO schema_migrations (version) VALUES ('20140804202100');
-
-INSERT INTO schema_migrations (version) VALUES ('20140804202101');
-
-INSERT INTO schema_migrations (version) VALUES ('20140804202958');
-
-INSERT INTO schema_migrations (version) VALUES ('20140804210000');
-
-INSERT INTO schema_migrations (version) VALUES ('20140815111351');
-
-INSERT INTO schema_migrations (version) VALUES ('20140815111352');
-
-INSERT INTO schema_migrations (version) VALUES ('20140815121224');
-
-INSERT INTO schema_migrations (version) VALUES ('20140815123542');
-
-INSERT INTO schema_migrations (version) VALUES ('20140815124157');
-
-INSERT INTO schema_migrations (version) VALUES ('20140815124606');
-
-INSERT INTO schema_migrations (version) VALUES ('20140827142659');
-
-INSERT INTO schema_migrations (version) VALUES ('20140901105741');
-
-INSERT INTO schema_migrations (version) VALUES ('20140901106000');
-
-INSERT INTO schema_migrations (version) VALUES ('20140909165233');
-
-INSERT INTO schema_migrations (version) VALUES ('20140918115412');
-
-INSERT INTO schema_migrations (version) VALUES ('20140922102737');
-
-INSERT INTO schema_migrations (version) VALUES ('20140922110956');
-
-INSERT INTO schema_migrations (version) VALUES ('20141002140242');
-
-INSERT INTO schema_migrations (version) VALUES ('20141111102451');
-
-INSERT INTO schema_migrations (version) VALUES ('20141111203313');
-
-INSERT INTO schema_migrations (version) VALUES ('20141126085907');
-
-INSERT INTO schema_migrations (version) VALUES ('20150313153722');
-
-INSERT INTO schema_migrations (version) VALUES ('20150317084737');
-
-INSERT INTO schema_migrations (version) VALUES ('20150413000000');
-
-INSERT INTO schema_migrations (version) VALUES ('20150413160156');
-
-INSERT INTO schema_migrations (version) VALUES ('20150413160157');
-
-INSERT INTO schema_migrations (version) VALUES ('20150413160158');
-
-INSERT INTO schema_migrations (version) VALUES ('20150413160159');
-
-INSERT INTO schema_migrations (version) VALUES ('20150416074423');
-
-INSERT INTO schema_migrations (version) VALUES ('20150416090140');
-
-INSERT INTO schema_migrations (version) VALUES ('20150503120915');
-
-INSERT INTO schema_migrations (version) VALUES ('20150505084914');
-
-INSERT INTO schema_migrations (version) VALUES ('20150510125926');
-
-INSERT INTO schema_migrations (version) VALUES ('20150521181918');
-
-INSERT INTO schema_migrations (version) VALUES ('20150528100944');
-
-INSERT INTO schema_migrations (version) VALUES ('20150602094513');
-
-INSERT INTO schema_migrations (version) VALUES ('20150602095241');
-
-INSERT INTO schema_migrations (version) VALUES ('20150602104342');
-
-INSERT INTO schema_migrations (version) VALUES ('20150609094809');
-
-INSERT INTO schema_migrations (version) VALUES ('20150609094810');
-
-INSERT INTO schema_migrations (version) VALUES ('20150609094820');
-
-INSERT INTO schema_migrations (version) VALUES ('20150616095023');
-
-INSERT INTO schema_migrations (version) VALUES ('20150616100351');
-
-INSERT INTO schema_migrations (version) VALUES ('20150616100551');
-
-INSERT INTO schema_migrations (version) VALUES ('20150707164448');
-
-INSERT INTO schema_migrations (version) VALUES ('20150710114451');
-
-INSERT INTO schema_migrations (version) VALUES ('20150716171420');
-
-INSERT INTO schema_migrations (version) VALUES ('20150716192356');
-
-INSERT INTO schema_migrations (version) VALUES ('20150717101243');
-
-INSERT INTO schema_migrations (version) VALUES ('20150724003736');
-
-INSERT INTO schema_migrations (version) VALUES ('20150803082520');
-
-INSERT INTO schema_migrations (version) VALUES ('20150809032138');
-
-INSERT INTO schema_migrations (version) VALUES ('20150826000000');
-
-INSERT INTO schema_migrations (version) VALUES ('20151006105402');
-
-INSERT INTO schema_migrations (version) VALUES ('20151020203421');
-
-INSERT INTO schema_migrations (version) VALUES ('20151124110943');
-
-INSERT INTO schema_migrations (version) VALUES ('20151127102425');
-
-INSERT INTO schema_migrations (version) VALUES ('20151130101417');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316093659');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316094627');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316100620');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316100621');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316100622');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316100623');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316100624');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316100625');
-
-INSERT INTO schema_migrations (version) VALUES ('20160316100626');
-
-INSERT INTO schema_migrations (version) VALUES ('20160519195544');
 
