@@ -61,7 +61,7 @@ if (test "$?" != "0") then {
 	exit 1;
 } fi;
 
-if (test "$CONH" = "") then {
+if (test "$CONH" != "") then {
 	git push heroku master
 	heroku run rake db:migrate sip:indices
 } fi;
