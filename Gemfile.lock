@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 62d2178c5692c9572da9c2771896a47a85b8d018
+  revision: 255ce4cd5ccc3061b90f2e81be796feeb9101b40
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 299d058636c637838e39c3500e1d3a8b9dba09e6
+  revision: 5980c9b4d105105ccfce44304286cc725fd2037d
   specs:
     sivel2_gen (2.0b1)
       devise
