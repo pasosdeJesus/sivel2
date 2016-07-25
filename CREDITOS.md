@@ -5,7 +5,7 @@ Ver los creditos de esa versión en
 
 * Proceso de Desarrollo: Vladimir Támara <vtamara@pasosdeJesus.org>
 * Pruebas: Blanca Acosta <blanca@pasosdeJesus.org>
-* Tooltips: Andrea Padilla <>
+* Tooltips: Andrea Padilla
 * Mejoras a DIVIPOLA: Alejandro Cadena
 * Información geográfica de Venezuela y Ecuador: Randolf Laverde
 
@@ -23,4 +23,4 @@ Han apoyado financiando el desarrollo de componentes de dominio público:
 * Marcha Patriotica desde comienzos de 2016 agradecimiento especial a 
 	Cristian
 
-Agradecimientos por el logo a William Rozo 
+Agradecimientos por el logo a William Rozo <wiroal@riseup.net>
