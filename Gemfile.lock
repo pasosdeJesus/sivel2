@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9e682d35be1db6c9868bec07bc268160407a09b3
+  revision: 274e70e4a594eca1a0b8800c65e174ab9194ace4
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -187,7 +187,7 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    puma (3.5.2)
+    puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
