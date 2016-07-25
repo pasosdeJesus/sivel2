@@ -5,9 +5,10 @@ Ver los creditos de esa versión en
 
 * Proceso de Desarrollo: Vladimir Támara <vtamara@pasosdeJesus.org>
 * Pruebas: Blanca Acosta <blanca@pasosdeJesus.org>
-* Tooltips: Andrea Padilla
-* Mejoras a DIVIPOLA: Alejandro Cadena
 * Información geográfica de Venezuela y Ecuador: Randolf Laverde
+* Mejoras a DIVIPOLA: Alejandro Cadena
+* Tooltips: Andrea Padilla
+
 
 Han apoyado financiando el desarrollo de componentes de dominio público:
 * El SJR LAC de 2013 a 2015, agradecimiento especial a 
