@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 4819d445abf91b214ae922e012d3ba2aebe980d7
+  revision: 47327a894db7de992b1b251eb2d23b510d08e176
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7d7c5be53dbbbaf1f42c957bb04d2ca8f523057f
+  revision: 26bc17b9b802b3e314aca83ca113deb3caab5f4c
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -128,7 +128,7 @@ GEM
     factory_girl_rails (4.7.0)
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
-    globalid (0.3.6)
+    globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     interception (0.5)
