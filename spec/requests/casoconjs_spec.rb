@@ -40,7 +40,7 @@ describe "Llenar caso con javascript", :js => true do
         click_on "Añadir Víctima"
         #page.save_screenshot('/tmp/vic2.png')
         #puts page.html
-        if (!find_field('Año nacimiento').visible?)
+        if (!find_field('Año de nacimiento').visible?)
           click_on "Añadir Víctima"
           #page.save_screenshot('/tmp/vic3.png')
         end
@@ -48,9 +48,9 @@ describe "Llenar caso con javascript", :js => true do
           fill_in "Nombres", with: 'Nombres V'
           fill_in "Apellidos", with: 'Apellidos V'
           #page.save_screenshot('/tmp/vic2-5.png')
-          select("1999", from: "Año nacimiento")
-          select("ENERO", from: "Mes nacimiento")
-          select("1", from: "Día nacimiento")
+          select("1999", from: "Año de nacimiento")
+          select("ENERO", from: "Mes de nacimiento")
+          select("1", from: "Día de nacimiento")
           select("MASCULINO", from: 'Sexo')
           select("CÉDULA DE CIUDADANÍA", from: 'Tipo de Documento')
           fill_in "Número Documento", with: '19222'

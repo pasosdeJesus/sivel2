@@ -4,11 +4,11 @@ require 'spec_helper'
 describe "Control de acceso " do
   before { 
     @usuario = FactoryGirl.create(:usuario, rol: Ability::ROLANALI)
-                                  visit new_usuario_session_path 
-                                  fill_in "Usuario", with: @usuario.nusuario
-                                  fill_in "Clave", with: @usuario.password
-                                  click_button "Iniciar Sesión"
-                                  expect(page).to have_content("Administrar")
+    visit '/usuarios/sign_in'
+    fill_in "Usuario", with: @usuario.nusuario
+    fill_in "Clave", with: @usuario.password
+    click_button "Iniciar Sesión"
+    expect(page).to have_content("Administrar")
   }
 
   describe "analista" do
