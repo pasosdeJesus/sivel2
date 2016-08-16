@@ -47,7 +47,7 @@ describe "Llenar caso con javascript", :js => true do
         within ("div#victima") do 
           fill_in "Nombres", with: 'Nombres V'
           fill_in "Apellidos", with: 'Apellidos V'
-          #page.save_screenshot('/tmp/vic2-5.png')
+          page.save_screenshot('/tmp/vic2-5.png')
           select("1999", from: "Año de nacimiento")
           select("ENERO", from: "Mes de nacimiento")
           select("1", from: "Día de nacimiento")
@@ -57,7 +57,7 @@ describe "Llenar caso con javascript", :js => true do
           select('ALBANIA', from: 'País de Nacionalidad')
           select('RUSIA', from: 'País de Nacimiento')
           select('OTRO', from: 'Profesión')
-          select('De 0 a 15 Años', from: 'Rango de Edad')
+          #select('De 0 a 15 Años', from: 'Rango de Edad')
           select('ROM', from: 'Etnia') 
           select('IGLESIA DE DIOS', from: 'Religión/Iglesia') 
           select('HETEROSEXUAL', from: 'Orientación Sexual') 

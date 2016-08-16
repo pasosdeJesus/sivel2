@@ -2,12 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
@@ -183,7 +187,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE ar_internal_metadata (
@@ -231,7 +235,7 @@ CREATE SEQUENCE sivel2_gen_caso_id_seq
 
 
 --
--- Name: sivel2_gen_caso; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso (
@@ -265,7 +269,7 @@ CREATE SEQUENCE victima_seq
 
 
 --
--- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_victima (
@@ -287,7 +291,7 @@ CREATE TABLE sivel2_gen_victima (
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('victima_seq'::regclass) NOT NULL,
     CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
-    CONSTRAINT victima_orientacionsexual_check CHECK (((((((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar)) OR (orientacionsexual = 'B'::bpchar)) OR (orientacionsexual = 'T'::bpchar)) OR (orientacionsexual = 'I'::bpchar)) OR (orientacionsexual = 'H'::bpchar)))
+    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'I'::bpchar) OR (orientacionsexual = 'H'::bpchar)))
 );
 
 
@@ -318,7 +322,7 @@ CREATE SEQUENCE sip_clase_id_seq
 
 
 --
--- Name: sip_clase; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_clase; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_clase (
@@ -351,7 +355,7 @@ CREATE SEQUENCE sip_departamento_id_seq
 
 
 --
--- Name: sip_departamento; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_departamento; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_departamento (
@@ -383,7 +387,7 @@ CREATE SEQUENCE sip_municipio_id_seq
 
 
 --
--- Name: sip_municipio; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_municipio; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_municipio (
@@ -415,7 +419,7 @@ CREATE SEQUENCE sip_ubicacion_id_seq
 
 
 --
--- Name: sip_ubicacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_ubicacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_ubicacion (
@@ -495,7 +499,7 @@ CREATE SEQUENCE instanciader_seq
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schema_migrations (
@@ -504,7 +508,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: sip_anexo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_anexo; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_anexo (
@@ -551,7 +555,7 @@ CREATE SEQUENCE sip_etiqueta_id_seq
 
 
 --
--- Name: sip_etiqueta; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_etiqueta; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_etiqueta (
@@ -579,7 +583,7 @@ CREATE SEQUENCE sip_fuenteprensa_id_seq
 
 
 --
--- Name: sip_fuenteprensa; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_fuenteprensa; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_fuenteprensa (
@@ -604,7 +608,7 @@ CREATE VIEW sip_mundep_sinorden AS
     (((sip_municipio.nombre)::text || ' / '::text) || (sip_departamento.nombre)::text) AS nombre
    FROM (sip_municipio
      JOIN sip_departamento ON ((sip_municipio.id_departamento = sip_departamento.id)))
-  WHERE (((sip_departamento.id_pais = 170) AND (sip_municipio.fechadeshabilitacion IS NULL)) AND (sip_departamento.fechadeshabilitacion IS NULL))
+  WHERE ((sip_departamento.id_pais = 170) AND (sip_municipio.fechadeshabilitacion IS NULL) AND (sip_departamento.fechadeshabilitacion IS NULL))
 UNION
  SELECT sip_departamento.id_deplocal AS idlocal,
     sip_departamento.nombre
@@ -613,7 +617,7 @@ UNION
 
 
 --
--- Name: sip_mundep; Type: MATERIALIZED VIEW; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_mundep; Type: MATERIALIZED VIEW; Schema: public; Owner: -
 --
 
 CREATE MATERIALIZED VIEW sip_mundep AS
@@ -638,7 +642,7 @@ CREATE SEQUENCE sip_oficina_id_seq
 
 
 --
--- Name: sip_oficina; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_oficina; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_oficina (
@@ -654,7 +658,7 @@ CREATE TABLE sip_oficina (
 
 
 --
--- Name: sip_pais; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_pais; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_pais (
@@ -709,7 +713,7 @@ CREATE SEQUENCE sip_persona_id_seq
 
 
 --
--- Name: sip_persona; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_persona; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_persona (
@@ -729,9 +733,9 @@ CREATE TABLE sip_persona (
     id_departamento integer,
     id_municipio integer,
     id_clase integer,
-    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR ((((dianac >= 1) AND ((((((((mesnac = 1) OR (mesnac = 3)) OR (mesnac = 5)) OR (mesnac = 7)) OR (mesnac = 8)) OR (mesnac = 10)) OR (mesnac = 12)) AND (dianac <= 31))) OR (((((mesnac = 4) OR (mesnac = 6)) OR (mesnac = 9)) OR (mesnac = 11)) AND (dianac <= 30))) OR ((mesnac = 2) AND (dianac <= 29))))),
+    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
     CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
-    CONSTRAINT persona_sexo_check CHECK ((((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar)) OR (sexo = 'M'::bpchar)))
+    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
 );
 
 
@@ -748,7 +752,7 @@ CREATE SEQUENCE sip_persona_trelacion_id_seq
 
 
 --
--- Name: sip_persona_trelacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_persona_trelacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_persona_trelacion (
@@ -763,7 +767,7 @@ CREATE TABLE sip_persona_trelacion (
 
 
 --
--- Name: sip_tclase; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_tclase; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_tclase (
@@ -779,7 +783,7 @@ CREATE TABLE sip_tclase (
 
 
 --
--- Name: sip_tdocumento; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_tdocumento; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_tdocumento (
@@ -815,7 +819,7 @@ ALTER SEQUENCE sip_tdocumento_id_seq OWNED BY sip_tdocumento.id;
 
 
 --
--- Name: sip_trelacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_trelacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_trelacion (
@@ -844,7 +848,7 @@ CREATE SEQUENCE sip_tsitio_id_seq
 
 
 --
--- Name: sip_tsitio; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_tsitio; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sip_tsitio (
@@ -872,7 +876,7 @@ CREATE SEQUENCE sivel2_gen_actividadoficio_id_seq
 
 
 --
--- Name: sivel2_gen_actividadoficio; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_actividadoficio; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_actividadoficio (
@@ -888,7 +892,7 @@ CREATE TABLE sivel2_gen_actividadoficio (
 
 
 --
--- Name: sivel2_gen_acto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_acto; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_acto (
@@ -903,7 +907,7 @@ CREATE TABLE sivel2_gen_acto (
 
 
 --
--- Name: sivel2_gen_actocolectivo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_actocolectivo; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_actocolectivo (
@@ -917,7 +921,7 @@ CREATE TABLE sivel2_gen_actocolectivo (
 
 
 --
--- Name: sivel2_gen_anexo_caso; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_anexo_caso; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_anexo_caso (
@@ -946,7 +950,7 @@ CREATE SEQUENCE sivel2_gen_antecedente_id_seq
 
 
 --
--- Name: sivel2_gen_antecedente; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_antecedente; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_antecedente (
@@ -962,7 +966,7 @@ CREATE TABLE sivel2_gen_antecedente (
 
 
 --
--- Name: sivel2_gen_antecedente_caso; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_antecedente_caso; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_antecedente_caso (
@@ -974,7 +978,7 @@ CREATE TABLE sivel2_gen_antecedente_caso (
 
 
 --
--- Name: sivel2_gen_antecedente_combatiente; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_antecedente_combatiente; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_antecedente_combatiente (
@@ -984,7 +988,7 @@ CREATE TABLE sivel2_gen_antecedente_combatiente (
 
 
 --
--- Name: sivel2_gen_antecedente_victima; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_antecedente_victima; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_antecedente_victima (
@@ -998,7 +1002,7 @@ CREATE TABLE sivel2_gen_antecedente_victima (
 
 
 --
--- Name: sivel2_gen_antecedente_victimacolectiva; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_antecedente_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_antecedente_victimacolectiva (
@@ -1010,7 +1014,7 @@ CREATE TABLE sivel2_gen_antecedente_victimacolectiva (
 
 
 --
--- Name: sivel2_gen_caso_categoria_presponsable; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_categoria_presponsable; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_categoria_presponsable (
@@ -1026,7 +1030,7 @@ CREATE TABLE sivel2_gen_caso_categoria_presponsable (
 
 
 --
--- Name: sivel2_gen_caso_contexto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_contexto; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_contexto (
@@ -1038,7 +1042,7 @@ CREATE TABLE sivel2_gen_caso_contexto (
 
 
 --
--- Name: sivel2_gen_caso_etiqueta; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_etiqueta; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_etiqueta (
@@ -1066,7 +1070,7 @@ CREATE SEQUENCE sivel2_gen_caso_fotra_seq
 
 
 --
--- Name: sivel2_gen_caso_fotra; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_fotra; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_fotra (
@@ -1085,7 +1089,7 @@ CREATE TABLE sivel2_gen_caso_fotra (
 
 
 --
--- Name: sivel2_gen_caso_frontera; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_frontera; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_frontera (
@@ -1109,7 +1113,7 @@ CREATE SEQUENCE sivel2_gen_caso_fuenteprensa_seq
 
 
 --
--- Name: sivel2_gen_caso_fuenteprensa; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_fuenteprensa; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_fuenteprensa (
@@ -1127,7 +1131,7 @@ CREATE TABLE sivel2_gen_caso_fuenteprensa (
 
 
 --
--- Name: sivel2_gen_caso_presponsable; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_presponsable; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_presponsable (
@@ -1147,7 +1151,7 @@ CREATE TABLE sivel2_gen_caso_presponsable (
 
 
 --
--- Name: sivel2_gen_caso_region; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_region; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_region (
@@ -1159,7 +1163,7 @@ CREATE TABLE sivel2_gen_caso_region (
 
 
 --
--- Name: sivel2_gen_caso_usuario; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_usuario; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_usuario (
@@ -1172,7 +1176,7 @@ CREATE TABLE sivel2_gen_caso_usuario (
 
 
 --
--- Name: sivel2_gen_categoria; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_categoria; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_categoria (
@@ -1188,12 +1192,12 @@ CREATE TABLE sivel2_gen_categoria (
     observaciones character varying(5000),
     supracategoria_id integer,
     CONSTRAINT categoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
-    CONSTRAINT categoria_tipocat_check CHECK ((((tipocat = 'I'::bpchar) OR (tipocat = 'C'::bpchar)) OR (tipocat = 'O'::bpchar)))
+    CONSTRAINT categoria_tipocat_check CHECK (((tipocat = 'I'::bpchar) OR (tipocat = 'C'::bpchar) OR (tipocat = 'O'::bpchar)))
 );
 
 
 --
--- Name: sivel2_gen_combatiente; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_combatiente; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_combatiente (
@@ -1248,7 +1252,7 @@ CREATE SEQUENCE sivel2_gen_presponsable_id_seq
 
 
 --
--- Name: sivel2_gen_presponsable; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_presponsable; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_presponsable (
@@ -1277,7 +1281,7 @@ CREATE SEQUENCE sivel2_gen_supracategoria_id_seq
 
 
 --
--- Name: sivel2_gen_supracategoria; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_supracategoria; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_supracategoria (
@@ -1319,12 +1323,12 @@ CREATE VIEW sivel2_gen_conscaso1 AS
            FROM sivel2_gen_categoria categoria,
             sivel2_gen_supracategoria supracategoria,
             sivel2_gen_acto acto
-          WHERE (((categoria.id = acto.id_categoria) AND (supracategoria.id = categoria.supracategoria_id)) AND (acto.id_caso = caso.id))), ', '::text) AS tipificacion
+          WHERE ((categoria.id = acto.id_categoria) AND (supracategoria.id = categoria.supracategoria_id) AND (acto.id_caso = caso.id))), ', '::text) AS tipificacion
    FROM sivel2_gen_caso caso;
 
 
 --
--- Name: sivel2_gen_conscaso; Type: MATERIALIZED VIEW; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_conscaso; Type: MATERIALIZED VIEW; Schema: public; Owner: -
 --
 
 CREATE MATERIALIZED VIEW sivel2_gen_conscaso AS
@@ -1341,7 +1345,7 @@ CREATE MATERIALIZED VIEW sivel2_gen_conscaso AS
 
 
 --
--- Name: sivel2_gen_contexto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_contexto; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_contexto (
@@ -1368,7 +1372,7 @@ CREATE SEQUENCE sivel2_gen_escolaridad_id_seq
 
 
 --
--- Name: sivel2_gen_escolaridad; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_escolaridad; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_escolaridad (
@@ -1396,7 +1400,7 @@ CREATE SEQUENCE sivel2_gen_estadocivil_id_seq
 
 
 --
--- Name: sivel2_gen_estadocivil; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_estadocivil; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_estadocivil (
@@ -1424,7 +1428,7 @@ CREATE SEQUENCE sivel2_gen_etnia_id_seq
 
 
 --
--- Name: sivel2_gen_etnia; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_etnia; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_etnia (
@@ -1453,7 +1457,7 @@ CREATE SEQUENCE sivel2_gen_filiacion_id_seq
 
 
 --
--- Name: sivel2_gen_filiacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_filiacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_filiacion (
@@ -1469,7 +1473,7 @@ CREATE TABLE sivel2_gen_filiacion (
 
 
 --
--- Name: sivel2_gen_filiacion_victimacolectiva; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_filiacion_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_filiacion_victimacolectiva (
@@ -1481,7 +1485,7 @@ CREATE TABLE sivel2_gen_filiacion_victimacolectiva (
 
 
 --
--- Name: sivel2_gen_fotra; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_fotra; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_fotra (
@@ -1505,7 +1509,7 @@ CREATE SEQUENCE sivel2_gen_frontera_id_seq
 
 
 --
--- Name: sivel2_gen_frontera; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_frontera; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_frontera (
@@ -1533,7 +1537,7 @@ CREATE SEQUENCE sivel2_gen_grupoper_id_seq
 
 
 --
--- Name: sivel2_gen_grupoper; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_grupoper; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_grupoper (
@@ -1558,7 +1562,7 @@ CREATE SEQUENCE sivel2_gen_iglesia_id_seq
 
 
 --
--- Name: sivel2_gen_iglesia; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_iglesia; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_iglesia (
@@ -1587,7 +1591,7 @@ CREATE SEQUENCE sivel2_gen_intervalo_id_seq
 
 
 --
--- Name: sivel2_gen_intervalo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_intervalo; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_intervalo (
@@ -1616,7 +1620,7 @@ CREATE SEQUENCE sivel2_gen_maternidad_id_seq
 
 
 --
--- Name: sivel2_gen_maternidad; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_maternidad; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_maternidad (
@@ -1644,7 +1648,7 @@ CREATE SEQUENCE sivel2_gen_organizacion_id_seq
 
 
 --
--- Name: sivel2_gen_organizacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_organizacion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_organizacion (
@@ -1660,7 +1664,7 @@ CREATE TABLE sivel2_gen_organizacion (
 
 
 --
--- Name: sivel2_gen_organizacion_victimacolectiva; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_organizacion_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_organizacion_victimacolectiva (
@@ -1684,7 +1688,7 @@ CREATE SEQUENCE sivel2_gen_pconsolidado_id_seq
 
 
 --
--- Name: sivel2_gen_pconsolidado; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_pconsolidado; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_pconsolidado (
@@ -1714,7 +1718,7 @@ CREATE SEQUENCE sivel2_gen_profesion_id_seq
 
 
 --
--- Name: sivel2_gen_profesion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_profesion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_profesion (
@@ -1730,7 +1734,7 @@ CREATE TABLE sivel2_gen_profesion (
 
 
 --
--- Name: sivel2_gen_profesion_victimacolectiva; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_profesion_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_profesion_victimacolectiva (
@@ -1754,7 +1758,7 @@ CREATE SEQUENCE sivel2_gen_rangoedad_id_seq
 
 
 --
--- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_rangoedad (
@@ -1773,7 +1777,7 @@ CREATE TABLE sivel2_gen_rangoedad (
 
 
 --
--- Name: sivel2_gen_rangoedad_victimacolectiva; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_rangoedad_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_rangoedad_victimacolectiva (
@@ -1797,7 +1801,7 @@ CREATE SEQUENCE sivel2_gen_region_id_seq
 
 
 --
--- Name: sivel2_gen_region; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_region; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_region (
@@ -1813,7 +1817,7 @@ CREATE TABLE sivel2_gen_region (
 
 
 --
--- Name: sivel2_gen_resagresion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_resagresion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_resagresion (
@@ -1859,7 +1863,7 @@ CREATE SEQUENCE sivel2_gen_sectorsocial_id_seq
 
 
 --
--- Name: sivel2_gen_sectorsocial; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_sectorsocial; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_sectorsocial (
@@ -1875,7 +1879,7 @@ CREATE TABLE sivel2_gen_sectorsocial (
 
 
 --
--- Name: sivel2_gen_sectorsocial_victimacolectiva; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_sectorsocial_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_sectorsocial_victimacolectiva (
@@ -1887,7 +1891,7 @@ CREATE TABLE sivel2_gen_sectorsocial_victimacolectiva (
 
 
 --
--- Name: sivel2_gen_tviolencia; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_tviolencia; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_tviolencia (
@@ -1916,7 +1920,7 @@ CREATE SEQUENCE sivel2_gen_victimacolectiva_id_seq
 
 
 --
--- Name: sivel2_gen_victimacolectiva; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_victimacolectiva (
@@ -1931,7 +1935,7 @@ CREATE TABLE sivel2_gen_victimacolectiva (
 
 
 --
--- Name: sivel2_gen_victimacolectiva_vinculoestado; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victimacolectiva_vinculoestado; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_victimacolectiva_vinculoestado (
@@ -1955,7 +1959,7 @@ CREATE SEQUENCE sivel2_gen_vinculoestado_id_seq
 
 
 --
--- Name: sivel2_gen_vinculoestado; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_vinculoestado; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_vinculoestado (
@@ -1983,7 +1987,7 @@ CREATE SEQUENCE usuario_id_seq
 
 
 --
--- Name: usuario; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: usuario; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE usuario (
@@ -2018,7 +2022,7 @@ CREATE TABLE usuario (
 
 
 --
--- Name: vvictimasoundexesp; Type: MATERIALIZED VIEW; Schema: public; Owner: -; Tablespace: 
+-- Name: vvictimasoundexesp; Type: MATERIALIZED VIEW; Schema: public; Owner: -
 --
 
 CREATE MATERIALIZED VIEW vvictimasoundexesp AS
@@ -2027,7 +2031,7 @@ CREATE MATERIALIZED VIEW vvictimasoundexesp AS
     (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text) AS nomap,
     ( SELECT array_to_string(array_agg(soundexesp(n.s)), ' '::text) AS array_to_string
            FROM ( SELECT unnest(string_to_array(regexp_replace((((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text), '  *'::text, ' '::text), ' '::text)) AS s
-                  ORDER BY unnest(string_to_array(regexp_replace((((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text), '  *'::text, ' '::text), ' '::text))) n) AS nomsoundexesp
+                  ORDER BY (unnest(string_to_array(regexp_replace((((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text), '  *'::text, ' '::text), ' '::text)))) n) AS nomsoundexesp
    FROM sip_persona,
     sivel2_gen_victima
   WHERE (sip_persona.id = sivel2_gen_victima.id_persona)
@@ -2070,7 +2074,7 @@ ALTER TABLE ONLY sivel2_gen_resagresion ALTER COLUMN id SET DEFAULT nextval('siv
 
 
 --
--- Name: actividadoficio_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: actividadoficio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_actividadoficio
@@ -2078,7 +2082,7 @@ ALTER TABLE ONLY sivel2_gen_actividadoficio
 
 
 --
--- Name: acto_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: acto_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_acto
@@ -2086,7 +2090,7 @@ ALTER TABLE ONLY sivel2_gen_acto
 
 
 --
--- Name: acto_id_presponsable_id_categoria_id_persona_id_caso_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: acto_id_presponsable_id_categoria_id_persona_id_caso_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_acto
@@ -2094,7 +2098,7 @@ ALTER TABLE ONLY sivel2_gen_acto
 
 
 --
--- Name: acto_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: acto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_acto
@@ -2102,7 +2106,7 @@ ALTER TABLE ONLY sivel2_gen_acto
 
 
 --
--- Name: actocolectivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: actocolectivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_actocolectivo
@@ -2110,7 +2114,7 @@ ALTER TABLE ONLY sivel2_gen_actocolectivo
 
 
 --
--- Name: anexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: anexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_anexo_caso
@@ -2118,7 +2122,7 @@ ALTER TABLE ONLY sivel2_gen_anexo_caso
 
 
 --
--- Name: antecedente_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: antecedente_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_antecedente_caso
@@ -2126,7 +2130,7 @@ ALTER TABLE ONLY sivel2_gen_antecedente_caso
 
 
 --
--- Name: antecedente_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: antecedente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_antecedente
@@ -2134,7 +2138,7 @@ ALTER TABLE ONLY sivel2_gen_antecedente
 
 
 --
--- Name: antecedente_victima_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: antecedente_victima_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_antecedente_victima
@@ -2142,7 +2146,7 @@ ALTER TABLE ONLY sivel2_gen_antecedente_victima
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ar_internal_metadata
@@ -2150,7 +2154,7 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
--- Name: caso_contexto_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_contexto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_contexto
@@ -2158,7 +2162,7 @@ ALTER TABLE ONLY sivel2_gen_caso_contexto
 
 
 --
--- Name: caso_etiqueta_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_etiqueta_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_etiqueta
@@ -2166,7 +2170,7 @@ ALTER TABLE ONLY sivel2_gen_caso_etiqueta
 
 
 --
--- Name: caso_etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_etiqueta
@@ -2174,7 +2178,7 @@ ALTER TABLE ONLY sivel2_gen_caso_etiqueta
 
 
 --
--- Name: caso_frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_frontera
@@ -2182,7 +2186,7 @@ ALTER TABLE ONLY sivel2_gen_caso_frontera
 
 
 --
--- Name: caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso
@@ -2190,7 +2194,7 @@ ALTER TABLE ONLY sivel2_gen_caso
 
 
 --
--- Name: caso_presponsable_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_presponsable_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_presponsable
@@ -2198,7 +2202,7 @@ ALTER TABLE ONLY sivel2_gen_caso_presponsable
 
 
 --
--- Name: caso_presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_presponsable
@@ -2206,7 +2210,7 @@ ALTER TABLE ONLY sivel2_gen_caso_presponsable
 
 
 --
--- Name: caso_region_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: caso_region_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_region
@@ -2214,7 +2218,7 @@ ALTER TABLE ONLY sivel2_gen_caso_region
 
 
 --
--- Name: categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_categoria
@@ -2222,7 +2226,7 @@ ALTER TABLE ONLY sivel2_gen_categoria
 
 
 --
--- Name: contexto_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: contexto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_contexto
@@ -2230,7 +2234,7 @@ ALTER TABLE ONLY sivel2_gen_contexto
 
 
 --
--- Name: escolaridad_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: escolaridad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_escolaridad
@@ -2238,7 +2242,7 @@ ALTER TABLE ONLY sivel2_gen_escolaridad
 
 
 --
--- Name: estadocivil_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: estadocivil_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_estadocivil
@@ -2246,7 +2250,7 @@ ALTER TABLE ONLY sivel2_gen_estadocivil
 
 
 --
--- Name: etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_etiqueta
@@ -2254,7 +2258,7 @@ ALTER TABLE ONLY sip_etiqueta
 
 
 --
--- Name: etnia_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: etnia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_etnia
@@ -2262,7 +2266,7 @@ ALTER TABLE ONLY sivel2_gen_etnia
 
 
 --
--- Name: filiacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: filiacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_filiacion
@@ -2270,7 +2274,7 @@ ALTER TABLE ONLY sivel2_gen_filiacion
 
 
 --
--- Name: fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_fotra
@@ -2278,7 +2282,7 @@ ALTER TABLE ONLY sivel2_gen_fotra
 
 
 --
--- Name: frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_frontera
@@ -2286,7 +2290,7 @@ ALTER TABLE ONLY sivel2_gen_frontera
 
 
 --
--- Name: grupoper_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: grupoper_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_grupoper
@@ -2294,7 +2298,7 @@ ALTER TABLE ONLY sivel2_gen_grupoper
 
 
 --
--- Name: iglesia_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: iglesia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_iglesia
@@ -2302,7 +2306,7 @@ ALTER TABLE ONLY sivel2_gen_iglesia
 
 
 --
--- Name: intervalo_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: intervalo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_intervalo
@@ -2310,7 +2314,7 @@ ALTER TABLE ONLY sivel2_gen_intervalo
 
 
 --
--- Name: maternidad_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: maternidad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_maternidad
@@ -2318,7 +2322,7 @@ ALTER TABLE ONLY sivel2_gen_maternidad
 
 
 --
--- Name: organizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: organizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_organizacion
@@ -2326,7 +2330,7 @@ ALTER TABLE ONLY sivel2_gen_organizacion
 
 
 --
--- Name: pais_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: pais_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_pais
@@ -2334,7 +2338,7 @@ ALTER TABLE ONLY sip_pais
 
 
 --
--- Name: pconsolidado_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: pconsolidado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_pconsolidado
@@ -2342,7 +2346,7 @@ ALTER TABLE ONLY sivel2_gen_pconsolidado
 
 
 --
--- Name: persona_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: persona_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -2350,7 +2354,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_presponsable
@@ -2358,7 +2362,7 @@ ALTER TABLE ONLY sivel2_gen_presponsable
 
 
 --
--- Name: profesion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: profesion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_profesion
@@ -2366,7 +2370,7 @@ ALTER TABLE ONLY sivel2_gen_profesion
 
 
 --
--- Name: rangoedad_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: rangoedad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_rangoedad
@@ -2374,7 +2378,7 @@ ALTER TABLE ONLY sivel2_gen_rangoedad
 
 
 --
--- Name: region_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: region_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_region
@@ -2382,7 +2386,7 @@ ALTER TABLE ONLY sivel2_gen_region
 
 
 --
--- Name: regionsjr_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: regionsjr_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_oficina
@@ -2390,7 +2394,7 @@ ALTER TABLE ONLY sip_oficina
 
 
 --
--- Name: sectorsocial_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sectorsocial_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_sectorsocial
@@ -2398,7 +2402,7 @@ ALTER TABLE ONLY sivel2_gen_sectorsocial
 
 
 --
--- Name: sip_anexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_anexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_anexo
@@ -2406,7 +2410,7 @@ ALTER TABLE ONLY sip_anexo
 
 
 --
--- Name: sip_clase_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_clase_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_clase
@@ -2414,7 +2418,7 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: sip_clase_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_clase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_clase
@@ -2422,7 +2426,7 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: sip_departamento_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_departamento_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -2430,7 +2434,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: sip_departamento_id_pais_id_deplocal_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_departamento_id_pais_id_deplocal_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -2438,7 +2442,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: sip_departamento_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_departamento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -2446,7 +2450,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: sip_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_fuenteprensa
@@ -2454,7 +2458,7 @@ ALTER TABLE ONLY sip_fuenteprensa
 
 
 --
--- Name: sip_municipio_id_departamento_id_munlocal_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_municipio_id_departamento_id_munlocal_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_municipio
@@ -2462,7 +2466,7 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: sip_municipio_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_municipio_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_municipio
@@ -2470,7 +2474,7 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: sip_municipio_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_municipio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_municipio
@@ -2478,7 +2482,7 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: sip_persona_trelacion_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_persona_trelacion_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -2486,7 +2490,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sip_persona_trelacion_persona1_persona2_id_trelacion_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_persona_trelacion_persona1_persona2_id_trelacion_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -2494,7 +2498,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sip_persona_trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_persona_trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -2502,7 +2506,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sivel2_gen_caso_fotra_id_caso_nombre_fecha_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_fotra_id_caso_nombre_fecha_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_fotra
@@ -2510,7 +2514,7 @@ ALTER TABLE ONLY sivel2_gen_caso_fotra
 
 
 --
--- Name: sivel2_gen_caso_fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_fotra
@@ -2518,7 +2522,7 @@ ALTER TABLE ONLY sivel2_gen_caso_fotra
 
 
 --
--- Name: sivel2_gen_caso_fuenteprensa_id_caso_fecha_fuenteprensa_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_fuenteprensa_id_caso_fecha_fuenteprensa_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
@@ -2526,7 +2530,7 @@ ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
 
 
 --
--- Name: sivel2_gen_caso_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_caso_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
@@ -2534,7 +2538,7 @@ ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
 
 
 --
--- Name: sivel2_gen_combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_combatiente
@@ -2542,7 +2546,7 @@ ALTER TABLE ONLY sivel2_gen_combatiente
 
 
 --
--- Name: sivel2_gen_resagresion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_resagresion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_resagresion
@@ -2550,7 +2554,7 @@ ALTER TABLE ONLY sivel2_gen_resagresion
 
 
 --
--- Name: sivel2_gen_supracategoria_id_tviolencia_codigo_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_supracategoria_id_tviolencia_codigo_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_supracategoria
@@ -2558,7 +2562,7 @@ ALTER TABLE ONLY sivel2_gen_supracategoria
 
 
 --
--- Name: sivel2_gen_supracategoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_supracategoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_supracategoria
@@ -2566,7 +2570,7 @@ ALTER TABLE ONLY sivel2_gen_supracategoria
 
 
 --
--- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victimacolectiva
@@ -2574,7 +2578,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 
 --
--- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victimacolectiva
@@ -2582,7 +2586,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 
 --
--- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key2; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key2; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victimacolectiva
@@ -2590,7 +2594,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 
 --
--- Name: sivel2_gen_victimacolectiva_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victimacolectiva_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victimacolectiva
@@ -2598,7 +2602,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 
 --
--- Name: sivel2_gen_victimacolectiva_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sivel2_gen_victimacolectiva_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victimacolectiva
@@ -2606,7 +2610,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 
 --
--- Name: tclase_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: tclase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_tclase
@@ -2614,7 +2618,7 @@ ALTER TABLE ONLY sip_tclase
 
 
 --
--- Name: tdocumento_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: tdocumento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_tdocumento
@@ -2622,7 +2626,7 @@ ALTER TABLE ONLY sip_tdocumento
 
 
 --
--- Name: trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_trelacion
@@ -2630,7 +2634,7 @@ ALTER TABLE ONLY sip_trelacion
 
 
 --
--- Name: tsitio_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: tsitio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_tsitio
@@ -2638,7 +2642,7 @@ ALTER TABLE ONLY sip_tsitio
 
 
 --
--- Name: tviolencia_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: tviolencia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_tviolencia
@@ -2646,7 +2650,7 @@ ALTER TABLE ONLY sivel2_gen_tviolencia
 
 
 --
--- Name: ubicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: ubicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_ubicacion
@@ -2654,7 +2658,7 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
--- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY usuario
@@ -2662,7 +2666,7 @@ ALTER TABLE ONLY usuario
 
 
 --
--- Name: victima_id_caso_id_persona_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: victima_id_caso_id_persona_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victima
@@ -2670,7 +2674,7 @@ ALTER TABLE ONLY sivel2_gen_victima
 
 
 --
--- Name: victima_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: victima_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victima
@@ -2678,7 +2682,7 @@ ALTER TABLE ONLY sivel2_gen_victima
 
 
 --
--- Name: victima_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: victima_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_victima
@@ -2686,7 +2690,7 @@ ALTER TABLE ONLY sivel2_gen_victima
 
 
 --
--- Name: vinculoestado_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: vinculoestado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_vinculoestado
@@ -2694,63 +2698,63 @@ ALTER TABLE ONLY sivel2_gen_vinculoestado
 
 
 --
--- Name: busca_sivel2_gen_conscaso; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: busca_sivel2_gen_conscaso; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX busca_sivel2_gen_conscaso ON sivel2_gen_conscaso USING gin (q);
 
 
 --
--- Name: index_sivel2_gen_antecedente_combatiente_on_id_antecedente; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_sivel2_gen_antecedente_combatiente_on_id_antecedente; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_sivel2_gen_antecedente_combatiente_on_id_antecedente ON sivel2_gen_antecedente_combatiente USING btree (id_antecedente);
 
 
 --
--- Name: index_sivel2_gen_antecedente_combatiente_on_id_combatiente; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_sivel2_gen_antecedente_combatiente_on_id_combatiente; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_sivel2_gen_antecedente_combatiente_on_id_combatiente ON sivel2_gen_antecedente_combatiente USING btree (id_combatiente);
 
 
 --
--- Name: index_usuario_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_usuario_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_usuario_on_email ON usuario USING btree (email);
 
 
 --
--- Name: index_usuario_on_regionsjr_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_usuario_on_regionsjr_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_usuario_on_regionsjr_id ON usuario USING btree (oficina_id);
 
 
 --
--- Name: index_usuario_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_usuario_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_usuario_on_reset_password_token ON usuario USING btree (reset_password_token);
 
 
 --
--- Name: sip_busca_mundep; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: sip_busca_mundep; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX sip_busca_mundep ON sip_mundep USING gin (mundep);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
 
 
 --
--- Name: usuario_nusuario; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: usuario_nusuario; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX usuario_nusuario ON usuario USING btree (nusuario);
@@ -3608,7 +3612,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (version) VALUES ('20131128151014'), ('20131204135932'), ('20131204140000'), ('20131204143718'), ('20131204183530'), ('20131206081531'), ('20131210221541'), ('20131220103409'), ('20131223175141'), ('20140117212555'), ('20140129151136'), ('20140207102709'), ('20140207102739'), ('20140211162355'), ('20140211164659'), ('20140211172443'), ('20140313012209'), ('20140514142421'), ('20140518120059'), ('20140527110223'), ('20140528043115'), ('20140613044320'), ('20140704035033'), ('20140804194616'), ('20140804200235'), ('20140804202100'), ('20140804202101'), ('20140804202958'), ('20140804210000'), ('20140815111351'), ('20140815111352'), ('20140815121224'), ('20140815123542'), ('20140815124157'), ('20140815124606'), ('20140827142659'), ('20140901105741'), ('20140901106000'), ('20140909165233'), ('20140918115412'), ('20140922102737'), ('20140922110956'), ('20141002140242'), ('20141111102451'), ('20141111203313'), ('20141126085907'), ('20150313153722'), ('20150317084737'), ('20150413000000'), ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150416090140'), ('20150503120915'), ('20150505084914'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150602094513'), ('20150602095241'), ('20150602104342'), ('20150609094809'), ('20150609094810'), ('20150609094820'), ('20150616095023'), ('20150616100351'), ('20150616100551'), ('20150707164448'), ('20150710114451'), ('20150716171420'), ('20150716192356'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20150826000000'), ('20151006105402'), ('20151020203421'), ('20151124110943'), ('20151127102425'), ('20151130101417'), ('20160316093659'), ('20160316094627'), ('20160316100620'), ('20160316100621'), ('20160316100622'), ('20160316100623'), ('20160316100624'), ('20160316100625'), ('20160316100626'), ('20160519195544'), ('20160719195853'), ('20160719214520'), ('20160724160049'), ('20160724164110'), ('20160725123242'), ('20160725125929'), ('20160725131347');
 
