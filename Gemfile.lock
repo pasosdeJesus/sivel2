@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 8eef3566df1da3f018606b576298b7b3e7f375e7
+  revision: ecc86c884d7bcd2ef7bfe2c7840724b32a3b9638
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e467834f24981ec092282186b8485cd6e93ade2c
+  revision: e976617357fc70efb1351d38c05ab294f8383528
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -78,7 +78,7 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-datepicker-rails (1.6.1.1)
+    bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
     builder (3.2.2)
     camertron-eprun (1.1.0)
@@ -203,7 +203,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.0.1)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (1.0.0)
+    rails-controller-testing (1.0.1)
       actionpack (~> 5.x)
       actionview (~> 5.x)
       activesupport (~> 5.x)
