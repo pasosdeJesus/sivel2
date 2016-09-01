@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: c08075b3cb6ec7a3e66f202d4a2e5411f3646cfe
+  revision: c21e60ec72322eeef0edf99d6a7420994f944fdf
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9d1c5d050246c18ea044b3cd46dbee08d07825e6
+  revision: 2fcb75c1386bc2ad99f099846da7493e3f669c06
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -81,7 +81,7 @@ GEM
     bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
     builder (3.2.2)
-    camertron-eprun (1.1.0)
+    camertron-eprun (1.1.1)
     cancancan (1.15.0)
     capybara (2.7.1)
       addressable
@@ -240,7 +240,7 @@ GEM
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
-    rspec-rails (3.5.1)
+    rspec-rails (3.5.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -253,7 +253,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    simple_form (3.2.1)
+    simple_form (3.3.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     simplecov (0.12.0)
