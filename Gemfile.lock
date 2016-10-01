@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b7a09bfed6c239f9b8203fccc1be436c8b98ed08
+  revision: e2a0a660b0dd3fb2672f40e96732f740be0aa01b
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 89c7b6f2d992b2e0b172366629a3e43a0b93b571
+  revision: 8367a7334be609da1e1b28ba6301dbaba50a792b
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -232,7 +232,7 @@ GEM
       json (~> 1.4)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    rspec-core (3.5.3)
+    rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
