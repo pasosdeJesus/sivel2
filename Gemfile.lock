@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e8a8ba1cf5ed06e0bebdde678c976d4d94dfe39d
+  revision: 1f27ad93c696e957eeb30918523fab01c75bd4eb
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 84ca2292e56480704d0e9a574829389d114b18f2
+  revision: c82e267f0fa1ebd23ac3b211e4bcd22077ff9542
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -304,7 +304,7 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    will_paginate (3.1.3)
+    will_paginate (3.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
