@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1f27ad93c696e957eeb30918523fab01c75bd4eb
+  revision: 966848fbfc2253ed5e8bdebf567bd21ac9a5183f
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: c82e267f0fa1ebd23ac3b211e4bcd22077ff9542
+  revision: 8306088dba77cf73b4aa9dece25e105dd9c289d3
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -281,15 +281,15 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter_cldr (3.5.0)
+    twitter_cldr (3.6.0)
       camertron-eprun
-      cldr-plurals-runtime-rb (~> 1.0.0)
+      cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2016.7)
+    tzinfo-data (1.2016.8)
       tzinfo (>= 1.0.0)
-    uglifier (3.0.2)
+    uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
     unicorn (5.1.0)
       kgio (~> 2.6)
