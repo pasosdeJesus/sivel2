@@ -36,22 +36,28 @@ describe "Llenar caso con javascript", :js => true do
         if (!find_link('Añadir Víctima').visible?)
           click_on "Víctimas"
         end
-        page.save_screenshot('/tmp/vic.png')
+        #page.save_screenshot('/tmp/vic.png')
         click_on "Añadir Víctima"
+        #page.save_screenshot('/tmp/vic2.png')
         #puts page.html
+        if (!find_field('Año de nacimiento').visible?)
+          click_on "Añadir Víctima"
+          #page.save_screenshot('/tmp/vic3.png')
+        end
         within ("div#victima") do 
           fill_in "Nombres", with: 'Nombres V'
           fill_in "Apellidos", with: 'Apellidos V'
-          fill_in "Año Nacimiento", with: '1999'
-          fill_in "Mes Nacimiento", with: '1'
-          fill_in "Día Nacimiento", with: '1'
+          page.save_screenshot('/tmp/vic2-5.png')
+          select("1999", from: "Año de nacimiento")
+          select("ENERO", from: "Mes de nacimiento")
+          select("1", from: "Día de nacimiento")
           select("MASCULINO", from: 'Sexo')
           select("CÉDULA DE CIUDADANÍA", from: 'Tipo de Documento')
           fill_in "Número Documento", with: '19222'
           select('ALBANIA', from: 'País de Nacionalidad')
           select('RUSIA', from: 'País de Nacimiento')
           select('OTRO', from: 'Profesión')
-          select('De 0 a 15 Años', from: 'Rango de Edad')
+          #select('De 0 a 15 Años', from: 'Rango de Edad')
           select('ROM', from: 'Etnia') 
           select('IGLESIA DE DIOS', from: 'Religión/Iglesia') 
           select('HETEROSEXUAL', from: 'Orientación Sexual') 

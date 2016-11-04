@@ -18,3 +18,8 @@ config/database.yml
 *~
 
 public/assets/*
+config/initializers/sip.rb
+config/application.rb
+config/routes.rb
+archivos/
+public/heb412/

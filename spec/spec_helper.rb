@@ -56,6 +56,7 @@ RSpec.configure do |config|
   end
 
   config.include Rails.application.routes.url_helpers
+  #config.include Capybara::DSL
 
   config.include Devise::TestHelpers, :type => :controller
   #config.include ControllerHelpers, :type => :controller
