@@ -21,3 +21,8 @@ Han apoyado financiando el desarrollo de componentes de dominio público:
 	Cristian
 
 Agradecimientos por el logo a William Rozo 
+
+Agradecimiento especial a Dios trino, el de la Biblia, a quien dedicamos 
+este trabajo y a quien oramos para que no sea usado por estructuras armadas
+y sólo para darle honra a Él.
+
