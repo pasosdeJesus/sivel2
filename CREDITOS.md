@@ -29,3 +29,10 @@ Agradecimientos por el logo a William Rozo <wiroal@riseup.net>
 Agradecimiento especial a Dios trino, el de la Biblia, a quien dedicamos 
 este trabajo y a quien oramos para que no sea usado por estructuras armadas
 y sólo para darle honra a Él.
+
+Porque la palabra de Dios es viva y eficaz y más cortante que toda
+espada de dos filos, penetras hasta partir el alma, el espíritu,
+las coyonturas, los tuetanos, discierne los pensamientos y las
+intenciones del corazón.
+
+Hebreos 4:12
