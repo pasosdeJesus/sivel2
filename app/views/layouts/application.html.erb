@@ -14,8 +14,12 @@
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>
-    <%= menu_item "Documentacion", sivel2_gen.acercade_path %>
     <% if !current_usuario.nil? %>
+      <%= drop_down "Documentos" do %>
+        <%= menu_item "Nube", heb412_gen.sisini_path %>
+        <%= menu_item "Definir plantilla hoja de calculo m.", 
+          heb412_gen.new_plantillahcm_path %>
+      <% end %>
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
         <% if session[:capturacaso_acordeon] %>

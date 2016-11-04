@@ -14,6 +14,11 @@ gem 'puma'
 # CSS
 gem "sass"
 
+
+gem 'chosen'
+gem 'font-awesome-rails'
+gem "rspreadsheet"
+
 # Color en terminal
 gem "colorize"
 
@@ -73,6 +78,10 @@ gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'
 # Motor de SIVeL 2
 gem 'sivel2_gen', git: 'https://github.com/pasosdeJesus/sivel2_gen.git'
 #gem 'sivel2_gen', path: '../sivel2_gen'
+
+# Motor de nube y plantillas
+gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+#gem 'heb412_gen', path: '../heb412_gen'
 
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails

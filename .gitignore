@@ -22,3 +22,4 @@ config/initializers/sip.rb
 config/application.rb
 config/routes.rb
 archivos/
+public/heb412/
