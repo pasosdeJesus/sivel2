@@ -303,7 +303,7 @@ CREATE VIEW cben1 AS
  SELECT caso.id AS id_caso,
     victima.id_persona,
     1 AS npersona,
-    'total'::text AS total
+    ((date_part('year'::text, caso.fecha) || '-'::text) || lpad((date_part('month'::text, caso.fecha))::text, 2, '0'::text)) AS mes
    FROM sivel2_gen_caso caso,
     sivel2_gen_victima victima
   WHERE (caso.id = victima.id_caso);
@@ -326,7 +326,6 @@ CREATE SEQUENCE sip_clase_id_seq
 --
 
 CREATE TABLE sip_clase (
-    id_clalocal integer,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     id_tclase character varying(10) DEFAULT 'CP'::character varying NOT NULL,
     latitud double precision,
@@ -337,6 +336,7 @@ CREATE TABLE sip_clase (
     updated_at timestamp without time zone,
     id_municipio integer,
     id integer DEFAULT nextval('sip_clase_id_seq'::regclass) NOT NULL,
+    id_clalocal integer,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
@@ -359,7 +359,7 @@ CREATE SEQUENCE sip_departamento_id_seq
 --
 
 CREATE TABLE sip_departamento (
-    id_deplocal integer,
+    id_deplocal integer NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     latitud double precision,
     longitud double precision,
@@ -391,7 +391,7 @@ CREATE SEQUENCE sip_municipio_id_seq
 --
 
 CREATE TABLE sip_municipio (
-    id_munlocal integer,
+    id_munlocal integer NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     latitud double precision,
     longitud double precision,
@@ -447,7 +447,7 @@ CREATE VIEW cben2 AS
  SELECT cben1.id_caso,
     cben1.id_persona,
     cben1.npersona,
-    cben1.total,
+    cben1.mes,
     ubicacion.id_departamento,
     departamento.nombre AS departamento_nombre,
     ubicacion.id_municipio,
@@ -459,7 +459,7 @@ CREATE VIEW cben2 AS
      LEFT JOIN sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
      LEFT JOIN sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
      LEFT JOIN sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.total, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
+  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.mes, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
 
 
 --
@@ -479,18 +479,6 @@ CREATE SEQUENCE contexto_seq
 --
 
 CREATE SEQUENCE fotra_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: grupoper_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE grupoper_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -648,18 +636,6 @@ ALTER SEQUENCE heb412_gen_plantillahcm_id_seq OWNED BY heb412_gen_plantillahcm.i
 --
 
 CREATE SEQUENCE instanciader_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: regimensalud_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE regimensalud_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1157,19 +1133,6 @@ CREATE TABLE sivel2_gen_antecedente_combatiente (
 
 
 --
--- Name: sivel2_gen_antecedente_comunidad; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_antecedente_comunidad (
-    id_antecedente integer NOT NULL,
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
 -- Name: sivel2_gen_antecedente_victima; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1240,22 +1203,6 @@ CREATE TABLE sivel2_gen_caso_etiqueta (
 
 
 --
--- Name: sivel2_gen_caso_fotra; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_caso_fotra (
-    id_caso integer NOT NULL,
-    id_fotra integer NOT NULL,
-    anotacion character varying(200),
-    fecha date NOT NULL,
-    ubicacionfisica character varying(100),
-    tfuente character varying(25),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
 -- Name: sivel2_gen_caso_fotra_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1268,27 +1215,30 @@ CREATE SEQUENCE sivel2_gen_caso_fotra_seq
 
 
 --
+-- Name: sivel2_gen_caso_fotra; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sivel2_gen_caso_fotra (
+    id_caso integer NOT NULL,
+    id_fotra integer,
+    anotacion character varying(200),
+    fecha date NOT NULL,
+    ubicacionfisica character varying(100),
+    tfuente character varying(25),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    id integer DEFAULT nextval('sivel2_gen_caso_fotra_seq'::regclass) NOT NULL,
+    anexo_caso_id integer
+);
+
+
+--
 -- Name: sivel2_gen_caso_frontera; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_frontera (
     id_frontera integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: sivel2_gen_caso_fuenteprensa; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_caso_fuenteprensa (
-    fecha date NOT NULL,
-    ubicacion character varying(100),
-    clasificacion character varying(100),
-    ubicacionfisica character varying(100),
-    fuenteprensa_id integer NOT NULL,
     id_caso integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -1305,6 +1255,24 @@ CREATE SEQUENCE sivel2_gen_caso_fuenteprensa_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sivel2_gen_caso_fuenteprensa (
+    fecha date NOT NULL,
+    ubicacion character varying(100),
+    clasificacion character varying(100),
+    ubicacionfisica character varying(100),
+    fuenteprensa_id integer NOT NULL,
+    id_caso integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('sivel2_gen_caso_fuenteprensa_seq'::regclass) NOT NULL,
+    anexo_caso_id integer
+);
 
 
 --
@@ -1414,84 +1382,6 @@ CREATE SEQUENCE sivel2_gen_combatiente_id_seq
 --
 
 ALTER SEQUENCE sivel2_gen_combatiente_id_seq OWNED BY sivel2_gen_combatiente.id;
-
-
---
--- Name: sivel2_gen_comunidad_filiacion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_comunidad_filiacion (
-    id_filiacion integer DEFAULT 10 NOT NULL,
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: sivel2_gen_comunidad_organizacion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_comunidad_organizacion (
-    id_organizacion integer DEFAULT 16 NOT NULL,
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: sivel2_gen_comunidad_profesion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_comunidad_profesion (
-    id_profesion integer DEFAULT 22 NOT NULL,
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: sivel2_gen_comunidad_rangoedad; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_comunidad_rangoedad (
-    id_rangoedad integer DEFAULT 6 NOT NULL,
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: sivel2_gen_comunidad_sectorsocial; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_comunidad_sectorsocial (
-    id_sectorsocial integer DEFAULT 15 NOT NULL,
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: sivel2_gen_comunidad_vinculoestado; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_comunidad_vinculoestado (
-    id_vinculoestado integer DEFAULT 38 NOT NULL,
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
 
 
 --
@@ -1780,19 +1670,6 @@ CREATE TABLE sivel2_gen_frontera (
 
 
 --
--- Name: sivel2_gen_grupoper; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_grupoper (
-    id integer DEFAULT nextval('grupoper_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    anotaciones character varying(1000),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
 -- Name: sivel2_gen_grupoper_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1802,6 +1679,19 @@ CREATE SEQUENCE sivel2_gen_grupoper_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: sivel2_gen_grupoper; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sivel2_gen_grupoper (
+    id integer DEFAULT nextval('sivel2_gen_grupoper_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    anotaciones character varying(1000),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
 
 
 --
@@ -1831,6 +1721,77 @@ CREATE TABLE sivel2_gen_iglesia (
     observaciones character varying(5000),
     CONSTRAINT iglesia_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
+
+
+--
+-- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE usuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: usuario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE usuario (
+    nusuario character varying(15) NOT NULL,
+    password character varying(64) DEFAULT ''::character varying NOT NULL,
+    nombre character varying(50) COLLATE public.es_co_utf_8,
+    descripcion character varying(50),
+    rol integer DEFAULT 4,
+    idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
+    id integer DEFAULT nextval('usuario_id_seq'::regclass) NOT NULL,
+    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    fechadeshabilitacion date,
+    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    failed_attempts integer,
+    unlock_token character varying(64),
+    locked_at timestamp without time zone,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    oficina_id integer,
+    CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
+    CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
+);
+
+
+--
+-- Name: sivel2_gen_iniciador; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW sivel2_gen_iniciador AS
+ SELECT s3.id_caso,
+    s3.fechainicio,
+    s3.id_usuario,
+    usuario.nusuario
+   FROM usuario,
+    ( SELECT s2.id_caso,
+            s2.fechainicio,
+            min(s2.id_usuario) AS id_usuario
+           FROM sivel2_gen_caso_usuario s2,
+            ( SELECT f1.id_caso,
+                    min(f1.fechainicio) AS m
+                   FROM sivel2_gen_caso_usuario f1
+                  GROUP BY f1.id_caso) c
+          WHERE ((s2.id_caso = c.id_caso) AND (s2.fechainicio = c.m))
+          GROUP BY s2.id_caso, s2.fechainicio
+          ORDER BY s2.id_caso, s2.fechainicio) s3
+  WHERE (usuario.id = s3.id_usuario);
 
 
 --
@@ -2044,21 +2005,6 @@ CREATE TABLE sivel2_gen_rangoedad_victimacolectiva (
 
 
 --
--- Name: sivel2_gen_regimensalud; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_regimensalud (
-    id integer DEFAULT nextval('regimensalud_seq'::regclass) NOT NULL,
-    nombre character varying(50) NOT NULL,
-    fechacreacion date DEFAULT '2013-05-13'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    CONSTRAINT regimensalud_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
 -- Name: sivel2_gen_region_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2178,20 +2124,6 @@ CREATE TABLE sivel2_gen_tviolencia (
 
 
 --
--- Name: sivel2_gen_victimacolectiva; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_victimacolectiva (
-    id_grupoper integer NOT NULL,
-    id_caso integer NOT NULL,
-    personasaprox integer,
-    organizacionarmada integer DEFAULT 35,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
 -- Name: sivel2_gen_victimacolectiva_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2201,6 +2133,21 @@ CREATE SEQUENCE sivel2_gen_victimacolectiva_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: sivel2_gen_victimacolectiva; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sivel2_gen_victimacolectiva (
+    id_grupoper integer NOT NULL,
+    id_caso integer NOT NULL,
+    personasaprox integer,
+    organizacionarmada integer DEFAULT 35,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('sivel2_gen_victimacolectiva_id_seq'::regclass) NOT NULL
+);
 
 
 --
@@ -2240,53 +2187,6 @@ CREATE TABLE sivel2_gen_vinculoestado (
     updated_at timestamp without time zone,
     observaciones character varying(5000),
     CONSTRAINT vinculoestado_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE usuario_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: usuario; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE usuario (
-    nusuario character varying(15) NOT NULL,
-    password character varying(64) DEFAULT ''::character varying NOT NULL,
-    nombre character varying(50) COLLATE public.es_co_utf_8,
-    descripcion character varying(50),
-    rol integer DEFAULT 4,
-    idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
-    id integer DEFAULT nextval('usuario_id_seq'::regclass) NOT NULL,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
-    fechadeshabilitacion date,
-    email character varying(255) DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
-    sign_in_count integer DEFAULT 0 NOT NULL,
-    failed_attempts integer,
-    unlock_token character varying(64),
-    locked_at timestamp without time zone,
-    reset_password_token character varying(255),
-    reset_password_sent_at timestamp without time zone,
-    remember_created_at timestamp without time zone,
-    current_sign_in_at timestamp without time zone,
-    last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    oficina_id integer,
-    CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
-    CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
 
 
@@ -2427,14 +2327,6 @@ ALTER TABLE ONLY sivel2_gen_antecedente_caso
 
 
 --
--- Name: antecedente_comunidad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_antecedente_comunidad
-    ADD CONSTRAINT antecedente_comunidad_pkey PRIMARY KEY (id_antecedente, id_grupoper, id_caso);
-
-
---
 -- Name: antecedente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2483,14 +2375,6 @@ ALTER TABLE ONLY sivel2_gen_caso_etiqueta
 
 
 --
--- Name: caso_fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_fotra
-    ADD CONSTRAINT caso_fotra_pkey PRIMARY KEY (id_caso, id_fotra, fecha);
-
-
---
 -- Name: caso_frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2536,54 +2420,6 @@ ALTER TABLE ONLY sivel2_gen_caso_region
 
 ALTER TABLE ONLY sivel2_gen_categoria
     ADD CONSTRAINT categoria_pkey PRIMARY KEY (id);
-
-
---
--- Name: comunidad_filiacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_filiacion
-    ADD CONSTRAINT comunidad_filiacion_pkey PRIMARY KEY (id_filiacion, id_grupoper, id_caso);
-
-
---
--- Name: comunidad_organizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_organizacion
-    ADD CONSTRAINT comunidad_organizacion_pkey PRIMARY KEY (id_organizacion, id_grupoper, id_caso);
-
-
---
--- Name: comunidad_profesion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_profesion
-    ADD CONSTRAINT comunidad_profesion_pkey PRIMARY KEY (id_profesion, id_grupoper, id_caso);
-
-
---
--- Name: comunidad_rangoedad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_rangoedad
-    ADD CONSTRAINT comunidad_rangoedad_pkey PRIMARY KEY (id_rangoedad, id_grupoper, id_caso);
-
-
---
--- Name: comunidad_sectorsocial_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_sectorsocial
-    ADD CONSTRAINT comunidad_sectorsocial_pkey PRIMARY KEY (id_sectorsocial, id_grupoper, id_caso);
-
-
---
--- Name: comunidad_vinculoestado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_vinculoestado
-    ADD CONSTRAINT comunidad_vinculoestado_pkey PRIMARY KEY (id_vinculoestado, id_grupoper, id_caso);
 
 
 --
@@ -2771,14 +2607,6 @@ ALTER TABLE ONLY sivel2_gen_rangoedad
 
 
 --
--- Name: regimensalud_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_regimensalud
-    ADD CONSTRAINT regimensalud_pkey PRIMARY KEY (id);
-
-
---
 -- Name: region_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2816,14 +2644,6 @@ ALTER TABLE ONLY sip_anexo
 
 ALTER TABLE ONLY sip_clase
     ADD CONSTRAINT sip_clase_id_key UNIQUE (id);
-
-
---
--- Name: sip_clase_id_municipio_id_clalocal_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sip_clase
-    ADD CONSTRAINT sip_clase_id_municipio_id_clalocal_key UNIQUE (id_municipio, id_clalocal);
 
 
 --
@@ -2915,6 +2735,22 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
+-- Name: sivel2_gen_caso_fotra_id_caso_nombre_fecha_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_fotra
+    ADD CONSTRAINT sivel2_gen_caso_fotra_id_caso_nombre_fecha_key UNIQUE (id_caso, nombre, fecha);
+
+
+--
+-- Name: sivel2_gen_caso_fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_fotra
+    ADD CONSTRAINT sivel2_gen_caso_fotra_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_caso_fuenteprensa_id_caso_fecha_fuenteprensa_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2927,7 +2763,7 @@ ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
 --
 
 ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
-    ADD CONSTRAINT sivel2_gen_caso_fuenteprensa_pkey PRIMARY KEY (fecha, fuenteprensa_id, id_caso);
+    ADD CONSTRAINT sivel2_gen_caso_fuenteprensa_pkey PRIMARY KEY (id);
 
 
 --
@@ -2968,6 +2804,38 @@ ALTER TABLE ONLY sivel2_gen_supracategoria
 
 ALTER TABLE ONLY sivel2_gen_victimacolectiva
     ADD CONSTRAINT sivel2_gen_victimacolectiva_id_caso_id_grupoper_key UNIQUE (id_caso, id_grupoper);
+
+
+--
+-- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key1; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_victimacolectiva_id_caso_id_grupoper_key1 UNIQUE (id_caso, id_grupoper);
+
+
+--
+-- Name: sivel2_gen_victimacolectiva_id_caso_id_grupoper_key2; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_victimacolectiva_id_caso_id_grupoper_key2 UNIQUE (id_caso, id_grupoper);
+
+
+--
+-- Name: sivel2_gen_victimacolectiva_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_victimacolectiva_id_key UNIQUE (id);
+
+
+--
+-- Name: sivel2_gen_victimacolectiva_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_victimacolectiva_pkey PRIMARY KEY (id);
 
 
 --
@@ -3048,14 +2916,6 @@ ALTER TABLE ONLY sivel2_gen_victima
 
 ALTER TABLE ONLY sivel2_gen_victima
     ADD CONSTRAINT victima_pkey PRIMARY KEY (id);
-
-
---
--- Name: victimacolectiva_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_victimacolectiva
-    ADD CONSTRAINT victimacolectiva_pkey PRIMARY KEY (id_grupoper, id_caso);
 
 
 --
@@ -3193,14 +3053,6 @@ ALTER TABLE ONLY sivel2_gen_actocolectivo
 
 
 --
--- Name: actocolectivo_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_actocolectivo
-    ADD CONSTRAINT actocolectivo_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
-
-
---
 -- Name: actocolectivo_id_presponsable_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3252,40 +3104,8 @@ ALTER TABLE ONLY sivel2_gen_antecedente_caso
 -- Name: antecedente_comunidad_id_antecedente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY sivel2_gen_antecedente_comunidad
-    ADD CONSTRAINT antecedente_comunidad_id_antecedente_fkey FOREIGN KEY (id_antecedente) REFERENCES sivel2_gen_antecedente(id);
-
-
---
--- Name: antecedente_comunidad_id_antecedente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY sivel2_gen_antecedente_victimacolectiva
     ADD CONSTRAINT antecedente_comunidad_id_antecedente_fkey FOREIGN KEY (id_antecedente) REFERENCES sivel2_gen_antecedente(id);
-
-
---
--- Name: antecedente_comunidad_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_antecedente_comunidad
-    ADD CONSTRAINT antecedente_comunidad_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: antecedente_comunidad_id_grupoper_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_antecedente_comunidad
-    ADD CONSTRAINT antecedente_comunidad_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
-
-
---
--- Name: antecedente_comunidad_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_antecedente_comunidad
-    ADD CONSTRAINT antecedente_comunidad_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
 
 
 --
@@ -3513,75 +3333,11 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: comunidad_filiacion_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_filiacion
-    ADD CONSTRAINT comunidad_filiacion_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: comunidad_filiacion_id_filiacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_filiacion
-    ADD CONSTRAINT comunidad_filiacion_id_filiacion_fkey FOREIGN KEY (id_filiacion) REFERENCES sivel2_gen_filiacion(id);
-
-
---
 -- Name: comunidad_filiacion_id_filiacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_filiacion_victimacolectiva
     ADD CONSTRAINT comunidad_filiacion_id_filiacion_fkey FOREIGN KEY (id_filiacion) REFERENCES sivel2_gen_filiacion(id);
-
-
---
--- Name: comunidad_filiacion_id_grupoper_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_filiacion
-    ADD CONSTRAINT comunidad_filiacion_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
-
-
---
--- Name: comunidad_filiacion_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_filiacion
-    ADD CONSTRAINT comunidad_filiacion_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
-
-
---
--- Name: comunidad_organizacion_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_organizacion
-    ADD CONSTRAINT comunidad_organizacion_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: comunidad_organizacion_id_grupoper_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_organizacion
-    ADD CONSTRAINT comunidad_organizacion_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
-
-
---
--- Name: comunidad_organizacion_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_organizacion
-    ADD CONSTRAINT comunidad_organizacion_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
-
-
---
--- Name: comunidad_organizacion_id_organizacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_organizacion
-    ADD CONSTRAINT comunidad_organizacion_id_organizacion_fkey FOREIGN KEY (id_organizacion) REFERENCES sivel2_gen_organizacion(id);
 
 
 --
@@ -3593,75 +3349,11 @@ ALTER TABLE ONLY sivel2_gen_organizacion_victimacolectiva
 
 
 --
--- Name: comunidad_profesion_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_profesion
-    ADD CONSTRAINT comunidad_profesion_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: comunidad_profesion_id_grupoper_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_profesion
-    ADD CONSTRAINT comunidad_profesion_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
-
-
---
--- Name: comunidad_profesion_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_profesion
-    ADD CONSTRAINT comunidad_profesion_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
-
-
---
--- Name: comunidad_profesion_id_profesion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_profesion
-    ADD CONSTRAINT comunidad_profesion_id_profesion_fkey FOREIGN KEY (id_profesion) REFERENCES sivel2_gen_profesion(id);
-
-
---
 -- Name: comunidad_profesion_id_profesion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_profesion_victimacolectiva
     ADD CONSTRAINT comunidad_profesion_id_profesion_fkey FOREIGN KEY (id_profesion) REFERENCES sivel2_gen_profesion(id);
-
-
---
--- Name: comunidad_rangoedad_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_rangoedad
-    ADD CONSTRAINT comunidad_rangoedad_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: comunidad_rangoedad_id_grupoper_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_rangoedad
-    ADD CONSTRAINT comunidad_rangoedad_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
-
-
---
--- Name: comunidad_rangoedad_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_rangoedad
-    ADD CONSTRAINT comunidad_rangoedad_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
-
-
---
--- Name: comunidad_rangoedad_id_rangoedad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_rangoedad
-    ADD CONSTRAINT comunidad_rangoedad_id_rangoedad_fkey FOREIGN KEY (id_rangoedad) REFERENCES sivel2_gen_rangoedad(id);
 
 
 --
@@ -3673,75 +3365,11 @@ ALTER TABLE ONLY sivel2_gen_rangoedad_victimacolectiva
 
 
 --
--- Name: comunidad_sectorsocial_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_sectorsocial
-    ADD CONSTRAINT comunidad_sectorsocial_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: comunidad_sectorsocial_id_grupoper_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_sectorsocial
-    ADD CONSTRAINT comunidad_sectorsocial_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
-
-
---
--- Name: comunidad_sectorsocial_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_sectorsocial
-    ADD CONSTRAINT comunidad_sectorsocial_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
-
-
---
--- Name: comunidad_sectorsocial_id_sector_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_sectorsocial
-    ADD CONSTRAINT comunidad_sectorsocial_id_sector_fkey FOREIGN KEY (id_sectorsocial) REFERENCES sivel2_gen_sectorsocial(id);
-
-
---
 -- Name: comunidad_sectorsocial_id_sector_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sivel2_gen_sectorsocial_victimacolectiva
     ADD CONSTRAINT comunidad_sectorsocial_id_sector_fkey FOREIGN KEY (id_sectorsocial) REFERENCES sivel2_gen_sectorsocial(id);
-
-
---
--- Name: comunidad_vinculoestado_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_vinculoestado
-    ADD CONSTRAINT comunidad_vinculoestado_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
--- Name: comunidad_vinculoestado_id_grupoper_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_vinculoestado
-    ADD CONSTRAINT comunidad_vinculoestado_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
-
-
---
--- Name: comunidad_vinculoestado_id_grupoper_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_vinculoestado
-    ADD CONSTRAINT comunidad_vinculoestado_id_grupoper_fkey1 FOREIGN KEY (id_grupoper, id_caso) REFERENCES sivel2_gen_victimacolectiva(id_grupoper, id_caso);
-
-
---
--- Name: comunidad_vinculoestado_id_vinculoestado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_comunidad_vinculoestado
-    ADD CONSTRAINT comunidad_vinculoestado_id_vinculoestado_fkey FOREIGN KEY (id_vinculoestado) REFERENCES sivel2_gen_vinculoestado(id);
 
 
 --
@@ -3985,6 +3613,30 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
+-- Name: sivel2_gen_antecedente_victimacolectiv_victimacolectiva_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_antecedente_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_antecedente_victimacolectiv_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES sivel2_gen_victimacolectiva(id);
+
+
+--
+-- Name: sivel2_gen_caso_fotra_anexo_caso_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_fotra
+    ADD CONSTRAINT sivel2_gen_caso_fotra_anexo_caso_id_fkey FOREIGN KEY (anexo_caso_id) REFERENCES sivel2_gen_anexo_caso(id);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa_anexo_caso_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT sivel2_gen_caso_fuenteprensa_anexo_caso_id_fkey FOREIGN KEY (anexo_caso_id) REFERENCES sivel2_gen_anexo_caso(id);
+
+
+--
 -- Name: sivel2_gen_caso_fuenteprensa_fuenteprensa_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4006,6 +3658,54 @@ ALTER TABLE ONLY sivel2_gen_caso_fuenteprensa
 
 ALTER TABLE ONLY sivel2_gen_categoria
     ADD CONSTRAINT sivel2_gen_categoria_supracategoria_id_fkey FOREIGN KEY (supracategoria_id) REFERENCES sivel2_gen_supracategoria(id);
+
+
+--
+-- Name: sivel2_gen_filiacion_victimacolectiva_victimacolectiva_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_filiacion_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_filiacion_victimacolectiva_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES sivel2_gen_victimacolectiva(id);
+
+
+--
+-- Name: sivel2_gen_organizacion_victimacolecti_victimacolectiva_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_organizacion_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_organizacion_victimacolecti_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES sivel2_gen_victimacolectiva(id);
+
+
+--
+-- Name: sivel2_gen_profesion_victimacolectiva_victimacolectiva_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_profesion_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_profesion_victimacolectiva_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES sivel2_gen_victimacolectiva(id);
+
+
+--
+-- Name: sivel2_gen_rangoedad_victimacolectiva_victimacolectiva_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_rangoedad_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_rangoedad_victimacolectiva_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES sivel2_gen_victimacolectiva(id);
+
+
+--
+-- Name: sivel2_gen_sectorsocial_victimacolecti_victimacolectiva_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_sectorsocial_victimacolectiva
+    ADD CONSTRAINT sivel2_gen_sectorsocial_victimacolecti_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES sivel2_gen_victimacolectiva(id);
+
+
+--
+-- Name: sivel2_gen_victimacolectiva_vinculoest_victimacolectiva_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_victimacolectiva_vinculoestado
+    ADD CONSTRAINT sivel2_gen_victimacolectiva_vinculoest_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES sivel2_gen_victimacolectiva(id);
 
 
 --
@@ -4174,6 +3874,6 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20131128151014'), ('20131204135932'), ('20131204140000'), ('20131204143718'), ('20131204183530'), ('20131206081531'), ('20131210221541'), ('20131220103409'), ('20131223175141'), ('20140117212555'), ('20140129151136'), ('20140207102709'), ('20140207102739'), ('20140211162355'), ('20140211164659'), ('20140211172443'), ('20140313012209'), ('20140514142421'), ('20140518120059'), ('20140527110223'), ('20140528043115'), ('20140611110441'), ('20140613044320'), ('20140704035033'), ('20140804194616'), ('20140804200235'), ('20140804202100'), ('20140804202101'), ('20140804202958'), ('20140804210000'), ('20140815111351'), ('20140815111352'), ('20140815121224'), ('20140815123542'), ('20140815124157'), ('20140815124606'), ('20140827142659'), ('20140901105741'), ('20140901106000'), ('20140909165233'), ('20140918115412'), ('20140922102737'), ('20140922110956'), ('20141002140242'), ('20141111102451'), ('20141111203313'), ('20141126085907'), ('20150313153722'), ('20150317084737'), ('20150413000000'), ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150416090140'), ('20150503120915'), ('20150505084914'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150602094513'), ('20150602095241'), ('20150602104342'), ('20150609094809'), ('20150609094820'), ('20150616095023'), ('20150616100351'), ('20150616100551'), ('20150707164448'), ('20150710114451'), ('20150716171420'), ('20150716192356'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20150826000000'), ('20151006105402'), ('20151020203421'), ('20151124110943'), ('20151127102425'), ('20151130101417'), ('20160316093659'), ('20160316094627'), ('20160316100620'), ('20160316100621'), ('20160316100622'), ('20160316100623'), ('20160316100624'), ('20160316100625'), ('20160316100626'), ('20160519195544'), ('20160719195853'), ('20160719214520'), ('20160724160049'), ('20160724164110'), ('20160725123242'), ('20160725125929'), ('20160725131347'), ('20161009111443'), ('20161010152631'), ('20161026110802'), ('20161027233011'), ('20161103080156'), ('20161103081041'), ('20161103083352');
+INSERT INTO schema_migrations (version) VALUES ('20131128151014'), ('20131204135932'), ('20131204140000'), ('20131204143718'), ('20131204183530'), ('20131206081531'), ('20131210221541'), ('20131220103409'), ('20131223175141'), ('20140117212555'), ('20140129151136'), ('20140207102709'), ('20140207102739'), ('20140211162355'), ('20140211164659'), ('20140211172443'), ('20140313012209'), ('20140514142421'), ('20140518120059'), ('20140527110223'), ('20140528043115'), ('20140613044320'), ('20140704035033'), ('20140804194616'), ('20140804200235'), ('20140804202100'), ('20140804202101'), ('20140804202958'), ('20140804210000'), ('20140815111351'), ('20140815111352'), ('20140815121224'), ('20140815123542'), ('20140815124157'), ('20140815124606'), ('20140827142659'), ('20140901105741'), ('20140901106000'), ('20140909165233'), ('20140918115412'), ('20140922102737'), ('20140922110956'), ('20141002140242'), ('20141111102451'), ('20141111203313'), ('20141126085907'), ('20150313153722'), ('20150317084737'), ('20150413000000'), ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150416090140'), ('20150503120915'), ('20150505084914'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150602094513'), ('20150602095241'), ('20150602104342'), ('20150609094809'), ('20150609094810'), ('20150609094820'), ('20150616095023'), ('20150616100351'), ('20150616100551'), ('20150707164448'), ('20150710114451'), ('20150716171420'), ('20150716192356'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20150826000000'), ('20151006105402'), ('20151020203421'), ('20151124110943'), ('20151127102425'), ('20151130101417'), ('20160316093659'), ('20160316094627'), ('20160316100620'), ('20160316100621'), ('20160316100622'), ('20160316100623'), ('20160316100624'), ('20160316100625'), ('20160316100626'), ('20160519195544'), ('20160719195853'), ('20160719214520'), ('20160724160049'), ('20160724164110'), ('20160725123242'), ('20160725125929'), ('20160725131347'), ('20161009111443'), ('20161010152631'), ('20161026110802'), ('20161027233011'), ('20161103080156'), ('20161103081041'), ('20161103083352'), ('20161108102349');
 
 
