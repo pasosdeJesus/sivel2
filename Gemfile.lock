@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 6c77bee361899058bbb66b5e27e5bece1b41104a
+  revision: 4e3c878510919900c3402a1f0e05fe7ce3f4aeee
   specs:
     heb412_gen (1.0.a1)
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 891aeadcfccf1eb3069c3493cc5fa48fde33d490
+  revision: 795d491dbf70f50cc35c3a9be4e6d39aa904fa30
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a9fc4aa69219f8c6d33cf6f2e342c279cc25409f
+  revision: 4e99c93f7e1dd4edede82186feb4bc631fa80d09
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -114,7 +114,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.10.0)
+    coffee-script-source (1.11.1)
     colorize (0.8.1)
     commonjs (0.2.7)
     concurrent-ruby (1.0.2)
@@ -195,7 +195,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (2.0.4)
-    puma (3.6.0)
+    puma (3.6.2)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -290,13 +290,13 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter_cldr (4.0.0)
+    twitter_cldr (4.1.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2016.9)
+    tzinfo-data (1.2016.10)
       tzinfo (>= 1.0.0)
     uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
