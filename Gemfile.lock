@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4e3c878510919900c3402a1f0e05fe7ce3f4aeee
+  revision: a9c2864ec3b8edb4981a819a90c4ace2e288f200
   specs:
     heb412_gen (1.0.a1)
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 795d491dbf70f50cc35c3a9be4e6d39aa904fa30
+  revision: 81b4502f7bed9edbb316381391e6d5f426e4af17
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 4e99c93f7e1dd4edede82186feb4bc631fa80d09
+  revision: 213c86f969eda0436ea02e7add146f1d2f9daa17
   specs:
     sivel2_gen (2.0b1)
       devise
@@ -140,14 +140,14 @@ GEM
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     interception (0.5)
-    jbuilder (2.6.0)
+    jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.2.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (5.0.5)
+    jquery-ui-rails (6.0.0)
       railties (>= 3.2.16)
     json (1.8.3)
     kgio (2.10.0)
@@ -280,7 +280,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    thor (0.19.1)
+    thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
     turbolinks (2.5.3)
