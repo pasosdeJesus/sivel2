@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   root 'sivel2_gen/hogar#index'
   mount Sip::Engine => "/", as: 'sip'
   mount Sivel2Gen::Engine => "/", as: 'sivel2_gen'
+  mount Heb412Gen::Engine => "/", as: 'heb412_gen'
 
 end
