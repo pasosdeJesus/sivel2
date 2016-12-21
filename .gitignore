@@ -16,6 +16,7 @@ config/database.yml
 /log/*.log
 /tmp
 *~
+*core
 
 public/assets/*
 config/initializers/sip.rb
@@ -23,3 +24,4 @@ config/application.rb
 config/routes.rb
 archivos/
 public/heb412/
+
