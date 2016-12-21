@@ -7,7 +7,7 @@ describe "Llenar caso con javascript", :js => true do
   before { 
     usuario = Usuario.find_by(nusuario: 'sivel2')
     usuario.password = 'sivel2'
-    visit '/usuarios/sign_in'
+    visit File.join(Rails.configuration.relative_url_root, '/usuarios/sign_in')
     fill_in "Usuario", with: usuario.nusuario
     fill_in "Clave", with: usuario.password
     click_button "Iniciar Sesión"
@@ -19,7 +19,7 @@ describe "Llenar caso con javascript", :js => true do
 
   describe "administrador llena" do
     it "puede crear caso" do
-      visit "/casos/nuevo"
+      visit File.join(Rails.configuration.relative_url_root, '/casos/nuevo')
       @numcaso=find_field('Código').value
 
       # Datos básicos

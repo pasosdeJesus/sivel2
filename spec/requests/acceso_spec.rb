@@ -4,7 +4,7 @@ require 'spec_helper'
 describe "Control de acceso " do
   before { 
     @usuario = FactoryGirl.create(:usuario, rol: Ability::ROLANALI)
-    visit '/usuarios/sign_in'
+    visit File.join(Rails.configuration.relative_url_root, '/usuarios/sign_in')
     fill_in "Usuario", with: @usuario.nusuario
     fill_in "Clave", with: @usuario.password
     click_button "Iniciar Sesión"
@@ -13,7 +13,7 @@ describe "Control de acceso " do
 
   describe "analista" do
     it "puede crear caso" do
-      visit "/casos/nuevo"
+      visit File.join(Rails.configuration.relative_url_root, '/casos/nuevo')
       @numcaso=find_field('Código').value
 
       # Datos básicos
