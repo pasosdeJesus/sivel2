@@ -103,7 +103,7 @@ group :test do
   gem 'rails-controller-testing'
 
   # Pruebas con rspec
-  gem 'spring-commands-rspec'
+  #gem 'spring-commands-rspec'
   gem 'rspec-rails'
 
   # Maneja datos de prueba
@@ -117,14 +117,23 @@ group :test do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
 
+  gem 'minitest-rails-capybara'
+
   # Pruebas de regresión que no requieren javascript
   gem "capybara"
   
   # Pruebas de regresión que requieren javascript
-  gem "capybara-webkit" 
+  #gem "capybara-webkit" 
 
   # Envia resultados de pruebas desde travis a codeclimate
   #gem "codeclimate-test-reporter", require: nil
+
+  gem "connection_pool"
+  gem "minitest-reporters"
+  gem "mocha"
+  gem "poltergeist"
+  gem "shoulda-context"
+  gem "shoulda-matchers", ">= 3.0.1"
 end
 
 

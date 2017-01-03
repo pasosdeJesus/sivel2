@@ -9,6 +9,8 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 Ver <https://github.com/pasosdeJesus/sip/wiki/Requerimientos>  
 
+Además PhantomJS
+
 ### Arquitectura
 
 Es una aplicación que emplea los motores genérico de SIVeL 2 
