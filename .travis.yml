@@ -1,17 +1,13 @@
 language: ruby
 rvm:
-        - 2.1.5
+        - 2.4.0
 notifications:
         email: false
 script: CODECLIMATE_REPO_TOKEN=8d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a xvfb-run rspec
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-                - JRUBY_OPTS=-Xcext.enabled=true
 before_install: 
-        - sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa
-        - sudo apt-get update
-        - sudo apt-get install libqt5webkit5-dev qtdeclarative5-dev qtlocation5-dev qtsensors5-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev qt4-default
         - sudo locale-gen --no-archive es_CO.UTF-8
         - psql -c 'CREATE DATABASE sivel2des_pru;' -U postgres
         - bundle install
