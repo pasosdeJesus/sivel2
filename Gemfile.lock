@@ -365,7 +365,6 @@ DEPENDENCIES
   minitest-rails-capybara
   minitest-reporters
   mocha
-  nokogiri (= 1.6.8.1)
   paperclip
   pg
   poltergeist
