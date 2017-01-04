@@ -3,7 +3,7 @@ rvm:
         - 2.4.0
 notifications:
         email: false
-script: CODECLIMATE_REPO_TOKEN=8d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a xvfb-run rspec
+script: CODECLIMATE_REPO_TOKEN=8d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a bundle exec rails test
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
