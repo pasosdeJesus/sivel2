@@ -123,7 +123,8 @@ group :test do
   #gem "capybara-webkit" 
 
   # Envia resultados de pruebas desde travis a codeclimate
-  #gem "codeclimate-test-reporter", require: nil
+  gem 'simplecov'
+  gem "codeclimate-test-reporter", '~> 1.0.0', require: nil
 
   gem "connection_pool"
   gem "minitest-reporters"
