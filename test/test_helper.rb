@@ -1,8 +1,11 @@
+# encoding: utf-8
+
+require 'simplecov'
+SimpleCov.start 'rails'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'simplecov'
-SimpleCov.start
 
 require 'minitest/reporters'
 Minitest::Reporters.use!(
