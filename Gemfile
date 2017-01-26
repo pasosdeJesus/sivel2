@@ -16,6 +16,8 @@ gem "sass"
 
 gem 'chosen'
 gem 'font-awesome-rails'
+
+gem 'libxml-ruby', '2.8.0' #https://github.com/xml4r/libxml-ruby/issues/127
 gem "rspreadsheet"
 
 # Color en terminal

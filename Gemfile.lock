@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e5a5288b4646ec430bf5270ec2e8ff9b348bffcb
+  revision: 4eb9f1b11db220d71b8bc6b83e18737700a1be14
   specs:
     heb412_gen (1.0.a1)
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d66d974d3e1ad0dec46f936559b0cb9370807441
+  revision: ee7f74f4024e9621949af3519bc381fe83fa6141
   specs:
     sip (2.0.b2)
       bootstrap-datepicker-rails
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 16393ac02879c1e5a107e2297385129c9b4bb8b3
+  revision: 97d0e7db1590b9e97b1496903bd42c05e0bb621a
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -92,7 +92,7 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (1.15.0)
-    capybara (2.11.0)
+    capybara (2.12.0)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -105,7 +105,7 @@ GEM
     cliver (0.3.2)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    codeclimate-test-reporter (1.0.4)
+    codeclimate-test-reporter (1.0.5)
       simplecov
     coderay (1.1.1)
     coffee-rails (4.2.1)
@@ -127,7 +127,7 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-i18n (1.1.1)
-    diff-lcs (1.2.5)
+    diff-lcs (1.3)
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -162,7 +162,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    libxml-ruby (2.9.0)
+    libxml-ruby (2.8.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -189,7 +189,7 @@ GEM
       minitest-capybara (~> 0.8)
       minitest-metadata (~> 0.6)
       minitest-rails (~> 3.0)
-    minitest-reporters (1.1.13)
+    minitest-reporters (1.1.14)
       ansi
       builder
       minitest (>= 5.0)
@@ -208,7 +208,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.19.0)
-    poltergeist (1.12.0)
+    poltergeist (1.13.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
@@ -283,9 +283,8 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rspreadsheet (0.2.15)
+    rspreadsheet (0.4.1)
       andand (~> 1.3)
-      libxml-ruby (~> 2.7)
       rubyzip (~> 1.1)
     ruby-progressbar (1.8.1)
     rubyzip (1.2.0)
@@ -296,13 +295,13 @@ GEM
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    simplecov (0.12.0)
+    simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (2.0.0)
+    spring (2.0.1)
       activesupport (>= 4.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -334,14 +333,14 @@ GEM
     unicorn (5.2.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    warden (1.2.6)
+    warden (1.2.7)
       rack (>= 1.0)
     web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       debug_inspector
       railties (>= 5.0)
-    websocket-driver (0.6.4)
+    websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     will_paginate (3.1.5)
@@ -371,6 +370,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   launchy
+  libxml-ruby (= 2.8.0)
   minitest-rails-capybara
   minitest-reporters
   mocha
