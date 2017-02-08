@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4eb9f1b11db220d71b8bc6b83e18737700a1be14
+  revision: cea29f02146b9df1cc26eec15d03355c559f7801
   specs:
     heb412_gen (1.0.a1)
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ee7f74f4024e9621949af3519bc381fe83fa6141
+  revision: aae06ec868409aa2a9debe0594b77e4bbcb861bb
   specs:
     sip (2.0.b2)
       bootstrap-datepicker-rails
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f73e79864ec5e79f1b82820f023fde75dd5bc584
+  revision: 32ffe2d633492c9eab891f0ce891a6dc3467a769
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -141,7 +141,7 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    i18n (0.7.0)
+    i18n (0.8.0)
     interception (0.5)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -224,7 +224,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (2.0.5)
-    puma (3.6.2)
+    puma (3.7.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -288,7 +288,7 @@ GEM
       andand (~> 1.3)
       rubyzip (~> 1.1)
     ruby-progressbar (1.8.1)
-    rubyzip (1.2.0)
+    rubyzip (1.2.1)
     sass (3.4.23)
     shoulda-context (1.2.2)
     shoulda-matchers (3.1.1)
@@ -316,11 +316,11 @@ GEM
     tilt (2.0.6)
     turbolinks (2.5.3)
       coffee-rails
-    twitter-bootstrap-rails (3.2.2)
-      actionpack (>= 3.1)
-      execjs (>= 2.2.2, >= 2.2)
-      less-rails (>= 2.5.0)
-      railties (>= 3.1)
+    twitter-bootstrap-rails (4.0.0)
+      actionpack (~> 5.0, >= 5.0.1)
+      execjs (~> 2.7)
+      less-rails (~> 2.8, >= 2.8.0)
+      railties (~> 5.0, >= 5.0.1)
     twitter_cldr (4.2.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
@@ -407,4 +407,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.13.7
+   1.14.3
