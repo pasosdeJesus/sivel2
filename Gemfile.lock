@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: cea29f02146b9df1cc26eec15d03355c559f7801
+  revision: befef9a840ba7146bacaf0c77f40dca2da17c7a0
   specs:
     heb412_gen (1.0.a1)
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: aae06ec868409aa2a9debe0594b77e4bbcb861bb
+  revision: b1c358ad5b29e7ef15c05af5f994bbc558e642b6
   specs:
     sip (2.0.b2)
       bootstrap-datepicker-rails
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 32ffe2d633492c9eab891f0ce891a6dc3467a769
+  revision: 9684c5690911ebc9ea6b0a14a6555b95675db3bc
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -92,7 +92,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     camertron-eprun (1.1.1)
-    cancancan (1.15.0)
+    cancancan (1.16.0)
     capybara (2.12.0)
       addressable
       mime-types (>= 1.16)
@@ -249,7 +249,7 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails-i18n (5.0.2)
+    rails-i18n (5.0.3)
       i18n (~> 0.7)
       railties (~> 5.0)
     rails_12factor (0.0.3)
