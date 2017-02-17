@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9684c5690911ebc9ea6b0a14a6555b95675db3bc
+  revision: cb0269c9f339493667846e555bf2fc621642877b
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -93,7 +93,7 @@ GEM
     byebug (9.0.6)
     camertron-eprun (1.1.1)
     cancancan (1.16.0)
-    capybara (2.12.0)
+    capybara (2.12.1)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -217,7 +217,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-rescue (1.4.4)
+    pry-rescue (1.4.5)
       interception (>= 0.5)
       pry
     pry-stack_explorer (0.4.9.2)
