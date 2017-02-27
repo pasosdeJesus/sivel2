@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: befef9a840ba7146bacaf0c77f40dca2da17c7a0
+  revision: e4f24835393522da9565b1e65eab0ba5016d44e9
   specs:
     heb412_gen (1.0.a1)
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b1c358ad5b29e7ef15c05af5f994bbc558e642b6
+  revision: e722c131d25543743a43e8beda13cfa2a4b0eaeb
   specs:
     sip (2.0.b2)
       bootstrap-datepicker-rails
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: cb0269c9f339493667846e555bf2fc621642877b
+  revision: 9de2b9ee43925c2efa2badb9c15bc7b45b1f2f3b
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -106,7 +106,7 @@ GEM
     cliver (0.3.2)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    codeclimate-test-reporter (1.0.5)
+    codeclimate-test-reporter (1.0.6)
       simplecov
     coderay (1.1.1)
     coffee-rails (4.2.1)
@@ -118,7 +118,7 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     commonjs (0.2.7)
-    concurrent-ruby (1.0.4)
+    concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     debug_inspector (0.0.2)
     devise (4.2.0)
@@ -141,10 +141,10 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    i18n (0.8.0)
+    i18n (0.8.1)
     interception (0.5)
-    jbuilder (2.6.1)
-      activesupport (>= 3.0.0, < 5.1)
+    jbuilder (2.6.3)
+      activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
     jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
@@ -224,7 +224,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (2.0.5)
-    puma (3.7.0)
+    puma (3.7.1)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -312,7 +312,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     thor (0.19.4)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (2.0.6)
     turbolinks (2.5.3)
       coffee-rails
@@ -329,7 +329,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2016.10)
       tzinfo (>= 1.0.0)
-    uglifier (3.0.4)
+    uglifier (3.1.0)
       execjs (>= 0.3.0, < 3)
     unicorn (5.2.0)
       kgio (~> 2.6)
