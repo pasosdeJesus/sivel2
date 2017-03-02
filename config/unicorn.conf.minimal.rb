@@ -6,6 +6,11 @@
 # See also http://unicorn.bogomips.org/examples/unicorn.conf.rb for
 # a more verbose configuration using more features.
 
+if ENV['DIRAP'].nil? 
+  puts "Establezca en DIRAP directorio de aplicacion"
+  return
+end
+
 listen 2009 # by default Unicorn listens on port 8080
 APP_PATH = ENV['DIRAP'] #"/var/www/htdocs/sivel2"
 working_directory APP_PATH
