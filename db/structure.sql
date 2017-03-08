@@ -3875,7 +3875,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES
+INSERT INTO "schema_migrations" (version) VALUES
 ('20131128151014'),
 ('20131204135932'),
 ('20131204140000'),
