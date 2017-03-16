@@ -126,7 +126,7 @@ group :test do
 
   # Envia resultados de pruebas desde travis a codeclimate
   gem 'simplecov'
-  gem "codeclimate-test-reporter", '~> 1.0.0', require: nil
+  gem "codeclimate-test-reporter"
 
   gem "connection_pool"
   gem "minitest-reporters"

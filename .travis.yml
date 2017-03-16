@@ -1,19 +1,18 @@
 language: ruby
 rvm:
         - 2.4.0
-addons:
-        code_climate:
-                - repo_token:  8d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a
-after_success:
-        - bundle exec codeclimate-test-reporter
 notifications:
         email: false
-script: bundle exec rails test
+script: bundle exec rails test -b
+after_success:
+        - CODECLIMATE_REPO_TOKEN=8d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a bundle exec codeclimate-test-reporter
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 before_install: 
         - sudo locale-gen --no-archive es_CO.UTF-8
+        - sudo /etc/init.d/postgresql stop
+        - sudo /etc/init.d/postgresql start 9.3
         - psql -c 'CREATE DATABASE sivel2des_pru;' -U postgres
         - bundle install
         - cp db/structure.sql db/structure.sql.conlock
