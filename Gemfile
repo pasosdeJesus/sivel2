@@ -14,7 +14,7 @@ gem 'puma'
 # CSS
 gem "sass"
 
-gem 'chosen'
+gem 'chosen-rails'
 gem 'font-awesome-rails'
 
 gem 'libxml-ruby', '2.8.0' #https://github.com/xml4r/libxml-ruby/issues/127

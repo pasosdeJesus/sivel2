@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 6e71d00860e13f94f5eca82fb2b02c4e901b90d8
+  revision: eeff2da083876e1eea514ea485bd712cb7d88605
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,11 +10,12 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0c513925e6872c57543fd27ed66856064026d0a6
+  revision: a02e39e5f01fa0892ae544083a89a399221310ba
   specs:
-    sip (2.0.b2)
+    sip (2.0.b3)
       bootstrap-datepicker-rails
       cancancan
+      chosen-rails
       colorize
       devise
       devise-i18n
@@ -30,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2ec16e140377cf273140ac4e7e6799b26fff8444
+  revision: 4838c46e78477c29a471ffb8ce698e46431ee263
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -105,7 +106,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    chosen (0.0.4)
     chosen-rails (1.5.2)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -148,8 +148,8 @@ GEM
       railties (>= 3.0.0)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
-    globalid (0.3.7)
-      activesupport (>= 4.1.0)
+    globalid (0.4.0)
+      activesupport (>= 4.2.0)
     i18n (0.8.1)
     interception (0.5)
     jbuilder (2.6.3)
@@ -373,7 +373,7 @@ DEPENDENCIES
   byebug
   cancancan
   capybara
-  chosen
+  chosen-rails
   cocoon!
   codeclimate-test-reporter
   coffee-rails
