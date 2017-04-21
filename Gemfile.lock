@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e35e627482f6fb60a1a2474d80eb98ec41a1fd68
+  revision: 65b52a9471fdbbcb189e984b684652cac6e95286
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9745b2ccb637ef5580e47b865e21557cfb7d9bcb
+  revision: 769a3b51aa2c72e8dc59afaa39c8ffef88071425
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2c6faf21bcb74414fe73d1535912f4b81a034dbe
+  revision: 75d32fc803534a9e1a63ba9dd7274f8db6a1416b
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -293,7 +293,7 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rspreadsheet (0.4.3)
+    rspreadsheet (0.4.4)
       andand (~> 1.3)
       libxml-ruby (= 2.8)
       rubyzip (~> 1.1)
