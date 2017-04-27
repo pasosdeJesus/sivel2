@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 65b52a9471fdbbcb189e984b684652cac6e95286
+  revision: e46c1474adfe400159c2be522792ae27c04f9920
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 769a3b51aa2c72e8dc59afaa39c8ffef88071425
+  revision: 9f6834d8bf46ac1e75daa05da186d4e7c0bc1f64
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 75d32fc803534a9e1a63ba9dd7274f8db6a1416b
+  revision: 480d72b7ddec3627e91a0f2c9ad41b9c8f222d42
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -175,7 +175,7 @@ GEM
     libxml-ruby (2.8.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.4)
+    mail (2.6.5)
       mime-types (>= 1.16, < 4)
     metaclass (0.0.4)
     method_source (0.8.2)
