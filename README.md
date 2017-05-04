@@ -13,8 +13,9 @@ Además PhantomJS
 
 ### Arquitectura
 
-Es una aplicación que emplea los motores genérico de SIVeL 2 
-[sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen)
+Es una aplicación que emplea los motores genéricos 
+[sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen),
+[heb412_gen](https://github.com/pasosdeJesus/heb412_gen)
 y  [sip](https://github.com/pasosdeJesus/sip)
 
 
@@ -25,6 +26,7 @@ Cree un usuario para la base de datos como se explica en
 (si deja el nombre sipdes se le facilitarán los siguientes pasos)
 
 * Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
+* Asegurse que las gemas quedan en ```/var/www/bundler/``` siguiendo instrucciones de <https://github.com/vtamara/dhobsd-m/blob/master/source/2016-03-30-bundler-doas.md>
 * Instale gemas requeridas con:
 ```
   bundle install
@@ -75,15 +77,15 @@ de regresión con capybara-webkit.  Si ya configuró el servidor de desarrollo
 como se explicó antes, basta ejecutarlas con:
 
 ```sh
-RAILS_ENV=test rake db:reset
-RAILS_ENV=test rake sip:indices
-rspec
+RAILS_ENV=test bundle exec rake db:reset
+RAILS_ENV=test bundle exec rake sip:indices
+bundle exec rails test
 ```
 
 ### Desarrollo en codio.com
 
 Opera bien excepto por la lentitud (aunque es más rápido que otros sitios
-de desarrollo) y porque no puede usarse capybara-webkit. 
+de desarrollo) y porque no puede usarse ```capybara-webkit```. 
 
 ### Despliegue de prueba en Heroku
 
@@ -131,9 +133,9 @@ y el cliente usado.
 * Configure la misma base de datos de un SIVeL 1.2 en sección `production`
   de `config/databases.yml` y ejecute
 ```sh
-  RAILS_ENV=production rake db:setup 
-  RAILS_ENV=production rake db:migrate
-  RAILS_ENV=production rake sip:indices
+  RAILS_ENV=production bundle exec rake db:setup 
+  RAILS_ENV=production bundle exec rake db:migrate
+  RAILS_ENV=production bundle exec rake sip:indices
 ```
 * Como servidor web recomendamos nginx, en la sección http agregue:
 ```
