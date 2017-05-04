@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require sivel2_gen/application
+//= require heb412_gen/motor
 //= require_tree .
 
 
