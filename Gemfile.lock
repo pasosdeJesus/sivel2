@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e84ced0579827b3e8db3b44fbe00ff7d04595a05
+  revision: 57baedae3ca869115ef3c0968b03cf03b6c4ee1e
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 84da85e89fb2a346edd26df9e44a2184f5c927bf
+  revision: ea79ff2bbe5ca48c71ddca38b063f4559ace950f
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: fea76f08105c0a244429e9c5cf7955acd1ddf97e
+  revision: e680fa717f2d0c4a309c981cf0435292d0e1a979
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -99,7 +99,7 @@ GEM
     byebug (9.0.6)
     camertron-eprun (1.1.1)
     cancancan (1.16.0)
-    capybara (2.13.0)
+    capybara (2.14.0)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -218,7 +218,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.20.0)
-    poltergeist (1.14.0)
+    poltergeist (1.15.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
@@ -294,9 +294,8 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rspreadsheet (0.4.4)
+    rspreadsheet (0.4.5)
       andand (~> 1.3)
-      libxml-ruby (= 2.8)
       rubyzip (~> 1.1)
     ruby-progressbar (1.8.1)
     rubyzip (1.2.1)
