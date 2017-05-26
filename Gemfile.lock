@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d3d4809bd30cd356351ac957b4482a40f1185123
+  revision: 3fb693b2a4d46b063f945a31c44be73b8fd9911d
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 83fb357d406a40c5c0a2a7e9df5ba164d77b17b9
+  revision: 92bc038b5bfadb290d04b2ba092e3d067c184fc6
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -118,9 +118,9 @@ GEM
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coderay (1.1.1)
-    coffee-rails (4.2.1)
+    coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.2.x)
+      railties (>= 4.0.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -343,7 +343,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     will_paginate (3.1.5)
-    xpath (2.0.0)
+    xpath (2.1.0)
       nokogiri (~> 1.3)
 
 PLATFORMS

@@ -36,7 +36,7 @@ class CasoconjsTest < Capybara::Rails::TestCase
       select("MASCULINO", from: 'Sexo')
       select("CÉDULA DE CIUDADANÍA", from: 'Tipo de Documento')
       fill_in "Número Documento", with: '19222'
-      select('ALBANIA', from: 'País de Nacionalidad')
+      #select('ALBANIA', from: 'País de Nacionalidad')
       select('RUSIA', from: 'País de Nacimiento')
       select('OTRO', from: 'Profesión')
       select('ROM', from: 'Etnia') 

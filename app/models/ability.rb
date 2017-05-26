@@ -8,6 +8,16 @@ class Ability  < Sivel2Gen::Ability
     'Terminos'
   end
 
+  def tablasbasicas 
+    Sip::Ability::BASICAS_PROPIAS + 
+      Sivel2Gen::Ability::BASICAS_PROPIAS - [
+        ['Sivel2Gen', 'actividadoficio'],
+        ['Sivel2Gen', 'escolaridad'],
+        ['Sivel2Gen', 'estadocivil'],
+        ['Sivel2Gen', 'maternidad']
+      ]
+  end
+
   # Establece autorizaciones con CanCanCan
   def initialize(usuario = nil)
     # Sin autenticación puede consultarse información geográfica 
@@ -31,13 +41,16 @@ class Ability  < Sivel2Gen::Ability
         can :read, Sivel2Gen::Caso
         can :new, Sivel2Gen::Caso
         can [:update, :create, :destroy], Sivel2Gen::Caso
-        can :manage, Sivel2Gen::Acto
         can :manage, Sip::Persona
+        can :manage, Sivel2Gen::Acto
+        can :manage, Sivel2Gen::Actocolectivo
+        can :read, Heb412Gen::Doc
       when Ability::ROLADMIN
         can :manage, Sivel2Gen::Caso
         can :manage, Sip::Persona
         can :manage, Usuario
         can :manage, Sivel2Gen::Acto
+        can :manage, Sivel2Gen::Actocolectivo
         can :manage, Heb412Gen::Doc
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|

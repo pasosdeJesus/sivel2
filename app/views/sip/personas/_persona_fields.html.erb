@@ -1,0 +1,109 @@
+<div class='campos_persona'>
+  <!-- %= f.input :id, readonly: true %-->
+  <%= f.input :id, as: :hidden %>
+  <% 
+    ph = 'N'
+    ac = {'data-autocompleta' => 'no' }
+    #debugger
+     if (!f.object.nombres || f.object.nombres == 'N' || f.object.nombres == '')
+       ph = 'Buscar'
+       ac = { }
+     end
+  %>
+  <%= f.input :nombres, placeholder: ph,
+    value_method: lambda {|t| '' if t.nombres == 'N'},
+    :input_html => ac
+  %>
+  <%= f.input :apellidos, placeholder: 'N',
+  	value_method: lambda {|t| '' if t.apellidos == 'N'}
+  %>
+  <%= f.input :tdocumento_id,
+    collection: Sip::Tdocumento.habilitados,
+    label: "Tipo de Documento",
+    label_method: :nombre,
+    value_method: :id 
+  %>
+  <%= f.input :numerodocumento, label: 'Número Documento'%>
+  <div class="input string">
+    <label class="string control-label">Casos en los que aparece: </label>
+    <% 
+      r = ""
+      sep = ""
+      v = Sivel2Gen::Victima.where(id_persona: f.object.id).order(:id_persona)
+      v.each do |vic|
+        if @caso.id != vic.caso.id
+      %>
+      <%= link_to vic.caso.id, sivel2_gen.caso_path(vic.caso), target:"_blank" %> 
+      <% 
+        end
+      end 
+    %>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-4">
+      <% @anios = *(1900..Date.today.year) %>
+      <%= f.input :anionac, 
+        collection: @anios 
+      %>
+    </div>
+    <div class="col-sm-4">
+      <%= fvictima.input :edad, as: :integer %>
+    </div>
+    <div class="col-sm-4">
+      <%= fvictima.input :edadactual, as: :integer %>
+    </div>
+  </div>
+  <% @meses = [
+    ["ENERO", 1], 
+    ["FEBRERO", 2], 
+    ["MARZO", 3], 
+    ["ABRIL", 4], 
+    ["MAYO", 5], 
+    ["JUNIO", 6], 
+    ["JULIO", 7], 
+    ["AGOSTO", 8], 
+    ["SEPTIEMBRE", 9], 
+    ["OCTUBRE", 10], 
+    ["NOVIEMBRE", 11], 
+    ["DICIEMBRE", 12]] %>
+  <%= f.input :mesnac, 
+    collection: @meses
+  %>
+  <% @dias = *(1..31) %>
+  <%= f.input :dianac, collection: @dias %>
+
+
+  <%= f.input :sexo, collection: [["SIN INFORMACIÓN", :S], 
+    ["FEMENINO", :F], ["MASCULINO", :M]], 
+    include_blank: false 
+  %>
+  <%= f.association :pais,
+    collection: Sip::Pais.habilitados,
+    label: "País de Nacimiento",
+    label_method: :nombre,
+    value_method: :id 
+  %>
+  <%= f.association :departamento,
+    collection: (Sip::Departamento.habilitados.where(
+      id_pais: f.object.id_pais)),
+    label: "Estado/Departamento de Nacimiento",
+    label_method: :nombre,
+    value_method: :id 
+  %>
+  <%= f.association :municipio,
+    collection: ( Sip::Municipio.habilitados.where(
+        id_departamento: f.object.id_departamento)),
+    label: "Municipio de Nacimiento",
+    label_method: :nombre,
+    value_method: :id 
+  %>
+  <%= f.association :clase,
+    collection: (Sip::Clase.habilitados.where(
+      id_municipio: f.object.id_municipio)),
+    label: "Centro Poblado de Nacimiento",
+    label_method: :nombre,
+    value_method: :id 
+  %>
+</div>

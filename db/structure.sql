@@ -304,7 +304,7 @@ CREATE VIEW cben1 AS
  SELECT caso.id AS id_caso,
     victima.id_persona,
     1 AS npersona,
-    'total'::text AS total
+    victima.id_etnia
    FROM sivel2_gen_caso caso,
     sivel2_gen_victima victima
   WHERE (caso.id = victima.id_caso);
@@ -448,7 +448,7 @@ CREATE VIEW cben2 AS
  SELECT cben1.id_caso,
     cben1.id_persona,
     cben1.npersona,
-    cben1.total,
+    cben1.id_etnia,
     ubicacion.id_departamento,
     departamento.nombre AS departamento_nombre,
     ubicacion.id_municipio,
@@ -460,19 +460,7 @@ CREATE VIEW cben2 AS
      LEFT JOIN sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
      LEFT JOIN sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
      LEFT JOIN sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.total, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
-
-
---
--- Name: contexto_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE contexto_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.id_etnia, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
 
 
 --
@@ -1097,6 +1085,18 @@ CREATE TABLE sivel2_gen_acto (
 
 
 --
+-- Name: sivel2_gen_actocolectivo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sivel2_gen_actocolectivo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sivel2_gen_actocolectivo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1106,7 +1106,8 @@ CREATE TABLE sivel2_gen_actocolectivo (
     id_grupoper integer NOT NULL,
     id_caso integer NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('sivel2_gen_actocolectivo_id_seq'::regclass) NOT NULL
 );
 
 
@@ -1535,16 +1536,29 @@ CREATE MATERIALIZED VIEW sivel2_gen_conscaso AS
 
 
 --
+-- Name: sivel2_gen_contexto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sivel2_gen_contexto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sivel2_gen_contexto; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_contexto (
-    id integer DEFAULT nextval('contexto_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('sivel2_gen_contexto_id_seq'::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT contexto_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -2355,14 +2369,6 @@ ALTER TABLE ONLY sivel2_gen_acto
 
 
 --
--- Name: sivel2_gen_actocolectivo actocolectivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_actocolectivo
-    ADD CONSTRAINT actocolectivo_pkey PRIMARY KEY (id_presponsable, id_categoria, id_grupoper, id_caso);
-
-
---
 -- Name: sivel2_gen_anexo_caso anexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2792,6 +2798,30 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 ALTER TABLE ONLY sip_persona_trelacion
     ADD CONSTRAINT sip_persona_trelacion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_actocolectivo sivel2_gen_actocolectivo_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_actocolectivo
+    ADD CONSTRAINT sivel2_gen_actocolectivo_id_key UNIQUE (id);
+
+
+--
+-- Name: sivel2_gen_actocolectivo sivel2_gen_actocolectivo_id_presponsable_id_categoria_id_gr_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_actocolectivo
+    ADD CONSTRAINT sivel2_gen_actocolectivo_id_presponsable_id_categoria_id_gr_key UNIQUE (id_presponsable, id_categoria, id_grupoper, id_caso);
+
+
+--
+-- Name: sivel2_gen_actocolectivo sivel2_gen_actocolectivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_actocolectivo
+    ADD CONSTRAINT sivel2_gen_actocolectivo_pkey PRIMARY KEY (id);
 
 
 --
@@ -4063,6 +4093,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170406213334'),
 ('20170413185012'),
 ('20170414035328'),
-('20170503145808');
+('20170503145808'),
+('20170526084502'),
+('20170526100040'),
+('20170526124219'),
+('20170526131129');
 
 

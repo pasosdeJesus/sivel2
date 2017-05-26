@@ -1,0 +1,3 @@
+Sivel2::Application.config.relative_url_root = '/'
+Sivel2::Application.config.assets.prefix = '/assets'
+
