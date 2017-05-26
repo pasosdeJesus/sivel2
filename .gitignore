@@ -26,3 +26,9 @@ archivos/
 public/heb412/
 public/sivel2/
 config/initializers/punto_montaje.rb
+.byebug_history
+app/views/sip/hogar/
+bin/u.sh
+config/unicorn.conf.minimal.rb
+coverage/
+
