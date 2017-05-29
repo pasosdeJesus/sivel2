@@ -18,15 +18,15 @@ class AccesoTest < Capybara::Rails::TestCase
     @numcaso=find_field('Código').value
 
     # Datos básicos
-    fill_in "Fecha del Hecho", with: '2014-08-05'
-    fill_in "Titulo", with: 'titulo'
+    fill_in "Fecha", with: '2014-08-05'
+    fill_in "Título", with: 'titulo'
     click_button "Guardar"
     assert page.has_content?("2014-08-05")
 
     # Solicitante Principal
     click_on "Editar"
     fill_in "Hora", with: '3:00 PM'
-    fill_in "Duracion", with: '2'
+    fill_in "Duración", with: '2'
     select("ANTIOQUIA CHOCO SANT", from: 'Región')
     select("Ecuador", from: 'Frontera')
     click_button "Guardar"

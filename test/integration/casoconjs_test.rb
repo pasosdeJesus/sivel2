@@ -63,7 +63,7 @@ class CasoconjsTest < Capybara::Rails::TestCase
       # Capybara+poltergeist+phantomjs 1.9.8 no permiten lo siguiente
       if false
         # La siguiente impide Guardar con error Internal Server Error
-        select('ARAGUA', from: 'Estado/Departamento') 
+        select('ARAGUA', from: 'Departamento/Estado/Cantón') 
         puts "Eligió departamento"
         page.save_screenshot('/tmp/s2-traselegirdepto')
         puts "Esperando Municipio con AJAX"
@@ -94,11 +94,11 @@ class CasoconjsTest < Capybara::Rails::TestCase
     su = "//div[@id='ubicacion']/div[2]"
     within(:xpath, su) do 
       select('COLOMBIA', from: 'País') 
-      assert page.has_select?('Estado/Departamento', with_options: ['BOYACÁ'])
+      assert page.has_select?('Departamento/Estado/Cantón', with_options: ['BOYACÁ'])
       rc = page.evaluate_script("$.active").to_i
       puts "hay depto rc=#{rc}"
       if false
-        select('BOYACÁ', from: 'Estado/Departamento') 
+        select('BOYACÁ', from: 'Departamento/Estado/Cantón') 
         select('CHISCAS', from: 'Municipio') 
         select('CHISCAS', from: 'Centro Poblado') 
       end
@@ -106,7 +106,7 @@ class CasoconjsTest < Capybara::Rails::TestCase
       fill_in "Sitio", with: 'Sitio2'
       fill_in "Latitud", with: '4.2'
       fill_in "Longitud", with: '-74.32'
-      select('RURAL', from: 'Tipo de Sitio') 
+      select('RURAL', from: 'Tipo de sitio') 
     end
 
     puts "Guardando"
