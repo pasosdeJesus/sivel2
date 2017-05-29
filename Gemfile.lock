@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3fb693b2a4d46b063f945a31c44be73b8fd9911d
+  revision: d4d95412e40e27b950c83678e60670f9e8804f16
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 92bc038b5bfadb290d04b2ba092e3d067c184fc6
+  revision: e5f274dde8efbcb7d605f6f6724ac3b00306c871
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -206,7 +206,7 @@ GEM
     mocha (1.2.1)
       metaclass (~> 0.0.1)
     multi_json (1.12.1)
-    nio4r (2.0.0)
+    nio4r (2.1.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)

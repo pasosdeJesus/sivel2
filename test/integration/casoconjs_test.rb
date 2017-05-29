@@ -19,8 +19,8 @@ class CasoconjsTest < Capybara::Rails::TestCase
     @numcaso=find_field('Código').value
 
     # Datos básicos
-    fill_in "Fecha del Hecho", with: '2014-08-05'
-    fill_in "Titulo", with: 'titulo'
+    fill_in "Fecha", with: '2014-08-05'
+    fill_in "Título", with: 'titulo'
 
     click_on "Víctimas"
     if (!find_link('Añadir Víctima').visible?)
@@ -41,7 +41,7 @@ class CasoconjsTest < Capybara::Rails::TestCase
       select('OTRO', from: 'Profesión')
       select('ROM', from: 'Etnia') 
       select('IGLESIA DE DIOS', from: 'Religión/Iglesia') 
-      select('HETEROSEXUAL', from: 'Orientación Sexual') 
+      select('HETEROSEXUAL', from: 'Orientación sexual') 
     end
 
     click_link "Ubicación"
@@ -58,7 +58,7 @@ class CasoconjsTest < Capybara::Rails::TestCase
       select('VENEZUELA', from: 'País') 
       assert page.has_select?('País', selected: 'VENEZUELA')
       puts "Eligió país"
-      assert page.has_select?('Estado/Departamento', with_options: ['ARAGUA'])
+      assert page.has_select?('Departamento/Estado/Cantón', with_options: ['ARAGUA'])
       puts "Lleno con AJAX departamento"
       # Capybara+poltergeist+phantomjs 1.9.8 no permiten lo siguiente
       if false
@@ -88,7 +88,7 @@ class CasoconjsTest < Capybara::Rails::TestCase
       fill_in "Sitio", with: 'Sitio'
       fill_in "Latitud", with: '4.1'
       fill_in "Longitud", with: '-74.3'
-      select('URBANO', from: 'Tipo de Sitio') 
+      select('URBANO', from: 'Tipo de sitio') 
     end
     click_on "Añadir Ubicación"
     su = "//div[@id='ubicacion']/div[2]"
