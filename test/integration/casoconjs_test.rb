@@ -19,7 +19,7 @@ class CasoconjsTest < Capybara::Rails::TestCase
     @numcaso=find_field('Código').value
 
     # Datos básicos
-    fill_in "Fecha", with: '2014-08-05'
+    fill_in "Fecha del hecho", with: '2014-08-05'
     fill_in "Título", with: 'titulo'
 
     click_on "Víctimas"
