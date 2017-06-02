@@ -28,12 +28,14 @@
         <% else %>
           <li><a id="fichacasovertical" href="<%= sivel2_gen.fichacasovertical_path %>">Ficha caso vertical</a></li>
         <% end %>
-        <% if current_usuario.rol == Ability::ROLADMIN %>
+        <% if can? :manage, ::Usuario %>
           <%= menu_item "Usuarios", main_app.usuarios_path %>
         <% end %>
-        <% if current_usuario.rol == Ability::ROLADMIN %>
+        <% if can? :manage, :tablasbasicas %>
           <%= menu_item "Tablas Básicas", sivel2_gen.tablasbasicas_path %>
-          <!-- %= #menu_item "Casos", admin_casos_path % -->
+        <% end %>
+        <% if can? :manage, Sip::Respaldo7z %>
+          <%= menu_item "Respaldo cifrado", sip.respaldo7z_path %>
         <% end %>
       <% end %>
       <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
@@ -46,7 +48,7 @@
 
 <% content_for :piedepagina do %>
   <p><span class='derechos'>Dominio Público de acuerdo a Legislación Colombiana<br/>
-    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2016. 
+    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2017.
   </span></p>
 <% end %>
 

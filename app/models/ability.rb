@@ -52,6 +52,7 @@ class Ability  < Sivel2Gen::Ability
         can :manage, Sivel2Gen::Acto
         can :manage, Sivel2Gen::Actocolectivo
         can :manage, Heb412Gen::Doc
+        can :manage, Sip::Respaldo7z
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)
