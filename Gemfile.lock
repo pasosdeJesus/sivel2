@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 800f6a489b003efc800e9a108b4d1c9180eca071
+  revision: cb48b1d73dd50292115f010d6d4a58eb6491f42b
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -149,7 +149,7 @@ GEM
       railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    i18n (0.8.1)
+    i18n (0.8.4)
     interception (0.5)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
