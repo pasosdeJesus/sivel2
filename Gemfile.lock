@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 1d266dd4a25bf45cbc35c48497b6ad3ddde4160c
+  revision: 904473087a3c03c7fd2c6d2e0c76bd3275be2ff6
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3b730f2e9f6226b90ebbf18589de83e3fdf7ea63
+  revision: 0bb5d88168dd99a20caa064f5fa5430bc65da0d9
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 641e3c67ca01093c32a31b67b324787ec5e97c84
+  revision: fabf0eedefdba0e0aa93f38e6b98c0ada11f5d3d
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -99,7 +99,7 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (2.0.0)
-    capybara (2.14.1)
+    capybara (2.14.2)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -174,7 +174,7 @@ GEM
     libxml-ruby (2.8.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     metaclass (0.0.4)
     method_source (0.8.2)
@@ -216,7 +216,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    pg (0.20.0)
+    pg (0.21.0)
     poltergeist (1.15.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
