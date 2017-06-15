@@ -21,6 +21,6 @@ before_install:
         - cp config/application.rb.plantilla config/application.rb
         - cp config/routes.rb.plantilla config/routes.rb
         - cp config/initializers/sip.rb.plantilla config/initializers/sip.rb
-        - rake db:setup
-        - rake sip:indices
+        - bundle exec rails db:setup
+        - bunlde exec rails sip:indices
 
