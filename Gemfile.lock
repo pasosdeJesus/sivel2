@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e57537936d2de74a70f21e9296409efe8c9eb714
+  revision: 6000828d47e374c38a714e949a926a41b731d5be
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -115,8 +115,6 @@ GEM
     cliver (0.3.2)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    codeclimate-test-reporter (1.0.8)
-      simplecov (<= 0.13)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -171,7 +169,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    libxml-ruby (2.8.0)
+    libxml-ruby (3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -294,7 +292,7 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
-    simplecov (0.13.0)
+    simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -357,7 +355,6 @@ DEPENDENCIES
   capybara
   chosen-rails
   cocoon!
-  codeclimate-test-reporter
   coffee-rails
   colorize
   connection_pool
@@ -370,7 +367,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   launchy
-  libxml-ruby (= 2.8.0)
+  libxml-ruby
   minitest-rails-capybara
   minitest-reporters
   mocha
