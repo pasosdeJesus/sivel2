@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 3272546a8af0a6795ebbea3787f6678ad1134611
+  revision: a8bb132eac0d105330436b198a47a543f9c96be5
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: dbc88fca5099d4ba091d8ddd95477a348a4179e7
+  revision: 18271e3723e724458c726ddbdcdb1968be9f4654
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f6a195c4b706b83514f7564e2575f7b7b935b1b9
+  revision: 77dd6e4db8559fe2ee0814adaf9325804a0926fa
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -283,11 +283,11 @@ GEM
       rubyzip (~> 1.1)
     ruby-progressbar (1.8.1)
     rubyzip (1.2.1)
-    sass (3.5.0)
-      sass-listen (~> 3.0.7)
-    sass-listen (3.0.7)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9.7)
+    sass (3.5.1)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
