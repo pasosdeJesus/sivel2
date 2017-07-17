@@ -40,6 +40,7 @@ class Ability  < Sivel2Gen::Ability
       when Ability::ROLANALI
         can :read, Sivel2Gen::Caso
         can :new, Sivel2Gen::Caso
+        can :nuevo, Sivel2Gen::Caso
         can [:update, :create, :destroy], Sivel2Gen::Caso
         can :manage, Sip::Persona
         can :manage, Sivel2Gen::Acto
