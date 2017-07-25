@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 21ec9b3d29806ed105c599dd845c97748064c1a4
+  revision: 00d3bfb1cc05d29e821cdabefbbf1208f038dc67
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: bb8f824a90057db506b536d38a43f0715fddb60d
+  revision: fd44a8fbf419c056d754a86b5b974f7a93b064a3
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 138859877e9a781d692f45b55fe05d10180f9932
+  revision: a66f5e244afd7ee75e31aad3ab3ac996142f9e9a
   specs:
     sivel2_gen (2.0b2)
       devise
@@ -317,7 +317,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (0.19.4)
     thread_safe (0.3.6)
-    tilt (2.0.7)
+    tilt (2.0.8)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
