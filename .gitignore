@@ -31,4 +31,6 @@ app/views/sip/hogar/
 bin/u.sh
 config/unicorn.conf.minimal.rb
 coverage/
-
+bin/corre.sh
+bin/detiene.sh
+bin/migra.sh
