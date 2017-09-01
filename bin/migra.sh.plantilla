@@ -1,10 +1,10 @@
 #!/bin/sh
 # Actualiza de github
 
-bin/detiene.sh
+RC=sivel2 bin/detiene.sh
 git pull
 bundle install
-bundle exec rails db:migrate
-bin/corre.sh
+bundle exec rails db:migrate RAILS_ENV=production
+RC=sivel2 bin/corre.sh
 
 
