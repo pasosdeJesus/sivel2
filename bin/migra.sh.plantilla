@@ -1,0 +1,10 @@
+#!/bin/sh
+# Actualiza de github
+
+bin/detiene.sh
+git pull
+bundle install
+bundle exec rails db:migrate
+bin/corre.sh
+
+
