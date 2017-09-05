@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: cf6f54265cae1f4b9c6f1a443c5dcc712b98e503
+  revision: 8cf444bd697eb07d2ff381228f3cb91b314bd25b
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0717c44d4a339bb64a8f3324d3aa71e03ac13295
+  revision: 0bd956439a32936bcefa7a2275834c04f9408a21
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -32,9 +32,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a3c3f6fee6204e3c011e17e2a458acec6d6dece2
+  revision: 7fcf952eccb4561570d52227aa9d85bc59a4d3aa
   specs:
-    sivel2_gen (2.0b2)
+    sivel2_gen (2.0b3)
       devise
       jquery-rails
       rails
@@ -115,7 +115,7 @@ GEM
     cliver (0.3.2)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    coderay (1.1.1)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
