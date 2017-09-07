@@ -46,6 +46,7 @@ class Ability  < Sivel2Gen::Ability
         can :manage, Sivel2Gen::Acto
         can :manage, Sivel2Gen::Actocolectivo
         can :read, Heb412Gen::Doc
+        can :read, Heb412Gen::Plantillahcm
       when Ability::ROLADMIN
         can :manage, Sivel2Gen::Caso
         can :manage, Sip::Persona
@@ -53,6 +54,7 @@ class Ability  < Sivel2Gen::Ability
         can :manage, Sivel2Gen::Acto
         can :manage, Sivel2Gen::Actocolectivo
         can :manage, Heb412Gen::Doc
+        can :manage, Heb412Gen::Plantillahcm
         can :manage, Sip::Respaldo7z
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|

@@ -18,8 +18,6 @@
     <% if !current_usuario.nil? %>
       <%= drop_down "Documentos" do %>
         <%= menu_item "Nube", heb412_gen.sisini_path %>
-        <%= menu_item "Definir plantilla hoja de calculo m.", 
-          heb412_gen.new_plantillahcm_path %>
       <% end %>
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
@@ -37,6 +35,10 @@
         <% if can? :manage, Sip::Respaldo7z %>
           <%= menu_item "Respaldo cifrado", sip.respaldo7z_path %>
         <% end %>
+        <% if can? :manage, Heb412Gen::Plantillahcm %>
+          <%= menu_item "Definir plantilla hoja de calculo m.", 
+            heb412_gen.new_plantillahcm_path %>
+          <% end %>
       <% end %>
       <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
     <% else %>
