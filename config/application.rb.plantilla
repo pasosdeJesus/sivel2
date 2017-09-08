@@ -28,7 +28,8 @@ module Sivel2
 
     config.x.formato_fecha='yyyy-mm-dd'
 
-    config.x.heb412_ruta = 'public/heb412'
+    config.x.heb412_ruta = Rails.root.join('public', 'heb412')
+
 
   end
 end
