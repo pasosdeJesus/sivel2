@@ -54,7 +54,7 @@
 <tr>
 	<td>type</td>
 	<td>id=intervalo_nombre</td>
-	<td>media noche</td>
+	<td>aaaa</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -65,6 +65,16 @@
 	<td>type</td>
 	<td>id=intervalo_rango</td>
 	<td>11 pm a 1 am</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=intervalo_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=intervalo_observaciones</td>
+	<td>bbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -84,11 +94,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

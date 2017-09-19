@@ -54,7 +54,17 @@
 <tr>
 	<td>type</td>
 	<td>id=contexto_nombre</td>
-	<td>novedoso</td>
+	<td>aaa</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=contexto_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=contexto_observaciones</td>
+	<td>bbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -74,11 +84,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

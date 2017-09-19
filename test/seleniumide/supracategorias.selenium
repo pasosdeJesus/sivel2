@@ -59,7 +59,7 @@
 <tr>
 	<td>type</td>
 	<td>id=supracategoria_id</td>
-	<td>9</td>
+	<td>15</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -69,7 +69,7 @@
 <tr>
 	<td>type</td>
 	<td>id=supracategoria_nombre</td>
-	<td>gritos</td>
+	<td>aaaa</td>
 </tr>
 <tr>
 	<td>select</td>
@@ -77,19 +77,34 @@
 	<td>label=VIOLACIONES A LOS DERECHOS HUMANOS</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>name=commit</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>id=supracategoria_id</td>
+	<td>click</td>
+	<td>css=a.chosen-single.chosen-default &gt; span</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=supracategoria_id</td>
-	<td>23</td>
+	<td>css=a.chosen-single.chosen-default &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=supracategoria_codigo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=supracategoria_codigo</td>
+	<td>bbb</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//form[@id='new_supracategoria']/div[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//form[@id='new_supracategoria']/div[6]</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -109,11 +124,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

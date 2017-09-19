@@ -54,7 +54,27 @@
 <tr>
 	<td>type</td>
 	<td>id=etnia_nombre</td>
-	<td>baru</td>
+	<td>aaa</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=etnia_descripcion</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=etnia_descripcion</td>
+	<td>cccc</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=etnia_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=etnia_observaciones</td>
+	<td>bbbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -74,11 +94,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

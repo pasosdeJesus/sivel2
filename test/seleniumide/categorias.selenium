@@ -59,7 +59,7 @@
 <tr>
 	<td>type</td>
 	<td>id=categoria_id</td>
-	<td>236</td>
+	<td>125</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -104,11 +104,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

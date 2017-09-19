@@ -59,7 +59,17 @@
 <tr>
 	<td>type</td>
 	<td>id=iglesia_nombre</td>
-	<td>iglesia fundacion de amor</td>
+	<td>aaa</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=iglesia_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=iglesia_observaciones</td>
+	<td>bbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

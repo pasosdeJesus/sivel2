@@ -287,12 +287,12 @@ CREATE TABLE sivel2_gen_victima (
     anotaciones character varying(1000),
     id_etnia integer DEFAULT 1,
     id_iglesia integer DEFAULT 1,
-    orientacionsexual character(1) DEFAULT 'H'::bpchar NOT NULL,
+    orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('victima_seq'::regclass) NOT NULL,
     CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
-    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'I'::bpchar) OR (orientacionsexual = 'H'::bpchar)))
+    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'S'::bpchar)))
 );
 
 
@@ -4065,6 +4065,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170526124219'),
 ('20170526131129'),
 ('20170529020218'),
-('20170529154413');
+('20170529154413'),
+('20170609131212');
 
 

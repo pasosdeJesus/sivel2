@@ -49,7 +49,7 @@
 <tr>
 	<td>type</td>
 	<td>id=usuario_nusuario</td>
-	<td>sofia</td>
+	<td>abc</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -59,7 +59,7 @@
 <tr>
 	<td>type</td>
 	<td>id=usuario_nombre</td>
-	<td>Sofia</td>
+	<td>abcd</td>
 </tr>
 <tr>
 	<td>select</td>
@@ -74,7 +74,7 @@
 <tr>
 	<td>type</td>
 	<td>id=usuario_email</td>
-	<td>sofia@sofia.org</td>
+	<td>abcd@abcd.org</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -104,11 +104,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

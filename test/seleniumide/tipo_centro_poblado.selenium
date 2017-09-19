@@ -59,7 +59,7 @@
 <tr>
 	<td>type</td>
 	<td>id=tclase_id</td>
-	<td>tn</td>
+	<td>aa</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -69,17 +69,17 @@
 <tr>
 	<td>type</td>
 	<td>id=tclase_nombre</td>
-	<td>tierras del estado</td>
+	<td>aaaaaa</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>id=tclase_id</td>
+	<td>id=tclase_observaciones</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=tclase_id</td>
-	<td>te</td>
+	<td>id=tclase_observaciones</td>
+	<td>bbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -99,11 +99,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

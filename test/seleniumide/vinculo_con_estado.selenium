@@ -17,6 +17,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>//li[2]/a/b</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>//li[2]/a/b</td>
 	<td></td>
@@ -54,7 +59,7 @@
 <tr>
 	<td>type</td>
 	<td>id=vinculoestado_nombre</td>
-	<td>mensajero</td>
+	<td>aaa</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -74,11 +79,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=SIVeL 2.0b2</td>
 	<td></td>
 </tr>
 </tbody></table>

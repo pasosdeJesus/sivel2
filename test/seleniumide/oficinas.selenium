@@ -62,6 +62,16 @@
 	<td>bogotas</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>id=oficina_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=oficina_observaciones</td>
+	<td>bbb</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>name=commit</td>
 	<td></td>
