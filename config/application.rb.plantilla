@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -20,14 +22,14 @@ module Sivel2
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.active_record.schema_format = :sql
+
+    #config.relative_url_root = "/sivel2"
 
     config.x.formato_fecha='yyyy-mm-dd'
 
-    config.x.heb412_ruta = 'public/heb412'
+    config.x.heb412_ruta = Rails.root.join('public', 'heb412')
+
 
   end
 end
