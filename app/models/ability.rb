@@ -11,6 +11,8 @@ class Ability  < Sivel2Gen::Ability
   def tablasbasicas 
     Sip::Ability::BASICAS_PROPIAS + 
       Sivel2Gen::Ability::BASICAS_PROPIAS - [
+        ['Sip', 'oficina'],
+        ['Sip', 'grupo'],
         ['Sivel2Gen', 'actividadoficio'],
         ['Sivel2Gen', 'escolaridad'],
         ['Sivel2Gen', 'estadocivil'],
