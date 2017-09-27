@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: a646139af157ce1385b8f8be257bcc76f61aa8d9
+  revision: f80ade2e0c99d4655da013acc3ef528d3730ab24
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: bd814795025a0b0be2c6fa4167280458da06a8ce
+  revision: b4753edcb74e6f08e064829dc41b21f520468ac8
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e4ebc80e71ab2e482f31bc9e4f9ba11b41ef7c53
+  revision: c6f6582e5b9e8529d2958cde27916868eaf84277
   specs:
     sivel2_gen (2.0b3)
       devise
@@ -178,7 +178,7 @@ GEM
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     metaclass (0.0.4)
-    method_source (0.8.2)
+    method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -223,9 +223,9 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    pry (0.11.0)
+    pry (0.11.1)
       coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
+      method_source (~> 0.9.0)
     pry-rescue (1.4.5)
       interception (>= 0.5)
       pry
