@@ -4,21 +4,16 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="https://www.nocheyniebla.org:15443/" />
-<title>vinculo_con_estado</title>
+<title>tipos_violencia</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">vinculo_con_estado</td></tr>
+<tr><td rowspan="1" colspan="3">tipos_violencia</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
 	<td>/sivel2/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//li[2]/a/b</td>
 	<td></td>
 </tr>
 <tr>
@@ -33,33 +28,63 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>link=Vínculos con el Estado</td>
+	<td>link=Tipos de Violencia</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Vínculos con el Estado</td>
+	<td>link=Tipos de Violencia</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>xpath=(//a[contains(text(),'Nuevo')])[3]</td>
+	<td>link=Nuevo</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//a[contains(text(),'Nuevo')])[3]</td>
+	<td>link=Nuevo</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>id=vinculoestado_nombre</td>
+	<td>id=tviolencia_id</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=vinculoestado_nombre</td>
+	<td>id=tviolencia_id</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=tviolencia_nombre</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tviolencia_nombre</td>
 	<td>aaa</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=tviolencia_nomcorto</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tviolencia_nomcorto</td>
+	<td>cc</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=tviolencia_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tviolencia_observaciones</td>
+	<td>bbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

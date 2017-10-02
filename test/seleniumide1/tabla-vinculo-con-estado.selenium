@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="https://www.nocheyniebla.org:15443/" />
-<title>categorias</title>
+<title>vinculo_con_estado</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">categorias</td></tr>
+<tr><td rowspan="1" colspan="3">vinculo_con_estado</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -17,78 +17,63 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=Administrar</td>
+	<td>waitForElementPresent</td>
+	<td>//li[2]/a/b</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>click</td>
+	<td>//li[2]/a/b</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
 	<td>link=Tablas Básicas</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=Tablas Básicas</td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForElementPresent</td>
-	<td>link=Categorias</td>
+	<td>link=Vínculos con el Estado</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Categorias</td>
+	<td>link=Vínculos con el Estado</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>xpath=(//a[contains(text(),'Nueva')])[2]</td>
+	<td>xpath=(//a[contains(text(),'Nuevo')])[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//a[contains(text(),'Nueva')])[2]</td>
+	<td>xpath=(//a[contains(text(),'Nuevo')])[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>id=categoria_id</td>
+	<td>id=vinculoestado_nombre</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=categoria_id</td>
-	<td>125</td>
+	<td>id=vinculoestado_nombre</td>
+	<td>aaa</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>id=categoria_nombre</td>
+	<td>id=vinculoestado_observaciones</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=categoria_nombre</td>
-	<td>desprestigio</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>id=categoria_supracategoria_id</td>
-	<td>label=ABUSO DE AUTORIDAD (VIOLACIONES A LOS DERECHOS HUMANOS)</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>id=categoria_contadaen</td>
-	<td>label=AMENAZA (INTOLERANCIA SOCIAL / VIOLENCIA POLÍTICO SOCIAL)</td>
+	<td>id=vinculoestado_observaciones</td>
+	<td>bbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>name=commit</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>link=Eliminar</td>
 	<td></td>
 </tr>
 <tr>

@@ -57,6 +57,16 @@
 	<td>aaa</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>id=tsitio_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tsitio_observaciones</td>
+	<td>bbb</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>name=commit</td>
 	<td></td>
