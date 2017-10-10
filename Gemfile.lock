@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 99e4dbb6e021d74f272de4d9c134fae162382387
+  revision: b39571fa324f9c50b374cce5fe6d5c8dc2116080
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d9f4b9536e3efc22b91b69e0437f693ca2050c43
+  revision: 9a6bfb38e8fd632e1f8b2880e6b561c41393aa6e
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9de3dc177a50e6231efda03c394bb42b8ac10c5f
+  revision: 1f215236783cef19d875488fd60b92b31464ab98
   specs:
     sivel2_gen (2.0b3)
       devise
@@ -99,13 +99,15 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (2.0.0)
-    capybara (2.15.1)
+    capybara (2.15.4)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    childprocess (0.8.0)
+      ffi (~> 1.0, >= 1.0.11)
     chosen-rails (1.5.2)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -137,9 +139,9 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.2.0)
     docile (1.1.5)
-    erubi (1.6.1)
+    erubi (1.7.0)
     execjs (2.7.0)
-    factory_girl (4.8.0)
+    factory_girl (4.8.1)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
@@ -283,9 +285,9 @@ GEM
     rspreadsheet (0.4.5)
       andand (~> 1.3)
       rubyzip (~> 1.1)
-    ruby-progressbar (1.8.3)
+    ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
-    sass (3.5.1)
+    sass (3.5.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -296,6 +298,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selenium-webdriver (3.6.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
     shoulda-context (1.2.2)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
@@ -337,7 +342,7 @@ GEM
       tzinfo (>= 1.0.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.3.0)
+    unicorn (5.3.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.7)
@@ -392,6 +397,7 @@ DEPENDENCIES
   rails_12factor
   rspreadsheet
   sass
+  selenium-webdriver
   shoulda-context
   shoulda-matchers (>= 3.0.1)
   simple_form

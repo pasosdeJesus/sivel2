@@ -123,6 +123,8 @@ group :test do
   # Pruebas de regresión que requieren javascript
   #gem "capybara-webkit" 
 
+  gem 'selenium-webdriver'
+
   # Envia resultados de pruebas desde travis a codeclimate
   gem 'simplecov'
 
