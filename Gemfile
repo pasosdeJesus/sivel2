@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rails-erd', require: false, group: :development
+
 #ruby ">= 2.2"
 
 # Rails (internacionalización)
