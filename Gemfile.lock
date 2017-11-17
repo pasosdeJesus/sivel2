@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 27cf2466136ee7e4f0dbf5efb042eca6b0deb2d0
+  revision: cc95d2c24078a7e8c5e55f885cae5347a6817f81
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2b395969d3a468565ca52ddcef93ac9a235e270a
+  revision: f44c1298d7feb37978f2275eb48b076a94fb8db7
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ae541b2a3f51dbc549d1cdb6098d53cc78e858d0
+  revision: 55c0007a90914cc0411a28d3a3d0e7978739a332
   specs:
     sivel2_gen (2.0b3)
       devise
@@ -229,7 +229,7 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    pry (0.11.2)
+    pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     pry-rescue (1.4.5)
@@ -284,7 +284,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.19.0)
-    rake (12.2.1)
+    rake (12.3.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -303,7 +303,7 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.6)
+    sass-rails (5.0.7)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
