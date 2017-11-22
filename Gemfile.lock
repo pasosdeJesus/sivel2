@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: cc95d2c24078a7e8c5e55f885cae5347a6817f81
+  revision: 7a951ebcc39542057b52a2d5f4bf4904fcc2c251
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f44c1298d7feb37978f2275eb48b076a94fb8db7
+  revision: b40a8edc45da1aa7da13e08aaabbfa2b97b713a8
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 55c0007a90914cc0411a28d3a3d0e7978739a332
+  revision: 003c924104d684859235c248b88777a9a237a351
   specs:
     sivel2_gen (2.0b3)
       devise
@@ -99,8 +99,8 @@ GEM
       railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
-    cancancan (2.1.1)
-    capybara (2.16.0)
+    cancancan (2.1.2)
+    capybara (2.16.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
@@ -206,7 +206,7 @@ GEM
       minitest-capybara (~> 0.8)
       minitest-metadata (~> 0.6)
       minitest-rails (~> 3.0)
-    minitest-reporters (1.1.18)
+    minitest-reporters (1.1.19)
       ansi
       builder
       minitest (>= 5.0)
@@ -239,9 +239,9 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (3.0.1)
-    puma (3.10.0)
+    puma (3.11.0)
     rack (2.0.3)
-    rack-test (0.7.0)
+    rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
