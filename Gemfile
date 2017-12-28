@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'rails-erd', require: false, group: :development
+
 #ruby ">= 2.2"
 
 # Rails (internacionalización)
-gem "rails", '~> 5.0.0'
+gem "rails", '~> 5.1.0'
 gem "rails-i18n"
 
 # Postgresql
@@ -17,7 +19,7 @@ gem "sass"
 gem 'chosen-rails'
 gem 'font-awesome-rails'
 
-gem 'libxml-ruby', '2.8.0' #https://github.com/xml4r/libxml-ruby/issues/127
+gem 'libxml-ruby'
 gem "rspreadsheet"
 
 # Color en terminal
@@ -41,7 +43,7 @@ gem "jquery-rails"
 gem "jquery-ui-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-gem "turbolinks", "2.5.3"
+gem "turbolinks"
 
 # Ambiente de CSS
 gem "twitter-bootstrap-rails"
@@ -123,9 +125,10 @@ group :test do
   # Pruebas de regresión que requieren javascript
   #gem "capybara-webkit" 
 
+  gem 'selenium-webdriver'
+
   # Envia resultados de pruebas desde travis a codeclimate
   gem 'simplecov'
-  gem "codeclimate-test-reporter"
 
   gem "connection_pool"
   gem "minitest-reporters"

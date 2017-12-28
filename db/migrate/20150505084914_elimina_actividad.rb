@@ -1,4 +1,4 @@
-class EliminaActividad < ActiveRecord::Migration
+class EliminaActividad < ActiveRecord::Migration[4.2]
   def change
     drop_table :sivel2_gen_actividad_rangoedadac
     drop_table :sivel2_gen_actividadareas_actividad

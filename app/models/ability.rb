@@ -11,6 +11,8 @@ class Ability  < Sivel2Gen::Ability
   def tablasbasicas 
     Sip::Ability::BASICAS_PROPIAS + 
       Sivel2Gen::Ability::BASICAS_PROPIAS - [
+        ['Sip', 'oficina'],
+        ['Sip', 'grupo'],
         ['Sivel2Gen', 'actividadoficio'],
         ['Sivel2Gen', 'escolaridad'],
         ['Sivel2Gen', 'estadocivil'],
@@ -40,11 +42,13 @@ class Ability  < Sivel2Gen::Ability
       when Ability::ROLANALI
         can :read, Sivel2Gen::Caso
         can :new, Sivel2Gen::Caso
+        can :nuevo, Sivel2Gen::Caso
         can [:update, :create, :destroy], Sivel2Gen::Caso
         can :manage, Sip::Persona
         can :manage, Sivel2Gen::Acto
         can :manage, Sivel2Gen::Actocolectivo
         can :read, Heb412Gen::Doc
+        can :read, Heb412Gen::Plantillahcm
       when Ability::ROLADMIN
         can :manage, Sivel2Gen::Caso
         can :manage, Sip::Persona
@@ -52,6 +56,8 @@ class Ability  < Sivel2Gen::Ability
         can :manage, Sivel2Gen::Acto
         can :manage, Sivel2Gen::Actocolectivo
         can :manage, Heb412Gen::Doc
+        can :manage, Heb412Gen::Plantillahcm
+        can :manage, Sip::Respaldo7z
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)
