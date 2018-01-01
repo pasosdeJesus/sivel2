@@ -500,15 +500,13 @@
 	<td>id=fuenteprensa_observaciones<datalist><option>id=fuenteprensa_observaciones</option></datalist></td>
 	<td>bbb</td>
 </tr>
-<tr>
-	<td>select</td>
-	<td>id=fuenteprensa_tfuente<datalist><option>id=fuenteprensa_tfuente</option></datalist></td>
-	<td>label=DIRECTA</td>
+<tr><td>clickAt</td><td>id=fuenteprensa_tfuente<datalist><option>id=fuenteprensa_tfuente</option><option>name=fuenteprensa[tfuente]</option><option>//input[@id='fuenteprensa_tfuente']</option><option>//form[@id='new_fuenteprensa']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>251,26</td>
 </tr>
-<tr>
-	<td>type</td>
-	<td>id=fuenteprensa_tfuente<datalist><option>id=fuenteprensa_tfuente</option></datalist></td>
-	<td></td>
+<tr><td>doubleClickAt</td><td>id=fuenteprensa_tfuente<datalist><option>id=fuenteprensa_tfuente</option><option>name=fuenteprensa[tfuente]</option><option>//input[@id='fuenteprensa_tfuente']</option><option>//form[@id='new_fuenteprensa']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>251,26</td>
+</tr>
+<tr><td>clickAt</td><td>id=fuenteprensa_tfuente<datalist><option>id=fuenteprensa_tfuente</option><option>name=fuenteprensa[tfuente]</option><option>//input[@id='fuenteprensa_tfuente']</option><option>//form[@id='new_fuenteprensa']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>251,26</td>
+</tr>
+<tr><td>type</td><td>id=fuenteprensa_tfuente<datalist><option>id=fuenteprensa_tfuente</option><option>name=fuenteprensa[tfuente]</option><option>//input[@id='fuenteprensa_tfuente']</option><option>//form[@id='new_fuenteprensa']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>directa</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -624,6 +622,36 @@
 	<td>click</td>
 	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
 	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-municipios</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/sivel2<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/admin/regiones</option><option>/sivel2</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>//li[2]/a/b<datalist><option>//li[2]/a/b</option></datalist></td><td>2,3</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>129,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Municipios<datalist><option>link=Municipios</option><option>//a[contains(text(),'Municipios')]</option><option>//a[contains(@href, 'admin/municipios')]</option><option>//li[13]/a</option></datalist></td><td>26,14</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/sivel2/admin/municipios/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>57,10</td>
+</tr>
+<tr><td>clickAt</td><td>id=municipio_nombre<datalist><option>id=municipio_nombre</option><option>name=municipio[nombre]</option><option>//input[@id='municipio_nombre']</option><option>//form[@id='new_municipio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>92,10</td>
+</tr>
+<tr><td>type</td><td>id=municipio_nombre<datalist><option>id=municipio_nombre</option><option>name=municipio[nombre]</option><option>//input[@id='municipio_nombre']</option><option>//form[@id='new_municipio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='municipio_id_departamento_chosen']/a/span<datalist><option>//div[@id='municipio_id_departamento_chosen']/a/span</option><option>//a/span</option></datalist></td><td>131,16</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='municipio_id_departamento_chosen']/div/ul/li<datalist><option>//div[@id='municipio_id_departamento_chosen']/div/ul/li</option><option>//div[3]/div/div/ul/li</option></datalist></td><td>10145,8</td>
+</tr>
+<tr><td>clickAt</td><td>id=municipio_observaciones<datalist><option>id=municipio_observaciones</option><option>name=municipio[observaciones]</option><option>//textarea[@id='municipio_observaciones']</option><option>//form[@id='new_municipio']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>170,28</td>
+</tr>
+<tr><td>type</td><td>id=municipio_observaciones<datalist><option>id=municipio_observaciones</option><option>name=municipio[observaciones]</option><option>//textarea[@id='municipio_observaciones']</option><option>//form[@id='new_municipio']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>//input[@name='commit']</option><option>//form[@id='new_municipio']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>44,20</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -905,6 +933,56 @@
 	<td>click</td>
 	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
 	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">reigiones</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>open</td>
+	<td>/sivel2<datalist><option>https://www.nocheyniebla.org:15443/sivel2/</option><option>/sivel2</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Administrar<datalist><option>link=Administrar</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Regiones<datalist><option>link=Regiones</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Nueva<datalist><option>link=Nueva</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=region_nombre<datalist><option>id=region_nombre</option></datalist></td>
+	<td>aaa</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=region_observaciones<datalist><option>id=region_observaciones</option></datalist></td>
+	<td>bbb</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>name=commit<datalist><option>name=commit</option></datalist></td>
+	<td></td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/regiones/103')])[2]</option><option>//a[3]</option></datalist></td><td>42,17</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -1450,6 +1528,156 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/casos/24')])[2]</option><option>//a[3]</option></datalist></td><td>39,15</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">contexto_bienes</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>open</td>
+	<td>/sivel2<datalist><option>https://www.nocheyniebla.org:15443/sivel2/</option><option>/sivel2</option></datalist></td>
+	<td></td>
+</tr>
+<tr><td>clickAt</td><td>//b<datalist><option>//b</option></datalist></td><td>1,0</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>39,8</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Contexto<datalist><option>link=Contexto</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=caso_bienes<datalist><option>id=caso_bienes</option></datalist></td>
+	<td>casa y finca</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>name=commit<datalist><option>name=commit</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>chooseOkOnNextConfirmation</td>
+	<td><datalist><option>¿Está seguro(a)?</option><option></option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
+	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">duracion_basico</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>open</td>
+	<td>/sivel2<datalist><option>https://www.nocheyniebla.org:15443/sivel2/</option><option>/sivel2</option></datalist></td>
+	<td></td>
+</tr>
+<tr><td>clickAt</td><td>//b<datalist><option>//b</option></datalist></td><td>4,3</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>50,22</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=caso_duracion<datalist><option>id=caso_duracion</option></datalist></td>
+	<td>3 semanas</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>name=commit<datalist><option>name=commit</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>chooseOkOnNextConfirmation</td>
+	<td><datalist><option>link=Eliminar</option><option></option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
+	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">hora_basico</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>open</td>
+	<td>/sivel2<datalist><option>https://www.nocheyniebla.org:15443/sivel2/casos</option><option>/sivel2</option></datalist></td>
+	<td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>63,16</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>62,16</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Datos Básicos<datalist><option>link=Datos Básicos</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=caso_hora<datalist><option>id=caso_hora</option></datalist></td>
+	<td>3 pm</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>name=commit<datalist><option>name=commit</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>chooseOkOnNextConfirmation</td>
+	<td><datalist><option>link=Eliminar</option><option></option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
+	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">titulo_basico</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>open</td>
+	<td>/sivel2<datalist><option>https://www.nocheyniebla.org:15443/sivel2/casos</option><option>/sivel2</option></datalist></td>
+	<td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>68,23</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>61,16</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=caso_titulo<datalist><option>id=caso_titulo</option></datalist></td>
+	<td>aaa</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>name=commit<datalist><option>name=commit</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>chooseOkOnNextConfirmation</td>
+	<td><datalist><option>link=Eliminar</option><option></option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
+	<td></td>
 </tr>
 </tbody></table>
 </body>
