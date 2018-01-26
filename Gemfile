@@ -9,7 +9,7 @@ gem "rails", '~> 5.1.0'
 gem "rails-i18n"
 
 # Postgresql
-gem "pg"
+gem "pg", '~> 0.21'
 
 gem 'puma'
 
