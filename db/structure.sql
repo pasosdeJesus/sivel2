@@ -297,7 +297,7 @@ CREATE VIEW cben1 AS
  SELECT caso.id AS id_caso,
     victima.id_persona,
     1 AS npersona,
-    victima.id_etnia
+    victima.id_rangoedad
    FROM sivel2_gen_caso caso,
     sivel2_gen_victima victima
   WHERE (caso.id = victima.id_caso);
@@ -441,7 +441,7 @@ CREATE VIEW cben2 AS
  SELECT cben1.id_caso,
     cben1.id_persona,
     cben1.npersona,
-    cben1.id_etnia,
+    cben1.id_rangoedad,
     ubicacion.id_departamento,
     departamento.nombre AS departamento_nombre,
     ubicacion.id_municipio,
@@ -453,7 +453,7 @@ CREATE VIEW cben2 AS
      LEFT JOIN sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
      LEFT JOIN sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
      LEFT JOIN sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.id_etnia, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
+  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.id_rangoedad, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
 
 
 --
@@ -1195,18 +1195,27 @@ CREATE TABLE sivel2_gen_antecedente_victimacolectiva (
 
 
 --
+-- Name: sivel2_gen_caso_categoria_presponsable_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sivel2_gen_caso_categoria_presponsable_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sivel2_gen_caso_categoria_presponsable; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE sivel2_gen_caso_categoria_presponsable (
-    id_tviolencia character varying(1) NOT NULL,
-    id_supracategoria integer NOT NULL,
     id_categoria integer NOT NULL,
-    id_caso integer NOT NULL,
-    id_presponsable integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id_caso_presponsable integer
+    id_caso_presponsable integer,
+    id integer DEFAULT nextval('sivel2_gen_caso_categoria_presponsable_id_seq'::regclass) NOT NULL
 );
 
 
@@ -1522,6 +1531,36 @@ CREATE MATERIALIZED VIEW sivel2_gen_conscaso AS
     sivel2_gen_conscaso1.tipificacion,
     to_tsvector('spanish'::regconfig, unaccent(((((((((((((sivel2_gen_conscaso1.caso_id || ' '::text) || replace(((sivel2_gen_conscaso1.fecha)::character varying)::text, '-'::text, ' '::text)) || ' '::text) || sivel2_gen_conscaso1.memo) || ' '::text) || sivel2_gen_conscaso1.ubicaciones) || ' '::text) || sivel2_gen_conscaso1.victimas) || ' '::text) || sivel2_gen_conscaso1.presponsables) || ' '::text) || sivel2_gen_conscaso1.tipificacion))) AS q
    FROM sivel2_gen_conscaso1
+  WITH NO DATA;
+
+
+--
+-- Name: sivel2_gen_consexpcaso; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW sivel2_gen_consexpcaso AS
+ SELECT conscaso.caso_id,
+    conscaso.fecha,
+    conscaso.memo,
+    conscaso.ubicaciones,
+    conscaso.victimas,
+    conscaso.presponsables,
+    conscaso.tipificacion,
+    conscaso.q,
+    caso.titulo,
+    caso.hora,
+    caso.duracion,
+    caso.grconfiabilidad,
+    caso.gresclarecimiento,
+    caso.grimpunidad,
+    caso.grinformacion,
+    caso.bienes,
+    caso.id_intervalo,
+    caso.created_at,
+    caso.updated_at
+   FROM (sivel2_gen_conscaso conscaso
+     JOIN sivel2_gen_caso caso ON ((caso.id = conscaso.caso_id)))
+  WHERE (true = false)
   WITH NO DATA;
 
 
@@ -2807,6 +2846,30 @@ ALTER TABLE ONLY sivel2_gen_actocolectivo
 
 
 --
+-- Name: sivel2_gen_caso_categoria_presponsable sivel2_gen_caso_categoria_pre_id_caso_presponsable_id_categ_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
+    ADD CONSTRAINT sivel2_gen_caso_categoria_pre_id_caso_presponsable_id_categ_key UNIQUE (id_caso_presponsable, id_categoria);
+
+
+--
+-- Name: sivel2_gen_caso_categoria_presponsable sivel2_gen_caso_categoria_presponsable_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
+    ADD CONSTRAINT sivel2_gen_caso_categoria_presponsable_id_key UNIQUE (id);
+
+
+--
+-- Name: sivel2_gen_caso_categoria_presponsable sivel2_gen_caso_categoria_presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
+    ADD CONSTRAINT sivel2_gen_caso_categoria_presponsable_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_caso_fotra sivel2_gen_caso_fotra_id_caso_nombre_fecha_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3197,14 +3260,6 @@ ALTER TABLE ONLY sivel2_gen_antecedente_victima
 
 
 --
--- Name: sivel2_gen_caso_categoria_presponsable caso_categoria_presponsable_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
-    ADD CONSTRAINT caso_categoria_presponsable_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES sivel2_gen_caso(id);
-
-
---
 -- Name: sivel2_gen_caso_categoria_presponsable caso_categoria_presponsable_id_caso_presponsable_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3218,22 +3273,6 @@ ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
 
 ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
     ADD CONSTRAINT caso_categoria_presponsable_id_categoria_fkey FOREIGN KEY (id_categoria) REFERENCES sivel2_gen_categoria(id);
-
-
---
--- Name: sivel2_gen_caso_categoria_presponsable caso_categoria_presponsable_id_presponsable_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
-    ADD CONSTRAINT caso_categoria_presponsable_id_presponsable_fkey FOREIGN KEY (id_presponsable) REFERENCES sivel2_gen_presponsable(id);
-
-
---
--- Name: sivel2_gen_caso_categoria_presponsable caso_categoria_presponsable_id_tviolencia_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_categoria_presponsable
-    ADD CONSTRAINT caso_categoria_presponsable_id_tviolencia_fkey FOREIGN KEY (id_tviolencia) REFERENCES sivel2_gen_tviolencia(id);
 
 
 --
@@ -4060,6 +4099,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170529154413'),
 ('20170609131212'),
 ('20170928100402'),
-('20171019133203');
+('20171019133203'),
+('20180126035129'),
+('20180126055129');
 
 
