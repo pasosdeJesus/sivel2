@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4acc07a0f61a6210cd56ccd53d9b2c128f304228
+  revision: 0b7847b350bea0fec7202a9b439b153037a6c9a8
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2fdab5e0423451ceefab347f996f3365b30d8f0e
+  revision: f4a4ef413da7ba5f6a8b5de7f17f2215a086671e
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 5d0f19f131d3322bf4de9dbc0e8aedc265f38c30
+  revision: ef41e14905a981cbd9eed4d92b8496d52a68048c
   specs:
     sivel2_gen (2.0b3)
       devise
@@ -139,7 +139,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.5.0)
+    devise-i18n (1.5.1)
       devise (>= 3.4)
     docile (1.1.5)
     erubi (1.7.0)
@@ -167,7 +167,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.1.0)
-    kgio (2.11.1)
+    kgio (2.11.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     less (2.6.0)
@@ -191,7 +191,7 @@ GEM
     mimemagic (0.3.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.11.2)
+    minitest (5.11.3)
     minitest-capybara (0.8.2)
       capybara (~> 2.2)
       minitest (~> 5.0)
@@ -215,7 +215,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.13.1)
     nio4r (2.2.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     paperclip (5.2.1)
@@ -240,7 +240,7 @@ GEM
       pry (>= 0.9.11)
     public_suffix (3.0.1)
     puma (3.11.2)
-    rack (2.0.3)
+    rack (2.0.4)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
@@ -343,7 +343,7 @@ GEM
       execjs (~> 2.7)
       less-rails (~> 2.8, >= 2.8.0)
       railties (~> 5.0, >= 5.0.1)
-    twitter_cldr (4.4.2)
+    twitter_cldr (4.4.3)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
@@ -351,7 +351,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.3)
       tzinfo (>= 1.0.0)
-    uglifier (4.1.4)
+    uglifier (4.1.5)
       execjs (>= 0.3.0, < 3)
     unicorn (5.4.0)
       kgio (~> 2.6)
