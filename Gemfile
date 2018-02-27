@@ -5,11 +5,11 @@ gem 'rails-erd', require: false, group: :development
 #ruby ">= 2.2"
 
 # Rails (internacionalización)
-gem "rails", '~> 5.1.0'
+gem "rails", '~> 5.2.0.rc1'
 gem "rails-i18n"
 
 # Postgresql
-gem "pg", '~> 0.21'
+gem "pg"#, '~> 0.21'
 
 gem 'puma'
 
@@ -135,7 +135,7 @@ group :test do
   gem "mocha"
   gem "poltergeist"
   gem "shoulda-context"
-  gem "shoulda-matchers", ">= 3.0.1"
+  gem "shoulda-matchers"#, ">= 3.0.1"
 end
 
 
