@@ -5,7 +5,7 @@ gem 'rails-erd', require: false, group: :development
 #ruby ">= 2.2"
 
 # Rails (internacionalización)
-gem "rails", '~> 5.2.0.rc1'
+gem "rails"#, '~> 5.2.0.rc1'
 gem "rails-i18n"
 
 # Postgresql
@@ -108,7 +108,7 @@ group :test do
   gem 'rails-controller-testing'
 
   # Maneja datos de prueba
-  gem "factory_girl_rails", group: [:development, :test]
+  #gem "factory_girl_rails", group: [:development, :test]
 
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
   # Lanza programas para examinar resultados
