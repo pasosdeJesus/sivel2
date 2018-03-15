@@ -45,11 +45,11 @@ Cree un usuario para la base de datos como se explica en
 * Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
   falta.
-  Para actualizar un SIVeL 1.2 saque copia al a base, configure datos de la 
+  Para actualizar un SIVeL 1.2 saque copia a la base, configure datos de la 
   copia en ```config/database.yml``` y ejecute:
 ```sh
   rake db:migrate
-  rake sivel2:indices
+  rake sip:indices
 ```
 * Lance la aplicación en modo de desarrollo con:
 ```sh
