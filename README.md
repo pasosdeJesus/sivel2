@@ -7,7 +7,7 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 ### Requerimientos
 
-Ver <https://github.com/pasosdeJesus/sip/wiki/Requerimientos>  
+Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>  
 
 Además PhantomJS
 
