@@ -7,7 +7,7 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 ### Requerimientos
 
-Ver <https://github.com/pasosdeJesus/sip/wiki/Requerimientos>  
+Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>  
 
 Además PhantomJS
 
@@ -26,7 +26,7 @@ Cree un usuario para la base de datos como se explica en
 (si deja el nombre sipdes se le facilitarán los siguientes pasos)
 
 * Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
-* Asegurse que las gemas quedan en ```/var/www/bundler/``` siguiendo instrucciones de <https://github.com/vtamara/dhobsd-m/blob/master/source/2016-03-30-bundler-doas.md>
+* Asegurse que las gemas quedan en ```/var/www/bundler/``` siguiendo instrucciones de <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
 * Instale gemas requeridas con:
 ```
   bundle install
@@ -45,11 +45,11 @@ Cree un usuario para la base de datos como se explica en
 * Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
   falta.
-  Para actualizar un SIVeL 1.2 saque copia al a base, configure datos de la 
+  Para actualizar un SIVeL 1.2 saque copia a la base, configure datos de la 
   copia en ```config/database.yml``` y ejecute:
 ```sh
   rake db:migrate
-  rake sivel2:indices
+  rake sip:indices
 ```
 * Lance la aplicación en modo de desarrollo con:
 ```sh
