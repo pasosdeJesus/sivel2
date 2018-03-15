@@ -26,7 +26,7 @@ Cree un usuario para la base de datos como se explica en
 (si deja el nombre sipdes se le facilitarán los siguientes pasos)
 
 * Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
-* Asegurse que las gemas quedan en ```/var/www/bundler/``` siguiendo instrucciones de <https://github.com/vtamara/dhobsd-m/blob/master/source/2016-03-30-bundler-doas.md>
+* Asegurse que las gemas quedan en ```/var/www/bundler/``` siguiendo instrucciones de <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
 * Instale gemas requeridas con:
 ```
   bundle install
