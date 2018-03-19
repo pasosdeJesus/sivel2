@@ -19,6 +19,8 @@ before_install:
         - cp config/application.rb.plantilla config/application.rb
         - cp config/routes.rb.plantilla config/routes.rb
         - cp config/initializers/sip.rb.plantilla config/initializers/sip.rb
+        - cp db/structure.sql db/structure.sql.copia # travis no soporta PostreSQL 10
+        - sed -e 's/provider = libc,//g' db/structure.sql.copia > db/structure.sql 
         - bundle exec rails db:setup
         - bundle exec rails sip:indices
 
