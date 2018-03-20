@@ -1560,9 +1560,7 @@ CREATE MATERIALIZED VIEW sivel2_gen_consexpcaso AS
     caso.updated_at
    FROM (sivel2_gen_conscaso conscaso
      JOIN sivel2_gen_caso caso ON ((caso.id = conscaso.caso_id)))
-  WHERE (conscaso.caso_id IN ( SELECT sivel2_gen_conscaso.caso_id
-           FROM sivel2_gen_conscaso
-          ORDER BY sivel2_gen_conscaso.ubicaciones, sivel2_gen_conscaso.caso_id))
+  WHERE (true = false)
   WITH NO DATA;
 
 
@@ -3977,7 +3975,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20131128151014'),
