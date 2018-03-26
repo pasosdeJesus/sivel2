@@ -34,7 +34,13 @@ Cree un usuario para la base de datos como se explica en
 * Copie y de requerirlo modifique las plantillas:
 ```sh
   find . -name "*plantilla"
-  for i in `find . -name "*plantilla"`; do n=`echo $i | sed -e "s/.plantilla//g"`; echo $n; cp $i $n; done
+  for i in `find . -name "*plantilla"`; do 
+    n=`echo $i | sed -e "s/.plantilla//g"`; 
+    if (test ! -e $n) then { 
+      echo $n; 
+      cp $i $n; 
+    } fi; 
+  done
 ```
   Estas plantillas dejan la aplicación en el URL / (tendría que modificarlas
   si prefiere una raiz de URL diferente, ver sección 'Punto de montaje' de 
