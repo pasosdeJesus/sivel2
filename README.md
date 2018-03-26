@@ -57,6 +57,11 @@ Cree un usuario para la base de datos como se explica en
   rake db:migrate
   rake sip:indices
 ```
+  Si va a empezar con una base nueva ejecute:
+```sh
+  rake db:create db:setup sip:indices
+```
+  
 * Lance la aplicación en modo de desarrollo con:
 ```sh
   rails s
