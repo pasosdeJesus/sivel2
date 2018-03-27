@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 43f0f1746fc18c6f36bccbc386d7e8673847cbf7
+  revision: bb734be8d78e59fb0417c0166f2861393c646b7c
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 743da820744d0ef727c7a6f77bff2f20403c5cff
+  revision: c868a426025dfea71533a0b6af32f98dd13ff181
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7941f72042fe2724e52a63624d458044f502e0ca
+  revision: 3cc4ab29bdafb21693674c82e0d8f2ef62968b70
   specs:
     sivel2_gen (2.0b6)
       devise
@@ -98,6 +98,7 @@ GEM
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (10.0.1)
     camertron-eprun (1.1.1)
     cancancan (2.1.3)
     capybara (2.18.0)
@@ -171,7 +172,7 @@ GEM
       sprockets (> 2, < 4)
       tilt
     libxml-ruby (3.1.0)
-    loofah (2.2.1)
+    loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -199,12 +200,12 @@ GEM
       minitest-capybara (~> 0.8)
       minitest-metadata (~> 0.6)
       minitest-rails (~> 3.0)
-    minitest-reporters (1.1.19)
+    minitest-reporters (1.2.0)
       ansi
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    mocha (1.3.0)
+    mocha (1.4.0)
       metaclass (~> 0.0.1)
     multi_json (1.13.1)
     nio4r (2.3.0)
@@ -260,8 +261,8 @@ GEM
       activesupport (>= 3.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.0.3)
-      loofah (~> 2.0)
+    rails-html-sanitizer (1.0.4)
+      loofah (~> 2.2, >= 2.2.2)
     rails-i18n (5.1.1)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
@@ -277,7 +278,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.19.0)
-    rake (12.3.0)
+    rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -291,7 +292,7 @@ GEM
     ruby-graphviz (1.2.3)
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
-    sass (3.5.5)
+    sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -344,7 +345,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2018.3)
+    tzinfo-data (1.2018.4)
       tzinfo (>= 1.0.0)
     uglifier (4.1.8)
       execjs (>= 0.3.0, < 3)
@@ -371,6 +372,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   chosen-rails
