@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e50637e076e4ecf83d8ae445ed5aa21edd359fd7
+  revision: e38b0fa4e614a2e43e770bb53badb9976182e045
   specs:
     sivel2_gen (2.0b6)
       devise
@@ -234,7 +234,7 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
-    rack-test (0.8.3)
+    rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.5)
       actioncable (= 5.1.5)
