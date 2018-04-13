@@ -5,8 +5,10 @@ gem 'rails-erd', require: false, group: :development
 #ruby ">= 2.2"
 
 # Rails (internacionalización)
-gem "rails"#, '~> 5.2.0.rc1'
+gem "rails", '~> 5.2.0'
 gem "rails-i18n"
+
+gem 'bootsnap', '>=1.1.0', require: false
 
 # Postgresql
 gem "pg"#, '~> 0.21'
@@ -72,18 +74,17 @@ gem "paperclip"
 
 # Zonas horarias
 gem "tzinfo"
-gem "tzinfo-data"
 
 # Motor de sip
-gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'
+gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git', branch: 'rails5.2'
 #gem 'sip', path: '../sip'
 
 # Motor de SIVeL 2
-gem 'sivel2_gen', git: 'https://github.com/pasosdeJesus/sivel2_gen.git'
+gem 'sivel2_gen', git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: 'rails5.2'
 #gem 'sivel2_gen', path: '../sivel2_gen'
 
 # Motor de nube y plantillas
-gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: 'rails5.2'
 #gem 'heb412_gen', path: '../heb412_gen'
 
 group :test, :development do
