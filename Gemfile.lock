@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4ecbd9590fbbbc8d0d33e25ee897775dd7c3f67d
-  branch: rails5.2
+  revision: 5094accd79d49902ca45c554861b2e1f67251485
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -12,8 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 627612ebb1716fb75159da25d06a28d42507460e
-  branch: rails5.2
+  revision: b0a152c5c2ec0a98f39c6ee70b4c5ee6cea75574
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -35,8 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 919499c1f27cabd699b11d9391412c3017120305
-  branch: rails5.2
+  revision: ce61a60f59c288605636839772305c6927298add
   specs:
     sivel2_gen (2.0b6)
       devise
@@ -44,13 +41,9 @@ GIT
       rails
 
 GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
-
-GEM
-  remote: https://rubygems.org/
+  remote: https://github.com/rails/rails.git
+  revision: 4887f97bd8a8859294ad02ccea20d83a94ec0812
+  ref: 4887f97bd8a8859294ad02ccea20d83a94ec0812
   specs:
     actioncable (5.2.0)
       actionpack (= 5.2.0)
@@ -93,6 +86,35 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    rails (5.2.0)
+      actioncable (= 5.2.0)
+      actionmailer (= 5.2.0)
+      actionpack (= 5.2.0)
+      actionview (= 5.2.0)
+      activejob (= 5.2.0)
+      activemodel (= 5.2.0)
+      activerecord (= 5.2.0)
+      activestorage (= 5.2.0)
+      activesupport (= 5.2.0)
+      bundler (>= 1.3.0)
+      railties (= 5.2.0)
+      sprockets-rails (>= 2.0.0)
+    railties (5.2.0)
+      actionpack (= 5.2.0)
+      activesupport (= 5.2.0)
+      method_source
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     andand (1.3.3)
@@ -248,19 +270,6 @@ GEM
     rack (2.0.4)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
-    rails (5.2.0)
-      actioncable (= 5.2.0)
-      actionmailer (= 5.2.0)
-      actionpack (= 5.2.0)
-      actionview (= 5.2.0)
-      activejob (= 5.2.0)
-      activemodel (= 5.2.0)
-      activerecord (= 5.2.0)
-      activestorage (= 5.2.0)
-      activesupport (= 5.2.0)
-      bundler (>= 1.3.0)
-      railties (= 5.2.0)
-      sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.2)
       actionpack (~> 5.x, >= 5.0.1)
       actionview (~> 5.x, >= 5.0.1)
@@ -283,12 +292,6 @@ GEM
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
-    railties (5.2.0)
-      actionpack (= 5.2.0)
-      activesupport (= 5.2.0)
-      method_source
-      rake (>= 0.8.7)
-      thor (>= 0.18.1, < 2.0)
     raindrops (0.19.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
@@ -408,7 +411,7 @@ DEPENDENCIES
   pry-rescue
   pry-stack_explorer
   puma
-  rails (~> 5.2.0)
+  rails (~> 5.2.0)!
   rails-controller-testing
   rails-erd
   rails-i18n
