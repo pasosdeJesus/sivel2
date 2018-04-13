@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ce61a60f59c288605636839772305c6927298add
+  revision: 539c2d6930c5dc397dd5a1d7e0b54e2a8151e888
   specs:
     sivel2_gen (2.0b6)
       devise
@@ -108,9 +108,10 @@ GIT
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  revision: f8fbad8d9d6bb087223221d70733b58a3d2efd8a
+  branch: new_id_with_ajax
   specs:
-    cocoon (1.2.6)
+    cocoon (1.2.11)
 
 GEM
   remote: https://rubygems.org/
