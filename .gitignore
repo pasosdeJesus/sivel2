@@ -34,3 +34,6 @@ coverage/
 bin/corre.sh
 bin/detiene.sh
 bin/migra.sh
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
