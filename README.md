@@ -54,17 +54,17 @@ Cree un usuario para la base de datos como se explica en
   Para actualizar un SIVeL 1.2 saque copia a la base, configure datos de la 
   copia en ```config/database.yml``` y ejecute:
 ```sh
-  rake db:migrate
-  rake sip:indices
+  bin/rails db:migrate
+  bin/rails sip:indices
 ```
   Si va a empezar con una base nueva ejecute:
 ```sh
-  rake db:create db:setup sip:indices
+  bin/rails db:create db:setup sip:indices
 ```
   
 * Lance la aplicación en modo de desarrollo con:
 ```sh
-  rails s
+  bin/rails s
 ```
 * Examine con un navegador que tenga habilitadas las galletas (cookies) en el 
   puerto 3000: ```http://127.0.0.1:3000```.  Por eso si usa el navegador ```w3m``` 
