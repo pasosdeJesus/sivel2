@@ -146,12 +146,25 @@ y el cliente usado.
 * Se recomienda que deje fuentes en ```/var/www/htdocs/sivel2```
 * Siga los mismos pasos para configurar un servidor de desarrollo --excepto
   lanzar
+* Cree la base de datos `sivel2gen_pro` con dueño `sipdes`.  Por ejemplo en adJ
+  desde el usuario `_postgresql`:
+```sh
+  createdb -Upostgres -h/var/www/var/run/postgresql -Osipdes sivel2gen_pro
+```
+* Edite credenciales cifradas con
+```sh
+EDITOR=vim bin/rails credentials:edit
+```
+y con
+```sh
+RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
+```
 * Configure la misma base de datos de un SIVeL 1.2 en sección `production`
   de `config/databases.yml` y ejecute
 ```sh
-  RAILS_ENV=production bundle exec rake db:setup 
-  RAILS_ENV=production bundle exec rake db:migrate
-  RAILS_ENV=production bundle exec rake sip:indices
+  RAILS_ENV=production bin/rails db:setup 
+  RAILS_ENV=production bin/rails db:migrate
+  RAILS_ENV=production bin/rails sip:indices
 ```
 * Como servidor web recomendamos nginx, en la sección http agregue:
 ```
