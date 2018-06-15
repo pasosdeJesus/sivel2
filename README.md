@@ -57,9 +57,14 @@ Cree un usuario para la base de datos como se explica en
   bin/rails db:migrate
   bin/rails sip:indices
 ```
-  Si va a empezar con una base nueva ejecute:
+  Si va a empezar con una base nueva ejecute como usuario `_postgresql`:
 ```sh
-  bin/rails db:create db:setup sip:indices
+  createdb -Upostgres -h/var/www/var/run/postgresql/ -Osipdes sivel2gen_des
+```
+  y desde el directorio de la aplicación:  
+```sh
+  bin/rails db:setup
+  bin/rails sip:indices
 ```
   
 * Lance la aplicación en modo de desarrollo con:
