@@ -297,10 +297,10 @@ CREATE VIEW cben1 AS
  SELECT caso.id AS id_caso,
     victima.id_persona,
     1 AS npersona,
-    victima.id_rangoedad
+    victima.id_vinculoestado
    FROM sivel2_gen_caso caso,
     sivel2_gen_victima victima
-  WHERE (caso.id = victima.id_caso);
+  WHERE ((caso.fecha <= '2017-01-01'::date) AND (caso.id = victima.id_caso));
 
 
 --
@@ -441,7 +441,7 @@ CREATE VIEW cben2 AS
  SELECT cben1.id_caso,
     cben1.id_persona,
     cben1.npersona,
-    cben1.id_rangoedad,
+    cben1.id_vinculoestado,
     ubicacion.id_departamento,
     departamento.nombre AS departamento_nombre,
     ubicacion.id_municipio,
@@ -453,7 +453,7 @@ CREATE VIEW cben2 AS
      LEFT JOIN sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
      LEFT JOIN sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
      LEFT JOIN sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.id_rangoedad, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
+  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.id_vinculoestado, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
 
 
 --
@@ -576,6 +576,39 @@ CREATE SEQUENCE heb412_gen_doc_id_seq
 --
 
 ALTER SEQUENCE heb412_gen_doc_id_seq OWNED BY heb412_gen_doc.id;
+
+
+--
+-- Name: heb412_gen_plantilladoc; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE heb412_gen_plantilladoc (
+    id bigint NOT NULL,
+    ruta character varying(2047),
+    fuente character varying(1023),
+    licencia character varying(1023),
+    vista character varying(127),
+    nombremenu character varying(127)
+);
+
+
+--
+-- Name: heb412_gen_plantilladoc_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE heb412_gen_plantilladoc_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: heb412_gen_plantilladoc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE heb412_gen_plantilladoc_id_seq OWNED BY heb412_gen_plantilladoc.id;
 
 
 --
@@ -2317,6 +2350,13 @@ ALTER TABLE ONLY heb412_gen_doc ALTER COLUMN id SET DEFAULT nextval('heb412_gen_
 
 
 --
+-- Name: heb412_gen_plantilladoc id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_plantilladoc ALTER COLUMN id SET DEFAULT nextval('heb412_gen_plantilladoc_id_seq'::regclass);
+
+
+--
 -- Name: heb412_gen_plantillahcm id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2595,6 +2635,14 @@ ALTER TABLE ONLY heb412_gen_campoplantillahcm
 
 ALTER TABLE ONLY heb412_gen_doc
     ADD CONSTRAINT heb412_gen_doc_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: heb412_gen_plantilladoc heb412_gen_plantilladoc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_plantilladoc
+    ADD CONSTRAINT heb412_gen_plantilladoc_pkey PRIMARY KEY (id);
 
 
 --
@@ -4103,6 +4151,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180126035129'),
 ('20180126055129'),
 ('20180225152848'),
-('20180320230847');
+('20180320230847'),
+('20180427194732'),
+('20180509111948');
 
 

@@ -8,15 +8,34 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'minitest/reporters'
+require 'minitest/rails/capybara'
+require 'minitest/rails'
 Minitest::Reporters.use!(
   Minitest::Reporters::ProgressReporter.new,
   ENV,
   Minitest.backtrace_filter)
 
-require "minitest/rails/capybara"
-require "capybara/rails"
-require "capybara/poltergeist"
+#require "minitest/rails/capybara"
+#require "capybara/rails"
+#require "capybara/poltergeist"
 Capybara.javascript_driver = :poltergeist
+
+
+# Usuario para ingresar y hacer pruebas
+PRUEBA_USUARIO = {
+  nusuario: "admin",
+  password: "sjrven123",
+  nombre: "admin",
+  descripcion: "admin",
+  rol: 1,
+  idioma: "es_CO",
+  email: "usuario1@localhost",
+  encrypted_password: '$2a$10$uMAciEcJuUXDnpelfSH6He7BxW0yBeq6VMemlWc5xEl6NZRDYVA3G',
+  sign_in_count: 0,
+  fechacreacion: "2014-08-05",
+  fechadeshabilitacion: nil,
+  oficina_id: nil
+}
 
 class ActiveSupport::TestCase
 
@@ -57,6 +76,6 @@ class ActiveRecord::Base
 
    def self.connection
      @@shared_connection || ConnectionPool::Wrapper.new(:size => 1) { retrieve_connection }
-   end
+  end
 end
 ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
