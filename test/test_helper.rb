@@ -15,41 +15,13 @@ Minitest::Reporters.use!(
   ENV,
   Minitest.backtrace_filter)
 
-#require "minitest/rails/capybara"
-#require "capybara/rails"
-#require "capybara/poltergeist"
 Capybara.javascript_driver = :poltergeist
 
 
-# Usuario para ingresar y hacer pruebas
-PRUEBA_USUARIO = {
-  nusuario: "admin",
-  password: "sjrven123",
-  nombre: "admin",
-  descripcion: "admin",
-  rol: 1,
-  idioma: "es_CO",
-  email: "usuario1@localhost",
-  encrypted_password: '$2a$10$uMAciEcJuUXDnpelfSH6He7BxW0yBeq6VMemlWc5xEl6NZRDYVA3G',
-  sign_in_count: 0,
-  fechacreacion: "2014-08-05",
-  fechadeshabilitacion: nil,
-  oficina_id: nil
-}
-
 class ActiveSupport::TestCase
 
-#  setup :load_seeds
-
-  #set_fixture_class sip_tclase: "Sip::Tclase"
-  #set_fixture_class "sip/tsitio": Sip::Tsitio
-
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   
-  #Rails.application.load_seed
-
-  # Add more helper methods to be used by all tests here...
   protected
   def load_seeds
     load "#{Rails.root}/db/seeds.rb"
