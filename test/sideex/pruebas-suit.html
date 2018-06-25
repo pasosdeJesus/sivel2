@@ -1682,28 +1682,6 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">caso-region-basico</td></tr>
-</thead>
-<tbody>
-<tr><td>open</td><td>/sivel2<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option><option>/sivel2</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>css=b.caret<datalist><option>css=b.caret</option><option>//b</option></datalist></td><td>5,1</td>
-</tr>
-<tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>53,16</td>
-</tr>
-<tr><td>addSelection</td><td>id=caso_region_ids<datalist><option>id=caso_region_ids</option><option>css=#caso_region_ids</option><option>//select[@id='caso_region_ids']</option><option>//div[@id='basicos']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>label=ANTIOQUIA CHOCO SANT</td>
-</tr>
-<tr><td>clickAt</td><td>css=option[value="6"]<datalist><option>css=option[value="6"]</option><option>//option[@value='6']</option><option>//select[@id='caso_region_ids']/option</option><option>//div[7]/select/option</option></datalist></td><td>67,7</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_72']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>67,15</td>
-</tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/casos/72')])[2]</option><option>//a[3]</option></datalist></td><td>43,17</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
 <tr><td rowspan="1" colspan="3">caso-frontera-basico</td></tr>
 </thead>
 <tbody>
@@ -1846,6 +1824,30 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">cas-basico-frontera</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>25,18</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>29,9</td>
+</tr>
+<tr><td>clickAt</td><td>id=caso_frontera_ids<datalist><option>id=caso_frontera_ids</option><option>css=#caso_frontera_ids</option><option>//select[@id='caso_frontera_ids']</option><option>//div[@id='basicos']/div[8]/select</option><option>//div[8]/select</option></datalist></td><td>39,5</td>
+</tr>
+<tr><td>addSelection</td><td>id=caso_frontera_ids<datalist><option>id=caso_frontera_ids</option><option>css=#caso_frontera_ids</option><option>//select[@id='caso_frontera_ids']</option><option>//div[@id='basicos']/div[8]/select</option><option>//div[8]/select</option></datalist></td><td>label=Brasil</td>
+</tr>
+<tr><td>clickAt</td><td>css=#caso_frontera_ids &gt; option[value="2"]<datalist><option>css=#caso_frontera_ids &gt; option[value="2"]</option><option>xpath=(//option[@value='2'])[2]</option><option>//select[@id='caso_frontera_ids']/option</option><option>//div[8]/select/option</option></datalist></td><td>24,9</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_231']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>101,23</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/casos/231')])[2]</option><option>//a[3]</option></datalist></td><td>41,27</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">caso-ubicacion-sitio</td></tr>
 </thead>
 <tbody>
@@ -1964,30 +1966,6 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/casos/229')])[2]</option><option>//a[3]</option></datalist></td><td>39,24</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">cas-basico-frontera</td></tr>
-</thead>
-<tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>25,18</td>
-</tr>
-<tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>29,9</td>
-</tr>
-<tr><td>clickAt</td><td>id=caso_frontera_ids<datalist><option>id=caso_frontera_ids</option><option>css=#caso_frontera_ids</option><option>//select[@id='caso_frontera_ids']</option><option>//div[@id='basicos']/div[8]/select</option><option>//div[8]/select</option></datalist></td><td>39,5</td>
-</tr>
-<tr><td>addSelection</td><td>id=caso_frontera_ids<datalist><option>id=caso_frontera_ids</option><option>css=#caso_frontera_ids</option><option>//select[@id='caso_frontera_ids']</option><option>//div[@id='basicos']/div[8]/select</option><option>//div[8]/select</option></datalist></td><td>label=Brasil</td>
-</tr>
-<tr><td>clickAt</td><td>css=#caso_frontera_ids &gt; option[value="2"]<datalist><option>css=#caso_frontera_ids &gt; option[value="2"]</option><option>xpath=(//option[@value='2'])[2]</option><option>//select[@id='caso_frontera_ids']/option</option><option>//div[8]/select/option</option></datalist></td><td>24,9</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_231']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>101,23</td>
-</tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/casos/231')])[2]</option><option>//a[3]</option></datalist></td><td>41,27</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
