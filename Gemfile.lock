@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 012cc640def9ebee78267708d11f2d8d71730a66
+  revision: 999c8f5b9b415ba3eae13eb278d8f9d975014ed7
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f299602294270ba6452f62146691d1875823edf1
+  revision: 26e7698a986b85b8ab836637c03b1ca8c77c9ea0
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7a7325f01fe9f9c12713595629825ce0bfb87791
+  revision: 50f68f9ce12b3fde3aec32045c9fbae659020f4c
   specs:
     sivel2_gen (2.0b6)
       devise
@@ -237,7 +237,7 @@ GEM
     msgpack (1.2.4)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     odf-report (0.5.2)
       nokogiri (>= 1.5.0)
