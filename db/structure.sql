@@ -803,6 +803,31 @@ CREATE TABLE sip_grupo_usuario (
 
 
 --
+-- Name: sip_grupoper_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sip_grupoper_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_grupoper; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sip_grupoper (
+    id integer DEFAULT nextval('sip_grupoper_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    anotaciones character varying(1000),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
 -- Name: sip_mundep_sinorden; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -1791,31 +1816,6 @@ CREATE TABLE sivel2_gen_frontera (
 
 
 --
--- Name: sivel2_gen_grupoper_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE sivel2_gen_grupoper_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_grupoper; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sivel2_gen_grupoper (
-    id integer DEFAULT nextval('sivel2_gen_grupoper_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    anotaciones character varying(1000),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
 -- Name: sivel2_gen_iglesia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2494,14 +2494,6 @@ ALTER TABLE ONLY sivel2_gen_caso_etiqueta
 
 
 --
--- Name: sivel2_gen_caso_frontera caso_frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_frontera
-    ADD CONSTRAINT caso_frontera_pkey PRIMARY KEY (id_frontera, id_caso);
-
-
---
 -- Name: sivel2_gen_caso caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2603,14 +2595,6 @@ ALTER TABLE ONLY sivel2_gen_fotra
 
 ALTER TABLE ONLY sivel2_gen_frontera
     ADD CONSTRAINT frontera_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_grupoper grupoper_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_grupoper
-    ADD CONSTRAINT grupoper_pkey PRIMARY KEY (id);
 
 
 --
@@ -2819,6 +2803,14 @@ ALTER TABLE ONLY sip_fuenteprensa
 
 ALTER TABLE ONLY sip_grupo
     ADD CONSTRAINT sip_grupo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_grupoper sip_grupoper_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_grupoper
+    ADD CONSTRAINT sip_grupoper_pkey PRIMARY KEY (id);
 
 
 --
@@ -3232,7 +3224,7 @@ ALTER TABLE ONLY sivel2_gen_actocolectivo
 --
 
 ALTER TABLE ONLY sivel2_gen_actocolectivo
-    ADD CONSTRAINT actocolectivo_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
+    ADD CONSTRAINT actocolectivo_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sip_grupoper(id);
 
 
 --
@@ -4008,7 +4000,7 @@ ALTER TABLE ONLY sivel2_gen_victimacolectiva
 --
 
 ALTER TABLE ONLY sivel2_gen_victimacolectiva
-    ADD CONSTRAINT victimacolectiva_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sivel2_gen_grupoper(id);
+    ADD CONSTRAINT victimacolectiva_id_grupoper_fkey FOREIGN KEY (id_grupoper) REFERENCES sip_grupoper(id);
 
 
 --
@@ -4153,6 +4145,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180225152848'),
 ('20180320230847'),
 ('20180427194732'),
-('20180509111948');
+('20180509111948'),
+('20180717134314'),
+('20180717135811'),
+('20180718094829');
 
 

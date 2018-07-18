@@ -81,7 +81,7 @@ gem "paperclip"
 gem "tzinfo"
 
 # Motor de SIVeL 2
-gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
+gem 'sip', git: "https://github.com/pasosdeJesus/sip.git", branch: 'sip_grupoper'
 #gem 'sip', path: '../sip'
 
 # Motor heb412_gen para manejar archivos como nube y plantillas
@@ -89,7 +89,7 @@ gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 #gem 'heb412_gen', path: '../heb412_gen/'
 
 # Motor Cor1440_gen
-gem 'sivel2_gen', git: "https://github.com/pasosdeJesus/sivel2_gen.git"
+gem 'sivel2_gen', git: "https://github.com/pasosdeJesus/sivel2_gen.git", branch: 'sip_grupoper'
 #gem "sivel2_gen", path: '../sivel2_gen'
 
 gem 'chosen-rails'
@@ -106,7 +106,7 @@ end
 
 group :development, :test do
   # Depurar
-  #gem 'byebug'
+  gem 'byebug'
 end
 
 group :test do
