@@ -629,7 +629,7 @@
 <tr><td rowspan="1" colspan="3">tabla-municipios</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>/sivel2<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/admin/regiones</option><option>/sivel2</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2<datalist><option>/sivel2/admin/regiones</option><option>/sivel2</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>//li[2]/a/b<datalist><option>//li[2]/a/b</option></datalist></td><td>2,3</td>
 </tr>
@@ -1685,7 +1685,7 @@
 <tr><td rowspan="1" colspan="3">caso-frontera-basico</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option><option>/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>css=b.caret<datalist><option>css=b.caret</option><option>//b</option></datalist></td><td>3,0</td>
 </tr>
@@ -1707,7 +1707,7 @@
 <tr><td rowspan="1" colspan="3">caso-intrvalo-basico</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option><option>/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>css=b.caret<datalist><option>css=b.caret</option><option>//b</option></datalist></td><td>2,2</td>
 </tr>
@@ -1761,7 +1761,7 @@
 <tr><td rowspan="1" colspan="3">caso-ubicacion-departamento</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>css=b.caret<datalist><option>css=b.caret</option><option>//b</option></datalist></td><td>4,0</td>
 </tr>
@@ -1793,7 +1793,7 @@
 <tr><td rowspan="1" colspan="3">caso-ubicacion-municipio</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>65,25</td>
 </tr>
@@ -1827,7 +1827,7 @@
 <tr><td rowspan="1" colspan="3">cas-basico-frontera</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>25,18</td>
 </tr>
@@ -1845,13 +1845,15 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/casos/231')])[2]</option><option>//a[3]</option></datalist></td><td>41,27</td>
 </tr>
+<tr><td>AssertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
 <tr><td rowspan="1" colspan="3">caso-ubicacion-sitio</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>67,19</td>
 </tr>
@@ -1909,7 +1911,7 @@
 <tr><td rowspan="1" colspan="3">caso-ubicacion-tipo-sitio</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>/sivel2<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option><option>/sivel2</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2<datalist><option>/sivel2/</option><option>/sivel2</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>css=b.caret<datalist><option>css=b.caret</option><option>//b</option></datalist></td><td>-1,1</td>
 </tr>
@@ -1951,7 +1953,7 @@
 <tr><td rowspan="1" colspan="3">caso-basico-region</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>35,21</td>
 </tr>
@@ -1973,7 +1975,7 @@
 <tr><td rowspan="1" colspan="3">caso-fuente-fecha</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -1981,7 +1983,7 @@
 <tr><td rowspan="1" colspan="3">caso anexos</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:12300/sivel2/<datalist><option>http://archivoprensa.cinep.org.co:12300/sivel2/</option></datalist></td><td></td>
+<tr><td>open</td><td>/sivel2/<datalist><option>/sivel2/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>40,21</td>
 </tr>
