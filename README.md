@@ -23,7 +23,6 @@ y  [sip](https://github.com/pasosdeJesus/sip)
 
 Cree un usuario para la base de datos como se explica en 
 <https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
-(si deja el nombre sipdes se le facilitarán los siguientes pasos)
 
 * Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
 * Asegurse que las gemas quedan en ```/var/www/bundler/``` siguiendo instrucciones de <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
@@ -42,15 +41,15 @@ Cree un usuario para la base de datos como se explica en
     } fi; 
   done
 ```
-  Estas plantillas dejan la aplicación en el URL / (tendría que modificarlas
-  si prefiere una raiz de URL diferente, ver sección 'Punto de montaje' de 
-  https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-rutas,-controladores-y-vistas )
+  Estas plantillas dejan la aplicación en el URL /sivel2 (tendría que 
+  modificarlas si prefiere una raiz de URL diferente, ver sección 
+  'Punto de montaje' de https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-rutas,-controladores-y-vistas )
 * Establezca una ruta para anexos en ```config/initializers/sip.rb```.  
   Debe existir y poder ser escrita por el dueño del proceso con el que corra 
   el servidor de desarrollo.
-* Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
-  migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
-  falta.
+* Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` 
+  permiten migrar una SIVeL 1.2, actualizando estructura y agregando datos 
+  que hagan falta.
   Para actualizar un SIVeL 1.2 saque copia a la base, configure datos de la 
   copia en ```config/database.yml``` y ejecute:
 ```sh
@@ -61,7 +60,8 @@ Cree un usuario para la base de datos como se explica en
 ```sh
   createdb -Upostgres -h/var/www/var/run/postgresql/ -Osipdes sivel2gen_des
 ```
-  y desde el directorio de la aplicación:  
+  (cambiando sipdes por el usuario que creó y configuró) y desde el 
+  directorio de la aplicación:  
 ```sh
   bin/rails db:setup
   bin/rails sip:indices
@@ -72,8 +72,8 @@ Cree un usuario para la base de datos como se explica en
   bin/rails s
 ```
 * Examine con un navegador que tenga habilitadas las galletas (cookies) en el 
-  puerto 3000: ```http://127.0.0.1:3000```.  Por eso si usa el navegador ```w3m``` 
-  añada la opción ```-cookie``` 
+  puerto 3000: ```http://127.0.0.1:3000/sivel2```.  Por eso si usa el 
+  navegador ```w3m``` añada la opción ```-cookie``` 
 * Cuando requiera detener basta que de Control-C o que busque el
   proceso con ruby que corre en el puerto 3000 y lo elimine con ```kill```:
 ```sh
@@ -82,7 +82,7 @@ kill 323122
 ```
 * En este modo es recomendable borrar recursos precompilados 
 ```sh
-rm -rf public/assets/*
+rm -rf public/sivel2/assets/*
 ```
 
 ### Pruebas
