@@ -24,7 +24,7 @@ module Sivel2
 
     config.active_record.schema_format = :sql
 
-    #config.relative_url_root = "/sivel2"
+    config.relative_url_root = "/sivel2"
 
     config.x.formato_fecha='yyyy-mm-dd'
 
