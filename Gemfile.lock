@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d1f79b1d8f442caefc74ebc98f51e23be107c917
+  revision: 51a05ef04c2988e5cff9a13704193b2986e933cd
   branch: sip_grupoper
   specs:
     sip (2.0.b5)
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: c23ab00c737eae75d4dafed7a08293feca964cef
+  revision: ab1109263e157dc6db4c1cb08512ee4d985baee1
   branch: sip_grupoper
   specs:
     sivel2_gen (2.0b6)
@@ -307,7 +307,7 @@ GEM
       rubyzip (~> 1.1)
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
-    sass (3.5.6)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)

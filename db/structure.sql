@@ -2518,14 +2518,6 @@ ALTER TABLE ONLY sivel2_gen_caso_presponsable
 
 
 --
--- Name: sivel2_gen_caso_region caso_region_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sivel2_gen_caso_region
-    ADD CONSTRAINT caso_region_pkey PRIMARY KEY (id_region, id_caso);
-
-
---
 -- Name: sivel2_gen_categoria categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4148,6 +4140,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180509111948'),
 ('20180717134314'),
 ('20180717135811'),
-('20180718094829');
+('20180718094829'),
+('20180719015902');
 
 
