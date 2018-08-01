@@ -20,7 +20,8 @@ gem "pg"#, '~> 0.21'
 gem 'puma'
 
 # CSS
-gem "sass"
+gem "sassc"
+gem "sass-rails"
 
 # Color en terminal
 gem "colorize"

@@ -318,6 +318,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (1.12.1)
+      ffi (~> 1.9.6)
+      sass (>= 3.3.0)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -413,7 +416,8 @@ DEPENDENCIES
   rails-i18n
   rails_12factor
   rspreadsheet
-  sass
+  sass-rails
+  sassc
   simple_form
   simplecov
   sip!
@@ -432,4 +436,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
