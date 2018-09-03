@@ -26,7 +26,7 @@ module Sivel2
 
     #config.relative_url_root = "/sivel2"
 
-    config.x.formato_fecha='yyyy-mm-dd'
+    config.x.formato_fecha='dd/M/yyyy'
 
     config.x.heb412_ruta = Rails.root.join('public', 'heb412')
 
