@@ -15,10 +15,10 @@ class AccesoTest < Capybara::Rails::TestCase
     assert page.has_content?("Administrar")
 
     visit File.join(Rails.configuration.relative_url_root, '/casos/nuevo')
-    @numcaso=find_field('Código').value
+    @numcaso=find_field('Caso No').value
 
     # Datos básicos
-    fill_in "Fecha del hecho", with: '2014-08-05'
+    fill_in "Fecha del hecho", with: '05/Ago/2014'
     fill_in "Título", with: 'titulo'
     click_button "Guardar"
     assert page.has_content?("2014-08-05")
