@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ed68c963fdbce0c49963bbf4d3f5babac118a650
-  branch: vista_listado
+  revision: 6ec55c67cd0fe21bc324755f78be55cfd01b0a1b
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -12,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3c93615802fdaf5152728fa4916ab4e7763d7902
+  revision: bee85f4aff0371f42101c9d9c402a01e1e85da6b
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -34,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f851fadcdc7289e3f527802df38304ba0bfe8dad
+  revision: e8dd137f7c2c0ad5a8ab8fa20d7224bff276d49e
   specs:
     sivel2_gen (2.0b7)
       devise
@@ -230,7 +229,7 @@ GEM
       minitest-capybara (~> 0.8)
       minitest-metadata (~> 0.6)
       minitest-rails (~> 3.0)
-    minitest-reporters (1.3.3)
+    minitest-reporters (1.3.4)
       ansi
       builder
       minitest (>= 5.0)
