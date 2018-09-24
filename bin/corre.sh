@@ -5,7 +5,7 @@ if (test -f ".env") then {
 	. .env
 } fi;
 if (test "$RC" = "") then {
-	RC=sivel2
+	export RC=sivel2
 } fi;
 if (test "$RAILS_ENV" = "development") then {
 	bin/rails -s -p $PUERTODES

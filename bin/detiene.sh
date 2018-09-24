@@ -1,5 +1,9 @@
 #!/bin/sh
 # Inicia servicio
+
+if (test -f ".env") then {
+	. .env
+} fi;
 if (test "$RC" = "") then {
 	RC=sivel2
 } fi;
