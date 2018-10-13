@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9a1dc9c44e1b6831c15a2f3531db3d909e831a24
+  revision: ea8f85695c309b32f49c540c8e53ecd031c92474
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b227a1b94c00471bbd21710c3b92bda3b138e165
+  revision: 068307e1208f5bdab8aef4c4a74ae32eb08a7044
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 4048add961db1318a362ae1f33728abff3857c6f
+  revision: 9d4dd3b2d294bcaf146a6aa722d72fc9e3440608
   specs:
     sivel2_gen (2.0b7)
       devise
@@ -166,7 +166,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.6.4)
+    devise-i18n (1.6.5)
       devise (>= 4.4)
     docile (1.3.1)
     erubi (1.7.1)
@@ -215,8 +215,8 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    minitest-capybara (0.8.2)
-      capybara (~> 2.2)
+    minitest-capybara (0.9.0)
+      capybara
       minitest (~> 5.0)
       rake
     minitest-metadata (0.6.0)
@@ -229,7 +229,7 @@ GEM
       minitest-capybara (~> 0.8)
       minitest-metadata (~> 0.6)
       minitest-rails (~> 3.0)
-    minitest-reporters (1.3.4)
+    minitest-reporters (1.3.5)
       ansi
       builder
       minitest (>= 5.0)
@@ -237,7 +237,7 @@ GEM
     msgpack (1.2.4)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     odf-report (0.5.2)
       nokogiri (>= 1.5.0)
@@ -260,9 +260,9 @@ GEM
       ttfunk (~> 1.5)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
-    prawnto_2 (0.2.6)
-      prawn (>= 0.6.0)
-      rails (>= 3.1)
+    prawnto_2 (0.3.0)
+      prawn (>= 1.0.0)
+      rails (>= 3.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -428,4 +428,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.4
+   1.16.5
