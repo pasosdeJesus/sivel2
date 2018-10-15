@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ea8f85695c309b32f49c540c8e53ecd031c92474
+  revision: fdc4cbff6bcd49a4d18c5d43389597dab53e540a
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 068307e1208f5bdab8aef4c4a74ae32eb08a7044
+  revision: 38cbe0a5e8f80ebe339c7448a8842771005cf253
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9d4dd3b2d294bcaf146a6aa722d72fc9e3440608
+  revision: 22748195bb209a943b556d33532cfe3c1ea9e36d
   specs:
     sivel2_gen (2.0b7)
       devise
@@ -176,7 +176,7 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    i18n (1.1.0)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     interception (0.5)
     jbuilder (2.7.0)
@@ -203,7 +203,7 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
@@ -368,7 +368,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.6)
-    xpath (3.1.0)
+    xpath (3.2.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
