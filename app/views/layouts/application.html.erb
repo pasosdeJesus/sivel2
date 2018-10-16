@@ -8,9 +8,15 @@
       <%= drop_down "Casos" do %>
         <%= menu_item "Listado", sivel2_gen.casos_path %>
         <%= menu_item "Nuevo Caso", sivel2_gen.new_caso_path %>
-        <%= menu_item "Conteo demografía víctimas", sivel2_gen.conteos_personas_path %>
-        <%= menu_item "Conteo general de víctimas", sivel2_gen.conteos_genvic_path %>
         <%= menu_item "Validar casos", sivel2_gen.validarcasos_path %>
+      <% end %>
+      <%= drop_down "Reportes y conteos" do %>
+        <%= menu_item "Consolidado de víctimas", 
+          sivel2_gen.victimas_path %>
+        <%= menu_item "Conteo demografía víctimas", 
+          sivel2_gen.conteos_personas_path %>
+        <%= menu_item "Conteo general de víctimas", 
+          sivel2_gen.conteos_genvic_path %>
       <% end %>
     <% end %>
   <% end %>
