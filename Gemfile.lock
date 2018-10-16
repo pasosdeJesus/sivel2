@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fdc4cbff6bcd49a4d18c5d43389597dab53e540a
+  revision: ede8ca63064bbb22afe1206c2e6da82776c98714
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b61cc82c65a30241a8c5ca3dfb30d2a37175d148
+  revision: 33d52f97f9c1d841c1cb3f816d8b8766a1e0bc4b
   specs:
     sivel2_gen (2.0b7)
       devise
