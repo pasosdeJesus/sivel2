@@ -25,6 +25,18 @@
       <%= drop_down "Documentos" do %>
         <%= menu_item "Manual", 'https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing' %>
         <%= menu_item "Nube", heb412_gen.sisini_path %>
+        <% if can? :manage, ::Heb412Gen::Plantillahcm %>
+          <%= menu_item "Plantillas para listado en hojas de calculo",
+            heb412_gen.plantillashcm_path %>
+        <% end %>
+        <% if can? :manage, ::Heb412Gen::Plantillahcr %>
+          <%= menu_item "Plantillas para un registro en hoja de calculo",
+            heb412_gen.plantillashcr_path %>
+        <% end %>
+        <% if can? :manage, ::Heb412Gen::Plantilladoc %>
+          <%= menu_item "Plantillas para un registro en documento",
+            heb412_gen.plantillasdoc_path %>
+        <% end %>
       <% end %>
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
