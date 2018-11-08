@@ -7,6 +7,15 @@ if (test -f ".env") then {
 if (test "$RC" = "") then {
 	export RC=sivel2
 } fi;
+if (test "$RAILS_ENV" = "") then {
+	RAILS_ENV=development
+} fi;
+if (test "$PUERTODES" = "") then {
+	PUERTODES=2300
+} fi;
+if (test "$IPDES" = "") then {
+	IPDES=127.0.0.1
+} fi;
 if (test "$RAILS_ENV" = "development") then {
 	bin/rails s -p $PUERTODES -b $IPDES
 } else {
