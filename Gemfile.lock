@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5b5e248aee264969cb2244c1683d29fedf4312a8
+  revision: 7a394ccafb43c69ae2bbabca36de4e4576349e61
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4164b687d1bd9794e4a1bf550e00d303e5713cd0
+  revision: 0ac17e344bbdc2b090fef0c9b10983e652a9ea55
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 490596b6a810ff3800ea82f6077c71f7d100eff0
+  revision: b665b86966b079c6e14473e79ebc3ade531c8de6
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -166,8 +166,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.6.5)
-      devise (>= 4.4)
+    devise-i18n (1.7.0)
+      devise (>= 4.5)
     docile (1.3.1)
     erubi (1.7.1)
     execjs (2.7.0)
@@ -207,7 +207,7 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    method_source (0.9.1)
+    method_source (0.9.2)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
@@ -304,7 +304,7 @@ GEM
       rubyzip (~> 1.1)
     ruby-progressbar (1.10.0)
     rubyzip (1.2.2)
-    sass (3.7.1)
+    sass (3.7.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -334,7 +334,7 @@ GEM
       sprockets (>= 3.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (0.20.0)
+    thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.8)
     ttfunk (1.5.1)
