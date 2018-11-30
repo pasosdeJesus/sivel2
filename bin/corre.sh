@@ -17,6 +17,9 @@ if (test "$IPDES" = "") then {
 	IPDES=127.0.0.1
 } fi;
 if (test "$RAILS_ENV" = "development") then {
+	if (test "$SININD" = "") then {
+		bundle exec rake sip:indices
+	} fi;
 	bin/rails s -p $PUERTODES -b $IPDES
 } else {
 	if (test ! -f /etc/rc.d/$RC) then {
