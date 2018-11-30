@@ -2242,7 +2242,7 @@ CREATE SEQUENCE public.sivel2_gen_pconsolidado_id_seq
 
 CREATE TABLE public.sivel2_gen_pconsolidado (
     id integer DEFAULT nextval('public.sivel2_gen_pconsolidado_id_seq'::regclass) NOT NULL,
-    rotulo character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     tipoviolencia character varying(25) NOT NULL,
     clasificacion character varying(25) NOT NULL,
     peso integer DEFAULT 0,
@@ -2250,6 +2250,7 @@ CREATE TABLE public.sivel2_gen_pconsolidado (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(500),
     CONSTRAINT pconsolidado_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -4509,6 +4510,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181011104537'),
 ('20181012110629'),
 ('20181017094456'),
-('20181018003945');
+('20181018003945'),
+('20181130112320');
 
 
