@@ -8,10 +8,13 @@ class PlantillaEjemplo < ActiveRecord::Migration[5.1]
           licencia, vista, nombremenu, filainicial FROM heb412_gen_plantillahcm
           WHERE id<100
         );
-      SELECT setval('heb412_gen_campoplantillahcm_id_seq', MAX(1000, id+1), true)
-        FROM heb412_gen_campoplantillahcm;
-      SELECT setval('heb412_gen_plantillahcm_id_seq', MAX(100, id+1), true)
-        FROM heb412_gen_plantillahcm;
+
+      SELECT setval('heb412_gen_campoplantillahcm_id_seq', MAX(id))
+        FROM (SELECT 1000 as id UNION 
+            SELECT MAX(id) FROM heb412_gen_campoplantillahcm) AS s;
+      SELECT setval('heb412_gen_plantillahcm_id_seq', MAX(id), true)
+        FROM (SELECT 100 as id UNION 
+            SELECT MAX(id) FROM heb412_gen_plantillahcm) AS s;
 
 
       INSERT INTO heb412_gen_plantillahcm 
