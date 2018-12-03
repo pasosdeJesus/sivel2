@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 3ad26457bba16fd7d77ef22bcf856b310d834e83
+  revision: 6a24e684913443f90aff52887a333b0b9b52c686
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0b661228774608b52f4a73fe4f99859cad590a90
+  revision: 643a8bc184d92b2ae228edd4d0cea7518090f224
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,78 +33,12 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 81192b72ff1e6f826c11eb699b73b17ea5fb995c
+  revision: 8cb9559e1de9b52b19e4679c4e82c080d0d17895
   specs:
     sivel2_gen (2.0b8)
       devise
       jquery-rails
       rails
-
-GIT
-  remote: https://github.com/rails/rails.git
-  revision: 4887f97bd8a8859294ad02ccea20d83a94ec0812
-  ref: 4887f97bd8a8859294ad02ccea20d83a94ec0812
-  specs:
-    actioncable (5.2.0)
-      actionpack (= 5.2.0)
-      nio4r (~> 2.0)
-      websocket-driver (>= 0.6.1)
-    actionmailer (5.2.0)
-      actionpack (= 5.2.0)
-      actionview (= 5.2.0)
-      activejob (= 5.2.0)
-      mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 2.0)
-    actionpack (5.2.0)
-      actionview (= 5.2.0)
-      activesupport (= 5.2.0)
-      rack (~> 2.0)
-      rack-test (>= 0.6.3)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.2.0)
-      activesupport (= 5.2.0)
-      builder (~> 3.1)
-      erubi (~> 1.4)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.2.0)
-      activesupport (= 5.2.0)
-      globalid (>= 0.3.6)
-    activemodel (5.2.0)
-      activesupport (= 5.2.0)
-    activerecord (5.2.0)
-      activemodel (= 5.2.0)
-      activesupport (= 5.2.0)
-      arel (>= 9.0)
-    activestorage (5.2.0)
-      actionpack (= 5.2.0)
-      activerecord (= 5.2.0)
-      marcel (~> 0.3.1)
-    activesupport (5.2.0)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-    rails (5.2.0)
-      actioncable (= 5.2.0)
-      actionmailer (= 5.2.0)
-      actionpack (= 5.2.0)
-      actionview (= 5.2.0)
-      activejob (= 5.2.0)
-      activemodel (= 5.2.0)
-      activerecord (= 5.2.0)
-      activestorage (= 5.2.0)
-      activesupport (= 5.2.0)
-      bundler (>= 1.3.0)
-      railties (= 5.2.0)
-      sprockets-rails (>= 2.0.0)
-    railties (5.2.0)
-      actionpack (= 5.2.0)
-      activesupport (= 5.2.0)
-      method_source
-      rake (>= 0.8.7)
-      thor (>= 0.18.1, < 2.0)
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
@@ -116,6 +50,47 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    actioncable (5.2.1.1)
+      actionpack (= 5.2.1.1)
+      nio4r (~> 2.0)
+      websocket-driver (>= 0.6.1)
+    actionmailer (5.2.1.1)
+      actionpack (= 5.2.1.1)
+      actionview (= 5.2.1.1)
+      activejob (= 5.2.1.1)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 2.0)
+    actionpack (5.2.1.1)
+      actionview (= 5.2.1.1)
+      activesupport (= 5.2.1.1)
+      rack (~> 2.0)
+      rack-test (>= 0.6.3)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (5.2.1.1)
+      activesupport (= 5.2.1.1)
+      builder (~> 3.1)
+      erubi (~> 1.4)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    activejob (5.2.1.1)
+      activesupport (= 5.2.1.1)
+      globalid (>= 0.3.6)
+    activemodel (5.2.1.1)
+      activesupport (= 5.2.1.1)
+    activerecord (5.2.1.1)
+      activemodel (= 5.2.1.1)
+      activesupport (= 5.2.1.1)
+      arel (>= 9.0)
+    activestorage (5.2.1.1)
+      actionpack (= 5.2.1.1)
+      activerecord (= 5.2.1.1)
+      marcel (~> 0.3.1)
+    activesupport (5.2.1.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     andand (1.3.3)
@@ -130,6 +105,7 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (10.0.2)
     camertron-eprun (1.1.1)
     cancancan (2.3.0)
     capybara (2.18.0)
@@ -277,6 +253,19 @@ GEM
     rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rails (5.2.1.1)
+      actioncable (= 5.2.1.1)
+      actionmailer (= 5.2.1.1)
+      actionpack (= 5.2.1.1)
+      actionview (= 5.2.1.1)
+      activejob (= 5.2.1.1)
+      activemodel (= 5.2.1.1)
+      activerecord (= 5.2.1.1)
+      activestorage (= 5.2.1.1)
+      activesupport (= 5.2.1.1)
+      bundler (>= 1.3.0)
+      railties (= 5.2.1.1)
+      sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -290,6 +279,12 @@ GEM
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
+    railties (5.2.1.1)
+      actionpack (= 5.2.1.1)
+      activesupport (= 5.2.1.1)
+      method_source
+      rake (>= 0.8.7)
+      thor (>= 0.19.0, < 2.0)
     raindrops (0.19.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
@@ -378,6 +373,7 @@ DEPENDENCIES
   bcrypt
   bootsnap (>= 1.1.0)
   bootstrap-datepicker-rails
+  byebug
   cancancan
   chosen-rails
   cocoon!
@@ -405,7 +401,7 @@ DEPENDENCIES
   pry-rescue
   pry-stack_explorer
   puma
-  rails (~> 5.2.0)!
+  rails (~> 5.2.1)
   rails-i18n
   rails_12factor
   rspreadsheet
