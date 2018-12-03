@@ -1,6 +1,19 @@
 class PlantillaEjemplo < ActiveRecord::Migration[5.1]
   def up
     execute <<-SQL
+      UPDATE heb412_gen_campoplantillahcm SET id=id+1000 WHERE id<1000;
+      INSERT INTO heb412_gen_plantillahcm (id, ruta, descripcion, fuente,
+        licencia, vista, nombremenu, filainicial) 
+        (SELECT id+100, ruta, descripcion, fuente, 
+          licencia, vista, nombremenu, filainicial FROM heb412_gen_plantillahcm
+          WHERE id<100
+        );
+      SELECT setval('heb412_gen_campoplantillahcm_id_seq', MAX(1000, id+1), true)
+        FROM heb412_gen_campoplantillahcm;
+      SELECT setval('heb412_gen_plantillahcm_id_seq', MAX(100, id+1), true)
+        FROM heb412_gen_plantillahcm;
+
+
       INSERT INTO heb412_gen_plantillahcm 
         (id, ruta, descripcion, fuente, licencia, vista, nombremenu, filainicial) 
       VALUES
