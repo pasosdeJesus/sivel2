@@ -51,10 +51,6 @@
         <% if can? :manage, :tablasbasicas %>
           <%= menu_item "Tablas Básicas", sivel2_gen.tablasbasicas_path %>
         <% end %>
-        <% if can? :manage, ::Heb412Gen::Plantillahcm %>
-          <%= menu_item "Definir generación en plantilla de hoja de cálculo", 
-            heb412_gen.new_plantillahcm_path %>
-        <% end %>
         <% if can? :manage, Sip::Respaldo7z %>
           <%= menu_item "Respaldo cifrado", sip.respaldo7z_path %>
         <% end %>
