@@ -144,7 +144,7 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">caso-basico-intrvalo</td></tr>
+<tr><td rowspan="1" colspan="3">caso-basico-intervalo</td></tr>
 </thead>
 <tbody>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>38,16</td>
@@ -216,28 +216,32 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">caso-ubicacióno-pais</td></tr>
+<tr><td rowspan="1" colspan="3">caso-ubicación-pais</td></tr>
 </thead>
 <tbody>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>46,23</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+</tr>
 <tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/anzorc/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>53,12</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
 </tr>
 <tr><td>clickAt</td><td>link=Ubicación<datalist><option>link=Ubicación</option><option>//a[contains(text(),'Ubicación')]</option><option>//form[@id='edit_caso_60']/div/div[2]/ul/li[2]/a</option><option>//a[contains(@href, '#ubicacion')]</option><option>//form/div/div[2]/ul/li[2]/a</option></datalist></td><td>73,17</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+</tr>
 <tr><td>clickAt</td><td>link=Añadir Ubicación<datalist><option>link=Añadir Ubicación</option><option>css=a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Ubicación')]</option><option>//div[@id='ubicacion']/div/a</option><option>xpath=(//a[contains(@href, '#')])[17]</option><option>//div[2]/div/a</option></datalist></td><td>52,13</td>
 </tr>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+<tr><td>clickAt</td><td>link=Ubicación<datalist><option>link=Ubicación</option><option>//a[contains(text(),'Ubicación')]</option><option>//form[@id='edit_caso_60']/div/div[2]/ul/li[2]/a</option><option>//a[contains(@href, '#ubicacion')]</option><option>//form/div/div[2]/ul/li[2]/a</option></datalist></td><td>73,17</td>
 </tr>
-<tr><td>select</td><td>//div[2]/div/div[2]/div/div/div/select<datalist><option>id=caso_ubicacion_attributes_22_id_pais</option><option>name=caso[ubicacion_attributes][22][id_pais]</option><option>css=#caso_ubicacion_attributes_22_id_pais</option><option>//select[@id='caso_ubicacion_attributes_22_id_pais']</option><option>//div[@id='ubicacion']/div/div/div/select</option><option>//div[2]/div/div[2]/div/div/div/select</option></datalist></td><td>label=COLOMBIA</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option><option>$('.chosen-select').removeAttr('style')</option></datalist></td><td></td>
 </tr>
-<tr><td>mouseDownAt</td><td>//div[2]/div/div[2]/div/div/div/select<datalist><option>id=caso_ubicacion_attributes_22_id_pais</option><option>name=caso[ubicacion_attributes][22][id_pais]</option><option>css=#caso_ubicacion_attributes_22_id_pais</option><option>//select[@id='caso_ubicacion_attributes_22_id_pais']</option><option>//div[@id='ubicacion']/div/div/div/select</option><option>//div[2]/div/div[2]/div/div/div/select</option></datalist></td><td>-68,-262</td>
+<tr><td>runScript</td><td>$('.chosen-container').remove();<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option><option>$('.chosen-container').remove();</option></datalist></td><td></td>
 </tr>
-<tr><td>mouseMoveAt</td><td>//div[2]/div/div[2]/div/div/div/select<datalist><option>id=caso_ubicacion_attributes_22_id_pais</option><option>name=caso[ubicacion_attributes][22][id_pais]</option><option>css=#caso_ubicacion_attributes_22_id_pais</option><option>//select[@id='caso_ubicacion_attributes_22_id_pais']</option><option>//div[@id='ubicacion']/div/div/div/select</option><option>//div[2]/div/div[2]/div/div/div/select</option></datalist></td><td>-68,-262</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option><option>$('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>mouseUpAt</td><td>//div[2]/div/div[2]/div/div/div/select<datalist><option>id=caso_ubicacion_attributes_22_id_pais</option><option>name=caso[ubicacion_attributes][22][id_pais]</option><option>css=#caso_ubicacion_attributes_22_id_pais</option><option>//select[@id='caso_ubicacion_attributes_22_id_pais']</option><option>//div[@id='ubicacion']/div/div/div/select</option><option>//div[2]/div/div[2]/div/div/div/select</option></datalist></td><td>-68,-262</td>
-</tr>
-<tr><td>clickAt</td><td>//div[2]/div/div[2]/div/div/div/select<datalist><option>id=caso_ubicacion_attributes_22_id_pais</option><option>name=caso[ubicacion_attributes][22][id_pais]</option><option>css=#caso_ubicacion_attributes_22_id_pais</option><option>//select[@id='caso_ubicacion_attributes_22_id_pais']</option><option>//div[@id='ubicacion']/div/div/div/select</option><option>//div[2]/div/div[2]/div/div/div/select</option></datalist></td><td>-68,-262</td>
+<tr><td>select</td><td>//select[substring(@id,string-length(@id) -string-length('id_pais') +1) = 'id_pais']<datalist><option>id=caso_ubicacion_attributes_56_id_pais</option><option>name=caso[ubicacion_attributes][56][id_pais]</option><option>css=#caso_ubicacion_attributes_56_id_pais</option><option>//select[@id='caso_ubicacion_attributes_56_id_pais']</option><option>//div[@id='ubicacion']/div/div/div/div/div/select</option><option>//div[2]/div/div[2]/div/div/div/div/div/select</option><option>//select[substring(@id,string-length(@id) -string-length('id_pais') +1) = 'id_pais']</option></datalist></td><td>label=COLOMBIA</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_60']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>114,23</td>
 </tr>
