@@ -1766,7 +1766,7 @@ CREATE VIEW public.sivel2_gen_conscaso1 AS
  SELECT caso.id AS caso_id,
     caso.fecha,
     caso.memo,
-    array_to_string(ARRAY( SELECT (((departamento.nombre)::text || ' / '::text) || (municipio.nombre)::text)
+    array_to_string(ARRAY( SELECT (((COALESCE(departamento.nombre, ''::character varying))::text || ' / '::text) || (COALESCE(municipio.nombre, ''::character varying))::text)
            FROM ((public.sip_ubicacion ubicacion
              LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
              LEFT JOIN public.sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
@@ -3817,6 +3817,14 @@ ALTER TABLE ONLY public.sip_departamento
 
 
 --
+-- Name: sip_municipio fk_rails_089870a38d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_municipio
+    ADD CONSTRAINT fk_rails_089870a38d FOREIGN KEY (id_departamento) REFERENCES public.sip_departamento(id);
+
+
+--
 -- Name: heb412_gen_campohc fk_rails_1e5f26c999; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3886,6 +3894,14 @@ ALTER TABLE ONLY public.sip_actorsocial_persona
 
 ALTER TABLE ONLY public.sip_grupo_usuario
     ADD CONSTRAINT fk_rails_8d24f7c1c0 FOREIGN KEY (sip_grupo_id) REFERENCES public.sip_grupo(id);
+
+
+--
+-- Name: sip_departamento fk_rails_92093de1a1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_departamento
+    ADD CONSTRAINT fk_rails_92093de1a1 FOREIGN KEY (id_pais) REFERENCES public.sip_pais(id);
 
 
 --
@@ -3974,6 +3990,14 @@ ALTER TABLE ONLY public.sivel2_gen_combatiente
 
 ALTER TABLE ONLY public.sivel2_gen_combatiente
     ADD CONSTRAINT fk_rails_fb02819ec4 FOREIGN KEY (id_rangoedad) REFERENCES public.sivel2_gen_rangoedad(id);
+
+
+--
+-- Name: sip_clase fk_rails_fb09f016e4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_clase
+    ADD CONSTRAINT fk_rails_fb09f016e4 FOREIGN KEY (id_municipio) REFERENCES public.sip_municipio(id);
 
 
 --
@@ -4511,6 +4535,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181012110629'),
 ('20181017094456'),
 ('20181018003945'),
-('20181130112320');
+('20181130112320'),
+('20190109125417'),
+('20190110191802'),
+('20190128032125');
 
 
