@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 11b5ba236af659586abc5d8f7e24f595d59a485a
+  revision: dab81daf1e9cb95d6a69d5a0629d3264ede7c605
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0bf71402370e6597d21ddee96decbe427fcbf6c5
+  revision: 50a60137c2099ddf41a1ef57420ebc956a1f760f
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 66f4b5555bb0f37918edddf9e5027416f44dec0b
+  revision: cbee25ee185461a89627a4acfebd1e2c25ba6e3d
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -101,12 +101,12 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.3.2)
+    bootsnap (1.4.1)
       msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (10.0.2)
+    byebug (11.0.0)
     camertron-eprun (1.1.1)
     cancancan (2.3.0)
     capybara (2.18.0)
@@ -138,14 +138,14 @@ GEM
     connection_pool (2.2.2)
     crass (1.0.4)
     debug_inspector (0.0.3)
-    devise (4.5.0)
+    devise (4.6.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.7.1)
-      devise (>= 4.5)
+    devise-i18n (1.8.0)
+      devise (>= 4.6)
     docile (1.3.1)
     erd (0.6.3)
       nokogiri
@@ -169,7 +169,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.1.0)
+    json (2.2.0)
     kgio (2.11.2)
     launchy (2.4.3)
       addressable (~> 2.3)
