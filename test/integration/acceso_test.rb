@@ -18,7 +18,8 @@ class AccesoTest < Capybara::Rails::TestCase
     @numcaso=find_field('Caso No').value
 
     # Datos básicos
-    fill_in "Fecha del hecho", with: '05/Ago/2014'
+    fill_in "Fecha del hecho", 
+      with: Sip::FormatoFechaHelper.fecha_local_estandar('2014-08-05')
     fill_in "Título", with: 'titulo'
     click_button "Guardar"
     assert page.has_content?("2014-08-05")
