@@ -296,7 +296,7 @@ CREATE VIEW public.cben1 AS
  SELECT caso.id AS id_caso,
     victima.id_persona,
     1 AS npersona,
-    ((date_part('year'::text, caso.fecha) || '-'::text) || lpad((date_part('month'::text, caso.fecha))::text, 2, '0'::text)) AS mes
+    victima.id_rangoedad
    FROM public.sivel2_gen_caso caso,
     public.sivel2_gen_victima victima
   WHERE (caso.id = victima.id_caso);
@@ -440,7 +440,7 @@ CREATE VIEW public.cben2 AS
  SELECT cben1.id_caso,
     cben1.id_persona,
     cben1.npersona,
-    cben1.mes,
+    cben1.id_rangoedad,
     ubicacion.id_departamento,
     departamento.nombre AS departamento_nombre,
     ubicacion.id_municipio,
@@ -452,7 +452,7 @@ CREATE VIEW public.cben2 AS
      LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
      LEFT JOIN public.sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
      LEFT JOIN public.sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.mes, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
+  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.id_rangoedad, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
 
 
 --
@@ -4380,7 +4380,7 @@ ALTER TABLE ONLY public.sivel2_gen_victimacolectiva
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20131128151014'),
@@ -4538,6 +4538,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181130112320'),
 ('20190109125417'),
 ('20190110191802'),
-('20190128032125');
+('20190128032125'),
+('20190308195346');
 
 
