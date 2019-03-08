@@ -11,6 +11,7 @@ gem "rails-i18n"
 
 gem "odf-report"
 
+gem 'bigdecimal'
 
 # Postgresql
 gem "pg"#, '~> 0.21'
@@ -99,12 +100,13 @@ group :development do
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console'
+  gem 'erd'
 
 end
 
 group :development, :test do
   # Depurar
-  gem 'byebug'
+  #gem 'byebug'
 end
 
 group :test do
@@ -134,7 +136,7 @@ end
 
 group :production do
   # Para despliegue
-  gem "unicorn"
+  gem "unicorn", '5.4.1'
 
   # Requerido por heroku para usar stdout como bitacora
   gem "rails_12factor"
