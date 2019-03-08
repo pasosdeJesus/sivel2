@@ -12,10 +12,10 @@ if (test "${DIRAP}" = "") then {
 	echo "Definir directorio de la aplicación en DIRAP"
 	exit 1;
 } fi;
-if (test "${RAILS_RELATIVE_URL_ROOT}" = "") then {
-	echo "Definir ruta relativa en URL en RAILS_RELATIVE_URL_ROOT"
-	exit 1;
-} fi;
+#if (test "${RAILS_RELATIVE_URL_ROOT}" = "") then {
+#	echo "Definir ruta relativa en URL en RAILS_RELATIVE_URL_ROOT"
+#	exit 1;
+#} fi;
 
 DOAS=`which doas 2> /dev/null`
 if (test "$?" != "0") then {
