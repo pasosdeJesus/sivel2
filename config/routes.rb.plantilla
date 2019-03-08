@@ -1,6 +1,9 @@
+# encoding: utf-8
+
 Rails.application.routes.draw do
 
   scope 'sivel2' do
+
     devise_scope :usuario do
       get 'sign_out' => 'devise/sessions#destroy'
   
@@ -25,7 +28,9 @@ Rails.application.routes.draw do
     resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
   
     root 'sivel2_gen/hogar#index'
+
   end
+
   mount Sip::Engine => "/sivel2", as: 'sip'
   mount Sivel2Gen::Engine => "/sivel2", as: 'sivel2_gen'
   mount Heb412Gen::Engine => "/sivel2", as: 'heb412_gen'
