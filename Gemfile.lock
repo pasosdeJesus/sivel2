@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 8f66dcf1540b96e0660fdaec34b33eaeedc7562a
+  revision: 0257a344d4e8e3126fe3194d885bacfa6370c30d
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -214,7 +214,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.2.7)
+    msgpack (1.2.8)
     multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.10.1)
@@ -359,7 +359,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.4.1)
+    unicorn (5.5.0.1.g6836)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.8)
@@ -427,7 +427,7 @@ DEPENDENCIES
   twitter_cldr
   tzinfo
   uglifier
-  unicorn (= 5.4.1)
+  unicorn (~> 5.5.0.1.g6836)
   web-console
   will_paginate
 
