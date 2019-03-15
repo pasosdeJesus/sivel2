@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4789d78fc2b1b81a4b62024092de7428d3cc0285
+  revision: f8a6cef99c44892b2e7e02ac6321806a9b66bc72
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e886c9a9694c4c1de405d734aff7ef831bc92e13
+  revision: f3f455ddb06bb42bf89527a45bc19cddfea031d3
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 00879847c29d768759dcf47fd406832114b19999
+  revision: 57d70af6749527de2e67bdc1b4cde322dee9d421
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -106,7 +106,6 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (11.0.0)
     camertron-eprun (1.1.1)
     cancancan (2.3.0)
     capybara (2.18.0)
@@ -134,7 +133,7 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     commonjs (0.2.7)
-    concurrent-ruby (1.1.4)
+    concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
     debug_inspector (0.0.3)
@@ -215,7 +214,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.2.7)
+    msgpack (1.2.9)
     multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.10.1)
@@ -360,7 +359,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.5.0)
+    unicorn (5.5.0.1.g6836)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.8)
@@ -385,7 +384,6 @@ DEPENDENCIES
   bigdecimal
   bootsnap (>= 1.1.0)
   bootstrap-datepicker-rails
-  byebug
   cancancan
   chosen-rails
   cocoon!
@@ -429,7 +427,7 @@ DEPENDENCIES
   twitter_cldr
   tzinfo
   uglifier
-  unicorn
+  unicorn (~> 5.5.0.1.g6836)
   web-console
   will_paginate
 
