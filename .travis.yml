@@ -22,6 +22,9 @@ before_install:
         - sudo /etc/init.d/postgresql stop
         - sudo /etc/init.d/postgresql start 9.6
         - psql -c 'CREATE DATABASE sivel2gen_pru;' -U postgres
+        - gem install bundler
+        - gem update --system
+        - bundle update --bundler
         - bundle install
         - cp config/database.travis.yml config/database.yml
         - cp config/application.rb.plantilla config/application.rb
