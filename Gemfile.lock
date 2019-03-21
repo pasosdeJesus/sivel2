@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 3cad685dee0ef8d2c2695cb212ef7c69f016ffda
+  revision: c866b4bd03d91bba6f58cbeff4049489deddcd6c
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ecae2a3632bb2451a72ccd809e1b45ea372612fa
+  revision: b724d044f46e43b2dbb9be05599920817bf3e827
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 5802c3d18174b8b1fa5d4c42b32f9adeeabbec71
+  revision: d91873b4545fed07a5ab9cdd67cc43bb519be942
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -253,7 +253,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.1)
     rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -372,7 +372,7 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    will_paginate (3.1.6)
+    will_paginate (3.1.7)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
