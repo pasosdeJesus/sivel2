@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c866b4bd03d91bba6f58cbeff4049489deddcd6c
+  revision: 75c54f12442d63e40a934a7ecb9fe4e50def3a64
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: d91873b4545fed07a5ab9cdd67cc43bb519be942
+  revision: 999fdf0088ed7bde14c25fca00f54baed19d7acc
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
-  revision: 9d29a8abcc5b6ed9aefcad85ca54dd1364262583
+  revision: f1c8458db49f388d0f1f02e98d04e8c23c131bb9
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
