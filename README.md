@@ -22,7 +22,7 @@ y  [sip](https://github.com/pasosdeJesus/sip)
 
 ### Configuración y uso de servidor de desarrollo
 
-Cree un usuario para la base de datos como se explica en 
+Cree un usuario para PostgreSQL como se explica en 
 <https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
 (si deja el nombre sipdes se le facilitarán los siguientes pasos)
 
@@ -43,12 +43,10 @@ Cree un usuario para la base de datos como se explica en
     } fi; 
   done
 ```
-  Estas plantillas dejan la aplicación en el URL / (tendría que modificarlas
+  Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que modificarlas
   si prefiere una raiz de URL diferente, ver sección 'Punto de montaje' de 
-  https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-rutas,-controladores-y-vistas )
-* Establezca una ruta para anexos en ```config/initializers/sip.rb```.  
-  Debe existir y poder ser escrita por el dueño del proceso con el que corra 
-  el servidor de desarrollo.
+  https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-rutas,-controladores-y-vistas ).
+  Asegurese de establecer usuario y base de datos que configuró en PostgreSQL en config/database.yml.
 * Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
   falta.
@@ -58,9 +56,9 @@ Cree un usuario para la base de datos como se explica en
   bin/rails db:migrate
   bin/rails sip:indices
 ```
-  Si va a empezar con una base nueva ejecute como usuario `_postgresql`:
+  Si va a empezar con una base nueva sivel2gen_des como usuario de PostgreSQL sipdes:
 ```sh
-  createdb -Upostgres -h/var/www/var/run/postgresql/ -Osipdes sivel2gen_des
+  createdb -U sipdes -h /var/www/var/run/postgresql/ sivel2gen_des
 ```
   y desde el directorio de la aplicación:  
 ```sh
