@@ -10,7 +10,6 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>  
 
-Además PhantomJS
 
 ### Arquitectura
 
