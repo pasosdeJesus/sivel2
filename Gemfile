@@ -13,6 +13,8 @@ gem "odf-report"
 
 gem 'bigdecimal'
 
+gem 'redcarpet'
+
 # Postgresql
 gem "pg"#, '~> 0.21'
 

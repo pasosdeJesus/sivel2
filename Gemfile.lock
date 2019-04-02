@@ -415,6 +415,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-i18n
   rails_12factor
+  redcarpet
   rspreadsheet
   sass
   simple_form
