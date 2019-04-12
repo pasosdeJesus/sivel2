@@ -31,6 +31,10 @@ Cree un usuario para PostgreSQL como se explica en
 ```
   bundle install
 ```
+o si tiene problema para instalar una porque requiere permisos de administrador instalela con:
+```
+doas gem install --install-dir /var/www/bundler/ruby/2.6/ bindex -v 0.7.0
+```
 * Copie y de requerirlo modifique las plantillas:
 ```sh
   find . -name "*plantilla"
