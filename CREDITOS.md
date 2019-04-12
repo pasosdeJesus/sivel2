@@ -5,6 +5,7 @@ Ver los creditos de esa versión en
 
 * Proceso de Desarrollo: Vladimir Támara <vtamara@pasosdeJesus.org>
 * Pruebas: Blanca Acosta <blanca@pasosdeJesus.org>
+* Pruebas a infraestructura: Cristian Llanos (cllanos@cinep.org.co)
 * Información geográfica de Venezuela y Ecuador: Randolf Laverde
 * Mejoras a DIVIPOLA: Alejandro Cadena
 * Tooltips: Andrea Padilla
