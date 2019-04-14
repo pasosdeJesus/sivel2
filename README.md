@@ -101,6 +101,32 @@ RAILS_ENV=test bundle exec rake sip:indices
 bundle exec rails test
 ```
 
+### Pruebas de regresión ```sivel2``` (test)
+
+Las pruebas se corren con en la ruta donde se encuentra las fuentes de la aplicación, digamos en la ruta donde dejo fuente ```/var/www/htdocs/sivel2/```
+
+```sh
+bin/rails test
+```
+Se editan los archivos usuario_test.rb, acceso_test.rb de la ruta: test/integration/; en ambos arhivos se incluyen la palabra ```skip```. 
+
+Para el primer archivo debe ubicar después de 'test "no autentica" do', y después de 
+'visit File.join(Rails.configuration.relative_url_root, '/usuarios/sign_in''
+
+```
+    test "no autentica" do
+    skip
+   
+    visit File.join(Rails.configuration.relative_url_root, '/usuarios/sign_in')
+    skip
+   ```
+
+En el caso del archivo acceso_test.rb se ubica después de:
+ ```
+ test "control de acceso" do
+    skip
+```
+
 ### Desarrollo en codio.com
 
 Opera bien excepto por la lentitud (aunque es más rápido que otros sitios
