@@ -1,25 +1,31 @@
-# SIVeL 2
+# SIVeL 2 #
+
+## Bienvenido al código fuente de SIVeL ##
+Sistema de Información de Violencia Política en Línea versión 2
+
 [![Estado Construcción](https://api.travis-ci.org/pasosdeJesus/sivel2.svg?branch=master)](https://travis-ci.org/pasosdeJesus/sivel2) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![security](https://hakiri.io/github/pasosdeJesus/sivel2/master.svg)](https://hakiri.io/github/pasosdeJesus/sivel2/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/sivel2.svg)](https://gemnasium.com/pasosdeJesus/sivel2) 
 
 ![Logo de sivel2](https://raw.githubusercontent.com/pasosdeJesus/sivel2/master/app/assets/images/logo.jpg)
 
 
-Sistema de Información de Violencia Política en Línea versión 2
-
-### Requerimientos
-
+### Requerimientos 📋
+Tecnologías, versiones y permisos.
 Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>  
 
 
-### Arquitectura
+### Arquitectura :small_red_triangle:
+Es una aplicación que emplea 3 motores genéricos:
+1. Desarrollo personalizado: 
+[sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen)
 
-Es una aplicación que emplea los motores genéricos 
-[sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen),
+2. Nube:
 [heb412_gen](https://github.com/pasosdeJesus/heb412_gen)
-y  [sip](https://github.com/pasosdeJesus/sip)
+
+3. Actualización:
+[sip](https://github.com/pasosdeJesus/sip)
 
 
-### Configuración y uso de servidor de desarrollo
+### Configuración y uso de servidor de desarrollo 🔧
 
 Cree un usuario para PostgreSQL como se explica en 
 <https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
@@ -88,7 +94,7 @@ kill 323122
 rm -rf public/assets/*
 ```
 
-### Pruebas
+### Pruebas ⚙️
 
 Dado que se hacen pruebas a modelos, rutas, controladores y vistas en 
 ```sivel2_gen```, en ```sivel2``` sólo se implementan algunas pruebas 
@@ -101,12 +107,12 @@ RAILS_ENV=test bundle exec rake sip:indices
 bundle exec rails test
 ```
 
-### Desarrollo en codio.com
+### Desarrollo en codio.com ⌨️
 
 Opera bien excepto por la lentitud (aunque es más rápido que otros sitios
 de desarrollo) y porque no puede usarse ```capybara-webkit```. 
 
-### Despliegue de prueba en Heroku
+### Despliegue de prueba en Heroku ⌨️
 
 [![heroku](https://www.herokucdn.com/deploy/button.svg)](http://sivel2.herokuapp.com) 
 
@@ -136,7 +142,7 @@ Otras labores tipicas son:
   base de datos (cuyo nombre se ve con ```heroku config```):  
   ```heroku pg:reset nombrebase```
 
-### Medición de tiempos
+### Medición de tiempos :hourglass_flowing_sand:
 
 En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de 
 respuesta medidos con el inspector del navegador Chrome (una vez en la página 
@@ -145,7 +151,7 @@ En ese archivo se ha consignado el tiempo de cada prueba junto con el servidor
 y el cliente usado.
 
 
-### Despliegue en sitio de producción con unicorn:
+### Despliegue en sitio de producción con unicorn ⌨️
 * Se recomienda que deje fuentes en ```/var/www/htdocs/sivel2```
 * Siga los mismos pasos para configurar un servidor de desarrollo --excepto
   lanzar
@@ -154,7 +160,7 @@ y el cliente usado.
 ```sh
   createdb -Upostgres -h/var/www/var/run/postgresql -Osipdes sivel2gen_pro
 ```
-* Edite credenciales cifradas con
+* Edite credenciales cifradas con:
 ```sh
 EDITOR=vim bin/rails credentials:edit
 ```
@@ -235,7 +241,7 @@ rc_cmd $1
 ```
   E incluya ```sivel2``` en la variable ```pkg_scripts``` de ```/etc/rc.conf.local```
 
-### Actualización de servidor de desarrollo
+### Actualización de servidor de desarrollo :arrows_clockwise:
 
 * Detenga el servidor de desarrollo (teclas Control-C)
 * Actualice fuentes: ```git pull```
@@ -248,7 +254,7 @@ rc_cmd $1
 * Actualice índices: ```rake sip:indices```
 * Lance nuevamente el servidor de desarrollo: ```rails s```
 
-### Actualización de servidor de producción
+### Actualización de servidor de producción :arrows_clockwise:
 
 Son practicamente los mismos pasos que emplea para actualizar servidor 
 de desarrollo, excepto que unicorn se detiene con pkill y se inica
@@ -257,7 +263,7 @@ como se describió en Despliegue y que debe preceder cada rake con
 RAILS_ENV=production
 ```
 
-### Respaldos
+### Respaldos :thumbsup:
 
 En el sitio de producción se recomienda agregar una tarea cron con:
 
@@ -265,8 +271,12 @@ En el sitio de producción se recomienda agregar una tarea cron con:
 cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca 
 ```
 
-
-### Convenciones
+### Convenciones :abc:
 
 Las mismas de ```sip```.  Ver <https://github.com/pasosdeJesus/sip/wiki/Convenciones>
 
+## Autores ✒️
+
+**Vladimir Tamara** - *Desarrollo* - [vtamara](https://github.com/vtamara)
+
+Además, se ha contado con algunos [contribuyentes](https://github.com/pasosdeJesus/sivel2/graphs/contributors) quienes han participado en este proyecto. 
