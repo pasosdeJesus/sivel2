@@ -277,6 +277,5 @@ Las mismas de ```sip```.  Ver <https://github.com/pasosdeJesus/sip/wiki/Convenci
 
 ## Autores ✒️
 
-**Vladimir Tamara** - *Desarrollo* - [vtamara](https://github.com/vtamara)
-
-Además, se ha contado con algunos [contribuyentes](https://github.com/pasosdeJesus/sivel2/graphs/contributors) quienes han participado en este proyecto. 
+Ver [contribuyentes](https://github.com/pasosdeJesus/sivel2/graphs/contributors) y 
+<https://github.com/pasosdeJesus/sivel2/blob/master/CREDITOS.md>
