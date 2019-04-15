@@ -44,16 +44,29 @@ Cree un usuario para PostgreSQL como se explica en
 * Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
 * Asegurese que las gemas esten instaladas en ```/var/www/bundler/ruby/2.6/``` siguiendo instrucciones de <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
 * El archivo ```/var/www/htdocs/sivel2/Gemfile```contiene el listado de todas las dependencias a instalar en los distinto ambientes de ejecucion. Instale las gemas que se especifican en tal archivocon:
-```shell=
+```sh
   cd /var/www/htdocs/sivel2/
-  bundle install
+```
+Para actualizar las dependencias de la aplicacion ejecute el comando:
+```sh
+bundle update
 ```
 
-si se interrumpe por problemas de permisos en instalación de una gema, instalela como en el siguiente ejemplo (cambiando la gema y la versión):
+A continuacion realice la instalacion de las dependencias:
+
+```sh
+bundle install
+```
+Si se interrumpe por problemas de permisos en instalación de una gema, instalela como en el siguiente ejemplo (cambiando la gema y la versión):
 ```sh
 doas gem install --install-dir /var/www/bundler/ruby/2.6/ bindex -v 0.7.0
 ```
-y continúe con `bundle install`
+
+
+
+
+
+
 * Copie y de requerirlo modifique las plantillas:
 ```sh
   find . -name "*plantilla"
