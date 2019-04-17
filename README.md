@@ -11,7 +11,7 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 <https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing>
 
-## Documentación para desplegar la aplicación
+## Documentación para administradores que despliegan y mantienen en operación la aplicación
 
 ### Requisitos 📋
 
@@ -249,7 +249,7 @@ En el sitio de producción se recomienda agregar una tarea cron con:
 cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca 
 ```
 
-### Desarrollo y documentación para desarrolladores :abc:
+## Desarrollo y documentación para desarrolladores :abc:
 
 El desarrollo debe centrarse en los motores que constituyen esta aplicación, 
 particularmente ```sivel2_gen```.
