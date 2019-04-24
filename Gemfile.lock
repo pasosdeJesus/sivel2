@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: cb287d1afd2aa195cd3f80a8d587dea6f7a30d4e
+  revision: 58fa999a85c643912b7d6f9ab8aa38b5ee5d348d
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 48862ab107a89113b8422dacaf4c8bf7420c5a4e
+  revision: fd0876716054d5cc42c86b20239fd6dd6c1036d2
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -125,9 +125,9 @@ GEM
     climate_control (0.2.0)
     cliver (0.3.2)
     coderay (1.1.2)
-    coffee-rails (4.2.2)
+    coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
+      railties (>= 5.2.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
