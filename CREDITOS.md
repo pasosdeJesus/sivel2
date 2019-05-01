@@ -5,6 +5,7 @@ Ver los creditos de esa versión en
 
 * Proceso de Desarrollo: Vladimir Támara <vtamara@pasosdeJesus.org>
 * Pruebas: Blanca Acosta <blanca@pasosdeJesus.org>
+* Pruebas a infraestructura: Cristian Llanos (cllanos@cinep.org.co)
 * Información geográfica de Venezuela y Ecuador: Randolf Laverde
 * Mejoras a DIVIPOLA: Alejandro Cadena
 * Tooltips: Andrea Padilla
@@ -14,9 +15,9 @@ Han apoyado financiando el desarrollo de componentes de dominio público:
 * El SJR LAC de 2013 a 2015, agradecimiento especial a 
 	Marlys Mosquera y Randolf Laverde
 * El SJR Colombia desde 2014, agradecimiento especial a 
-	Mauricio Garcia y Vera Samudio
+	Jairo Montoya, Mauricio Garcia y Vera Samudio
 * El CINEP desde finales de 2015 agradecimiento especial a 
-	Luis Guillermo Guerra, Sergio Coronado y Alejandro Angulo.
+	Luis Guillermo Guerra, Sergio Coronado, Alejandro Angulo y Javier Giraldo.
 * ANZORC desde finales de 2015 agradecimiento especial a 
 	Yenly Mendez y Leidy Romero
 * CODACOP desde comienzos de 2016 agradecimiento especial a 

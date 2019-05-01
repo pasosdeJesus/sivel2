@@ -1,36 +1,49 @@
-# SIVeL 2
+# SIVeL 2 #
+
+## Bienvenido al código fuente de SIVeL ##
+Sistema de Información de Violencia Política en Línea versión 2
+
 [![Estado Construcción](https://api.travis-ci.org/pasosdeJesus/sivel2.svg?branch=master)](https://travis-ci.org/pasosdeJesus/sivel2) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![security](https://hakiri.io/github/pasosdeJesus/sivel2/master.svg)](https://hakiri.io/github/pasosdeJesus/sivel2/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/sivel2.svg)](https://gemnasium.com/pasosdeJesus/sivel2) 
 
 ![Logo de sivel2](https://raw.githubusercontent.com/pasosdeJesus/sivel2/master/app/assets/images/logo.jpg)
 
+## Documentación para usuarios finales
 
-Sistema de Información de Violencia Política en Línea versión 2
+<https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing>
 
-### Requerimientos
+## Documentación para administradores que despliegan y mantienen en operación la aplicación
 
-Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>  
+### Requisitos 📋
 
+Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 
-### Arquitectura
-
-Es una aplicación que emplea los motores genéricos 
-[sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen),
-[heb412_gen](https://github.com/pasosdeJesus/heb412_gen)
-y  [sip](https://github.com/pasosdeJesus/sip)
-
-
-### Configuración y uso de servidor de desarrollo
+### Probar operación en modo de desarrollo 🔧
 
 Cree un usuario para PostgreSQL como se explica en 
-<https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
+<https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md>
 (si deja el nombre sipdes se le facilitarán los siguientes pasos)
 
-* Ubique fuentes por ejemplo en ```/var/www/htdocs/sivel2/```
-* Asegurse que las gemas quedan en ```/var/www/bundler/``` siguiendo instrucciones de <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
-* Instale gemas requeridas con:
-```
+* Ubique fuentes por ejemplo en `/var/www/htdocs/sivel2/`
+* Asegurese que las gemas esten instaladas.  En el caso de adJ en 
+  `/var/www/bundler/ruby/2.6/` siguiendo instrucciones de 
+  <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
+* El archivo `Gemfile` contiene el listado de todas las dependencias a 
+  instalar en los distinto ambientes de ejecucion. Instale las gemas que 
+  se especifican en tal archivo con:
+  ```sh
   bundle install
-```
+  ```
+  Si quisiera actualizar las dependencias de la aplicacion ejecute:
+  ```sh
+  bundle update
+  ```
+
+  Si se interrumpe el proceso por problemas de permisos en instalación de una 
+  gema, instalela como en el siguiente ejemplo (cambiando la gema y la versión):
+  ```sh
+  doas gem install --install-dir /var/www/bundler/ruby/2.6/ bindex -v 0.7.0
+  ```
+
 * Copie y de requerirlo modifique las plantillas:
 ```sh
   find . -name "*plantilla"
@@ -42,105 +55,81 @@ Cree un usuario para PostgreSQL como se explica en
     } fi; 
   done
 ```
-  Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que modificarlas
-  si prefiere una raiz de URL diferente, ver sección 'Punto de montaje' de 
-  https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-rutas,-controladores-y-vistas ).
-  Asegurese de establecer usuario y base de datos que configuró en PostgreSQL en config/database.yml.
-* Las  migraciones del directorio ```db/migrate``` de ```sivel2_gen``` permiten 
+  Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que 
+  modificarlas si prefiere una raiz de URL diferente, ver
+  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md>
+  Asegurese de establecer usuario y base de datos que configuró en PostgreSQL 
+  en `config/database.yml`.
+* Las  migraciones del directorio `db/migrate` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
   falta.
   Para actualizar un SIVeL 1.2 saque copia a la base, configure datos de la 
-  copia en ```config/database.yml``` y ejecute:
-```sh
+  copia en `config/database.yml` y ejecute:
+  ```sh
   bin/rails db:migrate
   bin/rails sip:indices
-```
-  Si va a empezar con una base nueva sivel2gen_des como usuario de PostgreSQL sipdes:
-```sh
+  ```
+  Si va a empezar con una base nueva ```sivel2gen_des``` como usuario de 
+  PostgreSQL sipdes:
+  ```sh
   createdb -U sipdes -h /var/www/var/run/postgresql/ sivel2gen_des
-```
+  ```
   y desde el directorio de la aplicación:  
-```sh
+  ```sh
   bin/rails db:setup
+  bin/rails db:migrate
   bin/rails sip:indices
-```
+  ```
   
-* Lance la aplicación en modo de desarrollo con:
+* Lance la aplicación en modo de desarrollo. En el siguiente ejemplo el 
+  parametro `-p` indica el puerto por el cual escuchara la aplicacion 
+  y el parametro `-b` como **0.0.0.0** para que se pueda acceder desde 
+  cualquiera de las IPs configuradas en las interfaces de red:
 ```sh
-  bin/rails s
+  bin/rails s -p 2300 -b 0.0.0.0
 ```
 * Examine con un navegador que tenga habilitadas las galletas (cookies) en el 
-  puerto 3000: ```http://127.0.0.1:3000```.  Por eso si usa el navegador ```w3m``` 
-  añada la opción ```-cookie``` 
+  puerto 2300: `http://127.0.0.1:2300`.  (Por eso si usa el 
+  navegador `w3m` añada la opción `-cookie`) 
 * Cuando requiera detener basta que de Control-C o que busque el
-  proceso con ruby que corre en el puerto 3000 y lo elimine con ```kill```:
-```sh
-ps ax | grep "ruby.*3000"
-kill 323122
-```
+  proceso con ruby que corre en el puerto 3000 y lo elimine con `kill`:
+  ```sh
+  ps ax | grep "ruby.*2300"
+  kill 323122
+  ```
 * En este modo es recomendable borrar recursos precompilados 
-```sh
-rm -rf public/assets/*
-```
+  ```sh
+  rm -rf public/assets/*
+  ```
 
-### Pruebas
+### Pruebas ⚙️
 
 Dado que se hacen pruebas a modelos, rutas, controladores y vistas en 
 ```sivel2_gen```, en ```sivel2``` sólo se implementan algunas pruebas 
-de regresión con capybara-webkit.  Si ya configuró el servidor de desarrollo
-como se explicó antes, basta ejecutarlas con:
+de integración con `capybara` y `poltergeist` (ver carpeta
+`test/` y documentación de como desarrollarlas en <https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-con-minitest.md>), 
+así como pruebas al sistema con sideex (ver carpeta `test/sideex` y documentación 
+de como hacerlas en <https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-al-sistema-con-sideex.md>
+).  
+
+Si ya configuró el servidor de desarrollo como se explicó antes y logró ver
+la aplicación corriendo puede ejecutar las pruebas de integración con:
 
 ```sh
-RAILS_ENV=test bundle exec rake db:reset
-RAILS_ENV=test bundle exec rake sip:indices
-bundle exec rails test
+RAILS_ENV=test bin/rails db:reset
+RAILS_ENV=test bin/rails sip:indices
+bin/rails test
 ```
 
-### Desarrollo en codio.com
-
-Opera bien excepto por la lentitud (aunque es más rápido que otros sitios
-de desarrollo) y porque no puede usarse ```capybara-webkit```. 
-
-### Despliegue de prueba en Heroku
-
-[![heroku](https://www.herokucdn.com/deploy/button.svg)](http://sivel2.herokuapp.com) 
-
-Para tener menos de 10000 registros en base de datos se han eliminado ciudades 
-de Colombia y Venezuela. Podrá ver departamentos/estados y municipios.
-
-Los anexos son volatiles pues tuvieron que ubicarse en ```/tmp/``` (que se 
-borra con periodicidad).
-
-En tiempo de ejecución el uso de heroku se detecta en 
-```config/initializers/sivel2_gen``` usando una variable de entorno 
---que cambia de un despliegue a otro y que debe examinarse con 
-```sh
-	heroku config
-```
-Para que heroku solo instale las gemas de producción:
-```sh
-	heroku config:set BUNDLE_WITHOUT="development:test"
-```
-
-Otras labores tipicas son:
-* Para iniciar interfaz Postgresql: ```heroku pg:psql```
-* Para ejecutar migraciones faltantes: ```heroku run rake db:migrate```
-* Para examinar configuración ```heroku config``` que entre otras mostrará URL 
-  y nombre de la base de datos.
-* Heroku usa base de datos de manera diferente, para volver a inicializar 
-  base de datos (cuyo nombre se ve con ```heroku config```):  
-  ```heroku pg:reset nombrebase```
-
-### Medición de tiempos
-
-En el archivo TIEMPO.md se han consignado algunas mediciones de tiempo de 
-respuesta medidos con el inspector del navegador Chrome (una vez en la página 
-de ingreso a SIVeL, botón derecho Inspeccionar Elemento, pestaña Network). 
-En ese archivo se ha consignado el tiempo de cada prueba junto con el servidor 
-y el cliente usado.
+Y para ejecutar las pruebas del sistema, ejecute la aplicación en modo de desarrollo
+y desde el navegador en el que la visualiza, instale la extensión sideex (http://www.sideex.org/), 
+cargue las suits de prueba de la carpeta `test/sideex` y corralas.  La mayoría de pruebas
+debería pasar (en ocasiones algunas no pasan por demoras en la aplicación para servir
+páginas o responder AJAX, pero si ejecuta varias veces eventualmente mejorando servidor,
+cliente o conexión entre ambos, deberían pasar).
 
 
-### Despliegue en sitio de producción con unicorn:
+### Despliegue en sitio de producción con unicorn ⌨️
 * Se recomienda que deje fuentes en ```/var/www/htdocs/sivel2```
 * Siga los mismos pasos para configurar un servidor de desarrollo --excepto
   lanzar
@@ -149,7 +138,7 @@ y el cliente usado.
 ```sh
   createdb -Upostgres -h/var/www/var/run/postgresql -Osipdes sivel2gen_pro
 ```
-* Edite credenciales cifradas con
+* Edite credenciales cifradas con:
 ```sh
 EDITOR=vim bin/rails credentials:edit
 ```
@@ -157,7 +146,7 @@ y con
 ```sh
 RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 ```
-* Configure la misma base de datos de un SIVeL 1.2 en sección `production`
+* Configure la misma base de datos de un SIVeL 1.2 en la sección `production`
   de `config/databases.yml` y ejecute
 ```sh
   RAILS_ENV=production bin/rails db:setup 
@@ -230,7 +219,7 @@ rc_cmd $1
 ```
   E incluya ```sivel2``` en la variable ```pkg_scripts``` de ```/etc/rc.conf.local```
 
-### Actualización de servidor de desarrollo
+### Actualización de servidor de desarrollo :arrows_clockwise:
 
 * Detenga el servidor de desarrollo (teclas Control-C)
 * Actualice fuentes: ```git pull```
@@ -238,21 +227,21 @@ rc_cmd $1
 ``` sh
   bundle install
 ```
-* Aplique cambios a base de datos: ```rake db:migrate```
-* Actualice tablas básicas: ```rake sivel:actbasicas```
-* Actualice índices: ```rake sip:indices```
-* Lance nuevamente el servidor de desarrollo: ```rails s```
+* Aplique cambios a base de datos: ```bin/rails db:migrate```
+* Actualice tablas básicas: ```bin/rails sivel:actbasicas```
+* Actualice índices: ```bin/rails sip:indices```
+* Lance nuevamente el servidor de desarrollo: ```bin/rails s -p 2300 -b 0.0.0.0```
 
-### Actualización de servidor de producción
+### Actualización de servidor de producción :arrows_clockwise:
 
 Son practicamente los mismos pasos que emplea para actualizar servidor 
-de desarrollo, excepto que unicorn se detiene con pkill y se inica
+de desarrollo, excepto que `unicorn` se detiene con pkill y se inica
 como se describió en Despliegue y que debe preceder cada rake con 
 ```
 RAILS_ENV=production
 ```
 
-### Respaldos
+### Respaldos :thumbsup:
 
 En el sitio de producción se recomienda agregar una tarea cron con:
 
@@ -260,8 +249,16 @@ En el sitio de producción se recomienda agregar una tarea cron con:
 cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca 
 ```
 
+## Desarrollo y documentación para desarrolladores :abc:
 
-### Convenciones
+El desarrollo debe centrarse en los motores que constituyen esta aplicación, 
+particularmente ```sivel2_gen```.
 
-Las mismas de ```sip```.  Ver <https://github.com/pasosdeJesus/sip/wiki/Convenciones>
+La documentación general para desarrolladores que mantenemos está en:
+<https://github.com/pasosdeJesus/sip/blob/master/doc/README.md>
 
+
+## Autores ✒️
+
+Ver [contribuyentes](https://github.com/pasosdeJesus/sivel2/graphs/contributors) y 
+<https://github.com/pasosdeJesus/sivel2/blob/master/CREDITOS.md>
