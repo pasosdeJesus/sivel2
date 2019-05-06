@@ -169,26 +169,36 @@ RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
     root /var/www/htdocs/sivel2/;
     server_name sivel2.pasosdeJesus.org
     error_log logs/s2error.log;
-
-    location ^~ /assets/ {
-        gzip_static on;
-        expires max;
-        add_header Cache-Control public;
-        root /var/www/htdocs/sivel2/public/;
+    
+    location /sivel2 {
+      try_files $uri @unicornsivel2;
     }
 
-    try_files $uri/index.html $uri @unicorn;
-    location @unicorn {
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_set_header Host $http_host;
-            proxy_redirect off;
-            proxy_pass http://unicorns2;
-            error_page 500 502 503 504 /500.html;
-            client_max_body_size 4G;
-            keepalive_timeout 10;
+    location @unicornsivel2 {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_set_header Host $http_host;
+      proxy_redirect off;
+      proxy_pass http://unicornsivel2;
+      error_page 500 502 503 504 /500.html;
+      keepalive_timeout 10;
+    }
+    
+    location ^~ /sivel2/assets/ {
+      gzip_static on;
+      expires max;
+      add_header Cache-Control public;
+      root /var/www/htdocs/sivel2/public/;
     }
 
+    location ^~ /sivel2/images/ {
+      gzip_static on;
+      expires max;
+      add_header Cache-Control public;
+      root /var/www/htdocs/sivel2/public/;
+    }
+
+    
   }
 ```
 * Precompile los recursos 
