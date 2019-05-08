@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 2c98153c9017e2f2e471afd56bc42cf675d7d40a
+  revision: 97ec21f856840a682273993a450d91220d38091d
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b0c18e494e0b7030167cbca8c53ef109288d7724
+  revision: f48e95107dd5a3941ce75734a28fc1c85d13aef5
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b1afa18d9f7fe78481c47850ceae4cc6a68bdd0b
+  revision: 7ddf3efe76e1b46454d410361f0b36f6693bb2f3
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -360,7 +360,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.5.0.1.g6836)
+    unicorn (5.5.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.8)
@@ -430,7 +430,7 @@ DEPENDENCIES
   twitter_cldr
   tzinfo
   uglifier
-  unicorn (~> 5.5.0.1.g6836)
+  unicorn
   web-console
   will_paginate
 
