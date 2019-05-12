@@ -459,7 +459,11 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/174/edita')]</option><option>//a[2]</option></datalist></td><td>35,17</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>link=Presuntos Responsables<datalist><option>link=Presuntos Responsables</option><option>//a[contains(text(),'Presuntos Responsables')]</option><option>//form[@id='edit_caso_174']/div/div[2]/ul/li[6]/a</option><option>//a[contains(@href, '#presponsable')]</option><option>//li[6]/a</option></datalist></td><td>134,26</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Añadir presunto responsable<datalist><option>link=Añadir presunto responsable</option><option>css=#presponsable &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir presunto responsable')]</option><option>//div[@id='presponsable']/div/a</option><option>xpath=(//a[contains(@href, '#')])[25]</option><option>//div[6]/div/a</option></datalist></td><td>115,11</td>
 </tr>
@@ -487,33 +491,19 @@
 </tr>
 <tr><td>type</td><td>//div[6]/div/div/div[3]/div[2]/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_batallon</option><option>name=caso[caso_presponsable_attributes][0][batallon]</option><option>css=#caso_caso_presponsable_attributes_0_batallon</option><option>//input[@id='caso_caso_presponsable_attributes_0_batallon']</option><option>//div[@id='presponsable']/div/div/div[3]/div[2]/div/input</option><option>//div[6]/div/div/div[3]/div[2]/div/input</option></datalist></td><td>90 de Boyaca</td>
 </tr>
-<tr><td>addSelection</td><td>//div[4]/select<datalist><option>id=caso_caso_presponsable_attributes_0_categoria_ids</option><option>css=#caso_caso_presponsable_attributes_0_categoria_ids</option><option>//select[@id='caso_caso_presponsable_attributes_0_categoria_ids']</option><option>//div[@id='presponsable']/div/div/div[4]/select</option><option>//div[4]/select</option></datalist></td><td>label=C63 EMBOSCADA</td>
-</tr>
-<tr><td>clickAt</td><td>//div[3]/div[3]/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_otro</option><option>name=caso[caso_presponsable_attributes][0][otro]</option><option>css=#caso_caso_presponsable_attributes_0_otro</option><option>//input[@id='caso_caso_presponsable_attributes_0_otro']</option><option>//div[@id='presponsable']/div/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>152,11</td>
-</tr>
-<tr><td>clickAt</td><td>//div[3]/div[3]/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_otro</option><option>name=caso[caso_presponsable_attributes][0][otro]</option><option>css=#caso_caso_presponsable_attributes_0_otro</option><option>//input[@id='caso_caso_presponsable_attributes_0_otro']</option><option>//div[@id='presponsable']/div/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>124,16</td>
-</tr>
 <tr><td>clickAt</td><td>//div[6]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_brigada</option><option>name=caso[caso_presponsable_attributes][0][brigada]</option><option>css=#caso_caso_presponsable_attributes_0_brigada</option><option>//input[@id='caso_caso_presponsable_attributes_0_brigada']</option><option>//div[@id='presponsable']/div/div/div[3]/div/div/input</option><option>//div[6]/div/div/div[3]/div/div/input</option></datalist></td><td>112,19</td>
 </tr>
 <tr><td>type</td><td>//div[6]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_brigada</option><option>name=caso[caso_presponsable_attributes][0][brigada]</option><option>css=#caso_caso_presponsable_attributes_0_brigada</option><option>//input[@id='caso_caso_presponsable_attributes_0_brigada']</option><option>//div[@id='presponsable']/div/div/div[3]/div/div/input</option><option>//div[6]/div/div/div[3]/div/div/input</option></datalist></td><td>de la fronrtera</td>
 </tr>
-<tr><td>clickAt</td><td>css=option[value="63"]<datalist><option>css=option[value="63"]</option><option>//option[@value='63']</option><option>//select[@id='caso_caso_presponsable_attributes_0_categoria_ids']/option[13]</option><option>//div[4]/select/option[13]</option></datalist></td><td>78,-205</td>
+<tr><td>clickAt</td><td>//div[6]/div/div/div[3]/div[3]/div/input<datalist><option>id=caso_caso_presponsable_attributes_91_otro</option><option>name=caso[caso_presponsable_attributes][91][otro]</option><option>css=#caso_caso_presponsable_attributes_91_otro</option><option>//input[@id='caso_caso_presponsable_attributes_91_otro']</option><option>//div[@id='presponsable']/div/div/div[3]/div[3]/div/input</option><option>//div[6]/div/div/div[3]/div[3]/div/input</option></datalist></td><td>146,18</td>
 </tr>
-<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+<tr><td>type</td><td>//div[6]/div/div/div[3]/div[3]/div/input<datalist><option>id=caso_caso_presponsable_attributes_91_otro</option><option>name=caso[caso_presponsable_attributes][91][otro]</option><option>css=#caso_caso_presponsable_attributes_91_otro</option><option>//input[@id='caso_caso_presponsable_attributes_91_otro']</option><option>//div[@id='presponsable']/div/div/div[3]/div[3]/div/input</option><option>//div[6]/div/div/div[3]/div[3]/div/input</option></datalist></td><td>el momo</td>
 </tr>
-<tr><td>clickAt</td><td>//div[6]/div/div/div[3]/div[2]/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_batallon</option><option>name=caso[caso_presponsable_attributes][0][batallon]</option><option>css=#caso_caso_presponsable_attributes_0_batallon</option><option>//input[@id='caso_caso_presponsable_attributes_0_batallon']</option><option>//div[@id='presponsable']/div/div/div[3]/div[2]/div/input</option><option>//div[6]/div/div/div[3]/div[2]/div/input</option></datalist></td><td>129,21</td>
+<tr><td>addSelection</td><td>//div[4]/select<datalist><option>id=caso_caso_presponsable_attributes_93_categoria_ids</option><option>css=#caso_caso_presponsable_attributes_93_categoria_ids</option><option>//select[@id='caso_caso_presponsable_attributes_93_categoria_ids']</option><option>//div[@id='presponsable']/div/div/div[4]/select</option><option>//div[4]/select</option></datalist></td><td>label=C62 COMBATE</td>
 </tr>
-<tr><td>clickAt</td><td>//div[@id='presponsable']/div/div/div/div/div/select<datalist><option>id=caso_caso_presponsable_attributes_0_id_presponsable</option><option>name=caso[caso_presponsable_attributes][0][id_presponsable]</option><option>css=#caso_caso_presponsable_attributes_0_id_presponsable</option><option>//select[@id='caso_caso_presponsable_attributes_0_id_presponsable']</option><option>//div[@id='presponsable']/div/div/div/div/div/select</option><option>//div[6]/div/div/div/div/div/select</option></datalist></td><td>-40,-213</td>
+<tr><td>clickAt</td><td>css=option[value="62"]<datalist><option>css=option[value="62"]</option><option>//option[@value='62']</option><option>//select[@id='caso_caso_presponsable_attributes_93_categoria_ids']/option</option><option>//div[4]/select/option</option></datalist></td><td>94,5</td>
 </tr>
-<tr><td>clickAt</td><td>//div[6]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_bloque</option><option>name=caso[caso_presponsable_attributes][0][bloque]</option><option>css=#caso_caso_presponsable_attributes_0_bloque</option><option>//input[@id='caso_caso_presponsable_attributes_0_bloque']</option><option>//div[@id='presponsable']/div/div/div[2]/div/div/input</option><option>//div[6]/div/div/div[2]/div/div/input</option></datalist></td><td>60,15</td>
-</tr>
-<tr><td>clickAt</td><td>//div[6]/div/div/div[2]/div[2]/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_frente</option><option>name=caso[caso_presponsable_attributes][0][frente]</option><option>css=#caso_caso_presponsable_attributes_0_frente</option><option>//input[@id='caso_caso_presponsable_attributes_0_frente']</option><option>//div[@id='presponsable']/div/div/div[2]/div[2]/div/input</option><option>//div[6]/div/div/div[2]/div[2]/div/input</option></datalist></td><td>62,16</td>
-</tr>
-<tr><td>clickAt</td><td>//div[2]/div[3]/div/input<datalist><option>id=caso_caso_presponsable_attributes_0_division</option><option>name=caso[caso_presponsable_attributes][0][division]</option><option>css=#caso_caso_presponsable_attributes_0_division</option><option>//input[@id='caso_caso_presponsable_attributes_0_division']</option><option>//div[@id='presponsable']/div/div/div[2]/div[3]/div/input</option><option>//div[2]/div[3]/div/input</option></datalist></td><td>97,18</td>
-</tr>
-<tr><td>type</td><td>//div[@id='presponsable']/div/div/div[3]/div[3]/div/input<datalist><option>id=caso_caso_presponsable_attributes_63_otro</option><option>name=caso[caso_presponsable_attributes][63][otro]</option><option>css=#caso_caso_presponsable_attributes_63_otro</option><option>//input[@id='caso_caso_presponsable_attributes_63_otro']</option><option>//div[@id='presponsable']/div/div/div[3]/div[3]/div/input</option><option>//div[6]/div/div/div[3]/div[3]/div/input</option></datalist></td><td>el mechudo</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_174']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>80,16</td>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_244']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>71,22</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -571,6 +561,8 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/174/edita')]</option><option>//a[2]</option></datalist></td><td>19,11</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>link=Descripción<datalist><option>link=Descripción</option><option>//a[contains(text(),'Descripción')]</option><option>//form[@id='edit_caso_174']/div/div[2]/ul/li[11]/a</option><option>//a[contains(@href, '#descripcion')]</option><option>//li[11]/a</option></datalist></td><td>59,20</td>
 </tr>
 <tr><td>clickAt</td><td>id=caso_memo<datalist><option>id=caso_memo</option><option>name=caso[memo]</option><option>css=#caso_memo</option><option>//textarea[@id='caso_memo']</option><option>//div[@id='descripcion']/div/textarea</option><option>//div[11]/div/textarea</option></datalist></td><td>129,15</td>
@@ -586,6 +578,8 @@
 </thead>
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/174/edita')]</option><option>//a[2]</option></datalist></td><td>35,14</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Etiquetas<datalist><option>link=Etiquetas</option><option>//a[contains(text(),'Etiquetas')]</option><option>//form[@id='edit_caso_174']/div/div[2]/ul/li[13]/a</option><option>//a[contains(@href, '#etiquetas')]</option><option>//li[13]/a</option></datalist></td><td>26,23</td>
 </tr>
@@ -608,6 +602,8 @@
 </thead>
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/174/edita')]</option><option>//a[2]</option></datalist></td><td>28,13</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Evaluación<datalist><option>link=Evaluación</option><option>//a[contains(text(),'Evaluación')]</option><option>//form[@id='edit_caso_174']/div/div[2]/ul/li[14]/a</option><option>//a[contains(@href, '#evaluacion')]</option><option>//li[14]/a</option></datalist></td><td>60,10</td>
 </tr>
