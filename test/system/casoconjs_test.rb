@@ -1,14 +1,10 @@
 # encoding: UTF-8
 
-require 'test_helper'
+require 'application_system_test_case'
 
-class CasoconjsTest < Capybara::Rails::TestCase
-
+class CasoconjsTest < ApplicationSystemTestCase
 
   test 'administrador crea' do
-    skip
-    # Problema de autorización dificil de depurar en la siguiente línea
-    Capybara.current_driver = Capybara.javascript_driver
     # Reporta Error:
     # CasoconjsTest#test_administrador_crea:
     # CanCan::AccessDenied: No está autorizado para read sip/departamento/active record relation.
@@ -21,18 +17,21 @@ class CasoconjsTest < Capybara::Rails::TestCase
     assert page.has_content?("Administrar")
 
     visit File.join(Rails.configuration.relative_url_root, '/casos/nuevo')
-    @numcaso=find_field('Código').value
+    take_screenshot
+    @numcaso=find_field('Caso No.').value
 
     # Datos básicos
     fill_in "Fecha del hecho", with: '2014-08-05'
     fill_in "Título", with: 'titulo'
 
-    page.save_screenshot('/tmp/s2-ccj-trasbasicos')
+    take_screenshot
     click_on "Víctimas"
-    if (!find_link('Añadir Víctima').visible?)
+    lav=find_link('Añadir Víctima')
+    if (!lav.visible?)
       click_on "Víctimas"
     end
-    click_on "Añadir Víctima"
+    click_on 'Añadir Víctima'
+    take_screenshot
     within ("div#victima") do 
       fill_in "Nombres", with: 'Nombres V'
       fill_in "Apellidos", with: 'Apellidos V'
@@ -40,10 +39,10 @@ class CasoconjsTest < Capybara::Rails::TestCase
       select("ENERO", from: 'Mes de nacimiento')
       select("1", from: 'Día de nacimiento')
       select("MASCULINO", from: 'Sexo')
-      select("CÉDULA DE CIUDADANÍA", from: 'Tipo de Documento')
-      fill_in "Número Documento", with: '19222'
+      select("CÉDULA DE CIUDADANÍA", from: 'Tipo de documento')
+      fill_in "Número de documento", with: '19222'
       #select('ALBANIA', from: 'País de Nacionalidad')
-      select('RUSIA', from: 'País de Nacimiento')
+      select('RUSIA', from: 'País de nacimiento')
       select('OTRO', from: 'Profesión')
       select('ROM', from: 'Etnia') 
       select('IGLESIA DE DIOS', from: 'Religión/Iglesia') 
@@ -121,7 +120,6 @@ class CasoconjsTest < Capybara::Rails::TestCase
     click_button "Guardar"
     puts page.html
     assert page.has_content?("2014-08-05")
-
   end
 
 end

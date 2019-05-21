@@ -1,10 +1,9 @@
-# encoding: utf-8
 
-require 'test_helper'
+# encoding: UTF-8
 
-class UsuarioTest < Capybara::Rails::TestCase  # no se logró que operara con ActionDispatch::IntegrationTest 
+require 'application_system_test_case'
 
-  include Capybara::DSL
+class UsuarioTest < ApplicationSystemTestCase
 
   test "no autentica" do
     usuario = Usuario.find_by(nusuario: 'sivel2') 
