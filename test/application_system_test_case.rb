@@ -16,7 +16,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   }
 
   def setup
-    load "#{Rails.root}/db/seeds.rb"
+#    load "#{Rails.root}/db/seeds.rb"
   end
 
   def teardown

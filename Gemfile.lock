@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 812fcdd47ec5ee0451a76b80ded7030ea60efa25
+  revision: 7697ccd348beb2827076d427b52f0304fc0d71a8
   branch: rails6
   specs:
     sip (2.0.b5)
@@ -34,6 +34,16 @@ GIT
       will_paginate
 
 GIT
+  remote: https://github.com/pasosdeJesus/sivel2_gen.git
+  revision: 9031c9cfffbf3e3066d39c1964157640ff5a76e4
+  branch: rails6
+  specs:
+    sivel2_gen (2.0b8)
+      devise
+      jquery-rails
+      rails
+
+GIT
   remote: https://github.com/vtamara/chosen-rails.git
   revision: 48c457fc9ef1c4c573b4dcdb9dc07034b46ed6b4
   branch: several-fixes
@@ -49,14 +59,6 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
-
-PATH
-  remote: ../sivel2_gen
-  specs:
-    sivel2_gen (2.0b8)
-      devise
-      jquery-rails
-      rails
 
 GEM
   remote: https://rubygems.org/
