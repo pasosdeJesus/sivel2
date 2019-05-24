@@ -27,6 +27,13 @@ Cree un usuario para PostgreSQL como se explica en
 * Asegurese que las gemas esten instaladas.  En el caso de adJ en 
   `/var/www/bundler/ruby/2.6/` siguiendo instrucciones de 
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
+  y en el directorio con fuentes asegurese de tener el archivo `.bundle/config`
+  con contenido:
+  ```
+  ---
+  BUNDLE_PATH: "/var/www/bundler"
+  BUNDLE_DISABLE_SHARED_GEMS: "true"
+  ```
 * El archivo `Gemfile` contiene el listado de todas las dependencias a 
   instalar en los distinto ambientes de ejecucion. Instale las gemas que 
   se especifican en tal archivo con:
