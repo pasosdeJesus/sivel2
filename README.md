@@ -19,10 +19,9 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 
 ### Probar operación en modo de desarrollo 🔧
 
-Cree un usuario para PostgreSQL como se explica en 
-<https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md>
-(si deja el nombre sipdes se le facilitarán los siguientes pasos)
-
+* Cree un usuario para PostgreSQL como se explica en 
+  <https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md>
+  (si deja el nombre sipdes se le facilitarán los siguientes pasos)
 * Ubique fuentes por ejemplo en `/var/www/htdocs/sivel2/`
 * Asegurese que las gemas esten instaladas.  En el caso de adJ en 
   `/var/www/bundler/ruby/2.6/` siguiendo instrucciones de 
