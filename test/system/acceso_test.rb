@@ -1,9 +1,8 @@
 # encoding: UTF-8
 
-require 'test_helper'
+require 'application_system_test_case'
 
-class AccesoTest < Capybara::Rails::TestCase
-  include Capybara::DSL  
+class AccesoTest < ApplicationSystemTestCase
 
   test "control de acceso" do
     @usuario = Usuario.find_by(nusuario: 'sivel2')
@@ -28,6 +27,11 @@ class AccesoTest < Capybara::Rails::TestCase
     click_on "Editar"
     fill_in "Hora", with: '3:00 PM'
     fill_in "Duración", with: '2'
+
+    # Nos deshacemos de chosen, que le resulta dificil a capybara
+    execute_script("$('.chosen-select').removeAttr('style')")
+    execute_script("$('.chosen-container').remove()")
+    execute_script("$('.chosen-select').removeClass('chosen-select') ")
     select("ANTIOQUIA CHOCO SANT", from: 'Región')
     select("Ecuador", from: 'Frontera')
     click_button "Guardar"

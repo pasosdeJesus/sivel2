@@ -1,8 +1,9 @@
-require "test_helper"
+# encoding: UTF-8
 
-class PuedeVerHogarTest < ActionDispatch::IntegrationTest
+require 'application_system_test_case'
 
-  include Capybara::DSL
+class PuedeVerHogarTest < ApplicationSystemTestCase
+
   test "hogar con contenido" do 
     visit Rails.configuration.relative_url_root
     assert page.has_content?("SIVeL")

@@ -37,7 +37,7 @@ before_install:
         - bundle exec rails sip:indices
 
 script: 
-        - bundle exec rails test -b
+        - bundle exec rails test:system -b
 
 after_script:
         - ./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT

@@ -286,7 +286,7 @@ CREATE VIEW public.cben1 AS
     'total'::text AS total
    FROM public.sivel2_gen_caso caso,
     public.sivel2_gen_victima victima
-  WHERE (caso.id = victima.id_caso);
+  WHERE ((caso.fecha >= '2010-02-10'::date) AND (caso.fecha <= '2019-02-28'::date) AND (caso.id = victima.id_caso));
 
 
 --
