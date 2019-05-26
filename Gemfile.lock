@@ -1,9 +1,8 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ebfbd3787b3f49953f4507399b5a8c775ac4ad5b
-  branch: rails6
+  revision: d88fcee7067dacff69a8ac4d7357688176e0686b
   specs:
-    heb412_gen (1.0.a1)
+    heb412_gen (1.0.b6)
       chosen-rails
       font-awesome-rails
       redcarpet
@@ -12,10 +11,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7697ccd348beb2827076d427b52f0304fc0d71a8
-  branch: rails6
+  revision: ea75f35ad09ab2434f43b28bff626a33e18614a6
   specs:
-    sip (2.0.b5)
+    sip (2.0.b6)
       bootstrap-datepicker-rails
       cancancan
       chosen-rails
@@ -35,8 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9031c9cfffbf3e3066d39c1964157640ff5a76e4
-  branch: rails6
+  revision: 8688467f895fe1efd15b24eed76ed144e0175694
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -132,13 +129,13 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
-    capybara (3.20.2)
+    capybara (3.21.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      regexp_parser (~> 1.2)
+      regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
@@ -302,15 +299,15 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.4.0)
-    regexp_parser (1.5.0)
+    regexp_parser (1.5.1)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
-    rspreadsheet (0.4.5)
+    rspreadsheet (0.4.7)
       andand (~> 1.3)
       rubyzip (~> 1.1)
     ruby-graphviz (1.2.4)
-    rubyzip (1.2.2)
+    rubyzip (1.2.3)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)

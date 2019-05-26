@@ -1,7 +1,4 @@
-# encoding: UTF-8
-
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
 
 require 'bundler/setup' # Set up gems listed in the Gemfile.
-require 'bootsnap/setup'  # Acelera arranque usando colchon
-
+require 'bootsnap/setup' # Speed up boot time by caching expensive operations.

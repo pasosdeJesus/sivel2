@@ -86,15 +86,15 @@ gem 'prawn-table'
 gem 'tzinfo'
 
 # Motor estilo Pasos de Jesús
-gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git', branch: :rails6
+gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'
 #gem 'sip', path: '../sip'
 
 # Motor de nube y plantillas
-gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: :rails6
+gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 #gem 'heb412_gen', path: '../heb412_gen'
 
 # Manejo de casos
-gem 'sivel2_gen', git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: :rails6
+gem 'sivel2_gen', git: 'https://github.com/pasosdeJesus/sivel2_gen.git'
 #gem 'sivel2_gen', path: '../sivel2_gen'
 
 
