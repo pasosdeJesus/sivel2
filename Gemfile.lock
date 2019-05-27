@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: d88fcee7067dacff69a8ac4d7357688176e0686b
+  revision: 90078a77ccf48aea25e107fd5494297f975150fb
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ea75f35ad09ab2434f43b28bff626a33e18614a6
+  revision: c42f4b6128c4e2f7889ea7c7c8767210d4d8b76d
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 8688467f895fe1efd15b24eed76ed144e0175694
+  revision: 25c594976932986783fc7f68a697da819e1b22e4
   specs:
     sivel2_gen (2.0b8)
       devise
@@ -247,7 +247,7 @@ GEM
     pry-stack_explorer (0.4.9.3)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    public_suffix (3.0.3)
+    public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
     rack-proxy (0.6.5)
