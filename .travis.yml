@@ -37,7 +37,7 @@ before_install:
         - bundle exec rails sip:indices
 
 script: 
-        - CONFIG_HOSTS=www.example.com bundle exec rails test:system 
+        - bundle exec rails test:system 
 
 after_script:
         - ./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT
