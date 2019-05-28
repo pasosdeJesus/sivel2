@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>Sivel2-admin-1-tablas-basicas</title>
+	<title>sivel2-01-admin-tablas-basicas</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -51,11 +51,13 @@
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,21</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>2000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Categorias<datalist><option>link=Categorias</option><option>//a[contains(text(),'Categorias')]</option><option>//a[contains(@href, 'admin/categorias')]</option><option>//article/ul/li[3]/a</option></datalist></td><td>31,12</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/categorias/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>51,26</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>id=categoria_nombre<datalist><option>id=categoria_nombre</option><option>name=categoria[nombre]</option><option>css=#categoria_nombre</option><option>//input[@id='categoria_nombre']</option><option>//form[@id='new_categoria']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>40,15</td>
 </tr>
@@ -97,19 +99,17 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>57,16</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
-</tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,16</td>
 </tr>
 <tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Centros poblados<datalist><option>link=Centros poblados</option><option>//a[contains(text(),'Centros poblados')]</option><option>//a[contains(@href, 'admin/clases')]</option><option>//article/ul/li[4]/a</option></datalist></td><td>69,10</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>4000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/clases/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>43,18</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>4000</td>
 </tr>
 <tr><td>clickAt</td><td>id=clase_nombre<datalist><option>id=clase_nombre</option><option>name=clase[nombre]</option><option>css=#clase_nombre</option><option>//input[@id='clase_nombre']</option><option>//form[@id='new_clase']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>153,21</td>
 </tr>
@@ -119,7 +119,7 @@
 </tr>
 <tr><td>clickAt</td><td>id=clase_id_municipio<datalist><option>id=clase_id_municipio</option><option>name=clase[id_municipio]</option><option>css=#clase_id_municipio</option><option>//select[@id='clase_id_municipio']</option><option>//form[@id='new_clase']/div[3]/select</option><option>//select</option></datalist></td><td>89,11</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>2000</td>
 </tr>
 <tr><td>select</td><td>id=clase_id_municipio<datalist><option>id=clase_id_municipio</option><option>name=clase[id_municipio]</option><option>css=#clase_id_municipio</option><option>//select[@id='clase_id_municipio']</option><option>//form[@id='new_clase']/div[3]/select</option><option>//select</option></datalist></td><td>label=ACEVEDO / BOLIVARIANO DE MIRANDA</td>
 </tr>
@@ -145,6 +145,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/clases/100002')])[2]</option><option>//a[3]</option></datalist></td><td>49,9</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>4000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Centros poblados</td>
 </tr>
 </tbody></table>
@@ -160,6 +162,8 @@
 <tr><td>clickAt</td><td>link=Contextos<datalist><option>link=Contextos</option><option>//a[contains(text(),'Contextos')]</option><option>//a[contains(@href, 'admin/contextos')]</option><option>//article/ul/li[4]/a</option></datalist></td><td>32,13</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/sivel2/admin/contextos/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>21,27</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>2000</td>
 </tr>
 <tr><td>clickAt</td><td>id=contexto_nombre<datalist><option>id=contexto_nombre</option><option>name=contexto[nombre]</option><option>css=#contexto_nombre</option><option>//input[@id='contexto_nombre']</option><option>//form[@id='new_contexto']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>39,22</td>
 </tr>
@@ -187,19 +191,27 @@
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>59,14</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>link=Departamentos/Estados<datalist><option>link=Departamentos/Estados</option><option>//a[contains(text(),'Departamentos/Estados')]</option><option>//a[contains(@href, 'admin/departamentos')]</option><option>//li[6]/a</option></datalist></td><td>60,11</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>2000</td>
+</tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/departamentos/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>40,13</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>3000</td>
 </tr>
 <tr><td>clickAt</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>css=#departamento_nombre</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>41,9</td>
 </tr>
 <tr><td>type</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>css=#departamento_nombre</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
 </tr>
-<tr><td>clickAt</td><td>css=a.chosen-single.chosen-default &gt; span<datalist><option>css=a.chosen-single.chosen-default &gt; span</option><option>//div[@id='departamento_id_pais_chosen']/a/span</option><option>//a/span</option></datalist></td><td>37,7</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>type</td><td>css=input.chosen-search-input<datalist><option>css=input.chosen-search-input</option><option>xpath=(//input[@type='text'])[2]</option><option>//div[@id='departamento_id_pais_chosen']/div/div/input</option><option>//div/div/input</option></datalist></td><td>col</td>
+<tr><td>clickAt</td><td>id=departamento_id_pais<datalist><option>id=departamento_id_pais</option><option>name=departamento[id_pais]</option><option>css=#departamento_id_pais</option><option>//select[@id='departamento_id_pais']</option><option>//form[@id='new_departamento']/div[3]/select</option><option>//select</option></datalist></td><td>357,22</td>
 </tr>
-<tr><td>clickAt</td><td>css=em<datalist><option>css=em</option><option>//div[@id='departamento_id_pais_chosen']/div/ul/li/em</option><option>//em</option></datalist></td><td>11,15</td>
+<tr><td>select</td><td>id=departamento_id_pais<datalist><option>id=departamento_id_pais</option><option>name=departamento[id_pais]</option><option>css=#departamento_id_pais</option><option>//select[@id='departamento_id_pais']</option><option>//form[@id='new_departamento']/div[3]/select</option><option>//select</option></datalist></td><td>label=COLOMBIA</td>
+</tr>
+<tr><td>assertText</td><td>css=label.integer.optional.control-label<datalist><option>css=label.integer.optional.control-label</option><option>//form[@id='new_departamento']/div[4]/label</option><option>//div[4]/label</option></datalist></td><td>Código dentro del país</td>
 </tr>
 <tr><td>runScript</td><td>$('#departamento_id_deplocal').removeAttr('type')<datalist><option>$('#pais_codiso').removeAttr('type')</option><option>$('#departamento_id_deplocal').removeAttr('type')</option></datalist></td><td></td>
 </tr>
@@ -212,6 +224,8 @@
 <tr><td>type</td><td>id=departamento_observaciones<datalist><option>id=departamento_observaciones</option><option>name=departamento[observaciones]</option><option>css=#departamento_observaciones</option><option>//textarea[@id='departamento_observaciones']</option><option>//form[@id='new_departamento']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_departamento']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>46,16</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
@@ -262,6 +276,8 @@
 <tr><td>clickAt</td><td>link=Etnias<datalist><option>link=Etnias</option><option>//a[contains(text(),'Etnias')]</option><option>//a[contains(@href, 'admin/etnias')]</option><option>//li[9]/a</option></datalist></td><td>15,9</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/etnias/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>35,19</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>id=etnia_nombre<datalist><option>id=etnia_nombre</option><option>name=etnia[nombre]</option><option>css=#etnia_nombre</option><option>//input[@id='etnia_nombre']</option><option>//form[@id='new_etnia']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>36,14</td>
 </tr>
@@ -331,6 +347,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/fronteras/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>42,21</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>id=frontera_nombre<datalist><option>id=frontera_nombre</option><option>name=frontera[nombre]</option><option>css=#frontera_nombre</option><option>//input[@id='frontera_nombre']</option><option>//form[@id='new_frontera']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>39,8</td>
 </tr>
 <tr><td>type</td><td>id=frontera_nombre<datalist><option>id=frontera_nombre</option><option>name=frontera[nombre]</option><option>css=#frontera_nombre</option><option>//input[@id='frontera_nombre']</option><option>//form[@id='new_frontera']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
@@ -360,6 +378,8 @@
 <tr><td>clickAt</td><td>link=Fuentes de prensa<datalist><option>link=Fuentes de prensa</option><option>//a[contains(text(),'Fuentes de prensa')]</option><option>//a[contains(@href, 'admin/fuentesprensa')]</option><option>//li[12]/a</option></datalist></td><td>79,1</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/fuentesprensa/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>47,23</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>2000</td>
 </tr>
 <tr><td>clickAt</td><td>id=fuenteprensa_nombre<datalist><option>id=fuenteprensa_nombre</option><option>name=fuenteprensa[nombre]</option><option>css=#fuenteprensa_nombre</option><option>//input[@id='fuenteprensa_nombre']</option><option>//form[@id='new_fuenteprensa']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>54,27</td>
 </tr>
@@ -394,6 +414,8 @@
 <tr><td>clickAt</td><td>link=Iglesias<datalist><option>link=Iglesias</option><option>//a[contains(text(),'Iglesias')]</option><option>//a[contains(@href, 'admin/iglesias')]</option><option>//li[14]/a</option></datalist></td><td>22,4</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/iglesias/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>46,13</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>id=iglesia_nombre<datalist><option>id=iglesia_nombre</option><option>name=iglesia[nombre]</option><option>css=#iglesia_nombre</option><option>//input[@id='iglesia_nombre']</option><option>//form[@id='new_iglesia']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>63,30</td>
 </tr>
@@ -463,7 +485,7 @@
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/sivel2/admin/municipios/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>44,13</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>2000</td>
 </tr>
 <tr><td>clickAt</td><td>id=municipio_nombre<datalist><option>id=municipio_nombre</option><option>name=municipio[nombre]</option><option>css=#municipio_nombre</option><option>//input[@id='municipio_nombre']</option><option>//form[@id='new_municipio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>47,14</td>
 </tr>
@@ -506,6 +528,8 @@
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>63,8</td>
 </tr>
 <tr><td>clickAt</td><td>link=Organizaciones<datalist><option>link=Organizaciones</option><option>//a[contains(text(),'Organizaciones')]</option><option>//a[contains(@href, 'admin/organizaciones')]</option><option>//li[19]/a</option></datalist></td><td>55,9</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/organizaciones/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>35,10</td>
 </tr>
@@ -1131,11 +1155,11 @@
 </tr>
 <tr><td>clickAt</td><td>link=Vínculos con el Estado<datalist><option>link=Vínculos con el Estado</option><option>//a[contains(text(),'Vínculos con el Estado')]</option><option>//a[contains(@href, 'admin/vinculosestado')]</option><option>//li[35]/a</option></datalist></td><td>27,7</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/vinculosestado/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>37,9</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>id=vinculoestado_nombre<datalist><option>id=vinculoestado_nombre</option><option>name=vinculoestado[nombre]</option><option>css=#vinculoestado_nombre</option><option>//input[@id='vinculoestado_nombre']</option><option>//form[@id='new_vinculoestado']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>79,19</td>
 </tr>
@@ -1148,6 +1172,8 @@
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_vinculoestado']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>19,22</td>
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/vinculosestado/101')])[2]</option><option>//a[3]</option></datalist></td><td>33,7</td>
 </tr>
