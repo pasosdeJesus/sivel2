@@ -35,8 +35,10 @@ class Ability  < Sivel2Gen::Ability
     can :contar, Sip::Ubicacion
     can :nuevo, Sip::Ubicacion
 
-    can :contar, Sivel2Gen::Caso
     can :buscar, Sivel2Gen::Caso
+    can :contar, Sivel2Gen::Caso
+    # La consulta web es publica dependiendo de 
+    # Rails.config.x.sivel2_consulta_web_publica
     can :lista, Sivel2Gen::Caso
     
     can :nuevo, Sivel2Gen::Combatiente
