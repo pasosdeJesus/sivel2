@@ -17,13 +17,16 @@ Han apoyado financiando el desarrollo de componentes de dominio público:
 * El SJR Colombia desde 2014, agradecimiento especial a 
 	Jairo Montoya, Mauricio Garcia y Vera Samudio
 * El CINEP desde finales de 2015 agradecimiento especial a 
-	Luis Guillermo Guerra, Sergio Coronado, Alejandro Angulo y Javier Giraldo.
+	Luis Guillermo Guerra, Sergio Coronado, Alejandro Angulo y 
+	Javier Giraldo.
 * ANZORC desde finales de 2015 agradecimiento especial a 
 	Yenly Mendez y Leidy Romero
 * CODACOP desde comienzos de 2016 agradecimiento especial a 
 	Janeth Lozano
 * Marcha Patriotica desde comienzos de 2016 agradecimiento especial a 
 	Cristian
+* Universida de Sheffield a comienzos de 2019 agradecimiento especial a
+  	Miguel Kanai
 
 Agradecimientos por el logo a William Rozo <wiroal@riseup.net>
 
