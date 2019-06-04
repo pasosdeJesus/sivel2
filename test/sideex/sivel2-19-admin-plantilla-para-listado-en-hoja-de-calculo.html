@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>sivel2-13-admin-plantilla-para-listado-en-hoja-de-calculo</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ruta-nombre-fila-inicial</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Documentos<datalist><option>link=Documentos</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Documentos')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//ul[2]/li/a</option></datalist></td><td>57,21</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>clickAt</td><td>link=Plantillas para listado en hojas de calculo<datalist><option>link=Plantillas para listado en hojas de calculo</option><option>//a[contains(text(),'Plantillas para listado en hojas de calculo')]</option><option>//a[contains(@href, '/sivel2/plantillashcm')]</option><option>//ul[2]/li/ul/li[3]/a</option></datalist></td><td>233,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/sivel2/plantillahcm/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>31,27</td>
+</tr>
+<tr><td>select</td><td>id=plantillahcm_ruta<datalist><option>id=plantillahcm_ruta</option><option>name=plantillahcm[ruta]</option><option>css=#plantillahcm_ruta</option><option>//select[@id='plantillahcm_ruta']</option><option>//div[@id='campos']/div[2]/select</option><option>//select</option></datalist></td><td>label=plantillaslistadocasos/ReporteTabla.ods</td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillahcm_ruta<datalist><option>id=plantillahcm_ruta</option><option>name=plantillahcm[ruta]</option><option>css=#plantillahcm_ruta</option><option>//select[@id='plantillahcm_ruta']</option><option>//div[@id='campos']/div[2]/select</option><option>//select</option></datalist></td><td>-32,-181</td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillahcm_nombremenu<datalist><option>id=plantillahcm_nombremenu</option><option>name=plantillahcm[nombremenu]</option><option>css=#plantillahcm_nombremenu</option><option>//input[@id='plantillahcm_nombremenu']</option><option>//div[@id='campos']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>170,17</td>
+</tr>
+<tr><td>type</td><td>id=plantillahcm_nombremenu<datalist><option>id=plantillahcm_nombremenu</option><option>name=plantillahcm[nombremenu]</option><option>css=#plantillahcm_nombremenu</option><option>//input[@id='plantillahcm_nombremenu']</option><option>//div[@id='campos']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>Listado de victimas por ubicación</td>
+</tr>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillahcm_filainicial<datalist><option>id=plantillahcm_filainicial</option><option>name=plantillahcm[filainicial]</option><option>css=#plantillahcm_filainicial</option><option>//input[@id='plantillahcm_filainicial']</option><option>//div[@id='campos']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>243,16</td>
+</tr>
+<tr><td>type</td><td>id=plantillahcm_filainicial<datalist><option>id=plantillahcm_filainicial</option><option>name=plantillahcm[filainicial]</option><option>css=#plantillahcm_filainicial</option><option>//input[@id='plantillahcm_filainicial']</option><option>//div[@id='campos']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>3</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[@id='campos']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>148,12</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Plantillahcm</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">fuente</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/plantillahcm/102/edita')]</option><option>//a[2]</option></datalist></td><td>31,26</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillahcm_fuente<datalist><option>id=plantillahcm_fuente</option><option>name=plantillahcm[fuente]</option><option>css=#plantillahcm_fuente</option><option>//input[@id='plantillahcm_fuente']</option><option>//div[@id='campos']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>74,8</td>
+</tr>
+<tr><td>type</td><td>id=plantillahcm_fuente<datalist><option>id=plantillahcm_fuente</option><option>name=plantillahcm[fuente]</option><option>css=#plantillahcm_fuente</option><option>//input[@id='plantillahcm_fuente']</option><option>//div[@id='campos']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>www.</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[@id='campos']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>148,12</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Plantillahcm</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">licencia</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/plantillahcm/102/edita')]</option><option>//a[2]</option></datalist></td><td>31,26</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillahcm_licencia<datalist><option>id=plantillahcm_licencia</option><option>name=plantillahcm[licencia]</option><option>css=#plantillahcm_licencia</option><option>//input[@id='plantillahcm_licencia']</option><option>//div[@id='campos']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>55,9</td>
+</tr>
+<tr><td>type</td><td>id=plantillahcm_licencia<datalist><option>id=plantillahcm_licencia</option><option>name=plantillahcm[licencia]</option><option>css=#plantillahcm_licencia</option><option>//input[@id='plantillahcm_licencia']</option><option>//div[@id='campos']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>https</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[@id='campos']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>148,12</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Plantillahcm</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">vista</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/plantillahcm/102/edita')]</option><option>//a[2]</option></datalist></td><td>31,26</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>select</td><td>id=plantillahcm_vista<datalist><option>id=plantillahcm_vista</option><option>name=plantillahcm[vista]</option><option>css=#plantillahcm_vista</option><option>//select[@id='plantillahcm_vista']</option><option>//div[@id='campos']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=Listado de Personas</td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillahcm_vista<datalist><option>id=plantillahcm_vista</option><option>name=plantillahcm[vista]</option><option>css=#plantillahcm_vista</option><option>//select[@id='plantillahcm_vista']</option><option>//div[@id='campos']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>-32,-340</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[@id='campos']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>148,12</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Plantillahcm</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">campo-campo</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/plantillahcm/102/edita')]</option><option>//a[2]</option></datalist></td><td>31,26</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>clickAt</td><td>link=Añadir Campo<datalist><option>link=Añadir Campo</option><option>css=a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Campo')]</option><option>//div[@id='gen_divcampos']/div/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//div[8]/div/div/a</option></datalist></td><td>51,11</td>
+</tr>
+<tr><td>select</td><td>//tbody[@id='campoplantillahcm']/tr/td/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553894304268_nombrecampo</option><option>name=plantillahcm[campoplantillahcm_attributes][1553894304268][nombrecampo]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553894304268_nombrecampo</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553894304268_nombrecampo']</option><option>//tbody[@id='campoplantillahcm']/tr/td/div/select</option><option>//td/div/select</option></datalist></td><td>label=nombres</td>
+</tr>
+<tr><td>clickAt</td><td>//tbody[@id='campoplantillahcm']/tr/td/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553894304268_nombrecampo</option><option>name=plantillahcm[campoplantillahcm_attributes][1553894304268][nombrecampo]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553894304268_nombrecampo</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553894304268_nombrecampo']</option><option>//tbody[@id='campoplantillahcm']/tr/td/div/select</option><option>//td/div/select</option></datalist></td><td>-32,-484</td>
+</tr>
+<tr><td>clickAt</td><td>link=Añadir Campo<datalist><option>link=Añadir Campo</option><option>css=a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Campo')]</option><option>//div[@id='gen_divcampos']/div/a</option><option>xpath=(//a[contains(@href, '#')])[6]</option><option>//div[8]/div/div/a</option></datalist></td><td>51,4</td>
+</tr>
+<tr><td>select</td><td>//tbody[@id='campoplantillahcm']/tr[2]/td/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553889030557_nombrecampo</option><option>name=plantillahcm[campoplantillahcm_attributes][1553889030557][nombrecampo]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553889030557_nombrecampo</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553889030557_nombrecampo']</option><option>//tbody[@id='campoplantillahcm']/tr[2]/td/div/select</option><option>//tr[2]/td/div/select</option></datalist></td><td>label=fechanac_localizada</td>
+</tr>
+<tr><td>clickAt</td><td>//tbody[@id='campoplantillahcm']/tr[2]/td/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553889030557_nombrecampo</option><option>name=plantillahcm[campoplantillahcm_attributes][1553889030557][nombrecampo]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553889030557_nombrecampo</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553889030557_nombrecampo']</option><option>//tbody[@id='campoplantillahcm']/tr[2]/td/div/select</option><option>//tr[2]/td/div/select</option></datalist></td><td>-32,-525</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Editar Plantilla Para Listado En Hoja De Cálculo</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">campo-columna</td></tr>
+</thead>
+<tbody>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>select</td><td>//tbody[@id='campoplantillahcm']/tr/td[2]/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553896660467_columna</option><option>name=plantillahcm[campoplantillahcm_attributes][1553896660467][columna]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553896660467_columna</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553896660467_columna']</option><option>//tbody[@id='campoplantillahcm']/tr/td[2]/div/select</option><option>//td[2]/div/select</option></datalist></td><td>label=A</td>
+</tr>
+<tr><td>clickAt</td><td>//tbody[@id='campoplantillahcm']/tr/td[2]/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553896660467_columna</option><option>name=plantillahcm[campoplantillahcm_attributes][1553896660467][columna]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553896660467_columna</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553896660467_columna']</option><option>//tbody[@id='campoplantillahcm']/tr/td[2]/div/select</option><option>//td[2]/div/select</option></datalist></td><td>-680,-443</td>
+</tr>
+<tr><td>select</td><td>//tbody[@id='campoplantillahcm']/tr[2]/td[2]/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553896662093_columna</option><option>name=plantillahcm[campoplantillahcm_attributes][1553896662093][columna]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553896662093_columna</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553896662093_columna']</option><option>//tbody[@id='campoplantillahcm']/tr[2]/td[2]/div/select</option><option>//tr[2]/td[2]/div/select</option></datalist></td><td>label=B</td>
+</tr>
+<tr><td>clickAt</td><td>//tbody[@id='campoplantillahcm']/tr[2]/td[2]/div/select<datalist><option>id=plantillahcm_campoplantillahcm_attributes_1553896662093_columna</option><option>name=plantillahcm[campoplantillahcm_attributes][1553896662093][columna]</option><option>css=#plantillahcm_campoplantillahcm_attributes_1553896662093_columna</option><option>//select[@id='plantillahcm_campoplantillahcm_attributes_1553896662093_columna']</option><option>//tbody[@id='campoplantillahcm']/tr[2]/td[2]/div/select</option><option>//tr[2]/td[2]/div/select</option></datalist></td><td>-680,-484</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[@id='campos']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>148,12</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Plantillahcm</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">campo-acciones</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/plantillahcm/117/edita')]</option><option>//a[2]</option></datalist></td><td>21,15</td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn-danger.remove_fields.existing</option><option>//a[contains(text(),'Eliminar')]</option><option>//tbody[@id='campoplantillahcm']/tr/td[3]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//td[3]/a</option></datalist></td><td>23,8</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[@id='campos']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>238,19</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/plantillahcm/117')])[3]</option><option>//div[3]/a</option></datalist></td><td>26,13</td>
+</tr>
+</tbody></table>
+</body>
+</html>

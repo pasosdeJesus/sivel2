@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>sivel2-8-operador-filtros-caso</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-palabra-completa</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Regresar<datalist><option>link=Regresar</option><option>css=a.btn</option><option>//a[contains(text(),'Regresar')]</option><option>xpath=(//a[contains(@href, '/sivel2/casos')])[3]</option><option>//form/div/div/a</option></datalist></td><td>49,25</td>
+</tr>
+<tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>36,7</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_q<datalist><option>id=filtro_q</option><option>name=filtro[q]</option><option>css=#filtro_q</option><option>//input[@id='filtro_q']</option><option>//div/input</option></datalist></td><td>94,14</td>
+</tr>
+<tr><td>type</td><td>id=filtro_q<datalist><option>id=filtro_q</option><option>name=filtro[q]</option><option>css=#filtro_q</option><option>//input[@id='filtro_q']</option><option>//div/input</option></datalist></td><td>caldas</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>44,22</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='filtro_avanzado']/div/div/div[3]<datalist><option>//div[@id='filtro_avanzado']/div/div/div[3]</option><option>//div[2]/div/div/div[3]</option></datalist></td><td>42,3</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>32,26</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>21,12</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>29,15</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-ubicacion-departamento</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>label=ARAUCA</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>-286,-239</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>22,19</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>48,13</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>27,22</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-ubicacion-municipio</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>label=ATLÁNTICO</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>-286,-239</td>
+</tr>
+<tr><td>select</td><td>id=filtro_municipio_id<datalist><option>id=filtro_municipio_id</option><option>name=filtro[municipio_id]</option><option>css=#filtro_municipio_id</option><option>//select[@id='filtro_municipio_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>label=CANDELARIA</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_municipio_id<datalist><option>id=filtro_municipio_id</option><option>name=filtro[municipio_id]</option><option>css=#filtro_municipio_id</option><option>//select[@id='filtro_municipio_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>-578,-239</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>38,12</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>13,12</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>29,20</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-ubicacion-clase</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>label=CAQUETÁ</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>-286,-239</td>
+</tr>
+<tr><td>select</td><td>id=filtro_municipio_id<datalist><option>id=filtro_municipio_id</option><option>name=filtro[municipio_id]</option><option>css=#filtro_municipio_id</option><option>//select[@id='filtro_municipio_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>label=EL DONCELLO</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_municipio_id<datalist><option>id=filtro_municipio_id</option><option>name=filtro[municipio_id]</option><option>css=#filtro_municipio_id</option><option>//select[@id='filtro_municipio_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>-578,-239</td>
+</tr>
+<tr><td>select</td><td>id=filtro_clase_id<datalist><option>id=filtro_clase_id</option><option>name=filtro[clase_id]</option><option>css=#filtro_clase_id</option><option>//select[@id='filtro_clase_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[4]/div/select</option><option>//div[4]/div/select</option></datalist></td><td>label=MAGUARE</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_clase_id<datalist><option>id=filtro_clase_id</option><option>name=filtro[clase_id]</option><option>css=#filtro_clase_id</option><option>//select[@id='filtro_clase_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[4]/div/select</option><option>//div[4]/div/select</option></datalist></td><td>-772,-239</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>40,24</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>38,10</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>44,26</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-fecha-desde</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_fechaini<datalist><option>id=filtro_fechaini</option><option>name=filtro[fechaini]</option><option>css=#filtro_fechaini</option><option>//input[@id='filtro_fechaini']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[2]/div/input</option><option>//div[3]/div[2]/div/input</option></datalist></td><td>71,21</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>77,17</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/table/thead/tr[2]/th[2]<datalist><option>//div[2]/table/thead/tr[2]/th[2]</option></datalist></td><td>74,16</td>
+</tr>
+<tr><td>clickAt</td><td>//div[3]/table/tbody/tr/td/span[10]<datalist><option>//div[3]/table/tbody/tr/td/span[10]</option></datalist></td><td>20,36</td>
+</tr>
+<tr><td>clickAt</td><td>//td/span[3]<datalist><option>//td/span[3]</option></datalist></td><td>22,35</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[3]/td[5]<datalist><option>//div[2]/div/table/tbody/tr[3]/td[5]</option></datalist></td><td>13,24</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>15,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>35,7</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>30,16</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-fecha-hasta</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_fechafin<datalist><option>id=filtro_fechafin</option><option>name=filtro[fechafin]</option><option>css=#filtro_fechafin</option><option>//input[@id='filtro_fechafin']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>153,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>77,21</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/table/thead/tr[2]/th[2]<datalist><option>//div[2]/table/thead/tr[2]/th[2]</option></datalist></td><td>86,8</td>
+</tr>
+<tr><td>clickAt</td><td>//div[3]/table/tbody/tr/td/span[10]<datalist><option>//div[3]/table/tbody/tr/td/span[10]</option></datalist></td><td>30,24</td>
+</tr>
+<tr><td>clickAt</td><td>//td/span[2]<datalist><option>//td/span[2]</option></datalist></td><td>23,38</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[3]/td[4]<datalist><option>//div[2]/div/table/tbody/tr[3]/td[4]</option></datalist></td><td>12,14</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>38,19</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>47,9</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>37,15</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-presuntos-responsables</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_presponsable_id<datalist><option>id=filtro_presponsable_id</option><option>name=filtro[presponsable_id]</option><option>css=#filtro_presponsable_id</option><option>//select[@id='filtro_presponsable_id']</option><option>//div[@id='filtro_avanzado']/div/div[4]/div[2]/div/select</option><option>//div[4]/div[2]/div/select</option></datalist></td><td>label=PARAMILITARES</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_presponsable_id<datalist><option>id=filtro_presponsable_id</option><option>name=filtro[presponsable_id]</option><option>css=#filtro_presponsable_id</option><option>//select[@id='filtro_presponsable_id']</option><option>//div[@id='filtro_avanzado']/div/div[4]/div[2]/div/select</option><option>//div[4]/div[2]/div/select</option></datalist></td><td>107,13</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>41,28</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>22,15</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>41,19</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-tipificacion</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_categoria_id<datalist><option>id=filtro_categoria_id</option><option>name=filtro[categoria_id]</option><option>css=#filtro_categoria_id</option><option>//select[@id='filtro_categoria_id']</option><option>//div[@id='filtro_avanzado']/div/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>label=A12 TORTURA</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_categoria_id<datalist><option>id=filtro_categoria_id</option><option>name=filtro[categoria_id]</option><option>css=#filtro_categoria_id</option><option>//select[@id='filtro_categoria_id']</option><option>//div[@id='filtro_avanzado']/div/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>-285,-254</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>17,17</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>24,9</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>22,22</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-victima-nombre</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>106,13</td>
+</tr>
+<tr><td>type</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>alvaro</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>37,20</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>59,7</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>37,20</td>
+</tr>
+<tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-victima-apellido</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_apellidos<datalist><option>id=filtro_apellidos</option><option>name=filtro[apellidos]</option><option>css=#filtro_apellidos</option><option>//input[@id='filtro_apellidos']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[3]/div/input</option><option>//div[6]/div[3]/div/input</option></datalist></td><td>54,16</td>
+</tr>
+<tr><td>type</td><td>id=filtro_apellidos<datalist><option>id=filtro_apellidos</option><option>name=filtro[apellidos]</option><option>css=#filtro_apellidos</option><option>//input[@id='filtro_apellidos']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[3]/div/input</option><option>//div[6]/div[3]/div/input</option></datalist></td><td>cortez</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>29,24</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>29,10</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>12,21</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-sexo</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_sexo<datalist><option>id=filtro_sexo</option><option>name=filtro[sexo]</option><option>css=#filtro_sexo</option><option>//select[@id='filtro_sexo']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[2]/div/select</option><option>//div[7]/div[2]/div/select</option></datalist></td><td>label=FEMENINO</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_sexo<datalist><option>id=filtro_sexo</option><option>name=filtro[sexo]</option><option>css=#filtro_sexo</option><option>//select[@id='filtro_sexo']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[2]/div/select</option><option>//div[7]/div[2]/div/select</option></datalist></td><td>-285,-440</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>27,18</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>21,13</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>44,17</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-rango-de-edad</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_rangoedad_id<datalist><option>id=filtro_rangoedad_id</option><option>name=filtro[rangoedad_id]</option><option>css=#filtro_rangoedad_id</option><option>//select[@id='filtro_rangoedad_id']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[3]/div/select</option><option>//div[7]/div[3]/div/select</option></datalist></td><td>label=De 26 a 45 Años</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_rangoedad_id<datalist><option>id=filtro_rangoedad_id</option><option>name=filtro[rangoedad_id]</option><option>css=#filtro_rangoedad_id</option><option>//select[@id='filtro_rangoedad_id']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[3]/div/select</option><option>//div[7]/div[3]/div/select</option></datalist></td><td>-675,-228</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>38,23</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>28,17</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>22,22</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-descripcion</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_descripcion<datalist><option>id=filtro_descripcion</option><option>name=filtro[descripcion]</option><option>css=#filtro_descripcion</option><option>//input[@id='filtro_descripcion']</option><option>//div[@id='filtro_avanzado']/div/div[8]/div[2]/div/input</option><option>//div[8]/div[2]/div/input</option></datalist></td><td>61,7</td>
+</tr>
+<tr><td>type</td><td>id=filtro_descripcion<datalist><option>id=filtro_descripcion</option><option>name=filtro[descripcion]</option><option>css=#filtro_descripcion</option><option>//input[@id='filtro_descripcion']</option><option>//div[@id='filtro_avanzado']/div/div[8]/div[2]/div/input</option><option>//div[8]/div[2]/div/input</option></datalist></td><td>ddd</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>23,12</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>30,9</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>34,15</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-etiqueta</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_etiqueta1<datalist><option>id=filtro_etiqueta1</option><option>name=filtro[etiqueta1]</option><option>css=#filtro_etiqueta1</option><option>//select[@id='filtro_etiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[3]/div/select</option><option>//div[9]/div[3]/div/select</option></datalist></td><td>label=ERROR_IMPORTACIÓN</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_etiqueta1<datalist><option>id=filtro_etiqueta1</option><option>name=filtro[etiqueta1]</option><option>css=#filtro_etiqueta1</option><option>//select[@id='filtro_etiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[3]/div/select</option><option>//div[9]/div[3]/div/select</option></datalist></td><td>-383,-414</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>41,17</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>31,12</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>20,19</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-etiqueta-no</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_conetiqueta1<datalist><option>id=filtro_conetiqueta1</option><option>name=filtro[conetiqueta1]</option><option>css=#filtro_conetiqueta1</option><option>//select[@id='filtro_conetiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[2]/div/select</option><option>//div[9]/div[2]/div/select</option></datalist></td><td>label=NO TIENE</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_conetiqueta1<datalist><option>id=filtro_conetiqueta1</option><option>name=filtro[conetiqueta1]</option><option>css=#filtro_conetiqueta1</option><option>//select[@id='filtro_conetiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[2]/div/select</option><option>//div[9]/div[2]/div/select</option></datalist></td><td>-285,-520</td>
+</tr>
+<tr><td>select</td><td>id=filtro_etiqueta1<datalist><option>id=filtro_etiqueta1</option><option>name=filtro[etiqueta1]</option><option>css=#filtro_etiqueta1</option><option>//select[@id='filtro_etiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[3]/div/select</option><option>//div[9]/div[3]/div/select</option></datalist></td><td>label=PENDIENTE</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_etiqueta1<datalist><option>id=filtro_etiqueta1</option><option>name=filtro[etiqueta1]</option><option>css=#filtro_etiqueta1</option><option>//select[@id='filtro_etiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[3]/div/select</option><option>//div[9]/div[3]/div/select</option></datalist></td><td>-383,-520</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>27,20</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>62,17</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>26,22</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-ingreso-al-sistema-fecha-usuario</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[2]/div/select</option><option>//div[10]/div[2]/div/select</option></datalist></td><td>label=Operador - operador</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[2]/div/select</option><option>//div[10]/div[2]/div/select</option></datalist></td><td>-285,-454</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>31,23</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>39,14</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>14,16</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-ingreso-al-sistema-fecha-inicial</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_fechaingini<datalist><option>id=filtro_fechaingini</option><option>name=filtro[fechaingini]</option><option>css=#filtro_fechaingini</option><option>//input[@id='filtro_fechaingini']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[3]/div/input</option><option>//div[10]/div[3]/div/input</option></datalist></td><td>91,22</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr/td[3]<datalist><option>//div[2]/div/table/tbody/tr/td[3]</option></datalist></td><td>15,21</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>38,24</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>47,11</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>23,23</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-ingreso-al-sistema-fecha-final</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>50,17</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_fechaingfin<datalist><option>id=filtro_fechaingfin</option><option>name=filtro[fechaingfin]</option><option>css=#filtro_fechaingfin</option><option>//input[@id='filtro_fechaingfin']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[4]/div/input</option><option>//div[10]/div[4]/div/input</option></datalist></td><td>53,30</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[5]/td[3]<datalist><option>//div[2]/div/table/tbody/tr[5]/td[3]</option></datalist></td><td>22,17</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>36,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>55,11</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>32,18</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-casos-codigo</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>50,17</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>48,15</td>
+</tr>
+<tr><td>type</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>17</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>20,22</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.btn.btn-default.btn-xs<datalist><option>css=button.btn.btn-default.btn-xs</option><option>//button[@type='reset']</option><option>//div[5]/button</option></datalist></td><td>28,17</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>39,19</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+</tr>
+</tbody></table>
+</body>
+</html>
