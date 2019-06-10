@@ -117,6 +117,7 @@ end
 group :test do
   gem 'capybara'
   gem 'poltergeist'
+  gem 'selenium'
   gem 'selenium-webdriver'
   gem 'simplecov'
   #gem 'connection_pool'
