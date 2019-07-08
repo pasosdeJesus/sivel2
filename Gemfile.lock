@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 805eb05ec4dd939abacea975d84bbc0bcfaca002
+  revision: dc7f7f68f668dbf988f1ef87f51128e2477a6975
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a0b8b01401bf6039895b5c59dd7fd82348936e8a
+  revision: cfd26b89ab12af424e9f59f3365f0e73844e9de3
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 8c29d7314517b1ce79cb0ca1dd23699ca2922df3
+  revision: 6a7f927fde50807da9389f7f9fb3d80e78f585e4
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7d6aaf7be58deb88952428ce06dbd57d6b3262ac
+  revision: 8c052bc19fe4987436fa94213b70fbcedb2b1c74
   specs:
     sivel2_gen (2.0b9)
       devise
@@ -222,7 +222,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.3.0)
-    nio4r (2.3.1)
+    nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     odf-report (0.6.0)
