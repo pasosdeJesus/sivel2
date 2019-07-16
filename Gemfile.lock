@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: dc7f7f68f668dbf988f1ef87f51128e2477a6975
+  revision: 62e91c163f4c7ad319aec8458c831559606742c8
+  branch: temas
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -12,7 +13,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: cfd26b89ab12af424e9f59f3365f0e73844e9de3
+  revision: 44735034a866326df25ef651814e98b6cc48b4cf
+  branch: temas
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -20,7 +22,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6a7f927fde50807da9389f7f9fb3d80e78f585e4
+  revision: 53ac6cc5bbf8a605d11b6c2633c142e7df837faa
+  branch: temas
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -42,7 +45,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 8c052bc19fe4987436fa94213b70fbcedb2b1c74
+  revision: 913a5dc8a936a7f294f9ce3eda25ef7ffaf540a8
+  branch: temas
   specs:
     sivel2_gen (2.0b9)
       devise
@@ -128,7 +132,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     andand (1.3.3)
     bcrypt (3.1.13)
-    bindex (0.7.0)
+    bindex (0.8.1)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootsnap (1.4.4)
@@ -138,7 +142,7 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
-    capybara (3.25.0)
+    capybara (3.26.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -218,7 +222,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
-    mini_mime (1.0.1)
+    mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.3.0)
@@ -237,6 +241,10 @@ GEM
       terrapin (~> 0.6.0)
     pdf-core (0.7.0)
     pg (1.1.4)
+    pick-a-color-rails (0.0.1)
+      jquery-rails
+      railties (>= 3.0)
+      tiny-color-rails
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -259,7 +267,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (3.1.1)
-    puma (4.0.0)
+    puma (4.0.1)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
@@ -311,7 +319,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.4.0)
-    regexp_parser (1.5.1)
+    regexp_parser (1.6.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -357,6 +365,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    tiny-color-rails (0.0.2)
+      railties (>= 3.0)
     ttfunk (1.5.1)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
@@ -394,7 +404,7 @@ GEM
     will_paginate (3.1.7)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.1.8)
+    zeitwerk (2.1.9)
     zip (2.0.2)
 
 PLATFORMS
@@ -423,6 +433,7 @@ DEPENDENCIES
   odf-report
   paperclip
   pg
+  pick-a-color-rails
   poltergeist
   prawn
   prawn-table
@@ -443,6 +454,7 @@ DEPENDENCIES
   sip!
   sivel2_gen!
   spring
+  tiny-color-rails
   turbolinks
   twitter-bootstrap-rails
   twitter_cldr
