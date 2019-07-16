@@ -22,11 +22,11 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 * Cree un usuario para PostgreSQL como se explica en 
   <https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md>
   (si deja el nombre sipdes se le facilitarán los siguientes pasos)
-* Ubique fuentes por ejemplo en `/var/www/htdocs/sivel2/`
-* Asegurese que las gemas esten instaladas.  En el caso de adJ en 
-  `/var/www/bundler/ruby/2.6/` siguiendo instrucciones de 
+* Ubique las fuentes en un directorio, por ejemplo en `/var/www/htdocs/sivel2/`
+* Asegúrese que las gemas estén instaladas. En el caso de adJ en 
+  `/var/www/bundler/ruby/2.6/` siguiendo las instrucciones de 
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
-  y en el directorio con fuentes asegurese de tener el archivo `.bundle/config`
+  y en el directorio con fuentes asegúrese de tener el archivo `.bundle/config`
   con contenido:
   ```
   ---
@@ -34,22 +34,20 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   BUNDLE_DISABLE_SHARED_GEMS: "true"
   ```
 * El archivo `Gemfile` contiene el listado de todas las dependencias a 
-  instalar en los distinto ambientes de ejecucion. Instale las gemas que 
+  instalar en los distinto ambientes de ejecución. Instale las gemas que 
   se especifican en tal archivo con:
   ```sh
   bundle install
   ```
-  Si quisiera actualizar las dependencias de la aplicacion ejecute:
+  Si quisiera actualizar las dependencias de la aplicación ejecute:
   ```sh
   bundle update
   ```
-
   Si se interrumpe el proceso por problemas de permisos en instalación de una 
-  gema, instalela como en el siguiente ejemplo (cambiando la gema y la versión):
+  gema, instálela como en el siguiente ejemplo (cambiando la gema y la versión):
   ```sh
   doas gem install --install-dir /var/www/bundler/ruby/2.6/ bindex -v 0.7.0
   ```
-
 * Copie y de requerirlo modifique las plantillas:
 ```sh
   find . -name "*plantilla"
@@ -62,11 +60,11 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   done
 ```
   Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que 
-  modificarlas si prefiere una raiz de URL diferente, ver
+  modificarlas si prefiere una raíz de URL diferente, ver
   <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md>
-  Asegurese de establecer usuario y base de datos que configuró en PostgreSQL 
+  Asegúrese de establecer usuario y base de datos que configuró en PostgreSQL 
   en `config/database.yml`.
-* Las  migraciones del directorio `db/migrate` de ```sivel2_gen``` permiten 
+* Las migraciones del directorio `db/migrate` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
   falta.
   Para actualizar un SIVeL 1.2 saque copia a la base, configure datos de la 
@@ -86,11 +84,10 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   bin/rails db:migrate
   bin/rails sip:indices
   ```
-  
 * Lance la aplicación en modo de desarrollo. En el siguiente ejemplo el 
-  parametro `-p` indica el puerto por el cual escuchara la aplicacion 
-  y el parametro `-b` como **0.0.0.0** para que se pueda acceder desde 
-  cualquiera de las IPs configuradas en las interfaces de red:
+  parametro `-p` indica el puerto por el cual escuchará la aplicación 
+  y el parámetro `-b` indica la dirección IP como **0.0.0.0**
+ para que se pueda acceder desde cualquiera de las IPs configuradas en las interfaces de red:
 ```sh
   bin/rails s -p 2300 -b 0.0.0.0
 ```
