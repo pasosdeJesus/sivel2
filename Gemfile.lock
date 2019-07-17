@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 62e91c163f4c7ad319aec8458c831559606742c8
-  branch: temas
+  revision: 0d3aa9611e797c6441b930c0a92851469f31962a
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -13,8 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 44735034a866326df25ef651814e98b6cc48b4cf
-  branch: temas
+  revision: 2fc3980594dfb364950a10638eecf55604e0becc
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -22,8 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 53ac6cc5bbf8a605d11b6c2633c142e7df837faa
-  branch: temas
+  revision: 1c0790c8944815d8f5cddcf96579177fd03bb70d
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -45,8 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 913a5dc8a936a7f294f9ce3eda25ef7ffaf540a8
-  branch: temas
+  revision: 0cb8814bdd72adc3c56b08fa8643ebb893868262
   specs:
     sivel2_gen (2.0b9)
       devise
