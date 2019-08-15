@@ -60,5 +60,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
-  config.relative_url_root = "/sivel2"
+  #config.relative_url_root = "/sivel2"
 end
