@@ -117,7 +117,7 @@ class CasoconjsTest < ApplicationSystemTestCase
     end
 
     puts "Guardando"
-    click_button "Guardar"
+    click_button "Validar y Guardar"
     puts page.html
     assert page.has_content?("2014-08-05")
   end

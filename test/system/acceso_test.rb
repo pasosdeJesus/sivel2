@@ -18,7 +18,7 @@ class AccesoTest < ApplicationSystemTestCase
 
     # Datos básicos
     fill_in "Fecha del hecho", 
-      with: Sip::FormatoFechaHelper.fecha_local_estandar('2014-08-05')
+      with: '2014-08-05'
     fill_in "Título", with: 'titulo'
     click_button "Guardar"
     assert page.has_content?("2014-08-05")
