@@ -39,10 +39,8 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   ```sh
   bundle install
   ```
-  Si quisiera actualizar las dependencias de la aplicación ejecute:
-  ```sh
-  bundle update
-  ```
+  (Si quisiera actualizar las dependencias de la aplicación podría ejecutar `bundle update; bundle install`)
+  
   Si se interrumpe el proceso por problemas de permisos en instalación de una 
   gema, instálela como en el siguiente ejemplo (cambiando la gema y la versión):
   ```sh
@@ -145,7 +143,7 @@ cliente o conexión entre ambos, deberían pasar).
 ```sh
 EDITOR=vim bin/rails credentials:edit
 ```
-y con
+y 
 ```sh
 RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 ```
@@ -156,7 +154,14 @@ RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
   RAILS_ENV=production bin/rails db:migrate
   RAILS_ENV=production bin/rails sip:indices
 ```
-* Como servidor web recomendamos nginx, en la sección http agregue:
+* Deje el mismo punto de montaje que usará con el servidor web en `config/application.rb`, `config/routes.rb` y `config/initializers/punto_montaje.rb`
+* Configure ruta para anexos y respaldos en `config/initializers/sip.rb` --recomendable en ruta que respalde con periodicidad.
+* Configure ruta para la nube (preferible donde quede también respaldada con periodicidad) en `config/application.rb`
+* Elija un puerto no usado (digamos 2009) y configure tanto unicorn de la aplicación como el servidor web para usarlo. Puede configurar unicorn de la aplicación editando `config/unicorn.conf.minimal.rb`:
+```
+listen 2009
+```
+* Como servidor web recomendamos nginx, suponiendo que el puerto elegido es 2009, en la sección http agregue:
 ```
   upstream unicorns2 {
 	  server 127.0.0.1:2009 fail_timeout=0;

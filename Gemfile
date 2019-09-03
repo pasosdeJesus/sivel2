@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+#ruby '2.6.2'
 
 # Rails con internacionalización
 gem 'rails', '~> 6.0.0.rc1'
@@ -53,6 +53,9 @@ gem 'redcarpet'
 gem 'libxml-ruby'#
 gem 'rspreadsheet'
 
+# Facilita elegir colores en tema
+gem 'pick-a-color-rails'
+gem 'tiny-color-rails'
 
 # Formularios simples 
 gem 'simple_form'
@@ -104,7 +107,7 @@ gem 'sivel2_gen', git: 'https://github.com/pasosdeJesus/sivel2_gen.git'
 
 group  :development, :test do
   # Depurar
-  #gem 'byebug', platforms [:mri, :mingw, :x64_mingw]
+  #gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 
@@ -120,7 +123,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'poltergeist'
   gem 'selenium'
   gem 'selenium-webdriver'
   gem 'simplecov'
