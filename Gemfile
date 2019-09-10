@@ -65,8 +65,8 @@ gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', branch: 'new_id_with
 #gem 'cocoon', path: '../cocoon'
 
 # Autenticación y roles
-gem 'devise'
-gem 'devise-i18n'
+gem 'devise', '>= 4.7.1'
+gem 'devise-i18n', '>= 1.8.1'
 gem 'cancancan'
 gem 'bcrypt'
 
