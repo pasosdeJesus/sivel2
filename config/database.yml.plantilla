@@ -6,12 +6,12 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   host: /var/www/var/run/postgresql
-  username: sipdes
-  password: aquilaclave
+  username: sipdes      # OJO Cambie aqui por su usuario PostgreSQL
+  password: aquilaclave # OJO Cambie aqui por la clave de su usario PostgreSQL
 
 development:
   <<: *default
-  database: sivel2gen_des
+  database: sivel2gen_des # OJO Cambie aqui por la base en modo desarrollo
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
@@ -24,7 +24,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: sivel2gen_pru
+  database: sivel2gen_pru # OJO Cambie aqui por la base en modo pruebas
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -47,4 +47,4 @@ test:
 #
 production:
   <<: *default
-  database: sivel2gen_pro
+  database: sivel2gen_pro # OJO Cambie aqui por la base en modo producción

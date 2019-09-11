@@ -21,6 +21,9 @@
         <%= menu_item "Conteo general de víctimas", 
           sivel2_gen.conteos_genvic_path %>
       <% end %>
+      <%= drop_down "Mapas" do %>
+        <%= menu_item "Casos sobre Google Maps", sivel2_gen.casos_mapagm_path %> 
+      <% end %> 
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>
