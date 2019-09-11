@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: dd809415f0ed4f16ea4bc79afe76051d007994dc
+  revision: df1cfbae370046e31037ff03c5303866c4d88f35
   specs:
     sivel2_gen (2.0b9)
       devise
