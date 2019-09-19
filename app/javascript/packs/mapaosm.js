@@ -1,14 +1,14 @@
 var map = null;
 var marker= [];
 var mc = null;
-var markersClusterer= []
 var bounds; 
-
 map = L.map('map_osm',{ 
       center: [4.6682, -74.071], 
       zoom: 6
     }); 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' }).addTo(map); 
+
+var markers = L.markerClusterGroup();
 
 window.setTimeout(addCases, 0);
 
@@ -39,8 +39,6 @@ function downloadUrl(url, callback) {
 
 function addCases(refresh) {
 
- // bounds = new google.maps.LatLngBounds();
-
   var desde = $('#inputDesde').val();
   var hasta = $('#inputHasta').val();
   var departamento = $('#departamento').val();
@@ -61,8 +59,8 @@ function addCases(refresh) {
     requestUrl += '&filtro[categoria_id]=' + tvio;
   }
   if (refresh == true) {
-    markersClusterer.length = 0;
-    mc.clearMarkers();
+   // markersClusterer.length = 0;
+   // mc.clearMarkers();
   };
   showLoader();
   downloadUrl(requestUrl, function(req) {
@@ -86,13 +84,9 @@ function addCases(refresh) {
         var point= new L.LatLng(parseFloat(lat), parseFloat(lng));
         var title = fecha + ": " + titulo;
         var marker = createMarker(point, codigo, title);
-        markersClusterer.push(marker);
       }
-
     }
     $('#nrcasos').html('(<strong>' + numResult + '</strong> casos mostrados)');
-    mc = L.markerClusterGroup();
-    showAll()
     hideLoader();
   });
 }
@@ -102,11 +96,9 @@ function createMarker(point, codigo, title) {
 
   var marker = new L.Marker(point);
   marker.on('click', onClick);
-  marker.bindPopup(title);
-  map.addLayer(marker);
+  markers.addLayer(marker);
+  map.addLayer(markers);
   
-  //bounds.extend(point);
-
   function onClick() {
     showLoader();
     var root = window
@@ -136,10 +128,10 @@ function createMarker(point, codigo, title) {
       var victimas = o["caso"].victimas;
       var prresp = o["caso"].presponsables;
 
-      var descripcionCont = '<div class="infowindowcont"><div>' 
-        + '<h3>' + titulo + '</h3>' + '</div>' + '<div>' + hechos + '</div></div>';
+      var descripcionCont = '<div>' 
+        + '<h3>' + titulo + '</h3>' + '</div>' + '<div>' + hechos + '</div>';
 
-      var hechosCont = '<div class="infowindowcont"><table>';
+      var hechosCont = '<div><table>';
       hechosCont += (fecha != "") ? '<tr><td>Fecha:</td><td>' 
         + fecha + '</td></tr>' : '';
       hechosCont += (hora != "") ? '<tr><td>Hora:</td><td>' 
@@ -158,7 +150,7 @@ function createMarker(point, codigo, title) {
         + codigo + '</td></tr>' : '';
       hechosCont += '</table></div>';
 
-      var victimasCont = '<div class="infowindowcont"><table>'
+      var victimasCont = '<div><table>'
         + '<tr><td>Victimas:</td><td>';
       for(var cv in victimas) {
         var victima = victimas[cv];
@@ -173,37 +165,38 @@ function createMarker(point, codigo, title) {
         victimasCont += (prrespel != "") ? prrespel 
           + '<br />' : 'SIN INFORMACIÓN';
       }
-      victimasCont += '</td></tr></table>';
-      var datosInfowindow= '<div id="infow">'
-        +'<ul class="nav nav-tabs" id="myTab" role="tablist">'
-        + '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'
-        +'<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'
-        +'<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'
-        +'</ul>'
-        +'<div class="tab-content" id="myTabContent">'
-        +'<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ descripcionCont  +'</div>'
-        +'<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hechosCont +'</div>'
-        +'<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ victimasCont +'</div>'
-        +'</div>'
-        +'</div>'
-
-      var info = new google.maps.InfoWindow({
-        content: datosInfowindow
-      });
-      info.open(map, marker);
-      //cerrar infowindow cuando hagan clic fuera de él 
-      $(document).on("click",function(e) {
-        var container = $("#infow");
-        if (!container.is(e.target) && container.has(e.target).length === 0) { 
-          info.close();
-        }
-      });
-
+      victimasCont += '</td></tr></table></div>';
+ // marker.bindPopup(datosInfowindow);
+      capa(descripcionCont, hechosCont, victimasCont)
       hideLoader();
 
     });
   }
   return marker;
 }
+// variable que guarda los detalles del marker al que se le dio click
+var eventBackup;
+// variable global donde se carga la capa flotante
+var info;
 
+// capa flotante donde se muestra la info al darle click sobre un maker
+function capa(des, hec, vic){
+
+  if (info != undefined) { // se valida si existe informacion en la capa, si es borra la capa
+    info.remove(map); // esta linea quita la capa flotante
+  }
+
+  info = L.control();
+  info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+  };
+
+  info.update = function () {
+    this._div.innerHTML = '<p>'+ des + hec + vic + '</p>';
+    //this._div.innerHTML = '<div class="modal" tabindex="-1" role="dialog">        <div class="modal-dialog" role="document">          <div class="modal-content">            <div class="modal-header">              <h5 class="modal-title">Modal title</h5>              <button type="button" class="close" data-dismiss="modal" aria-label="Close">                <span aria-hidden="true">&times;</span>              </button>            </div>            <div class="modal-body">              <p>Modal body text goes here.</p>            </div>            <div class="modal-footer">              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>              <button type="button" class="btn btn-primary">Save changes</button>            </div>          </div>        </div>      </div>';
+  };
+  info.addTo(map);
+}
 
