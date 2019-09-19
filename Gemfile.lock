@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 6a62b17ca30c8363704fb53c1ddadf7928f88c39
+  revision: 3241097f461c8000d6ce5f62d391f37e02e29637
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: cf64512a1f249904d56b85503705485edfbdbdae
+  revision: 5db87a06d110d910e685c7af1d8fcf3dbda552de
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 770a3ff35f86dc94943f3a86834cdb56d6fe368e
+  revision: d6e8d522655f3ed4a11c9ee5bd3ed95c987dbc3e
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 8fbdf71eb574a5282633b91f21e26772101fd723
+  revision: 96b3e4acaf849a667e71f59c39cad22a51fe28c8
   specs:
     sivel2_gen (2.0b9)
       devise
@@ -318,7 +318,7 @@ GEM
     rubyzip (1.2.4)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.2.0)
+    sassc (2.2.1)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -355,7 +355,7 @@ GEM
     tiny-color-rails (0.0.2)
       railties (>= 3.0)
     ttfunk (1.5.1)
-    turbolinks (5.2.0)
+    turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     twitter-bootstrap-rails (3.2.2)
