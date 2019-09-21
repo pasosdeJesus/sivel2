@@ -93,7 +93,7 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   ```
 * Instale librerías Javascript requeridas al lado del cliente con:
 ```sh
-  CXX=yarn install
+  CXX=c++ yarn install
   ```
 * Lance la aplicación en modo de desarrollo. En el siguiente ejemplo el 
   parametro `-p` indica el puerto por el cual escuchará la aplicación 
