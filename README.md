@@ -59,7 +59,7 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 ```
   Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que 
   modificarlas si prefiere una raíz de URL diferente, ver
-  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md>
+  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md> )
 
   Lo mínimo que debe modificar es establecer usuario PostgreSQL, clave y 
   bases de datos (desarrollo, pruebas y producción) que configuró en 
