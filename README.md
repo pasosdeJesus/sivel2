@@ -85,6 +85,16 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   bin/rails db:migrate
   bin/rails sip:indices
   ```
+* Si no lo ha hecho instale yarn para manejar paquetes javascript:
+  ```sh
+  doas pkg_add bash
+  ftp -o- https://yarnpkg.com/install.sh | bash
+  . ~/.profile
+  ```
+* Instale librerías Javascript requeridas al lado del cliente con:
+```sh
+  CXX=yarn install
+  ```
 * Lance la aplicación en modo de desarrollo. En el siguiente ejemplo el 
   parametro `-p` indica el puerto por el cual escuchará la aplicación 
   y el parámetro `-b` indica la dirección IP como **0.0.0.0**
