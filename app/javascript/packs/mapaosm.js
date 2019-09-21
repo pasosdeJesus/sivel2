@@ -46,9 +46,9 @@ function addCasesOsm() {
   var prresp = $('#presponsable').val();
   var tvio = $('#tvio').val();
 
-  var root = window
-  sip_arregla_puntomontaje(root)
-  var ruta = root.puntomontaje + 'casos.json'
+  var root = window;
+  sip_arregla_puntomontaje(root);
+  var ruta = root.puntomontaje + 'casos.json';
   var requestUrl = ruta + '?utf8=' + '&filtro[fechaini]=' + desde + '&filtro[fechafin]=' + hasta;
   if (departamento != undefined && departamento != 0){
     requestUrl += '&filtro[departamento_id]=' + departamento;
@@ -102,9 +102,9 @@ function createMarker(point, codigo, title) {
   
   function onClick() {
     showLoader();
-    var root = window
-    sip_arregla_puntomontaje(root)
-    var ruta = root.puntomontaje + 'casos/'
+    var root = window;
+    sip_arregla_puntomontaje(root);
+    var ruta = root.puntomontaje + 'casos/';
     var requestUrl = ruta + codigo + ".json";  
     downloadUrl(requestUrl, function(req) {
       data = req.responseText;
@@ -112,63 +112,62 @@ function createMarker(point, codigo, title) {
       //window.alert(data);
       if (data == null || data.substr(0, 1) != '{') {
         hideLoader();
-        window.alert("El URL " + requestUrl 
-          + " no retorno detalles del caso\n " + data);
+        window.alert("El URL " + requestUrl +
+          " no retorno detalles del caso\n " + data);
         return;
       }
       var o = jQuery.parseJSON(data);
 
-      var id = o["caso"].id;
-      var titulo = o["caso"].titulo; 
-      var hechos = o["caso"].hechos; 
-      var fecha = o["caso"].fecha; 
-      var hora = o["caso"].hora; 
-      var departamento = o["caso"].departamento; 
-      var municipio = o["caso"].municipio; 
-      var centro_poblado = o["caso"].centro_poblado;
-      var victimas = o["caso"].victimas;
-      var prresp = o["caso"].presponsables;
+      var id = o['caso'].id;
+      var titulo = o['caso'].titulo; 
+      var hechos = o['caso'].hechos; 
+      var fecha = o['caso'].fecha; 
+      var hora = o['caso'].hora; 
+      var departamento = o['caso'].departamento; 
+      var municipio = o['caso'].municipio; 
+      var centro_poblado = o['caso'].centro_poblado;
+      var victimas = o['caso'].victimas;
+      var prresp = o['caso'].presponsables;
 
-      var descripcionCont = '<div>' 
-        + '<h3>' + titulo + '</h3>' + '</div>' + '<div>' + hechos + '</div>';
+      var descripcionCont = '<div>' +
+        '<h3>' + titulo + '</h3>' + '</div>' + '<div>' + hechos + '</div>';
 
       var hechosCont = '<div><table>';
-      hechosCont += (fecha != "") ? '<tr><td>Fecha:</td><td>' 
-        + fecha + '</td></tr>' : '';
-      hechosCont += (hora != "") ? '<tr><td>Hora:</td><td>' 
-        + hora + '</td></tr>' : '';
+      hechosCont += (fecha != "") ? '<tr><td>Fecha:</td><td>' +
+        fecha + '</td></tr>' : '';
+      hechosCont += (hora != "") ? '<tr><td>Hora:</td><td>' +
+        hora + '</td></tr>' : '';
       hechosCont += (departamento != "") ? 
-        '<tr><td>Departamento:</td><td>' 
-        + departamento + '</td></tr>' : '';
+        '<tr><td>Departamento:</td><td>' +
+        departamento + '</td></tr>' : '';
       hechosCont += (municipio != "") ? 
-        '<tr><td>Municipio:</td><td>' 
-        + municipio + '</td></tr>' : '';
+        '<tr><td>Municipio:</td><td>' +
+        municipio + '</td></tr>' : '';
       hechosCont += (centro_poblado != "") ? 
-        '<tr><td>Centro Poblado:</td><td>' 
-        + centro_poblado + '</td></tr>' : '';
+        '<tr><td>Centro Poblado:</td><td>' +
+        centro_poblado + '</td></tr>' : '';
       hechosCont += (codigo != "") ? 
-        '<tr><td>Codigo:</td><td>' 
-        + codigo + '</td></tr>' : '';
+        '<tr><td>Codigo:</td><td>' +
+        codigo + '</td></tr>' : '';
       hechosCont += '</table></div>';
 
-      var victimasCont = '<div><table>'
-        + '<tr><td>Victimas:</td><td>';
+      var victimasCont = '<div><table>' +
+        '<tr><td>Victimas:</td><td>';
       for(var cv in victimas) {
         var victima = victimas[cv];
-        victimasCont += (victima != "") ? victima 
-          + '<br />' : 'SIN INFORMACIÓN';
+        victimasCont += (victima != "") ? victima +
+          '<br />' : 'SIN INFORMACIÓN';
       }
 
-      victimasCont += '</td></tr><tr>'
-        + '<td>Presuntos Responsables:</td><td>';
+      victimasCont += '</td></tr><tr>' +
+        '<td>Presuntos Responsables:</td><td>';
       for(var cp in prresp) {
         var prrespel = prresp[cp];
-        victimasCont += (prrespel != "") ? prrespel 
-          + '<br />' : 'SIN INFORMACIÓN';
+        victimasCont += (prrespel != "") ? prrespel +
+          '<br />' : 'SIN INFORMACIÓN';
       }
       victimasCont += '</td></tr></table></div>';
- // marker.bindPopup(datosInfowindow);
-      capa(descripcionCont, hechosCont, victimasCont)
+      capa(descripcionCont, hechosCont, victimasCont);
       hideLoader();
 
     });
@@ -195,20 +194,20 @@ function capa(des, hec, vic){
   };
 
   info.update = function (des, hec, vic) {
-    this._div.innerHTML = '<button type="button" id="closeBtn" class="close" aria-label="Close">'
-        + '<span aria-hidden="true">&times;</span>'
-        + '</button><div id="infow">'
-        +'<ul class="nav nav-tabs" id="myTab" role="tablist">'
-        + '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'
-        +'<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'
-        +'<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'
-        +'</ul>'
-        +'<div class="tab-content" id="myTabContent">'
-        +'<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'
-        +'<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'
-        +'<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'
-        +'</div>'
-        +'</div>';
+    this._div.innerHTML = '<button type="button" id="closeBtn" class="close" aria-label="Close">'+
+         '<span aria-hidden="true">&times;</span>'+
+         '</button><div id="infow">'+
+        '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
+         '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
+        '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
+        '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
+        '</ul>'+
+        '<div class="tab-content" id="myTabContent">'+
+        '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
+        '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
+        '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
+        '</div>'+
+        '</div>';
   };
   info.addTo(map);
   // Disable dragging when user's cursor enters the element
