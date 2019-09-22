@@ -15,16 +15,9 @@
   -moz-box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
   box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
 }
-.body_map { 
-  font: 12px Geneva, Arial, sans-serif; 
-  margin: 0; 
-  padding: 0;
-}
 
-#container_map { 
-  width: 100%;  
-  background-color: #f5f5f5;
-  border: 1px;
+#settings_canvasOsm{
+  padding-bottom: 10px;
 }
 
 #map_osm { 
@@ -33,38 +26,8 @@
   float: left; 
 }
 
-.infowindowcont { 
-  font-size: 15px; 
-  line-height: 15px; 
-}
-
 .clear { 
   clear: both; 
-}
-
-.input_map, .select_map { 
-  border: 1px solid #7380ab; 
-  font: 11px Geneva, Arial, sans-serif; 
-  background-color: #cfd7f3; 
-}
-
-.select_map { 
-  height: 17px; 
-}
-
-.input_map { 
-  height: 14px; 
-  padding: 2px; 
-}
-
-.button { 
-  background: #A61C1F; 
-  color: #fff; 
-  padding: 0 2px; 
-  border-color: #4d0305; 
-  height: auto; 
-  font-weight: bold; 
-  cursor: pointer; 
 }
 
 #loader { 

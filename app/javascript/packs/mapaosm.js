@@ -3,17 +3,16 @@ var marker= [];
 var markers= null;
 var bounds; 
 
-  map = L.map('map_osm',{ 
-    center: [4.6682, -74.071], 
-    zoom: 6
-  }); 
+map = L.map('map_osm',{ 
+  center: [4.6682, -74.071], 
+  zoom: 6
+}); 
 
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' 
-  }).addTo(map); 
-  markers = L.markerClusterGroup();
-   window.setTimeout(addCasesOsm, 0);
-  // addCasesOsm();
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' 
+}).addTo(map); 
+markers = L.markerClusterGroup();
+window.setTimeout(addCasesOsm, 0);
 //ícono de marker
 //var iconoCaso = <%= asset_path('icon.png') %>
 
@@ -71,13 +70,12 @@ function addCasesOsm() {
     var o = jQuery.parseJSON(data);
     var numResult = 0;
     for(var codigo in o) {
-      numResult++;
       var lat = o[codigo].latitud;
       var lng = o[codigo].longitud;
       var titulo= o[codigo].titulo;
       var fecha = o[codigo].fecha;
-
       if (lat != null || lng != null){
+        numResult++;
         var point= new L.LatLng(parseFloat(lat), parseFloat(lng));
         var title = fecha + ": " + titulo;
         createMarker(point, codigo, title);
@@ -93,13 +91,13 @@ function createMarker(point, codigo, title) {
   var marker = new L.Marker(point);
   // Exportar los casos a formato GeoJson
   var geojson = marker.toGeoJSON();
- // console.log(geojson);
+  // console.log(geojson);
 
   //Acción al hacer clic en caso en el mapa
   marker.on('click', onClick);
   markers.addLayer(marker);
   map.addLayer(markers);
-  
+
   function onClick() {
     showLoader();
     var root = window;
@@ -195,19 +193,19 @@ function capa(des, hec, vic){
 
   info.update = function (des, hec, vic) {
     this._div.innerHTML = '<button type="button" id="closeBtn" class="close" aria-label="Close">'+
-         '<span aria-hidden="true">&times;</span>'+
-         '</button><div id="infow">'+
-        '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
-         '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
-        '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
-        '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
-        '</ul>'+
-        '<div class="tab-content" id="myTabContent">'+
-        '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
-        '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
-        '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
-        '</div>'+
-        '</div>';
+      '<span aria-hidden="true">&times;</span>'+
+      '</button><div id="infow">'+
+      '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
+      '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
+      '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
+      '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
+      '</ul>'+
+      '<div class="tab-content" id="myTabContent">'+
+      '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
+      '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
+      '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
+      '</div>'+
+      '</div>';
   };
   info.addTo(map);
   // Disable dragging when user's cursor enters the element
@@ -234,6 +232,6 @@ map.on('zoom', function() {
 });
 
 document.getElementById("addCasesOsm").addEventListener("click", function(){
- markers.clearLayers(); 
+  markers.clearLayers(); 
   addCasesOsm();
 }, false);
