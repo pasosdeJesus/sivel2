@@ -1,8 +1,5 @@
 /**
- *  * Estilo para mapa
- *  * @copyright 2011 Dominio público. Sin garantías.
- *  * @license   https://www.pasosdejesus.org/dominio_publico_colombia.html Dominio Público. Sin garantías.
- *  * @version   $$
+ * Estilo para mapa sobre OpenStreetMap
  *  */
 
 .info{
@@ -15,6 +12,7 @@
   -moz-box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
   box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
 }
+
 .body_map { 
   font: 12px Geneva, Arial, sans-serif; 
   margin: 0; 

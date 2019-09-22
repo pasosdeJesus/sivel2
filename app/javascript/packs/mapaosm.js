@@ -1,19 +1,18 @@
-var map = null;
-var marker= [];
-var markers= null;
+var mapa = null;
+var marker = [];
+var markers = null;
 var bounds; 
 
-  map = L.map('map_osm',{ 
-    center: [4.6682, -74.071], 
-    zoom: 6
-  }); 
+mapa = L.map('map_osm',{ 
+  center: [4.6682, -74.071], 
+  zoom: 6
+}); 
 
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' 
-  }).addTo(map); 
-  markers = L.markerClusterGroup();
-   window.setTimeout(addCasesOsm, 0);
-  // addCasesOsm();
+    }).addTo(mapa); 
+markers = L.markerClusterGroup();
+window.setTimeout(addCasesOsm, 0);
 //ícono de marker
 //var iconoCaso = <%= asset_path('icon.png') %>
 
@@ -98,7 +97,7 @@ function createMarker(point, codigo, title) {
   //Acción al hacer clic en caso en el mapa
   marker.on('click', onClick);
   markers.addLayer(marker);
-  map.addLayer(markers);
+  mapa.addLayer(markers);
   
   function onClick() {
     showLoader();
@@ -183,11 +182,11 @@ var info;
 function capa(des, hec, vic){
 
   if (info != undefined) { // se valida si existe informacion en la capa, si es borra la capa
-    info.remove(map); // esta linea quita la capa flotante
+    info.remove(mapa); // esta linea quita la capa flotante
   }
 
   info = L.control();
-  info.onAdd = function (map) {
+  info.onAdd = function (mapa) {
     this._div = L.DomUtil.create('div', 'info');
     this.update(des, hec, vic);
     return this._div;
@@ -209,27 +208,28 @@ function capa(des, hec, vic){
         '</div>'+
         '</div>';
   };
-  info.addTo(map);
+  info.addTo(mapa);
   // Disable dragging when user's cursor enters the element
   info.getContainer().addEventListener('mouseover', function () {
-    map.dragging.disable();
+    mapa.dragging.disable();
   });
 
   // Re-enable dragging when user's cursor leaves the element
   info.getContainer().addEventListener('mouseout', function () {
-    map.dragging.enable();
+    mapa.dragging.enable();
   });
 }
+// addCasesOsm();
 
 // Cierra la capa flotante desde el boton cerrar
 $(document).on('click','#closeBtn', function(){
-  info.remove(map);
+  info.remove(mapa);
 });
 
 // Cierra el info al hacer zoom in/out
-map.on('zoom', function() {
+mapa.on('zoom', function() {
   if (info != undefined) {
-    info.remove(map);
+    info.remove(mapa);
   }
 });
 
