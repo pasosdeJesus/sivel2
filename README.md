@@ -59,7 +59,7 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 ```
   Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que 
   modificarlas si prefiere una raíz de URL diferente, ver
-  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md>
+  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md> )
 
   Lo mínimo que debe modificar es establecer usuario PostgreSQL, clave y 
   bases de datos (desarrollo, pruebas y producción) que configuró en 
@@ -84,6 +84,16 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   bin/rails db:setup
   bin/rails db:migrate
   bin/rails sip:indices
+  ```
+* Si no lo ha hecho instale yarn para manejar paquetes javascript:
+  ```sh
+  doas pkg_add bash
+  ftp -o- https://yarnpkg.com/install.sh | bash
+  . ~/.profile
+  ```
+* Instale librerías Javascript requeridas al lado del cliente con:
+```sh
+  CXX=c++ yarn install
   ```
 * Lance la aplicación en modo de desarrollo. En el siguiente ejemplo el 
   parametro `-p` indica el puerto por el cual escuchará la aplicación 
