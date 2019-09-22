@@ -1,0 +1,99 @@
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+  <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+</head>
+<body>
+  <div id= "container_mapOsm">
+    <div class="page-header">
+    <h1>Casos sobre Open Street Maps</h1>  
+    </div>
+    <div id="settings_canvasOsm">
+      <div class="card border-primary mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Filtrar Casos</h4>
+          <form name="settings" onsubmit="addCases(true); return false;">
+            <div class= "row">
+              <div class="col-sm-3">
+                <input class= "input_map" name="num" type="hidden" value="200" />
+                <div class="settings_element">
+                  <div>Fecha:</div>
+                  <div>
+                    <input type="text" name="desde" class="input_map form-control"
+                                                    placeholder= "Desde"
+                                                    id="inputDesde"
+                                                    data-behaviour="datepicker"
+                                                    value=""
+                                                    size="11"/>
+                  </div>
+                  <div>
+                    <input type="text" name="hasta" class="input_map form-control"
+                                                    placeholder= "Hasta"
+                                                    id="inputHasta"
+                                                    data-behaviour="datepicker"
+                                                    value=""
+                                                    size="11"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="settings_element">
+                  <div>Departamento:</div>
+                  <div>
+                    <select name="departamento" class="select_map custom-select"
+                                                id="departamento"
+                                                style="width:140px;">
+                      <option value="0">Mostrar todos</option>
+                      <option value="">-----------------------</option>
+                      <%= options_for_select(Sip::Departamento.habilitados.where(id_pais: 170).all.collect { |d| [d.nombre, d.id ] })
+                    %> 
+                  </select>
+                  </div>
+                </div>
+                <!-- <div class="clear"></div>-->
+              </div>
+              <div class="col-sm-3">
+                <div class="settings_element">
+                  <div>P. Responsable:</div>
+                  <div>
+                    <select name="prresp" class="select_map custom-select" id="presponsable" style="width:150px;">
+                      <option value="0">Mostrar todos</option>
+                      <option value="">-----------------------</option>
+                      <%= options_for_select(Sivel2Gen::Presponsable.all.collect { |d| [d.nombre, d.id ] }) %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="settings_element">
+                  <div>Violencia:</div>
+                  <div>
+                    <select name="tvio" class="select_map custom-select" id="tvio" style="width:150px;">
+                      <option value="0">Mostrar todos</option>
+                      <option value="">-----------------------</option>
+                      <%= options_for_select(Sivel2Gen::Categoria.all.collect { |d| [d.nombre, d.id ] })%>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="alert alert-success" role="alert">
+                  <span class="nrcasos" id="nrcasos"></span>
+                </div>
+
+              </div>
+              <div class="col-sm-8">
+                <button id="addCasesOsm" type="button" class="btn">Filtrar</button>
+              </div>
+              <img id='loader'  src='<%= asset_path('spinnern.gif') %>'>
+            </div>
+        </div>
+          </form>
+
+          <div id="map_osm"></div>
+      </div>
+    </div>
+  </div>
+  <%= javascript_pack_tag 'mapaosm' %>
+</body>

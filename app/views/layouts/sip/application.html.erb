@@ -43,8 +43,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144.png">
     <meta name="msapplication-config" content="/images/browserconfig.xml">
 
-
     <%= javascript_include_tag "application" %>
+    <%= javascript_pack_tag 'application' %>
   </head>
   <body>
     <%= nav_bar :fixed => :top, 
@@ -56,9 +56,6 @@
     <% end %>
 
     <div class="container master-container">
-	    <ul class="breadcrumb">
-        <%= yield :breadcrumb %>
-	    </ul>
 	    <%= bootstrap_flash %>
 	    <%= yield %>
     </div>
