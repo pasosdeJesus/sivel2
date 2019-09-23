@@ -7,8 +7,9 @@ Ver los creditos de esa versión en
 * Pruebas: Blanca Acosta <blanca@pasosdeJesus.org>
 * Pruebas a infraestructura: Cristian Llanos (cllanos@cinep.org.co)
 * Información geográfica de Venezuela y Ecuador: Randolf Laverde
-* Mejoras a DIVIPOLA: Alejandro Cadena
+* Mejoras a DIVIPOLA 2016: Alejandro Cadena
 * Tooltips: Andrea Padilla
+* Exportación XRLAT, JSON y migración del mapa de SIVeL 1.2 a SIVeL 2: Luis Alejandro Cruz
 
 
 Han apoyado financiando el desarrollo de componentes de dominio público:
