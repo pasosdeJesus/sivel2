@@ -91,7 +91,7 @@ function createMarker(point, codigo, title) {
   var marker = new L.Marker(point);
   // Exportar los casos a formato GeoJson
   var geojson = marker.toGeoJSON();
-  // console.log(geojson);
+   console.log(geojson);
 
   //Acción al hacer clic en caso en el mapa
   marker.on('click', onClick);
