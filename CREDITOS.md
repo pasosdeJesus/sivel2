@@ -9,7 +9,7 @@ Ver los creditos de esa versión en
 * Información geográfica de Venezuela y Ecuador: Randolf Laverde
 * Mejoras a DIVIPOLA 2016: Alejandro Cadena
 * Tooltips: Andrea Padilla
-* Exportación XRLAT, JSON y migración del mapa de SIVeL 1.2 a SIVeL 2: Luis Alejandro Cruz
+* Exportación XRLAT, JSON y migración del mapa de SIVeL 1.2 a SIVeL 2 y nuevo mapa sobre OSM: Luis Alejandro Cruz
 * Logo de SIVeL 2: William Rozo <wiroal@riseup.net>
 
 Han apoyado financiando el desarrollo de componentes de dominio público:
