@@ -4,7 +4,6 @@
  *  * @license   https://www.pasosdejesus.org/dominio_publico_colombia.html Dominio Público. Sin garantías.
  *  * @version   $$
  *  */
-
 .info{
   margin-right: 0px;
   margin-top: 0px;
@@ -17,13 +16,17 @@
 }
 
 #settings_canvasOsm{
-  padding-bottom: 10px;
+  width: 100%;
+  padding: 5px 5px 5px 5px;
+  z-index:2;
+  background-color: #33333360;
 }
 
-#map_osm { 
+#map_osm {
   width: 100%; 
-  height: 450px;
-  float: left; 
+  height: 90vh;
+  float: left;
+  z-index:1; 
 }
 
 .clear { 

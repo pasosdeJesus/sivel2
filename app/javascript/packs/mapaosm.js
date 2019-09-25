@@ -2,15 +2,37 @@ var map = null;
 var marker= [];
 var markers= null;
 var bounds; 
+//borrar clase container
 
-map = L.map('map_osm',{ 
-  center: [4.6682, -74.071], 
-  zoom: 6
-}); 
+$('#div_contenido').css({'position': 'relative', 'margin-top': '3rem'});
+$('#div_contenido').removeClass("container");
+$('#div_contenido').removeClass("master-container");
+$('#div_contenido').addClass("container-fluid");
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' 
-}).addTo(map); 
+//creacion de mapa y sus capas
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
+
+var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
+
+var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
+var streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
+
+var map = L.mapbox.map('map_osm')
+  .addLayer(mapboxTiles)
+  .setView([4.6682, -74.071], 6)
+  .addControl(L.mapbox.geocoderControl('mapbox.places'));
+var baseMaps = {
+  "Grayscale": grayscale,
+  "Streets": streets
+};
+
+var overlayMaps = {
+  // "Cities": cities
+};
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+//Crea los clusers de casos y agrega casos
 markers = L.markerClusterGroup();
 window.setTimeout(addCasesOsm, 0);
 //ícono de marker
@@ -87,18 +109,19 @@ function addCasesOsm() {
 }
 
 function createMarker(point, codigo, title) {
-
-  var marker = new L.Marker(point);
-  // Exportar los casos a formato GeoJson
-  var geojson = marker.toGeoJSON();
-   console.log(geojson);
-
-  //Acción al hacer clic en caso en el mapa
-  marker.on('click', onClick);
-  markers.addLayer(marker);
+  var capaCasos = L.layerGroup();
+  var casoMarker = new L.Marker(point).addTo(capaCasos);
+  markers.addLayer(capaCasos);
   map.addLayer(markers);
 
-  function onClick() {
+  // Exportar los casos a formato GeoJson
+  //var geojson = capaCasos.toGeoJSON();
+
+
+  //Acción al hacer clic en caso en el mapa
+
+  casoMarker.on('click', clicMarcadorCaso);
+  function clicMarcadorCaso() {
     showLoader();
     var root = window;
     sip_arregla_puntomontaje(root);
@@ -220,8 +243,10 @@ function capa(des, hec, vic){
 }
 
 // Cierra la capa flotante desde el boton cerrar
-$(document).on('click','#closeBtn', function(){
-  info.remove(map);
+$(document).on('click','#closeBtn', function() {
+  if (info != undefined) {
+    info.remove(map);
+  }
 });
 
 // Cierra el info al hacer zoom in/out
@@ -231,7 +256,7 @@ map.on('zoom', function() {
   }
 });
 
-document.getElementById("addCasesOsm").addEventListener("click", function(){
+$(document).on('click', '#addCasesOsm', function(){
   markers.clearLayers(); 
   addCasesOsm();
-}, false);
+});
