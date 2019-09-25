@@ -16,15 +16,18 @@
 }
 
 #settings_canvasOsm{
-  width: 100%;
+  width: 100vw;
+  margin-left: 0px;
+  margin-top: 0px;
   padding: 5px 5px 5px 5px;
   z-index:2;
-  background-color: #33333360;
+  background-color: #33333390;
+  color: #FFF;
 }
 
 #map_osm {
   width: 100%; 
-  height: 90vh;
+  height: 85vh;
   float: left;
   z-index:1; 
 }
@@ -39,4 +42,13 @@
   top: 10px; 
   width: 32px; 
   height: 32px; 
+}
+
+.select_mapOsm { 
+  font: 12px; 
+  background-color: #444444;
+}
+.input_mapOsm{ 
+  font: 12px; 
+  background-color: #444444;
 }

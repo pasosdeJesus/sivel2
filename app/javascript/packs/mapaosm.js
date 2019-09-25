@@ -4,7 +4,7 @@ var markers= null;
 var bounds; 
 //borrar clase container
 
-$('#div_contenido').css({'position': 'relative', 'margin-top': '3rem'});
+$('#div_contenido').css({'position': 'relative'});
 $('#div_contenido').removeClass("container");
 $('#div_contenido').removeClass("master-container");
 $('#div_contenido').addClass("container-fluid");
@@ -19,10 +19,6 @@ var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v
 var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
 var streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
 
-var map = L.mapbox.map('map_osm')
-  .addLayer(mapboxTiles)
-  .setView([4.6682, -74.071], 6)
-  .addControl(L.mapbox.geocoderControl('mapbox.places'));
 var baseMaps = {
   "Grayscale": grayscale,
   "Streets": streets
@@ -31,10 +27,26 @@ var baseMaps = {
 var overlayMaps = {
   // "Cities": cities
 };
-L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+filtro = L.control({position: 'topleft'});
+  filtro.onAdd = function (map) {
+    this._div = L.DomUtil.get('settings_canvasOsm');
+    return this._div;
+  };
+
+var map = L.mapbox.map('map_osm', null, {zoomControl: false})
+  .addLayer(mapboxTiles)
+  .addControl(filtro)
+  .addControl(L.control.zoom({position:'topleft'}))
+  .setView([4.6682, -74.071], 6)
+  .addControl(L.mapbox.geocoderControl('mapbox.places'))
+  .addControl(L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}));
+L.control.scale({imperial: false}).addTo(map);
+
 //Crea los clusers de casos y agrega casos
 markers = L.markerClusterGroup();
 window.setTimeout(addCasesOsm, 0);
+
 //ícono de marker
 //var iconoCaso = <%= asset_path('icon.png') %>
 
