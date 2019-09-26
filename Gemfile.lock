@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9933ef900c5c96683098bae9f76f24eebc02c184
+  revision: 69fe0fced591e9d8a140907a2f96c6b62c8bec11
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ebbd39f9ac04c7682a1315c93c587568b2b0f39e
+  revision: 17ee518e59dbc5e2979c64ba87cce98dc9080a3c
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7d2656e69ecce1af5a536a04e82b8f80bace9ace
+  revision: fff621177cc34589f0b6eba352c3c5a42b8a70c5
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 96b3e4acaf849a667e71f59c39cad22a51fe28c8
+  revision: 6b69a6e252be08d2210795419067315bd8de704a
   specs:
     sivel2_gen (2.0b9)
       devise
@@ -176,7 +176,7 @@ GEM
     erd (0.6.3)
       nokogiri
       rails-erd (>= 0.4.5)
-    erubi (1.8.0)
+    erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.11.1)
     font-awesome-rails (4.7.0.5)
@@ -219,9 +219,9 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.11.3)
+    minitest (5.12.0)
     msgpack (1.3.1)
-    nio4r (2.5.1)
+    nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     odf-report (0.6.0)
@@ -258,7 +258,7 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (4.0.1)
-    puma (4.1.1)
+    puma (4.2.0)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
@@ -351,7 +351,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (0.20.3)
     thread_safe (0.3.6)
-    tilt (2.0.9)
+    tilt (2.0.10)
     tiny-color-rails (0.0.2)
       railties (>= 3.0)
     ttfunk (1.5.1)
@@ -369,7 +369,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.20)
+    uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicorn (5.5.1)
       kgio (~> 2.6)

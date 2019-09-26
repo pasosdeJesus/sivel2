@@ -48,10 +48,17 @@ gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', branch: 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem 'odf-report'
+gem 'rubyzip', '>= 2.0'
+
+# Genera ODT
+gem 'odf-report', git: 'https://github.com/vtamara/odf-report.git', branch: 'rubyzip-1.3'
+
+# Genera ODS
+gem 'libxml-ruby'
+gem 'rspreadsheet', git: 'https://github.com/vtamara/rspreadsheet.git', branch: 'rubyzip-1.3'
+
+# Markdown
 gem 'redcarpet'
-gem 'libxml-ruby'#
-gem 'rspreadsheet'
 
 # Facilita elegir colores en tema
 gem 'pick-a-color-rails'
