@@ -1,18 +1,45 @@
-var mapa = null;
-var marker = [];
-var markers = null;
+var map = null;
+var marker= [];
+var markers= null;
 var bounds; 
+//borrar clase container
 
-mapa = L.map('map_osm',{ 
-  center: [4.6682, -74.071], 
-  zoom: 6
-}); 
+$('#div_contenido').css({'position': 'relative'});
+$('#div_contenido').removeClass("container");
+$('#div_contenido').removeClass("master-container");
+$('#div_contenido').addClass("container-fluid");
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' 
-    }).addTo(mapa); 
+//creacion de mapa y sus capas
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
+
+var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
+
+filtro = L.control({position: 'topleft'});
+  filtro.onAdd = function (map) {
+    this._div = L.DomUtil.get('settings_canvasOsm');
+    return this._div;
+  };
+
+baselayers= {
+  "default" : mapboxTiles,
+  "ejemplo1" : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+
+}
+var map = L.mapbox.map('map_osm', null, {zoomControl: false})
+  .addLayer(mapboxTiles)
+  .addControl(filtro)
+  .addControl(L.control.zoom({position:'topleft'}))
+  .setView([4.6682, -74.071], 6)
+  .addControl(L.mapbox.geocoderControl('mapbox.places'))
+  .addControl(L.control.layers(baselayers, null, {position: 'topleft'}));
+L.control.scale({imperial: false}).addTo(map);
+
+//Crea los clusers de casos y agrega casos
 markers = L.markerClusterGroup();
 window.setTimeout(addCasesOsm, 0);
+
 //ícono de marker
 //var iconoCaso = <%= asset_path('icon.png') %>
 
@@ -70,13 +97,12 @@ function addCasesOsm() {
     var o = jQuery.parseJSON(data);
     var numResult = 0;
     for(var codigo in o) {
-      numResult++;
       var lat = o[codigo].latitud;
       var lng = o[codigo].longitud;
       var titulo= o[codigo].titulo;
       var fecha = o[codigo].fecha;
-
       if (lat != null || lng != null){
+        numResult++;
         var point= new L.LatLng(parseFloat(lat), parseFloat(lng));
         var title = fecha + ": " + titulo;
         createMarker(point, codigo, title);
@@ -88,18 +114,19 @@ function addCasesOsm() {
 }
 
 function createMarker(point, codigo, title) {
+  var capaCasos = L.layerGroup();
+  var casoMarker = new L.Marker(point).addTo(capaCasos);
+  markers.addLayer(capaCasos);
+  map.addLayer(markers);
 
-  var marker = new L.Marker(point);
   // Exportar los casos a formato GeoJson
-  var geojson = marker.toGeoJSON();
- // console.log(geojson);
+  //var geojson = capaCasos.toGeoJSON();
+
 
   //Acción al hacer clic en caso en el mapa
-  marker.on('click', onClick);
-  markers.addLayer(marker);
-  mapa.addLayer(markers);
-  
-  function onClick() {
+
+  casoMarker.on('click', clicMarcadorCaso);
+  function clicMarcadorCaso() {
     showLoader();
     var root = window;
     sip_arregla_puntomontaje(root);
@@ -182,11 +209,11 @@ var info;
 function capa(des, hec, vic){
 
   if (info != undefined) { // se valida si existe informacion en la capa, si es borra la capa
-    info.remove(mapa); // esta linea quita la capa flotante
+    info.remove(map); // esta linea quita la capa flotante
   }
 
   info = L.control();
-  info.onAdd = function (mapa) {
+  info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info');
     this.update(des, hec, vic);
     return this._div;
@@ -194,46 +221,47 @@ function capa(des, hec, vic){
 
   info.update = function (des, hec, vic) {
     this._div.innerHTML = '<button type="button" id="closeBtn" class="close" aria-label="Close">'+
-         '<span aria-hidden="true">&times;</span>'+
-         '</button><div id="infow">'+
-        '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
-         '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
-        '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
-        '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
-        '</ul>'+
-        '<div class="tab-content" id="myTabContent">'+
-        '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
-        '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
-        '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
-        '</div>'+
-        '</div>';
+      '<span aria-hidden="true">&times;</span>'+
+      '</button><div id="infow">'+
+      '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
+      '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
+      '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
+      '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
+      '</ul>'+
+      '<div class="tab-content" id="myTabContent">'+
+      '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
+      '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
+      '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
+      '</div>'+
+      '</div>';
   };
-  info.addTo(mapa);
+  info.addTo(map);
   // Disable dragging when user's cursor enters the element
   info.getContainer().addEventListener('mouseover', function () {
-    mapa.dragging.disable();
+    map.dragging.disable();
   });
 
   // Re-enable dragging when user's cursor leaves the element
   info.getContainer().addEventListener('mouseout', function () {
-    mapa.dragging.enable();
+    map.dragging.enable();
   });
 }
-// addCasesOsm();
 
 // Cierra la capa flotante desde el boton cerrar
-$(document).on('click','#closeBtn', function(){
-  info.remove(mapa);
-});
-
-// Cierra el info al hacer zoom in/out
-mapa.on('zoom', function() {
+$(document).on('click','#closeBtn', function() {
   if (info != undefined) {
-    info.remove(mapa);
+    info.remove(map);
   }
 });
 
-document.getElementById("addCasesOsm").addEventListener("click", function(){
- markers.clearLayers(); 
+// Cierra el info al hacer zoom in/out
+map.on('zoom', function() {
+  if (info != undefined) {
+    info.remove(map);
+  }
+});
+
+$(document).on('click', '#addCasesOsm', function(){
+  markers.clearLayers(); 
   addCasesOsm();
-}, false);
+});
