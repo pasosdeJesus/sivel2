@@ -5,14 +5,16 @@
  *  * @version   $$
  *  */
 .info{
-  margin-right: 0px;
-  margin-top: 0px;
-  height: 430px;
+  height: 80vh;
   width: 400px;
   background-color: #fff;
   -webkit-box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
   -moz-box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
   box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
+}
+
+#infow{
+  height: 80vh;
 }
 
 #settings_canvasOsm{
@@ -21,7 +23,7 @@
   margin-top: 0px;
   padding: 5px 5px 5px 5px;
   z-index:2;
-  background-color: #33333390;
+  background-color: #202040;
   color: #FFF;
 }
 
@@ -45,10 +47,8 @@
 }
 
 .select_mapOsm { 
-  font: 12px; 
-  background-color: #444444;
+  background-color: #202060;
 }
 .input_mapOsm{ 
-  font: 12px; 
-  background-color: #444444;
+  background-color: #202060;
 }

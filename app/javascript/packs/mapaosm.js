@@ -16,31 +16,24 @@ var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a
 
 var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
 
-var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
-var streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
-
-var baseMaps = {
-  "Grayscale": grayscale,
-  "Streets": streets
-};
-
-var overlayMaps = {
-  // "Cities": cities
-};
-
 filtro = L.control({position: 'topleft'});
   filtro.onAdd = function (map) {
     this._div = L.DomUtil.get('settings_canvasOsm');
     return this._div;
   };
 
+baselayers= {
+  "default" : mapboxTiles,
+  "ejemplo1" : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+
+}
 var map = L.mapbox.map('map_osm', null, {zoomControl: false})
   .addLayer(mapboxTiles)
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
   .addControl(L.mapbox.geocoderControl('mapbox.places'))
-  .addControl(L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}));
+  .addControl(L.control.layers(baselayers, null, {position: 'topleft'}));
 L.control.scale({imperial: false}).addTo(map);
 
 //Crea los clusers de casos y agrega casos

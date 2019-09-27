@@ -89,7 +89,7 @@ gem 'prawn-table'
 gem 'tzinfo'
 
 # Motor estilo Pasos de Jesús
-gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git', branch: :bs4
+gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'#, branch: :bs4
 #gem 'sip', path: '../sip'
 
 # Motor de formularios

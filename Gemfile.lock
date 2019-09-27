@@ -20,10 +20,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0b41f8d98eb4896132a69df6991851195afdd1c1
-  branch: bs4
+  revision: b13d46332450b91e48725a6ee85fcb296f33f20e
   specs:
     sip (2.0.b6)
+      bootstrap-datepicker-rails
       cancancan
       chosen-rails
       colorize
@@ -36,6 +36,7 @@ GIT
       rails
       rails-i18n
       simple_form
+      twitter-bootstrap-rails
       twitter_cldr
       will_paginate
 
