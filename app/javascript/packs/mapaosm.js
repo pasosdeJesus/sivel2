@@ -22,18 +22,31 @@ filtro = L.control({position: 'topleft'});
     return this._div;
   };
 
+agregaCapaBtn = L.control({position: 'topleft'});
+  agregaCapaBtn.onAdd = function (map) {
+    this._div = L.DomUtil.get('agregaCapa');
+    return this._div;
+  }
+
 baselayers= {
   "default" : mapboxTiles,
-  "ejemplo1" : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+  "ejemplo1" : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+  "Dark" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
 
 }
+
+overlayers= {
+  "Transport" : L.tileLayer('http://www.openptmap.org/tiles/${z}/${x}/${y}.png'),
+}
+
 var map = L.mapbox.map('map_osm', null, {zoomControl: false})
   .addLayer(mapboxTiles)
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
   .addControl(L.mapbox.geocoderControl('mapbox.places'))
-  .addControl(L.control.layers(baselayers, null, {position: 'topleft'}));
+  .addControl(L.control.layers(baselayers, overlayers, {position: 'topleft'}))
+  .addControl(agregaCapaBtn);
 L.control.scale({imperial: false}).addTo(map);
 
 //Crea los clusers de casos y agrega casos
@@ -254,6 +267,13 @@ $(document).on('click','#closeBtn', function() {
   }
 });
 
+// Cierra la capa flotante desde el boton cerrar
+$(document).on('click','#btnCerrarAgCapa', function() {
+  if (agregaCapaDiv != undefined) {
+    agregaCapaDiv.remove(map);
+  }
+});
+
 // Cierra el info al hacer zoom in/out
 map.on('zoom', function() {
   if (info != undefined) {
@@ -265,3 +285,30 @@ $(document).on('click', '#addCasesOsm', function(){
   markers.clearLayers(); 
   addCasesOsm();
 });
+
+$(document).on('click', '#agregarCapa', function(){
+  agregarCapa();
+});
+
+
+// Boton agregar capas
+var agregaCapaDiv;
+function agregarCapa(){
+  if (agregaCapaDiv != undefined) { // se valida si existe informacion en la capa, si es borra la capa
+    agregaCapaDiv.remove(map); // esta linea quita la capa flotante
+  }
+
+  agregaCapaDiv = L.control();
+  agregaCapaDiv.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'agregaCapaDiv');
+    this.updateAgregaCapaDiv();
+    return this._div;
+  };
+
+  agregaCapaDiv.updateAgregaCapaDiv = function () {
+    this._div.innerHTML = '<button type="button" id="btnCerrarAgCapa" class="close" aria-label="Close">'+
+      '<span aria-hidden="true">&times;</span>'+
+      '</button><div class="card">            <div class="card-body">              <h5 class="card-title">Special title treatment</h5>              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>              <a href="#" class="btn btn-primary">Go somewhere</a>            </div>          </div>';
+  };
+  agregaCapaDiv.addTo(map);
+}

@@ -4,7 +4,7 @@
  *  * @license   https://www.pasosdejesus.org/dominio_publico_colombia.html Dominio Público. Sin garantías.
  *  * @version   $$
  *  */
-.info{
+.info, .agregaCapaDiv{
   height: 80vh;
   width: 400px;
   background-color: #fff;

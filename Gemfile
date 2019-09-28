@@ -48,17 +48,10 @@ gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', branch: 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem 'rubyzip', '>= 2.0'
-
-# Genera ODT
-gem 'odf-report', git: 'https://github.com/vtamara/odf-report.git', branch: 'rubyzip-1.3'
-
-# Genera ODS
-gem 'libxml-ruby'
-gem 'rspreadsheet', git: 'https://github.com/vtamara/rspreadsheet.git', branch: 'rubyzip-1.3'
-
-# Markdown
+gem 'odf-report'
 gem 'redcarpet'
+gem 'libxml-ruby'#
+gem 'rspreadsheet'
 
 # Facilita elegir colores en tema
 gem 'pick-a-color-rails'
@@ -96,7 +89,7 @@ gem 'prawn-table'
 gem 'tzinfo'
 
 # Motor estilo Pasos de Jesús
-gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'
+gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'#, branch: :bs4
 #gem 'sip', path: '../sip'
 
 # Motor de formularios
