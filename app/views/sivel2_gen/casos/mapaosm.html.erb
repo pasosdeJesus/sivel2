@@ -6,18 +6,18 @@
   <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
   <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
   <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
-  <div id="settings_canvasOsm">
+  <div id="filtroOsm">
     <div class="card border-primary mb-3">
       <div class="card-body">
         <h4 class="card-title">Filtrar Casos</h4>
         <form name="settings" onsubmit="addCasesOsm(true); return false;">
           <div class= "row">
             <div class="col-sm-2">
-              <input class= "input_mapOsm" name="num" type="hidden" value="200" />
+              <input class= "input_mapaOsm" name="num" type="hidden" value="200" />
               <div class="settings_element">
                 <div>Fecha:</div>
                 <div>
-                  <input type="text" name="desde" class="input_mapOsm form-control"
+                  <input type="text" name="desde" class="input_mapaOsm form-control"
                                                   placeholder= "Desde"
                                                   id="inputDesde"
                                                   data-behaviour="datepicker"
@@ -25,7 +25,7 @@
                                                   size="11"/>
                 </div>
                 <div>
-                  <input type="text" name="hasta" class="input_mapOsm form-control"
+                  <input type="text" name="hasta" class="input_mapaOsm form-control"
                                                   placeholder= "Hasta"
                                                   id="inputHasta"
                                                   data-behaviour="datepicker"
@@ -38,7 +38,7 @@
               <div class="settings_element">
                 <div>Departamento:</div>
                 <div>
-                  <select name="departamento" class="select_mapOsm custom-select"
+                  <select name="departamento" class="select_mapaOsm custom-select"
                                               id="departamento"
                                               style="width:140px;">
                     <option value="0">Mostrar todos</option>
@@ -48,13 +48,12 @@
                 </select>
                 </div>
               </div>
-              <!-- <div class="clear"></div>-->
             </div>
             <div class="col-sm-2">
               <div class="settings_element">
                 <div>P. Responsable:</div>
                 <div>
-                  <select name="prresp" class="select_mapOsm custom-select" id="presponsable" style="width:150px;">
+                  <select name="prresp" class="select_mapaOsm custom-select" id="presponsable" style="width:150px;">
                     <option value="0">Mostrar todos</option>
                     <option value="">-----------------------</option>
                     <%= options_for_select(Sivel2Gen::Presponsable.all.collect { |d| [d.nombre, d.id ] }) %>
@@ -66,7 +65,7 @@
               <div class="settings_element">
                 <div>Violencia:</div>
                 <div>
-                  <select name="tvio" class="select_mapOsm custom-select" id="tvio" style="width:150px;">
+                  <select name="tvio" class="select_mapaOsm custom-select" id="tvio" style="width:150px;">
                     <option value="0">Mostrar todos</option>
                     <option value="">-----------------------</option>
                     <%= options_for_select(Sivel2Gen::Categoria.all.collect { |d| [d.nombre, d.id ] })%>
@@ -84,7 +83,7 @@
                 <div class="col-sm-6">
                   <button id="addCasesOsm" type="button" class="btn">Filtrar</button>
                 </div>
-                <img id='loader'  src='<%= asset_path('spinnern.gif') %>'>
+                <img id='cargador'  src='<%= asset_path('spinnern.gif') %>'>
               </div>
             </div>
           </div>
@@ -95,6 +94,6 @@
   <div id="agregaCapa">
     <button id="agregarCapa" type="button" class="btn btn-primary btn-sm">Agregar Capa</button>
   </div>
-  <div id="map_osm"></div>
+  <div id="mapa_osm"></div>
   <%= javascript_pack_tag 'mapaosm' %>
 </body>
