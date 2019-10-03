@@ -24,7 +24,7 @@ agregaCapaBtn = L.control({position: 'bottomleft'});
 agregaCapaBtn.onAdd = function (mapa) {
   this._div = L.DomUtil.get('agregaCapa');
   return this._div;
-}
+};
 
 var capasBase= {
   "Osm" : mapboxTiles,
@@ -261,7 +261,7 @@ $(document).on('click', '#addCasesOsm', function(){
 //Funciones de agregar supercapas
 $(document).on('click', '#agregarCapa', function(){
   agregarCapa();
-  var contenidoGeoJson
+  var contenidoGeoJson;
 
   // Función que sube la capa del usuario
   document.getElementById('archivoGeo').addEventListener('change', leerArchivo, false);
@@ -280,11 +280,11 @@ $(document).on('click', '#agregarCapa', function(){
     nombreCapanueva = $('#nombreCapaNueva').val();
     var geoJsonParseado = jQuery.parseJSON(contenidoGeoJson);
     var capaGeoJson = L.geoJSON(geoJsonParseado);
-    mapa.addLayer(capaGeoJson)
+    mapa.addLayer(capaGeoJson);
     controlCapas.addOverlay(capaGeoJson, nombreCapanueva);
     agregaCapaDiv.remove(mapa);
     alert("Capa agregada con éxito");
-  })
+  });
 });
 
 // Boton agregar capas
