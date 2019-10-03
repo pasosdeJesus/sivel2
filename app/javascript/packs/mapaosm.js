@@ -34,7 +34,7 @@ var capasBase= {
 
 }
 var capasSuperpuestas= {
-  "Transport" : L.tileLayer('http://www.openptmap.org/tiles/${z}/${x}/${y}.png'),
+  "Transport" : L.tileLayer('http://www.openptmap.org/tiles/{z}/{x}/{y}.png'),
 }
 var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
 
