@@ -1,27 +1,63 @@
-var mapa = null;
-var marker = [];
-var markers = null;
+var marker= [];
+var markers= null;
 var bounds; 
 
-mapa = L.map('map_osm',{ 
-  center: [4.6682, -74.071], 
-  zoom: 6
-}); 
+//borrar clase container y ocultar footer
+$('#div_contenido').css({'position': 'relative'});
+$('#div_contenido').removeClass("container");
+$('#div_contenido').removeClass("master-container");
+$('#div_contenido').addClass("container-fluid");
+$('#pie_pagina').css({'display': 'none'});
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' 
-    }).addTo(mapa); 
-markers = L.markerClusterGroup();
-window.setTimeout(addCasesOsm, 0);
-//ícono de marker
-//var iconoCaso = <%= asset_path('icon.png') %>
+//creacion de mapa y sus capas
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
+var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
 
-function showLoader() {
-  $('#loader').show();
+filtro = L.control({position: 'topleft'});
+filtro.onAdd = function (mapa) {
+  this._div = L.DomUtil.get('filtroOsm');
+  return this._div;
+};
+
+agregaCapaBtn = L.control({position: 'bottomleft'});
+agregaCapaBtn.onAdd = function (mapa) {
+  this._div = L.DomUtil.get('agregaCapa');
+  return this._div;
 }
 
-function hideLoader() {
-  $('#loader').hide();
+var capasBase= {
+  "Osm" : mapboxTiles,
+  "Satelite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+  "Osm2" : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+  "Dark" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
+
+}
+var capasSuperpuestas= {
+  "Transport" : L.tileLayer('http://www.openptmap.org/tiles/${z}/${x}/${y}.png'),
+}
+var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
+
+var mapa = L.mapbox.map('mapa_osm', null, {zoomControl: false, minZoom: 2})
+  .addLayer(mapboxTiles)
+  .addControl(filtro)
+  .addControl(L.control.zoom({position:'topleft'}))
+  .setView([4.6682, -74.071], 6)
+  .addControl(L.mapbox.geocoderControl('mapbox.places'))
+  .addControl(controlCapas)
+  .addControl(agregaCapaBtn);
+L.control.scale({imperial: false}).addTo(mapa);
+
+//Crea los clusers de casos y agrega casos
+markers = L.markerClusterGroup();
+window.setTimeout(addCasesOsm, 0);
+
+function mostrarCargador() {
+  $('#cargador').show();
+}
+
+function ocultarCargador() {
+  $('#cargador').hide();
 }
 
 function downloadUrl(url, callback) {
@@ -36,15 +72,12 @@ function downloadUrl(url, callback) {
   request.send(null);
 }
 
-
 function addCasesOsm() {
-
   var desde = $('#inputDesde').val();
   var hasta = $('#inputHasta').val();
   var departamento = $('#departamento').val();
   var prresp = $('#presponsable').val();
   var tvio = $('#tvio').val();
-
   var root = window;
   sip_arregla_puntomontaje(root);
   var ruta = root.puntomontaje + 'casos.json';
@@ -58,11 +91,11 @@ function addCasesOsm() {
   if (tvio != undefined && tvio != 0){
     requestUrl += '&filtro[categoria_id]=' + tvio;
   }
-  showLoader();
+  mostrarCargador();
   downloadUrl(requestUrl, function(req) {
     data = req.responseText;
     if (data == null || data.substr(0, 1) != '{'){
-      hideLoader();
+      ocultarCargador();
       $('#nrcasos').html("0");
       window.alert("El URL" + requestUrl + "no retorno informacion JSON.\n\n" + data);
       return;
@@ -70,53 +103,48 @@ function addCasesOsm() {
     var o = jQuery.parseJSON(data);
     var numResult = 0;
     for(var codigo in o) {
-      numResult++;
       var lat = o[codigo].latitud;
       var lng = o[codigo].longitud;
       var titulo= o[codigo].titulo;
       var fecha = o[codigo].fecha;
-
       if (lat != null || lng != null){
+        numResult++;
         var point= new L.LatLng(parseFloat(lat), parseFloat(lng));
         var title = fecha + ": " + titulo;
         createMarker(point, codigo, title);
       }
     }
     $('#nrcasos').html(numResult + ' Casos mostrados!');
-    hideLoader();
+    ocultarCargador();
   });
 }
 
 function createMarker(point, codigo, title) {
+  var capaCasos = L.layerGroup();
+  var casoMarker = new L.Marker(point).addTo(capaCasos);
+  markers.addLayer(capaCasos);
+  mapa.addLayer(markers);
 
-  var marker = new L.Marker(point);
   // Exportar los casos a formato GeoJson
-  var geojson = marker.toGeoJSON();
- // console.log(geojson);
+  //var geojson = capaCasos.toGeoJSON();
 
   //Acción al hacer clic en caso en el mapa
-  marker.on('click', onClick);
-  markers.addLayer(marker);
-  mapa.addLayer(markers);
-  
-  function onClick() {
-    showLoader();
+  casoMarker.on('click', clicMarcadorCaso);
+  function clicMarcadorCaso() {
+    mostrarCargador();
     var root = window;
     sip_arregla_puntomontaje(root);
     var ruta = root.puntomontaje + 'casos/';
     var requestUrl = ruta + codigo + ".json";  
     downloadUrl(requestUrl, function(req) {
       data = req.responseText;
-
-      //window.alert(data);
       if (data == null || data.substr(0, 1) != '{') {
-        hideLoader();
+        ocultarCargador();
         window.alert("El URL " + requestUrl +
           " no retorno detalles del caso\n " + data);
         return;
       }
       var o = jQuery.parseJSON(data);
-
       var id = o['caso'].id;
       var titulo = o['caso'].titulo; 
       var hechos = o['caso'].hechos; 
@@ -127,10 +155,8 @@ function createMarker(point, codigo, title) {
       var centro_poblado = o['caso'].centro_poblado;
       var victimas = o['caso'].victimas;
       var prresp = o['caso'].presponsables;
-
       var descripcionCont = '<div>' +
         '<h3>' + titulo + '</h3>' + '</div>' + '<div>' + hechos + '</div>';
-
       var hechosCont = '<div><table>';
       hechosCont += (fecha != "") ? '<tr><td>Fecha:</td><td>' +
         fecha + '</td></tr>' : '';
@@ -149,7 +175,6 @@ function createMarker(point, codigo, title) {
         '<tr><td>Codigo:</td><td>' +
         codigo + '</td></tr>' : '';
       hechosCont += '</table></div>';
-
       var victimasCont = '<div><table>' +
         '<tr><td>Victimas:</td><td>';
       for(var cv in victimas) {
@@ -167,8 +192,7 @@ function createMarker(point, codigo, title) {
       }
       victimasCont += '</td></tr></table></div>';
       capa(descripcionCont, hechosCont, victimasCont);
-      hideLoader();
-
+      ocultarCargador();
     });
   }
   return marker;
@@ -177,53 +201,48 @@ function createMarker(point, codigo, title) {
 var eventBackup;
 // variable global donde se carga la capa flotante
 var info;
-
 // capa flotante donde se muestra la info al darle click sobre un maker
 function capa(des, hec, vic){
-
   if (info != undefined) { // se valida si existe informacion en la capa, si es borra la capa
     info.remove(mapa); // esta linea quita la capa flotante
   }
-
   info = L.control();
   info.onAdd = function (mapa) {
     this._div = L.DomUtil.create('div', 'info');
     this.update(des, hec, vic);
     return this._div;
   };
-
   info.update = function (des, hec, vic) {
     this._div.innerHTML = '<button type="button" id="closeBtn" class="close" aria-label="Close">'+
-         '<span aria-hidden="true">&times;</span>'+
-         '</button><div id="infow">'+
-        '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
-         '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
-        '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
-        '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
-        '</ul>'+
-        '<div class="tab-content" id="myTabContent">'+
-        '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
-        '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
-        '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
-        '</div>'+
-        '</div>';
+      '<span aria-hidden="true">&times;</span>'+
+      '</button><div id="infow">'+
+      '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
+      '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
+      '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
+      '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
+      '</ul>'+
+      '<div class="tab-content" id="myTabContent">'+
+      '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
+      '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
+      '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
+      '</div>'+
+      '</div>';
   };
   info.addTo(mapa);
-  // Disable dragging when user's cursor enters the element
-  info.getContainer().addEventListener('mouseover', function () {
-    mapa.dragging.disable();
-  });
-
-  // Re-enable dragging when user's cursor leaves the element
-  info.getContainer().addEventListener('mouseout', function () {
-    mapa.dragging.enable();
-  });
 }
-// addCasesOsm();
 
 // Cierra la capa flotante desde el boton cerrar
-$(document).on('click','#closeBtn', function(){
-  info.remove(mapa);
+$(document).on('click','#closeBtn', function() {
+  if (info != undefined) {
+    info.remove(mapa);
+  }
+});
+
+// Cierra la capa flotante desde el boton cerrar
+$(document).on('click','#btnCerrarAgCapa', function() {
+  if (agregaCapaDiv != undefined) {
+    agregaCapaDiv.remove(mapa);
+  }
 });
 
 // Cierra el info al hacer zoom in/out
@@ -233,7 +252,61 @@ mapa.on('zoom', function() {
   }
 });
 
-document.getElementById("addCasesOsm").addEventListener("click", function(){
- markers.clearLayers(); 
+//limpia el mapa de casos cada que se filtra
+$(document).on('click', '#addCasesOsm', function(){
+  markers.clearLayers(); 
   addCasesOsm();
-}, false);
+});
+
+//Funciones de agregar supercapas
+$(document).on('click', '#agregarCapa', function(){
+  agregarCapa();
+  var contenidoGeoJson
+
+  // Función que sube la capa del usuario
+  document.getElementById('archivoGeo').addEventListener('change', leerArchivo, false);
+  function leerArchivo(e){
+    var archivo = e.target.files[0];
+    if (!archivo) {
+      return;
+    }
+    var lector = new FileReader();
+    lector.onload = function(e) {
+      contenidoGeoJson = e.target.result;
+    };
+    lector.readAsText(archivo);
+  }
+  $('#subirCapa').on('click', function(){
+    nombreCapanueva = $('#nombreCapaNueva').val();
+    var geoJsonParseado = jQuery.parseJSON(contenidoGeoJson);
+    var capaGeoJson = L.geoJSON(geoJsonParseado);
+    mapa.addLayer(capaGeoJson)
+    controlCapas.addOverlay(capaGeoJson, nombreCapanueva);
+    agregaCapaDiv.remove(mapa);
+    alert("Capa agregada con éxito");
+  })
+});
+
+// Boton agregar capas
+var agregaCapaDiv;
+function agregarCapa(){
+  if (agregaCapaDiv != undefined) { // se valida si existe informacion en la capa, si es borra la capa
+    agregaCapaDiv.remove(mapa); // esta linea quita la capa flotante
+  }
+  agregaCapaDiv = L.control();
+  agregaCapaDiv.onAdd = function (mapa) {
+    this._div = L.DomUtil.create('div', 'agregaCapaDiv');
+    this.updateAgregaCapaDiv();
+    return this._div;
+  };
+
+  agregaCapaDiv.updateAgregaCapaDiv = function () {
+    this._div.innerHTML = '<button type="button" id="btnCerrarAgCapa" class="close" aria-label="Close">'+ 
+      '<span aria-hidden="true">&times;</span></button>'+
+      '<div class="card border-primary mb-3"> <div class="card-body"><h3>Agregar capa al mapa</h3>' +
+      '<input id="nombreCapaNueva" class="form-group form-control" type="text" placeholder="Nombre de la Capa">'+
+      '<div class="form-group custom-file"><input id="archivoGeo" type="file" class="custom-file-input" id="customFileLang" lang="es"><label class="custom-file-label" for="customFileLang">Seleccionar archivo GeoJSON</label></div>' +
+      '<button id="subirCapa" class="form-group btn btn-primary">Subir</button></div></div>';
+  };
+  agregaCapaDiv.addTo(mapa);
+}
