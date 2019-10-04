@@ -13,7 +13,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   }
 
   def setup
-#    load "#{Rails.root}/db/seeds.rb"
+    if Sip::Tclase.all.count == 0
+      load "#{Rails.root}/db/seeds.rb"
+      Rake::Task['sip:indices'].invoke
+    end
   end
 
   def teardown
