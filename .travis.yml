@@ -4,7 +4,12 @@ rvm:
         - 2.6.2
 
 addons:
-        postgresql: '9.6'
+        postgresql: '10'
+
+apt:
+        packages:
+                - postgresql-10
+                - postgresql-client-10
 
 notifications:
         email: false
@@ -13,6 +18,7 @@ env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
                 - CC_TEST_REPORTER_ID=8d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a
+                - PGPORT=5432
 
 before_install: 
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -20,11 +26,10 @@ before_install:
         - ./cc-test-reporter before-build
         - sudo locale-gen --no-archive es_CO.UTF-8
         - sudo /etc/init.d/postgresql stop
-        - sudo /etc/init.d/postgresql start 9.6
-        - psql -c 'CREATE DATABASE sivel2gen_pru;' -U postgres
+        - sudo /etc/init.d/postgresql start 10
+        - psql -h 127.0.0.1 -c 'CREATE DATABASE sivel2gen_pru;' -U postgres
         - gem install bundler
         - gem update --system
-        - bundle update --bundler
         - bundle install
         - cp config/database.travis.yml config/database.yml
         - cp config/application.rb.plantilla config/application.rb
