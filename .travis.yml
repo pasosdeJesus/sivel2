@@ -20,6 +20,11 @@ env:
                 - CC_TEST_REPORTER_ID=8d43ae3a928f18aabb5a98065fd25344195b0bd414f8136f3a714b469291ac8a
                 - PGPORT=5432
 
+before_script:
+  - wget http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
+  - export CHROME_BIN=chromium-browser          
+
 before_install: 
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
