@@ -10,9 +10,11 @@ $('#div_contenido').addClass("container-fluid");
 $('#pie_pagina').css({'display': 'none'});
 
 //creacion de mapa y sus capas
-L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
-var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
+//L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
+
+var osmValdozas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
 
 filtro = L.control({position: 'topleft'});
 filtro.onAdd = function (mapa) {
@@ -27,9 +29,8 @@ agregaCapaBtn.onAdd = function (mapa) {
 };
 
 var capasBase= {
-  "Osm" : mapboxTiles,
+  "Osm" : osmValdozas,
   "Satelite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
-  "Osm2" : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
   "Dark" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
 
 }
@@ -38,12 +39,12 @@ var capasSuperpuestas= {
 }
 var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
 
-var mapa = L.mapbox.map('mapa_osm', null, {zoomControl: false, minZoom: 2})
-  .addLayer(mapboxTiles)
+var mapa = L.map('mapa_osm', {zoomControl: false, minZoom: 2})
+  .addLayer(osmValdozas)
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
-  .addControl(L.mapbox.geocoderControl('mapbox.places'))
+// .addControl(L.mapbox.geocoderControl('mapbox.places'))
   .addControl(controlCapas)
   .addControl(agregaCapaBtn);
 L.control.scale({imperial: false}).addTo(mapa);
@@ -81,7 +82,9 @@ function addCasesOsm() {
   var root = window;
   sip_arregla_puntomontaje(root);
   var ruta = root.puntomontaje + 'casos.json';
-  var requestUrl = ruta + '?utf8=' + '&filtro[fechaini]=' + desde + '&filtro[fechafin]=' + hasta;
+  //  var requestUrl = ruta + '?utf8=' + '&filtro[fechaini]=' + desde + '&filtro[fechafin]=' + hasta;
+  var requestUrl = ruta + '?filtro[q]=&filtro[fechaini]='+ desde +'&filtro[fechafin]='+ hasta +'&filtro[disgenera]=reprevista.json&idplantilla=reprevista&commit=Enviar';
+
   if (departamento != undefined && departamento != 0){
     requestUrl += '&filtro[departamento_id]=' + departamento;
   }
