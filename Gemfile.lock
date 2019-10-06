@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a0798221538a2226c9411eb2b85fed5ccc2494c3
+  revision: 776bc239c2fdfac4bb9a71cc7bca292d9d4c16a2
   specs:
     sivel2_gen (2.0b9)
       devise
@@ -153,8 +153,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    childprocess (2.0.0)
-      rake (< 13.0)
+    childprocess (3.0.0)
     choice (0.2.0)
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.2.0)
@@ -188,7 +187,7 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.6.0)
+    i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     jar_wrapper (0.1.8)
       zip
@@ -292,7 +291,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     raindrops (0.19.0)
-    rake (12.3.3)
+    rake (13.0.0)
     redcarpet (3.5.0)
     regexp_parser (1.6.0)
     responders (3.0.0)
@@ -315,10 +314,10 @@ GEM
       tilt
     selenium (0.2.11)
       jar_wrapper
-    selenium-webdriver (3.142.5)
-      childprocess (>= 0.5, < 3.0)
+    selenium-webdriver (3.142.6)
+      childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    simple_form (5.0.0)
+    simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.17.1)
