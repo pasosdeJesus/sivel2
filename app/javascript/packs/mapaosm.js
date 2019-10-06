@@ -10,9 +10,14 @@ $('#div_contenido').addClass("container-fluid");
 $('#pie_pagina').css({'display': 'none'});
 
 //creacion de mapa y sus capas
-L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
-var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
+
+//L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
+//var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+//var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
+
+var osmBaldosas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
 
 filtro = L.control({position: 'topleft'});
 filtro.onAdd = function (mapa) {
@@ -24,26 +29,25 @@ agregaCapaBtn = L.control({position: 'bottomleft'});
 agregaCapaBtn.onAdd = function (mapa) {
   this._div = L.DomUtil.get('agregaCapa');
   return this._div;
-}
+};
 
 var capasBase= {
-  "Osm" : mapboxTiles,
-  "Satelite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
-  "Osm2" : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
-  "Dark" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
+  "OpenStreetMap" : osmBaldosas,
+  "Satelite (ArcGIS)": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+  "Oscuro (CartoDB)" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
 
 }
 var capasSuperpuestas= {
-  "Transport" : L.tileLayer('http://www.openptmap.org/tiles/{z}/{x}/{y}.png'),
+  "Transporte (Openptmap)" : L.tileLayer('http://www.openptmap.org/tiles/${z}/${x}/${y}.png'),
 }
 var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
 
-var mapa = L.mapbox.map('mapa_osm', null, {zoomControl: false, minZoom: 2})
-  .addLayer(mapboxTiles)
+var mapa = L.map('mapa_osm', {zoomControl: false, minZoom: 2})
+  .addLayer(osmBaldosas)
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
-  .addControl(L.mapbox.geocoderControl('mapbox.places'))
+// .addControl(L.mapbox.geocoderControl('mapbox.places'))
   .addControl(controlCapas)
   .addControl(agregaCapaBtn);
 L.control.scale({imperial: false}).addTo(mapa);
@@ -81,7 +85,9 @@ function addCasesOsm() {
   var root = window;
   sip_arregla_puntomontaje(root);
   var ruta = root.puntomontaje + 'casos.json';
-  var requestUrl = ruta + '?utf8=' + '&filtro[fechaini]=' + desde + '&filtro[fechafin]=' + hasta;
+  //  var requestUrl = ruta + '?utf8=' + '&filtro[fechaini]=' + desde + '&filtro[fechafin]=' + hasta;
+  var requestUrl = ruta + '?filtro[q]=&filtro[fechaini]='+ desde +'&filtro[fechafin]='+ hasta +'&filtro[disgenera]=reprevista.json&idplantilla=reprevista&commit=Enviar';
+
   if (departamento != undefined && departamento != 0){
     requestUrl += '&filtro[departamento_id]=' + departamento;
   }
@@ -261,7 +267,8 @@ $(document).on('click', '#addCasesOsm', function(){
 //Funciones de agregar supercapas
 $(document).on('click', '#agregarCapa', function(){
   agregarCapa();
-  var contenidoGeoJson
+  
+  var contenidoGeoJson;
 
   // Función que sube la capa del usuario
   document.getElementById('archivoGeo').addEventListener('change', leerArchivo, false);
@@ -280,11 +287,11 @@ $(document).on('click', '#agregarCapa', function(){
     nombreCapanueva = $('#nombreCapaNueva').val();
     var geoJsonParseado = jQuery.parseJSON(contenidoGeoJson);
     var capaGeoJson = L.geoJSON(geoJsonParseado);
-    mapa.addLayer(capaGeoJson)
+    mapa.addLayer(capaGeoJson);
     controlCapas.addOverlay(capaGeoJson, nombreCapanueva);
     agregaCapaDiv.remove(mapa);
     alert("Capa agregada con éxito");
-  })
+  });
 });
 
 // Boton agregar capas

@@ -3810,6 +3810,11 @@ leaflet-css@^0.1.0:
   resolved "https://registry.yarnpkg.com/leaflet-css/-/leaflet-css-0.1.0.tgz#c1d07652092897b6321fa5caf634a15472ef152d"
   integrity sha1-wdB2Ugkol7YyH6XK9jShVHLvFS0=
 
+leaflet-google-places-autocomplete@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/leaflet-google-places-autocomplete/-/leaflet-google-places-autocomplete-0.0.8.tgz#dbcf5d1833d011bef3f266bb4357b79e3bf81d70"
+  integrity sha1-289dGDPQEb7z8ma7Q1e3njv4HXA=
+
 leaflet.markercluster@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/leaflet.markercluster/-/leaflet.markercluster-1.4.1.tgz#b53f2c4f2ca7306ddab1dbb6f1861d5e8aa6c5e5"
