@@ -12,7 +12,7 @@ $('#pie_pagina').css({'display': 'none'});
 //creacion de mapa y sus capas
 //L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
 
-var osmValdozas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var osmBaldozas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
@@ -29,7 +29,7 @@ agregaCapaBtn.onAdd = function (mapa) {
 };
 
 var capasBase= {
-  "Osm" : osmValdozas,
+  "Osm" : osmBaldozas,
   "Satelite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
   "Dark" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
 
@@ -40,7 +40,7 @@ var capasSuperpuestas= {
 var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
 
 var mapa = L.map('mapa_osm', {zoomControl: false, minZoom: 2})
-  .addLayer(osmValdozas)
+  .addLayer(osmBaldozas)
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
@@ -51,7 +51,7 @@ L.control.scale({imperial: false}).addTo(mapa);
 
 //Crea los clusers de casos y agrega casos
 markers = L.markerClusterGroup();
-window.setTimeout(addCasesOsm, 0);
+window.setTimeout(agregarCasosOsm, 0);
 
 function mostrarCargador() {
   $('#cargador').show();
@@ -73,7 +73,7 @@ function downloadUrl(url, callback) {
   request.send(null);
 }
 
-function addCasesOsm() {
+function agregarCasosOsm() {
   var desde = $('#inputDesde').val();
   var hasta = $('#inputHasta').val();
   var departamento = $('#departamento').val();
@@ -256,9 +256,9 @@ mapa.on('zoom', function() {
 });
 
 //limpia el mapa de casos cada que se filtra
-$(document).on('click', '#addCasesOsm', function(){
+$(document).on('click', '#agregarCasosOsm', function(){
   markers.clearLayers(); 
-  addCasesOsm();
+  agregarCasosOsm();
 });
 
 //Funciones de agregar supercapas

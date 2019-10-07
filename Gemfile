@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 #ruby '2.6.2'
+gem 'rubyzip', '>=2.0'
 
 # Rails con internacionalización
 gem 'rails', '~> 6.0.0.rc1'
@@ -31,26 +32,23 @@ gem 'jbuilder'
 gem 'bootsnap', '>=1.1.0', require: false
 
 # Bootstrap y FontAwesome
-gem 'twitter-bootstrap-rails'
-gem 'font-awesome-rails'
 gem 'bootstrap-datepicker-rails'
-
+gem 'font-awesome-rails'
+gem 'twitter-bootstrap-rails'
 
 # CoffeeScript para recuersos .js.coffee y vistas
 gem 'coffee-rails'
 
 # Uglifier comprime recursos Javascript
-gem 'uglifier'
-
 gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', branch: 'several-fixes'
+gem 'uglifier'
 
 # jquery como librería JavaScript
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-
+gem 'libxml-ruby'#
 gem 'odf-report'
 gem 'redcarpet'
-gem 'libxml-ruby'#
 gem 'rspreadsheet'
 
 # Facilita elegir colores en tema
@@ -65,10 +63,10 @@ gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', branch: 'new_id_with
 #gem 'cocoon', path: '../cocoon'
 
 # Autenticación y roles
+gem 'bcrypt'
+gem 'cancancan'
 gem 'devise'
 gem 'devise-i18n'
-gem 'cancancan'
-gem 'bcrypt'
 
 # Listados en páginas
 gem 'will_paginate'
@@ -83,7 +81,6 @@ gem 'paperclip'
 gem 'prawn'
 gem 'prawnto_2',  :require => 'prawnto'
 gem 'prawn-table'
-
 
 # Zonas horarias
 gem 'tzinfo'
@@ -110,15 +107,13 @@ group  :development, :test do
   #gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
-
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
-  gem 'web-console'
   gem 'erd'
+  gem 'web-console'
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem 'spring'
-
 end
 
 group :test do
@@ -137,7 +132,6 @@ group :test do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
 end
-
 
 group :production do
   # Para despliegue
