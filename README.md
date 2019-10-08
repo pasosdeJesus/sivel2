@@ -48,14 +48,7 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   ```
 * Copie y de requerirlo modifique las plantillas:
 ```sh
-  find . -name "*plantilla"
-  for i in `find . -name "*plantilla"`; do 
-    n=`echo $i | sed -e "s/.plantilla//g"`; 
-    if (test ! -e $n) then { 
-      echo $n; 
-      cp $i $n; 
-    } fi; 
-  done
+  for i in `find . -name "*plantilla"`; do n=`echo $i | sed -e "s/.plantilla//g"`; if (test ! -e "$n") then {echo $n; cp $i $n; } fi; done 
 ```
   Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que 
   modificarlas si prefiere una raíz de URL diferente, ver
@@ -63,7 +56,8 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 
   Lo mínimo que debe modificar es establecer usuario PostgreSQL, clave y 
   bases de datos (desarrollo, pruebas y producción) que configuró en 
-  PostgreSQL en `config/database.yml`.
+  PostgreSQL en `config/database.yml` (también es recomendable que agregue el
+  usuario y la clave en el archivo `~/.pgpass`).
 
 * Las migraciones del directorio `db/migrate` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
