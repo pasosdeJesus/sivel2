@@ -44,3 +44,4 @@ bin/migra.sh
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+config/credentials.yml.enc
