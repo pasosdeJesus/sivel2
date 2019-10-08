@@ -223,7 +223,7 @@ listen 2009
 ```
 * Precompile los recursos 
 ```sh 
-bin/rails assets:precompile
+RAILS_ENV=production bin/rails assets:precompile
 ```
 * Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave):
 ```sh 
@@ -232,7 +232,8 @@ DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293
 * Para iniciar en cada arranque, por ejemplo en adJ cree /etc/rc.d/sivel2
 ```sh
 
-servicio="DIRAP=/var/www/htdocs/sivel2 RAILS_RELATIVE_URL_ROOT=/ USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+servicio="DIRAP=/var/www/htdocs/sivel2 RAILS_RELATIVE_URL_ROOT=/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+
 
 . /etc/rc.d/rc.subr
 
@@ -247,7 +248,11 @@ rc_stop() {
 
 rc_cmd $1
 ```
-  E incluya ```sivel2``` en la variable ```pkg_scripts``` de ```/etc/rc.conf.local```
+  Inicielo con:
+```
+doas sh /etc/rc.d/sivel2 -d start
+```
+Y una vez opere bien, incluya ```sivel2``` en la variable ```pkg_scripts``` de ```/etc/rc.conf.local```
 
 ### Actualización de servidor de desarrollo :arrows_clockwise:
 
