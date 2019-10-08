@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 2b5fd9757635e840ec72205f1537bb0b39624ec8
+  revision: ab6a1ba8dc58bd2e399c7937ad3f629bc6e56e62
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: c1e80e4619f2cbcd1154dc426da6f12e0986a8d3
+  revision: 0221965dd6ec92b92345594be5ff009d45317188
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4cd18cded1787c608cb0efeccd3326694d559b78
+  revision: 676f0b8183ca36caf9b2019bc2d5902e219c7843
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 776bc239c2fdfac4bb9a71cc7bca292d9d4c16a2
+  revision: b2da951251da21c4785bd85762ce6e544a062104
   specs:
     sivel2_gen (2.0b9)
       devise
@@ -279,8 +279,8 @@ GEM
       activesupport (>= 4.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.2.0)
-      loofah (~> 2.2, >= 2.2.2)
+    rails-html-sanitizer (1.3.0)
+      loofah (~> 2.3)
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
