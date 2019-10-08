@@ -212,7 +212,12 @@ listen 2009
       add_header Cache-Control public;
       root /var/www/htdocs/sivel2/public/;
     }
-
+    
+    location ^~ /sivel2/packs/ {
+      gzip_static on;
+      add_header Cache-Control public;
+      root /var/www/htdocs/sivel2/public/;
+    }
     
   }
 ```
