@@ -170,7 +170,7 @@ listen 2009
 ```
 * Como servidor web recomendamos nginx, suponiendo que el puerto elegido es 2009, en la sección http agregue:
 ```
-  upstream unicorns2 {
+  upstream unicornsivel2 {
 	  server 127.0.0.1:2009 fail_timeout=0;
   }
 ```
