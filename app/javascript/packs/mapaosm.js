@@ -82,7 +82,7 @@ var coleccion = {
   "type": "FeatureCollection",
   "features": []
 };
-
+var marcadoresCreados;
 
 function agregarCasosOsm() {
   var desde = $('#inputDesde').val();
@@ -125,7 +125,7 @@ function agregarCasosOsm() {
         numResult++;
         var point= new L.LatLng(parseFloat(lat), parseFloat(lng));
         var title = fecha + ": " + titulo;
-       
+
         marcadoresCreados = createMarker(point, codigo, title);
         actualizaGeoJson(marcadoresCreados);
       }
@@ -282,7 +282,7 @@ mapa.on('zoom', function() {
 //limpia el mapa de casos cada que se filtra
 $(document).on('click', '#agregarCasosOsm', function(){
   markers.clearLayers(); 
- // actualizaGeoJson(marcadoresCreados);
+  coleccion.features = [];
   agregarCasosOsm();
 });
 
