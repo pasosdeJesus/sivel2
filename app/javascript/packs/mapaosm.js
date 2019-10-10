@@ -10,8 +10,6 @@ $('#div_contenido').addClass("container-fluid");
 $('#pie_pagina').css({'display': 'none'});
 
 //creacion de mapa y sus capas
-//L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
-
 var osmBaldozas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
@@ -19,6 +17,12 @@ var osmBaldozas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
 filtro = L.control({position: 'topleft'});
 filtro.onAdd = function (mapa) {
   this._div = L.DomUtil.get('filtroOsm');
+  return this._div;
+};
+
+descargamapaBtn = L.control({position:'bottomleft'});
+descargamapaBtn.onAdd = function (mapa){
+  this._div = L.DomUtil.get('descargaMapa');
   return this._div;
 };
 
@@ -44,9 +48,9 @@ var mapa = L.map('mapa_osm', {zoomControl: false, minZoom: 2})
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
-// .addControl(L.mapbox.geocoderControl('mapbox.places'))
   .addControl(controlCapas)
-  .addControl(agregaCapaBtn);
+  .addControl(agregaCapaBtn)
+  .addControl(descargamapaBtn);
 L.control.scale({imperial: false}).addTo(mapa);
 
 //Crea los clusers de casos y agrega casos
@@ -72,6 +76,13 @@ function downloadUrl(url, callback) {
   request.open('GET', url, true);
   request.send(null);
 }
+
+// una colección GeoJson vacía
+var coleccion = {
+  "type": "FeatureCollection",
+  "features": []
+};
+
 
 function agregarCasosOsm() {
   var desde = $('#inputDesde').val();
@@ -114,7 +125,9 @@ function agregarCasosOsm() {
         numResult++;
         var point= new L.LatLng(parseFloat(lat), parseFloat(lng));
         var title = fecha + ": " + titulo;
-        createMarker(point, codigo, title);
+       
+        marcadoresCreados = createMarker(point, codigo, title);
+        actualizaGeoJson(marcadoresCreados);
       }
     }
     $('#nrcasos').html(numResult + ' Casos mostrados!');
@@ -122,14 +135,23 @@ function agregarCasosOsm() {
   });
 }
 
+function actualizaGeoJson(datosMarcadores){
+  var geojson = marcadoresCreados.toGeoJSON();
+  coleccion.features.push(geojson);
+  $('#descargarMapa').on('click', function(){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(coleccion));
+    var descargaGeo = document.getElementById('enlaceDescarga');
+    descargaGeo.setAttribute("href",     dataStr     );
+    descargaGeo.setAttribute("download", "casos.geojson");
+  });
+}
+
 function createMarker(point, codigo, title) {
+  // Exportar los casos a formato GeoJson
   var capaCasos = L.layerGroup();
   var casoMarker = new L.Marker(point).addTo(capaCasos);
   markers.addLayer(capaCasos);
   mapa.addLayer(markers);
-
-  // Exportar los casos a formato GeoJson
-  //var geojson = capaCasos.toGeoJSON();
 
   //Acción al hacer clic en caso en el mapa
   casoMarker.on('click', clicMarcadorCaso);
@@ -198,8 +220,10 @@ function createMarker(point, codigo, title) {
       ocultarCargador();
     });
   }
-  return marker;
+
+  return capaCasos;
 }
+
 // variable que guarda los detalles del marker al que se le dio click
 var eventBackup;
 // variable global donde se carga la capa flotante
@@ -258,6 +282,7 @@ mapa.on('zoom', function() {
 //limpia el mapa de casos cada que se filtra
 $(document).on('click', '#agregarCasosOsm', function(){
   markers.clearLayers(); 
+ // actualizaGeoJson(marcadoresCreados);
   agregarCasosOsm();
 });
 
