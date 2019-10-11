@@ -200,13 +200,6 @@ CREATE FUNCTION public.probmujer(in_text text) RETURNS numeric
 $_$;
 
 
---
--- Name: rand(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.rand() RETURNS double precision
-    LANGUAGE sql
-    AS $$SELECT random();$$;
 
 
 --
@@ -331,15 +324,6 @@ FROM (SELECT UNNEST(STRING_TO_ARRAY(
 		REGEXP_REPLACE(TRIM($1), '  *', ' '), ' ')) AS s                
 	      ORDER BY 1) AS n;
 $_$;
-
-
---
--- Name: substring_index(text, text, integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.substring_index(text, text, integer) RETURNS text
-    LANGUAGE sql
-    AS $_$SELECT array_to_string((string_to_array($1, $2)) [1:$3], $2);$_$;
 
 
 --

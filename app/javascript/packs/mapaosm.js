@@ -32,6 +32,7 @@ agregaCapaBtn.onAdd = function (mapa) {
 };
 
 var capasBase= {
+//  "Mapbox" : mapboxTiles,
   "OpenStreetMap" : osmBaldosas,
   "Satelite (ArcGIS)": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
   "Oscuro (CartoDB)" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
@@ -42,12 +43,14 @@ var capasSuperpuestas= {
 }
 var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
 
+// var mapa = L.mapbox.map('mapa_osm', null, {zoomControl: false, minZoom: 2})
 var mapa = L.map('mapa_osm', {zoomControl: false, minZoom: 2})
+//  .addLayer(mapboxTiles)
   .addLayer(osmBaldosas)
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
-// .addControl(L.mapbox.geocoderControl('mapbox.places'))
+//  .addControl(L.mapbox.geocoderControl('mapbox.places'))
   .addControl(controlCapas)
   .addControl(agregaCapaBtn);
 L.control.scale({imperial: false}).addTo(mapa);
