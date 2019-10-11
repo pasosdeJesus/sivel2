@@ -10,7 +10,7 @@ $('#div_contenido').addClass("container-fluid");
 $('#pie_pagina').css({'display': 'none'});
 
 //creacion de mapa y sus capas
-var osmBaldozas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var osmBaldosas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
@@ -33,18 +33,18 @@ agregaCapaBtn.onAdd = function (mapa) {
 };
 
 var capasBase= {
-  "Osm" : osmBaldozas,
-  "Satelite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
-  "Dark" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
+  "OpenStreetMap" : osmBaldosas,
+  "Satelite (ArcGIS)": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+  "Oscuro (CartoDB)" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
 
 };
 var capasSuperpuestas= {
-  "Transport" : L.tileLayer('http://www.openptmap.org/tiles/${z}/${x}/${y}.png'),
+  "Transporte (OpenPtmap)" : L.tileLayer('http://www.openptmap.org/tiles/{z}/{x}/{y}.png'),
 };
 var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
 
 var mapa = L.map('mapa_osm', {zoomControl: false, minZoom: 2})
-  .addLayer(osmBaldozas)
+  .addLayer(osmBaldosas)
   .addControl(filtro)
   .addControl(L.control.zoom({position:'topleft'}))
   .setView([4.6682, -74.071], 6)
