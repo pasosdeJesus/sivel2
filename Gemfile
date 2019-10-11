@@ -38,7 +38,7 @@ gem 'libxml-ruby'
 
 # Motor de formularios
 gem 'mr519_gen', git: 'https://github.com/pasosdeJesus/mr519_gen.git'
-#gem 'mr519_gen', path: '../mr519_gen'
+# gem 'mr519_gen', path: '../mr519_gen'
 
 gem 'odf-report', git: 'https://github.com/vtamara/odf-report.git', branch: 'rubyzip-1.3' # Genera ODT
 
@@ -71,7 +71,7 @@ gem 'sass-rails' # Hojas de estilo con SCSS
 gem 'simple_form' # Formularios simples 
 
 # Motor estilo Pasos de Jesús
-gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'#, branch: :bs4
+gem 'sip', git: 'https://github.com/pasosdeJesus/sip.git'# , branch: :bs4
 #gem 'sip', path: '../sip'
 
 # Manejo de casos
