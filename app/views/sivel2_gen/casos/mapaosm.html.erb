@@ -13,7 +13,7 @@
     <div class="card border-primary mb-3">
       <div class="card-body">
         <h4 class="card-title">Filtrar Casos</h4>
-        <form name="settings" onsubmit="addCasesOsm(true); return false;">
+        <form name="settings" onsubmit="agregarCasosOsm(true); return false;">
           <div class= "row">
             <div class="col-sm-2">
               <input class= "input_mapaOsm" name="num" type="hidden" value="200" />
@@ -84,7 +84,7 @@
                   </div>
                 </div>
                 <div class="col-sm-6">
-                  <button id="addCasesOsm" type="button" class="btn">Filtrar</button>
+                  <button id="agregarCasosOsm" type="button" class="btn">Filtrar</button>
                 </div>
                 <img id='cargador'  src='<%= asset_path('spinnern.gif') %>'>
               </div>
@@ -96,6 +96,9 @@
   </div>
   <div id="agregaCapa">
     <button id="agregarCapa" type="button" class="btn btn-primary btn-sm">Agregar Capa</button>
+  </div>
+  <div id="descargaMapa">
+    <button id="descargarMapa" type="button" class="btn btn-primary btn-sm"><a id= "enlaceDescarga">Descargar</a></button>
   </div>
   <div id="mapa_osm"></div>
   <%= javascript_pack_tag 'mapaosm' %>

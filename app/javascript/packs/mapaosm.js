@@ -10,18 +10,19 @@ $('#div_contenido').addClass("container-fluid");
 $('#pie_pagina').css({'display': 'none'});
 
 //creacion de mapa y sus capas
-
-//L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlam9jcnV6cmNjIiwiYSI6ImNrMGlpcXZkczAwZjYzZG1yMHRvdmVneW8ifQ.jXgr1i13GdMmYWeSh6yNlg';
-//var mapboxAtribuciones= '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-//var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {id: '', attribution: mapboxAtribuciones});
-
 var osmBaldosas = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; Contribuyentes de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 });
 
 filtro = L.control({position: 'topleft'});
 filtro.onAdd = function (mapa) {
   this._div = L.DomUtil.get('filtroOsm');
+  return this._div;
+};
+
+descargamapaBtn = L.control({position:'bottomleft'});
+descargamapaBtn.onAdd = function (mapa){
+  this._div = L.DomUtil.get('descargaMapa');
   return this._div;
 };
 
@@ -37,10 +38,10 @@ var capasBase= {
   "Satelite (ArcGIS)": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
   "Oscuro (CartoDB)" : L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
 
-}
+};
 var capasSuperpuestas= {
-  "Transporte (Openptmap)" : L.tileLayer('http://www.openptmap.org/tiles/{z}/{x}/{y}.png'),
-}
+  "Transporte (OpenPtmap)" : L.tileLayer('http://www.openptmap.org/tiles/{z}/{x}/{y}.png'),
+};
 var controlCapas = L.control.layers(capasBase, capasSuperpuestas, {position: 'topleft'});
 
 // var mapa = L.mapbox.map('mapa_osm', null, {zoomControl: false, minZoom: 2})
@@ -52,12 +53,13 @@ var mapa = L.map('mapa_osm', {zoomControl: false, minZoom: 2})
   .setView([4.6682, -74.071], 6)
 //  .addControl(L.mapbox.geocoderControl('mapbox.places'))
   .addControl(controlCapas)
-  .addControl(agregaCapaBtn);
+  .addControl(agregaCapaBtn)
+  .addControl(descargamapaBtn);
 L.control.scale({imperial: false}).addTo(mapa);
 
 //Crea los clusers de casos y agrega casos
 markers = L.markerClusterGroup();
-window.setTimeout(addCasesOsm, 0);
+window.setTimeout(agregarCasosOsm, 0);
 
 function mostrarCargador() {
   $('#cargador').show();
@@ -79,7 +81,14 @@ function downloadUrl(url, callback) {
   request.send(null);
 }
 
-function addCasesOsm() {
+// una colección GeoJson vacía
+var coleccion = {
+  "type": "FeatureCollection",
+  "features": []
+};
+var marcadoresCreados;
+
+function agregarCasosOsm() {
   var desde = $('#inputDesde').val();
   var hasta = $('#inputHasta').val();
   var departamento = $('#departamento').val();
@@ -120,7 +129,9 @@ function addCasesOsm() {
         numResult++;
         var point= new L.LatLng(parseFloat(lat), parseFloat(lng));
         var title = fecha + ": " + titulo;
-        createMarker(point, codigo, title);
+
+        marcadoresCreados = createMarker(point, codigo, title);
+        actualizaGeoJson(marcadoresCreados);
       }
     }
     $('#nrcasos').html(numResult + ' Casos mostrados!');
@@ -128,14 +139,23 @@ function addCasesOsm() {
   });
 }
 
+function actualizaGeoJson(datosMarcadores){
+  var geojson = marcadoresCreados.toGeoJSON();
+  coleccion.features.push(geojson);
+  $('#descargarMapa').on('click', function(){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(coleccion));
+    var descargaGeo = document.getElementById('enlaceDescarga');
+    descargaGeo.setAttribute("href",     dataStr     );
+    descargaGeo.setAttribute("download", "casos.geojson");
+  });
+}
+
 function createMarker(point, codigo, title) {
+  // Exportar los casos a formato GeoJson
   var capaCasos = L.layerGroup();
   var casoMarker = new L.Marker(point).addTo(capaCasos);
   markers.addLayer(capaCasos);
   mapa.addLayer(markers);
-
-  // Exportar los casos a formato GeoJson
-  //var geojson = capaCasos.toGeoJSON();
 
   //Acción al hacer clic en caso en el mapa
   casoMarker.on('click', clicMarcadorCaso);
@@ -204,8 +224,10 @@ function createMarker(point, codigo, title) {
       ocultarCargador();
     });
   }
-  return marker;
+
+  return capaCasos;
 }
+
 // variable que guarda los detalles del marker al que se le dio click
 var eventBackup;
 // variable global donde se carga la capa flotante
@@ -262,15 +284,15 @@ mapa.on('zoom', function() {
 });
 
 //limpia el mapa de casos cada que se filtra
-$(document).on('click', '#addCasesOsm', function(){
+$(document).on('click', '#agregarCasosOsm', function(){
   markers.clearLayers(); 
-  addCasesOsm();
+  coleccion.features = [];
+  agregarCasosOsm();
 });
 
 //Funciones de agregar supercapas
 $(document).on('click', '#agregarCapa', function(){
   agregarCapa();
-  
   var contenidoGeoJson;
 
   // Función que sube la capa del usuario
