@@ -200,6 +200,13 @@ CREATE FUNCTION public.probmujer(in_text text) RETURNS numeric
 $_$;
 
 
+--
+-- Name: rand(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.rand() RETURNS double precision
+    LANGUAGE sql
+    AS $$SELECT random();$$;
 
 
 --
@@ -327,6 +334,15 @@ $_$;
 
 
 --
+-- Name: substring_index(text, text, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.substring_index(text, text, integer) RETURNS text
+    LANGUAGE sql
+    AS $_$SELECT array_to_string((string_to_array($1, $2)) [1:$3], $2);$_$;
+
+
+--
 -- Name: first(anyelement); Type: AGGREGATE; Schema: public; Owner: -
 --
 
@@ -438,10 +454,10 @@ CREATE TABLE public.categoria_personal (
 
 
 --
--- Name: sivel2_gen_caso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: combatiente_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sivel2_gen_caso_id_seq
+CREATE SEQUENCE public.combatiente_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -450,25 +466,38 @@ CREATE SEQUENCE public.sivel2_gen_caso_id_seq
 
 
 --
--- Name: sivel2_gen_caso; Type: TABLE; Schema: public; Owner: -
+-- Name: combatiente; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sivel2_gen_caso (
-    id integer DEFAULT nextval('public.sivel2_gen_caso_id_seq'::regclass) NOT NULL,
-    titulo character varying(50),
-    fecha date NOT NULL,
-    hora character varying(10),
-    duracion character varying(10),
-    memo text NOT NULL,
-    grconfiabilidad character varying(5),
-    gresclarecimiento character varying(5),
-    grimpunidad character varying(8),
-    grinformacion character varying(8),
-    bienes text,
-    id_intervalo integer DEFAULT 5,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    ubicacion_id integer
+CREATE TABLE public.combatiente (
+    id integer DEFAULT nextval('public.combatiente_seq'::regclass) NOT NULL,
+    nombre character varying(100) NOT NULL,
+    alias character varying(100),
+    edad integer,
+    sexo character(1) NOT NULL,
+    id_resagresion integer NOT NULL,
+    id_profesion integer,
+    id_rangoedad integer,
+    id_filiacion integer,
+    id_sectorsocial integer,
+    id_organizacion integer,
+    id_vinculoestado integer,
+    id_caso integer,
+    organizacionarmada integer,
+    CONSTRAINT combatiente_edad_check CHECK (((edad IS NULL) OR (edad >= 0))),
+    CONSTRAINT combatiente_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'M'::bpchar) OR (sexo = 'F'::bpchar)))
+);
+
+
+SET default_with_oids = true;
+
+--
+-- Name: combatiente_presponsable; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.combatiente_presponsable (
+    id_p_responsable integer NOT NULL,
+    id_combatiente integer NOT NULL
 );
 
 
@@ -483,6 +512,8 @@ CREATE SEQUENCE public.victima_seq
     NO MAXVALUE
     CACHE 1;
 
+
+SET default_with_oids = false;
 
 --
 -- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -
@@ -500,7 +531,7 @@ CREATE TABLE public.sivel2_gen_victima (
     organizacionarmada integer DEFAULT 35 NOT NULL,
     anotaciones character varying(1000),
     id_persona integer NOT NULL,
-    id_etnia integer DEFAULT 1,
+    id_etnia integer DEFAULT 1 NOT NULL,
     id_iglesia integer DEFAULT 1,
     orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
     created_at timestamp without time zone,
@@ -512,52 +543,16 @@ CREATE TABLE public.sivel2_gen_victima (
 
 
 --
--- Name: cben1; Type: VIEW; Schema: public; Owner: -
+-- Name: cpaact; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW public.cben1 AS
- SELECT caso.id AS id_caso,
-    victima.id_persona,
-    1 AS npersona,
-    'total'::text AS total
-   FROM public.sivel2_gen_caso caso,
-    public.sivel2_gen_victima victima
-  WHERE ((caso.fecha >= '2010-02-10'::date) AND (caso.fecha <= '2019-02-28'::date) AND (caso.id = victima.id_caso));
-
-
---
--- Name: sip_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_clase_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-SET default_with_oids = true;
-
---
--- Name: sip_clase; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_clase (
-    id_clalocal integer,
-    id_tclase character varying(10) DEFAULT 'CP'::character varying NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    latitud double precision,
-    longitud double precision,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id_municipio integer,
-    id integer DEFAULT nextval('public.sip_clase_id_seq'::regclass) NOT NULL,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8,
-    CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
+CREATE VIEW public.cpaact AS
+ SELECT sivel2_gen_victima.id_caso,
+    categoria_personal.id_categoria,
+    sivel2_gen_victima.id_persona AS id_victima
+   FROM public.sivel2_gen_victima,
+    public.categoria_personal
+  WHERE (sivel2_gen_victima.id_persona = categoria_personal.id_victima);
 
 
 --
@@ -571,8 +566,6 @@ CREATE SEQUENCE public.sip_departamento_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-SET default_with_oids = false;
 
 --
 -- Name: sip_departamento; Type: TABLE; Schema: public; Owner: -
@@ -627,6 +620,45 @@ CREATE TABLE public.sip_municipio (
 
 
 --
+-- Name: sip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_persona_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_persona; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_persona (
+    id integer DEFAULT nextval('public.sip_persona_id_seq'::regclass) NOT NULL,
+    nombres character varying(100) COLLATE public.es_co_utf_8 NOT NULL,
+    apellidos character varying(100) COLLATE public.es_co_utf_8 NOT NULL,
+    anionac integer,
+    mesnac integer,
+    dianac integer,
+    sexo character(1) NOT NULL,
+    numerodocumento character varying(100),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id_pais integer,
+    nacionalde integer,
+    tdocumento_id integer,
+    id_departamento integer,
+    id_municipio integer,
+    id_clase integer,
+    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
+    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
+    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
+);
+
+
+--
 -- Name: sip_ubicacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -660,131 +692,6 @@ CREATE TABLE public.sip_ubicacion (
 
 
 --
--- Name: cben2; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.cben2 AS
- SELECT cben1.id_caso,
-    cben1.id_persona,
-    cben1.npersona,
-    cben1.total,
-    ubicacion.id_departamento,
-    departamento.nombre AS departamento_nombre,
-    ubicacion.id_municipio,
-    municipio.nombre AS municipio_nombre,
-    ubicacion.id_clase,
-    clase.nombre AS clase_nombre
-   FROM ((((public.cben1
-     LEFT JOIN public.sip_ubicacion ubicacion ON ((cben1.id_caso = ubicacion.id_caso)))
-     LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
-     LEFT JOIN public.sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
-     LEFT JOIN public.sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.total, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
-
-
---
--- Name: combatiente_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.combatiente_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: combatiente; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.combatiente (
-    id integer DEFAULT nextval('public.combatiente_seq'::regclass) NOT NULL,
-    nombre character varying(100) NOT NULL,
-    alias character varying(100),
-    edad integer,
-    sexo character(1) NOT NULL,
-    id_resagresion integer NOT NULL,
-    id_profesion integer,
-    id_rangoedad integer,
-    id_filiacion integer,
-    id_sectorsocial integer,
-    id_organizacion integer,
-    id_vinculoestado integer,
-    id_caso integer,
-    organizacionarmada integer,
-    CONSTRAINT combatiente_edad_check CHECK (((edad IS NULL) OR (edad >= 0))),
-    CONSTRAINT combatiente_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'M'::bpchar) OR (sexo = 'F'::bpchar)))
-);
-
-
-SET default_with_oids = true;
-
---
--- Name: combatiente_presponsable; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.combatiente_presponsable (
-    id_p_responsable integer NOT NULL,
-    id_combatiente integer NOT NULL
-);
-
-
---
--- Name: cpaact; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.cpaact AS
- SELECT sivel2_gen_victima.id_caso,
-    categoria_personal.id_categoria,
-    sivel2_gen_victima.id_persona AS id_victima
-   FROM public.sivel2_gen_victima,
-    public.categoria_personal
-  WHERE (sivel2_gen_victima.id_persona = categoria_personal.id_victima);
-
-
---
--- Name: sip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_persona_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-SET default_with_oids = false;
-
---
--- Name: sip_persona; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_persona (
-    id integer DEFAULT nextval('public.sip_persona_id_seq'::regclass) NOT NULL,
-    nombres character varying(100) COLLATE public.es_co_utf_8 NOT NULL,
-    apellidos character varying(100) COLLATE public.es_co_utf_8 NOT NULL,
-    anionac integer,
-    mesnac integer,
-    dianac integer,
-    sexo character(1) NOT NULL,
-    numerodocumento character varying(100),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id_pais integer,
-    nacionalde integer,
-    tdocumento_id integer,
-    id_departamento integer,
-    id_municipio integer,
-    id_clase integer,
-    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
-    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
-    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
-);
-
-
---
 -- Name: sivel2_gen_acto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -796,6 +703,41 @@ CREATE TABLE public.sivel2_gen_acto (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('public.acto_seq'::regclass) NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_caso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_caso_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_caso; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_caso (
+    id integer DEFAULT nextval('public.sivel2_gen_caso_id_seq'::regclass) NOT NULL,
+    titulo character varying(50),
+    fecha date NOT NULL,
+    hora character varying(10),
+    duracion character varying(10),
+    memo text NOT NULL,
+    grconfiabilidad character varying(5),
+    gresclarecimiento character varying(5),
+    grimpunidad character varying(8),
+    grinformacion character varying(8),
+    bienes text,
+    id_intervalo integer DEFAULT 5,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    ubicacion_id integer
 );
 
 
@@ -1825,6 +1767,41 @@ ALTER SEQUENCE public.sip_anexo_id_seq OWNED BY public.sip_anexo.id;
 
 
 --
+-- Name: sip_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_clase_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+SET default_with_oids = true;
+
+--
+-- Name: sip_clase; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_clase (
+    id_clalocal integer,
+    id_tclase character varying(10) DEFAULT 'CP'::character varying NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    latitud double precision,
+    longitud double precision,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id_municipio integer,
+    id integer DEFAULT nextval('public.sip_clase_id_seq'::regclass) NOT NULL,
+    observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sip_etiqueta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1835,6 +1812,8 @@ CREATE SEQUENCE public.sip_etiqueta_id_seq
     NO MAXVALUE
     CACHE 1;
 
+
+SET default_with_oids = false;
 
 --
 -- Name: sip_etiqueta; Type: TABLE; Schema: public; Owner: -
@@ -6497,6 +6476,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190926104116'),
 ('20190926104551'),
 ('20190926133640'),
-('20190926143845');
+('20190926143845'),
+('20191012042159');
 
 
