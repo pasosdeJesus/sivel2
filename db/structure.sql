@@ -367,31 +367,6 @@ CREATE SEQUENCE public.acto_seq
 
 SET default_tablespace = '';
 
-SET default_with_oids = true;
-
---
--- Name: actualizacionbase; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actualizacionbase (
-    id character varying(10) NOT NULL,
-    fecha date NOT NULL,
-    descripcion character varying(500) NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: antecedente_combatiente; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.antecedente_combatiente (
-    id_antecedente integer NOT NULL,
-    id_combatiente integer NOT NULL
-);
-
-
 SET default_with_oids = false;
 
 --
@@ -431,29 +406,6 @@ CREATE SEQUENCE public.caso_presponsable_seq
 
 
 --
--- Name: caso_usuario_tmp; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.caso_usuario_tmp (
-    id_usuario integer,
-    id_caso integer,
-    fechainicio date
-);
-
-
---
--- Name: categoria_personal; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.categoria_personal (
-    id_tipo_violencia character varying(1) NOT NULL,
-    id_supracategoria integer NOT NULL,
-    id_categoria integer NOT NULL,
-    id_victima integer NOT NULL
-);
-
-
---
 -- Name: combatiente_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -463,96 +415,6 @@ CREATE SEQUENCE public.combatiente_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: combatiente; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.combatiente (
-    id integer DEFAULT nextval('public.combatiente_seq'::regclass) NOT NULL,
-    nombre character varying(100) NOT NULL,
-    alias character varying(100),
-    edad integer,
-    sexo character(1) NOT NULL,
-    id_resagresion integer NOT NULL,
-    id_profesion integer,
-    id_rangoedad integer,
-    id_filiacion integer,
-    id_sectorsocial integer,
-    id_organizacion integer,
-    id_vinculoestado integer,
-    id_caso integer,
-    organizacionarmada integer,
-    CONSTRAINT combatiente_edad_check CHECK (((edad IS NULL) OR (edad >= 0))),
-    CONSTRAINT combatiente_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'M'::bpchar) OR (sexo = 'F'::bpchar)))
-);
-
-
-SET default_with_oids = true;
-
---
--- Name: combatiente_presponsable; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.combatiente_presponsable (
-    id_p_responsable integer NOT NULL,
-    id_combatiente integer NOT NULL
-);
-
-
---
--- Name: victima_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.victima_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-SET default_with_oids = false;
-
---
--- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_victima (
-    hijos integer,
-    id_profesion integer DEFAULT 22 NOT NULL,
-    id_rangoedad integer DEFAULT 6 NOT NULL,
-    id_filiacion integer DEFAULT 10 NOT NULL,
-    id_sectorsocial integer DEFAULT 15 NOT NULL,
-    id_organizacion integer DEFAULT 16 NOT NULL,
-    id_vinculoestado integer DEFAULT 38 NOT NULL,
-    id_caso integer NOT NULL,
-    organizacionarmada integer DEFAULT 35 NOT NULL,
-    anotaciones character varying(1000),
-    id_persona integer NOT NULL,
-    id_etnia integer DEFAULT 1 NOT NULL,
-    id_iglesia integer DEFAULT 1,
-    orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.victima_seq'::regclass) NOT NULL,
-    CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
-    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'S'::bpchar)))
-);
-
-
---
--- Name: cpaact; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.cpaact AS
- SELECT sivel2_gen_victima.id_caso,
-    categoria_personal.id_categoria,
-    sivel2_gen_victima.id_persona AS id_victima
-   FROM public.sivel2_gen_victima,
-    public.categoria_personal
-  WHERE (sivel2_gen_victima.id_persona = categoria_personal.id_victima);
 
 
 --
@@ -797,6 +659,45 @@ CREATE TABLE public.sivel2_gen_supracategoria (
 
 
 --
+-- Name: victima_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.victima_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_victima (
+    hijos integer,
+    id_profesion integer DEFAULT 22 NOT NULL,
+    id_rangoedad integer DEFAULT 6 NOT NULL,
+    id_filiacion integer DEFAULT 10 NOT NULL,
+    id_sectorsocial integer DEFAULT 15 NOT NULL,
+    id_organizacion integer DEFAULT 16 NOT NULL,
+    id_vinculoestado integer DEFAULT 38 NOT NULL,
+    id_caso integer NOT NULL,
+    organizacionarmada integer DEFAULT 35 NOT NULL,
+    anotaciones character varying(1000),
+    id_persona integer NOT NULL,
+    id_etnia integer DEFAULT 1 NOT NULL,
+    id_iglesia integer DEFAULT 1,
+    orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('public.victima_seq'::regclass) NOT NULL,
+    CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
+    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'S'::bpchar)))
+);
+
+
+--
 -- Name: cvt1; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -821,31 +722,6 @@ CREATE VIEW public.cvt1 AS
      LEFT JOIN public.sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)));
 
 
-SET default_with_oids = true;
-
---
--- Name: departamento_region; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.departamento_region (
-    id_departamento integer NOT NULL,
-    id_region integer NOT NULL
-);
-
-
---
--- Name: descripcion_frontera; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.descripcion_frontera (
-    id integer NOT NULL,
-    id_frontera integer,
-    lugar character varying(50) NOT NULL,
-    sitio character varying(50),
-    tipo character(1)
-);
-
-
 --
 -- Name: fotra_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
@@ -857,8 +733,6 @@ CREATE SEQUENCE public.fotra_seq
     NO MAXVALUE
     CACHE 1;
 
-
-SET default_with_oids = false;
 
 --
 -- Name: heb412_gen_campohc; Type: TABLE; Schema: public; Owner: -
@@ -1134,31 +1008,6 @@ CREATE SEQUENCE public.heb412_gen_plantillahcr_id_seq
 --
 
 ALTER SEQUENCE public.heb412_gen_plantillahcr_id_seq OWNED BY public.heb412_gen_plantillahcr.id;
-
-
---
--- Name: homonimosim; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.homonimosim (
-    id_persona1 integer NOT NULL,
-    id_persona2 integer NOT NULL,
-    CONSTRAINT homonimosim_check CHECK ((id_persona2 > id_persona1))
-);
-
-
---
--- Name: homonimia; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.homonimia AS
- SELECT homonimosim.id_persona1,
-    homonimosim.id_persona2
-   FROM public.homonimosim
-UNION
- SELECT homonimosim.id_persona2 AS id_persona1,
-    homonimosim.id_persona1 AS id_persona2
-   FROM public.homonimosim;
 
 
 --
@@ -1440,18 +1289,6 @@ ALTER SEQUENCE public.mr519_gen_valorcampo_id_seq OWNED BY public.mr519_gen_valo
 
 
 --
--- Name: muncoor; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.muncoor (
-    id_departamento integer,
-    id_municipio integer,
-    latitud double precision,
-    longitud double precision
-);
-
-
---
 -- Name: napellidos; Type: MATERIALIZED VIEW; Schema: public; Owner: -
 --
 
@@ -1499,31 +1336,6 @@ CREATE MATERIALIZED VIEW public.nmujeres AS
   WITH NO DATA;
 
 
-SET default_with_oids = true;
-
---
--- Name: obsoleto_funcionario; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.obsoleto_funcionario (
-    id integer NOT NULL,
-    anotacion character(50),
-    nombre character varying(15) NOT NULL
-);
-
-
-SET default_with_oids = false;
-
---
--- Name: p_responsable_agrede_persona; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.p_responsable_agrede_persona (
-    id_p_responsable integer NOT NULL,
-    id_victima integer NOT NULL
-);
-
-
 --
 -- Name: persona_nomap; Type: MATERIALIZED VIEW; Schema: public; Owner: -
 --
@@ -1533,19 +1345,6 @@ CREATE MATERIALIZED VIEW public.persona_nomap AS
     upper(btrim(((btrim((sip_persona.nombres)::text) || ' '::text) || btrim((sip_persona.apellidos)::text)))) AS nomap
    FROM public.sip_persona
   WITH NO DATA;
-
-
---
--- Name: priact; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.priact AS
- SELECT sivel2_gen_victima.id_caso,
-    sivel2_gen_victima.id_persona,
-    p_responsable_agrede_persona.id_p_responsable
-   FROM public.sivel2_gen_victima,
-    public.p_responsable_agrede_persona
-  WHERE (sivel2_gen_victima.id_persona = p_responsable_agrede_persona.id_victima);
 
 
 --
@@ -1562,59 +1361,6 @@ CREATE VIEW public.primerusuario AS
 
 
 --
--- Name: sivel2_gen_rangoedad_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_rangoedad_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_rangoedad (
-    id integer DEFAULT nextval('public.sivel2_gen_rangoedad_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    rango character varying(20),
-    limiteinferior integer DEFAULT 0 NOT NULL,
-    limitesuperior integer DEFAULT 0 NOT NULL,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT rango_edad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: rangos_errados; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.rangos_errados AS
- SELECT sivel2_gen_caso.id AS caso_id,
-    sip_persona.id AS persona_id,
-    sivel2_gen_caso.fecha,
-    btrim((((sip_persona.apellidos)::text || ' '::text) || (sip_persona.nombres)::text)) AS btrim,
-    sip_persona.anionac,
-    sip_persona.mesnac,
-    sip_persona.dianac,
-    public.edad_de_fechanac(sip_persona.anionac, sip_persona.mesnac, sip_persona.dianac, sivel2_gen_caso.fecha) AS edad_en_hecho,
-    sivel2_gen_rangoedad.rango
-   FROM (((public.sivel2_gen_victima
-     JOIN public.sivel2_gen_caso ON ((sivel2_gen_caso.id = sivel2_gen_victima.id_caso)))
-     JOIN public.sip_persona ON ((sip_persona.id = sivel2_gen_victima.id_persona)))
-     JOIN public.sivel2_gen_rangoedad ON ((sivel2_gen_victima.id_rangoedad = sivel2_gen_rangoedad.id)))
-  WHERE ((public.edad_de_fechanac(sip_persona.anionac, sip_persona.mesnac, sip_persona.dianac, sivel2_gen_caso.fecha) < sivel2_gen_rangoedad.limiteinferior) OR (public.edad_de_fechanac(sip_persona.anionac, sip_persona.mesnac, sip_persona.dianac, sivel2_gen_caso.fecha) > sivel2_gen_rangoedad.limitesuperior))
-  ORDER BY sivel2_gen_caso.fecha, sivel2_gen_caso.id;
-
-
---
 -- Name: resagresion_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1624,21 +1370,6 @@ CREATE SEQUENCE public.resagresion_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: resagresion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.resagresion (
-    id integer DEFAULT nextval('public.resagresion_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    CONSTRAINT resultado_agresion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -3290,6 +3021,41 @@ CREATE TABLE public.sivel2_gen_profesion_victimacolectiva (
 
 
 --
+-- Name: sivel2_gen_rangoedad_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_rangoedad_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+SET default_with_oids = false;
+
+--
+-- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_rangoedad (
+    id integer DEFAULT nextval('public.sivel2_gen_rangoedad_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    rango character varying(20),
+    limiteinferior integer DEFAULT 0 NOT NULL,
+    limitesuperior integer DEFAULT 0 NOT NULL,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT rango_edad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+SET default_with_oids = true;
+
+--
 -- Name: sivel2_gen_rangoedad_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3499,27 +3265,6 @@ CREATE TABLE public.sivel2_gen_vinculoestado (
 
 
 --
--- Name: victimao; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.victimao (
-    id integer,
-    nombre character varying(200),
-    edad integer,
-    hijos integer,
-    sexo character(1),
-    id_profesion integer,
-    id_rango_edad integer,
-    id_filiacion integer,
-    id_sector_social integer,
-    id_organizacion integer,
-    id_vinculo_estado integer,
-    id_caso integer,
-    id_organizacion_armada integer
-);
-
-
---
 -- Name: vvictimasoundexesp; Type: MATERIALIZED VIEW; Schema: public; Owner: -
 --
 
@@ -3532,20 +3277,6 @@ CREATE MATERIALIZED VIEW public.vvictimasoundexesp AS
     public.sivel2_gen_victima
   WHERE (sip_persona.id = sivel2_gen_victima.id_persona)
   WITH NO DATA;
-
-
---
--- Name: y; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.y AS
- SELECT sivel2_gen_caso.id,
-    min(sivel2_gen_caso_usuario.fechainicio) AS min
-   FROM public.sivel2_gen_caso_usuario,
-    public.sivel2_gen_caso
-  WHERE ((sivel2_gen_caso.id > 35000) AND (sivel2_gen_caso.id = sivel2_gen_caso_usuario.id_caso))
-  GROUP BY sivel2_gen_caso.id
-  ORDER BY sivel2_gen_caso.id;
 
 
 --
@@ -3789,22 +3520,6 @@ ALTER TABLE ONLY public.sivel2_gen_acto
 
 
 --
--- Name: actualizacionbase actualizacion_base_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actualizacionbase
-    ADD CONSTRAINT actualizacion_base_pkey PRIMARY KEY (id);
-
-
---
--- Name: antecedente_combatiente antecedente_combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.antecedente_combatiente
-    ADD CONSTRAINT antecedente_combatiente_pkey PRIMARY KEY (id_antecedente, id_combatiente);
-
-
---
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3829,14 +3544,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
 
 
 --
--- Name: categoria_personal categoria_personal_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.categoria_personal
-    ADD CONSTRAINT categoria_personal_pkey PRIMARY KEY (id_tipo_violencia, id_supracategoria, id_categoria, id_victima);
-
-
---
 -- Name: sivel2_gen_categoria categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3845,43 +3552,11 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: combatiente combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_pkey PRIMARY KEY (id);
-
-
---
--- Name: departamento_region departamento_region_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.departamento_region
-    ADD CONSTRAINT departamento_region_pkey PRIMARY KEY (id_departamento, id_region);
-
-
---
--- Name: descripcion_frontera descripcion_frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.descripcion_frontera
-    ADD CONSTRAINT descripcion_frontera_pkey PRIMARY KEY (id);
-
-
---
 -- Name: sivel2_gen_caso_frontera frontera_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_frontera
     ADD CONSTRAINT frontera_caso_pkey PRIMARY KEY (id_frontera, id_caso);
-
-
---
--- Name: obsoleto_funcionario funcionario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.obsoleto_funcionario
-    ADD CONSTRAINT funcionario_pkey PRIMARY KEY (id);
 
 
 --
@@ -3949,14 +3624,6 @@ ALTER TABLE ONLY public.heb412_gen_plantillahcr
 
 
 --
--- Name: homonimosim homonimosim_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.homonimosim
-    ADD CONSTRAINT homonimosim_pkey PRIMARY KEY (id_persona1, id_persona2);
-
-
---
 -- Name: mr519_gen_campo mr519_gen_campo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4013,22 +3680,6 @@ ALTER TABLE ONLY public.mr519_gen_valorcampo
 
 
 --
--- Name: combatiente_presponsable p_responsable_agrede_combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente_presponsable
-    ADD CONSTRAINT p_responsable_agrede_combatiente_pkey PRIMARY KEY (id_p_responsable, id_combatiente);
-
-
---
--- Name: p_responsable_agrede_persona p_responsable_agrede_persona_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.p_responsable_agrede_persona
-    ADD CONSTRAINT p_responsable_agrede_persona_pkey PRIMARY KEY (id_p_responsable, id_victima);
-
-
---
 -- Name: sivel2_gen_pconsolidado pconsolidado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4042,14 +3693,6 @@ ALTER TABLE ONLY public.sivel2_gen_pconsolidado
 
 ALTER TABLE ONLY public.sivel2_gen_caso_region
     ADD CONSTRAINT region_caso_pkey PRIMARY KEY (id_region, id_caso);
-
-
---
--- Name: resagresion resultado_agresion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.resagresion
-    ADD CONSTRAINT resultado_agresion_pkey PRIMARY KEY (id);
 
 
 --
@@ -4881,14 +4524,6 @@ ALTER TABLE ONLY public.sivel2_gen_supracategoria
 
 
 --
--- Name: descripcion_frontera $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.descripcion_frontera
-    ADD CONSTRAINT "$1" FOREIGN KEY (id_frontera) REFERENCES public.sivel2_gen_frontera(id);
-
-
---
 -- Name: sivel2_gen_victimacolectiva $1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5009,30 +4644,6 @@ ALTER TABLE ONLY public.sivel2_gen_antecedente_victima
 
 
 --
--- Name: combatiente $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$1" FOREIGN KEY (id_resagresion) REFERENCES public.resagresion(id);
-
-
---
--- Name: antecedente_combatiente $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.antecedente_combatiente
-    ADD CONSTRAINT "$1" FOREIGN KEY (id_antecedente) REFERENCES public.sivel2_gen_antecedente(id);
-
-
---
--- Name: combatiente_presponsable $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente_presponsable
-    ADD CONSTRAINT "$1" FOREIGN KEY (id_p_responsable) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
 -- Name: sivel2_gen_caso_fuenteprensa $1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5054,14 +4665,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_fotra
 
 ALTER TABLE ONLY public.sip_clase
     ADD CONSTRAINT "$1" FOREIGN KEY (id_tclase) REFERENCES public.sip_tclase(id);
-
-
---
--- Name: departamento_region $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.departamento_region
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_region) REFERENCES public.sivel2_gen_region(id);
 
 
 --
@@ -5113,30 +4716,6 @@ ALTER TABLE ONLY public.sivel2_gen_victima
 
 
 --
--- Name: combatiente $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_profesion) REFERENCES public.sivel2_gen_profesion(id);
-
-
---
--- Name: antecedente_combatiente $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.antecedente_combatiente
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_combatiente) REFERENCES public.combatiente(id);
-
-
---
--- Name: combatiente_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente_presponsable
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_combatiente) REFERENCES public.combatiente(id);
-
-
---
 -- Name: sivel2_gen_caso_usuario $2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5169,27 +4748,11 @@ ALTER TABLE ONLY public.sivel2_gen_victima
 
 
 --
--- Name: combatiente $3; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$3" FOREIGN KEY (id_rangoedad) REFERENCES public.sivel2_gen_rangoedad(id);
-
-
---
 -- Name: sivel2_gen_victima $4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_victima
     ADD CONSTRAINT "$4" FOREIGN KEY (id_sectorsocial) REFERENCES public.sivel2_gen_sectorsocial(id);
-
-
---
--- Name: combatiente $4; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$4" FOREIGN KEY (id_filiacion) REFERENCES public.sivel2_gen_filiacion(id);
 
 
 --
@@ -5201,27 +4764,11 @@ ALTER TABLE ONLY public.sivel2_gen_victima
 
 
 --
--- Name: combatiente $5; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$5" FOREIGN KEY (id_sectorsocial) REFERENCES public.sivel2_gen_sectorsocial(id);
-
-
---
 -- Name: sivel2_gen_victima $6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_victima
     ADD CONSTRAINT "$6" FOREIGN KEY (id_vinculoestado) REFERENCES public.sivel2_gen_vinculoestado(id);
-
-
---
--- Name: combatiente $6; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$6" FOREIGN KEY (id_organizacion) REFERENCES public.sivel2_gen_organizacion(id);
 
 
 --
@@ -5233,35 +4780,11 @@ ALTER TABLE ONLY public.sivel2_gen_victima
 
 
 --
--- Name: combatiente $7; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$7" FOREIGN KEY (id_vinculoestado) REFERENCES public.sivel2_gen_vinculoestado(id);
-
-
---
 -- Name: sivel2_gen_victima $8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_victima
     ADD CONSTRAINT "$8" FOREIGN KEY (organizacionarmada) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
--- Name: combatiente $8; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$8" FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: combatiente $9; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT "$9" FOREIGN KEY (organizacionarmada) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -5406,94 +4929,6 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 ALTER TABLE ONLY public.sivel2_gen_categoria
     ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
-
-
---
--- Name: categoria_personal categoria_personal_id_categoria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.categoria_personal
-    ADD CONSTRAINT categoria_personal_id_categoria_fkey FOREIGN KEY (id_categoria) REFERENCES public.sivel2_gen_categoria(id);
-
-
---
--- Name: categoria_personal categoria_personal_id_tipo_violencia_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.categoria_personal
-    ADD CONSTRAINT categoria_personal_id_tipo_violencia_fkey FOREIGN KEY (id_tipo_violencia) REFERENCES public.sivel2_gen_tviolencia(id);
-
-
---
--- Name: combatiente combatiente_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: combatiente combatiente_id_filiacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_filiacion_fkey FOREIGN KEY (id_filiacion) REFERENCES public.sivel2_gen_filiacion(id);
-
-
---
--- Name: combatiente combatiente_id_organizacion_armada_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_organizacion_armada_fkey FOREIGN KEY (organizacionarmada) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
--- Name: combatiente combatiente_id_organizacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_organizacion_fkey FOREIGN KEY (id_organizacion) REFERENCES public.sivel2_gen_organizacion(id);
-
-
---
--- Name: combatiente combatiente_id_profesion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_profesion_fkey FOREIGN KEY (id_profesion) REFERENCES public.sivel2_gen_profesion(id);
-
-
---
--- Name: combatiente combatiente_id_rango_edad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_rango_edad_fkey FOREIGN KEY (id_rangoedad) REFERENCES public.sivel2_gen_rangoedad(id);
-
-
---
--- Name: combatiente combatiente_id_resultado_agresion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_resultado_agresion_fkey FOREIGN KEY (id_resagresion) REFERENCES public.resagresion(id);
-
-
---
--- Name: combatiente combatiente_id_sector_social_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_sector_social_fkey FOREIGN KEY (id_sectorsocial) REFERENCES public.sivel2_gen_sectorsocial(id);
-
-
---
--- Name: combatiente combatiente_id_vinculo_estado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_id_vinculo_estado_fkey FOREIGN KEY (id_vinculoestado) REFERENCES public.sivel2_gen_vinculoestado(id);
 
 
 --
@@ -5878,30 +5313,6 @@ ALTER TABLE ONLY public.sip_clase
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_combatiente
     ADD CONSTRAINT fk_rails_fc1811169b FOREIGN KEY (id_antecedente) REFERENCES public.sivel2_gen_antecedente(id);
-
-
---
--- Name: homonimosim homonimosim_id_persona1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.homonimosim
-    ADD CONSTRAINT homonimosim_id_persona1_fkey FOREIGN KEY (id_persona1) REFERENCES public.sip_persona(id);
-
-
---
--- Name: homonimosim homonimosim_id_persona2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.homonimosim
-    ADD CONSTRAINT homonimosim_id_persona2_fkey FOREIGN KEY (id_persona2) REFERENCES public.sip_persona(id);
-
-
---
--- Name: p_responsable_agrede_persona p_responsable_agrede_persona_id_p_responsable_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.p_responsable_agrede_persona
-    ADD CONSTRAINT p_responsable_agrede_persona_id_p_responsable_fkey FOREIGN KEY (id_p_responsable) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -6477,6 +5888,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190926104551'),
 ('20190926133640'),
 ('20190926143845'),
-('20191012042159');
+('20191012042159'),
+('20191016100031');
 
 
