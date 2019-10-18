@@ -8,6 +8,8 @@ Cree base de datos por ejemplo sivel2_laorg_des, sivel2_laorg_test y sivel2_laor
 
 Edite los archivos .plantilla
 
+Inicialice base de datos
+
 Configure packs
 
 cd public
@@ -16,3 +18,10 @@ cd laorg
 mkdir sivel2
 cd sivel2
 ln -sf ../../packs
+
+Configure en nginx: puerto donde correra unicorn, rutas
+
+upstream unicornsivel2fian {
+  server 127.0.0.1:2039 fail_timeout=0;
+}
+
