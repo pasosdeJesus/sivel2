@@ -24,5 +24,5 @@ if (test "$?" != "0") then {
 } fi;
 $DOAS su - ${USUARIO_AP} -c "cd $DIRAP; RAILS_ENV=production ${defuroot} bin/rails assets:precompile"
 $DOAS su - ${USUARIO_AP} -c "cd $DIRAP; ${defuroot} RAILS_ENV=production bin/rails sip:indices"
-$DOAS su - ${USUARIO_AP} -c "cd $DIRAP; echo \"Iniciando unicorn...\"; ${defuroot} CONFIG_HOSTS=${CONFIG_HOSTS} DIRAP=$DIRAP RAILS_ENV=production SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec /usr/local/bin/unicorn_rails -c $DIRAP/config/unicorn.conf.minimal.rb  -E production -D"
+$DOAS su - ${USUARIO_AP} -c "cd $DIRAP; echo \"Iniciando unicorn...\"; ${defuroot} PUERTOUNICORN=${PUERTOUNICORN} CONFIG_HOSTS=${CONFIG_HOSTS} DIRAP=$DIRAP RAILS_ENV=production SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec /usr/local/bin/unicorn_rails -c $DIRAP/config/unicorn.conf.minimal.rb  -E production -D"
 
