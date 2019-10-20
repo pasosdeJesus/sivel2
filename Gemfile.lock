@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b8e0b54fd1d0469350720321eaa680b639097fa8
+  revision: 1986fd3d863a1cd84259521e4c748d77d9ea55e3
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 6adaa48c3efe50e329ee428b6c052cba5864bcf8
+  revision: 6f3a517f59cd5b0ed44463a4a2b159b4c9cc9b9e
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 46bb348a3d07be10b4ec8e3e6eacf0a22a47870b
+  revision: a2704becdcfc3086adb53d1d99fc02f4a9fef08a
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -180,8 +180,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    jar_wrapper (0.1.8)
-      zip
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -306,8 +304,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium (0.2.11)
-      jar_wrapper
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -372,7 +368,6 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.2.0)
-    zip (2.0.2)
 
 PLATFORMS
   ruby
@@ -411,7 +406,6 @@ DEPENDENCIES
   rspreadsheet
   rubyzip (>= 2.0)
   sass-rails
-  selenium
   selenium-webdriver
   simple_form
   simplecov
