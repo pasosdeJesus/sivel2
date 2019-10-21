@@ -15,7 +15,7 @@ if ENV['PUERTOUNICORN'].nil?
   return
 end
 procesos=2
-if ENV['PROCESOSUNICORN'].nil? 
+if !ENV['PROCESOSUNICORN'].nil? 
   procesos=ENV['PROCESOSUNICORN'].to_i
 end
 

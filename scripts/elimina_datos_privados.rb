@@ -42,7 +42,7 @@ ActiveRecord::Base.connection.execute <<-SQL
   DELETE FROM sivel2_gen_rangoedad_victimacolectiva WHERE 
     victimacolectiva_id IN (SELECT id FROM sivel2_gen_victimacolectiva WHERE
       id_caso IN (SELECT id FROM sivel2_gen_caso WHERE fecha <'2001-01-01'));
-  DELETE FROM sivel2_gen_sectorsocia_victimacolectiva WHERE 
+  DELETE FROM sivel2_gen_sectorsocial_victimacolectiva WHERE 
     victimacolectiva_id IN (SELECT id FROM sivel2_gen_victimacolectiva WHERE
       id_caso IN (SELECT id FROM sivel2_gen_caso WHERE fecha <'2001-01-01'));
   DELETE FROM sivel2_gen_victimacolectiva_vinculoestado WHERE 

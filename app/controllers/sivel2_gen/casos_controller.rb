@@ -7,6 +7,10 @@ module Sivel2Gen
 
     include Sivel2Gen::Concerns::Controllers::CasosController
 
+    def campoord_inicial
+      'fecha'
+    end
+
     # GET casos/mapa
     def mapaosm
       render 'mapaosm', layout: 'application'
