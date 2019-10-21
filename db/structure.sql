@@ -2520,7 +2520,7 @@ CREATE MATERIALIZED VIEW public.sivel2_gen_consexpcaso AS
      JOIN public.sivel2_gen_caso caso ON ((caso.id = conscaso.caso_id)))
   WHERE (conscaso.caso_id IN ( SELECT sivel2_gen_conscaso.caso_id
            FROM public.sivel2_gen_conscaso
-          WHERE (sivel2_gen_conscaso.fecha >= '2018-12-20'::date)
+          WHERE (sivel2_gen_conscaso.fecha >= '2019-01-01'::date)
           ORDER BY sivel2_gen_conscaso.ubicaciones, sivel2_gen_conscaso.caso_id))
   ORDER BY conscaso.ubicaciones, conscaso.caso_id
   WITH NO DATA;
