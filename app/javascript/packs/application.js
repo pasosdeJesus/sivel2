@@ -14,5 +14,6 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-console.log('Hello World from Webpacker')
+var L = require('leaflet');
+var mc= require('leaflet.markercluster');
+console.log('Hello World from Webpacker');

@@ -48,20 +48,17 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   ```
 * Copie y de requerirlo modifique las plantillas:
 ```sh
-  find . -name "*plantilla"
-  for i in `find . -name "*plantilla"`; do 
-    n=`echo $i | sed -e "s/.plantilla//g"`; 
-    if (test ! -e $n) then { 
-      echo $n; 
-      cp $i $n; 
-    } fi; 
-  done
+  for i in `find . -name "*plantilla"`; do n=`echo $i | sed -e "s/.plantilla//g"`; if (test ! -e "$n") then {echo $n; cp $i $n; } fi; done 
 ```
   Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que 
   modificarlas si prefiere una raíz de URL diferente, ver
-  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md>
-  Asegúrese de establecer usuario y base de datos que configuró en PostgreSQL 
-  en `config/database.yml`.
+  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md> )
+
+  Lo mínimo que debe modificar es establecer usuario PostgreSQL, clave y 
+  bases de datos (desarrollo, pruebas y producción) que configuró en 
+  PostgreSQL en `config/database.yml` (también es recomendable que agregue el
+  usuario y la clave en el archivo `~/.pgpass`).
+
 * Las migraciones del directorio `db/migrate` de ```sivel2_gen``` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
   falta.
@@ -81,6 +78,16 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   bin/rails db:setup
   bin/rails db:migrate
   bin/rails sip:indices
+  ```
+* Si no lo ha hecho instale yarn para manejar paquetes javascript:
+  ```sh
+  doas pkg_add bash
+  ftp -o- https://yarnpkg.com/install.sh | bash
+  . ~/.profile
+  ```
+* Instale librerías Javascript requeridas al lado del cliente con:
+```sh
+  CXX=c++ yarn install
   ```
 * Lance la aplicación en modo de desarrollo. En el siguiente ejemplo el 
   parametro `-p` indica el puerto por el cual escuchará la aplicación 
@@ -163,7 +170,7 @@ listen 2009
 ```
 * Como servidor web recomendamos nginx, suponiendo que el puerto elegido es 2009, en la sección http agregue:
 ```
-  upstream unicorns2 {
+  upstream unicornsivel2 {
 	  server 127.0.0.1:2009 fail_timeout=0;
   }
 ```
@@ -205,13 +212,18 @@ listen 2009
       add_header Cache-Control public;
       root /var/www/htdocs/sivel2/public/;
     }
-
+    
+    location ^~ /sivel2/packs/ {
+      gzip_static on;
+      add_header Cache-Control public;
+      root /var/www/htdocs/sivel2/public/;
+    }
     
   }
 ```
 * Precompile los recursos 
 ```sh 
-bin/rails assets:precompile
+RAILS_ENV=production bin/rails assets:precompile
 ```
 * Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave):
 ```sh 
@@ -220,7 +232,8 @@ DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293
 * Para iniciar en cada arranque, por ejemplo en adJ cree /etc/rc.d/sivel2
 ```sh
 
-servicio="DIRAP=/var/www/htdocs/sivel2 RAILS_RELATIVE_URL_ROOT=/ USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+servicio="DIRAP=/var/www/htdocs/sivel2 RAILS_RELATIVE_URL_ROOT=/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+
 
 . /etc/rc.d/rc.subr
 
@@ -235,7 +248,11 @@ rc_stop() {
 
 rc_cmd $1
 ```
-  E incluya ```sivel2``` en la variable ```pkg_scripts``` de ```/etc/rc.conf.local```
+  Inicielo con:
+```
+doas sh /etc/rc.d/sivel2 -d start
+```
+Y una vez opere bien, incluya ```sivel2``` en la variable ```pkg_scripts``` de ```/etc/rc.conf.local```
 
 ### Actualización de servidor de desarrollo :arrows_clockwise:
 

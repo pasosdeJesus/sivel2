@@ -1,0 +1,60 @@
+.info, .agregaCapaDiv{
+  width: 400px;
+  padding: 5px 5px 5px 5px;
+  background-color: #fff;
+  -webkit-box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
+  -moz-box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
+  box-shadow: -5px 5px 8px 0px rgba(34,34,34,1);
+}
+
+.info{
+  height: 80vh;
+}
+
+#infow{
+  height: 80vh;
+}
+
+#filtroOsm{
+  width: 100vw;
+  margin-left: 0px;
+  margin-top: 0px;
+  padding: 5px 5px 5px 5px;
+  z-index:2;
+  background-color: #202040;
+  color: #FFF;
+}
+
+#mapa_osm {
+  width: 100%; 
+  height: 93vh;
+  float: left;
+  z-index:1; 
+}
+
+#cargador { 
+  position: absolute; 
+  right: 10px; 
+  top: 10px; 
+  width: 32px; 
+  height: 32px; 
+}
+
+.select_mapaOsm { 
+  background-color: #266DD3;
+}
+
+.input_mapaOsm{ 
+  background-color: #266DD3;
+  width: 140px;
+  height: 24px;
+  margin-top: 5px;
+}
+
+.input_mapaOsm::placeholder{
+  color: #FFF;
+}
+
+#enlaceDescarga{
+  color: #FFF;
+}

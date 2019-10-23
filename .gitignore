@@ -29,7 +29,6 @@ config/initializers/punto_montaje.rb
 .byebug_history
 app/views/sip/hogar/
 bin/u.sh
-config/unicorn.conf.minimal.rb
 coverage/
 bin/corre.sh
 bin/detiene.sh
@@ -44,3 +43,4 @@ bin/migra.sh
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+config/credentials.yml.enc
