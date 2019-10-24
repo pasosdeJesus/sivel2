@@ -174,9 +174,11 @@ function createMarker(point, codigo, title) {
         return;
       }
       var o = jQuery.parseJSON(data);
-      var id = o['caso'].id;
-      var titulo = o['caso'].titulo; 
-      var hechos = o['caso'].hechos; 
+      var id = (typeof o['caso'].id != 'undefined') ? o['caso'].id : -1;
+      var titulo = (typeof o['caso'].titulo != 'undefined') ? 
+        o['caso'].titulo : '';
+      var hechos = (typeof o['caso'].hechos != 'undefined') ? 
+        o['caso'].hechos : '--';
       var fecha = o['caso'].fecha; 
       var hora = o['caso'].hora; 
       var departamento = o['caso'].departamento; 
@@ -187,37 +189,36 @@ function createMarker(point, codigo, title) {
       var descripcionCont = '<div>' +
         '<h3>' + titulo + '</h3>' + '</div>' + '<div>' + hechos + '</div>';
       var hechosCont = '<div><table>';
-      hechosCont += (fecha != "") ? '<tr><td>Fecha:</td><td>' +
-        fecha + '</td></tr>' : '';
-      hechosCont += (hora != "") ? '<tr><td>Hora:</td><td>' +
-        hora + '</td></tr>' : '';
-      hechosCont += (departamento != "") ? 
-        '<tr><td>Departamento:</td><td>' +
+      hechosCont += ((typeof fecha != 'undefined') && fecha != "") ? 
+        '<tr><td>Fecha:</td><td>' + fecha + '</td></tr>' : '';
+      hechosCont += ((typeof hora != 'undefined') && hora != "") ? 
+        '<tr><td>Hora:</td><td>' + hora + '</td></tr>' : '';
+      hechosCont += ((typeof departamento != 'undefined') && 
+        departamento != "") ?  '<tr><td>Departamento:</td><td>' +
         departamento + '</td></tr>' : '';
-      hechosCont += (municipio != "") ? 
-        '<tr><td>Municipio:</td><td>' +
+      hechosCont += ((typeof municipio != 'undefined') && 
+        municipio != "") ?  '<tr><td>Municipio:</td><td>' +
         municipio + '</td></tr>' : '';
-      hechosCont += (centro_poblado != "") ? 
-        '<tr><td>Centro Poblado:</td><td>' +
+      hechosCont += ((typeof centro_poblado != 'undefined') && 
+        centro_poblado != "") ?  '<tr><td>Centro Poblado:</td><td>' +
         centro_poblado + '</td></tr>' : '';
-      hechosCont += (codigo != "") ? 
-        '<tr><td>Codigo:</td><td>' +
-        codigo + '</td></tr>' : '';
+      hechosCont += ((typeof codigo != 'undefined') && codigo != "") ? 
+        '<tr><td>Codigo:</td><td>' + codigo + '</td></tr>' : '';
       hechosCont += '</table></div>';
       var victimasCont = '<div><table>' +
         '<tr><td>Victimas:</td><td>';
       for(var cv in victimas) {
         var victima = victimas[cv];
-        victimasCont += (victima != "") ? victima +
-          '<br />' : 'SIN INFORMACIÓN';
+        victimasCont += ((typeof victima != 'undefined') && 
+          victima != "") ? victima + '<br />' : 'SIN INFORMACIÓN';
       }
 
       victimasCont += '</td></tr><tr>' +
         '<td>Presuntos Responsables:</td><td>';
       for(var cp in prresp) {
         var prrespel = prresp[cp];
-        victimasCont += (prrespel != "") ? prrespel +
-          '<br />' : 'SIN INFORMACIÓN';
+        victimasCont += ((typeof prrespel != 'undefined') && prrespel != "") ? 
+          prrespel + '<br />' : 'SIN INFORMACIÓN';
       }
       victimasCont += '</td></tr></table></div>';
       capa(descripcionCont, hechosCont, victimasCont);
@@ -248,12 +249,12 @@ function capa(des, hec, vic){
       '<span aria-hidden="true">&times;</span>'+
       '</button><div id="infow">'+
       '<ul class="nav nav-tabs" id="myTab" role="tablist">'+
-      '<li class="nav-item"><a class="nav-link active" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
+      '<li class="nav-item active"><a class="nav-link" id="infodes-tab" data-toggle="tab" href="#infodes" role="tab" aria-controls="infodes" aria-selected="true">Descripción</a></li>'+
       '<li class="nav-item"><a class="nav-link" id="infodatos-tab" data-toggle="tab" href="#infodatos" role="tab" aria-controls="infodatos" aria-selected="false">Datos</a></li>'+
       '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
       '</ul>'+
       '<div class="tab-content" id="myTabContent">'+
-      '<div class="tab-pane fade show active" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
+      '<div class="tab-pane fade active in" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
       '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
       '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
       '</div>'+
