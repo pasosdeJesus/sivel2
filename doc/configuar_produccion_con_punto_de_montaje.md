@@ -29,7 +29,11 @@ upstream unicornsivel2fian {
 # Soluciones a problemas comunes
 
 Si la página inicial se ve así:
-![https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/inicio-sin-assets.png]
+![Pantallazo de inicio sin recursos](https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/inicio-sin-assets.png)
+O al inspeccionar fuentes y revisar consola ve mensajes del estilo:
+```
+GET https://rbd.nocheyniebla.org:15443/csofb/sivel2/application-3f56911d83c1e4aab6ce1f08fbd92f8d83166c1f765cee5dd29f1ae0ebad9219.js net::ERR_ABORTED 404 (Not Found)
+```
 
 Seguramente el navegador no logra cargar los recursos (assets), revise:
 * Que en la configuración del punto de montaje se use el directorio assets, i.e en config/initializers/punto_montaje.rb diga:
