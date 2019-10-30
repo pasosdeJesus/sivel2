@@ -25,3 +25,31 @@ upstream unicornsivel2fian {
   server 127.0.0.1:2039 fail_timeout=0;
 }
 
+
+# Soluciones a problemas comunes
+
+Si la página inicial se ve así:
+[https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/inicio-sin-assets.png]
+
+Seguramente el navegador no logra cargar los recursos (assets), revise:
+* Que en la configuración del punto de montaje se use el directorio assets, i.e en config/initializers/punto_montaje.rb diga:
+```ruby                                                                              
+Sivel2::Application.config.relative_url_root = '/csofb/sivel2'
+Sivel2::Application.config.assets.prefix = '/csofb/sivel2/assets'
+```
+* Que la configuración de nginx tenga ruta para los recursos:
+```nginx.conf
+location ^~ /csofb/sivel2/assets/ { 
+        gzip_static on;                                                  
+        expires max;
+        add_header Cache-Control public;
+        root /var/www/htdocs/sivel2_csofb/public/;
+}
+        
+location ^~ /csofb/sivel2/images/ {  
+        gzip_static on; 
+        expires max;
+        add_header Cache-Control public;
+        root /var/www/htdocs/sivel2_csofb/public/;  
+}
+```
