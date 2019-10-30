@@ -62,8 +62,9 @@ location ^~ /csofb/sivel2/images/ {
 ## Mapa y otras experiencias interactivas no operan
 
 Por ejemplo el mapa se ve así:
+![Mapa sin webpack](https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/sivel2-sin-js-webpack.png)
 
-Es posible que no se estén cargando los recursos Javascript preparados con webpacker, asegurese de que exista el enlace packs:
+Es posible que no se estén cargando los recursos Javascript preparados con webpack, asegurese de que exista el enlace packs:
 ```
 cd public/laorg/sivel2
 ln -s ../../packs .
