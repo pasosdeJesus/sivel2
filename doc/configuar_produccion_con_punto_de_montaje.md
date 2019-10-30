@@ -29,7 +29,7 @@ upstream unicornsivel2fian {
 # Soluciones a problemas comunes
 
 Si la página inicial se ve así:
-[https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/inicio-sin-assets.png]
+![https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/inicio-sin-assets.png]
 
 Seguramente el navegador no logra cargar los recursos (assets), revise:
 * Que en la configuración del punto de montaje se use el directorio assets, i.e en config/initializers/punto_montaje.rb diga:
