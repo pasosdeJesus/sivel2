@@ -254,9 +254,9 @@ function capa(des, hec, vic){
       '<li class="nav-item"><a class="nav-link" id="infovictima-tab" data-toggle="tab" href="#infovictima" role="tab" aria-controls="infovictima" aria-selected="false">Víctimas</a></li>'+
       '</ul>'+
       '<div class="tab-content" id="myTabContent">'+
-      '<div class="tab-pane fade active in" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
-      '<div class="tab-pane fade" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
-      '<div class="tab-pane fade" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
+      '<div class="tab-pane fade active in panel-infomapa" id="infodes" role="tabpanel" aria-labelledby="infodes-tab">'+ des +'</div>'+
+      '<div class="tab-pane fade panel-infomapa" id="infodatos" role="tabpanel" aria-labelledby="infodatos-tab">'+ hec +'</div>'+
+      '<div class="tab-pane fade panel-infomapa" id="infovictima" role="tabpanel" aria-labelledby="infovctima-tab">'+ vic +'</div>'+
       '</div>'+
       '</div>';
   };
