@@ -43,8 +43,8 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144.png">
     <meta name="msapplication-config" content="/images/browserconfig.xml">
 
-    <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag "application" %>
   </head>
   <body>
     <%= nav_bar :fixed => :top, 

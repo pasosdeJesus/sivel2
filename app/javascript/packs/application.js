@@ -14,6 +14,21 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+console.log('Hola Mundo desde Webpacker')
+
+require('@rails/ujs').start()   // Javascript no intrusivo segun rails
+require('turbolinks').start()   // Acelera carga de paginas
+
 var L = require('leaflet');
 var mc= require('leaflet.markercluster');
-console.log('Hello World from Webpacker');
+
+import {$, jQuery} from 'jquery';
+import 'popper.js'              // Dialogos emergentes usados por bootstrap
+import 'bootstrap'              // Maquetacion y elementos de diseño
+import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
+import 'bootstrap-datepicker'
+import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
+import 'jquery-ui'
+import 'pick-a-color'
+import tinycolor from 'tinycolor2'
