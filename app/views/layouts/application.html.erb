@@ -31,7 +31,7 @@
       <% end %>
       <%= despliega_abajo "Mapas" do %>
         <%= opcion_menu "Casos sobre Open Street Maps", 
-          main_app.casos_mapaosm_path, desplegable: true %>
+          sivel2_gen.casos_mapaosm_path, desplegable: true %>
       <% end %> 
     <% end %>
   <% end %>
@@ -63,11 +63,13 @@
         <%= opcion_menu "Clave", main_app.editar_registro_usuario_path,
           desplegable: true %>
         <% if session[:capturacaso_acordeon] %>
-          <%= opcion_menu 'Ficha caso vertical ✓', '/fichacasovertical',
+          <%= opcion_menu 'Ficha caso vertical ✓', 
+            sivel2_gen.fichacasovertical_path,
             desplegable: true, id: 'fichacasovertical' 
           %>
         <% else %>
-          <%= opcion_menu 'Ficha caso vertical', '/fichacasovertical',
+          <%= opcion_menu 'Ficha caso vertical', 
+            sivel2_gen.fichacasovertical_path,
             desplegable: true, id: 'fichacasovertical' 
           %>
         <% end %>
