@@ -11,6 +11,11 @@
   height: 80vh;
 }
 
+.panel-infomapa {
+  height: 65vh;
+  overflow-y:scroll;
+}
+
 #infow{
   height: 80vh;
 }

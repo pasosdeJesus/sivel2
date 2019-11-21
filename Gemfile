@@ -12,7 +12,8 @@ gem 'cancancan'
 
 gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', branch: 'several-fixes'
 
-gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', branch: 'new_id_with_ajax' # Formularios anidados (algunos con ajax)
+gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', 
+  branch: 'new_id_with_ajax' # Formularios anidados (algunos con ajax)
 
 gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
 
