@@ -1,10 +1,8 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 94bdd978eac7df790a864bc746e1880b134ad02a
+  revision: a9db9071b45c6077a56030d7225ebbb1aec7835e
   specs:
     heb412_gen (1.0.b6)
-      chosen-rails
-      font-awesome-rails
       mr519_gen
       redcarpet
       rspreadsheet
@@ -12,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 8ac2f61bb455bb02e9fbc8d4a70e12b20fc9c199
+  revision: edf83c22a608a4b850ce7833db7d167e9bf55570
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -20,44 +18,21 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5da50084bf8625a0d8eefaeb10b3fe206cb668b9
+  revision: 5d018c7206397bb19d0a361af04e45254911c9b5
   specs:
-    sip (2.0.b6)
-      bootstrap-datepicker-rails
+    sip (2.0.b7)
       cancancan
       chosen-rails
-      colorize
       devise
       devise-i18n
-      jquery-rails
       jquery-ui-rails
       minitest
       paperclip
       rails
       rails-i18n
       simple_form
-      twitter-bootstrap-rails
       twitter_cldr
       will_paginate
-
-GIT
-  remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f62e6779969a028d2519008756bebe7526dba4d8
-  specs:
-    sivel2_gen (2.0b10)
-      devise
-      jquery-rails
-      rails
-
-GIT
-  remote: https://github.com/vtamara/chosen-rails.git
-  revision: 48c457fc9ef1c4c573b4dcdb9dc07034b46ed6b4
-  branch: several-fixes
-  specs:
-    chosen-rails (1.8.7)
-      coffee-rails (>= 3.2)
-      railties (>= 3.0)
-      sass-rails (>= 3.2)
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
@@ -65,6 +40,14 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+PATH
+  remote: ../sivel2_gen
+  specs:
+    sivel2_gen (2.0b10)
+      devise
+      jquery-rails
+      rails
 
 GEM
   remote: https://rubygems.org/
@@ -131,8 +114,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    bootstrap-datepicker-rails (1.8.0.1)
-      railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
@@ -146,6 +127,10 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     choice (0.2.0)
+    chosen-rails (1.9.0)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sassc-rails (>= 2.1.2)
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.2.0)
     coffee-rails (5.0.0)
@@ -156,7 +141,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    commonjs (0.2.7)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     devise (4.7.1)
@@ -174,8 +158,6 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.11.2)
-    font-awesome-rails (4.7.0.5)
-      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.7.0)
@@ -190,12 +172,6 @@ GEM
       railties (>= 3.2.16)
     json (2.2.0)
     kgio (2.11.2)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (4.0.0)
-      actionpack (>= 4)
-      less (~> 2.6.0)
-      sprockets (>= 2)
     libxml-ruby (3.1.0)
     loofah (2.3.1)
       crass (~> 1.0.2)
@@ -228,10 +204,6 @@ GEM
       terrapin (~> 0.6.0)
     pdf-core (0.7.0)
     pg (1.1.4)
-    pick-a-color-rails (0.0.1)
-      jquery-rails
-      railties (>= 3.0)
-      tiny-color-rails
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -294,8 +266,6 @@ GEM
       rubyzip (>= 1.3)
     ruby-graphviz (1.2.4)
     rubyzip (2.0.0)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.2.1)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -328,25 +298,13 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tiny-color-rails (0.0.2)
-      railties (>= 3.0)
     ttfunk (1.5.1)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
-    twitter-bootstrap-rails (3.2.2)
-      actionpack (>= 3.1)
-      execjs (>= 2.2.2, >= 2.2)
-      less-rails (>= 2.5.0)
-      railties (>= 3.1)
     twitter_cldr (5.0.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unicorn (5.5.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -375,27 +333,21 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootsnap (>= 1.1.0)
-  bootstrap-datepicker-rails
   cancancan
   capybara
-  chosen-rails!
   cocoon!
   coffee-rails
   colorize
   devise
   devise-i18n
   erd
-  font-awesome-rails
   heb412_gen!
   jbuilder
-  jquery-rails
-  jquery-ui-rails
   libxml-ruby
   mr519_gen!
   odf-report
   paperclip
   pg
-  pick-a-color-rails
   prawn
   prawn-table
   prawnto_2
@@ -405,19 +357,15 @@ DEPENDENCIES
   redcarpet
   rspreadsheet
   rubyzip (>= 2.0)
-  sass-rails
+  sassc-rails
   selenium-webdriver
   simple_form
   simplecov
   sip!
   sivel2_gen!
   spring
-  tiny-color-rails
-  turbolinks
-  twitter-bootstrap-rails
   twitter_cldr
   tzinfo
-  uglifier
   unicorn
   web-console
   webpacker

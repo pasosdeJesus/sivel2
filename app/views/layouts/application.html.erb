@@ -3,68 +3,93 @@
 <% end %>
 
 <% content_for :menu do %>
-  <%= menu_group do %>
+  <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-      <%= drop_down "Casos" do %>
-        <%= menu_item "Listado", sivel2_gen.casos_path %>
-        <%= menu_item "Nuevo Caso", sivel2_gen.new_caso_path %>
-        <%= menu_item "Validar casos", sivel2_gen.validarcasos_path %>
-        <%= menu_item "Buscar repetidos", sivel2_gen.buscarrepetidos_path %>
+      <%= despliega_abajo "Casos" do %>
+        <%= opcion_menu "Listado", sivel2_gen.casos_path,
+          desplegable: true %>
+        <%= opcion_menu "Nuevo Caso", sivel2_gen.new_caso_path,
+          desplegable: true %>
+        <%= opcion_menu "Validar casos", sivel2_gen.validarcasos_path,
+          desplegable: true %>
+        <%= opcion_menu "Buscar repetidos", sivel2_gen.buscarrepetidos_path,
+          desplegable: true %>
       <% end %>
-      <%= drop_down "Reportes y conteos" do %>
-        <%= menu_item "Listado de víctimas y casos", 
-          sivel2_gen.victimas_path %>
-        <%= menu_item "Conteo demografía víctimas", 
-          sivel2_gen.conteos_personas_path %>
-        <%= menu_item "Conteo de victimizaciones individuales", 
-          sivel2_gen.conteos_victimizaciones_path %>
-        <%= menu_item "Conteo general de víctimas", 
-          sivel2_gen.conteos_genvic_path %>
+      <%= despliega_abajo "Reportes y conteos" do %>
+        <%= opcion_menu "Listado de víctimas y casos", 
+          sivel2_gen.victimas_path,
+          desplegable: true %>
+        <%= opcion_menu "Conteo demografía víctimas", 
+          sivel2_gen.conteos_personas_path,
+          desplegable: true %>
+        <%= opcion_menu "Conteo de victimizaciones individuales", 
+          sivel2_gen.conteos_victimizaciones_path,
+          desplegable: true %>
+        <%= opcion_menu "Conteo general de víctimas", 
+          sivel2_gen.conteos_genvic_path,
+          desplegable: true %>
       <% end %>
-      <%= drop_down "Mapas" do %>
-        <%= menu_item "Casos sobre Open Street Maps", main_app.casos_mapaosm_path %> 
+      <%= despliega_abajo "Mapas" do %>
+        <%= opcion_menu "Casos sobre Open Street Maps", 
+          sivel2_gen.casos_mapaosm_path, desplegable: true %>
       <% end %> 
     <% end %>
   <% end %>
-  <%= menu_group :pull => :right do %>
+  <%= grupo_menus :pull => :right do %>
     <% if !current_usuario.nil? %>
-      <%= drop_down "Documentos" do %>
-        <%= menu_item "Manual", 'https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing', target: '_blank' %>
-        <%= menu_item "Nube", heb412_gen.sisini_path %>
+      <%= despliega_abajo "Documentos" do %>
+        <%= opcion_menu "Manual", 
+          'https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing', 
+          target: '_blank', desplegable: true %>
+        <%= opcion_menu "Nube", heb412_gen.sisini_path,
+          desplegable: true %>
         <% if can? :manage, ::Heb412Gen::Plantillahcm %>
-          <%= menu_item "Plantillas para listado en hojas de calculo",
-            heb412_gen.plantillashcm_path %>
+          <%= opcion_menu "Plantillas para listado en hojas de calculo",
+            heb412_gen.plantillashcm_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, ::Heb412Gen::Plantillahcr %>
-          <%= menu_item "Plantillas para un registro en hoja de calculo",
-            heb412_gen.plantillashcr_path %>
+          <%= opcion_menu "Plantillas para un registro en hoja de calculo",
+            heb412_gen.plantillashcr_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, ::Heb412Gen::Plantilladoc %>
-          <%= menu_item "Plantillas para un registro en documento",
-            heb412_gen.plantillasdoc_path %>
+          <%= opcion_menu "Plantillas para un registro en documento",
+            heb412_gen.plantillasdoc_path,
+            desplegable: true %>
         <% end %>
       <% end %>
-      <%= drop_down "Administrar" do %>
-        <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
+      <%= despliega_abajo "Administrar" do %>
+        <%= opcion_menu "Clave", main_app.editar_registro_usuario_path,
+          desplegable: true %>
         <% if session[:capturacaso_acordeon] %>
-          <li><a id="fichacasovertical" href="<%= sivel2_gen.fichacasovertical_path %>">Ficha caso vertical ✓</a></li>
+          <%= opcion_menu 'Ficha caso vertical ✓', 
+            sivel2_gen.fichacasovertical_path,
+            desplegable: true, id: 'fichacasovertical' 
+          %>
         <% else %>
-          <li><a id="fichacasovertical" href="<%= sivel2_gen.fichacasovertical_path %>">Ficha caso vertical</a></li>
+          <%= opcion_menu 'Ficha caso vertical', 
+            sivel2_gen.fichacasovertical_path,
+            desplegable: true, id: 'fichacasovertical' 
+          %>
         <% end %>
         <% if can? :manage, ::Usuario %>
-          <%= menu_item "Usuarios", main_app.usuarios_path %>
+          <%= opcion_menu "Usuarios", main_app.usuarios_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, :tablasbasicas %>
-          <%= menu_item "Tablas Básicas", sivel2_gen.tablasbasicas_path %>
+          <%= opcion_menu "Tablas Básicas", sivel2_gen.tablasbasicas_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, Sip::Respaldo7z %>
-          <%= menu_item "Respaldo cifrado", sip.respaldo7z_path %>
+          <%= opcion_menu "Respaldo cifrado", sip.respaldo7z_path,
+            desplegable: true %>
         <% end %>
       <% end %>
-      <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
+      <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
     <% else %>
-      <%= menu_item "Acerca de", sivel2_gen.acercade_path %>
-      <%= menu_item "Iniciar Sesión", main_app.new_usuario_session_path %> 
+      <%= opcion_menu "Acerca de", sivel2_gen.acercade_path %>
+      <%= opcion_menu "Iniciar Sesión", main_app.new_usuario_session_path %> 
     <% end %>
   <% end %>
 <% end %>
