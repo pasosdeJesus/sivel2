@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5b841afe28d8ebace13911bd78cc18ca50cdd52e
+  revision: 39004bf82242b19442995386b08be5de5c28d744
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: bb1301c3bcb2a45855dbbf42398c78721fdf3695
+  revision: 64438f04c75ec8e902f9d515ca3b13bdb3a1540a
   specs:
     sip (2.0.b7)
       cancancan
