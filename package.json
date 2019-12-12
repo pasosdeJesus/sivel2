@@ -20,6 +20,7 @@
     "leaflet.markercluster": "^1.4.1",
     "pick-a-color": "^1.2.3",
     "popper.js": "^1.16.0",
+    "serialize-javascript": "2.1.1",
     "tinycolor2": "^1.4.1",
     "turbolinks": "^5.2.0"
   }
