@@ -8,6 +8,7 @@ class CasoconjsTest < ApplicationSystemTestCase
     # Reporta Error:
     # CasoconjsTest#test_administrador_crea:
     # CanCan::AccessDenied: No está autorizado para read sip/departamento/active record relation.
+    # byebug
     @usuario = Usuario.find_by(nusuario: 'sivel2')
     @usuario.password = 'sivel2'
     visit File.join(Rails.configuration.relative_url_root, '/usuarios/sign_in')
@@ -18,6 +19,7 @@ class CasoconjsTest < ApplicationSystemTestCase
 
     visit File.join(Rails.configuration.relative_url_root, '/casos/nuevo')
     take_screenshot
+    assert page.has_content?("Caso No.")
     @numcaso=find_field('Caso No.').value
 
     # Datos básicos
@@ -32,6 +34,7 @@ class CasoconjsTest < ApplicationSystemTestCase
     end
     click_on 'Añadir Víctima'
     take_screenshot
+    assert page.has_content?("Nombres")
     within ("div#victima") do 
       fill_in "Nombres", with: 'Nombres V'
       fill_in "Apellidos", with: 'Apellidos V'
@@ -63,6 +66,7 @@ class CasoconjsTest < ApplicationSystemTestCase
       assert page.has_select?('País')
       select('VENEZUELA', from: 'País') 
       assert page.has_select?('País', selected: 'VENEZUELA')
+      page.save_screenshot('/tmp/s2-ccj-ubi-ven.png')
       puts "Eligió país"
       assert page.has_select?('Departamento/Estado/Cantón', with_options: ['ARAGUA'])
       puts "Lleno con AJAX departamento"
