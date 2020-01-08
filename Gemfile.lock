@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 762f2c712b4d7fad4a413b8217a547e2026fb0e0
+  revision: 137f0940acf26aa03d8cfea46b216fdb571e6223
   specs:
     sip (2.0.b7)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7101281bc19c33a1d38f816ceddff585908b2640
+  revision: 02a3d85929ee83ebf78e466b92ccbe8253a0ec83
   specs:
     sivel2_gen (2.0b10)
       devise
@@ -182,7 +182,7 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
-    mime-types (3.3)
+    mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
     mimemagic (0.3.3)
@@ -213,7 +213,7 @@ GEM
     prawnto_2 (0.3.0)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    public_suffix (4.0.1)
+    public_suffix (4.0.2)
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
@@ -275,7 +275,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.6)
+    selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     simple_form (5.0.1)
