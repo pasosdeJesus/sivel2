@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9a7d441dcb2c76b83a7857269682c34c4e90014e
+  revision: c272d1a53bf85cb2c27424d540df571ef8bc6635
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 4261b9223ff8a4e2ba30950cb961b6d850388673
+  revision: 3c6058a029c3c3ffc893440cf14476337cc606d3
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 6bd935c1893e6955aabd1d92a5440d45580277ac
+  revision: 8805ceac48e548baef505d1c4f1690078f7775e0
   specs:
     sivel2_gen (2.0b10)
       devise
@@ -216,7 +216,7 @@ GEM
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.1.0)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
