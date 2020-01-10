@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e3d23ec3803c759194dd7e710a372fbacb41d245
+  revision: 9a7d441dcb2c76b83a7857269682c34c4e90014e
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d0a10ab95bb7537a2392afb563b27e5d9b791004
+  revision: 4261b9223ff8a4e2ba30950cb961b6d850388673
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 32db02022eab4569985ec11c81d60db0aa68553d
+  revision: ad94453d2f45c945b1fca19e06f1cd1c71b7c8d0
   specs:
     sip (2.0.b7)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ee2e789ab9e8eb8bbd8a19e662239f2c45f69954
+  revision: 6bd935c1893e6955aabd1d92a5440d45580277ac
   specs:
     sivel2_gen (2.0b10)
       devise
@@ -161,7 +161,7 @@ GEM
     ffi (1.11.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.7.0)
+    i18n (1.8.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
@@ -172,7 +172,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.3.0)
-    kgio (2.11.2)
+    kgio (2.11.3)
     libxml-ruby (3.1.0)
     loofah (2.4.0)
       crass (~> 1.0.2)
@@ -204,7 +204,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.7.0)
-    pg (1.2.1)
+    pg (1.2.2)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -255,7 +255,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
-    raindrops (0.19.0)
+    raindrops (0.19.1)
     rake (13.0.1)
     redcarpet (3.5.0)
     regexp_parser (1.6.0)
@@ -299,7 +299,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    ttfunk (1.6.0)
+    ttfunk (1.6.1)
     twitter_cldr (5.3.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
