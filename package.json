@@ -11,15 +11,15 @@
     "bootstrap-datepicker": "^1.9.0",
     "chosen-js": "^1.8.7",
     "expose-loader": "^0.7.5",
+    "gridstack": "^0.5.5",
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
     "leaflet": "^1.5.1",
     "leaflet-css": "^0.1.0",
     "leaflet-google-places-autocomplete": "^0.0.8",
     "leaflet.markercluster": "^1.4.1",
-    "pick-a-color": "^1.2.3",
     "popper.js": "^1.16.0",
-    "tinycolor2": "^1.4.1",
+    "serialize-javascript": "2.1.1",
     "turbolinks": "^5.2.0"
   }
 }

@@ -18,9 +18,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 42f4551ba5deb80c1c0a77627cb91c3da2424c4c
+  revision: f0a5550321271622e69201de048075f012a0a24a
   specs:
-    sip (2.0.b7)
+    sip (2.0.b10)
       cancancan
       chosen-rails
       devise
