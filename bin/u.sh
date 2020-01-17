@@ -1,5 +1,6 @@
 #!/bin/sh
-# Inicia produccion
+# Arranca en modo produccion
+
 if (test "${SECRET_KEY_BASE}" = "") then {
 	echo "Definir variable de ambiente SECRET_KEY_BASE"
 	exit 1;
