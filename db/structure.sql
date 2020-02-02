@@ -4391,6 +4391,13 @@ CREATE INDEX caso_fecha_idx1 ON public.sivel2_gen_caso USING btree (fecha);
 
 
 --
+-- Name: caso_id_unico; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX caso_id_unico ON public.sivel2_gen_conscaso USING btree (caso_id);
+
+
+--
 -- Name: index_heb412_gen_doc_on_tdoc_type_and_tdoc_id; Type: INDEX; Schema: public; Owner: -
 --
 
