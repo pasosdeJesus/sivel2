@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -11,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Sivel2
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
+    config.load_defaults 6.0
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
@@ -22,15 +21,11 @@ module Sivel2
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
-    config.active_record.schema_format = :sql
-
     config.relative_url_root = "/sivel2"
 
+    config.active_record.schema_format = :sql
+
     config.x.formato_fecha='yyyy-mm-dd'
-
-    config.x.heb412_ruta = Rails.root.join('public', 'heb412')
-
-    config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
 
   end
 end

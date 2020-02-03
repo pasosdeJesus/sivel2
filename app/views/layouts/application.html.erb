@@ -60,7 +60,7 @@
         <% end %>
       <% end %>
       <%= despliega_abajo "Administrar" do %>
-        <%= opcion_menu "Clave", main_app.editar_registro_usuario_path,
+        <%= opcion_menu "Clave y Tema", main_app.editar_registro_usuario_path,
           desplegable: true %>
         <% if session[:capturacaso_acordeon] %>
           <%= opcion_menu 'Ficha caso vertical ✓', 
@@ -96,7 +96,7 @@
 
 <% content_for :piedepagina do %>
   <p><span class='derechos'>Dominio Público de acuerdo a Legislación Colombiana<br/>
-    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2019.
+    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2020.
   </span></p>
 <% end %>
 
