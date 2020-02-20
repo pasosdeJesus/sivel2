@@ -485,12 +485,17 @@ CREATE TABLE public.sivel2_gen_victima (
 
 CREATE VIEW public.cben1 AS
  SELECT caso.id AS id_caso,
-    victima.id_persona,
+    subv.id_victima,
+    subv.id_persona,
     1 AS npersona,
     'total'::text AS total
    FROM public.sivel2_gen_caso caso,
-    public.sivel2_gen_victima victima
-  WHERE (caso.id = victima.id_caso);
+    public.sivel2_gen_victima victima,
+    ( SELECT sivel2_gen_victima.id_persona,
+            max(sivel2_gen_victima.id) AS id_victima
+           FROM public.sivel2_gen_victima
+          GROUP BY sivel2_gen_victima.id_persona) subv
+  WHERE ((subv.id_victima = victima.id) AND (caso.id = victima.id_caso));
 
 
 --
@@ -633,6 +638,7 @@ CREATE TABLE public.sip_ubicacion (
 
 CREATE VIEW public.cben2 AS
  SELECT cben1.id_caso,
+    cben1.id_victima,
     cben1.id_persona,
     cben1.npersona,
     cben1.total,
@@ -642,12 +648,13 @@ CREATE VIEW public.cben2 AS
     municipio.nombre AS municipio_nombre,
     ubicacion.id_clase,
     clase.nombre AS clase_nombre
-   FROM ((((public.cben1
-     LEFT JOIN public.sip_ubicacion ubicacion ON ((cben1.id_caso = ubicacion.id_caso)))
+   FROM (((((public.cben1
+     JOIN public.sivel2_gen_caso caso ON ((cben1.id_caso = caso.id)))
+     LEFT JOIN public.sip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
      LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
      LEFT JOIN public.sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
      LEFT JOIN public.sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_persona, cben1.npersona, cben1.total, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
+  GROUP BY cben1.id_caso, cben1.id_victima, cben1.id_persona, cben1.npersona, cben1.total, ubicacion.id_departamento, departamento.nombre, ubicacion.id_municipio, municipio.nombre, ubicacion.id_clase, clase.nombre;
 
 
 --
