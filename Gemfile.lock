@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 8128438726ab3c69e3207c5a457eb38d45030b59
+  revision: 1c91a8572ed68b7d4fe7c503a93f8f9277b9e4ca
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a1c32d6d2d8d88b45e72adc112e9a2558fd579ab
+  revision: 9c630e49592651782dcefadab3945a22b2d5cb26
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6e56581d02b9dc3ba5e629ad1bc1368e8e54e46f
+  revision: 4f29b16d409623e86d2c3ace9c428ebc5e09e5ad
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 0ce2e5d5ab55f3477aa53c5120d29071825779a2
+  revision: 88789065f4920d6f49fc775e73f473e170635aab
   specs:
     sivel2_gen (2.0b10)
       devise
@@ -252,7 +252,7 @@ GEM
     raindrops (0.19.1)
     rake (13.0.1)
     redcarpet (3.5.0)
-    regexp_parser (1.6.0)
+    regexp_parser (1.7.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -275,10 +275,10 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simplecov (0.18.2)
+    simplecov (0.18.3)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
-    simplecov-html (0.12.0)
+    simplecov-html (0.12.1)
     spring (2.1.0)
     sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
