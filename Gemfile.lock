@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 0ec1f59fe12cba658e2bcc867bf18f47cb1e2ed1
+  revision: 4c3c0c5c0882b1dd98ce5270091c7fbe3554bb2a
   specs:
     sivel2_gen (2.0b10)
       devise
@@ -319,7 +319,7 @@ GEM
     will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
