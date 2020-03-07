@@ -164,10 +164,7 @@ RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 * Deje el mismo punto de montaje que usará con el servidor web en `config/application.rb`, `config/routes.rb` y `config/initializers/punto_montaje.rb`
 * Configure ruta para anexos y respaldos en `config/initializers/sip.rb` --recomendable en ruta que respalde con periodicidad.
 * Configure ruta para la nube (preferible donde quede también respaldada con periodicidad) en `config/application.rb`
-* Elija un puerto no usado (digamos 2009) y configure tanto unicorn de la aplicación como el servidor web para usarlo. Puede configurar unicorn de la aplicación editando `config/unicorn.conf.minimal.rb`:
-```
-listen 2009
-```
+* Elija un puerto no usado (digamos 2009) 
 * Como servidor web recomendamos nginx, suponiendo que el puerto elegido es 2009, en la sección http agregue:
 ```
   upstream unicornsivel2 {
