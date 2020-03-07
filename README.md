@@ -229,17 +229,17 @@ DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293
 * Para iniciar en cada arranque, por ejemplo en adJ cree /etc/rc.d/sivel2
 ```sh
 
-servicio="DIRAP=/var/www/htdocs/sivel2 RAILS_RELATIVE_URL_ROOT=/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+servicio="DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=miusuario SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
 
 
 . /etc/rc.d/rc.subr
 
 rc_check() {
-        ps axw | grep "[r]uby.*unicorn_rails .*sivel2" > /dev/null
+        ps axw | grep "[r]uby.*unicorn_rails .*sivel2[/]" > /dev/null
 }
 
 rc_stop() {
-        p=`ps axw | grep "[r]uby.*unicorn_rails.*master .*sivel2" | sed -e "s/^ *\([0-9]*\) .*/\1/g"`
+        p=`ps axw | grep "[r]uby.*unicorn_rails.*master .*sivel2[/]" | sed -e "s/^ *\([0-9]*\) .*/\1/g"`
 	kill $p
 }
 
