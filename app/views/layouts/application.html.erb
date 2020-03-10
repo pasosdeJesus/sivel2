@@ -19,16 +19,16 @@
           desplegable: true %>
       <% end %>
       <%= despliega_abajo "Reportes y conteos" do %>
-        <%= opcion_menu "Listado de víctimas y casos", 
-          sivel2_gen.victimas_path,
-          desplegable: true %>
         <%= opcion_menu "Conteo demografía víctimas", 
           sivel2_gen.conteos_personas_path,
+          desplegable: true %>
+        <%= opcion_menu "Listado de víctimas y casos", 
+          sivel2_gen.victimas_path,
           desplegable: true %>
         <%= opcion_menu "Conteo de victimizaciones individuales", 
           sivel2_gen.conteos_victimizaciones_path,
           desplegable: true %>
-        <%= opcion_menu "Conteo general de víctimas", 
+        <%= opcion_menu "Conteo general de víctimizaciones", 
           sivel2_gen.conteos_genvic_path,
           desplegable: true %>
       <% end %>
