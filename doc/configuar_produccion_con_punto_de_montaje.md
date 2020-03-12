@@ -1,34 +1,32 @@
-Supongamos que se necesita un sistema de información para una organización que abreviaremos con laorg, en un URL de la forma misitio.org.co/laorg/sivel2
+# Instrucciones para poner un sistema en produccin en un punto de montaje que no es /
 
-Clone este repositorio y ubiquelo por ejemplo en /var/www/htdocs/sivel2_laorg
+Las instrucciones para poner un sistema en produccin en / pueden verse en el archivo README.md de las fuentes de SIVeL.
 
-Cree usuario PostgreSQL por ejemplo sivel2laorg
+Estas instrucciones suponen que ya conoce las primeras y que necesita un sistema de información para una organización que abreviaremos con `laorg`, en un URL de la forma misitio.org.co/laorg/sivel2
 
-Cree base de datos por ejemplo sivel2_laorg_des, sivel2_laorg_test y sivel2_laorg_prod
+* Clone este repositorio y ubiquelo por ejemplo en `/var/www/htdocs/sivel2_laorg`
+* Cree usuario PostgreSQL por ejemplo `sivel2laorg`
+* Cree base de datos por ejemplo `sivel2_laorg_des`, `sivel2_laorg_test` y `sivel2_laorg_prod`
+* Copie renombrando y edite los archivos .plantilla
+* Inicialice base de datos
+* Configure packs
+        cd public
+        mkdir laorg
+        cd laorg
+        mkdir sivel2
+        cd sivel2
+        ln -sf ../../packs
 
-Edite los archivos .plantilla
-
-Inicialice base de datos
-
-Configure packs
-
-cd public
-mkdir laorg
-cd laorg
-mkdir sivel2
-cd sivel2
-ln -sf ../../packs
-
-Configure en nginx: puerto donde correra unicorn, rutas
+* Configure en nginx: puerto donde correra unicorn, rutas
 
 upstream unicornsivel2fian {
   server 127.0.0.1:2039 fail_timeout=0;
 }
 
 
-# Soluciones a problemas comunes
+## Soluciones a problemas comunes
 
-## Págia inicial sin recursos gráficos
+### Págia inicial sin recursos gráficos
 
 ![Pantallazo de inicio sin recursos](https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/inicio-sin-assets.png)
 O al inspeccionar fuentes y revisar consola ve mensajes del estilo:
@@ -59,7 +57,7 @@ location ^~ /csofb/sivel2/images/ {
 }
 ```
 
-## Mapa y otras experiencias interactivas no operan
+### Mapa y otras experiencias interactivas no operan
 
 Por ejemplo el mapa se ve así:
 ![Mapa sin webpack](https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/sivel2-sin-js-webpack.png)
@@ -69,3 +67,7 @@ Es posible que no se estén cargando los recursos Javascript preparados con webp
 cd public/laorg/sivel2
 ln -s ../../packs .
 ```
+
+
+### No permite subir anexos grandes
+
