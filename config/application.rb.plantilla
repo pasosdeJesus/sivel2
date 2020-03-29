@@ -29,5 +29,7 @@ module Sivel2
 
     config.x.sivel2_consulta_web_publica = false
 
+    config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
+
   end
 end
