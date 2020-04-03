@@ -7,6 +7,12 @@ module Sivel2Gen
 
     include Sivel2Gen::Concerns::Controllers::CasosController
 
+    before_action :set_caso, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource class: Sivel2Gen::Caso, 
+      except: [:index, :show, :mapaosm]
+
+    include Sivel2Gen::Concerns::Controllers::CasosController
+
     def campoord_inicial
       'fecha'
     end

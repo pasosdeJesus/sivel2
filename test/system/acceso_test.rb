@@ -5,6 +5,7 @@ require 'application_system_test_case'
 class AccesoTest < ApplicationSystemTestCase
 
   test "control de acceso" do
+    skip
     @usuario = Usuario.find_by(nusuario: 'sivel2')
     @usuario.password = 'sivel2'
     visit File.join(Rails.configuration.relative_url_root, '/usuarios/sign_in')

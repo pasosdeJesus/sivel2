@@ -164,10 +164,7 @@ RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 * Deje el mismo punto de montaje que usará con el servidor web en `config/application.rb`, `config/routes.rb` y `config/initializers/punto_montaje.rb`
 * Configure ruta para anexos y respaldos en `config/initializers/sip.rb` --recomendable en ruta que respalde con periodicidad.
 * Configure ruta para la nube (preferible donde quede también respaldada con periodicidad) en `config/application.rb`
-* Elija un puerto no usado (digamos 2009) y configure tanto unicorn de la aplicación como el servidor web para usarlo. Puede configurar unicorn de la aplicación editando `config/unicorn.conf.minimal.rb`:
-```
-listen 2009
-```
+* Elija un puerto local no usado (digamos 2009)
 * Como servidor web recomendamos nginx, suponiendo que el puerto elegido es 2009, en la sección http agregue:
 ```
   upstream unicornsivel2 {
@@ -225,24 +222,24 @@ listen 2009
 ```sh 
 RAILS_ENV=production bin/rails assets:precompile
 ```
-* Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave):
+* Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave y el puerto):
 ```sh 
-DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
+PUERTOUNICORN=2009  DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
 ```
 * Para iniciar en cada arranque, por ejemplo en adJ cree /etc/rc.d/sivel2
 ```sh
 
-servicio="DIRAP=/var/www/htdocs/sivel2 RAILS_RELATIVE_URL_ROOT=/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+servicio="PUERTOUNICORN=2009 DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=miusuario SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
 
 
 . /etc/rc.d/rc.subr
 
 rc_check() {
-        ps axw | grep "[r]uby.*unicorn_rails .*sivel2" > /dev/null
+        ps axw | grep "[r]uby.*unicorn_rails .*sivel2[/]" > /dev/null
 }
 
 rc_stop() {
-        p=`ps axw | grep "[r]uby.*unicorn_rails.*master .*sivel2" | sed -e "s/^ *\([0-9]*\) .*/\1/g"`
+        p=`ps axw | grep "[r]uby.*unicorn_rails.*master .*sivel2[/]" | sed -e "s/^ *\([0-9]*\) .*/\1/g"`
 	kill $p
 }
 

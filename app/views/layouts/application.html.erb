@@ -10,22 +10,25 @@
           desplegable: true %>
         <%= opcion_menu "Nuevo Caso", sivel2_gen.new_caso_path,
           desplegable: true %>
+        <%= opcion_menu "Refrescar Listado de Casos", 
+          sivel2_gen.casos_refresca_path,
+          desplegable: true %>
         <%= opcion_menu "Validar casos", sivel2_gen.validarcasos_path,
           desplegable: true %>
         <%= opcion_menu "Buscar repetidos", sivel2_gen.buscarrepetidos_path,
           desplegable: true %>
       <% end %>
       <%= despliega_abajo "Reportes y conteos" do %>
-        <%= opcion_menu "Listado de víctimas y casos", 
-          sivel2_gen.victimas_path,
-          desplegable: true %>
         <%= opcion_menu "Conteo demografía víctimas", 
           sivel2_gen.conteos_personas_path,
+          desplegable: true %>
+        <%= opcion_menu "Listado de víctimas y casos", 
+          sivel2_gen.victimas_path,
           desplegable: true %>
         <%= opcion_menu "Conteo de victimizaciones individuales", 
           sivel2_gen.conteos_victimizaciones_path,
           desplegable: true %>
-        <%= opcion_menu "Conteo general de víctimas", 
+        <%= opcion_menu "Conteo general de víctimizaciones", 
           sivel2_gen.conteos_genvic_path,
           desplegable: true %>
       <% end %>
