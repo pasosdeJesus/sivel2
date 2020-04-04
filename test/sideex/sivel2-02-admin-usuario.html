@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel2-12-admin-usuario</title>
+	<title>sivel2-02-admin-usuario</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -13,15 +13,13 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>52,22</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
-</tr>
 <tr><td>clickAt</td><td>link=Usuarios<datalist><option>link=Usuarios</option><option>//a[contains(text(),'Usuarios')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/usuarios')])[2]</option><option>//li[2]/ul/li[3]/a</option></datalist></td><td>56,11</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/usuarios/nuevo')]</option><option>//div[2]/a</option></datalist></td><td>55,3</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option></datalist></td><td>Nuevo Usuario</td>
 </tr>
 <tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>137,9</td>
 </tr>
