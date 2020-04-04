@@ -7,8 +7,6 @@ addons:
         postgresql: '10'
 
 apt:
-        - google-chrome-stable
-        - chromium-chromedriver
         packages:
                 - postgresql-10
                 - postgresql-client-10
@@ -23,7 +21,10 @@ env:
                 - PGPORT=5432
 
 before_script:
-        - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+        - wget http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
+        - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
+        - export CHROME_BIN=chromium-browser
+        - #ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 
 before_install: 
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
