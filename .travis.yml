@@ -21,6 +21,8 @@ env:
                 - PGPORT=5432
 
 before_script:
+        - echo $PATH
+        - mkdir -p /home/travis/virtualenv/python2.7.12/bin
         - wget http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
         - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
         - export CHROME_BIN=chromium-browser
