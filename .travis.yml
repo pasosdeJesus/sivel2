@@ -21,6 +21,7 @@ env:
                 - PGPORT=5432
 
 before_script:
+        - nvm install node
         - echo $PATH
         - mkdir -p /home/travis/virtualenv/python2.7.12/bin
         - wget http://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip
@@ -39,6 +40,7 @@ before_install:
         - gem install bundler
         - gem update --system
         - bundle install
+        - yarn install
         - cp config/database.travis.yml config/database.yml
         - cp config/application.rb.plantilla config/application.rb
         - cp config/routes.rb.plantilla config/routes.rb
