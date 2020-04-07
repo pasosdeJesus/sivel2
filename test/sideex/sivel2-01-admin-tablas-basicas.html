@@ -194,6 +194,56 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-departamentos</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>53,27</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>59,14</td>
+</tr>
+<tr><td>clickAt</td><td>link=Departamentos/Estados<datalist><option>link=Departamentos/Estados</option><option>//a[contains(text(),'Departamentos/Estados')]</option><option>//a[contains(@href, 'admin/departamentos')]</option><option>//li[6]/a</option></datalist></td><td>60,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/departamentos/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>40,13</td>
+</tr>
+<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>css=#departamento_nombre</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>41,9</td>
+</tr>
+<tr><td>type</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>css=#departamento_nombre</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>$('input[type=number]').removeAttr('type')<datalist><option>$('#pais_codiso').removeAttr('type')</option><option>$('#departamento_id_deplocal').removeAttr('type')</option><option>$('input[type=number]').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=departamento_id_pais<datalist><option>id=departamento_id_pais</option><option>name=departamento[id_pais]</option><option>css=#departamento_id_pais</option><option>//select[@id='departamento_id_pais']</option><option>//form[@id='new_departamento']/div[3]/select</option><option>//select</option></datalist></td><td>357,22</td>
+</tr>
+<tr><td>select</td><td>id=departamento_id_pais<datalist><option>id=departamento_id_pais</option><option>name=departamento[id_pais]</option><option>css=#departamento_id_pais</option><option>//select[@id='departamento_id_pais']</option><option>//form[@id='new_departamento']/div[3]/select</option><option>//select</option></datalist></td><td>label=COLOMBIA</td>
+</tr>
+<tr><td>clickAt</td><td>id=departamento_observaciones<datalist><option>id=departamento_observaciones</option><option>name=departamento[observaciones]</option><option>css=#departamento_observaciones</option><option>//textarea[@id='departamento_observaciones']</option><option>//form[@id='new_departamento']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>47,15</td>
+</tr>
+<tr><td>type</td><td>id=departamento_observaciones<datalist><option>id=departamento_observaciones</option><option>name=departamento[observaciones]</option><option>css=#departamento_observaciones</option><option>//textarea[@id='departamento_observaciones']</option><option>//form[@id='new_departamento']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>id=departamento_id_deplocal<datalist><option>id=departamento_id_deplocal</option><option>name=departamento[id_deplocal]</option><option>css=#departamento_id_deplocal</option><option>//input[@id='departamento_id_deplocal']</option><option>//form[@id='new_departamento']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>118,22</td>
+</tr>
+<tr><td>type</td><td>id=departamento_id_deplocal<datalist><option>id=departamento_id_deplocal</option><option>name=departamento[id_deplocal]</option><option>css=#departamento_id_deplocal</option><option>//input[@id='departamento_id_deplocal']</option><option>//form[@id='new_departamento']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>879</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_departamento']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>46,16</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/departamentos/100006')])[2]</option><option>//a[3]</option></datalist></td><td>34,20</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Departamentos/Estados</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-etiquetas</td></tr>
 </thead>
 <tbody>
@@ -264,8 +314,6 @@
 <tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>59,25</td>
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>78,9</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tablas Básicas</td>
 </tr>
 <tr><td>clickAt</td><td>link=Filiaciones<datalist><option>link=Filiaciones</option><option>//a[contains(text(),'Filiaciones')]</option><option>//a[contains(@href, 'admin/filiaciones')]</option><option>//li[10]/a</option></datalist></td><td>19,9</td>
 </tr>
@@ -424,6 +472,54 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-municipio</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>63,24</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>42,12</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tablas Básicas</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,16</td>
+</tr>
+<tr><td>clickAt</td><td>link=Municipios<datalist><option>link=Municipios</option><option>//a[contains(text(),'Municipios')]</option><option>//a[contains(@href, 'admin/municipios')]</option><option>//li[13]/a</option></datalist></td><td>16,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/sivel2/admin/municipios/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>44,13</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Nuevo Municipio</td>
+</tr>
+<tr><td>clickAt</td><td>id=municipio_nombre<datalist><option>id=municipio_nombre</option><option>name=municipio[nombre]</option><option>css=#municipio_nombre</option><option>//input[@id='municipio_nombre']</option><option>//form[@id='new_municipio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>47,14</td>
+</tr>
+<tr><td>type</td><td>id=municipio_nombre<datalist><option>id=municipio_nombre</option><option>name=municipio[nombre]</option><option>css=#municipio_nombre</option><option>//input[@id='municipio_nombre']</option><option>//form[@id='new_municipio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>$('input[type=number]').removeAttr('type')<datalist><option>$('input[type=number]').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option><option>$('#departamento_id_deplocal').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=municipio_id_departamento<datalist><option>id=municipio_id_departamento</option><option>name=municipio[id_departamento]</option><option>css=#municipio_id_departamento</option><option>//select[@id='municipio_id_departamento']</option><option>//form[@id='new_municipio']/div[3]/select</option><option>//select</option></datalist></td><td>label=BOYACÁ / COLOMBIA</td>
+</tr>
+<tr><td>clickAt</td><td>id=municipio_id_departamento<datalist><option>id=municipio_id_departamento</option><option>name=municipio[id_departamento]</option><option>css=#municipio_id_departamento</option><option>//select[@id='municipio_id_departamento']</option><option>//form[@id='new_municipio']/div[3]/select</option><option>//select</option></datalist></td><td>-75,-244</td>
+</tr>
+<tr><td>clickAt</td><td>id=municipio_observaciones<datalist><option>id=municipio_observaciones</option><option>name=municipio[observaciones]</option><option>css=#municipio_observaciones</option><option>//input[@id='municipio_observaciones']</option><option>//form[@id='new_municipio']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>38,4</td>
+</tr>
+<tr><td>type</td><td>id=municipio_observaciones<datalist><option>id=municipio_observaciones</option><option>name=municipio[observaciones]</option><option>css=#municipio_observaciones</option><option>//input[@id='municipio_observaciones']</option><option>//form[@id='new_municipio']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>id=municipio_id_munlocal<datalist><option>id=municipio_id_munlocal</option><option>name=municipio[id_munlocal]</option><option>css=#municipio_id_munlocal</option><option>//input[@id='municipio_id_munlocal']</option><option>//form[@id='new_municipio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>80,22</td>
+</tr>
+<tr><td>type</td><td>id=municipio_id_munlocal<datalist><option>id=municipio_id_munlocal</option><option>name=municipio[id_munlocal]</option><option>css=#municipio_id_munlocal</option><option>//input[@id='municipio_id_munlocal']</option><option>//form[@id='new_municipio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>575</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_municipio']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>33,16</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/municipios/100004')])[2]</option><option>//div[4]/a</option></datalist></td><td>12,19</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Municipios</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-organizaciones</td></tr>
 </thead>
 <tbody>
@@ -510,8 +606,6 @@
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>47,8</td>
 </tr>
 <tr><td>clickAt</td><td>link=Perfiles en actor social<datalist><option>link=Perfiles en actor social</option><option>//a[contains(text(),'Perfiles en actor social')]</option><option>//a[contains(@href, 'admin/perfilesactorsocial')]</option><option>//li[16]/a</option></datalist></td><td>61,4</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Perfiles en actor social</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/sivel2/admin/perfilesactorsocial/nueva')]</option><option>//div[2]/a</option></datalist></td><td>33,20</td>
 </tr>
@@ -602,8 +696,6 @@
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>84,11</td>
 </tr>
 <tr><td>clickAt</td><td>link=Rangos de Edad<datalist><option>link=Rangos de Edad</option><option>//a[contains(text(),'Rangos de Edad')]</option><option>//a[contains(@href, 'admin/rangosedad')]</option><option>//li[24]/a</option></datalist></td><td>34,10</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Rangos de Edad</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/rangosedad/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>39,24</td>
 </tr>
@@ -866,6 +958,78 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-tema</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>59,22</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/div/a[4]</option><option>//a[contains(@href, '/sivel2/tablasbasicas')]</option><option>//ul[2]/li[2]/div/a[4]</option></datalist></td><td>56,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Temas<datalist><option>link=Temas</option><option>//a[contains(text(),'Temas')]</option><option>//div[@id='div_contenido']/article/ul/li[26]/a</option><option>//a[contains(@href, 'admin/temas')]</option><option>//li[26]/a</option></datalist></td><td>25,2</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//div[@id='div_contenido']/form/div/div[2]/a</option><option>//a[contains(@href, '/sivel2/admin/temas/nueva')]</option><option>//div[2]/a</option></datalist></td><td>39,22</td>
+</tr>
+<tr><td>clickAt</td><td>id=tema_nombre<datalist><option>id=tema_nombre</option><option>name=tema[nombre]</option><option>css=#tema_nombre</option><option>//input[@id='tema_nombre']</option><option>//form[@id='new_tema']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>190,18</td>
+</tr>
+<tr><td>type</td><td>id=tema_nombre<datalist><option>id=tema_nombre</option><option>name=tema[nombre]</option><option>css=#tema_nombre</option><option>//input[@id='tema_nombre']</option><option>//form[@id='new_tema']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>VERDE</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_fondo").val("#ff0000")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#ff0000")</option></datalist></td><td>1</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_color_fuente").val("#ff4d4d")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_color_fuente").val("#c35456")</option><option>$("#tema_color_fuente").val("#ff4d4d")</option></datalist></td><td>2</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_color_flota_subitem_fuente").val("#ff8080")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_color_flota_subitem_fuente").val("#04646f")</option><option>$("#tema_color_flota_subitem_fuente").val("#ff8080")</option></datalist></td><td>3</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_color_flota_subitem_fondo").val("#ffb3b3")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_color_flota_subitem_fondo").val("#c34456")</option><option>$("#tema_color_flota_subitem_fondo").val("#ffb3b3")</option></datalist></td><td>4</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_nav_ini").val("#ffe6e6")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_ini").val("#5c906e")</option><option>$("#tema_nav_ini").val("#ffe6e6")</option></datalist></td><td>5</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_nav_fin").val("#226600")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fin").val("#4bbb6f")</option><option>$("#tema_nav_fin").val("#226600")</option></datalist></td><td>6</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_nav_fuente").val("#339900")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fuente").val("#1cb760")</option><option>$("#tema_nav_fuente").val("#339900")</option></datalist></td><td>7</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_fondo_lista").val("#4ce600")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo_lista").val("#e7bc3a")</option><option>$("#tema_fondo_lista").val("#4ce600")</option></datalist></td><td>8</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_primario_fondo_ini").val("#99ff66")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#303a36")</option><option>$("#tema_btn_primario_fondo_ini").val("#99ff66")</option></datalist></td><td>9</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_primario_fondo_fin").val("#ccffb3")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#f5c30f")</option><option>$("#tema_btn_primario_fondo_fin").val("#ccffb3")</option></datalist></td><td>10</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_primario_fuente").val("#cccc00")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#a09a45")</option><option>$("#tema_btn_primario_fuente").val("#cccc00")</option></datalist></td><td>11</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_peligro_fondo_ini").val("#ffff00")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#f64b4b")</option><option>$("#tema_btn_peligro_fondo_ini").val("#ffff00")</option></datalist></td><td>12</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_peligro_fondo_fin").val("#ffff66")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#a50e0e")</option><option>$("#tema_btn_peligro_fondo_fin").val("#ffff66")</option></datalist></td><td>13</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_peligro_fuente").val("#ffff99")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#46f1e9")</option><option>$("#tema_btn_peligro_fuente").val("#ffff99")</option></datalist></td><td>14</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_accion_fondo_ini").val("#ffffb3")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#bc8181")</option><option>$("#tema_btn_accion_fondo_ini").val("#ffffb3")</option></datalist></td><td>15</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_accion_fondo_fin").val("#e600e6")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#b61111")</option><option>$("#tema_btn_accion_fondo_fin").val("#e600e6")</option></datalist></td><td>16</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_btn_accion_fuente").val("#ffb3ff")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#f3e4e4")</option><option>$("#tema_btn_accion_fuente").val("#ffb3ff")</option></datalist></td><td>17</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_alerta_exito_fondo").val("6c516b")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#ecb194")</option><option>$("#tema_alerta_exito_fondo").val("eeccff")</option><option>$("#tema_alerta_exito_fondo").val("6c516b")</option></datalist></td><td>18</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_alerta_exito_fuente").val("#003399")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fin").val("#61a188")</option><option>$("#tema_alerta_exito_fuente").val("#003399")</option></datalist></td><td>19</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_alerta_problema_fondo").val("#4d88ff")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fuente").val("#ead76b")</option><option>$("#tema_alerta_problema_fondo").val("#4d88ff")</option></datalist></td><td>20</td>
+</tr>
+<tr><td>runScript</td><td>$("#tema_alerta_problema_fuente").val("#99bbff")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_alerta_problema_fuente").val("#56eeb5")</option><option>$("#tema_alerta_problema_fuente").val("#99bbff")</option></datalist></td><td>21</td>
+</tr>
+<tr><td>clickAt</td><td>id=tema_observaciones<datalist><option>id=tema_observaciones</option><option>name=tema[observaciones]</option><option>css=#tema_observaciones</option><option>//input[@id='tema_observaciones']</option><option>//form[@id='new_tema']/div[24]/input</option><option>//div[24]/input</option></datalist></td><td>221,16</td>
+</tr>
+<tr><td>type</td><td>id=tema_observaciones<datalist><option>id=tema_observaciones</option><option>name=tema[observaciones]</option><option>css=#tema_observaciones</option><option>//input[@id='tema_observaciones']</option><option>//form[@id='new_tema']/div[24]/input</option><option>//div[24]/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tema']/div[27]/input</option><option>//div[27]/input</option></datalist></td><td>37,16</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/municipios/100004')])[2]</option><option>//div[4]/a</option></datalist></td><td>12,19</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Temas</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-tipos-centros-poblados</td></tr>
 </thead>
 <tbody>
@@ -1090,180 +1254,6 @@
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/vinculosestado/101')])[2]</option><option>//a[3]</option></datalist></td><td>33,7</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Vínculos con el Estado</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">tabla-departamentos</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>53,27</td>
-</tr>
-<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>59,14</td>
-</tr>
-<tr><td>clickAt</td><td>link=Departamentos/Estados<datalist><option>link=Departamentos/Estados</option><option>//a[contains(text(),'Departamentos/Estados')]</option><option>//a[contains(@href, 'admin/departamentos')]</option><option>//li[6]/a</option></datalist></td><td>60,11</td>
-</tr>
-<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/departamentos/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>40,13</td>
-</tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>css=#departamento_nombre</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>41,9</td>
-</tr>
-<tr><td>type</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>css=#departamento_nombre</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
-</tr>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>$('input[type=number]').removeAttr('type')<datalist><option>$('#pais_codiso').removeAttr('type')</option><option>$('#departamento_id_deplocal').removeAttr('type')</option><option>$('input[type=number]').removeAttr('type')</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>id=departamento_id_pais<datalist><option>id=departamento_id_pais</option><option>name=departamento[id_pais]</option><option>css=#departamento_id_pais</option><option>//select[@id='departamento_id_pais']</option><option>//form[@id='new_departamento']/div[3]/select</option><option>//select</option></datalist></td><td>357,22</td>
-</tr>
-<tr><td>select</td><td>id=departamento_id_pais<datalist><option>id=departamento_id_pais</option><option>name=departamento[id_pais]</option><option>css=#departamento_id_pais</option><option>//select[@id='departamento_id_pais']</option><option>//form[@id='new_departamento']/div[3]/select</option><option>//select</option></datalist></td><td>label=COLOMBIA</td>
-</tr>
-<tr><td>clickAt</td><td>id=departamento_observaciones<datalist><option>id=departamento_observaciones</option><option>name=departamento[observaciones]</option><option>css=#departamento_observaciones</option><option>//textarea[@id='departamento_observaciones']</option><option>//form[@id='new_departamento']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>47,15</td>
-</tr>
-<tr><td>type</td><td>id=departamento_observaciones<datalist><option>id=departamento_observaciones</option><option>name=departamento[observaciones]</option><option>css=#departamento_observaciones</option><option>//textarea[@id='departamento_observaciones']</option><option>//form[@id='new_departamento']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
-</tr>
-<tr><td>clickAt</td><td>id=departamento_id_deplocal<datalist><option>id=departamento_id_deplocal</option><option>name=departamento[id_deplocal]</option><option>css=#departamento_id_deplocal</option><option>//input[@id='departamento_id_deplocal']</option><option>//form[@id='new_departamento']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>118,22</td>
-</tr>
-<tr><td>type</td><td>id=departamento_id_deplocal<datalist><option>id=departamento_id_deplocal</option><option>name=departamento[id_deplocal]</option><option>css=#departamento_id_deplocal</option><option>//input[@id='departamento_id_deplocal']</option><option>//form[@id='new_departamento']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>879</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_departamento']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>46,16</td>
-</tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/departamentos/100006')])[2]</option><option>//a[3]</option></datalist></td><td>34,20</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Departamentos/Estados</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">tabla-municipio</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>63,24</td>
-</tr>
-<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>42,12</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tablas Básicas</td>
-</tr>
-<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,16</td>
-</tr>
-<tr><td>clickAt</td><td>link=Municipios<datalist><option>link=Municipios</option><option>//a[contains(text(),'Municipios')]</option><option>//a[contains(@href, 'admin/municipios')]</option><option>//li[13]/a</option></datalist></td><td>16,13</td>
-</tr>
-<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/sivel2/admin/municipios/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>44,13</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Nuevo Municipio</td>
-</tr>
-<tr><td>clickAt</td><td>id=municipio_nombre<datalist><option>id=municipio_nombre</option><option>name=municipio[nombre]</option><option>css=#municipio_nombre</option><option>//input[@id='municipio_nombre']</option><option>//form[@id='new_municipio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>47,14</td>
-</tr>
-<tr><td>type</td><td>id=municipio_nombre<datalist><option>id=municipio_nombre</option><option>name=municipio[nombre]</option><option>css=#municipio_nombre</option><option>//input[@id='municipio_nombre']</option><option>//form[@id='new_municipio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
-</tr>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>$('input[type=number]').removeAttr('type')<datalist><option>$('input[type=number]').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option><option>$('#departamento_id_deplocal').removeAttr('type')</option></datalist></td><td></td>
-</tr>
-<tr><td>select</td><td>id=municipio_id_departamento<datalist><option>id=municipio_id_departamento</option><option>name=municipio[id_departamento]</option><option>css=#municipio_id_departamento</option><option>//select[@id='municipio_id_departamento']</option><option>//form[@id='new_municipio']/div[3]/select</option><option>//select</option></datalist></td><td>label=BOYACÁ / COLOMBIA</td>
-</tr>
-<tr><td>clickAt</td><td>id=municipio_id_departamento<datalist><option>id=municipio_id_departamento</option><option>name=municipio[id_departamento]</option><option>css=#municipio_id_departamento</option><option>//select[@id='municipio_id_departamento']</option><option>//form[@id='new_municipio']/div[3]/select</option><option>//select</option></datalist></td><td>-75,-244</td>
-</tr>
-<tr><td>clickAt</td><td>id=municipio_observaciones<datalist><option>id=municipio_observaciones</option><option>name=municipio[observaciones]</option><option>css=#municipio_observaciones</option><option>//input[@id='municipio_observaciones']</option><option>//form[@id='new_municipio']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>38,4</td>
-</tr>
-<tr><td>type</td><td>id=municipio_observaciones<datalist><option>id=municipio_observaciones</option><option>name=municipio[observaciones]</option><option>css=#municipio_observaciones</option><option>//input[@id='municipio_observaciones']</option><option>//form[@id='new_municipio']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>bbb</td>
-</tr>
-<tr><td>clickAt</td><td>id=municipio_id_munlocal<datalist><option>id=municipio_id_munlocal</option><option>name=municipio[id_munlocal]</option><option>css=#municipio_id_munlocal</option><option>//input[@id='municipio_id_munlocal']</option><option>//form[@id='new_municipio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>80,22</td>
-</tr>
-<tr><td>type</td><td>id=municipio_id_munlocal<datalist><option>id=municipio_id_munlocal</option><option>name=municipio[id_munlocal]</option><option>css=#municipio_id_munlocal</option><option>//input[@id='municipio_id_munlocal']</option><option>//form[@id='new_municipio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>575</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_municipio']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>33,16</td>
-</tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/municipios/100004')])[2]</option><option>//div[4]/a</option></datalist></td><td>12,19</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Municipios</td>
-</tr>
-<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Municipios</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">tabla-tema</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>59,22</td>
-</tr>
-<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/div/a[4]</option><option>//a[contains(@href, '/sivel2/tablasbasicas')]</option><option>//ul[2]/li[2]/div/a[4]</option></datalist></td><td>56,10</td>
-</tr>
-<tr><td>clickAt</td><td>link=Temas<datalist><option>link=Temas</option><option>//a[contains(text(),'Temas')]</option><option>//div[@id='div_contenido']/article/ul/li[26]/a</option><option>//a[contains(@href, 'admin/temas')]</option><option>//li[26]/a</option></datalist></td><td>25,2</td>
-</tr>
-<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//div[@id='div_contenido']/form/div/div[2]/a</option><option>//a[contains(@href, '/sivel2/admin/temas/nueva')]</option><option>//div[2]/a</option></datalist></td><td>39,22</td>
-</tr>
-<tr><td>clickAt</td><td>id=tema_nombre<datalist><option>id=tema_nombre</option><option>name=tema[nombre]</option><option>css=#tema_nombre</option><option>//input[@id='tema_nombre']</option><option>//form[@id='new_tema']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>190,18</td>
-</tr>
-<tr><td>type</td><td>id=tema_nombre<datalist><option>id=tema_nombre</option><option>name=tema[nombre]</option><option>css=#tema_nombre</option><option>//input[@id='tema_nombre']</option><option>//form[@id='new_tema']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>VERDE</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_fondo").val("#ff0000")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#ff0000")</option></datalist></td><td>1</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_color_fuente").val("#ff4d4d")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_color_fuente").val("#c35456")</option><option>$("#tema_color_fuente").val("#ff4d4d")</option></datalist></td><td>2</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_color_flota_subitem_fuente").val("#ff8080")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_color_flota_subitem_fuente").val("#04646f")</option><option>$("#tema_color_flota_subitem_fuente").val("#ff8080")</option></datalist></td><td>3</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_color_flota_subitem_fondo").val("#ffb3b3")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_color_flota_subitem_fondo").val("#c34456")</option><option>$("#tema_color_flota_subitem_fondo").val("#ffb3b3")</option></datalist></td><td>4</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_nav_ini").val("#ffe6e6")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_ini").val("#5c906e")</option><option>$("#tema_nav_ini").val("#ffe6e6")</option></datalist></td><td>5</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_nav_fin").val("#226600")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fin").val("#4bbb6f")</option><option>$("#tema_nav_fin").val("#226600")</option></datalist></td><td>6</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_nav_fuente").val("#339900")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fuente").val("#1cb760")</option><option>$("#tema_nav_fuente").val("#339900")</option></datalist></td><td>7</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_fondo_lista").val("#4ce600")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo_lista").val("#e7bc3a")</option><option>$("#tema_fondo_lista").val("#4ce600")</option></datalist></td><td>8</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_primario_fondo_ini").val("#99ff66")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#303a36")</option><option>$("#tema_btn_primario_fondo_ini").val("#99ff66")</option></datalist></td><td>9</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_primario_fondo_fin").val("#ccffb3")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#f5c30f")</option><option>$("#tema_btn_primario_fondo_fin").val("#ccffb3")</option></datalist></td><td>10</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_primario_fuente").val("#cccc00")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#a09a45")</option><option>$("#tema_btn_primario_fuente").val("#cccc00")</option></datalist></td><td>11</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_peligro_fondo_ini").val("#ffff00")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#f64b4b")</option><option>$("#tema_btn_peligro_fondo_ini").val("#ffff00")</option></datalist></td><td>12</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_peligro_fondo_fin").val("#ffff66")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#a50e0e")</option><option>$("#tema_btn_peligro_fondo_fin").val("#ffff66")</option></datalist></td><td>13</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_peligro_fuente").val("#ffff99")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#46f1e9")</option><option>$("#tema_btn_peligro_fuente").val("#ffff99")</option></datalist></td><td>14</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_accion_fondo_ini").val("#ffffb3")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#bc8181")</option><option>$("#tema_btn_accion_fondo_ini").val("#ffffb3")</option></datalist></td><td>15</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_accion_fondo_fin").val("#e600e6")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#b61111")</option><option>$("#tema_btn_accion_fondo_fin").val("#e600e6")</option></datalist></td><td>16</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_btn_accion_fuente").val("#ffb3ff")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#f3e4e4")</option><option>$("#tema_btn_accion_fuente").val("#ffb3ff")</option></datalist></td><td>17</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_alerta_exito_fondo").val("6c516b")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_fondo").val("#ecb194")</option><option>$("#tema_alerta_exito_fondo").val("eeccff")</option><option>$("#tema_alerta_exito_fondo").val("6c516b")</option></datalist></td><td>18</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_alerta_exito_fuente").val("#003399")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fin").val("#61a188")</option><option>$("#tema_alerta_exito_fuente").val("#003399")</option></datalist></td><td>19</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_alerta_problema_fondo").val("#4d88ff")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_nav_fuente").val("#ead76b")</option><option>$("#tema_alerta_problema_fondo").val("#4d88ff")</option></datalist></td><td>20</td>
-</tr>
-<tr><td>runScript</td><td>$("#tema_alerta_problema_fuente").val("#99bbff")<datalist><option>$("#tema_fondo").val("#c34456")</option><option>//li[2]/a/span[3]</option><option>css=span.color-box.spectrum-red</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[2]/a/span[3]</option><option>$("#tema_alerta_problema_fuente").val("#56eeb5")</option><option>$("#tema_alerta_problema_fuente").val("#99bbff")</option></datalist></td><td>21</td>
-</tr>
-<tr><td>clickAt</td><td>id=tema_observaciones<datalist><option>id=tema_observaciones</option><option>name=tema[observaciones]</option><option>css=#tema_observaciones</option><option>//input[@id='tema_observaciones']</option><option>//form[@id='new_tema']/div[24]/input</option><option>//div[24]/input</option></datalist></td><td>221,16</td>
-</tr>
-<tr><td>type</td><td>id=tema_observaciones<datalist><option>id=tema_observaciones</option><option>name=tema[observaciones]</option><option>css=#tema_observaciones</option><option>//input[@id='tema_observaciones']</option><option>//form[@id='new_tema']/div[24]/input</option><option>//div[24]/input</option></datalist></td><td>bbb</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tema']/div[27]/input</option><option>//div[27]/input</option></datalist></td><td>37,16</td>
-</tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/municipios/100004')])[2]</option><option>//div[4]/a</option></datalist></td><td>12,19</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Temas</td>
 </tr>
 </tbody></table>
 </body>
