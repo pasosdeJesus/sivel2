@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel2-04-admin-filtros-caso</title>
+	<title>sivel2-06-admin-filtros-caso</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -14,8 +14,6 @@
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>22,16</td>
 </tr>
 <tr><td>clickAt</td><td>link=Listado<datalist><option>link=Listado</option><option>css=li.active &gt; a</option><option>//a[contains(text(),'Listado')]</option><option>//a[contains(@href, '/narinoandino/sivel2/casos')]</option><option>//li/ul/li/a</option></datalist></td><td>42,16</td>
-</tr>
-<tr><td>pause</td><td><datalist><option></option><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>31,11</td>
 </tr>
@@ -49,8 +47,6 @@
 <tr><td rowspan="1" colspan="3">filtro-casos-ubicacion-departamento</td></tr>
 </thead>
 <tbody>
-<tr><td>pause</td><td><datalist><option></option><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>500</td>
-</tr>
 <tr><td>select</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>label=CALDAS</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>-243,-239</td>
@@ -119,8 +115,6 @@
 <tr><td rowspan="1" colspan="3">filtro-casos-ubicacion-clase</td></tr>
 </thead>
 <tbody>
-<tr><td>pause</td><td><datalist><option></option><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>500</td>
-</tr>
 <tr><td>select</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>label=CAQUETÁ</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_departamento_id<datalist><option>id=filtro_departamento_id</option><option>name=filtro[departamento_id]</option><option>css=#filtro_departamento_id</option><option>//select[@id='filtro_departamento_id']</option><option>//div[@id='filtro_avanzado']/div/div[2]/div[2]/div/select</option><option>//select</option></datalist></td><td>-243,-239</td>
@@ -165,8 +159,6 @@
 <tr><td rowspan="1" colspan="3">filtro-casos-fecha-desde</td></tr>
 </thead>
 <tbody>
-<tr><td>pause</td><td><datalist><option></option><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>500</td>
-</tr>
 <tr><td>clickAt</td><td>id=filtro_fechaini<datalist><option>id=filtro_fechaini</option><option>name=filtro[fechaini]</option><option>css=#filtro_fechaini</option><option>//input[@id='filtro_fechaini']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[2]/div/input</option><option>//div[3]/div[2]/div/input</option></datalist></td><td>52,17</td>
 </tr>
 <tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>71,8</td>
@@ -209,8 +201,6 @@
 <tr><td rowspan="1" colspan="3">filtro-casos-fecha-hasta</td></tr>
 </thead>
 <tbody>
-<tr><td>pause</td><td><datalist><option></option><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>500</td>
-</tr>
 <tr><td>clickAt</td><td>id=filtro_fechafin<datalist><option>id=filtro_fechafin</option><option>name=filtro[fechafin]</option><option>css=#filtro_fechafin</option><option>//input[@id='filtro_fechafin']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>221,24</td>
 </tr>
 <tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>68,14</td>
@@ -255,8 +245,6 @@
 <tr><td rowspan="1" colspan="3">filtro-casos-presuntos-responsables</td></tr>
 </thead>
 <tbody>
-<tr><td>pause</td><td><datalist><option></option><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>500</td>
-</tr>
 <tr><td>select</td><td>id=filtro_presponsable_id<datalist><option>id=filtro_presponsable_id</option><option>name=filtro[presponsable_id]</option><option>css=#filtro_presponsable_id</option><option>//select[@id='filtro_presponsable_id']</option><option>//div[@id='filtro_avanzado']/div/div[4]/div[2]/div/select</option><option>//div[4]/div[2]/div/select</option></datalist></td><td>label=GAULA</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_presponsable_id<datalist><option>id=filtro_presponsable_id</option><option>name=filtro[presponsable_id]</option><option>css=#filtro_presponsable_id</option><option>//select[@id='filtro_presponsable_id']</option><option>//div[@id='filtro_avanzado']/div/div[4]/div[2]/div/select</option><option>//div[4]/div[2]/div/select</option></datalist></td><td>-242,-214</td>
