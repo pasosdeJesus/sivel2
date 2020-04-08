@@ -278,7 +278,7 @@ RAILS_ENV=production
 En el sitio de producción se recomienda agregar una tarea cron con:
 
 ``` sh
-cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sivel2:vuelca 
+cd /var/www/htdocs/sivel2/; RAILS_ENV=production bin/rake sip:vuelca 
 ```
 
 ## Desarrollo y documentación para desarrolladores :abc:
