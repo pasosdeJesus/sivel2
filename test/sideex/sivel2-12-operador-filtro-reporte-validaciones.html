@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel2-10-operador-filtro-reporte-validaciones</title>
+	<title>sivel2-12-operador-filtro-reporte-validaciones</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -15,19 +15,27 @@
 </tr>
 <tr><td>clickAt</td><td>link=Validar casos<datalist><option>link=Validar casos</option><option>//a[contains(text(),'Validar casos')]</option><option>//a[contains(@href, '/sivel2/validarcasos')]</option><option>//li[3]/a</option></datalist></td><td>83,12</td>
 </tr>
-<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>css=body<datalist><option>css=body</option><option>//body</option></datalist></td><td>336,177</td>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>85,7</td>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>css=span.month<datalist><option>css=span.month</option><option>//td/span</option></datalist></td><td>27,33</td>
+<tr><td>clickAt</td><td>id=validarcaso_fechaini<datalist><option>id=validarcaso_fechaini</option><option>name=validarcaso[fechaini]</option><option>css=#validarcaso_fechaini</option><option>//input[@id='validarcaso_fechaini']</option><option>//form[@id='new_validarcaso']/div/div[2]/div/div[2]/div/input</option><option>//div/input</option></datalist></td><td>80,18</td>
 </tr>
-<tr><td>clickAt</td><td>//td[5]<datalist><option>//td[5]</option></datalist></td><td>7,21</td>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[5]/td<datalist><option>//div[2]/div/table/tbody/tr[5]/td</option></datalist></td><td>11,10</td>
+</tr>
+<tr><td>clickAt</td><td>//form[@id='new_validarcaso']/div/div[2]/div[2]<datalist><option>//form[@id='new_validarcaso']/div/div[2]/div[2]</option><option>//div[2]/div[2]</option></datalist></td><td>166,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.offset-sm-0.col-sm-4<datalist><option>css=div.offset-sm-0.col-sm-4</option><option>//form[@id='new_validarcaso']/div/div[2]/div/div[2]</option><option>//div[2]/div/div[2]</option></datalist></td><td>12,20</td>
+</tr>
+<tr><td>type</td><td>id=validarcaso_fechaini<datalist><option>id=validarcaso_fechaini</option><option>name=validarcaso[fechaini]</option><option>css=#validarcaso_fechaini</option><option>//input[@id='validarcaso_fechaini']</option><option>//form[@id='new_validarcaso']/div/div[2]/div/div[2]/div/input</option><option>//div/input</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_validarcaso']/div/div[2]/div[2]/div/input</option><option>//div[2]/div/input</option></datalist></td><td>22,14</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Reporte de Validaciones</td>
 </tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_validarcaso']/div/div[2]/div[2]/div/input</option><option>//div[2]/div/input</option></datalist></td><td>21,8</td>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
