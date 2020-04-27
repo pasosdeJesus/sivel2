@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 30bc99f2a67e6588ca6609a855dcd3401937f4ef
+  revision: bc63c3744cd64343a5265ecdc8a49d6ba171a3c8
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 37cd3885ea5afa170b859f8b8f1cb66101fc7e22
+  revision: 4a6daa4f8d0affbb4699794f56bd212001665123
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 46cbb1b6adcca1a21091378d226d1798429fe72a
+  revision: 89280a2f26c18ef2385fad5e6cf9944a0b0187bf
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2341652f6ce4c4d269c6ed8a9d6d5a7556c2fb03
+  revision: c8b11a584087caa48a8511a307b256f5534f8fcf
   specs:
     sivel2_gen (2.0b10)
       devise
@@ -182,7 +182,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.1009)
+    mime-types-data (3.2020.0425)
     mimemagic (0.3.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -263,7 +263,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     rubyzip (2.3.0)
-    sassc (2.2.1)
+    sassc (2.3.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -296,13 +296,13 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
-    twitter_cldr (5.4.0)
+    twitter_cldr (6.0.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    unicorn (5.5.4)
+    unicorn (5.5.5)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.8)
@@ -312,7 +312,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.0.1)
+    webpacker (5.1.1)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)

@@ -1,25 +1,22 @@
 {
-  "license": "Dominio público de acuerdo a la legislación colombiana",
-  "devDependencies": {
-    "webpack-dev-server": "^3.8.0"
-  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@rails/ujs": "^6.0.1",
-    "@rails/webpacker": "^4.0.7",
+    "@rails/webpacker": "^4.0.2",
     "bootstrap": "^4.3.1",
     "bootstrap-datepicker": "^1.9.0",
     "chosen-js": "^1.8.7",
     "expose-loader": "^0.7.5",
-    "gridstack": "^0.5.5",
-    "jquery": "^3.4.1",
+    "gridstack": "^0.6.0",
+    "jquery": "3.4.1",
     "jquery-ui": "^1.12.1",
-    "leaflet": "^1.5.1",
-    "leaflet-css": "^0.1.0",
-    "leaflet-google-places-autocomplete": "^0.0.8",
+    "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1",
     "popper.js": "^1.16.0",
     "serialize-javascript": "2.1.1",
     "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.4.1"
   }
 }
