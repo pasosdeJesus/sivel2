@@ -9,7 +9,7 @@ module Sivel2Gen
 
     before_action :set_caso, only: [:show, :edit, :update, :destroy]
     load_and_authorize_resource class: Sivel2Gen::Caso, 
-      except: [:index, :show, :mapaosm]
+      except: [:index, :show, :mapaosm, :update]
 
     include Sivel2Gen::Concerns::Controllers::CasosController
 
