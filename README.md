@@ -223,6 +223,13 @@ RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 ```sh 
 RAILS_ENV=production bin/rails assets:precompile
 ```
+* Instale de manera global `unicorn` y enlace `/usr/local/bin/rails_unicorn`:
+```sh
+doas gem install unicorn
+doas ln -sf /usr
+doas ln -sf /usr/local/bin/unicorn_rails27 /usr/local/bin/unicorn_rails
+```
+
 * Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave y el puerto):
 ```sh 
 PUERTOUNICORN=2009  DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
