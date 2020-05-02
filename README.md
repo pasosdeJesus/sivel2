@@ -44,7 +44,7 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   Si se interrumpe el proceso por problemas de permisos en instalación de una 
   gema, instálela como en el siguiente ejemplo (cambiando la gema y la versión):
   ```sh
-  doas gem install --install-dir /var/www/bundler/ruby/2.6/ bindex -v 0.7.0
+  doas gem install --install-dir /var/www/bundler/ruby/2.7/ bindex -v 0.7.0
   ```
 * Copie y de requerirlo modifique las plantillas:
 ```sh
