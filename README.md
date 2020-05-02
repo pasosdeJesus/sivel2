@@ -16,6 +16,8 @@ Sistema de Información de Violencia Política en Línea versión 2
 ### Requisitos 📋
 
 Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
+Además si va a desplegar en producción:
+* nginx (>=1.16)
 
 ### Probar operación en modo de desarrollo 🔧
 
@@ -174,8 +176,7 @@ RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 * Y agregue también un dominio virtual (digamos `sivel2.pasosdeJesus.org`) con:
 ```
   server {
-    listen 443;
-    ssl on;
+    listen 443 ssl;
     ssl_certificate /etc/ssl/server.crt;
     ssl_certificate_key /etc/ssl/private/server.key;
     root /var/www/htdocs/sivel2/;
