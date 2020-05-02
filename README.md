@@ -230,14 +230,14 @@ doas ln -sf /usr
 doas ln -sf /usr/local/bin/unicorn_rails27 /usr/local/bin/unicorn_rails
 ```
 
-* Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave y el puerto):
+* Tras reiniciar nginx, inicie unicorn desde directorio con fuentes con algo como (cambiando la llave, el servidor y el puerto):
 ```sh 
-PUERTOUNICORN=2009  DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
+CONFIG_HOSTS=servidor.miong.org PUERTOUNICORN=2009  DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
 ```
 * Para iniciar en cada arranque, por ejemplo en adJ cree /etc/rc.d/sivel2
 ```sh
 
-servicio="PUERTOUNICORN=2009 DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=miusuario SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+servicio="CONFIG_HOSTS=servidor.miong.org PUERTOUNICORN=2009 DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=miusuario SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
 
 
 . /etc/rc.d/rc.subr
