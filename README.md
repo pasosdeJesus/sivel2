@@ -16,6 +16,8 @@ Sistema de Información de Violencia Política en Línea versión 2
 ### Requisitos 📋
 
 Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
+Además si va a desplegar en producción:
+* nginx (>=1.16)
 
 ### Probar operación en modo de desarrollo 🔧
 
@@ -44,7 +46,7 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
   Si se interrumpe el proceso por problemas de permisos en instalación de una 
   gema, instálela como en el siguiente ejemplo (cambiando la gema y la versión):
   ```sh
-  doas gem install --install-dir /var/www/bundler/ruby/2.6/ bindex -v 0.7.0
+  doas gem install --install-dir /var/www/bundler/ruby/2.7/ bindex -v 0.7.0
   ```
 * Copie y de requerirlo modifique las plantillas:
 ```sh
@@ -174,8 +176,7 @@ RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 * Y agregue también un dominio virtual (digamos `sivel2.pasosdeJesus.org`) con:
 ```
   server {
-    listen 443;
-    ssl on;
+    listen 443 ssl;
     ssl_certificate /etc/ssl/server.crt;
     ssl_certificate_key /etc/ssl/private/server.key;
     root /var/www/htdocs/sivel2/;
