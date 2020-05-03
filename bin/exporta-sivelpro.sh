@@ -14,19 +14,14 @@ read a
 echo "1 de 3. Copia ..."
 
 cat > /tmp/incluir <<EOF
-sip_grupoper
-sip_actorsocial
-sip_actorsocial_persona
-sip_sectoractor
-sip_actorsocial_sectoractor
 sip_perfilactorsocial
+sip_sectoractor
 sip_trelacion
-sip_persona_trelacion
 sip_tsitio
+sivel2_gen_antecedente
 sivel2_gen_intervalo
-sivel2_gen_caso
-sip_ubicacion
 sivel2_gen_actividadoficio
+sivel2_gen_contexto
 sivel2_gen_tviolencia
 sivel2_gen_supracategoria
 sivel2_gen_categoria
@@ -37,34 +32,40 @@ sivel2_gen_organizacion
 sivel2_gen_presponsable
 sivel2_gen_profesion
 sivel2_gen_rangoedad
+sivel2_gen_frontera
+sivel2_gen_region
+sivel2_gen_resagresion
 sivel2_gen_sectorsocial
 sivel2_gen_vinculoestado
+sivel2_gen_escolaridad
+sivel2_gen_estadocivil
+sivel2_gen_maternidad
+sivel2_gen_contextovictima
+sip_actorsocial
+sip_grupoper
+sip_persona
+sivel2_gen_caso
+sip_actorsocial_persona
+sip_actorsocial_sectoractor
+sip_persona_trelacion
+sip_ubicacion
 sivel2_gen_victima
+sivel2_gen_victimacolectiva
 sivel2_gen_acto
 sivel2_gen_actocolectivo
-sivel2_gen_antecedente
 sivel2_gen_antecedente_caso
-sivel2_gen_resagresion
 sivel2_gen_combatiente
 sivel2_gen_antecedente_combatiente
 sivel2_gen_antecedente_victima
-sivel2_gen_victimacolectiva
 sivel2_gen_antecedente_victimacolectiva
 sivel2_gen_caso_presponsable
 sivel2_gen_caso_categoria_presponsable
-sivel2_gen_contexto
 sivel2_gen_caso_contexto
-sivel2_gen_frontera
 sivel2_gen_caso_frontera
-sivel2_gen_region
 sivel2_gen_caso_region
 sivel2_gen_caso_respuestafor
-sivel2_gen_contextovictima
 sivel2_gen_contextovictima_victima
-sivel2_gen_escolaridad
-sivel2_gen_estadocivil
 sivel2_gen_filiacion_victimacolectiva
-sivel2_gen_maternidad
 sivel2_gen_organizacion_victimacolectiva
 sivel2_gen_profesion_victimacolectiva
 sivel2_gen_rangoedad_victimacolectiva
@@ -72,7 +73,7 @@ sivel2_gen_sectorsocial_victimacolectiva
 sivel2_gen_victimacolectiva_vinculoestado
 EOF
 
-ord="pg_dump sivel2_pro --data-only -h /var/www/var/run/postgresql -U sivel2 --column-inserts"
+ord="pg_dump $base --data-only -h /var/www/var/run/postgresql -U $ubase --column-inserts"
 for i in `cat /tmp/incluir`; do
 	ord="$ord --table=$i"
 done
