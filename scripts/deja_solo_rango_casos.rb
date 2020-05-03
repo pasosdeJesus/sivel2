@@ -133,10 +133,6 @@ ejecuta_sql("
     WHERE id_caso<#{idini} or id_caso>#{idfin};
     ")
 ejecuta_sql("
-  DELETE FROM sivel2_gen_caso 
-    WHERE id<#{idini} or id>#{idfin};
-    ")
-ejecuta_sql("
   DELETE FROM sip_grupoper
     WHERE id IN (select id_grupoper FROM sivel2_gen_victimacolectiva
       WHERE id_caso<#{idini} or id_caso>#{idfin});
@@ -158,6 +154,7 @@ ejecuta_sql("
       WHERE id_caso<#{idini} or id_caso>#{idfin});
     ")
 
-
-
-
+ejecuta_sql("
+  DELETE FROM sivel2_gen_caso 
+    WHERE id<#{idini} or id>#{idfin};
+    ")
