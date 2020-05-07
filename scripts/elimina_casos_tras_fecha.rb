@@ -1,5 +1,5 @@
 # Ejecutar con 
-#bin/rails runner -e development scripts/elimina_casos_tras_fecha 2020-01-01
+#bin/rails runner -e development scripts/elimina_casos_tras_fecha.rb 2020-01-01
 
 puts ARGV
 fechaini = ARGV[0]
