@@ -11,33 +11,33 @@ gem 'cancancan'
 gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', 
   branch: 'new_id_with_ajax' # Formularios anidados (algunos con ajax)
 
-gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
+gem 'coffee-rails' , '>= 5.0.0' # CoffeeScript para recuersos .js.coffee y vistas
 
-gem 'devise' # Autenticación y roles
+gem 'devise' , '>= 4.7.1' # Autenticación y roles
 
-gem 'devise-i18n'
+gem 'devise-i18n', '>= 1.9.1'
 
-gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
+gem 'jbuilder' , '>= 2.10.0' # API JSON facil. Ver: https://github.com/rails/jbuilder
 
 gem 'libxml-ruby'
 
 gem 'odf-report' # Genera ODT
 
-gem 'paperclip' # Maneja adjuntos
+gem 'paperclip' , '>= 6.1.0' # Maneja adjuntos
 
 gem 'pg' # Postgresql
 
 gem 'prawn' # Generación de PDF
 
-gem 'prawnto_2',  :require => 'prawnto'
+gem 'prawnto_2', '>= 0.3.0', :require => 'prawnto'
 
 gem 'prawn-table'
 
 gem 'puma' # Servidor de aplicaciones
 
-gem 'rails', '~> 6.0.0.rc1'
+gem 'rails', '~> 6.0.3.1'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '>= 6.0.0'
 
 gem 'redcarpet' # Markdown
 
@@ -45,15 +45,15 @@ gem 'rspreadsheet' # Genera ODS
 
 gem 'rubyzip', '>= 2.0'
 
-gem 'sassc-rails' # Hojas de estilo con SCSS
+gem 'sassc-rails' , '>= 2.1.2' # Hojas de estilo con SCSS
 
-gem 'simple_form' # Formularios simples 
+gem 'simple_form' , '>= 5.0.2' # Formularios simples 
 
 gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
 
-gem 'webpacker' # módulos en Javascript https://github.com/rails/webpacker
+gem 'webpacker' , '>= 5.1.1' # módulos en Javascript https://github.com/rails/webpacker
 
 gem 'will_paginate' # Listados en páginas
 
@@ -94,7 +94,7 @@ group :development do
   
   gem 'spring' # Acelera ejecutando en fondo. 
 
-  gem 'web-console'
+  gem 'web-console', '>= 4.0.2'
 
 end
 
