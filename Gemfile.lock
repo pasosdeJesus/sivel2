@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 69f4914cb348729c0245515bf640a62cbe2dd759
+  revision: cda54e0d9a2aee6b4514ddba4f0a930642a68a6a
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: f9aa060a6f31b466a8c2b91cae1832c65317f98b
+  revision: a41ba40a1093c6bba3c4937076b2e3b300873b2a
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 13101535b7d5671959d3f161cbd04b05bef21d0d
+  revision: 8114071c82ef1d97d8935f8292b03630b806d177
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b6e5e7902c0ca850eda197a3f11496fc9e63979e
+  revision: e974c31d318dc5845045b2f82e0158457a0ba950
   specs:
     sivel2_gen (2.0b11)
       devise
@@ -157,10 +157,10 @@ GEM
       ruby-graphviz
     erubi (1.9.0)
     execjs (2.7.0)
-    ffi (1.12.2)
+    ffi (1.13.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.8.2)
+    i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
@@ -191,7 +191,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    odf-report (0.7.0)
+    odf-report (0.7.2)
       mime-types
       nokogiri (>= 1.10.0)
       rubyzip (>= 1.3.0)
@@ -253,7 +253,7 @@ GEM
     rake (13.0.1)
     redcarpet (3.5.0)
     regexp_parser (1.7.0)
-    responders (3.0.0)
+    responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.4)
@@ -263,7 +263,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     rubyzip (2.3.0)
-    sassc (2.3.0)
+    sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -283,7 +283,7 @@ GEM
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
     spring (2.1.0)
-    sprockets (4.0.0)
+    sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -319,7 +319,7 @@ GEM
       semantic_range (>= 2.3.0)
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
