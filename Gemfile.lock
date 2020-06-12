@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 52e0681e3ae2238fc2e3bc4e02e866f2fde15e95
+  revision: b4bafc9749780fe01ac8384e89eba537feefa175
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a4eea86cb3e7c436f801a930a66beab66932533c
+  revision: e901718b8e8c38a14b46a729932f5e65297a60d6
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: cfccd627e827ad6175a25b015d8201f916d4585b
+  revision: 1ec49676c8f801e8590cb961e5813e41ad88023c
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9d4e135c5a85886ee03dad463d41df542c077d8b
+  revision: 27aaa0b18ad07eda53ccc5e43f017e2c3e5ab81b
   specs:
     sivel2_gen (2.0b11)
       devise
@@ -143,7 +143,7 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
-    devise (4.7.1)
+    devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -157,7 +157,7 @@ GEM
       ruby-graphviz
     erubi (1.9.0)
     execjs (2.7.0)
-    ffi (1.13.0)
+    ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.3)
