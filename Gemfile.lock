@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4e3902cca8b2df3f4b0c1f5c3d7381d7c77d43f5
+  revision: a204df9a5bc3518b6131b9c2aa957c1cd1e97ae7
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 51c1fe878f0af98b78b1098d5b5c8becad8e8060
+  revision: 1f721c948c693a377a37b095e9b06bbc4a76ceda
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b3de9db1175e333ecd9a215f9cb9e2bbedf9bcbf
+  revision: 1579f8b96290c14f4b8f4c9734ee4947028053b2
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ae6956980fe3798d63c556ce3e5bde95ad61ec20
+  revision: ccef7e901b3235e844e1a2e7151d170aa4ec1aba
   specs:
     sivel2_gen (2.0b11)
       devise
@@ -118,7 +118,7 @@ GEM
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.1.0)
-    capybara (3.32.2)
+    capybara (3.33.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
