@@ -53,6 +53,8 @@
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_787']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>75,23</td>
 </tr>
+<tr><td>assertText</td><td>id=pie_pagina<datalist><option>id=pie_pagina</option><option>css=#pie_pagina</option><option>//footer[@id='pie_pagina']</option><option>//footer</option></datalist></td><td>Desarrollado por Pasos de Jesús. 2020.</td>
+</tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
@@ -112,101 +114,7 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">caso-fuentes-frecuentes</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/772/edita')]</option><option>//a[2]</option></datalist></td><td>23,19</td>
-</tr>
-<tr><td>clickAt</td><td>link=Fuentes frecuentes<datalist><option>link=Fuentes frecuentes</option><option>//a[contains(text(),'Fuentes frecuentes')]</option><option>//form[@id='edit_caso_162877']/div/div[2]/ul/li[3]/a</option><option>//a[contains(@href, '#fuentesprensa')]</option><option>//div[2]/ul/li[3]/a</option></datalist></td><td>101,19</td>
-</tr>
-<tr><td>clickAt</td><td>link=Añadir Fuente Frecuente<datalist><option>link=Añadir Fuente Frecuente</option><option>css=#fuentesprensa &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Fuente Frecuente')]</option><option>//div[@id='fuentesprensa']/div/a</option><option>xpath=(//a[contains(@href, '#')])[23]</option><option>//div[3]/div/a</option></datalist></td><td>127,1</td>
-</tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>//div[3]/div/div/div/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_fecha_localizada</option><option>name=caso[caso_fuenteprensa_attributes][0][fecha_localizada]</option><option>css=#caso_caso_fuenteprensa_attributes_0_fecha_localizada</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_fecha_localizada']</option><option>//div[@id='fuentesprensa']/div/div/div/div/div/input</option><option>//div[3]/div/div/div/div/div/input</option></datalist></td><td>106,15</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[2]/td[3]<datalist><option>//tr[2]/td[3]</option></datalist></td><td>7,20</td>
-</tr>
-<tr><td>select</td><td>//div[3]/div/div/div/div[2]/div/select<datalist><option>id=caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>name=caso[caso_fuenteprensa_attributes][0][fuenteprensa_id]</option><option>css=#caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>//select[@id='caso_caso_fuenteprensa_attributes_0_fuenteprensa_id']</option><option>//div[@id='fuentesprensa']/div/div/div/div[2]/div/select</option><option>//div[3]/div/div/div/div[2]/div/select</option></datalist></td><td>label=ONIC</td>
-</tr>
-<tr><td>clickAt</td><td>//div[3]/div/div/div/div[2]/div/select<datalist><option>id=caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>name=caso[caso_fuenteprensa_attributes][0][fuenteprensa_id]</option><option>css=#caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>//select[@id='caso_caso_fuenteprensa_attributes_0_fuenteprensa_id']</option><option>//div[@id='fuentesprensa']/div/div/div/div[2]/div/select</option><option>//div[3]/div/div/div/div[2]/div/select</option></datalist></td><td>-660,-224</td>
-</tr>
-<tr><td>clickAt</td><td>//div[3]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div/div/input</option><option>//div[3]/div/div/div[2]/div/div/input</option></datalist></td><td>157,17</td>
-</tr>
-<tr><td>type</td><td>//div[3]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div/div/input</option><option>//div[3]/div/div/div[2]/div/div/input</option></datalist></td><td>bogota</td>
-</tr>
-<tr><td>clickAt</td><td>//div[2]/div[2]/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>name=caso[caso_fuenteprensa_attributes][0][clasificacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_clasificacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div[2]/div/input</option><option>//div[2]/div[2]/div/input</option></datalist></td><td>75,23</td>
-</tr>
-<tr><td>type</td><td>//div[2]/div[2]/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>name=caso[caso_fuenteprensa_attributes][0][clasificacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_clasificacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div[2]/div/input</option><option>//div[2]/div[2]/div/input</option></datalist></td><td>Amenazas</td>
-</tr>
-<tr><td>clickAt</td><td>//div[3]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacionfisica]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacionfisica']</option><option>//div[@id='fuentesprensa']/div/div/div[3]/div/div/input</option><option>//div[3]/div/div/div[3]/div/div/input</option></datalist></td><td>161,28</td>
-</tr>
-<tr><td>type</td><td>//div[3]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacionfisica]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacionfisica']</option><option>//div[@id='fuentesprensa']/div/div/div[3]/div/div/input</option><option>//div[3]/div/div/div[3]/div/div/input</option></datalist></td><td>ssss</td>
-</tr>
-<tr><td>clickAt</td><td>link=Eliminar Fuente Frecuente<datalist><option>link=Eliminar Fuente Frecuente</option><option>css=#fuentesprensa &gt; div.control-group.nested-fields &gt; div.controls &gt; a.btn-danger.remove_fields.existing</option><option>//a[contains(text(),'Eliminar Fuente Frecuente')]</option><option>//div[@id='fuentesprensa']/div/div/a</option><option>xpath=(//a[contains(@href, '#')])[23]</option><option>//div[3]/div/div/a</option></datalist></td><td>110,8</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_174']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>41,12</td>
-</tr>
-<tr><td>clickAt</td><td>link=Expandir / colapsar bitácora de cambios<datalist><option>link=Expandir / colapsar bitácora de cambios</option><option>css=a.collapsed</option><option>//a[contains(text(),'Expandir / colapsar bitácora de cambios')]</option><option>//div[@id='panellc']/div/div/a</option><option>//a[contains(@href, '#colapsalc')]</option><option>//div/div/a</option></datalist></td><td>167,4</td>
-</tr>
-<tr><td>clickAt</td><td>link=Expandir / colapsar bitácora de cambios<datalist><option>link=Expandir / colapsar bitácora de cambios</option><option>css=div.panel-title &gt; a</option><option>//a[contains(text(),'Expandir / colapsar bitácora de cambios')]</option><option>//div[@id='panellc']/div/div/a</option><option>//a[contains(@href, '#colapsalc')]</option><option>//div/div/a</option></datalist></td><td>179,3</td>
-</tr>
-<tr><td>assertText</td><td>id=pie_pagina<datalist><option>id=pie_pagina</option><option>css=#pie_pagina</option><option>//footer[@id='pie_pagina']</option><option>//footer</option></datalist></td><td>Desarrollado por Pasos de Jesús. 2020.</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">caso-otras-fuentes</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/772/edita')]</option><option>//a[2]</option></datalist></td><td>23,19</td>
-</tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Otras fuentes<datalist><option>link=Otras fuentes</option><option>//a[contains(text(),'Otras fuentes')]</option><option>//form[@id='edit_caso_927']/div/div[2]/ul/li[4]/a</option><option>//a[contains(@href, '#fotras')]</option><option>//li[4]/a</option></datalist></td><td>82,15</td>
-</tr>
-<tr><td>clickAt</td><td>link=Añadir Otra Fuente<datalist><option>link=Añadir Otra Fuente</option><option>css=#fotras &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Otra Fuente')]</option><option>//div[@id='fotras']/div/a</option><option>xpath=(//a[contains(@href, '#')])[24]</option><option>//div[4]/div/a</option></datalist></td><td>95,9</td>
-</tr>
-<tr><td>clickAt</td><td>//div[4]/div/div/div/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_fecha_localizada</option><option>name=caso[caso_fotra_attributes][22][fecha_localizada]</option><option>css=#caso_caso_fotra_attributes_22_fecha_localizada</option><option>//input[@id='caso_caso_fotra_attributes_22_fecha_localizada']</option><option>//div[@id='fotras']/div/div/div/div/div/input</option><option>//div[4]/div/div/div/div/div/input</option></datalist></td><td>198,6</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[2]/td[3]<datalist><option>//tr[2]/td[3]</option></datalist></td><td>21,16</td>
-</tr>
-<tr><td>clickAt</td><td>//div[4]/div/div/div/div[2]/div/input<datalist><option>id=caso_caso_fotra_attributes_22_nombre</option><option>name=caso[caso_fotra_attributes][22][nombre]</option><option>css=#caso_caso_fotra_attributes_22_nombre</option><option>//input[@id='caso_caso_fotra_attributes_22_nombre']</option><option>//div[@id='fotras']/div/div/div/div[2]/div/input</option><option>//div[4]/div/div/div/div[2]/div/input</option></datalist></td><td>47,24</td>
-</tr>
-<tr><td>type</td><td>//div[4]/div/div/div/div[2]/div/input<datalist><option>id=caso_caso_fotra_attributes_22_nombre</option><option>name=caso[caso_fotra_attributes][22][nombre]</option><option>css=#caso_caso_fotra_attributes_22_nombre</option><option>//input[@id='caso_caso_fotra_attributes_22_nombre']</option><option>//div[@id='fotras']/div/div/div/div[2]/div/input</option><option>//div[4]/div/div/div/div[2]/div/input</option></datalist></td><td>El Granadino</td>
-</tr>
-<tr><td>clickAt</td><td>//div[4]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_anotacion</option><option>name=caso[caso_fotra_attributes][22][anotacion]</option><option>css=#caso_caso_fotra_attributes_22_anotacion</option><option>//input[@id='caso_caso_fotra_attributes_22_anotacion']</option><option>//div[@id='fotras']/div/div/div[2]/div/div/input</option><option>//div[4]/div/div/div[2]/div/div/input</option></datalist></td><td>201,20</td>
-</tr>
-<tr><td>type</td><td>//div[4]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_anotacion</option><option>name=caso[caso_fotra_attributes][22][anotacion]</option><option>css=#caso_caso_fotra_attributes_22_anotacion</option><option>//input[@id='caso_caso_fotra_attributes_22_anotacion']</option><option>//div[@id='fotras']/div/div/div[2]/div/div/input</option><option>//div[4]/div/div/div[2]/div/div/input</option></datalist></td><td>aaa</td>
-</tr>
-<tr><td>select</td><td>//div[4]/div/div/div[2]/div[2]/div/select<datalist><option>id=caso_caso_fotra_attributes_22_tfuente</option><option>name=caso[caso_fotra_attributes][22][tfuente]</option><option>css=#caso_caso_fotra_attributes_22_tfuente</option><option>//select[@id='caso_caso_fotra_attributes_22_tfuente']</option><option>//div[@id='fotras']/div/div/div[2]/div[2]/div/select</option><option>//div[4]/div/div/div[2]/div[2]/div/select</option></datalist></td><td>label=Indirecta</td>
-</tr>
-<tr><td>clickAt</td><td>//div[4]/div/div/div[2]/div[2]/div/select<datalist><option>id=caso_caso_fotra_attributes_22_tfuente</option><option>name=caso[caso_fotra_attributes][22][tfuente]</option><option>css=#caso_caso_fotra_attributes_22_tfuente</option><option>//select[@id='caso_caso_fotra_attributes_22_tfuente']</option><option>//div[@id='fotras']/div/div/div[2]/div[2]/div/select</option><option>//div[4]/div/div/div[2]/div[2]/div/select</option></datalist></td><td>-668,-300</td>
-</tr>
-<tr><td>clickAt</td><td>//div[4]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_ubicacionfisica</option><option>name=caso[caso_fotra_attributes][22][ubicacionfisica]</option><option>css=#caso_caso_fotra_attributes_22_ubicacionfisica</option><option>//input[@id='caso_caso_fotra_attributes_22_ubicacionfisica']</option><option>//div[@id='fotras']/div/div/div[3]/div/div/input</option><option>//div[4]/div/div/div[3]/div/div/input</option></datalist></td><td>211,11</td>
-</tr>
-<tr><td>type</td><td>//div[4]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_ubicacionfisica</option><option>name=caso[caso_fotra_attributes][22][ubicacionfisica]</option><option>css=#caso_caso_fotra_attributes_22_ubicacionfisica</option><option>//input[@id='caso_caso_fotra_attributes_22_ubicacionfisica']</option><option>//div[@id='fotras']/div/div/div[3]/div/div/input</option><option>//div[4]/div/div/div[3]/div/div/input</option></datalist></td><td>bbb</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_493']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>75,9</td>
-</tr>
-<tr><td>assertText</td><td>id=pie_pagina<datalist><option>id=pie_pagina</option><option>css=#pie_pagina</option><option>//footer[@id='pie_pagina']</option><option>//footer</option></datalist></td><td>Desarrollado por Pasos de Jesús. 2020.</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">caso-conteto</td></tr>
+<tr><td rowspan="1" colspan="3">caso-contexto</td></tr>
 </thead>
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/772/edita')]</option><option>//a[2]</option></datalist></td><td>23,19</td>
@@ -408,6 +316,46 @@
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_927']/div[2]/input[2]</option><option>//div[2]/input[2]</option></datalist></td><td>56,10</td>
 </tr>
 <tr><td>assertText</td><td>id=pie_pagina<datalist><option>id=pie_pagina</option><option>css=#pie_pagina</option><option>//footer[@id='pie_pagina']</option><option>//footer</option></datalist></td><td>Desarrollado por Pasos de Jesús. 2020.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">caso-familiares</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//div[@id='acordeonlc']/div[2]/div/a[2]</option><option>//a[contains(@href, '/sivel2/casos/162888/edit')]</option><option>//div[2]/div/a[2]</option></datalist></td><td>39,15</td>
+</tr>
+<tr><td>clickAt</td><td>link=Víctimas<datalist><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_162888']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victimas')]</option><option>//li[7]/a</option></datalist></td><td>44,20</td>
+</tr>
+<tr><td>clickAt</td><td>link=Familiares (Ingrese aquí familiares de esta víctima)<datalist><option>link=Familiares (Ingrese aquí familiares de esta víctima)</option><option>css=div.panel-title &gt; a</option><option>//a[contains(text(),'Familiares (Ingrese aquí familiares de esta víctima)')]</option><option>//div[@id='panellc']/div/div/a</option><option>//a[contains(@href, '#colapsalc')]</option><option>//div[9]/div/div/div/a</option></datalist></td><td>220,7</td>
+</tr>
+<tr><td>clickAt</td><td>link=Añadir Familiar<datalist><option>link=Añadir Familiar</option><option>css=div.panel-body.table-responsive &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Familiar')]</option><option>//div[@id='colapsalc-255926']/div/div/div/a</option><option>xpath=(//a[contains(@href, '#')])[27]</option><option>//div[9]/div/div[2]/div/div/div/a</option></datalist></td><td>62,14</td>
+</tr>
+<tr><td>clickAt</td><td>//td/div[2]/input<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_nombres</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][nombres]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_nombres</option><option>//input[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_nombres']</option><option>//tbody[@id='persona_familiares-255926']/tr/td/div[2]/input</option><option>//td/div[2]/input</option></datalist></td><td>95,16</td>
+</tr>
+<tr><td>type</td><td>//td/div[2]/input<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_nombres</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][nombres]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_nombres</option><option>//input[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_nombres']</option><option>//tbody[@id='persona_familiares-255926']/tr/td/div[2]/input</option><option>//td/div[2]/input</option></datalist></td><td>Adan</td>
+</tr>
+<tr><td>clickAt</td><td>//td[2]/div/input<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_apellidos</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][apellidos]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_apellidos</option><option>//input[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_apellidos']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[2]/div/input</option><option>//td[2]/div/input</option></datalist></td><td>74,17</td>
+</tr>
+<tr><td>type</td><td>//td[2]/div/input<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_apellidos</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][apellidos]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_apellidos</option><option>//input[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_apellidos']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[2]/div/input</option><option>//td[2]/div/input</option></datalist></td><td>Palomares</td>
+</tr>
+<tr><td>select</td><td>//td[3]/div/select<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_sexo</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][sexo]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_sexo</option><option>//select[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_sexo']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[3]/div/select</option><option>//td[3]/div/select</option></datalist></td><td>label=FEMENINO</td>
+</tr>
+<tr><td>clickAt</td><td>//td[3]/div/select<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_sexo</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][sexo]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_sexo</option><option>//select[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_sexo']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[3]/div/select</option><option>//td[3]/div/select</option></datalist></td><td>-439,-429</td>
+</tr>
+<tr><td>select</td><td>//td[4]/div/select<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_tdocumento_id</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][tdocumento_id]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_tdocumento_id</option><option>//select[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_tdocumento_id']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[4]/div/select</option><option>//td[4]/div/select</option></datalist></td><td>label=CC</td>
+</tr>
+<tr><td>clickAt</td><td>//td[4]/div/select<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_tdocumento_id</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][tdocumento_id]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_tdocumento_id</option><option>//select[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_tdocumento_id']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[4]/div/select</option><option>//td[4]/div/select</option></datalist></td><td>-614,-429</td>
+</tr>
+<tr><td>clickAt</td><td>//td[5]/div/input<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_numerodocumento</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][numerodocumento]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_numerodocumento</option><option>//input[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_numerodocumento']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[5]/div/input</option><option>//td[5]/div/input</option></datalist></td><td>88,28</td>
+</tr>
+<tr><td>type</td><td>//td[5]/div/input<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_numerodocumento</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][personados_attributes][numerodocumento]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_numerodocumento</option><option>//input[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_personados_attributes_numerodocumento']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[5]/div/input</option><option>//td[5]/div/input</option></datalist></td><td>5544332</td>
+</tr>
+<tr><td>select</td><td>//td[6]/div/select<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_id_trelacion</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][id_trelacion]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_id_trelacion</option><option>//select[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_id_trelacion']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>label=HERMANA(O)</td>
+</tr>
+<tr><td>clickAt</td><td>//td[6]/div/select<datalist><option>id=caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_id_trelacion</option><option>name=caso[victima_attributes][0][persona_attributes][persona_trelacion1_attributes][1593711427977][id_trelacion]</option><option>css=#caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_id_trelacion</option><option>//select[@id='caso_victima_attributes_0_persona_attributes_persona_trelacion1_attributes_1593711427977_id_trelacion']</option><option>//tbody[@id='persona_familiares-255926']/tr/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>-896,-429</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_162888']/div[2]/input[2]</option><option>//div[2]/input[2]</option></datalist></td><td>52,17</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -672,6 +620,102 @@
 <tr><td>clickAt</td><td>link=Añadir Acto(s) Colectivo<datalist><option>link=Añadir Acto(s) Colectivo</option><option>css=a.agregaractoscolectivos.btn.btn-primary</option><option>//a[contains(text(),'Añadir Acto(s) Colectivo')]</option><option>//div[@id='actos']/div[2]/div[2]/a</option><option>xpath=(//a[contains(@href, '#')])[36]</option><option>//div[10]/div[2]/div[2]/a</option></datalist></td><td>75,16</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_174']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>51,28</td>
+</tr>
+<tr><td>assertText</td><td>id=pie_pagina<datalist><option>id=pie_pagina</option><option>css=#pie_pagina</option><option>//footer[@id='pie_pagina']</option><option>//footer</option></datalist></td><td>Desarrollado por Pasos de Jesús. 2020.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">caso-fuentes-frecuentes</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/772/edita')]</option><option>//a[2]</option></datalist></td><td>23,19</td>
+</tr>
+<tr><td>clickAt</td><td>link=Fuentes frecuentes<datalist><option>link=Fuentes frecuentes</option><option>//a[contains(text(),'Fuentes frecuentes')]</option><option>//form[@id='edit_caso_162877']/div/div[2]/ul/li[3]/a</option><option>//a[contains(@href, '#fuentesprensa')]</option><option>//div[2]/ul/li[3]/a</option></datalist></td><td>101,19</td>
+</tr>
+<tr><td>clickAt</td><td>link=Añadir Fuente Frecuente<datalist><option>link=Añadir Fuente Frecuente</option><option>css=#fuentesprensa &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Fuente Frecuente')]</option><option>//div[@id='fuentesprensa']/div/a</option><option>xpath=(//a[contains(@href, '#')])[23]</option><option>//div[3]/div/a</option></datalist></td><td>127,1</td>
+</tr>
+<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>//div[3]/div/div/div/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_fecha_localizada</option><option>name=caso[caso_fuenteprensa_attributes][0][fecha_localizada]</option><option>css=#caso_caso_fuenteprensa_attributes_0_fecha_localizada</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_fecha_localizada']</option><option>//div[@id='fuentesprensa']/div/div/div/div/div/input</option><option>//div[3]/div/div/div/div/div/input</option></datalist></td><td>106,15</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]/td[3]<datalist><option>//tr[2]/td[3]</option></datalist></td><td>7,20</td>
+</tr>
+<tr><td>select</td><td>//div[3]/div/div/div/div[2]/div/select<datalist><option>id=caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>name=caso[caso_fuenteprensa_attributes][0][fuenteprensa_id]</option><option>css=#caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>//select[@id='caso_caso_fuenteprensa_attributes_0_fuenteprensa_id']</option><option>//div[@id='fuentesprensa']/div/div/div/div[2]/div/select</option><option>//div[3]/div/div/div/div[2]/div/select</option></datalist></td><td>label=ONIC</td>
+</tr>
+<tr><td>clickAt</td><td>//div[3]/div/div/div/div[2]/div/select<datalist><option>id=caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>name=caso[caso_fuenteprensa_attributes][0][fuenteprensa_id]</option><option>css=#caso_caso_fuenteprensa_attributes_0_fuenteprensa_id</option><option>//select[@id='caso_caso_fuenteprensa_attributes_0_fuenteprensa_id']</option><option>//div[@id='fuentesprensa']/div/div/div/div[2]/div/select</option><option>//div[3]/div/div/div/div[2]/div/select</option></datalist></td><td>-660,-224</td>
+</tr>
+<tr><td>clickAt</td><td>//div[3]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div/div/input</option><option>//div[3]/div/div/div[2]/div/div/input</option></datalist></td><td>157,17</td>
+</tr>
+<tr><td>type</td><td>//div[3]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div/div/input</option><option>//div[3]/div/div/div[2]/div/div/input</option></datalist></td><td>bogota</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/div[2]/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>name=caso[caso_fuenteprensa_attributes][0][clasificacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_clasificacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div[2]/div/input</option><option>//div[2]/div[2]/div/input</option></datalist></td><td>75,23</td>
+</tr>
+<tr><td>type</td><td>//div[2]/div[2]/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>name=caso[caso_fuenteprensa_attributes][0][clasificacion]</option><option>css=#caso_caso_fuenteprensa_attributes_0_clasificacion</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_clasificacion']</option><option>//div[@id='fuentesprensa']/div/div/div[2]/div[2]/div/input</option><option>//div[2]/div[2]/div/input</option></datalist></td><td>Amenazas</td>
+</tr>
+<tr><td>clickAt</td><td>//div[3]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacionfisica]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacionfisica']</option><option>//div[@id='fuentesprensa']/div/div/div[3]/div/div/input</option><option>//div[3]/div/div/div[3]/div/div/input</option></datalist></td><td>161,28</td>
+</tr>
+<tr><td>type</td><td>//div[3]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>name=caso[caso_fuenteprensa_attributes][0][ubicacionfisica]</option><option>css=#caso_caso_fuenteprensa_attributes_0_ubicacionfisica</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_ubicacionfisica']</option><option>//div[@id='fuentesprensa']/div/div/div[3]/div/div/input</option><option>//div[3]/div/div/div[3]/div/div/input</option></datalist></td><td>ssss</td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar Fuente Frecuente<datalist><option>link=Eliminar Fuente Frecuente</option><option>css=#fuentesprensa &gt; div.control-group.nested-fields &gt; div.controls &gt; a.btn-danger.remove_fields.existing</option><option>//a[contains(text(),'Eliminar Fuente Frecuente')]</option><option>//div[@id='fuentesprensa']/div/div/a</option><option>xpath=(//a[contains(@href, '#')])[23]</option><option>//div[3]/div/div/a</option></datalist></td><td>110,8</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_174']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>41,12</td>
+</tr>
+<tr><td>clickAt</td><td>link=Expandir / colapsar bitácora de cambios<datalist><option>link=Expandir / colapsar bitácora de cambios</option><option>css=a.collapsed</option><option>//a[contains(text(),'Expandir / colapsar bitácora de cambios')]</option><option>//div[@id='panellc']/div/div/a</option><option>//a[contains(@href, '#colapsalc')]</option><option>//div/div/a</option></datalist></td><td>167,4</td>
+</tr>
+<tr><td>clickAt</td><td>link=Expandir / colapsar bitácora de cambios<datalist><option>link=Expandir / colapsar bitácora de cambios</option><option>css=div.panel-title &gt; a</option><option>//a[contains(text(),'Expandir / colapsar bitácora de cambios')]</option><option>//div[@id='panellc']/div/div/a</option><option>//a[contains(@href, '#colapsalc')]</option><option>//div/div/a</option></datalist></td><td>179,3</td>
+</tr>
+<tr><td>assertText</td><td>id=pie_pagina<datalist><option>id=pie_pagina</option><option>css=#pie_pagina</option><option>//footer[@id='pie_pagina']</option><option>//footer</option></datalist></td><td>Desarrollado por Pasos de Jesús. 2020.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">caso-otras-fuentes</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/772/edita')]</option><option>//a[2]</option></datalist></td><td>23,19</td>
+</tr>
+<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Otras fuentes<datalist><option>link=Otras fuentes</option><option>//a[contains(text(),'Otras fuentes')]</option><option>//form[@id='edit_caso_927']/div/div[2]/ul/li[4]/a</option><option>//a[contains(@href, '#fotras')]</option><option>//li[4]/a</option></datalist></td><td>82,15</td>
+</tr>
+<tr><td>clickAt</td><td>link=Añadir Otra Fuente<datalist><option>link=Añadir Otra Fuente</option><option>css=#fotras &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Otra Fuente')]</option><option>//div[@id='fotras']/div/a</option><option>xpath=(//a[contains(@href, '#')])[24]</option><option>//div[4]/div/a</option></datalist></td><td>95,9</td>
+</tr>
+<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>//div[4]/div/div/div/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_fecha_localizada</option><option>name=caso[caso_fotra_attributes][22][fecha_localizada]</option><option>css=#caso_caso_fotra_attributes_22_fecha_localizada</option><option>//input[@id='caso_caso_fotra_attributes_22_fecha_localizada']</option><option>//div[@id='fotras']/div/div/div/div/div/input</option><option>//div[4]/div/div/div/div/div/input</option></datalist></td><td>198,6</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]/td[3]<datalist><option>//tr[2]/td[3]</option></datalist></td><td>21,16</td>
+</tr>
+<tr><td>clickAt</td><td>//div[4]/div/div/div/div[2]/div/input<datalist><option>id=caso_caso_fotra_attributes_22_nombre</option><option>name=caso[caso_fotra_attributes][22][nombre]</option><option>css=#caso_caso_fotra_attributes_22_nombre</option><option>//input[@id='caso_caso_fotra_attributes_22_nombre']</option><option>//div[@id='fotras']/div/div/div/div[2]/div/input</option><option>//div[4]/div/div/div/div[2]/div/input</option></datalist></td><td>47,24</td>
+</tr>
+<tr><td>type</td><td>//div[4]/div/div/div/div[2]/div/input<datalist><option>id=caso_caso_fotra_attributes_22_nombre</option><option>name=caso[caso_fotra_attributes][22][nombre]</option><option>css=#caso_caso_fotra_attributes_22_nombre</option><option>//input[@id='caso_caso_fotra_attributes_22_nombre']</option><option>//div[@id='fotras']/div/div/div/div[2]/div/input</option><option>//div[4]/div/div/div/div[2]/div/input</option></datalist></td><td>El Granadino</td>
+</tr>
+<tr><td>clickAt</td><td>//div[4]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_anotacion</option><option>name=caso[caso_fotra_attributes][22][anotacion]</option><option>css=#caso_caso_fotra_attributes_22_anotacion</option><option>//input[@id='caso_caso_fotra_attributes_22_anotacion']</option><option>//div[@id='fotras']/div/div/div[2]/div/div/input</option><option>//div[4]/div/div/div[2]/div/div/input</option></datalist></td><td>201,20</td>
+</tr>
+<tr><td>type</td><td>//div[4]/div/div/div[2]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_anotacion</option><option>name=caso[caso_fotra_attributes][22][anotacion]</option><option>css=#caso_caso_fotra_attributes_22_anotacion</option><option>//input[@id='caso_caso_fotra_attributes_22_anotacion']</option><option>//div[@id='fotras']/div/div/div[2]/div/div/input</option><option>//div[4]/div/div/div[2]/div/div/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>select</td><td>//div[4]/div/div/div[2]/div[2]/div/select<datalist><option>id=caso_caso_fotra_attributes_22_tfuente</option><option>name=caso[caso_fotra_attributes][22][tfuente]</option><option>css=#caso_caso_fotra_attributes_22_tfuente</option><option>//select[@id='caso_caso_fotra_attributes_22_tfuente']</option><option>//div[@id='fotras']/div/div/div[2]/div[2]/div/select</option><option>//div[4]/div/div/div[2]/div[2]/div/select</option></datalist></td><td>label=Indirecta</td>
+</tr>
+<tr><td>clickAt</td><td>//div[4]/div/div/div[2]/div[2]/div/select<datalist><option>id=caso_caso_fotra_attributes_22_tfuente</option><option>name=caso[caso_fotra_attributes][22][tfuente]</option><option>css=#caso_caso_fotra_attributes_22_tfuente</option><option>//select[@id='caso_caso_fotra_attributes_22_tfuente']</option><option>//div[@id='fotras']/div/div/div[2]/div[2]/div/select</option><option>//div[4]/div/div/div[2]/div[2]/div/select</option></datalist></td><td>-668,-300</td>
+</tr>
+<tr><td>clickAt</td><td>//div[4]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_ubicacionfisica</option><option>name=caso[caso_fotra_attributes][22][ubicacionfisica]</option><option>css=#caso_caso_fotra_attributes_22_ubicacionfisica</option><option>//input[@id='caso_caso_fotra_attributes_22_ubicacionfisica']</option><option>//div[@id='fotras']/div/div/div[3]/div/div/input</option><option>//div[4]/div/div/div[3]/div/div/input</option></datalist></td><td>211,11</td>
+</tr>
+<tr><td>type</td><td>//div[4]/div/div/div[3]/div/div/input<datalist><option>id=caso_caso_fotra_attributes_22_ubicacionfisica</option><option>name=caso[caso_fotra_attributes][22][ubicacionfisica]</option><option>css=#caso_caso_fotra_attributes_22_ubicacionfisica</option><option>//input[@id='caso_caso_fotra_attributes_22_ubicacionfisica']</option><option>//div[@id='fotras']/div/div/div[3]/div/div/input</option><option>//div[4]/div/div/div[3]/div/div/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_caso_493']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>75,9</td>
 </tr>
 <tr><td>assertText</td><td>id=pie_pagina<datalist><option>id=pie_pagina</option><option>css=#pie_pagina</option><option>//footer[@id='pie_pagina']</option><option>//footer</option></datalist></td><td>Desarrollado por Pasos de Jesús. 2020.</td>
 </tr>
