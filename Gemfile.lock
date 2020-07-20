@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 68bbb82beed0f249cdb3d2ba1f7e16491bbc87f3
+  revision: 3d600da945ddfb11a640b197988b51c382a2897f
   specs:
     sivel2_gen (2.0b11)
       devise
@@ -160,7 +160,7 @@ GEM
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.8.3)
+    i18n (1.8.4)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
