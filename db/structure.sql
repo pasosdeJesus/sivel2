@@ -45,6 +45,22 @@ COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
 --
+-- Name: completa_obs(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.completa_obs(obs character varying, nuevaobs character varying) RETURNS character varying
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        RETURN CASE WHEN obs IS NULL THEN nuevaobs
+          WHEN obs='' THEN nuevaobs
+          WHEN RIGHT(obs, 1)='.' THEN obs || ' ' || nuevaobs
+          ELSE obs || '. ' || nuevaobs
+        END;
+      END; $$;
+
+
+--
 -- Name: divarr(anyarray); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2608,7 +2624,7 @@ CREATE MATERIALIZED VIEW public.sivel2_gen_consexpcaso AS
      JOIN public.sivel2_gen_caso caso ON ((caso.id = conscaso.caso_id)))
   WHERE (conscaso.caso_id IN ( SELECT sivel2_gen_conscaso.caso_id
            FROM public.sivel2_gen_conscaso
-          WHERE ((sivel2_gen_conscaso.fecha >= '2018-12-01'::date) AND (sivel2_gen_conscaso.fecha <= '2018-12-31'::date))
+          WHERE ((sivel2_gen_conscaso.fecha >= '2018-01-01'::date) AND (sivel2_gen_conscaso.fecha <= '2018-01-31'::date))
           ORDER BY sivel2_gen_conscaso.ubicaciones, sivel2_gen_conscaso.caso_id))
   ORDER BY conscaso.ubicaciones, conscaso.caso_id
   WITH NO DATA;
@@ -6201,6 +6217,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200430101709'),
 ('20200622193241'),
 ('20200720005020'),
-('20200720013144');
+('20200720013144'),
+('20200722210144'),
+('20200723133542');
 
 
