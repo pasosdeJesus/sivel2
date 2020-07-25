@@ -17,19 +17,27 @@
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/usuarios/nuevo')]</option><option>//div[2]/a</option></datalist></td><td>55,3</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option></datalist></td><td>Nuevo Usuario</td>
-</tr>
 <tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>137,9</td>
 </tr>
 <tr><td>type</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
 </tr>
 <tr><td>clickAt</td><td>id=usuario_nombre<datalist><option>id=usuario_nombre</option><option>name=usuario[nombre]</option><option>css=#usuario_nombre</option><option>//input[@id='usuario_nombre']</option><option>//form[@id='new_usuario']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>130,12</td>
 </tr>
+<tr><td>clickAt</td><td>id=usuario_descripcion<datalist><option>id=usuario_descripcion</option><option>name=usuario[descripcion]</option><option>css=#usuario_descripcion</option><option>//input[@id='usuario_descripcion']</option><option>//form[@id='edit_usuario_10078']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>64,18</td>
+</tr>
+<tr><td>type</td><td>id=usuario_descripcion<datalist><option>id=usuario_descripcion</option><option>name=usuario[descripcion]</option><option>css=#usuario_descripcion</option><option>//input[@id='usuario_descripcion']</option><option>//form[@id='edit_usuario_10078']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>ddd</td>
+</tr>
 <tr><td>type</td><td>id=usuario_nombre<datalist><option>id=usuario_nombre</option><option>name=usuario[nombre]</option><option>css=#usuario_nombre</option><option>//input[@id='usuario_nombre']</option><option>//form[@id='new_usuario']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>aaa</td>
 </tr>
 <tr><td>select</td><td>id=usuario_rol<datalist><option>id=usuario_rol</option><option>name=usuario[rol]</option><option>css=#usuario_rol</option><option>//select[@id='usuario_rol']</option><option>//form[@id='new_usuario']/div[5]/select</option><option>//select</option></datalist></td><td>label=Operador</td>
 </tr>
 <tr><td>clickAt</td><td>id=usuario_rol<datalist><option>id=usuario_rol</option><option>name=usuario[rol]</option><option>css=#usuario_rol</option><option>//select[@id='usuario_rol']</option><option>//form[@id='new_usuario']/div[5]/select</option><option>//select</option></datalist></td><td>-68,-370</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>addSelection</td><td>id=usuario_sip_grupo_ids<datalist><option>id=usuario_sip_grupo_ids</option><option>css=#usuario_sip_grupo_ids</option><option>//select[@id='usuario_sip_grupo_ids']</option><option>//form[@id='edit_usuario_10079']/div[6]/select</option><option>//div[6]/select</option></datalist></td><td>label=Analista de Casos</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="20"]<datalist><option>css=option[value="20"]</option><option>//option[@value='20']</option><option>//select[@id='usuario_sip_grupo_ids']/option</option><option>//div[6]/select/option</option></datalist></td><td>68,9</td>
 </tr>
 <tr><td>runScript</td><td>$('#usuario_email').removeAttr('type')<datalist><option>$('#pais_codiso').removeAttr('type')</option><option>$('#usuario_email').removeAttr('type')</option></datalist></td><td></td>
 </tr>

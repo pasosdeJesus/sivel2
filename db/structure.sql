@@ -45,6 +45,22 @@ COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
 --
+-- Name: completa_obs(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.completa_obs(obs character varying, nuevaobs character varying) RETURNS character varying
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        RETURN CASE WHEN obs IS NULL THEN nuevaobs
+          WHEN obs='' THEN nuevaobs
+          WHEN RIGHT(obs, 1)='.' THEN obs || ' ' || nuevaobs
+          ELSE obs || '. ' || nuevaobs
+        END;
+      END; $$;
+
+
+--
 -- Name: divarr(anyarray); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -2365,7 +2381,7 @@ CREATE TABLE public.sivel2_gen_caso_fotra (
     id_fotra integer,
     anotacion character varying(200),
     fecha date NOT NULL,
-    ubicacionfisica character varying(1000),
+    ubicacionfisica character varying(1024),
     tfuente character varying(25),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -2407,7 +2423,7 @@ CREATE TABLE public.sivel2_gen_caso_fuenteprensa (
     fecha date NOT NULL,
     ubicacion character varying(100),
     clasificacion character varying(100),
-    ubicacionfisica character varying(100),
+    ubicacionfisica character varying(1024),
     fuenteprensa_id integer NOT NULL,
     id_caso integer NOT NULL,
     created_at timestamp without time zone,
@@ -2580,6 +2596,41 @@ CREATE MATERIALIZED VIEW public.sivel2_gen_conscaso AS
 
 
 --
+-- Name: sivel2_gen_consexpcaso; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.sivel2_gen_consexpcaso AS
+ SELECT conscaso.caso_id,
+    conscaso.fecha,
+    conscaso.memo,
+    conscaso.ubicaciones,
+    conscaso.victimas,
+    conscaso.presponsables,
+    conscaso.tipificacion,
+    conscaso.ultimo_refresco,
+    conscaso.q,
+    caso.titulo,
+    caso.hora,
+    caso.duracion,
+    caso.grconfiabilidad,
+    caso.gresclarecimiento,
+    caso.grimpunidad,
+    caso.grinformacion,
+    caso.bienes,
+    caso.id_intervalo,
+    caso.created_at,
+    caso.updated_at
+   FROM (public.sivel2_gen_conscaso conscaso
+     JOIN public.sivel2_gen_caso caso ON ((caso.id = conscaso.caso_id)))
+  WHERE (conscaso.caso_id IN ( SELECT sivel2_gen_conscaso.caso_id
+           FROM public.sivel2_gen_conscaso
+          WHERE ((sivel2_gen_conscaso.fecha >= '2018-01-01'::date) AND (sivel2_gen_conscaso.fecha <= '2018-01-31'::date))
+          ORDER BY sivel2_gen_conscaso.ubicaciones, sivel2_gen_conscaso.caso_id))
+  ORDER BY conscaso.ubicaciones, conscaso.caso_id
+  WITH NO DATA;
+
+
+--
 -- Name: sivel2_gen_contexto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2745,6 +2796,16 @@ CREATE TABLE public.sivel2_gen_etnia (
     updated_at timestamp without time zone,
     observaciones character varying(5000),
     CONSTRAINT etnia_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: sivel2_gen_etnia_victimacolectiva; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_etnia_victimacolectiva (
+    etnia_id integer,
+    victimacolectiva_id integer
 );
 
 
@@ -3246,6 +3307,16 @@ CREATE TABLE public.sivel2_gen_sectorsocial_victimacolectiva (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     victimacolectiva_id integer
+);
+
+
+--
+-- Name: sivel2_gen_sectorsocialsec_victima; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_sectorsocialsec_victima (
+    sectorsocial_id integer,
+    victima_id integer
 );
 
 
@@ -4524,6 +4595,34 @@ CREATE INDEX index_sivel2_gen_contextovictima_victima_on_victima_id ON public.si
 
 
 --
+-- Name: index_sivel2_gen_etnia_victimacolectiva_on_etnia_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_etnia_victimacolectiva_on_etnia_id ON public.sivel2_gen_etnia_victimacolectiva USING btree (etnia_id);
+
+
+--
+-- Name: index_sivel2_gen_etnia_victimacolectiva_on_victimacolectiva_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_etnia_victimacolectiva_on_victimacolectiva_id ON public.sivel2_gen_etnia_victimacolectiva USING btree (victimacolectiva_id);
+
+
+--
+-- Name: index_sivel2_gen_sectorsocialsec_victima_on_sectorsocial_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_sectorsocialsec_victima_on_sectorsocial_id ON public.sivel2_gen_sectorsocialsec_victima USING btree (sectorsocial_id);
+
+
+--
+-- Name: index_sivel2_gen_sectorsocialsec_victima_on_victima_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_sectorsocialsec_victima_on_victima_id ON public.sivel2_gen_sectorsocialsec_victima USING btree (victima_id);
+
+
+--
 -- Name: index_usuario_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -5084,6 +5183,14 @@ ALTER TABLE ONLY public.sip_municipio
 
 
 --
+-- Name: sivel2_gen_sectorsocialsec_victima fk_rails_0feb0e70eb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_sectorsocialsec_victima
+    ADD CONSTRAINT fk_rails_0feb0e70eb FOREIGN KEY (sectorsocial_id) REFERENCES public.sivel2_gen_sectorsocial(id);
+
+
+--
 -- Name: sivel2_gen_caso_presponsable fk_rails_118837ae4c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5177,6 +5284,14 @@ ALTER TABLE ONLY public.sip_actorsocial_persona
 
 ALTER TABLE ONLY public.sip_ubicacion
     ADD CONSTRAINT fk_rails_4dd7a7f238 FOREIGN KEY (id_departamento) REFERENCES public.sip_departamento(id);
+
+
+--
+-- Name: sivel2_gen_etnia_victimacolectiva fk_rails_4fafec807e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_etnia_victimacolectiva
+    ADD CONSTRAINT fk_rails_4fafec807e FOREIGN KEY (etnia_id) REFERENCES public.sivel2_gen_etnia(id);
 
 
 --
@@ -5388,6 +5503,14 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 
 --
+-- Name: sivel2_gen_etnia_victimacolectiva fk_rails_be1aa8ff16; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_etnia_victimacolectiva
+    ADD CONSTRAINT fk_rails_be1aa8ff16 FOREIGN KEY (victimacolectiva_id) REFERENCES public.sivel2_gen_victimacolectiva(id);
+
+
+--
 -- Name: sivel2_gen_combatiente fk_rails_bfb49597e1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5401,6 +5524,14 @@ ALTER TABLE ONLY public.sivel2_gen_combatiente
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT fk_rails_cc636858ad FOREIGN KEY (tema_id) REFERENCES public.sip_tema(id);
+
+
+--
+-- Name: sivel2_gen_sectorsocialsec_victima fk_rails_e04ef7c3e5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_sectorsocialsec_victima
+    ADD CONSTRAINT fk_rails_e04ef7c3e5 FOREIGN KEY (victima_id) REFERENCES public.sivel2_gen_victima(id);
 
 
 --
@@ -6083,6 +6214,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200423092828'),
 ('20200427091939'),
 ('20200428155536'),
-('20200430101709');
+('20200430101709'),
+('20200622193241'),
+('20200720005020'),
+('20200720013144'),
+('20200722210144'),
+('20200723133542');
 
 

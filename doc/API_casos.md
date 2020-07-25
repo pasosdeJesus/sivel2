@@ -24,40 +24,44 @@ A continuación se muestran ejemplos de cómo puede modificarse la ruta
 a medida que se agregan paramateros al filtro:
 
 Fecha de inicio es el 1 de Enero de 2018: 
-filtro[fechaini]=2018-01-01
+`filtro[fechaini]=2018-01-01`
 
 Fecha final es el 6 de Julio de 2019: 
-filtro[fechafin]=2019-07-06
+`filtro[fechafin]=2019-07-06`
 
 Departamento es Cauca:
-filtro[departamento_id]=17
+`filtro[departamento_id]=17`
 
-Municicpio es Popayán:
-filtro[municipio_id]=46
+Municipio es Popayán:
+`filtro[municipio_id]=46`
 
 Centro Poblado es Puelenje:
-filtro[clase_id]=1959
+`filtro[clase_id]=1959`
 
 Presunto Responsable es Guerrila:
-filtro[presponsable_id]=25
+`filtro[presponsable_id]=25`
 
 Tipificación es Tortura:
-filtro[categoria_id]=12
+`filtro[categoria_id]=12`
 
 Nombres de vícitma es Luis Alejandro:
-filtro[nombres]=Luis Alejandro
+`filtro[nombres]=Luis Alejandro`
 
 Apellidos de víctima es Cruz Lopez:
-filtro[apellidos]=Cruz Lopez
+`filtro[apellidos]=Cruz Lopez`
 
 Sexo es masculino:
-filtro[sexo]=M
+`filtro[sexo]=M`
 
 Rango de edad es de los 16 a los 25 años:
-filtro[rangoedad_id]=2
+`filtro[rangoedad_id]=2`
 
 Descripción de los hechos es "Descripcion de ejemplo":
-filtro[descripcion]=Descripcion de ejemplo
+`filtro[descripcion]=Descripcion de ejemplo`
+
+Los casos con códigos 6000 y 700:
+`filtro[codigo]=6000+7000`
+
 
 Los datos geográficos están disponibles en Internet (busque DIVIPOLA) 
 o en SQL en las fuentes de SIVeL en el archivo datos-geo-col.sql.
