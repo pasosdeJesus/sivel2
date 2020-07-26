@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 7829153ce240da49dedc78b4a5c06a8a682a1c60
+  revision: 76209879fc59b925572f8e34f2c2350b79bfaf3a
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2f6bc81b3997b839e71872b8f1ee76e640572337
+  revision: 84dffc256f71c7e87fd01430b1a3632dc058b806
   specs:
     sivel2_gen (2.0b11)
       devise
@@ -302,7 +302,7 @@ GEM
       tzinfo
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    unicorn (5.5.5)
+    unicorn (5.6.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.8)
