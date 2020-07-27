@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: fb8708d5b1287457a4b89d49d44cdb6f8c7c1dfc
+  revision: 190270906c819e77e608ba7a54a23dd281ae69e2
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: d1dd8f4e1870fb8c8812acd33b2aa2ad07da517a
+  revision: 78be459c4f5d7f329a8d84dcf6433a18f74c6012
   specs:
     sivel2_gen (2.0b11)
       devise
