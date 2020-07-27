@@ -77,8 +77,12 @@
         <% else %>
           <%= opcion_menu 'Ficha caso vertical', 
             sivel2_gen.fichacasovertical_path,
-            desplegable: true, id: 'fichacasovertical' 
-          %>
+            desplegable: true, id: 'fichacasovertical' %>
+        <% end %>
+        <% if can? :read, Mr519Gen::Encuestausuario %>
+          <%= opcion_menu 'Encuestas',
+            mr519_gen.encuestasusuario_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, ::Usuario %>
           <%= opcion_menu "Usuarios", main_app.usuarios_path,
