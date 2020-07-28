@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 69ad0bb21a7125fd9260edb041633cd1f6ac1c06
+  revision: 208d032e5618c2051ba5d6263e9e64bf78b9a114
   specs:
     sivel2_gen (2.0b11)
       devise
@@ -296,7 +296,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
-    twitter_cldr (6.0.1)
+    twitter_cldr (6.0.2)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
