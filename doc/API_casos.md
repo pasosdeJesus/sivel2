@@ -12,13 +12,15 @@ A continuación se presenta las diferentes rutas de consulta de casos
 de acuerdo a lo anteriormente mencionado:
 
 ## Ruta 1. `Consulta de casos por filtro avanzado`
-En la sección Casos --> Listado, además de los casos listados, 
+En el menú Casos -> Listado, además de los casos listados, 
 está presente el botón de búsqueda avanzada, el cual abre un filtro 
 para buscar casos especificando algunos parametros, una vez definidos 
 los parámetros se pulsa el botón Filtrar y SIVeL 2 muestra los casos filtrados. Por ejemplo suponiendo que se hace una consulta sin especificar 
 parametros de búsqueda en el filtro, la ruta generada es la siguiente:
 
 casos.html?utf8=✓&filtro[q]=&filtro[departamento_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[categoria_id]=&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[rangoedad_id]=&filtro[descripcion]=&filtro[inc_memo]=0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&commit=Enviar
+
+Los parametros de la forma filtro[inc_x] indican si debe o no retornarse una información, e.g filtro[inc_ubicaciones]=1 indica que si deben retornarse ubicaciones.
 
 A continuación se muestran ejemplos de cómo puede modificarse la ruta
 a medida que se agregan paramateros al filtro:
@@ -119,6 +121,9 @@ La respuesta del detalle será un objeto JSON como por ejemplo:
   "titulo":"Título de ejemplo 2",
   "hora":"6 pm"}
 ```
+
+Se incluirá además el departamento si el parámetro filtro[inc_ubicaciones] es 2 y se incluirá la descripción del caso si filtro[inc_memo] es 2.
+
 ## Ruta 2. `Casos/1.json o Casos/1.xrlat`
 
 Para conusltar un caso en detalle, SIVeL 2 proporciona vistas html, 
