@@ -108,10 +108,6 @@ latitud: decimal para sistema de proyección WGS84.
 
 longitud: decimal para sistema de proyección WGS84.
 
-departamento: Nombre del departamanto de la ubicación principal.
-
-municipio: Nombre del municipio de la ubicación principal.
-
 titulo: Titulo del caso.
 
 fecha: Fecha del caso.
@@ -127,20 +123,16 @@ La respuesta del detalle será un objeto JSON como por ejemplo:
 "108":{
   "latitud":3.01349776470494,
   "longitud":-76.4865299568979,
-  "departamento": "CAUCA",
-  "municipio": "CALOTO",
   "titulo":"Tíulo de ejemplo 1",
   "hora":"4 pm"}
 "110":{
   "latitud":3.01329233105802,
   "longitud":-76.4869831605996,
-  "departamento":"VALLE",
-  "municipio":"CANDELARIA",
   "titulo":"Título de ejemplo 2",
   "hora":"6 pm"}
 ```
 
-Se incluirá además el departamento si el parámetro filtro[inc_ubicaciones] es 2 y se incluirá la descripción del caso si filtro[inc_memo] es 2.
+Se incluirá además el departamento y municipio de la ubicación principal si el parámetro `filtro[inc_ubicaciones]` es 2 y se incluirá la descripción del caso si `filtro[inc_memo]` es 2.
 
 ## Ruta 2. `Casos/1.json o Casos/1.xrlat`
 
