@@ -18,7 +18,9 @@ para buscar casos especificando algunos parametros, una vez definidos
 los parámetros se pulsa el botón Filtrar y SIVeL 2 muestra los casos filtrados. Por ejemplo suponiendo que se hace una consulta sin especificar 
 parametros de búsqueda en el filtro, la ruta generada es la siguiente:
 
+```
 casos.html?utf8=✓&filtro[q]=&filtro[departamento_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[categoria_id]=&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[rangoedad_id]=&filtro[descripcion]=&filtro[inc_memo]=0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&commit=Enviar
+```
 
 Los parametros de la forma filtro[inc_x] indican si debe o no retornarse una información, e.g filtro[inc_ubicaciones]=1 indica que si deben retornarse ubicaciones.
 
@@ -102,11 +104,19 @@ La estructura definida para presentar este reporte es la siguiente:
 
 Para mostrar un reporte JSON de varios casos, se ha optado por solo mostrar algunas generalidades o elementos básicos del caso como lo son:
 
-latitud: decimal para sistema de proyección WGS84
-longitud: decimal para sistema de proyección WGS84
-titulo: Titulo del caso
-fecha: Fecha del caso
+latitud: decimal para sistema de proyección WGS84.
 
+longitud: decimal para sistema de proyección WGS84.
+
+titulo: Titulo del caso.
+
+fecha: Fecha del caso.
+
+Un ejemplo de ruta de exportación de los casos en reporte JSON es el siguiente:
+
+```
+/sivel2/casos.json?filtro[q]=&filtro[departamento_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[rangoedad_id]=&filtro[sectorsocial_id]=&filtro[organizacion_id]=&filtro[profesion_id]=&filtro[descripcion]=&filtro[inc_memo]=0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.json&idplantilla=reprevista
+```
 La respuesta del detalle será un objeto JSON como por ejemplo:
 
 ```JSON
@@ -122,7 +132,7 @@ La respuesta del detalle será un objeto JSON como por ejemplo:
   "hora":"6 pm"}
 ```
 
-Se incluirá además el departamento si el parámetro filtro[inc_ubicaciones] es 2 y se incluirá la descripción del caso si filtro[inc_memo] es 2.
+Se incluirá además el departamento y municipio de la ubicación principal si el parámetro `filtro[inc_ubicaciones]` es 2 y se incluirá la descripción del caso si `filtro[inc_memo]` es 2.
 
 ## Ruta 2. `Casos/1.json o Casos/1.xrlat`
 
