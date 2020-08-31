@@ -109,8 +109,6 @@
 </tr>
 <tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>$('[type=email]').removeAttr('type')</option><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option><option>css=h1</option></datalist></td><td>Tablas Básicas</td>
-</tr>
 <tr><td>clickAt</td><td>link=Centros poblados<datalist><option>link=Centros poblados</option><option>//a[contains(text(),'Centros poblados')]</option><option>//a[contains(@href, 'admin/clases')]</option><option>//article/ul/li[4]/a</option></datalist></td><td>69,10</td>
 </tr>
 <tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
@@ -122,8 +120,6 @@
 <tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/clases/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>43,18</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>$('[type=email]').removeAttr('type')</option><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option><option>css=h1</option></datalist></td><td>Nuevo Centro poblado</td>
 </tr>
 <tr><td>clickAt</td><td>id=clase_nombre<datalist><option>id=clase_nombre</option><option>name=clase[nombre]</option><option>css=#clase_nombre</option><option>//input[@id='clase_nombre']</option><option>//form[@id='new_clase']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>153,21</td>
 </tr>
@@ -145,7 +141,7 @@
 </tr>
 <tr><td>clickAt</td><td>id=clase_id_tclase<datalist><option>id=clase_id_tclase</option><option>name=clase[id_tclase]</option><option>css=#clase_id_tclase</option><option>//select[@id='clase_id_tclase']</option><option>//form[@id='new_clase']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>-68,-370</td>
 </tr>
-<tr><td>select</td><td>id=clase_id_tclase<datalist><option>id=clase_id_tclase</option><option>name=clase[id_tclase]</option><option>css=#clase_id_tclase</option><option>//select[@id='clase_id_tclase']</option><option>//form[@id='new_clase']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=CASERIO</td>
+<tr><td>select</td><td>id=clase_id_tclase<datalist><option>id=clase_id_tclase</option><option>name=clase[id_tclase]</option><option>css=#clase_id_tclase</option><option>//select[@id='clase_id_tclase']</option><option>//form[@id='new_clase']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=CABECERA MUNICIPAL</td>
 </tr>
 <tr><td>clickAt</td><td>id=clase_observaciones<datalist><option>id=clase_observaciones</option><option>name=clase[observaciones]</option><option>css=#clase_observaciones</option><option>//textarea[@id='clase_observaciones']</option><option>//form[@id='new_clase']/div[8]/textarea</option><option>//textarea</option></datalist></td><td>83,11</td>
 </tr>
@@ -736,8 +732,6 @@
 <tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>82,18</td>
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>64,11</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tablas Básicas</td>
 </tr>
 <tr><td>clickAt</td><td>link=Regiones<datalist><option>link=Regiones</option><option>//a[contains(text(),'Regiones')]</option><option>//a[contains(@href, 'admin/regiones')]</option><option>//li[25]/a</option></datalist></td><td>25,1</td>
 </tr>
