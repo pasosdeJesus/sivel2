@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 017d3ee2e9b7b0deed82ba05111147020613b279
+  revision: 86249f0cb87ab9ebc076c618e64da05891aed4ba
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,9 +36,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 3e8494b3524383f57ce49583e8c83a87421939de
+  revision: 508b1d0d595b7aefa49e22c940cb27851a33e7a5
   specs:
-    sivel2_gen (2.0b11)
+    sivel2_gen (2.0b12)
       devise
       jquery-rails
       rails
@@ -305,8 +305,8 @@ GEM
     unicorn (5.6.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    warden (1.2.8)
-      rack (>= 2.0.6)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
