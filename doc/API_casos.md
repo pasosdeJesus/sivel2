@@ -187,9 +187,9 @@ La respuesta a esta petición del API son objetos de la siguiente forma:
 
 ```JSON
 {
-  fecha: '2001-01-01', 
-  departamento: 'CAUCA', 
-  count: '45'
+  fecha: "2001-01-01", 
+  departamento: "CAUCA", 
+  count: "45"
 }
 ```
 De esta forma vienen especificados lo objetos para todas las fechas dentro del rango y todos los departamentos. Es obligatorio especificar los parámetros de fecha inicial y fecha final, además si el caso no tiene ubicación, este entrará a sumar en el conteo de esa fecha con departamento nulo.
