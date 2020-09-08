@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 64fb20008b5943ae773dcc83656ba798e33d4772
+  revision: 8759e2b1b67fe76dbaac6591be19fcb06bf21353
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2dc27fd913116150a6980d60b1d40b7c9049e529
+  revision: 73ca20c925391be713ea8ad2d755fe06f517cc7c
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9f5c36e2831c3bac27929dc4a62febb680202450
+  revision: 2288291f0bc895af07f0c295324bcc9c8bc2631e
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: fd9465e66c460ccac273d81ddc8524f7d9759e8c
+  revision: d4fe41def527fd76808e48f2b2821fc46d6858f5
   specs:
     sivel2_gen (2.0b12)
       devise
