@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 17eea07c2c870d55486abee3a09521ad069e684a
+  revision: 4ab21ac2aea4afa1f18a0074e3ca93fd473a836f
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: c82134af91201d06aa06c3b92f533694cf490d67
+  revision: 899ca17f22f0a08e8e4b2c3270f4ffeecf5c10b3
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6a10b1a0cf07f81260da3222fa304746796b2bc7
+  revision: ee8dd84ccf4077a098161323ade783487c226eda
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 72c9024d50cf5103fef826047b731dc62876d6d2
+  revision: c10ba89c55b7bbc5e503f779ad7117a77b09d64a
   specs:
     sivel2_gen (2.0b12)
       devise
@@ -162,7 +162,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.10.0)
+    jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -286,7 +286,7 @@ GEM
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
