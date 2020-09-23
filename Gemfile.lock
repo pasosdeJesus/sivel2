@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 75c4035a26e931973c4fa5a72ab7136cf11b8754
+  revision: 2bf9fb58ab459e9d28902fe4552755733ac0cab9
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 3941567101d7540278b84cd5496680c7a4c25613
+  revision: a2114b6da79d7ebb876bc2aa3fa9526f15015baa
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f8363ea2ed1beb9e3dedf170ada4fcfd00e883cd
+  revision: 9cb0829dc2a59726c26107c5e3dc07c0fa3be2de
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 8ad6a69f5ddc49d94867d5116f7440f8c9d620fa
+  revision: b0c927b7e2c56cc37ae6d3acda0b7cd13642c2ba
   specs:
     sivel2_gen (2.0b12)
       devise
@@ -143,7 +143,7 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
-    devise (4.7.2)
+    devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -252,7 +252,7 @@ GEM
     raindrops (0.19.1)
     rake (13.0.1)
     redcarpet (3.5.0)
-    regexp_parser (1.7.1)
+    regexp_parser (1.8.0)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -281,7 +281,7 @@ GEM
     simplecov (0.19.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
-    simplecov-html (0.12.2)
+    simplecov-html (0.12.3)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
