@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 2bf9fb58ab459e9d28902fe4552755733ac0cab9
+  revision: c58f225cd86afc0d9a79900c6a65b073951e80fb
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9cb0829dc2a59726c26107c5e3dc07c0fa3be2de
+  revision: 8eddf296ad8c838d383f3c87eafe1bf34b457c10
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b0c927b7e2c56cc37ae6d3acda0b7cd13642c2ba
+  revision: 99f01ce66bfa0e39322e22281ca04691c74f2a50
   specs:
     sivel2_gen (2.0b12)
       devise
@@ -209,11 +209,11 @@ GEM
       ttfunk (~> 1.6)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
-    prawnto_2 (0.3.0)
+    prawnto_2 (0.3.1)
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.0.0)
+    puma (5.0.2)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -252,7 +252,7 @@ GEM
     raindrops (0.19.1)
     rake (13.0.1)
     redcarpet (3.5.0)
-    regexp_parser (1.8.0)
+    regexp_parser (1.8.1)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
