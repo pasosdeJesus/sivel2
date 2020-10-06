@@ -36,9 +36,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 65845db4c0ce6a5a715e38d9c96e97540df10399
+  revision: cec1b655d6b3379a5001dba60180ae56c1abd161
   specs:
-    sivel2_gen (2.0b12)
+    sivel2_gen (2.0b13)
       devise
       jquery-rails
       rails
