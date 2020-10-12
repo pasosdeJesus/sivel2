@@ -20,6 +20,7 @@ class Ability  < Sivel2Gen::Ability
   # Establece autorizaciones con CanCanCan
   def initialize(usuario = nil)
     initialize_sivel2_gen(usuario)
+    can :contar, Sivel2Gen::Caso
     if usuario && usuario.rol then
       can [:read, :update], Mr519Gen::Encuestausuario
       if usuario && usuario.sip_grupo.pluck(:id).include?(

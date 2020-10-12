@@ -142,6 +142,10 @@ ejecuta_sql("
       id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}'));
     ")
 ejecuta_sql("
+  DELETE FROM sivel2_gen_caso_fotra WHERE
+    id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}');
+    ")
+ejecuta_sql("
   DELETE FROM sivel2_gen_caso WHERE
     fecha<='#{fechaini}';
     ")
