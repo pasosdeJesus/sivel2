@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fd923a1faac3b7c10478593fb05623497b2b356e
+  revision: c38493898864d9627ff03e962f0247653597b545
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 3a760e89b7a51075a9042d3813e7fecd347c4cdc
+  revision: e52777957a00d99468d6f13a361c2ddb387b5c0b
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4689617d47921b3373b31ce8d268379b634da629
+  revision: 2f920877967b498907b56a12622b774cb734cc58
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2e8f1797b8b3bf4241e4cf77b9d5e77511857271
+  revision: e0398c50218e09b048000837f47d337b6a8d802e
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
-  revision: 088c8d9dcce7f51cf3a968398047eaac7a37718b
+  revision: 9f1892403c3dbdb8f7d457a06f237ff58e7dfb07
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
