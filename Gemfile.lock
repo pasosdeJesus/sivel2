@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c38493898864d9627ff03e962f0247653597b545
+  revision: 6db4d566f8c8edcdc8731dc0bfaae6e6768c1910
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e52777957a00d99468d6f13a361c2ddb387b5c0b
+  revision: 0091242996d5fd081b8c082649b368084938e6b5
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2f920877967b498907b56a12622b774cb734cc58
+  revision: 8f2e1460797f590b2f0cd6be38f9be2d699bd564
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e0398c50218e09b048000837f47d337b6a8d802e
+  revision: 9c89a80d0cdc0c82ae731106a67d9ae9ba39cb9e
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -127,6 +127,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    choice (0.2.0)
     chosen-rails (1.9.0)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -239,6 +240,11 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-erd (1.6.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
     rails-i18n (6.0.0)
@@ -353,6 +359,7 @@ DEPENDENCIES
   prawnto_2
   puma
   rails (~> 6.0.0.rc1)
+  rails-erd
   rails-i18n
   redcarpet
   rspreadsheet
