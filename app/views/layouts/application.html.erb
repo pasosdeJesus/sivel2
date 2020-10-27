@@ -60,11 +60,6 @@
             heb412_gen.plantillashcr_path,
             desplegable: true %>
         <% end %>
-        <% if can? :manage, ::Heb412Gen::Plantilladoc %>
-          <%= opcion_menu "Plantillas para un registro en documento",
-            heb412_gen.plantillasdoc_path,
-            desplegable: true %>
-        <% end %>
       <% end %>
       <%= despliega_abajo "Administrar" do %>
         <%= opcion_menu "Clave y Tema", main_app.editar_registro_usuario_path,
