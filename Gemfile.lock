@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5c41ffc434b26cb5a99b23471832a55ca353de29
+  revision: c1d0f1e756281b296efb3361fd47f07e190a884b
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: da83ac538a69bf4e2520985f7e16a9a17a513877
+  revision: 9fe4cf9a62a253aee8a8b85e1db90423cc1ecc6c
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 74d077f7fbaf0cfb6662e0eba26cbad7302b6a8d
+  revision: 3050aa4f2c5ac4ca0e3908ce3fa56a8fe5e80a34
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 1e130fa831cd1be19abc21c0948e152f64150e2a
+  revision: 32a831c24a4b9f0a9edad7dab741c5fc84663451
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -304,7 +304,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
-    twitter_cldr (6.2.0)
+    twitter_cldr (6.3.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
@@ -331,7 +331,7 @@ GEM
     will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
