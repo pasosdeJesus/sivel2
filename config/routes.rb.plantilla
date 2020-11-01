@@ -27,6 +27,15 @@ Rails.application.routes.draw do
 
     get '/casos/mapaosm' => 'sivel2_gen/casos#mapaosm'
 
+    get '/maps/WORLD' => 'infomapa#worldjson', 
+             :as => 'worldjson'
+    get '/maps/gadm36_COL_1' => 'infomapa#colombia', 
+             :as => 'colombia'
+    get '/casos/infomapa' => 'infomapa#infomapa', 
+             :as => 'infomapa'
+    get '/casos/infomapa/datoscovid' => 'infomapa#datoscovid', 
+             :as => 'infomapacovid'
+
     root 'sivel2_gen/hogar#index'
   end # scope
 
