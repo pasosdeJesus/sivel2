@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
 
-<<<<<<< HEAD
-  rutarel = (ENV['RUTA_RELATIVA'] || 'sivel2/')
-=======
   rutarel = ENV.fetch('RUTA_RELATIVA', 'sivel2/')
->>>>>>> 178b034... sigue convenciones de sip 2.0b11, ver https://github.com/pasosdeJesus/sip/wiki/2021_2-Actualizaci%C3%B3n-de-sip-2.0b10-a-2.0b11
   scope rutarel do 
 
     devise_scope :usuario do
