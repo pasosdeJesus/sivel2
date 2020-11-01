@@ -1,17 +1,23 @@
 GIT
-  remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 8e4a154ae0c7b8ca1e17daec768d6b211186ca63
+  remote: https://github.com/mmotherwell/best_in_place
+  revision: 88eb3052623a9a6cd346864d2aca05021c2f80d0
   specs:
-    kt-paperclip (7.0.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      marcel (~> 1.0.1)
-      mime-types
-      terrapin (~> 0.6.0)
+    best_in_place (3.1.1)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
+  remote: https://github.com/pasosdeJesus/apo214.git
+  revision: 8e82c1a44d14cee89176f32c241b97b5ce3caf1e
+  branch: main
+  specs:
+    apo214 (0.1.0)
+      rails
+      sip
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: f36a8528c1f2ab7d7b0d97d0e2ebfbc71406ba9b
+  revision: e06c2fcc3e7e1f85423029c658891ad294464259
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -22,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1b01105e7bf65b40aef9e6798e2363518a01a13d
+  revision: bcf124c573a83f5f4d43feb84c2cd989cee9bef5
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -31,8 +37,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: bfda0ace6af60e5df39fe62f85359ef4d67179fe
-  branch: main
+  revision: b76dd94625b4740c1ff3ea1935d0a9b6b63dbbbf
+  branch: tooltipsbs5
   specs:
     sip (2.0.b12)
       cancancan
@@ -126,6 +132,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts_as_list (1.0.4)
+      activerecord (>= 4.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     andand (1.3.3)
@@ -183,6 +191,10 @@ GEM
     ffi (1.15.4)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    hotwire-rails (0.1.3)
+      rails (>= 6.0.0)
+      stimulus-rails
+      turbo-rails
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -195,6 +207,12 @@ GEM
       railties (>= 3.2.16)
     json (2.5.1)
     kgio (2.11.4)
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
     libxml-ruby (3.2.1)
     loofah (2.12.0)
       crass (~> 1.0.2)
@@ -243,8 +261,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
-    rack-cors (1.1.1)
-      rack (>= 2.0.0)
     rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
@@ -286,6 +302,7 @@ GEM
     raindrops (0.19.2)
     rake (13.0.6)
     redcarpet (3.5.1)
+    redis (4.4.0)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -325,11 +342,15 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stimulus-rails (0.6.0)
+      rails (>= 6.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
+    turbo-rails (0.8.1)
+      rails (>= 6.0.0)
     twitter_cldr (6.7.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
@@ -346,7 +367,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (6.0.0.rc.5)
+    webpacker (6.0.0.rc.1)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -363,7 +384,10 @@ PLATFORMS
   x86_64-openbsd
 
 DEPENDENCIES
+  acts_as_list
+  apo214!
   bcrypt
+  best_in_place!
   bootsnap (>= 1.1.0)
   cancancan
   capybara
@@ -375,8 +399,9 @@ DEPENDENCIES
   dotenv-rails
   erd
   heb412_gen!
+  hotwire-rails
   jbuilder
-  kt-paperclip!
+  kt-paperclip
   libxml-ruby
   mr519_gen!
   nokogiri (>= 1.11.1)
@@ -386,12 +411,11 @@ DEPENDENCIES
   prawn-table
   prawnto_2
   puma
-  rack
-  rack-cors
   rails (~> 6.1)
   rails-erd
   rails-i18n
   redcarpet
+  redis
   rspreadsheet
   rubyzip (>= 2.0)
   sassc-rails
@@ -405,8 +429,8 @@ DEPENDENCIES
   tzinfo
   unicorn
   web-console
-  webpacker (~> 6.0.0.rc.1)
+  webpacker (= 6.0.0.rc.1)
   will_paginate
 
 BUNDLED WITH
-   2.2.27
+   2.2.28
