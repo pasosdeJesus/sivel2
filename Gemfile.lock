@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 8b885861ce166ab5b790911047d2708cc67bbbd7
+  revision: 875ec3e333a112205f0fad5e860dc33918031884
   branch: main
   specs:
     apo214 (0.1.0)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: a0a4be161fc5096add632f6bfa975ec3d20e8cc3
+  revision: a3057ae95f4a0c8cfcc6ccea13c17dcf2d9be6fa
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2c6df84e87715940e0873c3dbc2a04befd0a6089
+  revision: 68f372924bb9b8894ce8d3ea425fe4e7501e02b0
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 04386adcfdfba6f6765b1de47b3064639c98a1c5
+  revision: ee97fbc5f1610217414b8e1969556a98964f4825
   specs:
     sip (2.0.b10)
       cancancan
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f5b20d66232101f2679ab97d9d47ed5321bed138
+  revision: 4de09e8e90345d0c2c76728d6cce89129aab8bed
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -145,7 +145,7 @@ GEM
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sassc-rails (>= 2.1.2)
-    cldr-plurals-runtime-rb (1.0.1)
+    cldr-plurals-runtime-rb (1.1.0)
     climate_control (0.2.0)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
@@ -167,7 +167,7 @@ GEM
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     docile (1.3.2)
-    erd (0.7.0)
+    erd (0.8.0)
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
