@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: caead7711e24abc985936b09636f7c8901146781
+  revision: 95f0349813ea8365402af11fa2c237f1eca67f60
+  branch: main
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +11,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2203570761bbb5155af62daa67e6d62ef25a0adc
+  revision: 26eeb05ff090f82f24a00fe78e4ba70336c149d0
+  branch: main
   specs:
     mr519_gen (0.2.0)
       rails
@@ -18,9 +20,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 35241f6728097c04ad6655c1702380896ce06352
+  revision: 687275bf8222107cd6e13793a34171b03c3afcb2
+  branch: main
   specs:
-    sip (2.0.b10)
+    sip (2.0.b11)
       cancancan
       chosen-rails
       devise
@@ -36,7 +39,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: cf1efd7be839c1b806fb2b4be912c75da243fd7d
+  revision: 4f6212965f75583e9ee89268afc1a6386b978b11
+  branch: main
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -50,66 +54,59 @@ GIT
   specs:
     cocoon (1.2.11)
 
-PATH
-  remote: ../apo214
-  specs:
-    apo214 (0.1.0)
-      rails
-      sip
-
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (6.0.3.4)
-      actionpack (= 6.0.3.4)
+    actioncable (6.0.3.5)
+      actionpack (= 6.0.3.5)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (6.0.3.4)
-      actionpack (= 6.0.3.4)
-      activejob (= 6.0.3.4)
-      activerecord (= 6.0.3.4)
-      activestorage (= 6.0.3.4)
-      activesupport (= 6.0.3.4)
+    actionmailbox (6.0.3.5)
+      actionpack (= 6.0.3.5)
+      activejob (= 6.0.3.5)
+      activerecord (= 6.0.3.5)
+      activestorage (= 6.0.3.5)
+      activesupport (= 6.0.3.5)
       mail (>= 2.7.1)
-    actionmailer (6.0.3.4)
-      actionpack (= 6.0.3.4)
-      actionview (= 6.0.3.4)
-      activejob (= 6.0.3.4)
+    actionmailer (6.0.3.5)
+      actionpack (= 6.0.3.5)
+      actionview (= 6.0.3.5)
+      activejob (= 6.0.3.5)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (6.0.3.4)
-      actionview (= 6.0.3.4)
-      activesupport (= 6.0.3.4)
+    actionpack (6.0.3.5)
+      actionview (= 6.0.3.5)
+      activesupport (= 6.0.3.5)
       rack (~> 2.0, >= 2.0.8)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (6.0.3.4)
-      actionpack (= 6.0.3.4)
-      activerecord (= 6.0.3.4)
-      activestorage (= 6.0.3.4)
-      activesupport (= 6.0.3.4)
+    actiontext (6.0.3.5)
+      actionpack (= 6.0.3.5)
+      activerecord (= 6.0.3.5)
+      activestorage (= 6.0.3.5)
+      activesupport (= 6.0.3.5)
       nokogiri (>= 1.8.5)
-    actionview (6.0.3.4)
-      activesupport (= 6.0.3.4)
+    actionview (6.0.3.5)
+      activesupport (= 6.0.3.5)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (6.0.3.4)
-      activesupport (= 6.0.3.4)
+    activejob (6.0.3.5)
+      activesupport (= 6.0.3.5)
       globalid (>= 0.3.6)
-    activemodel (6.0.3.4)
-      activesupport (= 6.0.3.4)
-    activerecord (6.0.3.4)
-      activemodel (= 6.0.3.4)
-      activesupport (= 6.0.3.4)
-    activestorage (6.0.3.4)
-      actionpack (= 6.0.3.4)
-      activejob (= 6.0.3.4)
-      activerecord (= 6.0.3.4)
+    activemodel (6.0.3.5)
+      activesupport (= 6.0.3.5)
+    activerecord (6.0.3.5)
+      activemodel (= 6.0.3.5)
+      activesupport (= 6.0.3.5)
+    activestorage (6.0.3.5)
+      actionpack (= 6.0.3.5)
+      activejob (= 6.0.3.5)
+      activerecord (= 6.0.3.5)
       marcel (~> 0.3.1)
-    activesupport (6.0.3.4)
+    activesupport (6.0.3.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -124,18 +121,18 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.5.1)
+    bootsnap (1.7.2)
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.2.1)
-    capybara (3.34.0)
+    capybara (3.35.3)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      regexp_parser (~> 1.5)
+      regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
     choice (0.2.0)
@@ -153,7 +150,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     connection_pool (2.2.3)
     crass (1.0.6)
     devise (4.7.3)
@@ -165,6 +162,10 @@ GEM
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     docile (1.3.5)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erd (0.8.0)
       nokogiri
       ruby-graphviz
@@ -173,9 +174,9 @@ GEM
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.8.7)
+    i18n (1.8.9)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.10.1)
+    jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -196,13 +197,13 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.1104)
+    mime-types-data (3.2021.0212)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
-    msgpack (1.3.3)
-    nio4r (2.5.4)
+    msgpack (1.4.2)
+    nio4r (2.5.5)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -228,7 +229,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.1.1)
+    puma (5.2.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -236,20 +237,20 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (6.0.3.4)
-      actioncable (= 6.0.3.4)
-      actionmailbox (= 6.0.3.4)
-      actionmailer (= 6.0.3.4)
-      actionpack (= 6.0.3.4)
-      actiontext (= 6.0.3.4)
-      actionview (= 6.0.3.4)
-      activejob (= 6.0.3.4)
-      activemodel (= 6.0.3.4)
-      activerecord (= 6.0.3.4)
-      activestorage (= 6.0.3.4)
-      activesupport (= 6.0.3.4)
+    rails (6.0.3.5)
+      actioncable (= 6.0.3.5)
+      actionmailbox (= 6.0.3.5)
+      actionmailer (= 6.0.3.5)
+      actionpack (= 6.0.3.5)
+      actiontext (= 6.0.3.5)
+      actionview (= 6.0.3.5)
+      activejob (= 6.0.3.5)
+      activemodel (= 6.0.3.5)
+      activerecord (= 6.0.3.5)
+      activestorage (= 6.0.3.5)
+      activesupport (= 6.0.3.5)
       bundler (>= 1.3.0)
-      railties (= 6.0.3.4)
+      railties (= 6.0.3.5)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -264,9 +265,9 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    railties (6.0.3.4)
-      actionpack (= 6.0.3.4)
-      activesupport (= 6.0.3.4)
+    railties (6.0.3.5)
+      actionpack (= 6.0.3.5)
+      activesupport (= 6.0.3.5)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
@@ -279,7 +280,7 @@ GEM
       railties (>= 3.2)
       tilt
     redcarpet (3.5.1)
-    regexp_parser (1.8.2)
+    regexp_parser (2.0.3)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -302,9 +303,9 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.1)
-    simple_form (5.0.3)
-      actionpack (>= 5.0)
-      activemodel (>= 5.0)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     simplecov (0.17.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -320,7 +321,7 @@ GEM
       sprockets (>= 3.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (1.0.1)
+    thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.7.0)
@@ -354,10 +355,9 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-openbsd
 
 DEPENDENCIES
-  apo214!
   bcrypt
   bootsnap (>= 1.1.0)
   cancancan
@@ -367,11 +367,13 @@ DEPENDENCIES
   colorize
   devise
   devise-i18n
+  dotenv-rails
   erd
   heb412_gen!
   jbuilder
   libxml-ruby
   mr519_gen!
+  nokogiri (>= 1.11.1)
   odf-report
   paperclip
   pg
@@ -401,4 +403,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.2.3
+   2.2.9
