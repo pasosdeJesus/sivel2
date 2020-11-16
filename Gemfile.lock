@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/pasosdeJesus/apo214.git
+  revision: 2a59e6f50a5c6b2f8a8c6066f0faa03051e14e30
+  branch: main
+  specs:
+    apo214 (0.1.0)
+      rails (~> 6.0.3, >= 6.0.3.2)
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
   revision: a0a4be161fc5096add632f6bfa975ec3d20e8cc3
   specs:
@@ -18,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1585a60b74e8eaf8f50114a05b866556ba7cdadb
+  revision: 6c59ad428ea9d241c0fd6d5e8314ecc85fdd267e
   specs:
     sip (2.0.b10)
       cancancan
@@ -161,7 +170,7 @@ GEM
     erd (0.6.4)
       nokogiri
       ruby-graphviz
-    erubi (1.9.0)
+    erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.13.1)
     globalid (0.4.2)
@@ -348,6 +357,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apo214!
   bcrypt
   bootsnap (>= 1.1.0)
   cancancan
