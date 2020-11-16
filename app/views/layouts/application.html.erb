@@ -43,6 +43,10 @@
           main_app.mapatiempo_path,
           desplegable: true %>
       <% end %>
+      <%= despliega_abajo "Desaparición" do %>
+        <%= opcion_menu "Lugares preliminares de disposición de cadaveres", 
+          apo214.lugarespreliminares_path, desplegable: true %>
+      <% end %>
     <% end %>
   <% end %>
   <%= grupo_menus :pull => :right do %>

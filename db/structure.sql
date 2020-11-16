@@ -397,6 +397,83 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: apo214_lugarpreliminar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_lugarpreliminar (
+    id bigint NOT NULL,
+    fecha date,
+    codigositio character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    nombreusuario character varying,
+    organizacion character varying,
+    ubicacionpre_id integer,
+    id_persona integer,
+    parentezco character varying,
+    grabacion boolean,
+    telefono character varying,
+    tipotestigo_id integer,
+    otrotipotestigo character varying,
+    hechos text,
+    ubicaespecifica text
+);
+
+
+--
+-- Name: apo214_lugarpreliminar_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_lugarpreliminar_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_lugarpreliminar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_lugarpreliminar_id_seq OWNED BY public.apo214_lugarpreliminar.id;
+
+
+--
+-- Name: apo214_tipotestigo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_tipotestigo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_tipotestigo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_tipotestigo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_tipotestigo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_tipotestigo_id_seq OWNED BY public.apo214_tipotestigo.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3506,6 +3583,20 @@ CREATE MATERIALIZED VIEW public.vvictimasoundexesp AS
 
 
 --
+-- Name: apo214_lugarpreliminar id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar ALTER COLUMN id SET DEFAULT nextval('public.apo214_lugarpreliminar_id_seq'::regclass);
+
+
+--
+-- Name: apo214_tipotestigo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_tipotestigo ALTER COLUMN id SET DEFAULT nextval('public.apo214_tipotestigo_id_seq'::regclass);
+
+
+--
 -- Name: heb412_gen_campohc id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3771,6 +3862,22 @@ ALTER TABLE ONLY public.sivel2_gen_acto
 
 ALTER TABLE ONLY public.sivel2_gen_acto
     ADD CONSTRAINT acto_id_presponsable_id_categoria_id_persona_id_caso_key UNIQUE (id_presponsable, id_categoria, id_persona, id_caso);
+
+
+--
+-- Name: apo214_lugarpreliminar apo214_lugarpreliminar_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT apo214_lugarpreliminar_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_tipotestigo apo214_tipotestigo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_tipotestigo
+    ADD CONSTRAINT apo214_tipotestigo_pkey PRIMARY KEY (id);
 
 
 --
@@ -5266,14 +5373,6 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: sivel2_gen_categoria categoria_contadaen_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_categoria
-    ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
-
-
---
 -- Name: sip_departamento departamento_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5458,6 +5557,14 @@ ALTER TABLE ONLY public.sip_actorsocial
 
 
 --
+-- Name: apo214_lugarpreliminar fk_rails_5dc41e5b2c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_5dc41e5b2c FOREIGN KEY (id_persona) REFERENCES public.sip_persona(id);
+
+
+--
 -- Name: sivel2_gen_contextovictima_victima fk_rails_6322164389; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5634,6 +5741,14 @@ ALTER TABLE ONLY public.sivel2_gen_combatiente
 
 
 --
+-- Name: apo214_lugarpreliminar fk_rails_b80776fd3b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_b80776fd3b FOREIGN KEY (ubicacionpre_id) REFERENCES public.sip_ubicacionpre(id);
+
+
+--
 -- Name: sip_ubicacion fk_rails_b82283d945; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5778,6 +5893,14 @@ ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
 
 
 --
+-- Name: apo214_lugarpreliminar fk_rails_fd33b98714; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_fd33b98714 FOREIGN KEY (tipotestigo_id) REFERENCES public.apo214_tipotestigo(id);
+
+
+--
 -- Name: sip_persona persona_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5799,14 +5922,6 @@ ALTER TABLE ONLY public.sip_persona
 
 ALTER TABLE ONLY public.sip_persona
     ADD CONSTRAINT persona_tdocumento_id_fkey FOREIGN KEY (tdocumento_id) REFERENCES public.sip_tdocumento(id);
-
-
---
--- Name: sivel2_gen_presponsable presponsable_papa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_presponsable
-    ADD CONSTRAINT presponsable_papa_fkey FOREIGN KEY (papa) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -6381,6 +6496,18 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200916022934'),
 ('20200919003430'),
 ('20200921123831'),
-('20201009004421');
+('20201009004421'),
+('20201021214107'),
+('20201029153649'),
+('20201029162732'),
+('20201029220052'),
+('20201102232506'),
+('20201103175114'),
+('20201105154106'),
+('20201106155800'),
+('20201108201914'),
+('20201108203930'),
+('20201110170225'),
+('20201110170728');
 
 
