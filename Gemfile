@@ -90,7 +90,6 @@ gem 'apo214', # Motor para desaparición
   git: 'https://github.com/pasosdeJesus/apo214.git', branch: :main
   #path: '../apo214'
 
-
 group  :development, :test do
  
   #gem 'byebug' # Depurar
