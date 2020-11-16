@@ -1,7 +1,7 @@
-class InfomapaController < ApplicationController
+class MapatiempoController < ApplicationController
 
-  def infomapa
-    render :infomapa, layout: 'application'
+  def mapatiempo
+    render :mapatiempo, layout: 'application'
     return
   end
 
