@@ -1,5 +1,4 @@
-# encoding: UTF-8
-class Ability  < Sivel2Gen::Ability
+class Ability  < Apo214::Ability
 
 
   GRUPO_DESAPARICION_CASOS = 25
@@ -20,6 +19,7 @@ class Ability  < Sivel2Gen::Ability
   # Establece autorizaciones con CanCanCan
   def initialize(usuario = nil)
     initialize_sivel2_gen(usuario)
+    initialize_apo214(usuario)
     can :contar, Sivel2Gen::Caso
     if usuario && usuario.rol then
       can [:read, :update], Mr519Gen::Encuestausuario
