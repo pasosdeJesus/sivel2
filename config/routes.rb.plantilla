@@ -27,14 +27,14 @@ Rails.application.routes.draw do
 
     get '/casos/mapaosm' => 'sivel2_gen/casos#mapaosm'
 
-    get '/maps/WORLD' => 'infomapa#worldjson', 
+    get '/maps/WORLD' => 'mapatiempo#worldjson', 
              :as => 'worldjson'
-    get '/maps/gadm36_COL_1' => 'infomapa#colombia', 
+    get '/maps/gadm36_COL_1' => 'mapatiempo#colombia', 
              :as => 'colombia'
-    get '/casos/infomapa' => 'infomapa#infomapa', 
-             :as => 'infomapa'
-    get '/casos/infomapa/datoscovid' => 'infomapa#datoscovid', 
-             :as => 'infomapacovid'
+    get '/casos/mapatiempo' => 'mapatiempo#mapatiempo', 
+             :as => 'mapatiempo'
+    get '/casos/mapatiempo/datoscovid' => 'mapatiempo#datoscovid', 
+             :as => 'mapatiempocovid'
 
     root 'sivel2_gen/hogar#index'
   end # scope
@@ -43,6 +43,6 @@ Rails.application.routes.draw do
   mount Mr519Gen::Engine, at: "/sivel2", as: 'mr519_gen'
   mount Heb412Gen::Engine, at: "/sivel2", as: 'heb412_gen'
   mount Sivel2Gen::Engine => "/sivel2", as: 'sivel2_gen'
-  mount Apo214::Engine => "/sivel2", as: 'apo214'
+  mount Apo214::Engine , at: '/sivel2', as: 'apo214'
 
 end
