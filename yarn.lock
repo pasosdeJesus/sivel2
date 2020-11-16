@@ -1547,9 +1547,9 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@pasosdejesus/mapa_tiempo_yi_liu@github:pasosdeJesus/mapa_tiempo_yi_liu":
+"@pasosdejesus/mapa_tiempo_yi_liu@github:Bayron3094/mapa_tiempo_yi_liu#bubble_plot":
   version "0.1.6"
-  resolved "https://codeload.github.com/pasosdeJesus/mapa_tiempo_yi_liu/tar.gz/db943ecaa74924d83fdf1dedad52e92df5667840"
+  resolved "https://codeload.github.com/Bayron3094/mapa_tiempo_yi_liu/tar.gz/b84418003ceaf79d3219b534a850946d8ade3700"
   dependencies:
     "@ctrl/tinycolor" "3.1.4"
     d3-force "^2.0.1"
