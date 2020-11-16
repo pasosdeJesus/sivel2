@@ -2,7 +2,7 @@
 # Inicia servicio
 
 if (test -f ".env") then {
-	. .env
+	. ./.env
 } fi;
 if (test "$RC" = "") then {
 	export RC=sivel2
