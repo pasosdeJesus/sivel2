@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 199a287c2a0db3647a0939cb53425b26631bedb2
+  revision: 7029823a7bede9d45821f9583dc3a8179cc28351
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d3bb8223589e21ed87f875295bfb82da5f3c8872
+  revision: bba79ea6c8f2dce204127ed5156b9b7ffb55b794
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1a43a4a8b15e88608caebe1d3d5a1b92d4ed43c1
+  revision: 0c49d1ba522c5658b011e1d2e7b24e5b3642b47f
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ff872d2c417ad429acd2d2853cb59f26f7d7e573
+  revision: 478a1696eaf3366a98ac80c83f3ec173a2558abc
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -153,7 +153,7 @@ GEM
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     docile (1.3.2)
-    erd (0.7.0)
+    erd (0.8.0)
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
