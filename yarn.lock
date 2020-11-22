@@ -1547,13 +1547,18 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@pasosdejesus/mapa_tiempo_yi_liu@github:Bayron3094/mapa_tiempo_yi_liu#bubble_plot":
-  version "0.1.7"
-  resolved "https://codeload.github.com/Bayron3094/mapa_tiempo_yi_liu/tar.gz/13eafe8e613fa857bebb22a13a062140001de736"
+"@pasosdejesus/mapa_tiempo_yi_liu@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@pasosdejesus/mapa_tiempo_yi_liu/-/mapa_tiempo_yi_liu-0.1.4.tgz#0d966e253d93d1071c041e31648d25ce1b080bc4"
+  integrity sha512-KG3CkBjrxIi/LctjxN5Lk49pwtAAcMFPsQLwTvnslRR6/kRdsOW255w4o1gwzYUzYcM7YHn6f7AazzU3ZpG1nQ==
   dependencies:
     "@ctrl/tinycolor" "3.1.4"
-    d3-force "^2.0.1"
-    react-table "^7.2.2"
+    d3 "^6.2.0"
+    d3-drag "^2.0.0"
+    d3-scale-chromatic "^2.0.0"
+    d3-time "^2.0.0"
+    d3-zoom "^2.0.0"
+    mapshaper "^0.5.21"
 
 "@pmmmwh/react-refresh-webpack-plugin@0.4.2":
   version "0.4.2"
@@ -4360,7 +4365,7 @@ d3-fetch@2:
   dependencies:
     d3-dsv "1 - 2"
 
-d3-force@2, d3-force@^2.0.1, d3-force@^2.1.1:
+d3-force@2, d3-force@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/d3-force/-/d3-force-2.1.1.tgz#f20ccbf1e6c9e80add1926f09b51f686a8bc0937"
   integrity sha512-nAuHEzBqMvpFVMf9OX75d00OxvOXdxY+xECIXjW6Gv8BRrXu6gAWbv/9XKrvfJ5i5DCokDW7RYE50LRoK092ew==
@@ -8247,7 +8252,7 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mapshaper@^0.5.26:
+mapshaper@^0.5.21, mapshaper@^0.5.26:
   version "0.5.26"
   resolved "https://registry.yarnpkg.com/mapshaper/-/mapshaper-0.5.26.tgz#7dfed33e0d8bb9e18d7a5739f8be551cbd32f10b"
   integrity sha512-33P82DBnlZKRY80xjOVGBGhyc3lxM3+nVckSizOuurlX9P2I/IBOwZvn0sqoHkokpuzle+6dDU4ZNQCiV+ixfA==
@@ -10715,7 +10720,7 @@ react-spring@^8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
-react-table@^7.2.2, react-table@^7.6.1:
+react-table@^7.6.1:
   version "7.6.2"
   resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.6.2.tgz#b60932fa6d457c2bca0da49815cd6a8fe9451f77"
   integrity sha512-urwNZTieb+xg/+BITUIrqdH5jZfJlw7rKVAAq25iXpBPwbQojLCEKJuGycLbVwn8fzU+Ovly3y8HHNaLNrPCvQ==

@@ -9,7 +9,7 @@
     "@nivo/circle-packing": "^0.63.1",
     "@nivo/line": "^0.63.1",
     "@nivo/stream": "^0.63.1",
-    "@pasosdejesus/mapa_tiempo_yi_liu": "github:Bayron3094/mapa_tiempo_yi_liu#bubble_plot",
+    "@pasosdejesus/mapa_tiempo_yi_liu": "^0.1.4",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/actiontext": "^6.0.0",
     "@rails/activestorage": "^6.0.0-alpha",
