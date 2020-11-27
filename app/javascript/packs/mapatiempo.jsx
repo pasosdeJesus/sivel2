@@ -4,8 +4,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { render } from 'react-dom'
 
-import App from '@pasosdejesus/mapa_tiempo_yi_liu'
+import MapaTiempo from '@pasosdejesus/mapa_tiempo_yi_liu'
 
-render(<App/>, document.getElementById('root'))
+render(<MapaTiempo/>, document.getElementById('root'))
 
 
