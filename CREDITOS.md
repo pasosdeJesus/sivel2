@@ -10,7 +10,8 @@ Ver los creditos de esa versión en
 * Mejoras a DIVIPOLA 2016: Alejandro Cadena
 * Tooltips: Andrea Padilla
 * Exportación XRLAT, JSON y migración del mapa de SIVeL 1.2 a SIVeL 2 y nuevo mapa sobre OSM: Luis Alejandro Cruz
-* Logo de SIVeL 2: William Rozo <wiroal@riseup.net>
+* El logo emplea imagen de <https://www.publicdomainpictures.net/pictures/70000/velka/fiamma-di-candela.jpg>
+  y texto de William Rozo <wiroal@riseup.net>
 
 Han apoyado financiando el desarrollo de componentes de dominio público:
 * El SJR LAC de 2013 a 2015, agradecimiento especial a 
