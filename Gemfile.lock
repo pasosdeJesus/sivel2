@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 7b7573f423a6b85218d821df7d641f5f8b07fc6e
+  revision: 0abc60be9e1dac1cbad320e8825f411bc13f7bd2
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2dc00d95d09570d5032871ac4ab53c53c434f748
+  revision: a172aa103937f6ed60ed0bef50bde00bbb566aa8
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1f339551a513c049900634a1bd382a494e7d889a
+  revision: d6623e3e1b0efa4b368071ed9562d776db560aec
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ad215a5638c10c0f2a5d5746d8a88bf28fc71d8e
+  revision: ad29457848fd2efe47b327aecbe9487d99b9a530
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -331,7 +331,7 @@ GEM
     will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.1)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
