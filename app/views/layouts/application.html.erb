@@ -18,7 +18,7 @@
             desplegable: true %>
           <%= opcion_menu "Buscar repetidos", sivel2_gen.buscarrepetidos_path,
             desplegable: true %>
-          <%= opcion_menu "Importar de XRLAT", 
+          <%= opcion_menu "Importar relatos XRLAT", 
             sivel2_gen.casos_importarrelatos_path, desplegable: true %>
         <% end %>
       <% end %>
@@ -58,11 +58,6 @@
         <% if can? :manage, ::Heb412Gen::Plantillahcr %>
           <%= opcion_menu "Plantillas para un registro en hoja de calculo",
             heb412_gen.plantillashcr_path,
-            desplegable: true %>
-        <% end %>
-        <% if can? :manage, ::Heb412Gen::Plantilladoc %>
-          <%= opcion_menu "Plantillas para un registro en documento",
-            heb412_gen.plantillasdoc_path,
             desplegable: true %>
         <% end %>
       <% end %>

@@ -11,6 +11,8 @@
 <tr><td rowspan="1" colspan="3">filtro-victimas-codigo </td></tr>
 </thead>
 <tbody>
+<tr><td>clickAt</td><td>link=SIVeL 2.0b13<datalist><option>link=SIVeL 2.0b13</option><option>css=a.navbar-brand</option><option>//a[contains(text(),'SIVeL 2.0b13')]</option><option>//a[contains(@href, 'https://rbd.nocheyniebla.org:15443/sivel2/')]</option><option>//a</option></datalist></td><td>71,26</td>
+</tr>
 <tr><td>clickAt</td><td>link=Reportes y conteos<datalist><option>link=Reportes y conteos</option><option>//a[contains(text(),'Reportes y conteos')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//li[2]/a</option></datalist></td><td>60,18</td>
 </tr>
 <tr><td>clickAt</td><td>link=Listado de víctimas y casos<datalist><option>link=Listado de víctimas y casos</option><option>css=li.dropdown.open &gt; ul.dropdown-menu &gt; li &gt; a</option><option>//a[contains(text(),'Listado de víctimas y casos')]</option><option>//a[contains(@href, '/sivel2/victimas')]</option><option>//li[2]/ul/li/a</option></datalist></td><td>101,17</td>
@@ -160,6 +162,198 @@
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[7]/input</option></datalist></td><td>36,19</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Víctimas y Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-victimas-muerto-DH-3</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>css=b</option><option>//div[@id='filtro_buspconsolidado_1_chosen']/a/div/b</option><option>//b</option><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_1<datalist><option>id=filtro_buspconsolidado_1</option><option>name=filtro[buspconsolidado_1]</option><option>css=#filtro_buspconsolidado_1</option><option>//select[@id='filtro_buspconsolidado_1']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/div/select</option><option>//select</option></datalist></td><td>-599,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_1<datalist><option>id=filtro_buspconsolidado_1</option><option>name=filtro[buspconsolidado_1]</option><option>css=#filtro_buspconsolidado_1</option><option>//select[@id='filtro_buspconsolidado_1']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/div/select</option><option>//select</option></datalist></td><td>label=Si</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>34,23</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_1<datalist><option>id=filtro_buspconsolidado_1</option><option>name=filtro[buspconsolidado_1]</option><option>css=#filtro_buspconsolidado_1</option><option>//select[@id='filtro_buspconsolidado_1']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/div/select</option><option>//select</option></datalist></td><td>-548,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_1<datalist><option>id=filtro_buspconsolidado_1</option><option>name=filtro[buspconsolidado_1]</option><option>css=#filtro_buspconsolidado_1</option><option>//select[@id='filtro_buspconsolidado_1']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/div/select</option><option>//select</option></datalist></td><td>label=No</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>47,15</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_1<datalist><option>id=filtro_buspconsolidado_1</option><option>name=filtro[buspconsolidado_1]</option><option>css=#filtro_buspconsolidado_1</option><option>//select[@id='filtro_buspconsolidado_1']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/div/select</option><option>//select</option></datalist></td><td>-599,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_1<datalist><option>id=filtro_buspconsolidado_1</option><option>name=filtro[buspconsolidado_1]</option><option>css=#filtro_buspconsolidado_1</option><option>//select[@id='filtro_buspconsolidado_1']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/div/select</option><option>//select</option></datalist></td><td>label=Todos</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>34,16</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Víctimas y Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-victimas-muerto-DIHC-0</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_2<datalist><option>id=filtro_buspconsolidado_2</option><option>name=filtro[buspconsolidado_2]</option><option>css=#filtro_buspconsolidado_2</option><option>//select[@id='filtro_buspconsolidado_2']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>-698,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_2<datalist><option>id=filtro_buspconsolidado_2</option><option>name=filtro[buspconsolidado_2]</option><option>css=#filtro_buspconsolidado_2</option><option>//select[@id='filtro_buspconsolidado_2']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>label=Si</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>22,24</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_2<datalist><option>id=filtro_buspconsolidado_2</option><option>name=filtro[buspconsolidado_2]</option><option>css=#filtro_buspconsolidado_2</option><option>//select[@id='filtro_buspconsolidado_2']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>-645,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_2<datalist><option>id=filtro_buspconsolidado_2</option><option>name=filtro[buspconsolidado_2]</option><option>css=#filtro_buspconsolidado_2</option><option>//select[@id='filtro_buspconsolidado_2']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>label=No</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>41,25</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_2<datalist><option>id=filtro_buspconsolidado_2</option><option>name=filtro[buspconsolidado_2]</option><option>css=#filtro_buspconsolidado_2</option><option>//select[@id='filtro_buspconsolidado_2']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>-698,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_2<datalist><option>id=filtro_buspconsolidado_2</option><option>name=filtro[buspconsolidado_2]</option><option>css=#filtro_buspconsolidado_2</option><option>//select[@id='filtro_buspconsolidado_2']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[6]/div/select</option><option>//td[6]/div/select</option></datalist></td><td>label=Todos</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>27,12</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Víctimas y Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-victimas-muerto-VPS-0</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_3<datalist><option>id=filtro_buspconsolidado_3</option><option>name=filtro[buspconsolidado_3]</option><option>css=#filtro_buspconsolidado_3</option><option>//select[@id='filtro_buspconsolidado_3']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/select</option><option>//td[7]/div/select</option></datalist></td><td>-797,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_3<datalist><option>id=filtro_buspconsolidado_3</option><option>name=filtro[buspconsolidado_3]</option><option>css=#filtro_buspconsolidado_3</option><option>//select[@id='filtro_buspconsolidado_3']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/select</option><option>//td[7]/div/select</option></datalist></td><td>label=Si</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>7,22</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_3<datalist><option>id=filtro_buspconsolidado_3</option><option>name=filtro[buspconsolidado_3]</option><option>css=#filtro_buspconsolidado_3</option><option>//select[@id='filtro_buspconsolidado_3']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/select</option><option>//td[7]/div/select</option></datalist></td><td>-744,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_3<datalist><option>id=filtro_buspconsolidado_3</option><option>name=filtro[buspconsolidado_3]</option><option>css=#filtro_buspconsolidado_3</option><option>//select[@id='filtro_buspconsolidado_3']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/select</option><option>//td[7]/div/select</option></datalist></td><td>label=No</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>43,19</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_3<datalist><option>id=filtro_buspconsolidado_3</option><option>name=filtro[buspconsolidado_3]</option><option>css=#filtro_buspconsolidado_3</option><option>//select[@id='filtro_buspconsolidado_3']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/select</option><option>//td[7]/div/select</option></datalist></td><td>-797,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_3<datalist><option>id=filtro_buspconsolidado_3</option><option>name=filtro[buspconsolidado_3]</option><option>css=#filtro_buspconsolidado_3</option><option>//select[@id='filtro_buspconsolidado_3']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/select</option><option>//td[7]/div/select</option></datalist></td><td>label=Todos</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>24,3</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Víctimas y Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-victimas-desaparicion-DH-0</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_4<datalist><option>id=filtro_buspconsolidado_4</option><option>name=filtro[buspconsolidado_4]</option><option>css=#filtro_buspconsolidado_4</option><option>//select[@id='filtro_buspconsolidado_4']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[8]/div/select</option><option>//td[8]/div/select</option></datalist></td><td>-896,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_4<datalist><option>id=filtro_buspconsolidado_4</option><option>name=filtro[buspconsolidado_4]</option><option>css=#filtro_buspconsolidado_4</option><option>//select[@id='filtro_buspconsolidado_4']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[8]/div/select</option><option>//td[8]/div/select</option></datalist></td><td>label=Si</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>12,17</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>css=html</option><option>//html</option><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_4<datalist><option>id=filtro_buspconsolidado_4</option><option>name=filtro[buspconsolidado_4]</option><option>css=#filtro_buspconsolidado_4</option><option>//select[@id='filtro_buspconsolidado_4']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[8]/div/select</option><option>//td[8]/div/select</option></datalist></td><td>-843,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_4<datalist><option>id=filtro_buspconsolidado_4</option><option>name=filtro[buspconsolidado_4]</option><option>css=#filtro_buspconsolidado_4</option><option>//select[@id='filtro_buspconsolidado_4']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[8]/div/select</option><option>//td[8]/div/select</option></datalist></td><td>label=No</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>34,12</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_4<datalist><option>id=filtro_buspconsolidado_4</option><option>name=filtro[buspconsolidado_4]</option><option>css=#filtro_buspconsolidado_4</option><option>//select[@id='filtro_buspconsolidado_4']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[8]/div/select</option><option>//td[8]/div/select</option></datalist></td><td>label=Todos</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_4<datalist><option>id=filtro_buspconsolidado_4</option><option>name=filtro[buspconsolidado_4]</option><option>css=#filtro_buspconsolidado_4</option><option>//select[@id='filtro_buspconsolidado_4']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[8]/div/select</option><option>//td[8]/div/select</option></datalist></td><td>-896,-454</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>60,27</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Víctimas y Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-victimas-tortura DIHC-0</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>id=filtro_buspconsolidado_6</option><option>name=filtro[buspconsolidado_6]</option><option>css=#filtro_buspconsolidado_6</option><option>//select[@id='filtro_buspconsolidado_6']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[10]/div/select</option><option>//td[10]/div/select</option><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_7<datalist><option>id=filtro_buspconsolidado_7</option><option>name=filtro[buspconsolidado_7]</option><option>css=#filtro_buspconsolidado_7</option><option>//select[@id='filtro_buspconsolidado_7']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/div/select</option><option>//td[11]/div/select</option></datalist></td><td>-769,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_7<datalist><option>id=filtro_buspconsolidado_7</option><option>name=filtro[buspconsolidado_7]</option><option>css=#filtro_buspconsolidado_7</option><option>//select[@id='filtro_buspconsolidado_7']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/div/select</option><option>//td[11]/div/select</option></datalist></td><td>label=Si</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>40,33</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_7<datalist><option>id=filtro_buspconsolidado_7</option><option>name=filtro[buspconsolidado_7]</option><option>css=#filtro_buspconsolidado_7</option><option>//select[@id='filtro_buspconsolidado_7']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/div/select</option><option>//td[11]/div/select</option></datalist></td><td>-323,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_7<datalist><option>id=filtro_buspconsolidado_7</option><option>name=filtro[buspconsolidado_7]</option><option>css=#filtro_buspconsolidado_7</option><option>//select[@id='filtro_buspconsolidado_7']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/div/select</option><option>//td[11]/div/select</option></datalist></td><td>label=No</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>23,27</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_7<datalist><option>id=filtro_buspconsolidado_7</option><option>name=filtro[buspconsolidado_7]</option><option>css=#filtro_buspconsolidado_7</option><option>//select[@id='filtro_buspconsolidado_7']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/div/select</option><option>//td[11]/div/select</option></datalist></td><td>-158,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_7<datalist><option>id=filtro_buspconsolidado_7</option><option>name=filtro[buspconsolidado_7]</option><option>css=#filtro_buspconsolidado_7</option><option>//select[@id='filtro_buspconsolidado_7']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/div/select</option><option>//td[11]/div/select</option></datalist></td><td>label=Todos</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>42,17</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Víctimas y Casos</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-victimas-tortura-VPS-0</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_8<datalist><option>id=filtro_buspconsolidado_8</option><option>name=filtro[buspconsolidado_8]</option><option>css=#filtro_buspconsolidado_8</option><option>//select[@id='filtro_buspconsolidado_8']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[12]/div/select</option><option>//td[12]/div/select</option></datalist></td><td>-461,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_8<datalist><option>id=filtro_buspconsolidado_8</option><option>name=filtro[buspconsolidado_8]</option><option>css=#filtro_buspconsolidado_8</option><option>//select[@id='filtro_buspconsolidado_8']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[12]/div/select</option><option>//td[12]/div/select</option></datalist></td><td>label=Si</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>37,16</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_8<datalist><option>id=filtro_buspconsolidado_8</option><option>name=filtro[buspconsolidado_8]</option><option>css=#filtro_buspconsolidado_8</option><option>//select[@id='filtro_buspconsolidado_8']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[12]/div/select</option><option>//td[12]/div/select</option></datalist></td><td>-768,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_8<datalist><option>id=filtro_buspconsolidado_8</option><option>name=filtro[buspconsolidado_8]</option><option>css=#filtro_buspconsolidado_8</option><option>//select[@id='filtro_buspconsolidado_8']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[12]/div/select</option><option>//td[12]/div/select</option></datalist></td><td>label=No</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>34,21</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_buspconsolidado_8<datalist><option>id=filtro_buspconsolidado_8</option><option>name=filtro[buspconsolidado_8]</option><option>css=#filtro_buspconsolidado_8</option><option>//select[@id='filtro_buspconsolidado_8']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[12]/div/select</option><option>//td[12]/div/select</option></datalist></td><td>-643,-454</td>
+</tr>
+<tr><td>select</td><td>id=filtro_buspconsolidado_8<datalist><option>id=filtro_buspconsolidado_8</option><option>name=filtro[buspconsolidado_8]</option><option>css=#filtro_buspconsolidado_8</option><option>//select[@id='filtro_buspconsolidado_8']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[12]/div/select</option><option>//td[12]/div/select</option></datalist></td><td>label=Todos</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[42]/input</option><option>//td[42]/input</option></datalist></td><td>40,22</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Víctimas y Casos</td>
 </tr>
 </tbody></table>
 </body>
