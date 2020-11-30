@@ -11,8 +11,8 @@ class Ability  < Apo214::Ability
           ['Sivel2Gen', 'actividadoficio'],
           ['Sivel2Gen', 'escolaridad'],
           ['Sivel2Gen', 'estadocivil'],
-          ['Sivel2Gen', 'maternidad'] 
-        ]
+          ['Sivel2Gen', 'maternidad']
+        ] + Apo214::Ability::BASICAS_PROPIAS
     return r
   end
 
