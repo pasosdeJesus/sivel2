@@ -92,6 +92,20 @@ Además si va a desplegar en producción:
 ```sh
   CXX=c++ yarn install
   ```
+* Cree un enlace a public/packs desde la carpeta public apropiada para el punto de montaje. 
+  Por ejemplo si está empleando el punto de montaje por omisión `/sivel2/` sería:
+```sh
+  mkdir -p public/sivel2
+  cd public/sivel2
+  ln -s ../packs .
+  cd ../..
+  ```
+* Para verificar que se están generando bien los recursos ejecute:
+```sh
+  rm -rf public/sivel2/assets/* public/sivel2/packs/*
+  bin/rails assets:precompile --trace
+```
+  y después verifique que se están poblando bien los directorios `public/sivel2/assets` y `public/sivel2/packs`
 * Lance la aplicación en modo de desarrollo. En el siguiente ejemplo el 
   parametro `-p` indica el puerto por el cual escuchará la aplicación 
   y el parámetro `-b` indica la dirección IP como **0.0.0.0**
@@ -100,7 +114,7 @@ Además si va a desplegar en producción:
   bin/rails s -p 2300 -b 0.0.0.0
 ```
 * Examine con un navegador que tenga habilitadas las galletas (cookies) en el 
-  puerto 2300: `http://127.0.0.1:2300`.  (Por eso si usa el 
+  puerto 2300: `http://127.0.0.1:2300/sivel2`.  (Por eso si usa el 
   navegador `w3m` añada la opción `-cookie`) 
 * Cuando requiera detener basta que de Control-C o que busque el
   proceso con ruby que corre en el puerto 3000 y lo elimine con `kill`:
