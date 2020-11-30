@@ -12,6 +12,12 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 <https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing>
 
+Si desea reportar un problema con sivel2 o conocer del desarrollo de esta aplicación por favor revise:
+
+Reportar problemas: <https://github.com/pasosdeJesus/sivel2_gen/issues>
+
+Tableros de seguimiento al desarrollo: <https://github.com/pasosdeJesus/sivel2_gen/projects>
+
 ## Documentación para administradores que despliegan y mantienen en operación la aplicación
 
 ### Requisitos 📋
