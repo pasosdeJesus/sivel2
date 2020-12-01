@@ -421,6 +421,40 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: apo214_disposicioncadaveres; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_disposicioncadaveres (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_disposicioncadaveres_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_disposicioncadaveres_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_disposicioncadaveres_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_disposicioncadaveres_id_seq OWNED BY public.apo214_disposicioncadaveres.id;
+
+
+--
 -- Name: apo214_lugarpreliminar; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -440,7 +474,17 @@ CREATE TABLE public.apo214_lugarpreliminar (
     tipotestigo_id integer,
     otrotipotestigo character varying,
     hechos text,
-    ubicaespecifica text
+    ubicaespecifica text,
+    disposicioncadaveres_id integer,
+    otradisposicioncadaveres character varying(1000),
+    tipoentierro_id integer,
+    min_depositados integer,
+    max_depositados integer,
+    fechadis date,
+    horadis time without time zone,
+    insitu boolean,
+    otrolubicacionpre_id integer,
+    detallesasesinato character varying(5000)
 );
 
 
@@ -461,6 +505,40 @@ CREATE SEQUENCE public.apo214_lugarpreliminar_id_seq
 --
 
 ALTER SEQUENCE public.apo214_lugarpreliminar_id_seq OWNED BY public.apo214_lugarpreliminar.id;
+
+
+--
+-- Name: apo214_tipoentierro; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_tipoentierro (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_tipoentierro_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_tipoentierro_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_tipoentierro_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_tipoentierro_id_seq OWNED BY public.apo214_tipoentierro.id;
 
 
 --
@@ -3148,6 +3226,8 @@ CREATE TABLE public.usuario (
     updated_at timestamp without time zone,
     oficina_id integer,
     tema_id integer,
+    observadorffechaini date,
+    observadorffechafin date,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -3238,6 +3318,16 @@ CREATE SEQUENCE public.sivel2_gen_maternidad_id_seq
 --
 
 ALTER SEQUENCE public.sivel2_gen_maternidad_id_seq OWNED BY public.sivel2_gen_maternidad.id;
+
+
+--
+-- Name: sivel2_gen_observador_filtrodepartamento; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_observador_filtrodepartamento (
+    usuario_id integer,
+    departamento_id integer
+);
 
 
 --
@@ -3607,10 +3697,24 @@ CREATE MATERIALIZED VIEW public.vvictimasoundexesp AS
 
 
 --
+-- Name: apo214_disposicioncadaveres id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_disposicioncadaveres ALTER COLUMN id SET DEFAULT nextval('public.apo214_disposicioncadaveres_id_seq'::regclass);
+
+
+--
 -- Name: apo214_lugarpreliminar id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.apo214_lugarpreliminar ALTER COLUMN id SET DEFAULT nextval('public.apo214_lugarpreliminar_id_seq'::regclass);
+
+
+--
+-- Name: apo214_tipoentierro id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_tipoentierro ALTER COLUMN id SET DEFAULT nextval('public.apo214_tipoentierro_id_seq'::regclass);
 
 
 --
@@ -3889,11 +3993,27 @@ ALTER TABLE ONLY public.sivel2_gen_acto
 
 
 --
+-- Name: apo214_disposicioncadaveres apo214_disposicioncadaveres_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_disposicioncadaveres
+    ADD CONSTRAINT apo214_disposicioncadaveres_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: apo214_lugarpreliminar apo214_lugarpreliminar_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.apo214_lugarpreliminar
     ADD CONSTRAINT apo214_lugarpreliminar_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_tipoentierro apo214_tipoentierro_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_tipoentierro
+    ADD CONSTRAINT apo214_tipoentierro_pkey PRIMARY KEY (id);
 
 
 --
@@ -4982,6 +5102,20 @@ CREATE INDEX sip_nombre_ubicacionpre_b ON public.sip_ubicacionpre USING gin (to_
 
 
 --
+-- Name: sivel2_gen_obs_fildep_d_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX sivel2_gen_obs_fildep_d_idx ON public.sivel2_gen_observador_filtrodepartamento USING btree (departamento_id);
+
+
+--
+-- Name: sivel2_gen_obs_fildep_u_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX sivel2_gen_obs_fildep_u_idx ON public.sivel2_gen_observador_filtrodepartamento USING btree (usuario_id);
+
+
+--
 -- Name: usuario_nusuario; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -5394,14 +5528,6 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 ALTER TABLE ONLY public.sivel2_gen_categoria
     ADD CONSTRAINT categoria_contada_en_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
-
-
---
--- Name: sivel2_gen_categoria categoria_contadaen_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_categoria
-    ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
 
 
 --
@@ -5829,6 +5955,14 @@ ALTER TABLE ONLY public.usuario
 
 
 --
+-- Name: apo214_lugarpreliminar fk_rails_d2074c8fa3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_d2074c8fa3 FOREIGN KEY (otrolubicacionpre_id) REFERENCES public.sip_ubicacionpre(id);
+
+
+--
 -- Name: sivel2_gen_sectorsocialsec_victima fk_rails_e04ef7c3e5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5861,6 +5995,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 
 --
+-- Name: apo214_lugarpreliminar fk_rails_ee76bec01f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_ee76bec01f FOREIGN KEY (disposicioncadaveres_id) REFERENCES public.apo214_disposicioncadaveres(id);
+
+
+--
 -- Name: sip_actorsocial_sectoractor fk_rails_f032bb21a6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5882,6 +6024,14 @@ ALTER TABLE ONLY public.sivel2_gen_combatiente
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_combatiente
     ADD CONSTRAINT fk_rails_f305297325 FOREIGN KEY (id_combatiente) REFERENCES public.sivel2_gen_combatiente(id);
+
+
+--
+-- Name: apo214_lugarpreliminar fk_rails_f52877c43f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_f52877c43f FOREIGN KEY (tipoentierro_id) REFERENCES public.apo214_tipoentierro(id);
 
 
 --
@@ -5954,14 +6104,6 @@ ALTER TABLE ONLY public.sip_persona
 
 ALTER TABLE ONLY public.sip_persona
     ADD CONSTRAINT persona_tdocumento_id_fkey FOREIGN KEY (tdocumento_id) REFERENCES public.sip_tdocumento(id);
-
-
---
--- Name: sivel2_gen_presponsable presponsable_papa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_presponsable
-    ADD CONSTRAINT presponsable_papa_fkey FOREIGN KEY (papa) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -6130,6 +6272,22 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 ALTER TABLE ONLY public.sivel2_gen_filiacion_victimacolectiva
     ADD CONSTRAINT sivel2_gen_filiacion_victimacolectiva_victimacolectiva_id_fkey FOREIGN KEY (victimacolectiva_id) REFERENCES public.sivel2_gen_victimacolectiva(id);
+
+
+--
+-- Name: sivel2_gen_observador_filtrodepartamento sivel2_gen_observador_filtrodepartamento_d_idx; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_observador_filtrodepartamento
+    ADD CONSTRAINT sivel2_gen_observador_filtrodepartamento_d_idx FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
+
+
+--
+-- Name: sivel2_gen_observador_filtrodepartamento sivel2_gen_observador_filtrodepartamento_u_idx; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_observador_filtrodepartamento
+    ADD CONSTRAINT sivel2_gen_observador_filtrodepartamento_u_idx FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
 
 
 --
@@ -6549,6 +6707,18 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201108203930'),
 ('20201110170225'),
 ('20201110170728'),
-('20201119125643');
+('20201119125643'),
+('20201127233621'),
+('20201128003003'),
+('20201129144340'),
+('20201129145302'),
+('20201129152636'),
+('20201129153038'),
+('20201129153603'),
+('20201129161641'),
+('20201129175515'),
+('20201129191238'),
+('20201130020715'),
+('20201201015501');
 
 
