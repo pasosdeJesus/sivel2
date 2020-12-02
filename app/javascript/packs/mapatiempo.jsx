@@ -6,6 +6,6 @@ import { render } from 'react-dom'
 
 import MapaTiempo from '@pasosdejesus/mapa_tiempo_yi_liu'
 
-render(<MapaTiempo/>, document.getElementById('root'))
+render(<MapaTiempo casos_url='https://base.nocheyniebla.org/casos/cuenta' usar_proxy_cors='false' />, document.getElementById('root'))
 
 
