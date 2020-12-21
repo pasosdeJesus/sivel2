@@ -38,7 +38,11 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
+<<<<<<< HEAD
 gem 'rails', '~> 6.1'
+=======
+gem 'rails', '~> 6.0.3.5'
+>>>>>>> e7be302... Actualiza a rails 6.1
 
 gem 'rails-i18n'
 
@@ -86,7 +90,6 @@ gem 'apo214', # Motor para manejo de casos
   #path: '../apo214'
 
 group  :development, :test do
- 
   #gem 'byebug' # Depurar
 
   gem 'colorize' # Colores en terminal
@@ -96,17 +99,17 @@ end
 
 
 group :development do
-
   gem 'erd'
 
   gem 'puma'
 
   gem 'rails-erd'
 
+  gem 'puma'
+
   gem 'spring' # Acelera ejecutando en fondo. 
 
   gem 'web-console'
-
 end
 
 
