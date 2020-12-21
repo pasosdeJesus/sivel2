@@ -98,7 +98,6 @@ group  :development, :test do
   gem 'colorize' # Colores en terminal
 
   gem 'dotenv-rails'
-
 end
 
 
@@ -109,6 +108,8 @@ group :development do
   gem 'puma'
 
   gem 'rails-erd'
+
+  gem 'puma'
 
   gem 'spring' # Acelera ejecutando en fondo. 
 
