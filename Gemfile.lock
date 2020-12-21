@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/pasosdeJesus/apo214.git
+  revision: b913ef6303ecd98070f93df350e2c1d155f4c188
+  branch: main
+  specs:
+    apo214 (0.1.0)
+      rails
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
   revision: 95f0349813ea8365402af11fa2c237f1eca67f60
   branch: main
@@ -358,6 +367,7 @@ PLATFORMS
   x86_64-openbsd
 
 DEPENDENCIES
+  apo214!
   bcrypt
   bootsnap (>= 1.1.0)
   cancancan
@@ -373,7 +383,6 @@ DEPENDENCIES
   jbuilder
   libxml-ruby
   mr519_gen!
-  nokogiri (>= 1.11.1)
   odf-report
   paperclip
   pg
@@ -381,7 +390,7 @@ DEPENDENCIES
   prawn-table
   prawnto_2
   puma
-  rails (~> 6.0.3.4)
+  rails (~> 6.0.3.5)
   rails-erd
   rails-i18n
   react-rails
