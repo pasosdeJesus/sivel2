@@ -92,7 +92,6 @@ gem 'apo214', # Motor para manejo de casos
   #path: '../apo214'
 
 group  :development, :test do
- 
   #gem 'byebug' # Depurar
 
   gem 'colorize' # Colores en terminal
@@ -102,17 +101,17 @@ end
 
 
 group :development do
-
   gem 'erd'
 
   gem 'puma'
 
   gem 'rails-erd'
 
+  gem 'puma'
+
   gem 'spring' # Acelera ejecutando en fondo. 
 
   gem 'web-console'
-
 end
 
 
