@@ -421,6 +421,40 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: apo214_cobertura; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_cobertura (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_cobertura_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_cobertura_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_cobertura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_cobertura_id_seq OWNED BY public.apo214_cobertura.id;
+
+
+--
 -- Name: apo214_disposicioncadaveres; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -455,6 +489,132 @@ ALTER SEQUENCE public.apo214_disposicioncadaveres_id_seq OWNED BY public.apo214_
 
 
 --
+-- Name: apo214_elementopaisaje; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_elementopaisaje (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_elementopaisaje_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_elementopaisaje_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_elementopaisaje_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_elementopaisaje_id_seq OWNED BY public.apo214_elementopaisaje.id;
+
+
+--
+-- Name: apo214_listadepositados; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listadepositados (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    persona_id integer NOT NULL
+);
+
+
+--
+-- Name: apo214_listadepositados_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listadepositados_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listadepositados_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listadepositados_id_seq OWNED BY public.apo214_listadepositados.id;
+
+
+--
+-- Name: apo214_listapersofuentes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listapersofuentes (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    persona_id integer NOT NULL,
+    telefono character varying(1000),
+    observacion character varying(5000)
+);
+
+
+--
+-- Name: apo214_listapersofuentes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listapersofuentes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listapersofuentes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listapersofuentes_id_seq OWNED BY public.apo214_listapersofuentes.id;
+
+
+--
+-- Name: apo214_listasuelo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listasuelo (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    suelo_id integer NOT NULL
+);
+
+
+--
+-- Name: apo214_listasuelo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listasuelo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listasuelo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listasuelo_id_seq OWNED BY public.apo214_listasuelo.id;
+
+
+--
 -- Name: apo214_lugarpreliminar; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -484,7 +644,17 @@ CREATE TABLE public.apo214_lugarpreliminar (
     horadis time without time zone,
     insitu boolean,
     otrolubicacionpre_id integer,
-    detallesasesinato character varying(5000)
+    detallesasesinato character varying(5000),
+    nombrepropiedad character varying(5000),
+    detallesdisposicion character varying(5000),
+    nomcomoseconoce character varying(1000),
+    elementopaisaje_id integer,
+    cobertura_id integer,
+    interatroprevias character varying(5000),
+    interatroactuales character varying(5000),
+    usoterprevios character varying(5000),
+    usoteractuales character varying(5000),
+    accesolugar character varying(5000)
 );
 
 
@@ -505,6 +675,73 @@ CREATE SEQUENCE public.apo214_lugarpreliminar_id_seq
 --
 
 ALTER SEQUENCE public.apo214_lugarpreliminar_id_seq OWNED BY public.apo214_lugarpreliminar.id;
+
+
+--
+-- Name: apo214_propietario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_propietario (
+    id bigint NOT NULL,
+    id_lugarpreliminar integer,
+    id_persona integer,
+    telefono character varying,
+    observaciones character varying(5000)
+);
+
+
+--
+-- Name: apo214_propietario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_propietario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_propietario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_propietario_id_seq OWNED BY public.apo214_propietario.id;
+
+
+--
+-- Name: apo214_suelo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_suelo (
+    id bigint NOT NULL,
+    profinicial character varying(100),
+    proffinal character varying(100),
+    color character varying(100),
+    textura character varying(100),
+    humedad character varying(100),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_suelo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_suelo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_suelo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_suelo_id_seq OWNED BY public.apo214_suelo.id;
 
 
 --
@@ -3697,6 +3934,13 @@ CREATE MATERIALIZED VIEW public.vvictimasoundexesp AS
 
 
 --
+-- Name: apo214_cobertura id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_cobertura ALTER COLUMN id SET DEFAULT nextval('public.apo214_cobertura_id_seq'::regclass);
+
+
+--
 -- Name: apo214_disposicioncadaveres id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3704,10 +3948,52 @@ ALTER TABLE ONLY public.apo214_disposicioncadaveres ALTER COLUMN id SET DEFAULT 
 
 
 --
+-- Name: apo214_elementopaisaje id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_elementopaisaje ALTER COLUMN id SET DEFAULT nextval('public.apo214_elementopaisaje_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listadepositados id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listadepositados ALTER COLUMN id SET DEFAULT nextval('public.apo214_listadepositados_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listapersofuentes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listapersofuentes ALTER COLUMN id SET DEFAULT nextval('public.apo214_listapersofuentes_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listasuelo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listasuelo ALTER COLUMN id SET DEFAULT nextval('public.apo214_listasuelo_id_seq'::regclass);
+
+
+--
 -- Name: apo214_lugarpreliminar id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.apo214_lugarpreliminar ALTER COLUMN id SET DEFAULT nextval('public.apo214_lugarpreliminar_id_seq'::regclass);
+
+
+--
+-- Name: apo214_propietario id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_propietario ALTER COLUMN id SET DEFAULT nextval('public.apo214_propietario_id_seq'::regclass);
+
+
+--
+-- Name: apo214_suelo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_suelo ALTER COLUMN id SET DEFAULT nextval('public.apo214_suelo_id_seq'::regclass);
 
 
 --
@@ -3993,6 +4279,14 @@ ALTER TABLE ONLY public.sivel2_gen_acto
 
 
 --
+-- Name: apo214_cobertura apo214_cobertura_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_cobertura
+    ADD CONSTRAINT apo214_cobertura_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: apo214_disposicioncadaveres apo214_disposicioncadaveres_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4001,11 +4295,59 @@ ALTER TABLE ONLY public.apo214_disposicioncadaveres
 
 
 --
+-- Name: apo214_elementopaisaje apo214_elementopaisaje_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_elementopaisaje
+    ADD CONSTRAINT apo214_elementopaisaje_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_listadepositados apo214_listadepositados_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listadepositados
+    ADD CONSTRAINT apo214_listadepositados_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_listapersofuentes apo214_listapersofuentes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listapersofuentes
+    ADD CONSTRAINT apo214_listapersofuentes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_listasuelo apo214_listasuelo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listasuelo
+    ADD CONSTRAINT apo214_listasuelo_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: apo214_lugarpreliminar apo214_lugarpreliminar_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.apo214_lugarpreliminar
     ADD CONSTRAINT apo214_lugarpreliminar_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_propietario apo214_propietario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_propietario
+    ADD CONSTRAINT apo214_propietario_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_suelo apo214_suelo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_suelo
+    ADD CONSTRAINT apo214_suelo_pkey PRIMARY KEY (id);
 
 
 --
@@ -5563,11 +5905,35 @@ ALTER TABLE ONLY public.sivel2_gen_caso_etiqueta
 
 
 --
+-- Name: apo214_propietario fk_rails_0425bff6ee; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_propietario
+    ADD CONSTRAINT fk_rails_0425bff6ee FOREIGN KEY (id_persona) REFERENCES public.sip_persona(id);
+
+
+--
+-- Name: apo214_propietario fk_rails_0629f9fb2c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_propietario
+    ADD CONSTRAINT fk_rails_0629f9fb2c FOREIGN KEY (id_lugarpreliminar) REFERENCES public.apo214_lugarpreliminar(id);
+
+
+--
 -- Name: sip_municipio fk_rails_089870a38d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sip_municipio
     ADD CONSTRAINT fk_rails_089870a38d FOREIGN KEY (id_departamento) REFERENCES public.sip_departamento(id);
+
+
+--
+-- Name: apo214_listadepositados fk_rails_094cd32464; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listadepositados
+    ADD CONSTRAINT fk_rails_094cd32464 FOREIGN KEY (lugarpreliminar_id) REFERENCES public.apo214_lugarpreliminar(id);
 
 
 --
@@ -5616,6 +5982,14 @@ ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
 
 ALTER TABLE ONLY public.heb412_gen_campohc
     ADD CONSTRAINT fk_rails_1e5f26c999 FOREIGN KEY (doc_id) REFERENCES public.heb412_gen_doc(id);
+
+
+--
+-- Name: apo214_listadepositados fk_rails_2449cb19a2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listadepositados
+    ADD CONSTRAINT fk_rails_2449cb19a2 FOREIGN KEY (persona_id) REFERENCES public.sip_persona(id);
 
 
 --
@@ -5672,6 +6046,22 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 ALTER TABLE ONLY public.sivel2_gen_caso_respuestafor
     ADD CONSTRAINT fk_rails_3fd971983e FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
+
+
+--
+-- Name: apo214_lugarpreliminar fk_rails_42ec3f4e71; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_42ec3f4e71 FOREIGN KEY (elementopaisaje_id) REFERENCES public.apo214_elementopaisaje(id);
+
+
+--
+-- Name: apo214_listapersofuentes fk_rails_44b1ed6894; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listapersofuentes
+    ADD CONSTRAINT fk_rails_44b1ed6894 FOREIGN KEY (lugarpreliminar_id) REFERENCES public.apo214_lugarpreliminar(id);
 
 
 --
@@ -5819,6 +6209,14 @@ ALTER TABLE ONLY public.mr519_gen_valorcampo
 
 
 --
+-- Name: apo214_listasuelo fk_rails_824ea49a05; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listasuelo
+    ADD CONSTRAINT fk_rails_824ea49a05 FOREIGN KEY (lugarpreliminar_id) REFERENCES public.apo214_lugarpreliminar(id);
+
+
+--
 -- Name: mr519_gen_encuestapersona fk_rails_83755e20b9; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5899,6 +6297,22 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 
 --
+-- Name: apo214_listasuelo fk_rails_a510cd86fa; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listasuelo
+    ADD CONSTRAINT fk_rails_a510cd86fa FOREIGN KEY (suelo_id) REFERENCES public.apo214_suelo(id);
+
+
+--
+-- Name: apo214_listapersofuentes fk_rails_abe0965e8d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listapersofuentes
+    ADD CONSTRAINT fk_rails_abe0965e8d FOREIGN KEY (persona_id) REFERENCES public.sip_persona(id);
+
+
+--
 -- Name: sivel2_gen_combatiente fk_rails_af43e915a6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5960,6 +6374,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT fk_rails_cc636858ad FOREIGN KEY (tema_id) REFERENCES public.sip_tema(id);
+
+
+--
+-- Name: apo214_lugarpreliminar fk_rails_cd4febda02; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar
+    ADD CONSTRAINT fk_rails_cd4febda02 FOREIGN KEY (cobertura_id) REFERENCES public.apo214_cobertura(id);
 
 
 --
@@ -6735,6 +7157,24 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201129175515'),
 ('20201129191238'),
 ('20201130020715'),
-('20201201015501');
+('20201201015501'),
+('20201201023145'),
+('20201203052009'),
+('20201209230317'),
+('20201209232557'),
+('20201214215209'),
+('20201215152027'),
+('20201215161607'),
+('20201215163716'),
+('20201215164448'),
+('20201215181622'),
+('20201215182935'),
+('20201215183649'),
+('20201215184808'),
+('20201215190623'),
+('20201215191833'),
+('20201215192951'),
+('20201219210527'),
+('20201220130138');
 
 
