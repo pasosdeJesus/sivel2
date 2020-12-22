@@ -37,6 +37,8 @@ gem 'prawn-table'
 
 gem 'rails', '~> 6.1'
 
+gem 'rails', '~> 6.1.0'
+
 gem 'rails-i18n'
 
 gem 'react-rails'
