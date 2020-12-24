@@ -42,8 +42,6 @@ gem 'rails', '~> 6.1'
 
 gem 'rails-i18n'
 
-gem 'react-rails'
-
 gem 'redcarpet' # Markdown
 
 gem 'rspreadsheet' # Genera ODS
