@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: c9d04a706eee1ebeecbfcf5827e69aaa8cb4314f
+  revision: bf3d1538042582b78cee61e3729e2f290366bbab
   branch: main
   specs:
     apo214 (0.1.0)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fdaa4bbe91655b79841ba78c2fb3e83ee3daedb9
+  revision: 5b209ae5a5c9e648eb8a507d30337e8cec8ced5b
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: f5c8add3a3a5c3e33617bae8fdf280adc69ce7f9
+  revision: 2806c701ca4b52199ad90f9a5fb6e8bd534017e0
   specs:
     mr519_gen (0.2.0)
       rails
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6fa794880f43a123a3d7fb766f7ad61ce429006b
+  revision: c825088f4d1be044e5b5bb5c30297fdef6a178ee
   specs:
     sip (2.0.b10)
       cancancan
@@ -45,9 +45,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 0c6ef20e12a68ec41f84585cfb603e6dfa41fd36
+  revision: 086b32f82652148937bcb98bf4c6f1578bb2bfcb
+  branch: v2.1
   specs:
-    sivel2_gen (2.0b13)
+    sivel2_gen (2.1a1)
       devise
       jquery-rails
       rails
@@ -124,16 +125,11 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     andand (1.3.3)
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
     builder (3.2.4)
-    byebug (11.1.3)
     camertron-eprun (1.1.1)
     cancancan (3.2.0)
     capybara (3.34.0)
@@ -161,7 +157,6 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     concurrent-ruby (1.1.7)
-    connection_pool (2.2.3)
     crass (1.0.6)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -171,7 +166,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
-    docile (1.3.3)
+    docile (1.3.4)
     erd (0.8.0)
       nokogiri
       ruby-graphviz
@@ -190,7 +185,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.5.0)
+    json (2.5.1)
     kgio (2.11.3)
     libxml-ruby (3.2.1)
     loofah (2.8.0)
@@ -277,12 +272,6 @@ GEM
       thor (~> 1.0)
     raindrops (0.19.1)
     rake (13.0.3)
-    react-rails (2.6.1)
-      babel-transpiler (>= 0.7.0)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     redcarpet (3.5.1)
     regexp_parser (1.8.2)
     responders (3.0.1)
@@ -334,7 +323,7 @@ GEM
       tzinfo
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicorn (5.7.0)
+    unicorn (5.8.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.9)
@@ -364,7 +353,6 @@ DEPENDENCIES
   apo214!
   bcrypt
   bootsnap (>= 1.1.0)
-  byebug
   cancancan
   capybara
   cocoon!
@@ -387,7 +375,6 @@ DEPENDENCIES
   rails (~> 6.1.0)
   rails-erd
   rails-i18n
-  react-rails
   redcarpet
   rspreadsheet
   rubyzip (>= 2.0)
