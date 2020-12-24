@@ -17,8 +17,17 @@
 
 console.log('Hola Mundo desde Webpacker')
 
-require('@rails/ujs').start()   // Javascript no intrusivo segun rails
-require('turbolinks').start()   // Acelera carga de paginas
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+// import * as ActiveStorage from "@rails/activestorage"
+// import "channels"
+
+Rails.start()
+//require('@rails/ujs').start()   // Javascript no intrusivo segun rails
+Turbolinks.start()
+//require('turbolinks').start()   // Acelera carga de paginas
+
+//ActiveStorage.start()
 
 var L = require('leaflet');
 var mc= require('leaflet.markercluster');
