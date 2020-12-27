@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5b209ae5a5c9e648eb8a507d30337e8cec8ced5b
+  revision: e4b1992c7cf1dd44bf2558afdc90d550d88afe29
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2806c701ca4b52199ad90f9a5fb6e8bd534017e0
+  revision: 473def9e234085d868ae867fee685cd9b383b8cf
   specs:
     mr519_gen (0.2.0)
       rails
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c825088f4d1be044e5b5bb5c30297fdef6a178ee
+  revision: a77f2e3b03edb45a9e3b46727c4ee131d41bdd44
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 4c28dffd0c40390583c61c816f08671f6e4fe08a
+  revision: d43970873cb95805168a2a736d55c656572e6489
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -313,7 +313,7 @@ GEM
       tzinfo
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicorn (5.7.0)
+    unicorn (5.8.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.9)
