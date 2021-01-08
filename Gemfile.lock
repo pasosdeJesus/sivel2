@@ -357,6 +357,7 @@ DEPENDENCIES
   jbuilder
   libxml-ruby
   mr519_gen!
+  nokogiri (>= 1.11.1)
   odf-report
   paperclip
   pg
