@@ -33,7 +33,6 @@ default: &default
     - .woff2
 
   extensions:
-    - .jsx
     - .mjs
     - .js
     - .sass
@@ -87,7 +86,7 @@ production:
   compile: false
 
   # Extract and emit a css file
-  extract_css: false
+  extract_css: true
 
   # Cache manifest.json for performance
   cache_manifest: true
