@@ -43,7 +43,7 @@ gem 'rack-cors'
 gem 'rails', '~> 6.1'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 6.0.3.4'
 
 gem 'rails-i18n'
 
