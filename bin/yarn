@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+<<<<<<< HEAD
 require 'pathname'
 
 APP_ROOT = File.expand_path('..', __dir__)
@@ -12,6 +13,13 @@ Dir.chdir(APP_ROOT) do
   if executable_path
     exec File.expand_path(Pathname.new(executable_path).join('yarn')), *ARGV
   else
+=======
+APP_ROOT = File.expand_path('..', __dir__)
+Dir.chdir(APP_ROOT) do
+  begin
+    exec "yarnpkg", *ARGV
+  rescue Errno::ENOENT
+>>>>>>> 427d2d8... Devuelve a rails 6.0 con suavidad
     $stderr.puts "Yarn executable was not detected in the system."
     $stderr.puts "Download Yarn at https://yarnpkg.com/en/docs/install"
     exit 1
