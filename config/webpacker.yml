@@ -15,6 +15,42 @@ default: &default
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
+<<<<<<< HEAD
+=======
+  # Extract and emit a css file
+  extract_css: false
+
+  static_assets_extensions:
+    - .jpg
+    - .jpeg
+    - .png
+    - .gif
+    - .tiff
+    - .ico
+    - .svg
+    - .eot
+    - .otf
+    - .ttf
+    - .woff
+    - .woff2
+
+  extensions:
+    - .jsx
+    - .mjs
+    - .js
+    - .sass
+    - .scss
+    - .css
+    - .module.sass
+    - .module.scss
+    - .module.css
+    - .png
+    - .svg
+    - .gif
+    - .jpeg
+    - .jpg
+
+>>>>>>> 51490a0 (babel)
 development:
   <<: *default
   compile: true
