@@ -31,6 +31,12 @@ module Sivel2
 
     config.x.sivel2_consulta_web_publica = false
 
+    config.x.sivel2_consweb_max = 2000
+
+    config.x.sivel2_consweb_epilogo = "<br>Si requiere más puede "\
+      "suscribirse a SIVeL Pro".html_safe
+
+
     config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
 
   end
