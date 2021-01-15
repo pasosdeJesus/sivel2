@@ -523,6 +523,37 @@ ALTER SEQUENCE public.apo214_elementopaisaje_id_seq OWNED BY public.apo214_eleme
 
 
 --
+-- Name: apo214_evaluacionriesgo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_evaluacionriesgo (
+    id bigint NOT NULL,
+    riesgo_id integer,
+    descripcion character varying(5000),
+    calificacion integer
+);
+
+
+--
+-- Name: apo214_evaluacionriesgo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_evaluacionriesgo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_evaluacionriesgo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_evaluacionriesgo_id_seq OWNED BY public.apo214_evaluacionriesgo.id;
+
+
+--
 -- Name: apo214_listadepositados; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -550,6 +581,36 @@ CREATE SEQUENCE public.apo214_listadepositados_id_seq
 --
 
 ALTER SEQUENCE public.apo214_listadepositados_id_seq OWNED BY public.apo214_listadepositados.id;
+
+
+--
+-- Name: apo214_listaevariesgo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listaevariesgo (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    evaluacionriesgo_id integer NOT NULL
+);
+
+
+--
+-- Name: apo214_listaevariesgo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listaevariesgo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listaevariesgo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listaevariesgo_id_seq OWNED BY public.apo214_listaevariesgo.id;
 
 
 --
@@ -707,6 +768,40 @@ CREATE SEQUENCE public.apo214_propietario_id_seq
 --
 
 ALTER SEQUENCE public.apo214_propietario_id_seq OWNED BY public.apo214_propietario.id;
+
+
+--
+-- Name: apo214_riesgo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_riesgo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_riesgo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_riesgo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_riesgo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_riesgo_id_seq OWNED BY public.apo214_riesgo.id;
 
 
 --
@@ -2881,7 +2976,7 @@ CREATE SEQUENCE public.sivel2_gen_caso_fotra_seq
 CREATE TABLE public.sivel2_gen_caso_fotra (
     id_caso integer NOT NULL,
     id_fotra integer,
-    anotacion character varying(200),
+    anotacion character varying(1024),
     fecha date NOT NULL,
     ubicacionfisica character varying(1024),
     tfuente character varying(25),
@@ -2923,7 +3018,7 @@ CREATE SEQUENCE public.sivel2_gen_caso_fuenteprensa_seq
 
 CREATE TABLE public.sivel2_gen_caso_fuenteprensa (
     fecha date NOT NULL,
-    ubicacion character varying(100),
+    ubicacion character varying(1024),
     clasificacion character varying(100),
     ubicacionfisica character varying(1024),
     fuenteprensa_id integer NOT NULL,
@@ -3955,10 +4050,24 @@ ALTER TABLE ONLY public.apo214_elementopaisaje ALTER COLUMN id SET DEFAULT nextv
 
 
 --
+-- Name: apo214_evaluacionriesgo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_evaluacionriesgo ALTER COLUMN id SET DEFAULT nextval('public.apo214_evaluacionriesgo_id_seq'::regclass);
+
+
+--
 -- Name: apo214_listadepositados id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.apo214_listadepositados ALTER COLUMN id SET DEFAULT nextval('public.apo214_listadepositados_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listaevariesgo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listaevariesgo ALTER COLUMN id SET DEFAULT nextval('public.apo214_listaevariesgo_id_seq'::regclass);
 
 
 --
@@ -3987,6 +4096,13 @@ ALTER TABLE ONLY public.apo214_lugarpreliminar ALTER COLUMN id SET DEFAULT nextv
 --
 
 ALTER TABLE ONLY public.apo214_propietario ALTER COLUMN id SET DEFAULT nextval('public.apo214_propietario_id_seq'::regclass);
+
+
+--
+-- Name: apo214_riesgo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_riesgo ALTER COLUMN id SET DEFAULT nextval('public.apo214_riesgo_id_seq'::regclass);
 
 
 --
@@ -4303,11 +4419,27 @@ ALTER TABLE ONLY public.apo214_elementopaisaje
 
 
 --
+-- Name: apo214_evaluacionriesgo apo214_evaluacionriesgo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_evaluacionriesgo
+    ADD CONSTRAINT apo214_evaluacionriesgo_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: apo214_listadepositados apo214_listadepositados_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.apo214_listadepositados
     ADD CONSTRAINT apo214_listadepositados_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_listaevariesgo apo214_listaevariesgo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listaevariesgo
+    ADD CONSTRAINT apo214_listaevariesgo_pkey PRIMARY KEY (id);
 
 
 --
@@ -4340,6 +4472,14 @@ ALTER TABLE ONLY public.apo214_lugarpreliminar
 
 ALTER TABLE ONLY public.apo214_propietario
     ADD CONSTRAINT apo214_propietario_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apo214_riesgo apo214_riesgo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_riesgo
+    ADD CONSTRAINT apo214_riesgo_pkey PRIMARY KEY (id);
 
 
 --
@@ -6033,6 +6173,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 
 --
+-- Name: apo214_listaevariesgo fk_rails_3ee6e4c376; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listaevariesgo
+    ADD CONSTRAINT fk_rails_3ee6e4c376 FOREIGN KEY (evaluacionriesgo_id) REFERENCES public.apo214_evaluacionriesgo(id);
+
+
+--
 -- Name: sivel2_gen_caso_respuestafor fk_rails_3fd971983e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6190,6 +6338,14 @@ ALTER TABLE ONLY public.sip_actorsocial_persona
 
 ALTER TABLE ONLY public.mr519_gen_respuestafor
     ADD CONSTRAINT fk_rails_805efe6935 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
+-- Name: apo214_evaluacionriesgo fk_rails_81404f916d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_evaluacionriesgo
+    ADD CONSTRAINT fk_rails_81404f916d FOREIGN KEY (riesgo_id) REFERENCES public.apo214_riesgo(id);
 
 
 --
@@ -6390,6 +6546,14 @@ ALTER TABLE ONLY public.apo214_lugarpreliminar
 
 ALTER TABLE ONLY public.sivel2_gen_sectorsocialsec_victima
     ADD CONSTRAINT fk_rails_e04ef7c3e5 FOREIGN KEY (victima_id) REFERENCES public.sivel2_gen_victima(id);
+
+
+--
+-- Name: apo214_listaevariesgo fk_rails_e07ebee0d2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listaevariesgo
+    ADD CONSTRAINT fk_rails_e07ebee0d2 FOREIGN KEY (lugarpreliminar_id) REFERENCES public.apo214_lugarpreliminar(id);
 
 
 --
@@ -7158,7 +7322,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201215190623'),
 ('20201215191833'),
 ('20201215192951'),
+('20201216022648'),
+('20201216023915'),
+('20201216025811'),
 ('20201219210527'),
-('20201220130138');
+('20201220130138'),
+('20201221182135'),
+('20201231194433');
 
 

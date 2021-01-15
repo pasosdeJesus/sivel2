@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 6f67da144021e1c4f66216be6641d4755ebc6eae
+  revision: 987e17b92e7c0345564e22b0e7eff8d7ab4f5dc8
   branch: main
   specs:
     apo214 (0.1.0)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: abdfe64037b9a1bc8effe002472131b4e3183416
+  revision: caead7711e24abc985936b09636f7c8901146781
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b6d34d0ddb118f3d6814b08f3ca63fc58b02f524
+  revision: 2203570761bbb5155af62daa67e6d62ef25a0adc
   specs:
     mr519_gen (0.2.0)
       rails
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1fcf818f91196fcd6944067b963a032f5f5de444
+  revision: 35241f6728097c04ad6655c1702380896ce06352
   specs:
     sip (2.0.b10)
       cancancan
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e3fec474357e3dc970946bbe8196d3ce32bf3cfe
+  revision: cf1efd7be839c1b806fb2b4be912c75da243fd7d
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -166,7 +166,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
-    docile (1.3.4)
+    docile (1.3.5)
     erd (0.8.0)
       nokogiri
       ruby-graphviz
@@ -188,7 +188,7 @@ GEM
     json (2.5.1)
     kgio (2.11.3)
     libxml-ruby (3.2.1)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
