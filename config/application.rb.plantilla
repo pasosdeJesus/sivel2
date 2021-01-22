@@ -36,6 +36,8 @@ module Sivel2
     config.x.sivel2_consweb_epilogo = "<br>Si requiere más puede "\
       "suscribirse a SIVeL Pro".html_safe
 
+    config.x.sivel2_mapaosm_diasatras = 182
+
 
     config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
 
