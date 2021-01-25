@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2fbf0acf04ecd5189f1b006122f8b22b56e92dc8
+  revision: 79daed3d821fff2a4f4930aa2f968781d25a75a5
   specs:
     sip (2.0.b10)
       cancancan
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9632a0f4c027221d6097b535f2ab00ee1a235e7a
+  revision: a8afb3a5544266a36c6c7220c320fca3f669c94f
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -163,7 +163,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.0)
+    jbuilder (2.11.1)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
