@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a8afb3a5544266a36c6c7220c320fca3f669c94f
+  revision: cc4ea42eb1cdd44a9f542d2705e11260d7a24923
   specs:
     sivel2_gen (2.0b13)
       devise
@@ -118,13 +118,13 @@ GEM
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.2.1)
-    capybara (3.34.0)
+    capybara (3.35.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      regexp_parser (~> 1.5)
+      regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
     choice (0.2.0)
@@ -261,7 +261,7 @@ GEM
     raindrops (0.19.1)
     rake (13.0.3)
     redcarpet (3.5.1)
-    regexp_parser (1.8.2)
+    regexp_parser (2.0.3)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
