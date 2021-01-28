@@ -91,10 +91,6 @@
           <%= opcion_menu "Respaldo cifrado", sip.respaldo7z_path,
             desplegable: true %>
         <% end %>
-        <% if can? :manage, Sip::Bitacora %>
-          <%= opcion_menu "Bitácoras", sip.bitacoras_path, 
-            desplegable: true %>
-        <% end %>
         <% if can? :manage, Mr519Gen::Formulario %>
           <%= opcion_menu "Formularios", mr519_gen.formularios_path,
             desplegable: true %>
