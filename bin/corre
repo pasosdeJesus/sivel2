@@ -1,0 +1,104 @@
+#!/usr/bin/env ruby
+# Ejecuta aplicación
+# Si hay un archivo .env toma variables de configuración de ese
+# Las variables usadas son:
+# RAILS_ENV:  Modo de ejecución development, production (o test que no se usa)
+# RC: Script de arranque en modo producción en /etc/rc.d/
+# PUERTODES: En modo desarrollo puerto por usar
+# IPDES: En modo desarrollo IP por usar
+# R: Si tiene un valor ejecuta rápido (no instala dependencias ni elimina caches ni regenera recursos)
+
+require 'fileutils'
+#require 'byebug'
+
+#ENV.each {|l,v| puts "#{l}=#{v}" } # Depuración
+
+# Ruta a directorio raíz de aplicación
+RAIZ_AP = File.expand_path('..', __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Falló la orden #{args} ==")
+end
+
+def completa_orden_var(orden, var, minusculas = false)
+  if ENV[var] && ENV[var] != ''
+    orden << "#{var}="
+    orden << (minusculas ? ENV[var].downcase : ENV[var])
+  end
+end
+
+FileUtils.chdir RAIZ_AP do
+
+  if File.exists?('./.env')
+    require 'dotenv'
+    Dotenv.load
+  end
+
+  if !ENV['RC'] || ENV['RC'] == ''
+    nap=`git remote -v | grep "(fetch)" | sed -e "s/.*\\/\\(.*\\) (fetch)/\\1/g"`
+    if !nap || nap == ''
+      nap = 'apconsip'
+    end
+    ENV['RC'] = nap.strip
+  end
+  puts "\n== Ejecutando aplicacion #{ENV['RC']} =="
+
+  if !File.exists?('/tmp/node')
+    puts "\n== Enlace a /usr/local/bin/node desde /tmp =="
+    system! 'doas ln -s /usr/local/bin/node /tmp'
+  end
+
+  if !ENV['RAILS_ENV'] || ENV['RAILS_ENV'] == ''
+    ENV['RAILS_ENV'] = 'development'
+  end
+  if !ENV['PUERTODES']
+    ENV['PUERTODES'] = '2300'
+  end
+  if !ENV['IPDES'] || ENV['IPDES'] == ''
+    ENV['IPDES'] = '127.0.0.1'
+  end
+
+  if !ENV['R'] || ENV['R'] == ''
+    puts "\n== Instalando dependencias =="
+    system! 'gem install bundler --conservative'
+    system('bundle check') || system!('bundle install')
+
+    # Instala dependencias Javascript
+    system! 'CXX=c++ bin/yarn'
+
+    puts "\n== Preparando base de datos =="
+    system! 'bin/rails db:prepare'
+
+    puts "\n== Actualizando índices =="
+    system!('bin/rails sip:indices')
+
+    puts "\n== Eliminando bitácoras, archivos temporales y recursos =="
+    system! 'bin/rails log:clear tmp:clear'
+    system! 'rm -rf public/packs/*'
+    system! "rm -rf public/#{ENV['RAILS_RELATIVE_URL_ROOT']}/assets/*"
+
+    puts "\n== Crea recursos CSS y Javascript =="
+    system! 'bin/rails assets:precompile --trace'
+  end
+
+  ord = ""
+
+  if ENV['RAILS_ENV'] == "development"
+    puts "\n== Ejecutando en modo desarrollo  =="
+    ord = "RAILS_RELATIVE_URL_ROOT='' bin/rails s"
+    if ENV['PUERTODES'] != ''
+      ord += " -p #{ENV['PUERTODES']}"
+    end
+    ord += " -b '#{ENV['IPDES']}'"
+    puts "#{ord}"
+  elsif ENV['RAILS_ENV'] == 'production'
+    if !File.exists?("/etc/rc.d/#{ENV['RC']}")
+      puts "\nFalta script /etc/rc.d/#{ENV['RC']}"
+      exit 1
+    end
+    puts "\n== Ejecutando en modo producción =="
+    ord = "doas sh /etc/rc.d/#{ENV['RC']} -d start"
+  end
+  system!(ord)
+
+end

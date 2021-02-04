@@ -1,0 +1,40 @@
+#!/bin/sh
+# Actualiza fuentes y base de datos
+
+if (test -f ".env") then {
+  . .env
+} fi;
+if (test "${RAILS_ENV}" = "") then {
+  RAILS_ENV=development
+} fi;
+bin/detiene
+if (test "$?" != "0") then { 
+  echo "Problema al detener"; 
+  exit 1; 
+} fi;
+git pull
+if (test "$?" != "0") then { 
+  echo "Problema con git pull"; 
+  exit 1; 
+} fi;
+bundle install
+if (test "$?" != "0") then { 
+  echo "Problema con bundle install"; 
+  exit 1; 
+} fi;
+CXX=c++ yarn install
+echo "BD_USUARIO=${BD_USUARIO}"
+echo "BD_CLAVE=${BD_CLAVE}"
+echo "BD_DES=${BD_DES}"
+bin/rails db:prepare RAILS_ENV=$RAILS_ENV BD_USUARIO=$BD_USUARIO \
+  BD_CLAVE=$BD_CLAVE BD_PRO=$BD_PRO BD_DES=$BD_DES BD_PRUEBA=$BD_PRUEBA
+if (test "$?" != "0") then { 
+  echo "Problema con db:migrate"; 
+  exit 1; 
+} fi;
+bin/corre
+if (test "$?" != "0") then { 
+  echo "Problema al volver a iniciar"; 
+  exit 1; 
+} fi;
+
