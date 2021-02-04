@@ -65,7 +65,7 @@ gem 'will_paginate' # Listados en páginas
 # lógico y no alfabetico como las gemas anteriores) 
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git'
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: :main
   #path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
