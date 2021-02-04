@@ -41,11 +41,17 @@ Rails.application.routes.draw do
     root 'sivel2_gen/hogar#index'
   end # scope
 
+<<<<<<< HEAD:config/routes.rb
 
+=======
+>>>>>>> ad60a71... Actualiza para operar con ruby 3 y nuevas variables de arranque:config/routes.rb.plantilla
   mount Sip::Engine, at: rutarel, as: 'sip'
   mount Mr519Gen::Engine, at: rutarel, as: 'mr519_gen'
   mount Heb412Gen::Engine, at: rutarel, as: 'heb412_gen'
   mount Sivel2Gen::Engine, at: rutarel, as: 'sivel2_gen'
+<<<<<<< HEAD:config/routes.rb
   mount Apo214::Engine, at: rutarel, as: 'apo214'
+=======
+>>>>>>> ad60a71... Actualiza para operar con ruby 3 y nuevas variables de arranque:config/routes.rb.plantilla
 
 end

@@ -22,6 +22,7 @@ module Sivel2
 
     config.active_record.schema_format = :sql
 
+<<<<<<< HEAD
     config.hosts <<  ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase
 
     config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
@@ -33,6 +34,20 @@ module Sivel2
     config.x.heb412_ruta = Pathname(
       ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
     )
+=======
+    config.hosts <<  (ENV['CONFIG_HOSTS'] && ENV['CONFIG_HOSTS'] != '' ? 
+                      ENV['CONFIG_HOSTS'].downcase : 
+                      'defensor.info'.downcase)
+
+    config.relative_url_root = (ENV['RUTA_RELATIVA'] || "/anzorc/si")
+
+    # sip
+    config.x.formato_fecha = (ENV['FORMATO_FECHA'] || 'dd/M/yyyy')
+
+    # heb412
+    config.x.heb412_ruta = (ENV['HEB412_RUTA'] && ENV['HEB412_RUTA'] != '' ?
+                            Pathname(ENV['HEB412_RUTA']) : 
+                            Rails.root.join('public', 'heb412'))
 
     # sivel2
     config.x.sivel2_consulta_web_publica = 
