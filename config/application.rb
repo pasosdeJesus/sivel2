@@ -34,15 +34,6 @@ module Sivel2
       ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
     )
 
-    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
-
-    # sip
-    config.x.formato_fecha = ENV.fetch('FORMATO_FECHA', 'dd/M/yyyy')
-
-    # heb412
-    config.x.heb412_ruta = Pathname(
-      ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
-
     # sivel2
     config.x.sivel2_consulta_web_publica = 
       (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
