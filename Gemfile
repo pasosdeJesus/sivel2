@@ -97,6 +97,10 @@ group  :development, :test do
   gem 'colorize' # Colores en terminal
 
   gem 'dotenv-rails'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 178b034... sigue convenciones de sip 2.0b11, ver https://github.com/pasosdeJesus/sip/wiki/2021_2-Actualizaci%C3%B3n-de-sip-2.0b10-a-2.0b11
 end
 
 
