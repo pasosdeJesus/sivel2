@@ -33,11 +33,8 @@ gem 'odf-report' # Genera ODT
 
 gem 'nokogiri', '>=1.11.1'
 
-<<<<<<< HEAD
-=======
 gem 'kt-paperclip' # Maneja adjuntos
 
->>>>>>> 7a4662c (bootstrap 5 y webpacker6 con sip b12)
 gem 'pg' # Postgresql
 
 gem 'prawn' # Generación de PDF

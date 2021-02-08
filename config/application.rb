@@ -51,9 +51,9 @@ module Sivel2
       ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
     )
 
-    # sivel2
-    config.x.sivel2_consulta_web_publica = 
-      (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
+      # sivel2
+      config.x.sivel2_consulta_web_publica = 
+        (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
 
     config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
