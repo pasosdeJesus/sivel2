@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  rutarel = (ENV['RUTA_RELATIVA'] || 'cor1440/')
+  rutarel = ENV.fetch('RUTA_RELATIVA', 'sivel2/')
   scope rutarel do 
 
     devise_scope :usuario do
