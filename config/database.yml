@@ -6,12 +6,12 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   host: /var/www/var/run/postgresql
-  username: <%= ENV['BD_USUARIO'] || 'sipdes' %>
-  password: <%= ENV['BD_CLAVE'] %>
+  username: <%= ENV.fetch('BD_USUARIO', 'sipdes') %>
+  password: <%= ENV.fetch('BD_CLAVE') %>
 
 development:
   <<: *default
-  database: <%= ENV['BD_DES'] || 'sivel2gen_des' %>
+  database: <%= ENV.fetch('BD_DES', 'sivel2gen_des') %>
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
@@ -24,7 +24,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= ENV['BD_PRUEBA'] || 'sivel2gen_pru' %>
+  database: <%= ENV.fetch('BD_PRUEBA', 'sivel2gen_pru') %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -47,4 +47,4 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['BD_PRO'] || 'sivel2gen_pro' %>
+  database: <%= ENV.fetch('BD_PRO', 'sivel2gen_pro') %>
