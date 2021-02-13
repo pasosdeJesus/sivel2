@@ -65,6 +65,7 @@ module Sivel2
 
       config.x.sivel2_mapaosm_diasatras = ENV.fetch('SIVEL2_CONSWEB_EPILOGO', 182)
 
+
   end
 end
 
