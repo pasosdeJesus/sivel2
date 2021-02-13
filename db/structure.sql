@@ -546,7 +546,7 @@ CREATE VIEW public.cben1 AS
             max(sivel2_gen_victima.id) AS id_victima
            FROM public.sivel2_gen_victima
           GROUP BY sivel2_gen_victima.id_persona) subv
-  WHERE ((subv.id_victima = victima.id) AND (caso.id = victima.id_caso));
+  WHERE ((caso.fecha >= '2020-02-12'::date) AND (caso.fecha <= '2029-03-01'::date) AND (subv.id_victima = victima.id) AND (caso.id = victima.id_caso));
 
 
 --
@@ -6454,6 +6454,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201130020715'),
 ('20201201015501'),
 ('20201214215209'),
-('20201231194433');
+('20201231194433'),
+('20210206191033');
 
 
