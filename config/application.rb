@@ -32,19 +32,20 @@ module Sivel2
     # heb412
     config.x.heb412_ruta = Pathname(
       ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
+    )
 
-      # sivel2
-      config.x.sivel2_consulta_web_publica = 
-        (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
+    # sivel2
+    config.x.sivel2_consulta_web_publica = 
+      (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
 
-      config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
+    config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
-      config.x.sivel2_consweb_epilogo = ENV.fetch(
-        'SIVEL2_CONSWEB_EPILOGO', 
-        "<br>Si requiere más puede suscribirse a SIVeL Pro"
-      ).html_safe
+    config.x.sivel2_consweb_epilogo = ENV.fetch(
+      'SIVEL2_CONSWEB_EPILOGO', 
+      "<br>Si requiere más puede suscribirse a SIVeL Pro"
+    ).html_safe
 
-      config.x.sivel2_mapaosm_diasatras = ENV.fetch('SIVEL2_CONSWEB_EPILOGO', 182)
+    config.x.sivel2_mapaosm_diasatras = ENV.fetch('SIVEL2_CONSWEB_EPILOGO', 182)
 
   end
 end
