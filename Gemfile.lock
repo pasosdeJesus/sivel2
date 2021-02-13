@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 987e17b92e7c0345564e22b0e7eff8d7ab4f5dc8
-  branch: main
-  specs:
-    apo214 (0.1.0)
-      rails
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
   revision: caead7711e24abc985936b09636f7c8901146781
   specs:
@@ -58,6 +49,13 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+PATH
+  remote: ../apo214
+  specs:
+    apo214 (0.1.0)
+      rails
+      sip
 
 GEM
   remote: https://rubygems.org/
@@ -403,4 +401,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.1.4
+   2.2.3
