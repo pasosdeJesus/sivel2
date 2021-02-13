@@ -25,7 +25,6 @@ module Sivel2
     config.hosts <<  ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase
 
     config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
-<<<<<<< HEAD
 
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOW'
@@ -33,8 +32,6 @@ module Sivel2
 
     config.x.origen_cors = ENV.fetch('ORIGEN_CORS','').split(',')
     puts "config.x.origen_cors=#{config.x.origen_cors.inspect}"
-=======
->>>>>>> 7f25bc4 (sigue convenciones de sip 2.0b11, ver https://github.com/pasosdeJesus/sip/wiki/2021_2-Actualizaci%C3%B3n-de-sip-2.0b10-a-2.0b11)
 
     # sip
     config.x.formato_fecha = ENV.fetch('FORMATO_FECHA', 'dd/M/yyyy')
@@ -42,16 +39,12 @@ module Sivel2
     # heb412
     config.x.heb412_ruta = Pathname(
       ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
-<<<<<<< HEAD
     )
-=======
->>>>>>> 7f25bc4 (sigue convenciones de sip 2.0b11, ver https://github.com/pasosdeJesus/sip/wiki/2021_2-Actualizaci%C3%B3n-de-sip-2.0b10-a-2.0b11)
 
-      # sivel2
-      config.x.sivel2_consulta_web_publica = 
-        (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
+    # sivel2
+    config.x.sivel2_consulta_web_publica = 
+      (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
 
-<<<<<<< HEAD
     config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
     config.x.sivel2_consweb_pie = ENV.fetch('SIVEL2_CONSWEB_PIE', '')
@@ -64,16 +57,13 @@ module Sivel2
     config.x.sivel2_mapaosm_diasatras = ENV.fetch(
       'SIVEL2_MAPAOSM_DIASATRAS', 182
     )
-=======
-      config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
-      config.x.sivel2_consweb_epilogo = ENV.fetch(
-        'SIVEL2_CONSWEB_EPILOGO', 
-        "<br>Si requiere más puede suscribirse a SIVeL Pro"
-      ).html_safe
+    config.x.sivel2_consweb_epilogo = ENV.fetch(
+      'SIVEL2_CONSWEB_EPILOGO', 
+      "<br>Si requiere más puede suscribirse a SIVeL Pro"
+    ).html_safe
 
       config.x.sivel2_mapaosm_diasatras = ENV.fetch('SIVEL2_CONSWEB_EPILOGO', 182)
->>>>>>> 7f25bc4 (sigue convenciones de sip 2.0b11, ver https://github.com/pasosdeJesus/sip/wiki/2021_2-Actualizaci%C3%B3n-de-sip-2.0b10-a-2.0b11)
 
   end
 end
