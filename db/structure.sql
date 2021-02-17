@@ -546,7 +546,7 @@ CREATE VIEW public.cben1 AS
             max(sivel2_gen_victima.id) AS id_victima
            FROM public.sivel2_gen_victima
           GROUP BY sivel2_gen_victima.id_persona) subv
-  WHERE ((caso.fecha >= '2020-02-12'::date) AND (caso.fecha <= '2029-03-01'::date) AND (subv.id_victima = victima.id) AND (caso.id = victima.id_caso));
+  WHERE ((subv.id_victima = victima.id) AND (caso.id = victima.id_caso));
 
 
 --
