@@ -38,11 +38,7 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
-<<<<<<< HEAD
 gem 'rails', '~> 6.1'
-=======
-gem 'rails', '~> 6.0.3.5'
->>>>>>> e7be302... Actualiza a rails 6.1
 
 gem 'rails-i18n'
 
