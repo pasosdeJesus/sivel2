@@ -17,17 +17,9 @@
 </tr>
 <tr><td>clickAt</td><td>link=Antecedentes<datalist><option>link=Antecedentes</option><option>//a[contains(text(),'Antecedentes')]</option><option>//a[contains(@href, 'admin/antecedentes')]</option><option>//article/ul/li[2]/a</option></datalist></td><td>50,8</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/antecedentes/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>23,17</td>
+</tr>
+<tr><td>esperaAsercionTexto2s</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Nuevo Antecedente</td>
 </tr>
 <tr><td>clickAt</td><td>id=antecedente_nombre<datalist><option>id=antecedente_nombre</option><option>name=antecedente[nombre]</option><option>css=#antecedente_nombre</option><option>//input[@id='antecedente_nombre']</option><option>//form[@id='new_antecedente']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>54,23</td>
 </tr>
@@ -55,11 +47,9 @@
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,21</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Categorias<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option><option>link=Categorias</option></datalist></td><td>Categorias</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tablas Básicas</td>
-</tr>
-<tr><td>clickAt</td><td>link=Categorias<datalist><option>link=Categorias</option><option>//a[contains(text(),'Categorias')]</option><option>//a[contains(@href, 'admin/categorias')]</option><option>//article/ul/li[3]/a</option></datalist></td><td>31,12</td>
+<tr><td>clickAt</td><td>link=Categorias<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option><option>link=Categorias</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/categorias/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>51,26</td>
 </tr>
@@ -85,17 +75,29 @@
 </tr>
 <tr><td>type</td><td>id=categoria_observaciones<datalist><option>id=categoria_observaciones</option><option>name=categoria[observaciones]</option><option>css=#categoria_observaciones</option><option>//textarea[@id='categoria_observaciones']</option><option>//form[@id='new_categoria']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
 </tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_categoria']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>35,20</td>
+<tr><td>clickAt</td><td>id=categoria_contadaen<datalist><option>id=categoria_contadaen</option><option>name=categoria[contadaen]</option><option>css=#categoria_contadaen</option><option>//select[@id='categoria_contadaen']</option><option>//form[@id='new_categoria']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>108,8</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+<tr><td>select</td><td>id=categoria_contadaen<datalist><option>id=categoria_contadaen</option><option>name=categoria[contadaen]</option><option>css=#categoria_contadaen</option><option>//select[@id='categoria_contadaen']</option><option>//form[@id='new_categoria']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=DD (BÉLICAS / ACCIONES BÉLICAS)</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Categoria</td>
+<tr><td>mouseDownAt</td><td>id=categoria_contadaen<datalist><option>id=categoria_contadaen</option><option>name=categoria[contadaen]</option><option>css=#categoria_contadaen</option><option>//select[@id='categoria_contadaen']</option><option>//form[@id='new_categoria']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>-87.5,-178</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=categoria_contadaen<datalist><option>id=categoria_contadaen</option><option>name=categoria[contadaen]</option><option>css=#categoria_contadaen</option><option>//select[@id='categoria_contadaen']</option><option>//form[@id='new_categoria']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>-87.5,-178</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=categoria_contadaen<datalist><option>id=categoria_contadaen</option><option>name=categoria[contadaen]</option><option>css=#categoria_contadaen</option><option>//select[@id='categoria_contadaen']</option><option>//form[@id='new_categoria']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>-87.5,-178</td>
+</tr>
+<tr><td>clickAt</td><td>id=categoria_contadaen<datalist><option>id=categoria_contadaen</option><option>name=categoria[contadaen]</option><option>css=#categoria_contadaen</option><option>//select[@id='categoria_contadaen']</option><option>//form[@id='new_categoria']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>-88,-178</td>
+</tr>
+<tr><td>select</td><td>id=categoria_id_pconsolidado<datalist><option>id=categoria_id_pconsolidado</option><option>name=categoria[id_pconsolidado]</option><option>css=#categoria_id_pconsolidado</option><option>//select[@id='categoria_id_pconsolidado']</option><option>//form[@id='new_categoria']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>label=26 - TOMA DE REHENES-DIHC</td>
+</tr>
+<tr><td>clickAt</td><td>id=categoria_id_pconsolidado<datalist><option>id=categoria_id_pconsolidado</option><option>name=categoria[id_pconsolidado]</option><option>css=#categoria_id_pconsolidado</option><option>//select[@id='categoria_id_pconsolidado']</option><option>//form[@id='new_categoria']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>-88,-277</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_categoria']/div[11]/input</option><option>//div[11]/input</option></datalist></td><td>32,5</td>
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/categorias/435')])[2]</option><option>//a[3]</option></datalist></td><td>59,5</td>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2/admin/categorias/435')])[2]</option><option>//div[4]/a</option></datalist></td><td>40,15</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Categorias</td>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Categorias</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -107,23 +109,9 @@
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,16</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
 <tr><td>clickAt</td><td>link=Centros poblados<datalist><option>link=Centros poblados</option><option>//a[contains(text(),'Centros poblados')]</option><option>//a[contains(@href, 'admin/clases')]</option><option>//article/ul/li[4]/a</option></datalist></td><td>69,10</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/clases/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>Nuevo</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/clases/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>43,18</td>
 </tr>
@@ -235,13 +223,7 @@
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/anzorc/sivel2/admin/departamentos/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>40,13</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+<tr><td>esperaAsercionTexto2s</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Nuevo Departamento/Estado</td>
 </tr>
 <tr><td>clickAt</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>css=#departamento_nombre</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>41,9</td>
 </tr>
@@ -545,9 +527,9 @@
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>42,12</td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Municipios<datalist><option>link=Municipios</option><option>//a[contains(text(),'Municipios')]</option><option>//a[contains(@href, 'admin/municipios')]</option><option>//li[13]/a</option></datalist></td><td>Municipios</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tablas Básicas</td>
+<tr><td>clickAt</td><td>link=Municipios<datalist><option>link=Municipios</option><option>//a[contains(text(),'Municipios')]</option><option>//a[contains(@href, 'admin/municipios')]</option><option>//li[13]/a</option></datalist></td><td>16,13</td>
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,16</td>
 </tr>
@@ -623,7 +605,7 @@
 </tr>
 <tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>47,12</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tablas Básicas</td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Países<datalist><option>link=Países</option><option>//a[contains(text(),'Países')]</option><option>//div[@id='div_contenido']/article/ul/li[16]/a</option><option>//a[contains(@href, 'admin/paises')]</option><option>//li[16]/a</option></datalist></td><td>Países</td>
 </tr>
 <tr><td>clickAt</td><td>link=Países<datalist><option>link=Países</option><option>//a[contains(text(),'Países')]</option><option>//div[@id='div_contenido']/article/ul/li[16]/a</option><option>//a[contains(@href, 'admin/paises')]</option><option>//li[16]/a</option></datalist></td><td>19,7</td>
 </tr>
@@ -1267,7 +1249,7 @@
 </tr>
 <tr><td>clickAt</td><td>link=Trivalentes<datalist><option>link=Trivalentes</option><option>//a[contains(text(),'Trivalentes')]</option><option>//div[@id='div_contenido']/article/ul/li[32]/a</option><option>//a[contains(@href, 'admin/trivalentes')]</option><option>//li[32]/a</option></datalist></td><td>18,3</td>
 </tr>
-<tr><td>doubleClickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//div[@id='div_contenido']/form/div/div[2]/a</option><option>//a[contains(@href, '/sivel2/admin/trivalentes/nueva')]</option><option>//div[2]/a</option></datalist></td><td>19,13</td>
+<tr><td>ClickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//div[@id='div_contenido']/form/div/div[2]/a</option><option>//a[contains(@href, '/sivel2/admin/trivalentes/nueva')]</option><option>//div[2]/a</option></datalist></td><td>19,13</td>
 </tr>
 <tr><td>clickAt</td><td>id=trivalente_nombre<datalist><option>id=trivalente_nombre</option><option>name=trivalente[nombre]</option><option>css=#trivalente_nombre</option><option>//input[@id='trivalente_nombre']</option><option>//form[@id='new_trivalente']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>101,22</td>
 </tr>
