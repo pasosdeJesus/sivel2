@@ -45,7 +45,8 @@ module Sivel2
       "<br>Si requiere más puede suscribirse a SIVeL Pro"
     ).html_safe
 
-    config.x.sivel2_mapaosm_diasatras = ENV.fetch('SIVEL2_CONSWEB_EPILOGO', 182)
+    config.x.sivel2_mapaosm_diasatras = ENV.fetch(
+      'SIVEL2_MAPAOSM_DIASATRAS', 182)
 
   end
 end
