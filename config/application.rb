@@ -40,6 +40,8 @@ module Sivel2
 
     config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
+    config.x.sivel2_consweb_pie = ENV.fetch('SIVEL2_CONSWEB_PIE', '')
+
     config.x.sivel2_consweb_epilogo = ENV.fetch(
       'SIVEL2_CONSWEB_EPILOGO', 
       "<br>Si requiere más puede suscribirse a SIVeL Pro"
