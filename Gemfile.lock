@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f0fc67ddb4bdb34582e3fdbfe56efb17e01d6d75
+  revision: 322cf97a727dfa7f5a03312b8819d9080f161d5c
   branch: main
   specs:
     sivel2_gen (2.0b14)
@@ -228,7 +228,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.2.1)
+    puma (5.2.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -394,4 +394,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.2.9
+   2.2.12
