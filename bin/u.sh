@@ -34,12 +34,17 @@ if (test "$?" != "0") then {
 
 $DOAS su - ${USUARIO_AP} -c "cd $DIRAP; 
   echo \"== Iniciando unicorn... ==\"; 
-  ${defuroot} PUERTOUNICORN=${PUERTOUNICORN} CONFIG_HOSTS=${CONFIG_HOSTS}\
-    DIRAP=$DIRAP RAILS_ENV=production SECRET_KEY_BASE=${SECRET_KEY_BASE} \
-    BD_CLAVE=${BD_CLAVE} BD_USUARIO=${BD_USUARIO} \
+  ${defuroot} BD_CLAVE=${BD_CLAVE} \
     BD_PRO=${BD_PRO} \
-    RUTA_RELATIVA=${RUTA_RELATIVA} \
+    BD_USUARIO=${BD_USUARIO} \
+    CONFIG_HOSTS=${CONFIG_HOSTS} \
+    DIRAP=$DIRAP \
     HEB412_RUTA=${HEB412_RUTA} \
+    PUERTOUNICORN=${PUERTOUNICORN} \
+    RAILS_ENV=production \
+    RUTA_RELATIVA=${RUTA_RELATIVA} \
+    SECRET_KEY_BASE=${SECRET_KEY_BASE} \
+    SIP_TITULO='${SIP_TITULO}' \
     bundle exec /usr/local/bin/unicorn_rails \
     -c $DIRAP/config/unicorn.conf.minimal.rb  -E production -D"
 
