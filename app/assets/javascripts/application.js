@@ -17,7 +17,6 @@
 //= require sivel2_gen/mapaosm
 //= require apo214/motor
 //= require_tree .
-
 document.addEventListener('turbolinks:load', function() {
   var root;
   root = typeof exports !== "undefined" && exports !== null ? 
