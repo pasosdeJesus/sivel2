@@ -90,7 +90,7 @@ gem 'apo214', # Motor para manejo de casos
 
 group  :development, :test do
  
-  gem 'byebug' # Depurar
+  #gem 'byebug' # Depurar
 
   gem 'colorize' # Colores en terminal
 
