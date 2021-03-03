@@ -85,7 +85,7 @@ gem 'apo214', # Motor para desaparición
 
 group  :development, :test do
  
-  gem 'byebug' # Depurar
+  #gem 'byebug' # Depurar
 
   gem 'colorize' # Colores en terminal
 
