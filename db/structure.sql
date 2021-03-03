@@ -6410,6 +6410,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 
 --
+-- Name: apo214_asisreconocimiento fk_rails_2ffc79dbbd; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_asisreconocimiento
+    ADD CONSTRAINT fk_rails_2ffc79dbbd FOREIGN KEY (id_lugarpreliminar) REFERENCES public.apo214_lugarpreliminar(id);
+
+
+--
 -- Name: sivel2_gen_caso_respuestafor fk_rails_3aa0de8b93; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6471,6 +6479,14 @@ ALTER TABLE ONLY public.apo214_listapersofuentes
 
 ALTER TABLE ONLY public.sip_actorsocial_persona
     ADD CONSTRAINT fk_rails_4672f6cbcd FOREIGN KEY (persona_id) REFERENCES public.sip_persona(id);
+
+
+--
+-- Name: apo214_asisreconocimiento fk_rails_4bfa7be556; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_asisreconocimiento
+    ADD CONSTRAINT fk_rails_4bfa7be556 FOREIGN KEY (id_persona) REFERENCES public.sip_persona(id);
 
 
 --

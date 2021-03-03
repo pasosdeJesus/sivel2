@@ -35,7 +35,7 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 6.0.3.5'
+gem 'rails', '~> 6.1'
 
 gem 'rails-i18n'
 
@@ -87,7 +87,7 @@ gem 'apo214', # Motor para desaparición
 
 group  :development, :test do
  
-  #gem 'byebug' # Depurar
+  gem 'byebug' # Depurar
 
   gem 'colorize' # Colores en terminal
 
