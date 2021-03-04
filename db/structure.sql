@@ -426,8 +426,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.apo214_asisreconocimiento (
     id bigint NOT NULL,
-    id_lugarpreliminar integer,
-    id_persona integer,
+    lugarpreliminar_id integer,
+    persona_id integer,
     organizacion character varying(5000)
 );
 
@@ -6674,6 +6674,14 @@ ALTER TABLE ONLY public.sivel2_gen_caso
 
 
 --
+-- Name: apo214_asisreconocimiento fk_rails_883533cb81; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_asisreconocimiento
+    ADD CONSTRAINT fk_rails_883533cb81 FOREIGN KEY (lugarpreliminar_id) REFERENCES public.apo214_lugarpreliminar(id);
+
+
+--
 -- Name: mr519_gen_encuestapersona fk_rails_88eeb03074; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6799,6 +6807,14 @@ ALTER TABLE ONLY public.apo214_lugarpreliminar
 
 ALTER TABLE ONLY public.sip_ubicacion
     ADD CONSTRAINT fk_rails_b82283d945 FOREIGN KEY (id_municipio) REFERENCES public.sip_municipio(id);
+
+
+--
+-- Name: apo214_asisreconocimiento fk_rails_b9116c62bf; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_asisreconocimiento
+    ADD CONSTRAINT fk_rails_b9116c62bf FOREIGN KEY (persona_id) REFERENCES public.sip_persona(id);
 
 
 --
