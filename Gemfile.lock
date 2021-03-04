@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: fd793a0b995b0b39d8241d58e354294f9eeeed68
-  branch: main
+  revision: 6f5fcaac7d0ecb2204099c53219d332345f6705e
+  branch: hotwire
   specs:
     apo214 (0.1.0)
       rails
@@ -188,6 +188,10 @@ GEM
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hotwire-rails (0.1.3)
+      rails (>= 6.0.0)
+      stimulus-rails
+      turbo-rails
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -333,11 +337,15 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stimulus-rails (0.2.3)
+      rails (>= 6.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
+    turbo-rails (0.5.9)
+      rails (>= 6.0.0)
     twitter_cldr (6.4.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
@@ -385,6 +393,7 @@ DEPENDENCIES
   dotenv-rails
   erd
   heb412_gen!
+  hotwire-rails
   jbuilder
   libxml-ruby
   mr519_gen!
