@@ -17,6 +17,8 @@ gem 'devise' # Autenticación y roles
 
 gem 'devise-i18n'
 
+gem 'hotwire-rails'
+
 gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
 
 gem 'kt-paperclip',                 # Anexos
