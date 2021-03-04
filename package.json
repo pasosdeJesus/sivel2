@@ -5,6 +5,8 @@
     "@babel/preset-react": "^7.12.10",
     "@ctrl/tinycolor": "^3.1.6",
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "@hotwired/turbo": "^7.0.0-beta.4",
+    "@hotwired/turbo-rails": "^7.0.0-beta.5",
     "@nivo/bump": "^0.63.1",
     "@nivo/circle-packing": "^0.63.1",
     "@nivo/line": "^0.63.1",
@@ -70,10 +72,10 @@
     "react_ujs": "^2.6.1",
     "reactstrap": "^8.7.0",
     "serialize-javascript": "^3.1.0",
+    "stimulus": "^2.0.0",
     "style-loader": "^2.0.0",
     "svg-url-loader": "^6.0.0",
-    "terser-webpack-plugin": "^4.1.0",
-    "turbolinks": "^5.2.0"
+    "terser-webpack-plugin": "^4.1.0"
   },
   "devDependencies": {
     "babel-loader": "^8.1.0",

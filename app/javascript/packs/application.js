@@ -18,13 +18,14 @@
 console.log('Hola Mundo desde Webpacker')
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-// import * as ActiveStorage from "@rails/activestorage"
+//// import "@hotwired/turbo-rails"
+import { Turbo, cable } from "@hotwired/turbo-rails"
+import * as ActiveStorage from "@rails/activestorage"
 // import "channels"
 
 Rails.start()
 //require('@rails/ujs').start()   // Javascript no intrusivo segun rails
-Turbolinks.start()
+//import Turbo from "@hotwired/turbo"
 //require('turbolinks').start()   // Acelera carga de paginas
 
 //ActiveStorage.start()
@@ -47,3 +48,5 @@ import 'jquery-ui/ui/data'
 var componentRequireContext = require.context("components", true);
 var ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
+
+import "controllers"
