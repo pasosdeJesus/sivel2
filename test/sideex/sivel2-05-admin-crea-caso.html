@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel2-05-admin-crea-caso</title>
+	<title>sivel2-05-admin-crea-caso1</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -11,17 +11,11 @@
 <tr><td rowspan="1" colspan="3">caso-datos-basicos</td></tr>
 </thead>
 <tbody>
-<tr><td>clickAt</td><td>link=SIVeL 2.0b13<datalist><option>link=SIVeL 2.0b13</option><option>css=a.navbar-brand</option><option>//a[contains(text(),'SIVeL 2.0b13')]</option><option>//a[contains(@href, 'https://rbd.nocheyniebla.org:15443/sivel2/')]</option><option>//a</option></datalist></td><td>91,25</td>
-</tr>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>31,24</td>
 </tr>
+<tr><td>esperaAsercionTexto2s</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/anzorc/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>Nuevo Caso</td>
+</tr>
 <tr><td>clickAt</td><td>link=Nuevo Caso<datalist><option>link=Nuevo Caso</option><option>//a[contains(text(),'Nuevo Caso')]</option><option>//a[contains(@href, '/anzorc/sivel2/casos/nuevo')]</option><option>//li[2]/a</option></datalist></td><td>51,8</td>
-</tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>id=caso_fecha_localizada<datalist><option>id=caso_fecha_localizada</option><option>name=caso[fecha_localizada]</option><option>css=#caso_fecha_localizada</option><option>//input[@id='caso_fecha_localizada']</option><option>//div[@id='basicos']/div/div/div/input</option><option>//div[2]/div/div/div/div/div/input</option></datalist></td><td>84,10</td>
 </tr>
@@ -77,15 +71,7 @@
 </tr>
 <tr><td>clickAt</td><td>link=Ubicación<datalist><option>link=Ubicación</option><option>//a[contains(text(),'Ubicación')]</option><option>//form[@id='edit_caso_60']/div/div[2]/ul/li[2]/a</option><option>//a[contains(@href, '#ubicacion')]</option><option>//form/div/div[2]/ul/li[2]/a</option></datalist></td><td>73,17</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Añadir Ubicación<datalist><option>link=Añadir Ubicación</option><option>css=a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Ubicación')]</option><option>//div[@id='ubicacion']/div/a</option><option>xpath=(//a[contains(@href, '#')])[17]</option><option>//div[2]/div/a</option></datalist></td><td>Añadir Ubicación</td>
 </tr>
 <tr><td>clickAt</td><td>link=Añadir Ubicación<datalist><option>link=Añadir Ubicación</option><option>css=a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Ubicación')]</option><option>//div[@id='ubicacion']/div/a</option><option>xpath=(//a[contains(@href, '#')])[17]</option><option>//div[2]/div/a</option></datalist></td><td>52,13</td>
 </tr>
@@ -157,11 +143,7 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/174/edita')]</option><option>//a[2]</option></datalist></td><td>35,17</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Presuntos responsables<datalist><option>link=Presuntos responsables</option><option>//a[contains(text(),'Presuntos responsables')]</option><option>//form[@id='edit_caso_927']/div/div[2]/ul/li[6]/a</option><option>//a[contains(@href, '#presponsables')]</option><option>//li[6]/a</option></datalist></td><td>Presuntos responsables</td>
 </tr>
 <tr><td>clickAt</td><td>link=Presuntos responsables<datalist><option>link=Presuntos responsables</option><option>//a[contains(text(),'Presuntos responsables')]</option><option>//form[@id='edit_caso_927']/div/div[2]/ul/li[6]/a</option><option>//a[contains(@href, '#presponsables')]</option><option>//li[6]/a</option></datalist></td><td>102,22</td>
 </tr>
@@ -213,21 +195,13 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/691/edita')]</option><option>//a[2]</option></datalist></td><td>32,13</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Víctimas<datalist><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>Víctimas</td>
 </tr>
 <tr><td>clickAt</td><td>link=Víctimas<datalist><option>link=Víctimas</option><option>//a[contains(text(),'Víctimas')]</option><option>//form[@id='edit_caso_691']/div/div[2]/ul/li[7]/a</option><option>//a[contains(@href, '#victima')]</option><option>//li[7]/a</option></datalist></td><td>49,31</td>
 </tr>
+<tr><td>esperaAsercionTexto2s</td><td>link=Añadir Víctima<datalist><option>link=Añadir Víctima</option><option>css=#victima &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Víctima')]</option><option>//div[@id='victima']/div/a</option><option>xpath=(//a[contains(@href, '#')])[24]</option><option>//div[7]/div/a</option></datalist></td><td>Añadir Víctima</td>
+</tr>
 <tr><td>clickAt</td><td>link=Añadir Víctima<datalist><option>link=Añadir Víctima</option><option>css=#victima &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Víctima')]</option><option>//div[@id='victima']/div/a</option><option>xpath=(//a[contains(@href, '#')])[24]</option><option>//div[7]/div/a</option></datalist></td><td>39,3</td>
-</tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>//div[7]/div/div/div/div[2]/div/div/input<datalist><option>//div[7]/div/div/div/div[2]/div/div/input</option><option>id=caso_victima_attributes_17_persona_attributes_nombres</option><option>name=caso[victima_attributes][17][persona_attributes][nombres]</option><option>css=#caso_victima_attributes_17_persona_attributes_nombres</option><option>//input[@id='caso_victima_attributes_17_persona_attributes_nombres']</option><option>//div[@id='victima']/div/div/div/div[2]/div/div/input</option></datalist></td><td>94,13</td>
 </tr>
@@ -671,13 +645,9 @@
 </tr>
 <tr><td>clickAt</td><td>link=Fuentes frecuentes<datalist><option>link=Fuentes frecuentes</option><option>//a[contains(text(),'Fuentes frecuentes')]</option><option>//form[@id='edit_caso_162877']/div/div[2]/ul/li[3]/a</option><option>//a[contains(@href, '#fuentesprensa')]</option><option>//div[2]/ul/li[3]/a</option></datalist></td><td>101,19</td>
 </tr>
+<tr><td>esperaAsercionTexto2s</td><td>link=Añadir Fuente Frecuente<datalist><option>link=Añadir Fuente Frecuente</option><option>css=#fuentesprensa &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Fuente Frecuente')]</option><option>//div[@id='fuentesprensa']/div/a</option><option>xpath=(//a[contains(@href, '#')])[23]</option><option>//div[3]/div/a</option></datalist></td><td>Añadir Fuente Frecuente</td>
+</tr>
 <tr><td>clickAt</td><td>link=Añadir Fuente Frecuente<datalist><option>link=Añadir Fuente Frecuente</option><option>css=#fuentesprensa &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Fuente Frecuente')]</option><option>//div[@id='fuentesprensa']/div/a</option><option>xpath=(//a[contains(@href, '#')])[23]</option><option>//div[3]/div/a</option></datalist></td><td>127,1</td>
-</tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>//div[3]/div/div/div/div/div/input<datalist><option>id=caso_caso_fuenteprensa_attributes_0_fecha_localizada</option><option>name=caso[caso_fuenteprensa_attributes][0][fecha_localizada]</option><option>css=#caso_caso_fuenteprensa_attributes_0_fecha_localizada</option><option>//input[@id='caso_caso_fuenteprensa_attributes_0_fecha_localizada']</option><option>//div[@id='fuentesprensa']/div/div/div/div/div/input</option><option>//div[3]/div/div/div/div/div/input</option></datalist></td><td>90,16</td>
 </tr>
@@ -723,21 +693,13 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/sivel2/casos/772/edita')]</option><option>//a[2]</option></datalist></td><td>23,19</td>
 </tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
+<tr><td>esperaAsercionTexto2s</td><td>link=Otras fuentes<datalist><option>link=Otras fuentes</option><option>//a[contains(text(),'Otras fuentes')]</option><option>//form[@id='edit_caso_927']/div/div[2]/ul/li[4]/a</option><option>//a[contains(@href, '#fotras')]</option><option>//li[4]/a</option></datalist></td><td>Otras fuentes</td>
 </tr>
 <tr><td>clickAt</td><td>link=Otras fuentes<datalist><option>link=Otras fuentes</option><option>//a[contains(text(),'Otras fuentes')]</option><option>//form[@id='edit_caso_927']/div/div[2]/ul/li[4]/a</option><option>//a[contains(@href, '#fotras')]</option><option>//li[4]/a</option></datalist></td><td>82,15</td>
 </tr>
+<tr><td>esperaAsercionTexto2s</td><td>link=Añadir Otra Fuente<datalist><option>link=Añadir Otra Fuente</option><option>css=#fotras &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Otra Fuente')]</option><option>//div[@id='fotras']/div/a</option><option>xpath=(//a[contains(@href, '#')])[24]</option><option>//div[4]/div/a</option></datalist></td><td>Añadir Otra Fuente</td>
+</tr>
 <tr><td>clickAt</td><td>link=Añadir Otra Fuente<datalist><option>link=Añadir Otra Fuente</option><option>css=#fotras &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Otra Fuente')]</option><option>//div[@id='fotras']/div/a</option><option>xpath=(//a[contains(@href, '#')])[24]</option><option>//div[4]/div/a</option></datalist></td><td>95,9</td>
-</tr>
-<tr><td>runScript</td><td>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();<datalist><option>var ya=0; var revisa=function () { const maxc=1000000; console.log(ya); c=0; while (ya == 0 &amp;&amp; c&lt;maxc &amp;&amp; ($('h1').length == 0 || $('h1').html().trim() != 'Editar Caso')) { if (c == 0) { console.log('Entro al ciclo') }; c += 1; }; if (c&lt;maxc) {ya=1;} }; revisa();</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
-</tr>
-<tr><td>runScript</td><td>revisa()<datalist><option>revisa()</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>//div[4]/div/div/div/div/div/input<datalist><option>id=caso_caso_fotra_attributes_0_fecha_localizada</option><option>name=caso[caso_fotra_attributes][0][fecha_localizada]</option><option>css=#caso_caso_fotra_attributes_0_fecha_localizada</option><option>//input[@id='caso_caso_fotra_attributes_0_fecha_localizada']</option><option>//div[@id='fotras']/div/div/div/div/div/input</option><option>//div[4]/div/div/div/div/div/input</option></datalist></td><td>66,11</td>
 </tr>
