@@ -35,7 +35,7 @@ gem 'prawnto_2',  :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'rails', '~> 6.0.3.5'
+gem 'rails', '~> 6.1'
 
 gem 'rails-i18n'
 
@@ -81,13 +81,13 @@ gem 'sivel2_gen', # Motor para manejo de casos
   #path: '../sivel2_gen'
 
 gem 'apo214', # Motor para desaparición
-  git: 'https://github.com/pasosdeJesus/apo214.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/apo214.git', branch: :hotwire
   #path: '../apo214'
 
 
 group  :development, :test do
  
-  #gem 'byebug' # Depurar
+  gem 'byebug' # Depurar
 
   gem 'colorize' # Colores en terminal
 
