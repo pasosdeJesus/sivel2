@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e205237d233d6cc1f071fe042c96b0b598adf53c
+  revision: 35e110a5fd2f4abbd8f1ff41f1971068c027aa77
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a2210280f976ac95640153ad8c6ab835768efd47
+  revision: 781132ead4c4bfad94726d353945043636b4fa63
   branch: main
   specs:
     sivel2_gen (2.0b14)
@@ -158,7 +158,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.9.2)
+    devise-i18n (1.9.3)
       devise (>= 4.7.1)
     docile (1.3.5)
     dotenv (2.7.6)
@@ -203,7 +203,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
-    nokogiri (1.11.1)
+    nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     odf-report (0.7.2)
@@ -394,4 +394,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.2.13
+   2.2.14
