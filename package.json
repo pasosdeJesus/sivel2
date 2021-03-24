@@ -42,6 +42,7 @@
     "html-webpack-plugin": "^4.5.0",
     "is-svg": "^4.2.2",
     "html-webpack-plugin": "^4.5.0",
+    "is-svg": "^4.2.2",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
     "js-yaml-loader": "^1.2.2",
