@@ -18,11 +18,7 @@
 //= require apo214/motor
 //= require_tree .
 
-<<<<<<< HEAD
 document.addEventListener('turbo:load', function() {
-=======
-document.addEventListener('turbolinks:load', function() {
->>>>>>> 9977cb5... deja como antes espacio
   var root;
   root = typeof exports !== "undefined" && exports !== null ? 
     exports : window;
