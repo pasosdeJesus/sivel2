@@ -8,6 +8,7 @@
     "chosen-js": "^1.8.7",
     "expose-loader": "^0.7.5",
     "gridstack": "^0.6.0",
+    "is-svg": "^4.2.2",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
     "leaflet": "^1.6.0",
