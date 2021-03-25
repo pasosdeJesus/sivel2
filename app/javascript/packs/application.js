@@ -25,6 +25,7 @@ import * as ActiveStorage from "@rails/activestorage"
 
 Rails.start()
 //require('@rails/ujs').start()   // Javascript no intrusivo segun rails
+//import Turbo from "@hotwired/turbo"
 //require('turbolinks').start()   // Acelera carga de paginas
 
 //ActiveStorage.start()
