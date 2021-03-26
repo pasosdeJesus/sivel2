@@ -14,7 +14,3 @@
  *= require sivel2_gen/application.css
  *= require_tree .
  */
-turbo-frame {
-  display: block;
-  border: 1px solid blue;
-}
