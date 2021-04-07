@@ -106,8 +106,6 @@ group :development do
 
   gem 'rails-erd'
 
-  gem 'puma'
-
   gem 'spring' # Acelera ejecutando en fondo. 
 
   gem 'web-console'
