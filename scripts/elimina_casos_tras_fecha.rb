@@ -54,6 +54,11 @@ ejecuta_sql("
       id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha>='#{fechaini}'));
     ")
 ejecuta_sql("
+  DELETE FROM sivel2_gen_sectorsocialsec_victima WHERE 
+    victima_id IN (SELECT id from sivel2_gen_victima WHERE
+      id_caso in (#{ids_por_eliminar}));
+    ")
+ejecuta_sql("
   DELETE FROM sivel2_gen_victima WHERE
     id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha>='#{fechaini}');
     ")

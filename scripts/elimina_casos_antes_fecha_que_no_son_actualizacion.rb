@@ -1,5 +1,5 @@
 # Ejecutar con 
-# bin/rails runner -e development scripts/elimina_casos_antes_fecha_que_no_son_actualizacion
+# bin/rails runner -e development scripts/elimina_casos_antes_fecha_que_no_son_actualizacion.rb 2001-01-01
 
 puts ARGV
 fechaini = ARGV[0]
@@ -24,13 +24,18 @@ def ejecuta_sql(sql)
 end
 
 ejecuta_sql("
-  DELETE FROM sivel2_gen_caso_fotra WHERE anexo_caso_id IN
-    (SELECT id FROM sivel2_gen_anexo_caso WHERE 
-    id_caso in (#{ids_por_eliminar}));
+  DELETE FROM sivel2_gen_caso_fuenteprensa WHERE 
+    id_caso in (#{ids_por_eliminar});
     ")
+
 ejecuta_sql("
   DELETE FROM sivel2_gen_anexo_caso WHERE 
     id_caso in (#{ids_por_eliminar});
+    ")
+
+ejecuta_sql("
+  DELETE FROM sivel2_gen_caso_fotra 
+    WHERE id_caso in (#{ids_por_eliminar});
     ")
 ejecuta_sql("
   DELETE FROM sivel2_gen_caso_etiqueta WHERE 
@@ -64,6 +69,11 @@ ejecuta_sql("
 ejecuta_sql("
   DELETE FROM sivel2_gen_antecedente_victima WHERE 
     id_victima IN (SELECT id from sivel2_gen_victima WHERE
+      id_caso in (#{ids_por_eliminar}));
+    ")
+ejecuta_sql("
+  DELETE FROM sivel2_gen_sectorsocialsec_victima WHERE 
+    victima_id IN (SELECT id from sivel2_gen_victima WHERE
       id_caso in (#{ids_por_eliminar}));
     ")
 ejecuta_sql("
