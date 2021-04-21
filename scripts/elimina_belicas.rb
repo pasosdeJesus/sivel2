@@ -22,8 +22,9 @@ ActiveRecord::Base.connection.execute <<-SQL
     (SELECT id_caso_presponsable/10000 FROM sivel2_gen_caso_categoria_presponsable) ORDER BY 1;
 
   DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE 
-    id_caso_presponsable/10000 NOT IN 
-      (SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1);
+    id_caso_presponsable IN 
+      (SELECT DISTINCT id from sivel2_gen_caso_presponsable WHERE
+      id_caso NOT IN (SELECT id_caso FROM nobelicas ORDER BY 1));
   UPDATE sivel2_gen_caso SET ubicacion_id=NULL WHERE
     id NOT IN (SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1);
   DELETE FROM sivel2_gen_antecedente_victima WHERE
