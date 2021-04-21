@@ -26,6 +26,10 @@ module Sivel2
 
     config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
 
+    config.action_dispatch.default_headers = {
+          'X-Frame-Options' => 'ALLOW'
+    }
+
     # sip
     config.x.formato_fecha = ENV.fetch('FORMATO_FECHA', 'dd/M/yyyy')
 
