@@ -1632,7 +1632,8 @@ CREATE TABLE public.sip_actorsocial_persona (
     perfilactorsocial_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    correo character varying(100)
+    correo character varying(100),
+    cargo character varying(254)
 );
 
 
@@ -6423,6 +6424,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190605143420'),
 ('20190612111043'),
 ('20190618135559'),
+('20190625112649'),
 ('20190625140232'),
 ('20190703044126'),
 ('20190715083916'),
@@ -6477,6 +6479,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210226155035'),
 ('20210316082124'),
 ('20210401194637'),
-('20210401210102');
+('20210401210102'),
+('20210414201956');
 
 
