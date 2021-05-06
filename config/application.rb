@@ -52,7 +52,8 @@ module Sivel2
     ).html_safe
 
     config.x.sivel2_mapaosm_diasatras = ENV.fetch(
-      'SIVEL2_MAPAOSM_DIASATRAS', 182)
+      'SIVEL2_MAPAOSM_DIASATRAS', 182
+    )
 
 
   end
