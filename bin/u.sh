@@ -40,6 +40,7 @@ $DOAS su - ${USUARIO_AP} -c "cd $DIRAP;
     CONFIG_HOSTS=\"${CONFIG_HOSTS}\" \
     DIRAP=\"${DIRAP}\" \
     HEB412_RUTA=\"${HEB412_RUTA}\" \
+    ORIGEN_CORS=\"${ORIGEN_CORS}\" \
     PUERTOUNICORN=\"${PUERTOUNICORN}\" \
     RAILS_ENV=production \
     RUTA_RELATIVA=\"${RUTA_RELATIVA}\" \

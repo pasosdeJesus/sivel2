@@ -30,6 +30,9 @@ module Sivel2
       'X-Frame-Options' => 'ALLOW'
     }
 
+    config.x.origen_cors = ENV.fetch('ORIGEN_CORS','').split(',')
+    puts "config.x.origen_cors=#{config.x.origen_cors.inspect}"
+
     # sip
     config.x.formato_fecha = ENV.fetch('FORMATO_FECHA', 'dd/M/yyyy')
 
