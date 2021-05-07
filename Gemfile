@@ -45,8 +45,6 @@ gem 'prawn-table'
 
 gem 'rack'
 
-gem 'rack-cors'
-
 gem 'rails', '~> 6.1'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
@@ -130,6 +128,7 @@ end
 
 
 group :production do
+  gem 'rack-cors'
 
   gem 'unicorn' # Para despliegue
 end
