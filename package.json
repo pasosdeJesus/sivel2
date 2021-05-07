@@ -1,8 +1,10 @@
 {
+  "name": "sivel2",
+  "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@rails/ujs": "^6.0.1",
-    "@rails/webpacker": "^4.0.2",
+    "@rails/webpacker": "^5.3.0",
     "bootstrap": "^4.3.1",
     "bootstrap-datepicker": "^1.9.0",
     "chosen-js": "^1.8.7",
@@ -16,7 +18,9 @@
     "node-forge": "0.10.0",
     "popper.js": "^1.16.0",
     "serialize-javascript": "2.1.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.4.1"
