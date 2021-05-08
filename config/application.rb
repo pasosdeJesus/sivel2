@@ -22,8 +22,6 @@ module Sivel2
 
     config.active_record.schema_format = :sql
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     config.hosts <<  ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase
 
     config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
@@ -39,13 +37,6 @@ module Sivel2
     config.x.heb412_ruta = Pathname(
       ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
     )
-=======
-    config.hosts <<  (ENV['CONFIG_HOSTS'] && ENV['CONFIG_HOSTS'] != '' ? 
-                      ENV['CONFIG_HOSTS'].downcase : 
-                      'defensor.info'.downcase)
-=======
-    config.hosts <<  ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase
->>>>>>> 178b034... sigue convenciones de sip 2.0b11, ver https://github.com/pasosdeJesus/sip/wiki/2021_2-Actualizaci%C3%B3n-de-sip-2.0b10-a-2.0b11
 
     config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
 
@@ -55,10 +46,11 @@ module Sivel2
     # heb412
     config.x.heb412_ruta = Pathname(
       ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
+    )
 
-      # sivel2
-      config.x.sivel2_consulta_web_publica = 
-        (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
+    # sivel2
+    config.x.sivel2_consulta_web_publica = 
+      (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
 
     config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
