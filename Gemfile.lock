@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 7b1802b79d4debeaf3581fb684d0c2c8c678737d
+  revision: 824c38108184d871790b38c7c41ab7614f15b13a
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a177a829c83e3e5553ef74d7dafb3b78d32642d5
+  revision: 54bbc64771b2d18c93ad569f53b84b70ef1d0120
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7ca0c690fbc156de098b598341506794ac2365a7
+  revision: 2c7359c0b58784484a9cd5c03f86b0dc1fa846f4
   branch: main
   specs:
     sip (2.0.b11)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 236421e1dc2860f59a4f98b50758dc75bfc02781
+  revision: 834092d45ad24f3be642960ddd5465c5ef4c61d6
   branch: main
   specs:
     sivel2_gen (2.0b14)
@@ -169,7 +169,7 @@ GEM
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
-    execjs (2.7.0)
+    execjs (2.8.0)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -229,7 +229,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.3.0)
+    puma (5.3.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -376,6 +376,7 @@ DEPENDENCIES
   prawn-table
   prawnto_2
   puma
+  rack
   rack-cors
   rails (~> 6.1)
   rails-erd
