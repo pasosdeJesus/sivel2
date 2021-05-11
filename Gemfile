@@ -128,7 +128,6 @@ end
 
 
 group :production do
-  gem 'rack-cors'
 
   gem 'unicorn' # Para despliegue
 end
