@@ -1,6 +1,6 @@
 require_relative 'boot'
 require 'rails/all'
-
+require "active_storage/engine"
 # Requiere gemas listas en el Gemfile, incluyendo las
 # limitadas a :test, :development, o :production.
 Bundler.require(*Rails.groups)
@@ -25,6 +25,8 @@ module Sivel2
     config.hosts <<  ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase
 
     config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
+    config.active_storage.routes_prefix = ENV.fetch('RUTA_RELATIVA', "/sivel2")
+
 
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOW'
