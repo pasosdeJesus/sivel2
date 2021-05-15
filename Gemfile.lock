@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: db2856b08b00337241295e9e8abc5a40fa698ed8
+  revision: a90ce2596ec3ee5cec69c3d29f309d0a4ec90666
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 67897de80962b7b027962d7c15b16984e567a1ac
+  revision: bb5067a8f414443bdfca9a7c390a99c3287f9f1e
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d65c021dd2502cf15728f503bf22b19f945bcb99
+  revision: 0093e0b276fee91e64a2813936ec09386a1c8d58
   branch: main
   specs:
     sip (2.0.b11)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e49b2f44ef0f9470f22c9628129af80831c7b7ad
+  revision: f6f45115e14ceea85b3787e1ba5c96801af7a7c8
   branch: main
   specs:
     sivel2_gen (2.0b14)
@@ -169,7 +169,7 @@ GEM
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
-    execjs (2.8.0)
+    execjs (2.8.1)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -204,7 +204,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
-    nokogiri (1.11.3)
+    nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     odf-report (0.7.2)
