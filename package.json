@@ -4,25 +4,26 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@rails/ujs": "^6.0.1",
-    "@rails/webpacker": "^5.3.0",
-    "bootstrap": "^4.3.1",
+    "@rails/webpacker": "5.3.0",
+    "bootstrap": "^4.6.0",
     "bootstrap-datepicker": "^1.9.0",
     "chosen-js": "^1.8.7",
     "expose-loader": "^0.7.5",
+    "font-awesome": "^4.7.0",
     "gridstack": "^0.6.0",
-    "is-svg": "^4.2.2",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "jquery-ui": "^1.12.1",
     "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1",
-    "node-forge": "0.10.0",
-    "popper.js": "^1.16.0",
-    "serialize-javascript": "2.1.1",
+    "popper.js": "^1.16.1",
+    "postcss": "^8.2.10",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
+  "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.4.1"
+    "webpack-dev-server": "^3.11.2"
   }
 }
+
