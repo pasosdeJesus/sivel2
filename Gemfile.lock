@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5d7a247f9c8b032c982be1913241d7c4e9893b4e
+  revision: 94820137a04235d5ebc132fdef9d35e778f1925f
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 860448840eb79bc6f3244ef23be1374d1aec2301
+  revision: e2f0899f9307610977c81b8ee75d8b62040b022a
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c4a3b76592e9948cd7614cce12ca0e07e6d8b8ea
+  revision: 134b5da4626d27a58e437d37a45646b034c1d893
   branch: main
   specs:
     sip (2.0.b11)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 619712a6b219c7df534ea7395c77b0f62afa3c7d
+  revision: efb28d91db874f88789fb7ef3a0753d5ffb896fc
   branch: main
   specs:
     sivel2_gen (2.0b14)
@@ -204,7 +204,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
-    nokogiri (1.11.6)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     odf-report (0.7.2)
