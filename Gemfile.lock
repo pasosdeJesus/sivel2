@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 94820137a04235d5ebc132fdef9d35e778f1925f
+  revision: 15bd380b9d43fd1f04ccd249ea135daa62c6bd86
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 134b5da4626d27a58e437d37a45646b034c1d893
+  revision: 8f388d74e20099c6e69d9ba52df2b9ea48842dea
   branch: main
   specs:
     sip (2.0.b11)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: efb28d91db874f88789fb7ef3a0753d5ffb896fc
+  revision: 34bc4d561aad42e6c086738bd583b54e438021d3
   branch: main
   specs:
     sivel2_gen (2.0b14)
@@ -150,7 +150,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -186,7 +186,7 @@ GEM
     json (2.5.1)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
