@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 3248132fa43cd59c0cd13ee30ddb3706f61c32dd
+  revision: 98cb183f91fea167a94c4af4fca246247bf90fcf
   branch: main
   specs:
     apo214 (0.1.0)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 7b1802b79d4debeaf3581fb684d0c2c8c678737d
+  revision: 93a9e276ce826e86af71cf3928f558a2a47949f9
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a177a829c83e3e5553ef74d7dafb3b78d32642d5
+  revision: f46fb0b78e763aaae18c4911651962b3aedc1456
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7ca0c690fbc156de098b598341506794ac2365a7
+  revision: cac5a627399d4ad11cf849be4044897601057411
   branch: main
   specs:
     sip (2.0.b11)
@@ -48,10 +48,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 236421e1dc2860f59a4f98b50758dc75bfc02781
+  revision: 5de0d65cb46ab499dba24851936c36805fcb065a
   branch: main
   specs:
-    sivel2_gen (2.0b14)
+    sivel2_gen (2.0b15)
       devise
       jquery-rails
       rails
@@ -136,7 +136,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
-    cancancan (3.2.1)
+    cancancan (3.2.2)
     capybara (3.35.3)
       addressable
       mini_mime (>= 0.1.3)
@@ -161,7 +161,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -171,7 +171,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.4)
       devise (>= 4.7.1)
-    docile (1.3.5)
+    docile (1.4.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -180,8 +180,8 @@ GEM
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
-    execjs (2.7.0)
-    ffi (1.15.0)
+    execjs (2.8.1)
+    ffi (1.15.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hotwire-rails (0.1.3)
@@ -199,9 +199,9 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.5.1)
-    kgio (2.11.3)
+    kgio (2.11.4)
     libxml-ruby (3.2.1)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -215,11 +215,11 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.0.3)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
-    nokogiri (1.11.3)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     odf-report (0.7.2)
@@ -244,11 +244,11 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.3.0)
+    puma (5.3.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
-    rack-proxy (0.6.5)
+    rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -286,7 +286,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (~> 1.0)
-    raindrops (0.19.1)
+    raindrops (0.19.2)
     rake (13.0.3)
     redcarpet (3.5.1)
     regexp_parser (2.1.1)
@@ -353,12 +353,12 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.3.0)
+    webpacker (5.4.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.0)

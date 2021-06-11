@@ -31,6 +31,20 @@ COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance betwe
 
 
 --
+-- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
+
+
+--
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -886,7 +900,9 @@ CREATE TABLE public.apo214_lugarpreliminar (
     desgenanomalia character varying(5000),
     evaluacionlugar character varying(5000),
     riesgosdanios character varying(500),
-    archivokml_id integer
+    archivokml_id integer,
+    descripcion_kml_as character varying(5000),
+    fecha_kml_as timestamp without time zone
 );
 
 
@@ -1184,7 +1200,7 @@ CREATE TABLE public.sivel2_gen_victima (
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('public.victima_seq'::regclass) NOT NULL,
     CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
-    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'S'::bpchar)))
+    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'O'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'S'::bpchar)))
 );
 
 
@@ -3504,6 +3520,16 @@ CREATE TABLE public.sivel2_gen_contextovictima_victima (
 
 
 --
+-- Name: sivel2_gen_departamento_region; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_departamento_region (
+    departamento_id integer,
+    region_id integer
+);
+
+
+--
 -- Name: sivel2_gen_escolaridad; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3854,6 +3880,16 @@ CREATE SEQUENCE public.sivel2_gen_maternidad_id_seq
 --
 
 ALTER SEQUENCE public.sivel2_gen_maternidad_id_seq OWNED BY public.sivel2_gen_maternidad.id;
+
+
+--
+-- Name: sivel2_gen_municipio_region; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_municipio_region (
+    municipio_id integer,
+    region_id integer
+);
 
 
 --
@@ -7749,6 +7785,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210406225904'),
 ('20210414201956'),
 ('20210428143811'),
-('20210430160739');
+('20210430160739'),
+('20210511011442'),
+('20210511065252'),
+('20210531223906'),
+('20210601023450'),
+('20210601023557');
 
 
