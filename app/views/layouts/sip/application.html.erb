@@ -54,8 +54,9 @@
     %>
       <%= yield :menu %>
     <% end %>
-
-    <% if request.env['PATH_INFO'] == "/sivel2/casos/mapatiempo" %>
+ 
+    <% if request.env['PATH_INFO'] == ActionController::Base.config.relative_url_root +
+        "casos/mapatiempo" %>
       <div id="div_contenido" style="margin-top: -9px;" >
 	      <%= bootstrap_flash %>
 	      <%= yield %>
