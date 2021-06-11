@@ -23,6 +23,16 @@
   "version": "0.1.0",
   "devDependencies": {
     "css-what": "^5.0.1",
+    "jest": "^27.0.4",
     "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "roots": [
+      "test/javascript"
+    ]
   }
 }
