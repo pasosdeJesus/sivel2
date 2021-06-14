@@ -14,8 +14,8 @@ read a
 echo "1 de 3. Copia ..."
 
 cat > /tmp/incluir <<EOF
-sip_perfilactorsocial
-sip_sectoractor
+sip_perfilorgsocial
+sip_sectororgsocial
 sip_trelacion
 sip_tsitio
 sivel2_gen_antecedente
@@ -41,12 +41,12 @@ sivel2_gen_escolaridad
 sivel2_gen_estadocivil
 sivel2_gen_maternidad
 sivel2_gen_contextovictima
-sip_actorsocial
+sip_orgsocial
 sip_grupoper
 sip_persona
 sivel2_gen_caso
-sip_actorsocial_persona
-sip_actorsocial_sectoractor
+sip_orgsocial_persona
+sip_orgsocial_sectororgsocial
 sip_persona_trelacion
 sip_ubicacion
 sivel2_gen_victima
