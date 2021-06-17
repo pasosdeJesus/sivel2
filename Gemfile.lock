@@ -1,6 +1,17 @@
 GIT
+  remote: https://github.com/kreeti/kt-paperclip.git
+  revision: 379d3a8ca990ce91baef7498bd74c8680c181c3c
+  specs:
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
+
+GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 55b8af14ca22e228d6b4d3599a238b9f5389e3e4
+  revision: 04afc987890c7be94c29c3370de073ee5413ee35
   branch: orgsocial
   specs:
     heb412_gen (1.0.b6)
@@ -11,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 34ba482cbaf8bd540250e09281e73bda242eef19
+  revision: c27bbcafb5460fa15f1b565d2f133c85d54cc904
   branch: orgsocial
   specs:
     mr519_gen (0.2.0)
@@ -20,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 8408e0ef8ab13083a4deb47f09805e305287ca24
+  revision: e2278cdd5263bca4f406d71ec4ce0cee368f8f15
   branch: orgsocial
   specs:
     sip (2.0.b11)
@@ -39,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 530d2674bc4294281e23b1188c4be4f1512116d3
+  revision: 8b56c55ae66cf6a81551c33963b212136d9f2eea
   branch: orgsocial
   specs:
     sivel2_gen (2.0b15)
@@ -170,7 +181,7 @@ GEM
       ruby-graphviz
     erubi (1.10.0)
     execjs (2.8.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -366,11 +377,11 @@ DEPENDENCIES
   erd
   heb412_gen!
   jbuilder
+  kt-paperclip!
   libxml-ruby
   mr519_gen!
   nokogiri (>= 1.11.1)
   odf-report
-  paperclip
   pg
   prawn
   prawn-table
