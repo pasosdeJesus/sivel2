@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4b806692bef8e7aba85b069a62ad5563ea815d2d
+  revision: 32f8f10b5823db338607eaa9070ad29d0f175520
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 508c202a07f614a070f33a8fe0741508c2c1bacd
+  revision: e1578477dde3f902bfb81014e1a096b716afb30e
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -49,19 +49,21 @@ GIT
       will_paginate
 
 GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 9f1892403c3dbdb8f7d457a06f237ff58e7dfb07
-  branch: new_id_with_ajax
-  specs:
-    cocoon (1.2.11)
-
-PATH
-  remote: ../sivel2_gen
+  remote: https://github.com/pasosdeJesus/sivel2_gen.git
+  revision: 2e803b5ed1a050eff1a917556487b288bdbc6cd8
+  branch: main
   specs:
     sivel2_gen (2.0b15)
       devise
       jquery-rails
       rails
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 9f1892403c3dbdb8f7d457a06f237ff58e7dfb07
+  branch: new_id_with_ajax
+  specs:
+    cocoon (1.2.11)
 
 GEM
   remote: https://rubygems.org/
