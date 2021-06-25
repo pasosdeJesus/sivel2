@@ -32,7 +32,7 @@ Turbolinks.start()
 var L = require('leaflet');
 var mc= require('leaflet.markercluster');
 
-import {$, jQuery} from 'jquery';
+import $ from "expose-loader?exposes=$,jQuery!jquery"
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import 'bootstrap'              // Maquetacion y elementos de diseño
 import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
