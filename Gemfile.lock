@@ -1,6 +1,17 @@
 GIT
+  remote: https://github.com/kreeti/kt-paperclip.git
+  revision: 379d3a8ca990ce91baef7498bd74c8680c181c3c
+  specs:
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
+
+GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 94820137a04235d5ebc132fdef9d35e778f1925f
+  revision: 32f8f10b5823db338607eaa9070ad29d0f175520
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -11,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e2f0899f9307610977c81b8ee75d8b62040b022a
+  revision: e1578477dde3f902bfb81014e1a096b716afb30e
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -20,10 +31,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 134b5da4626d27a58e437d37a45646b034c1d893
+  revision: 7a9821f010a24df5623d0da550c54dedd3930d1a
   branch: main
   specs:
-    sip (2.0.b11)
+    sip (2.0.b12)
       cancancan
       chosen-rails
       devise
@@ -39,10 +50,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: efb28d91db874f88789fb7ef3a0753d5ffb896fc
+  revision: 74af0feb37821008e9f4466b80adbc3513716d36
   branch: main
   specs:
-    sivel2_gen (2.0b14)
+    sivel2_gen (2.0b15)
       devise
       jquery-rails
       rails
@@ -125,7 +136,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
-    cancancan (3.2.2)
+    cancancan (3.3.0)
     capybara (3.35.3)
       addressable
       mini_mime (>= 0.1.3)
@@ -150,7 +161,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -158,8 +169,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.9.4)
-      devise (>= 4.7.1)
+    devise-i18n (1.10.0)
+      devise (>= 4.8.0)
     docile (1.4.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -170,7 +181,7 @@ GEM
       ruby-graphviz
     erubi (1.10.0)
     execjs (2.8.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -186,7 +197,7 @@ GEM
     json (2.5.1)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -341,7 +352,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
-    websocket-driver (0.7.4)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.0)
@@ -366,11 +377,11 @@ DEPENDENCIES
   erd
   heb412_gen!
   jbuilder
+  kt-paperclip!
   libxml-ruby
   mr519_gen!
   nokogiri (>= 1.11.1)
   odf-report
-  paperclip
   pg
   prawn
   prawn-table

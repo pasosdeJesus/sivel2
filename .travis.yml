@@ -41,6 +41,7 @@ before_install:
         - gem update --system
         - bundle install
         - yarn install
+        - yarn global add jest
         - cp config/database.travis.yml config/database.yml
         - cp config/application.rb.plantilla config/application.rb
         - cp config/routes.rb.plantilla config/routes.rb
@@ -52,6 +53,8 @@ before_install:
         - bundle exec rails sip:indices
 
 script: 
+        - RAILS_ENV=test CONFIG_HOSTS=127.0.0.1 jest
+        - RAILS_ENV=test CONFIG_HOSTS=127.0.0.1 bundle exec rails test
         - RAILS_ENV=test CONFIG_HOSTS=127.0.0.1 bundle exec rails test:system 
 
 after_script:
