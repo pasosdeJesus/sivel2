@@ -56,7 +56,9 @@ gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
 
-gem 'webpacker' # módulos en Javascript https://github.com/rails/webpacker
+gem 'webpacker', # módulos en Javascript https://github.com/rails/webpacker
+  git: 'https://github.com/rails/webpacker'
+
 
 gem 'will_paginate' # Listados en páginas
 
@@ -66,23 +68,23 @@ gem 'will_paginate' # Listados en páginas
 # lógico y no alfabetico como las gemas anteriores) 
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: :webpacker6
   #path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :webpacker6
   #path: '../mr519_gen'
 
 gem 'heb412_gen',  # Motor de nube y llenado de plantillas
-  git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: :webpacker6
   #path: '../heb412_gen'
 
 gem 'sivel2_gen', # Motor para manejo de casos
-  git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: :webpacker6
   #path: '../sivel2_gen'
 
 gem 'apo214', # Motor para manejo de casos
-  git: 'https://github.com/pasosdeJesus/apo214.git', branch: 'main'
+  git: 'https://github.com/pasosdeJesus/apo214.git', branch: :webpacker6
   #path: '../apo214'
 
 group  :development, :test do
