@@ -5,7 +5,7 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  host: /var/www/var/run/postgresql
+  host: <%= ENV.fetch('BD_SERVIDOR', '/var/www/var/run/postgresql') %>
   username: <%= ENV.fetch('BD_USUARIO', 'sipdes') %>
   password: <%= ENV.fetch('BD_CLAVE') %>
 

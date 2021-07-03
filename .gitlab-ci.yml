@@ -1,0 +1,53 @@
+# Basado entre otros en: https://dev.to/mpressen/rails-minitest-gitlab-ci-31ap
+
+image: "ruby:3.0.1"
+
+services:
+  - name: vtamara/postgis-es_co:13.3-1
+    alias: postgres
+
+variables:
+  RAILS_ENV: test
+  POSTGRES_ENABLED: "true"
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+  POSTGRES_DB: sivel2gen_pru
+  POSTGRES_HOST_AUTH_METHOD: trust
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: "true"
+
+
+stages:
+  - test
+
+test:
+  stage: test
+  cache:
+    paths:
+      - apt-cache
+      - node_modules
+      - vendor/bundle
+  before_script:
+    - uname -a
+    - whoami
+    - echo "HOME=${HOME}"
+    - pwd
+    - which ruby
+    - ruby -v
+    - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+    - apt-get update -yy && apt-get install build-essential libpq-dev postgresql-client -y
+    - apt-get install -y -qq nodejs
+    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    - apt-get update -qq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -yqq yarn
+    - yarn install
+    - gem install bundler --no-document
+    - bundle install --jobs $(nproc) "${FLAGS[@]}"
+    - cp .env.gitlab .env
+    - cp db/structure.sql db/structure.sql.copia 
+    - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
+    - bin/rails db:drop db:create db:setup
+    - bin/rails sip:indices
+  script:
+    - CONFIG_HOSTS=www.example.com bin/rails test
+
+
