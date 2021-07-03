@@ -4,9 +4,9 @@
 Sistema de Información de Violencia Política en Línea versión 2
 
 
-[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Estado Construcción](https://gitlab.com/pasosdeJesus/sivel2/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines)[![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![security](https://hakiri.io/github/pasosdeJesus/sivel2/master.svg)](https://hakiri.io/github/pasosdeJesus/sivel2/master)
+[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Estado Construcción](https://gitlab.com/pasosdeJesus/sivel2/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines)[![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![security](https://hakiri.io/github/pasosdeJesus/sivel2/main.svg)](https://hakiri.io/github/pasosdeJesus/sivel2/main)
 
-![Logo de sivel2](https://raw.githubusercontent.com/pasosdeJesus/sivel2/master/app/assets/images/logo.jpg)
+![Logo de sivel2](https://raw.githubusercontent.com/pasosdeJesus/sivel2/main/app/assets/images/logo.jpg)
 
 ## Documentación para usuarios finales
 
@@ -22,14 +22,14 @@ Tableros de seguimiento al desarrollo: <https://github.com/pasosdeJesus/sivel2_g
 
 ### Requisitos 📋
 
-Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
+Ver <https://github.com/pasosdeJesus/sip/blob/main/doc/requisitos.md>
 Además si va a desplegar en producción:
 * nginx (>=1.16)
 
 ### Probar operación en modo de desarrollo 🔧
 
 * Cree un usuario para PostgreSQL como se explica en 
-  <https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md>
+  <https://github.com/pasosdeJesus/sip/blob/main/doc/aplicacion-de-prueba.md>
   (si deja el nombre sipdes se le facilitarán los siguientes pasos)
 * Ubique las fuentes en un directorio, por ejemplo en `/var/www/htdocs/sivel2/`
 * Asegúrese que las gemas estén instaladas. En el caso de adJ en 
@@ -61,7 +61,7 @@ Además si va a desplegar en producción:
 ```
   Estas plantillas dejan la aplicación en el URL /sivel2/ (tendría que 
   modificarlas si prefiere una raíz de URL diferente, ver
-  <https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md> )
+  <https://github.com/pasosdeJesus/sip/blob/main/doc/punto-de-montaje.md> )
 
   Lo mínimo que debe modificar es establecer usuario PostgreSQL, clave y 
   bases de datos (desarrollo, pruebas y producción) que configuró en 
@@ -138,9 +138,9 @@ Además si va a desplegar en producción:
 Dado que se hacen pruebas a modelos, rutas, controladores y vistas en 
 ```sivel2_gen```, en ```sivel2``` sólo se implementan algunas pruebas 
 de integración con `capybara` y `poltergeist` (ver carpeta
-`test/` y documentación de como desarrollarlas en <https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-con-minitest.md>), 
+`test/` y documentación de como desarrollarlas en <https://github.com/pasosdeJesus/sip/blob/main/doc/pruebas-con-minitest.md>), 
 así como pruebas al sistema con sideex (ver carpeta `test/sideex` y documentación 
-de como hacerlas en <https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-al-sistema-con-sideex.md>
+de como hacerlas en <https://github.com/pasosdeJesus/sip/blob/main/doc/pruebas-al-sistema-con-sideex.md>
 ).  
 
 Si ya configuró el servidor de desarrollo como se explicó antes y logró ver
@@ -316,10 +316,10 @@ El desarrollo debe centrarse en los motores que constituyen esta aplicación,
 particularmente ```sivel2_gen```.
 
 La documentación general para desarrolladores que mantenemos está en:
-<https://github.com/pasosdeJesus/sip/blob/master/doc/README.md>
+<https://github.com/pasosdeJesus/sip/blob/main/doc/README.md>
 
 
 ## Autores ✒️
 
 Ver [contribuyentes](https://github.com/pasosdeJesus/sivel2/graphs/contributors) y 
-<https://github.com/pasosdeJesus/sivel2/blob/master/CREDITOS.md>
+<https://github.com/pasosdeJesus/sivel2/blob/main/CREDITOS.md>
