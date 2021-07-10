@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c4a680fd3270ef376ca1699e0ef40a83a740011e
+  revision: d1d70ea23fb6b1095ff461c8635f71f3057d9377
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b7a0f7d266eb1cb9c00971440e201862e82f4522
+  revision: e66d92f7f0957021ce125dade830d2f14bf775dd
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e35094edba13b6fdf0a24ceaa70ac1504751dea5
+  revision: 3f3cfa8e9c1767f1ab361352a4215ee28267b4c5
   branch: main
   specs:
     sip (2.0.b12)
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 01525d1a383c4337af21663add1878d7d19f4050
+  revision: dcb7634776ec61c8683c53d529d4bfe3916c0378
   branch: main
   specs:
     sivel2_gen (2.0b15)
@@ -127,7 +127,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     andand (1.3.3)
     bcrypt (3.1.16)
@@ -206,7 +206,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0225)
+    mime-types-data (3.2021.0704)
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
@@ -285,7 +285,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     raindrops (0.19.2)
-    rake (13.0.3)
+    rake (13.0.6)
     redcarpet (3.5.1)
     regexp_parser (2.1.1)
     responders (3.0.1)
@@ -297,7 +297,7 @@ GEM
       rubyzip (>= 1.3)
     ruby-graphviz (1.2.5)
       rexml
-    rubyzip (2.3.0)
+    rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -331,7 +331,7 @@ GEM
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    twitter_cldr (6.6.1)
+    twitter_cldr (6.6.2)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
