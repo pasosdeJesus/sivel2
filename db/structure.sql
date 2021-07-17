@@ -900,9 +900,7 @@ CREATE TABLE public.apo214_lugarpreliminar (
     desgenanomalia character varying(5000),
     evaluacionlugar character varying(5000),
     riesgosdanios character varying(500),
-    archivokml_id integer,
-    descripcion_kml_as character varying(5000),
-    fecha_kml_as timestamp without time zone
+    archivokml_id integer
 );
 
 
@@ -1200,7 +1198,7 @@ CREATE TABLE public.sivel2_gen_victima (
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('public.victima_seq'::regclass) NOT NULL,
     CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
-    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'T'::bpchar) OR (orientacionsexual = 'O'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'S'::bpchar)))
+    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'I'::bpchar) OR (orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'O'::bpchar) OR (orientacionsexual = 'S'::bpchar) OR (orientacionsexual = 'T'::bpchar)))
 );
 
 
@@ -7813,7 +7811,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210428143811'),
 ('20210430160739'),
 ('20210511011442'),
-('20210511065252'),
 ('20210531223906'),
 ('20210601023450'),
 ('20210601023557'),
