@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require best_in_place
 //= require sip/motor
 //= require heb412_gen/motor
 //= require mr519_gen/motor
