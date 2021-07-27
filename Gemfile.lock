@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9b97a4b70bc65f3eb1ef7d2f7cb9518318afd823
+  revision: 691687ff593a262b8355753e1873529ba7c19a29
   branch: main
   specs:
     sip (2.0.b12)
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 6a994dbfd8438ab095bd2648e821c78904de8494
+  revision: 9003c566eb6b8b5636bf9153349bb4f5e43cf4c7
   branch: main
   specs:
     sivel2_gen (2.0b15)
@@ -132,7 +132,7 @@ GEM
     andand (1.3.3)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.7.5)
+    bootsnap (1.7.6)
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
