@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ac558ad1b7dd212d3ae14952baf3e5a959451dc2
+  revision: fc97e1e0576e9f815b60695fe29bbda269b51ece
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a5dd13dc79f73c309fb3e05e80e737cc1d0b6101
+  revision: 63541576e2a7d7c6a4592b68d65315482bbb940e
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9003c566eb6b8b5636bf9153349bb4f5e43cf4c7
+  revision: 51e69b6015d7f1cf32186abbb0bedcf5d5c84137
   branch: main
   specs:
     sivel2_gen (2.0b15)
@@ -182,8 +182,8 @@ GEM
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.3)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
+    globalid (0.5.1)
+      activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
