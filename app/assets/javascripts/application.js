@@ -1,14 +1,14 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
+// Archivo manifesto que será compila en application.js e incluirá todos los archivos que se listen
+// a continuación.
 //
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+// Cualquier archivo JavaScript/Coffee de este directorio, lib/assets/javascripts, vendor/assets/javascripts,
+// o vendor/assets/javascripts de los pllugins, si los hay, pueden referenciarse aquí usando rutas relativas
 //
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
+// No se recomienda agregar código directamente aquí, pero si lo hace, aparecerá al final
+// del archivo compilado.
 //
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
+// Lea el README de Sprockets (https://github.com/sstephenson/sprockets#sprockets-directives) para ver 
+// de las directivas soportadas.
 //
 //= require best_in_place
 //= require sip/motor
