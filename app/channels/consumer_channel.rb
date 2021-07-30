@@ -4,6 +4,6 @@ class ConsumerChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+    # Limpiezas necesarias cuando se desuscribr del canal
   end
 end
