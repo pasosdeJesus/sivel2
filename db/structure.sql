@@ -4,6 +4,7 @@ SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
+SET default_toast_compression = 'pglz';
 SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
@@ -28,20 +29,6 @@ CREATE EXTENSION IF NOT EXISTS fuzzystrmatch WITH SCHEMA public;
 --
 
 COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance between strings';
-
-
---
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
 
 
 --
@@ -271,6 +258,38 @@ CREATE FUNCTION public.sip_edad_de_fechanac_fecharef(anionac integer, mesnac int
           ELSE 
             anioref-anionac
         END 
+      $$;
+
+
+--
+-- Name: sivel2_gen_polo_id(integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.sivel2_gen_polo_id(presponsable_id integer) RETURNS integer
+    LANGUAGE sql
+    AS $$
+        WITH RECURSIVE des AS (
+          SELECT id, nombre, papa_id 
+          FROM sivel2_gen_presponsable WHERE id=presponsable_id 
+          UNION SELECT e.id, e.nombre, e.papa_id 
+          FROM sivel2_gen_presponsable e INNER JOIN des d ON d.papa_id=e.id) 
+        SELECT id FROM des WHERE papa_id IS NULL;
+      $$;
+
+
+--
+-- Name: sivel2_gen_polo_nombre(integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.sivel2_gen_polo_nombre(presponsable_id integer) RETURNS character varying
+    LANGUAGE sql
+    AS $$
+        SELECT CASE 
+          WHEN fechadeshabilitacion IS NULL THEN nombre
+          ELSE nombre || '(DESHABILITADO)' 
+        END 
+        FROM sivel2_gen_presponsable 
+        WHERE id=sivel2_gen_polo_id(presponsable_id)
       $$;
 
 
@@ -8012,6 +8031,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210614120835'),
 ('20210616003251'),
 ('20210619191706'),
-('20210727111355');
+('20210727111355'),
+('20210728214424'),
+('20210730120340');
 
 
