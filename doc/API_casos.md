@@ -124,20 +124,20 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 - JSON
 Para mostrar un reporte JSON de varios casos, se ha optado por solo mostrar algunas generalidades o elementos básicos del caso como lo son:
 
-	latitud: decimal para sistema de proyección WGS84.
+	- latitud: decimal para sistema de proyección WGS84.
 
-	longitud: decimal para sistema de proyección WGS84.
+	- longitud: decimal para sistema de proyección WGS84.
 
-	titulo: Titulo del caso.
+	- titulo: Título del caso.
 
-	fecha: Fecha del caso.
+	- fecha: Fecha del caso.
 	
-	``
+	```json
 	{
 		"896":{"latitud":"3.0133211225242484","longitud":"-76.48676928148937","fecha":"2001-01-16"},
 		"1039":{"latitud":"3.0131201235660483","longitud":"-76.48710295521055","fecha":"2001-02-01"}
 	}
-	``
+	```
 - XML (Xrlat)
 SIVeL 2 mostrará el reporte completo siguiendo el docmuneto DTD ubicado en [http://sincodh.pasosdejesus.org/relatos/relatos-098.dtd](http://sincodh.pasosdejesus.org/relatos/relatos-098.dtd)
 	```xml
@@ -230,6 +230,20 @@ Se ha construido también una ruta para poder obtener mediante un arreglo el nú
 }
 ```
 De esta forma vienen especificados lo objetos para todas las fechas dentro del rango y todos los departamentos. Es obligatorio especificar los parámetros de fecha inicial y fecha final, además si el caso no tiene ubicación, este entrará a sumar en el conteo de esa fecha con departamento nulo.
+</details>
+ <details>
+ <summary><code>Resumen control de accesos</code><code>(permisos)</code></summary>
+ 
+ -  Consulta pública:
+	 - Consultar hasta 2000 registros en la API (puede usar los filtros para disminuir el número de registros)
+	 - Consultar un caso en formato HTML, JSON y XML
+	 - Buscar casos con los parámetros limitados a la consulta pública
+	 - Contar casos
+ - Usuario autenticado:
+	 - Consulta listado de casos ilimitado
+	 - Consultar un caso en formato HTML, JSON y XML
+	 - Buscar casos con los parámetros para usuario autenticado
+	 -  Contar casos
 </details>
 
 ------------------------------------------------------------------------------------------
