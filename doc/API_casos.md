@@ -72,7 +72,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos.html?filtro[q]=&filtro[departamento_id]=17&filtro[municipio_id]=1152&filtro[clase_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id][]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[orientacionsexual]=&filtro[rangoedad_id]=&filtro[sectorsocial_id]=&filtro[organizacion_id]=&filtro[profesion_id]=&filtro[victimacol]=&filtro[inc_victimacol]=0&filtro[inc_victimacol]=1&filtro[descripcion]=&filtro[inc_memo]=0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&formato=html&formatosalida=html&commit=Enviar
+>  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos.html?filtro[q]=&filtro[departamento_id]=17&filtro[municipio_id]=1152&filtro[clase_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id][]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[orientacionsexual]=&filtro[rangoedad_id]=&filtro[sectorsocial_id]=&filtro[organizacion_id]=&filtro[profesion_id]=&filtro[victimacol]=&filtro[inc_victimacol]=0&filtro[inc_victimacol]=1&filtro[descripcion]=&filtro[inc_memo]=`application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8``application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8`0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&formato=html&formatosalida=html&commit=Enviar
 > ```
 ##### Ejemplos de respuestas
 - HTML:
@@ -83,7 +83,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 
 	DEPARTAMENTO: CAUCA  
 	MUNICIPIO: SANTANDER DE QUILICHAO
-
+##### Ejemplos de respuestas##### Ejemplos de respuestas
 	Cuatro hombres fueron asesinados en la zona urbana y rural de este municipio, en el cual hay presencia paramilitar y guerrillera.
 
 	  
@@ -106,7 +106,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 	DEPARTAMENTO: CAUCA  
 	MUNICIPIO: SANTANDER DE QUILICHAO
 
-	Paramilitares de las AUC que se transportaban en motocicletas, portando armas de largo y corto alcance ejecutaron de varios impactos de arma de fuego a cuatro personas. Las víctimas fueron sacadas por la fuerza de sus viviendas y ejecutadas en presencia de sus familiares.
+	Paramilitares de las AUC que se transportaban en motocicletas, portando armas de largo y corto alcance ejecutaron de varios impactos de arma de fu##### Ejemplos de respuestas##### Ejemplos de respuestas##### Ejemplos de respuestasego a cuatro personas. Las víctimas fueron sacadas por la fuerza de sus viviendas y ejecutadas en presencia de sus familiares.
 
 	  
 	Presunto Responsable: POLO ESTATAL - AUC  
@@ -114,7 +114,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 	VIOLACIONES A LOS DERECHOS HUMANOS  
 	Ejecución Extrajudicial por Persecución Política  
 	INFRACCIONES AL DIH  
-	Homicidio Intencional De Persona Protegida por Personas  
+	Homicidio Intencio##### Ejemplos de respuestas##### Ejemplos de respuestas##### Ejemplos de respuestasnal De Persona Protegida por Personas  
 	  
 	RAMIRO SANDOVAL MINA - CAMPESINO  
 	JOSE ELCIDES CARABALI SANDOVAL - CAMPESINO  
@@ -151,7 +151,6 @@ SIVeL 2 mostrará el reporte completo siguiendo el docmuneto DTD ubicado en [htt
 	</relatos>
 	```
 </details>
-
 <details>
  <summary><code>GET</code> <code><b>/casos/ {id}</b></code> <code>(obtener un caso específico según el id proporcionado)</code></summary>
 
@@ -161,41 +160,29 @@ SIVeL 2 mostrará el reporte completo siguiendo el docmuneto DTD ubicado en [htt
 > |-------------------|-----------|----------------|-------------------------------------|
 > | `id` |  requerido | Integer   | El identificador específico del caso        |
 
-##### Responses
+Para conusltar un caso en detalle, SIVeL 2 proporciona los formatos html, json y xrlat (xml). Las rutas de estas vistas se obtienen al agregar la extensión correspondiente al final de  sivel2/casos/id.[extensión]. Para el caso de la extensión JSON. SIVeL 2 responde con los detalles del caso con un objeto JSON con una sola propiedad caso cuyo valor es un objeto con las propiedades:
+
+id: Identificación, titulo: título del caso, hechos: Descripción o memo del caso, fecha, hora, departamento principal, municipio principal, centro_poblado principal, presponsables: un objeto que puede tener varios ítems, uno por presunto responsable, la propiedad de cada uno será la identificación del presunto responsable y su valor será el nombre victimas: un objeto que puede tener varios ítems, uno por víctima individual del caso, la propiedad de cada uno será la identificación de la víctima y su valor será los nombres de la víctima seguido de un espacio y los apellidos.
+##### Respuestas
 
 > | código http   | tipo de contenido                     | respuesta                                                          |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `text/plain;charset=UTF-8`        | página html                                                      |
+> | `200`         | `application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8`        | página html  / Objeto JSON / Reporte XML                                                    |
 > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 
-Se incluirá además el departamento y municipio de la ubicación principal si el parámetro `filtro[inc_ubicaciones]` es 2 y se incluirá la descripción del caso si `filtro[inc_memo]` es 2.
+##### Ejemplo cURL
 
-## Ruta 2. `Casos/1.json o Casos/1.xrlat`
+> ```javascript
+>  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos/896
+> ```
 
-Para conusltar un caso en detalle, SIVeL 2 proporciona vistas html, 
-json y xrlat (xml). Las rutas de estas vistas se obtienen al agregar
-la extensión correspondiente al final de http://181.143.184.115/sivel2/casos/id.[extensión]. 
-Para el caso de la extensión JSON. SIVeL 2 
-responde con los detalles del caso con un objeto JSON con una sola propiedad caso cuyo valor es un objeto con las propiedades:
-
-id: Identificación
-titulo
-hechos: Descripción o memo del caso
-fecha
-hora
-departamento: principal
-municipio: principal
-centro_poblado: principal
-presponsables: un objeto que puede tener varios ítems, uno por presunto responsable, la propiedad de cada uno será la identificación del presunto responsable y su valor será el nombre
-victimas: un objeto que puede tener varios ítems, uno por víctima individual del caso, la propiedad de cada uno será la identificación de la víctima y su valor será los nombres de la víctima seguido de un espacio y los apellidos.
-
-A conitnuación se muestra un ejemplo de la respuesta JSON a una de estas peticiones:
-
-```JSON
+##### Ejemplos de respuestas
+- JSON
+```json
 {"caso":
   {"id":129,
    "titulo":"aaa",
-   "hechos":"En su informe anual sobre la situación de derechos humanos en Colombia, la Oficina del Alto Comisionado de la ONU para este tema, que actualmente está a cargo de la expresidenta chilena Michelle Bachelet, sostiene que en el 2018 el homicidio aumentó en el 49 por ciento de los municipios y llama la atención sobre la persistencia de los altos niveles de impunidad en este tema.",
+   "hechos":"En su informe anual sobre la situación de derechos humanos en Colombia, la Oficina del Alto Comisionado de la ONU para este temcurl -X GETa, que actualmente está a cargo de la expresidenta chilena Michelle Bachelet, sostiene que en el 2018 el homicidio aumentó en el 49 por ciento de los municipios y llama la atención sobre la persistencia de los altos niveles de impunidad en este tema.",
    "fecha":"2019-08-05",
    "hora":"6  pm",
    "departamento":"CALDAS",
@@ -207,21 +194,35 @@ A conitnuación se muestra un ejemplo de la respuesta JSON a una de estas petici
   }
 }
 ```
+- XML
+Para el caso de XRLAT sí se presenta un informe detallado del caso en formato xml y se descarga automáticamente en un archivo llamado [id].xrlat
+</details>
 
-Para el caso de XRLAT sí se presenta un informe detallado
- del caso en formato xml y se descarga automáticamente en un archivo llamado [id].xrlat
+<details>
+ <summary><code>GET</code> <code><b>/casos/cuenta</b></code></summary>
 
-## Conteo de Casos
+Se ha construido también una ruta para poder obtener mediante un arreglo el número total de casos por fecha y por departamento.
+##### Parámetros
 
-Se ha construido también una ruta para poder obtener mediante un arreglo el número total de casos por fecha y por departamento. La ruta recibe los parámetros de fecha inicial y fecha final en que se quiere realizar la consulta y está definida de la siguiente forma:
+> | nombre            |  tipo     | tipo de dato      | descripción                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `fechaini` |  Requerido | String   | Fecha inicial de la cuenta        |
+> | `fechafin` |  Requerido | String   | Fecha final de la cuenta        |
 
-```
-sivel2/casos/cuenta?[fechaini]='2001-01-01'&[fechafin]='2020-06-30' 
-```
+##### Respuestas
 
-La respuesta a esta petición del API son objetos de la siguiente forma:
+> | código http   | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/json;charset=UTF-8`        | Objeto JSON                                                     |
+> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 
-```JSON
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos/cuenta?[fechaini]='2001-01-01'&[fechafin]='2020-06-30'
+> ```
+##### Ejemplo de respuesta
+```json
 {
   fecha: "2001-01-01", 
   departamento: "CAUCA", 
@@ -229,3 +230,6 @@ La respuesta a esta petición del API son objetos de la siguiente forma:
 }
 ```
 De esta forma vienen especificados lo objetos para todas las fechas dentro del rango y todos los departamentos. Es obligatorio especificar los parámetros de fecha inicial y fecha final, además si el caso no tiene ubicación, este entrará a sumar en el conteo de esa fecha con departamento nulo.
+</details>
+
+------------------------------------------------------------------------------------------
