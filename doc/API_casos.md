@@ -83,7 +83,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 
 	DEPARTAMENTO: CAUCA  
 	MUNICIPIO: SANTANDER DE QUILICHAO
-##### Ejemplos de respuestas##### Ejemplos de respuestas
+
 	Cuatro hombres fueron asesinados en la zona urbana y rural de este municipio, en el cual hay presencia paramilitar y guerrillera.
 
 	  
@@ -106,7 +106,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 	DEPARTAMENTO: CAUCA  
 	MUNICIPIO: SANTANDER DE QUILICHAO
 
-	Paramilitares de las AUC que se transportaban en motocicletas, portando armas de largo y corto alcance ejecutaron de varios impactos de arma de fu##### Ejemplos de respuestas##### Ejemplos de respuestas##### Ejemplos de respuestasego a cuatro personas. Las víctimas fueron sacadas por la fuerza de sus viviendas y ejecutadas en presencia de sus familiares.
+	Paramilitares de las AUC que se transportaban en motocicletas, portando armas de largo y corto alcance ejecutaron de varios impactos de arma de fuego a cuatro personas. Las víctimas fueron sacadas por la fuerza de sus viviendas y ejecutadas en presencia de sus familiares.
 
 	  
 	Presunto Responsable: POLO ESTATAL - AUC  
@@ -114,7 +114,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 	VIOLACIONES A LOS DERECHOS HUMANOS  
 	Ejecución Extrajudicial por Persecución Política  
 	INFRACCIONES AL DIH  
-	Homicidio Intencio##### Ejemplos de respuestas##### Ejemplos de respuestas##### Ejemplos de respuestasnal De Persona Protegida por Personas  
+	Homicidio Intencional De Persona Protegida por Personas  
 	  
 	RAMIRO SANDOVAL MINA - CAMPESINO  
 	JOSE ELCIDES CARABALI SANDOVAL - CAMPESINO  
@@ -199,7 +199,7 @@ Para el caso de XRLAT sí se presenta un informe detallado del caso en formato x
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/casos/cuenta</b></code></summary>
+ <summary><code>GET</code> <code><b>/casos/cuenta</b></code><code> (Trae conteo de casos en un intervalo de fechas)</code></summary>
 
 Se ha construido también una ruta para poder obtener mediante un arreglo el número total de casos por fecha y por departamento.
 ##### Parámetros
