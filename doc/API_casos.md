@@ -72,7 +72,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos.html?filtro[q]=&filtro[departamento_id]=17&filtro[municipio_id]=1152&filtro[clase_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id][]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[orientacionsexual]=&filtro[rangoedad_id]=&filtro[sectorsocial_id]=&filtro[organizacion_id]=&filtro[profesion_id]=&filtro[victimacol]=&filtro[inc_victimacol]=0&filtro[inc_victimacol]=1&filtro[descripcion]=&filtro[inc_memo]=`application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8``application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8`0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&formato=html&formatosalida=html&commit=Enviar
+>  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos.html?filtro[q]=&filtro[departamento_id]=17&filtro[municipio_id]=1152&filtro[clase_id]=&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=1&filtro[presponsable_id][]=&filtro[inc_presponsables]=1&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=1&filtro[sexo]=&filtro[orientacionsexual]=&filtro[rangoedad_id]=&filtro[sectorsocial_id]=&filtro[organizacion_id]=&filtro[profesion_id]=&filtro[victimacol]=&filtro[inc_victimacol]=1&filtro[descripcion]=&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=1&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&formato=html&formatosalida=html&commit=Enviar
 > ```
 ##### Ejemplos de respuestas
 - HTML:
@@ -139,7 +139,7 @@ Para mostrar un reporte JSON de varios casos, se ha optado por solo mostrar algu
 	}
 	```
 - XML (Xrlat)
-SIVeL 2 mostrará el reporte completo siguiendo el docmuneto DTD ubicado en [http://sincodh.pasosdejesus.org/relatos/relatos-098.dtd](http://sincodh.pasosdejesus.org/relatos/relatos-098.dtd)
+SIVeL 2 mostrará el reporte completo siguiendo el docmuneto DTD ubicado en [http://sincodh.pasosdejesus.org/relatos/relatos-099.dtd](http://sincodh.pasosdejesus.org/relatos/relatos-099.dtd)
 	```xml
 	<relatos>
 		<relato>
