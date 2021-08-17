@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 0bc6c840bc0ba8bf4a2709dcd98c500b8c7865e4
+  revision: 5662ef728e62eeff3d8e5145389ad793880dc8c9
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b6003c12ae030a016623ec2b42b248f2083b09aa
+  revision: 39e688d3ff73069eca57901f2b489612634e3717
   branch: main
   specs:
     sivel2_gen (2.0b15)
