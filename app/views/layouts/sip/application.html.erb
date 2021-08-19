@@ -43,7 +43,7 @@
     <meta name="msapplication-TileImage" content="/images/favicon-144.png">
     <meta name="msapplication-config" content="/images/browserconfig.xml">
 
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: false %>
     <%= javascript_include_tag "application" %>
   </head>
   <body>

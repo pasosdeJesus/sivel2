@@ -18,21 +18,15 @@
 console.log('Hola Mundo desde Webpacker')
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-// import * as ActiveStorage from "@rails/activestorage"
-// import "channels"
-
 Rails.start()
-//require('@rails/ujs').start()   // Javascript no intrusivo segun rails
+import Turbolinks from "turbolinks"
 Turbolinks.start()
-//require('turbolinks').start()   // Acelera carga de paginas
 
-//ActiveStorage.start()
+import $ from "expose-loader?exposes=$,jQuery!jquery"
 
 var L = require('leaflet');
 var mc= require('leaflet.markercluster');
 
-import {$, jQuery} from 'jquery';
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import 'bootstrap'              // Maquetacion y elementos de diseño
 import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
