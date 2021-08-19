@@ -285,9 +285,9 @@
 <tbody>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
-<tr><td>select</td><td>id=filtro_categoria_id<datalist><option>id=filtro_categoria_id</option><option>name=filtro[categoria_id]</option><option>css=#filtro_categoria_id</option><option>//select[@id='filtro_categoria_id']</option><option>//div[@id='filtro_avanzado']/div/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>label=A1 SECUESTRO</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_categoria_id<datalist><option>id=filtro_categoria_id</option><option>name=filtro[categoria_id]</option><option>css=#filtro_categoria_id</option><option>//select[@id='filtro_categoria_id']</option><option>//div[@id='filtro_avanzado']/div/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>-242,-319</td>
+<tr><td>addSelection</td><td>id=filtro_categoria_id<datalist><option>id=filtro_categoria_id</option><option>name=filtro[categoria_id][]</option><option>css=#filtro_categoria_id</option><option>//select[@id='filtro_categoria_id']</option><option>//div[@id='filtro_avanzado']/div/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>label=A11 DESAPARICIÓN FORZADA</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>35,17</td>
 </tr>
@@ -373,7 +373,7 @@
 </tr>
 <tr><td>clickAt</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>22,14</td>
 </tr>
-<tr><td>type</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>victor</td>
+<tr><td>type</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>victor imposible de encontrar</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>34,21</td>
 </tr>
@@ -383,7 +383,9 @@
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
+<tr><td>clickAt</td><td>//div[@id='filtro_avanzado']/div/div[5]<datalist><option>//div[@id='filtro_avanzado']/div/div[5]</option><option>//div[5]</option></datalist></td><td>18,29</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>33,30</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
