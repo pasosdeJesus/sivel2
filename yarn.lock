@@ -1267,9 +1267,9 @@
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
 "@types/node@*":
-  version "16.7.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.8.tgz#2448be5f24fe6b77114632b6350fcd219334651e"
-  integrity sha512-8upnoQU0OPzbIkm+ZMM0zCeFCkw2s3mS0IWdx0+AAaWqm4fkBb0UJp8Edl7FVKRamYbpJC/aVsHpKWBIbiC7Zg==
+  version "16.7.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.9.tgz#3bf27710839e62a470ddf6bd8dd321f1737ce5b4"
+  integrity sha512-KktxVzS4FPDFVHUUOWyZMvRo//8vqOLITtLMhFSW9IdLsYT/sPyXj3wXtaTcR7A7olCe7R2Xy7R+q5pg2bU46g==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -3610,7 +3610,7 @@ jest-watcher@^27.1.0:
     jest-util "^27.1.0"
     string-length "^4.0.1"
 
-jest-worker@^27.0.2, jest-worker@^27.1.0:
+jest-worker@^27.0.6, jest-worker@^27.1.0:
   version "27.1.0"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-27.1.0.tgz#65f4a88e37148ed984ba8ca8492d6b376938c0aa"
   integrity sha512-mO4PHb2QWLn9yRXGp7rkvXLAYuxwhq1ZYUo0LoDhg8wqvv4QizP1ZWEJOeolgbEgAWZLIEU0wsku8J+lGWfBhg==
@@ -4601,7 +4601,7 @@ schema-utils@^2.6.5:
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
 
-schema-utils@^3.0, schema-utils@^3.0.0, schema-utils@^3.1.0:
+schema-utils@^3.0, schema-utils@^3.0.0, schema-utils@^3.1.0, schema-utils@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-3.1.1.tgz#bc74c4b6b6995c1d88f76a8b77bea7219e0c8281"
   integrity sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw==
@@ -4927,18 +4927,18 @@ terminal-link@^2.0.0:
     supports-hyperlinks "^2.0.0"
 
 terser-webpack-plugin@^5.1.3, terser-webpack-plugin@^5.1.4:
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.1.4.tgz#c369cf8a47aa9922bd0d8a94fe3d3da11a7678a1"
-  integrity sha512-C2WkFwstHDhVEmsmlCxrXUtVklS+Ir1A7twrYzrDrQQOIMOaVAYykaoo/Aq1K0QRkMoY2hhvDQY1cm4jnIMFwA==
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.2.0.tgz#694c54fcdfa5f5cb2ceaf31929e7535b32a8a50c"
+  integrity sha512-FpR4Qe0Yt4knSQ5u2bA1wkM0R8VlVsvhyfSHvomXRivS4vPLk0dJV2IhRBIHRABh7AFutdMeElIA5y1dETwMBg==
   dependencies:
-    jest-worker "^27.0.2"
+    jest-worker "^27.0.6"
     p-limit "^3.1.0"
-    schema-utils "^3.0.0"
+    schema-utils "^3.1.1"
     serialize-javascript "^6.0.0"
     source-map "^0.6.1"
-    terser "^5.7.0"
+    terser "^5.7.2"
 
-terser@^5.7.0:
+terser@^5.7.2:
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/terser/-/terser-5.7.2.tgz#d4d95ed4f8bf735cb933e802f2a1829abf545e3f"
   integrity sha512-0Omye+RD4X7X69O0eql3lC4Heh/5iLj3ggxR/B5ketZLOtLiOqukUgjw3q4PDnNQbsrkKr3UMypqStQG3XKRvw==
@@ -5219,9 +5219,9 @@ webpack-dev-middleware@^5.0.0:
     schema-utils "^3.0.0"
 
 webpack-dev-server@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-4.0.0.tgz#fb4906e91182154bba54a66e6e06f84c1e3c0a80"
-  integrity sha512-ya5cjoBSf3LqrshZn2HMaRZQx8YRNBE+tx+CQNFGaLLHrvs4Y1aik0sl5SFhLz2cW1O9/NtyaZhthc+8UiuvkQ==
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-4.1.0.tgz#1c7a7b77bdafec334a8b81d26c586f793001b5ca"
+  integrity sha512-PnnoCHuLKxH3vYff2EbORntD0Pd+MKclDIO8AcKsDVRToqY9/oeIwwUs5alA2B5OPgXJhaDNkBJAmb0OaWZFJA==
   dependencies:
     ansi-html "^0.0.7"
     bonjour "^3.5.0"
