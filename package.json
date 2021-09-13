@@ -7,6 +7,7 @@
     "@popperjs/core": "^2.9.3",
     "@rails/ujs": "^6.0.1",
     "@rails/webpacker": "^6.0.0-rc.1",
+    "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.1.0",
     "bootstrap-datepicker": "^1.9.0",
     "chosen-js": "^1.8.7",
@@ -23,7 +24,6 @@
   },
   "devDependencies": {
     "@webpack-cli/serve": "^1.5.2",
-    "babel-plugin-macros": "^3.1.0",
     "css-what": "^5.0.1",
     "glob-parent": "^5.1.2",
     "jest": "^27.0.4",
