@@ -49,6 +49,12 @@ PRUEBA_USUARIO_AN = {
 }
 
 
+PRUEBA_PERSONA = {
+  nombres: 'Luis Alejandro',
+  apellidos: 'Cruz Ordoñez',
+  sexo: 'M',
+  numerodocumento: '1061769227' 
+}
 
 PRUEBA_GRUPOPER = {
   id: 1,
@@ -62,3 +68,8 @@ PRUEBA_ORGSOCIAL = {
   updated_at: '2021-08-27'
 }
 
+PRUEBA_CASO = {
+  titulo: "Caso de prueba",
+  fecha: "2021-09-11",
+  memo: "Una descripción del caso de prueba"
+}
