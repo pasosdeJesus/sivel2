@@ -1,7 +1,6 @@
 #!/bin/sh
-# Saca copia de datos de casos de interesa en instancias de 
-# SIVeL-Pro
-# vtamara@pasosdeJesus.org. Dominio público. 2020
+# Saca copia de datos de casos de interes en instancias de SIVeL-Pro
+# vtamara@pasosdeJesus.org. Dominio público. 2021
 
 . .env
 
@@ -83,7 +82,7 @@ eval $ord > $rlocal/sivelpro-$dm.sql
 
 echo "2 de 3 . Transformando..."
 #grep -a -v -f bin/actweb.grep $rlocal/sivel2_pro-$dm.sql | sed -e "s/\(.*INTO.*caso_usuario.*(\)[0-9]*,/\11,/g" > $rlocal/web-sf-sinf-$dm.sql
-gzip $rlocal/sivelpro-$dm.sql.gz
+gzip $rlocal/sivelpro-$dm.sql
 
 echo "3 de 3. Transfiriendo ..."
 cmd="scp $opscpweb $rlocal/sivelpro-$dm.sql.gz $usuarioact@$maquinaweb:$dirweb"
