@@ -28,8 +28,7 @@
     "glob-parent": "^5.1.2",
     "jest": "^27.0.4",
     "normalize-url": "^4.5.1",
-    "postcss": "^8.2.10",
-    "webpack-dev-server": "^4.0.0"
+    "postcss": "^8.2.10"
   },
   "scripts": {
     "test": "jest",
