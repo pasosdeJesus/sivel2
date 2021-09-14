@@ -1,0 +1,36 @@
+#!/bin/sh
+
+if (test "$1" = "") then {
+  echo "Primer parametro debe ser volcado por importar"
+  exit 1;
+} fi;
+volcado=$1
+
+psql -h /var/www/var/run/postgresql -U $BD_USUARIO $BD_DES <<EOF
+ALTER TABLE sivel2_gen_acto DROP CONSTRAINT acto_id_caso_fkey;
+ALTER TABLE sivel2_gen_actocolectivo DROP CONSTRAINT actocolectivo_id_caso_fkey;
+ALTER TABLE sivel2_gen_antecedente_caso DROP CONSTRAINT $2;
+ALTER TABLE sivel2_gen_antecedente_victima DROP CONSTRAINT antecedente_victima_id_victima_fkey;
+ALTER TABLE sivel2_gen_antecedente_victimacolectiva DROP CONSTRAINT antecedente_victima_id_victima_fkey;
+ALTER TABLE sivel2_gen_caso DROP CONSTRAINT fk_rails_850036942a;
+ALTER TABLE sivel2_gen_caso_categoria_presponsable DROP CONSTRAINT
+caso_categoria_presponsable_id_caso_presponsable_fkey;
+ALTER TABLE sivel2_gen_caso_contexto DROP CONSTRAINT $1;
+ALTER TABLE sivel2_gen_caso_frontera DROP CONSTRAINT $2;
+ALTER TABLE sivel2_gen_caso_presponsable DROP CONSTRAINT $1;
+ALTER TABLE sivel2_gen_caso_region DROP CONSTRAINT $2;
+ALTER TABLE sivel2_gen_caso_respuestafor DROP CONSTRAINT fk_rails_3aa0de8b93;
+ALTER TABLE sivel2_gen_caso_respuestafor DROP CONSTRAINT fk_rails_3fd971983e;
+ALTER TABLE sivel2_gen_filiacion_victimacolectiva DROP CONSTRAINT
+sivel2_gen_filiacion_victimacolectiva_victimacolectiva_id_fkey;
+ALTER TABLE sivel2_gen_organizacion_victimacolectiva DROP CONSTRAINT sivel2_gen_organizacion_victimacolecti_victimacolectiva_id_fkey;
+ALTER TABLE sivel2_gen_profesion_victimacolectiva DROP CONSTRAINT sivel2_gen_profesion_victimacolectiva_victimacolectiva_id_fkey;
+ALTER TABLE sivel2_gen_rangoedad_victimacolectiva DROP CONSTRAINT sivel2_gen_rangoedad_victimacolectiva_victimacolectiva_id_fkey;
+ALTER TABLE sivel2_gen_sectorsocial_victimacolectiva DROP CONSTRAINT sivel2_gen_sectorsocial_victimacolecti_victimacolectiva_id_fkey;
+ALTER TABLE sivel2_gen_victima DROP CONSTRAINT $7;
+ALTER TABLE sivel2_gen_victimacolectiva DROP CONSTRAINT victima_colectiva_id_caso_fkey;
+ALTER TABLE sivel2_gen_victimacolectiva_vinculoestado DROP CONSTRAINT sivel2_gen_victimacolectiva_vinculoest_victimacolectiva_id_fkey;
+EOF
+
+psql -h /var/www/var/run/postgresql -U $BD_USUARIO $BD_DES -f $volcado
+
