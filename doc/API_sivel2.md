@@ -352,3 +352,59 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 	- Todos los permisos de gestionar las víctimas
 </details>
 
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>personas</code></summary>
+
+##### Parámetros
+
+> Filtro avanzado:
+
+> | Parámetro    | Tipo y Accesos                   | Ejemplo	  | 
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `:busid`         | Integer / AUT      | Persona con id 145: `filtro[busid]=145`
+> | `:busnombres`         |String  / AUT      |Nombre de persona es Alejandro:  `filtro[busnombres]=Alejandro`
+> | `:busapellidos`         |String  / AUT      |Apellido de persona es Cruz  `filtro[busapellidos]=Cruz`
+> | `:bussexo`         |String / AUT       | Sexo de persona es masculino: `filtro[bussexo]=M`
+> | `:busnumerodocumento`         |String / AUT        |Número de documento de persona es 123456789:  `filtro[busnumerodocumento]=123456789`
+
+Siglas de control de acceso: 
+- AUT: Usuario autenticado
+
+La respuesta a esta petición es un reporte HTML y JSON de las personas con los parámetros. 
+	
+
+##### Respuestas
+
+> | código http    | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8`        | Página html / Objeto JSON / Reporte XML  
+> | `400`         |Error        | (Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados
+> | `401`         | Error        | (Unauthorized) No hay autorización para llamar al servicio
+> | `404`         | Error`        | (NotFound) No se encontró información
+> | `500`         | Error        | Error en servidor                                                   |
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/personas?filtro[busid]=&filtro[busnombres]=Alejandro&filtro[busapellidos]=Cruz&filtro[bussexo]=S&filtro[busnumerodocumento]=123456789&filtrar=Filtrar
+> ```
+##### Ejemplos de respuestas
+- JSON
+Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar algunas generalidades o elementos básicos de la víctima como lo son:
+
+	- id: identificador de la persona.
+	- nombres: nombres de la persona.
+	- apellidos: apellidos de la persona.
+	- anionac: Año de nacimiento
+	- mesnac: Mes de nacimiento
+	- dianac: Día de nacimiento
+	- numerodocumento: Número de documento
+	- id_pais: Identificación del país de nacimiento
+	- id_departamento: Identificación del departamento de nacimiento
+	- id_municipio: Identificación del municipio de nacimiento
+	- id_clase: Identificación del centro poblado de nacimiento
+	
+	```json
+	[{"id":253110,"nombres":"Alejo","apellidos":"Cruz","anionac":1998,"mesnac":3,"dianac":5,"sexo":"S","numerodocumento":"104524","created_at":"2021-06-22T10:09:25.262-05:00","updated_at":"2021-06-22T10:09:25.262-05:00","id_pais":170,"nacionalde":null,"tdocumento_id":1,"id_departamento":null,"id_municipio":null,"id_clase":null}]
+	```
+</details>
