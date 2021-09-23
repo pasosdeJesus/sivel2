@@ -5,6 +5,7 @@
 . .env
 
 rlocal=/var/www/resbase/sivel2/bd/
+base=$BD_DES
 dm=`date +%d`
 echo "Por generar datos de casos para enviar a  $usuarioact@$maquinaweb:$dirweb con opciones '$opscpweb'";
 echo "El usuario puede cambiarse en .env";
@@ -72,7 +73,7 @@ sivel2_gen_sectorsocial_victimacolectiva
 sivel2_gen_victimacolectiva_vinculoestado
 EOF
 
-ord="pg_dump $base --data-only -h /var/www/var/run/postgresql -U $ubase --column-inserts"
+ord="pg_dump $base --data-only -h /var/www/var/run/postgresql -U $BD_USUARIO --column-inserts"
 for i in `cat /tmp/incluir`; do
 	ord="$ord --table=$i"
 done

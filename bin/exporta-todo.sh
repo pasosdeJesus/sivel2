@@ -1,8 +1,9 @@
 #!/bin/sh
-# Saca copia de todos los datos.
+# Genera volcado de todos los datos pero sin dueño y generando COPY para una
+# restauración muy rápida.
 # vtamara@pasosdeJesus.org. Dominio público. 2020
 
-# Genera un script SQL que se ejecuta desde una base vacia para reconstruir
+# Genera un script SQL que se ejecuta desde una base vacía para reconstruir
 # pero con dueño diferente
 
 . .env
@@ -34,8 +35,10 @@ $BD_USUARIO --no-owner | grep -v 'DROP TABLE public.usuario;' | grep -v 'DROP SE
 echo "2 de 3. Comprime ..."
 eval_con_eco "gzip $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql"
 
-echo "3 de 3. Envía ..."
-eval_con_eco "scp $SIVEL2_EXP_OPSCP $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR "
+if (test "$SIVEL2_EXP_USUARIO" != "") then {
+  echo "3 de 3. Envía ..."
+  eval_con_eco "scp $SIVEL2_EXP_OPSCP $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR "
+} fi;
 
 echo "Restaurar en otra base y limpiar"
 
