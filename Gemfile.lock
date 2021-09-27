@@ -214,8 +214,10 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.8)
-    nokogiri (1.12.4)
+    nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     odf-report (0.7.2)
       mime-types
@@ -360,6 +362,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-linux
   x86_64-openbsd
 
 DEPENDENCIES
