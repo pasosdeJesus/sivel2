@@ -242,15 +242,6 @@ $_$;
 
 
 --
--- Name: rand(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.rand() RETURNS double precision
-    LANGUAGE sql
-    AS $$SELECT random();$$;
-
-
---
 -- Name: sip_edad_de_fechanac_fecharef(integer, integer, integer, integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -429,14 +420,6 @@ FROM (SELECT UNNEST(STRING_TO_ARRAY(
 	      ORDER BY 1) AS n;
 $_$;
 
-
---
--- Name: substring_index(text, text, integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.substring_index(text, text, integer) RETURNS text
-    LANGUAGE sql
-    AS $_$SELECT array_to_string((string_to_array($1, $2)) [1:$3], $2);$_$;
 
 
 --
