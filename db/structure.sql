@@ -421,7 +421,6 @@ FROM (SELECT UNNEST(STRING_TO_ARRAY(
 $_$;
 
 
-
 --
 -- Name: first(anyelement); Type: AGGREGATE; Schema: public; Owner: -
 --
@@ -431,7 +430,6 @@ CREATE AGGREGATE public.first(anyelement) (
     STYPE = anyarray,
     FINALFUNC = public.first_element
 );
-
 
 --
 -- Name: acto_seq; Type: SEQUENCE; Schema: public; Owner: -
