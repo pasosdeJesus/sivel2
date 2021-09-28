@@ -25,7 +25,7 @@ config/routes.rb
 archivos/
 public/heb412/
 public/sivel2/
-public/sivel_21/
+public/sivel2.1/
 config/initializers/punto_montaje.rb
 .byebug_history
 app/views/sip/hogar/
