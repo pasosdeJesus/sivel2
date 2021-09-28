@@ -44,7 +44,7 @@
     <meta name="msapplication-config" content="/images/browserconfig.xml">
 
     <%= javascript_pack_tag 'application' %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", defer: false %>
   </head>
   <body>
     <%= nav_bar :fixed => :top, 

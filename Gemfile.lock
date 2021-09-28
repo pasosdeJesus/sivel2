@@ -1,7 +1,15 @@
 GIT
+  remote: https://github.com/mmotherwell/best_in_place
+  revision: 88eb3052623a9a6cd346864d2aca05021c2f80d0
+  specs:
+    best_in_place (3.1.1)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 1a865d3c4a90e36aacde2f4414bf638dd513f861
-  branch: webpacker6
+  revision: 6803025a901432fc10db63f2d1fe982c3fd73fbe
+  branch: main
   specs:
     apo214 (0.1.0)
       rails
@@ -9,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: dee989f86552ada508432d6ce870eaec0d8385fc
-  branch: webpacker6
+  revision: e34f0df4f923e7bcd563d8f8a8b9abffdbccff6a
+  branch: main
   specs:
-    heb412_gen (1.0.b6)
+    heb412_gen (1.0.b7)
       mr519_gen
       redcarpet
       rspreadsheet
@@ -20,17 +28,17 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: de30fe331dd73aa262e36647aabd7712ae0bf36b
-  branch: webpacker6
+  revision: 2f63819bf42d971a96612b2b698f44fedbd52f14
+  branch: main
   specs:
-    mr519_gen (0.2.0)
+    mr519_gen (0.2.1)
       rails
       sip
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5c6fada30f462704331fa32c6c2b156daaaa2a7e
-  branch: webpacker6
+  revision: 2f46ce0b2ae542f03bc5ae21fc4582bbbc9b09ce
+  branch: main
   specs:
     sip (2.0.b12)
       cancancan
@@ -44,27 +52,16 @@ GIT
       rails-i18n
       simple_form
       twitter_cldr
-      will_paginate
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 040525e968f7cb32d3c44d44ddabdc7bd492841f
-  branch: webpacker6
+  revision: 96ca0c0e4d7348ae279c2e8bff35f8097dd9cf8d
+  branch: main
   specs:
-    sivel2_gen (2.0b15)
+    sivel2_gen (2.0b16)
       devise
       jquery-rails
       rails
-
-GIT
-  remote: https://github.com/rails/webpacker
-  revision: 032c2d11a3758035305fe34e6795ab133128ee32
-  specs:
-    webpacker (6.0.0.beta.7)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
@@ -210,6 +207,12 @@ GEM
       railties (>= 3.2.16)
     json (2.5.1)
     kgio (2.11.4)
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
     libxml-ruby (3.2.1)
     loofah (2.10.0)
       crass (~> 1.0.2)
@@ -299,6 +302,7 @@ GEM
     raindrops (0.19.2)
     rake (13.0.3)
     redcarpet (3.5.1)
+    redis (4.4.0)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -363,6 +367,11 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webpacker (6.0.0.rc.1)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -378,6 +387,7 @@ DEPENDENCIES
   acts_as_list
   apo214!
   bcrypt
+  best_in_place!
   bootsnap (>= 1.1.0)
   cancancan
   capybara
@@ -391,11 +401,11 @@ DEPENDENCIES
   heb412_gen!
   hotwire-rails
   jbuilder
+  kt-paperclip
   libxml-ruby
   mr519_gen!
   nokogiri (>= 1.11.1)
   odf-report
-  paperclip
   pg
   prawn
   prawn-table
@@ -405,6 +415,7 @@ DEPENDENCIES
   rails-erd
   rails-i18n
   redcarpet
+  redis
   rspreadsheet
   rubyzip (>= 2.0)
   sassc-rails
@@ -418,8 +429,8 @@ DEPENDENCIES
   tzinfo
   unicorn
   web-console
-  webpacker!
+  webpacker (= 6.0.0.rc.1)
   will_paginate
 
 BUNDLED WITH
-   2.2.21
+   2.2.25
