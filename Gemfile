@@ -33,8 +33,6 @@ gem 'odf-report' # Genera ODT
 
 gem 'nokogiri', '>=1.11.1'
 
-gem 'kt-paperclip' # Maneja adjuntos
-
 gem 'pg' # Postgresql
 
 gem 'prawn' # Generación de PDF

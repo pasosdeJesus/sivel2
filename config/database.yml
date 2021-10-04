@@ -5,11 +5,7 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-<<<<<<< HEAD
   host: <%= ENV.fetch('BD_SERVIDOR', '/var/www/var/run/postgresql') %>
-=======
-  host: /var/www/var/run/postgresql
->>>>>>> 7f25bc4 (sigue convenciones de sip 2.0b11, ver https://github.com/pasosdeJesus/sip/wiki/2021_2-Actualizaci%C3%B3n-de-sip-2.0b10-a-2.0b11)
   username: <%= ENV.fetch('BD_USUARIO', 'sipdes') %>
   password: <%= ENV.fetch('BD_CLAVE') %>
 
