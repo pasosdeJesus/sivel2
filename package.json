@@ -35,6 +35,7 @@
     "css-what": "^5.0.1",
     "glob-parent": "^5.1.2",
     "jest": "^27.0.4",
+    "mini-css-extract-plugin": "^2.3.0",
     "normalize-url": "^4.5.1",
     "postcss": "^8.2.10"
   },

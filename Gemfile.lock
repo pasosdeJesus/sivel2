@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/kreeti/kt-paperclip.git
+  revision: 8e4a154ae0c7b8ca1e17daec768d6b211186ca63
+  specs:
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
+
+GIT
   remote: https://github.com/mmotherwell/best_in_place
   revision: 88eb3052623a9a6cd346864d2aca05021c2f80d0
   specs:
@@ -17,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e06c2fcc3e7e1f85423029c658891ad294464259
+  revision: c3596a6f4a7d5f4a574eac5428e2f6c181e835f1
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -28,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: bcf124c573a83f5f4d43feb84c2cd989cee9bef5
+  revision: 1f9ecd1b7f071c0e786d9fa1123f3abf3f19bb81
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -55,10 +66,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 3ee18832bd20f237ebaa3f6f6ba58dcdd83988dd
+  revision: ebd0658d6fac751b61303fe26f1006ff533de926
   branch: main
   specs:
-    sivel2_gen (2.0b16)
+    sivel2_gen (2.1a1)
       devise
       jquery-rails
       rails
@@ -207,12 +218,6 @@ GEM
       railties (>= 3.2.16)
     json (2.5.1)
     kgio (2.11.4)
-    kt-paperclip (7.0.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      marcel (~> 1.0.1)
-      mime-types
-      terrapin (~> 0.6.0)
     libxml-ruby (3.2.1)
     loofah (2.12.0)
       crass (~> 1.0.2)
@@ -261,6 +266,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
@@ -401,7 +408,7 @@ DEPENDENCIES
   heb412_gen!
   hotwire-rails
   jbuilder
-  kt-paperclip
+  kt-paperclip!
   libxml-ruby
   mr519_gen!
   nokogiri (>= 1.11.1)
@@ -411,6 +418,8 @@ DEPENDENCIES
   prawn-table
   prawnto_2
   puma
+  rack
+  rack-cors
   rails (~> 6.1)
   rails-erd
   rails-i18n
