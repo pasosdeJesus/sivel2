@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 8e4a154ae0c7b8ca1e17daec768d6b211186ca63
+  revision: 0b7bb0b455aea0fa961a25c0c74e2bd33ae99ba9
   specs:
-    kt-paperclip (7.0.0)
+    kt-paperclip (7.0.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 8e82c1a44d14cee89176f32c241b97b5ce3caf1e
+  revision: cc9cd59678e91b26166b06a61bd224cd100c3897
   branch: main
   specs:
     apo214 (0.1.0)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c3596a6f4a7d5f4a574eac5428e2f6c181e835f1
+  revision: b13b308c87729291f13eaa57ecb6472665889a89
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1f9ecd1b7f071c0e786d9fa1123f3abf3f19bb81
+  revision: 9791c5f849ba685a130279aa5fd2504b9f5c7712
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -48,8 +48,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b76dd94625b4740c1ff3ea1935d0a9b6b63dbbbf
-  branch: tooltipsbs5
+  revision: 9abf330f584de9afabb943e06d02e99907314dbd
+  branch: main
   specs:
     sip (2.0.b12)
       cancancan
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ebd0658d6fac751b61303fe26f1006ff533de926
+  revision: e18505ffbaf9040802336e2f5d87cab360d53cde
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -349,7 +349,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stimulus-rails (0.6.0)
+    stimulus-rails (0.7.0)
       rails (>= 6.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
