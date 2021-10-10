@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 8e4a154ae0c7b8ca1e17daec768d6b211186ca63
+  revision: 0b7bb0b455aea0fa961a25c0c74e2bd33ae99ba9
   specs:
-    kt-paperclip (7.0.0)
+    kt-paperclip (7.0.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c3596a6f4a7d5f4a574eac5428e2f6c181e835f1
+  revision: b13b308c87729291f13eaa57ecb6472665889a89
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1f9ecd1b7f071c0e786d9fa1123f3abf3f19bb81
+  revision: 9791c5f849ba685a130279aa5fd2504b9f5c7712
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9d225b0f882886160c18af18f8e8f9a138f72228
+  revision: 9abf330f584de9afabb943e06d02e99907314dbd
   branch: main
   specs:
     sip (2.0.b12)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 96395b7c26013d72558d7178cfe531111b121473
+  revision: 746c2043430cf380deb86cfbe27b9b78feac3b4c
   branch: sivel2.0
   specs:
     sivel2_gen (2.0b16)
