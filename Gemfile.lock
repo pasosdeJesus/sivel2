@@ -240,6 +240,8 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
     odf-report (0.7.2)
       mime-types
       nokogiri (>= 1.10.0)
@@ -262,7 +264,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.5.0)
+    puma (5.5.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -388,6 +390,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-linux
   x86_64-openbsd
 
 DEPENDENCIES
