@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 5e5a2a3f5c97f3ece075f5c23b5c2bd40a879647
+  revision: 14be2a45edcb8cac7045c26d996fc83fc93e8301
   branch: main
   specs:
     apo214 (0.1.0)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ffdc181db37843b7be4afc5fbd7fb0d3a736e02c
+  revision: df27c86e91e44aaaf600932863c259a24dcdc5b1
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 35f8f5270bee0c59fb68941669905b137fbeb003
+  revision: f5d7007139ffa2212b228025097d9acc9e7c5454
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6d73352f61c4220cf8ec8b9ab14648561ac6e4c7
+  revision: 41e63cfc9a7d82c35e93f34371c408ae4cbabccf
   branch: main
   specs:
     sip (2.0.b12)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7808cdf4237e70508b1f36daf683cfcd38fdd1dd
+  revision: ea31aa16f24dfcb7c6af3669a2a23e4529ae4a96
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -163,7 +163,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    childprocess (3.0.0)
+    childprocess (4.1.0)
     choice (0.2.0)
     chosen-rails (1.9.0)
       coffee-rails (>= 3.2)
@@ -216,7 +216,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.5.1)
+    json (2.6.0)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
     loofah (2.12.0)
@@ -309,7 +309,7 @@ GEM
     raindrops (0.19.2)
     rake (13.0.6)
     redcarpet (3.5.1)
-    redis (4.4.0)
+    redis (4.5.1)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -329,8 +329,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
+    selenium-webdriver (4.0.0)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     simple_form (5.1.0)
@@ -349,14 +350,14 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stimulus-rails (0.7.0)
+    stimulus-rails (0.7.1)
       rails (>= 6.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    turbo-rails (0.8.1)
+    turbo-rails (7.1.0)
       rails (>= 6.0.0)
     twitter_cldr (6.7.0)
       camertron-eprun

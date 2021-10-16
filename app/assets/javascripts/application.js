@@ -19,7 +19,7 @@
 //= require apo214/motor
 //= require_tree .
 
-document.addEventListener('turbo:load', function() {
+document.addEventListener('turbolinks:load', function() {
   var root;
   root = typeof exports !== "undefined" && exports !== null ? 
     exports : window;
