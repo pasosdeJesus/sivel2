@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ffdc181db37843b7be4afc5fbd7fb0d3a736e02c
+  revision: df27c86e91e44aaaf600932863c259a24dcdc5b1
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 35f8f5270bee0c59fb68941669905b137fbeb003
+  revision: f5d7007139ffa2212b228025097d9acc9e7c5454
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6d73352f61c4220cf8ec8b9ab14648561ac6e4c7
+  revision: 41e63cfc9a7d82c35e93f34371c408ae4cbabccf
   branch: main
   specs:
     sip (2.0.b12)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 707a8c30afbabafada813d43d7879b70a64728e2
+  revision: 85080d92e1e2e6cffc98fe64968a4c49429b4020
   branch: sivel2.0
   specs:
     sivel2_gen (2.0b16)
@@ -144,7 +144,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    childprocess (3.0.0)
+    childprocess (4.1.0)
     choice (0.2.0)
     chosen-rails (1.9.0)
       coffee-rails (>= 3.2)
@@ -193,7 +193,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.5.1)
+    json (2.6.0)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
     loofah (2.12.0)
@@ -305,8 +305,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
+    selenium-webdriver (4.0.0)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     simple_form (5.1.0)
