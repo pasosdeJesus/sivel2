@@ -1,6 +1,6 @@
 # Basado entre otros en: https://dev.to/mpressen/rails-minitest-gitlab-ci-31ap
 
-image: "ruby:3.0.1"
+image: "ruby:3.0.2"
 
 services:
   - name: vtamara/postgis-es_co:13.3-1
