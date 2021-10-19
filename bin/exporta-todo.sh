@@ -37,7 +37,11 @@ eval_con_eco "gzip $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql"
 
 if (test "$SIVEL2_EXP_USUARIO" != "") then {
   echo "3 de 3. Envía ..."
-  eval_con_eco "scp $SIVEL2_EXP_OPSCP $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR "
+  if (test "$SIVEL2_EXP_MAQ" = "localhost" -o "$SIVEL2_EXP_MAQ" = "127.0.0.1") then {
+    eval_con_eco "cp $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_DIR "
+  } else {
+    eval_con_eco "scp $SIVEL2_EXP_OPSCP $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR "
+  } fi;
 } fi;
 
 echo "Restaurar en otra base y limpiar"
