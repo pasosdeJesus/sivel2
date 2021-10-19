@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 248674c3e45a4d07ed01cba7d6e90910893afe56
+  revision: 2577ea07ce883ced77b8b6686fa3c50fcfd7acec
   branch: main
   specs:
     apo214 (0.1.0)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 72abce59df3efea20099773738e00fc22fa2c823
+  revision: cbb393fe587761697aa80b4fb30d3988ce93cb0a
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d57e9f50a7bff6abafa2043350d3dd82cb73ac70
+  revision: a41fa673b7c1b01629a560b7288e5f51beacec7d
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 10491e19f326b4ad4ed4b4e77b8b80b78cd34a2d
+  revision: e9ad2ec6e86800db83d7cd189abc397240cc2600
   branch: main
   specs:
     sip (2.0.b12)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 3bb1d4b65321b2ead4975add638246a531be3b47
+  revision: e1373d1f97befaa767cd5f6313511f3819ec34fc
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -264,7 +264,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -329,7 +329,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.0.0)
+    selenium-webdriver (4.0.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
@@ -357,7 +357,7 @@ GEM
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    turbo-rails (7.1.0)
+    turbo-rails (7.1.1)
       rails (>= 6.0.0)
     twitter_cldr (6.7.0)
       camertron-eprun
