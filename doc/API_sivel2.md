@@ -408,3 +408,58 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 	[{"id":253110,"nombres":"Alejo","apellidos":"Cruz","anionac":1998,"mesnac":3,"dianac":5,"sexo":"S","numerodocumento":"104524","created_at":"2021-06-22T10:09:25.262-05:00","updated_at":"2021-06-22T10:09:25.262-05:00","id_pais":170,"nacionalde":null,"tdocumento_id":1,"id_departamento":null,"id_municipio":null,"id_clase":null}]
 	```
 </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>conteos/personas</code><code>(Trae conteo de víctimas diferentes en un intervalo de tiempo)</code></summary>
+Se ha construido también una ruta para poder obtener el número total de víctimas (personas individuales) en un intervalo de fechas con filtros especializados y de desagregación.
+Los parámetros de del filtro iniciales son las fechas tal como se especifica a continuación:
+##### Parámetros
+
+> | nombre            |  tipo     | tipo de dato      | descripción                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `fechaini` |  Requerido | String   | Fecha inicial de la cuenta        |
+> | `fechafin` |  Requerido | String   | Fecha final de la cuenta        |
+
+Adicionalmente hay 10 criterios diferentes por los cuales es posible desagregar el conteo. Este se especifica en el parámetro "segun" por ejemplo:
+> ```javascript
+>  filtro[segun]=AÑO DE NACIMIENTO
+>   ```
+##### Parámetros desagregación (segun)
+
+> | nombre            |  tipo     | tipo de dato      | descripción                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `AÑO DE NACIMIENTO` |  Requerido | String   | Año de nacimiento de la persona      |
+> | `ETNIA` |  Requerido | String   | Etnia de la tabla víctima        |
+> | `FILIACIÓN` |  Requerido | String   | Filiación política de la víctima|
+> | `MES CASO` |  Requerido | String   | Mes del caso|
+> | `ORGANIZACIÓN` |  Requerido | String   | Organización a la que pertenece la víctima|
+> | `PROFESIÓN` |  Requerido | String   | Profesión de la víctima|
+> | `RANGO DE EDAD` |  Requerido | String   | Rango de edad de la víctima|
+> | `SECTOR SOCIAL` |  Requerido | String   | Sector social de la victima|
+> | `SEXO` |  Requerido | String   | Sexo de la persona |
+> | `VINCULO CON EL ESTADO` |  Requerido | String   | Vínculo con el estado|
+
+Además de dos filtros especializados por los cuales de puede expandir el conteo: Departamento y Municipio. Lugares geográficas de nacimiento de las víctimas asociadas mediante las tablas sip_departamento y sip_municipio respectivamente. El parámetro es booleano y se representa de la siguiente forma: 
+> ```javascript
+> filtro[departamento]=1
+> ```
+> ```javascript
+> filtro[municipio]=1
+> ```
+
+##### Respuestas
+
+> | código http   | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/html;charset=UTF-8`        | Status: ok. Página html                           |
+> | `400`         | `application/html`                |  Bad Request   |
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/conteos/personas?filtro[fechaini]=01/Ene/2000&filtro[fechafin]=31/Ene/2021&filtro[segun]=VÍNCULO CON EL ESTADO&filtro[departamento]=1&filtro[municipio]=0&commit=Contar
+> ```
+##### Ejemplo de respuesta
+La respuesta es una tabla html en donde la primera columna es el criterio de desagregación, la segunda y tercera el filtro de geolocalización (departamento y/o municipio) y la última el número de las victimas por fila. 
+![enter image description here](https://github.com/alejocruzrcc/sivel2/blob/img-victimas/doc/imagenes/conteo_perosnas.png)
+ </details>
