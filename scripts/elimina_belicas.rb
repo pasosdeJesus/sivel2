@@ -36,6 +36,7 @@ SQL
  ['sivel2_gen_victimacolectiva_vinculoestado', 
   'sivel2_gen_antecedente_victimacolectiva',
   'sivel2_gen_profesion_victimacolectiva', 
+  'sivel2_gen_etnia_victimacolectiva', 
   'sivel2_gen_filiacion_victimacolectiva', 
   'sivel2_gen_organizacion_victimacolectiva', 
   'sivel2_gen_rangoedad_victimacolectiva', 

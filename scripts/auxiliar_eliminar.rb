@@ -10,16 +10,15 @@ def eliminar_casos(subconsulta_ids_por_eliminar)
   DELETE FROM sivel2_gen_caso_fuenteprensa WHERE 
     id_caso in (#{subconsulta_ids_por_eliminar});
               ")
-
+  ejecutar_sql("
+  DELETE FROM sivel2_gen_caso_fotra 
+    WHERE id_caso in (#{subconsulta_ids_por_eliminar});
+              ")
   ejecutar_sql("
   DELETE FROM sivel2_gen_anexo_caso WHERE 
     id_caso in (#{subconsulta_ids_por_eliminar});
               ")
 
-  ejecutar_sql("
-  DELETE FROM sivel2_gen_caso_fotra 
-    WHERE id_caso in (#{subconsulta_ids_por_eliminar});
-              ")
   ejecutar_sql("
   DELETE FROM sivel2_gen_caso_etiqueta WHERE 
     id_caso in (#{subconsulta_ids_por_eliminar});
