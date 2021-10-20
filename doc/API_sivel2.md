@@ -37,14 +37,14 @@ Un susario puede consumir de la API tanto las generalidades básicas de un conju
 > | `:fechaingini`         |String / AUT     |Casos creados en 2018-01-01 o después : `filtro[usuario_id]=2018-01-01`      
 > | `:fechaingfin`         |String / AUT     |Casos creados en 2018-01-01 o antes : `filtro[usuario_id]=2018-01-01`   
 > | `:contexto_id`         |Integer / AUT     |El contexto es Proceso judicial: `filtro[contexto_id]=106`   
-> | `:contextovictima_id`         |Integer / AUT     |El contexto de vćitima es Falso positivo: `filtro[contextovictima_id]=1`  
+> | `:contextovictima_id`         |Integer / AUT     |El contexto de víctima es Falso positivo: `filtro[contextovictima_id]=1`  
 > | `:orientacionsexual`         |String / AUT     |La orientación sexual es Heterosexual: `filtro[contextovictima_id]=H`                                          
 > | `:inc_casoid`         |Integer / AUT     |Incluir la identificación del caso en el reporte: `filtro[inc_casoid]=1`  
 > | `:inc_fecha`         |Integer / CP / AUT     |Incluir la fecha del caso en el reporte: `filtro[inc_casoid]=1`  
 > | `:inc_ubicaciones`         |Integer / CP / AUT     |Incluir las ubicaciones del caso: `filtro[inc_ubicaciones]=1`
 > | `:inc_presponsables`         |Integer / CP / AUT     |Incluir los presuntos responsables del caso en el reporte: `filtro[inc_presponsables]=1`    
 > | `:inc_tipificacion`         |Integer / CP / AUT     |Incluir la tipificación del caso en el reporte: `filtro[inc_tipificacion]=1`  
-> | `:inc_victimas`         |Integer / CP / AUT     |Incluir las victimas del caso en el reporte: `filtro[inc_victimas]=1`  
+> | `:inc_victimas`         |Integer / CP / AUT     |Incluir las víctimas del caso en el reporte: `filtro[inc_victimas]=1`  
 > | `:inc_victimacol`         |Integer / AUT     |Incluir las víctimas colectivas del caso en el reporte: `filtro[inc_victimacol]=1`  
 > | `:inc_memo`         |Integer / CP / AUT     |Incluir la descripción del caso en el reporte: `filtro[inc_memo]=1`  
 > | `:orden`         |Integer / CP / AUT     | los casos se ordenaran según su ubicación: `filtro[orden]=ubicacion` 
@@ -162,7 +162,7 @@ SIVeL 2 mostrará el reporte completo siguiendo el docmuneto DTD ubicado en [htt
 
 Para conusltar un caso en detalle, SIVeL 2 proporciona los formatos html, json y xrlat (xml). Las rutas de estas vistas se obtienen al agregar la extensión correspondiente al final de  sivel2/casos/id.[extensión]. Para el caso de la extensión JSON. SIVeL 2 responde con los detalles del caso con un objeto JSON con una sola propiedad caso cuyo valor es un objeto con las propiedades:
 
-id: Identificación, titulo: título del caso, hechos: Descripción o memo del caso, fecha, hora, departamento principal, municipio principal, centro_poblado principal, presponsables: un objeto que puede tener varios ítems, uno por presunto responsable, la propiedad de cada uno será la identificación del presunto responsable y su valor será el nombre victimas: un objeto que puede tener varios ítems, uno por víctima individual del caso, la propiedad de cada uno será la identificación de la víctima y su valor será los nombres de la víctima seguido de un espacio y los apellidos.
+id: Identificación, titulo: título del caso, hechos: Descripción o memo del caso, fecha, hora, departamento principal, municipio principal, centro_poblado principal, presponsables: un objeto que puede tener varios ítems, uno por presunto responsable, la propiedad de cada uno será la identificación del presunto responsable y su valor será el nombre víctimas: un objeto que puede tener varios ítems, uno por víctima individual del caso, la propiedad de cada uno será la identificación de la víctima y su valor será los nombres de la víctima seguido de un espacio y los apellidos.
 ##### Respuestas
 
 > | código http   | tipo de contenido                     | respuesta                                                          |
@@ -320,14 +320,14 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 	- id_profesion: identificación de la tabla sivel2_gen_profesion de la profesión que tiene la vćitima.
 	- id_rangoedad: identificación de la tabla sivel2_gen_rangoedad a la cual pertenece el rango de edad de la víctima
 	- id_filiacion: identificación de la filiación política de la víctima.
-	- id_sectorsocial: identificación del sector social de la victima
+	- id_sectorsocial: identificación del sector social de la víctima
 	- id_organizacion: identificiación de la organización a la cual pertenece la víctima
 	- id_vinculoestado: identificación del vínculo con el estado que tiene la víctima
 	- organizacionarmada: Organización armada a la que pertenece la víctima
 	- anotaciones: anotaciones sobre la víctima
 	- id_etnia: identificación de la etnia de la víctima
 	- id_iglesia: identificación de la iglesia de la víctima
-	- orientacionsexual: Orientación sexual de la victima
+	- orientacionsexual: Orientación sexual de la víctima
 	
 	```json
 	[{"id_persona":326,"id_caso":932,"hijos":null,"id_profesion":22,"id_rangoedad":4,"id_filiacion":10,"id_sectorsocial":15,"id_organizacion":16,"id_vinculoestado":38,"organizacionarmada":35,"anotaciones":"","id_etnia":1,"id_iglesia":1,"orientacionsexual":"S","created_at":"2020-07-23T16:10:57.041-05:00","updated_at":"2020-07-23T16:11:28.060-05:00","id":246}]
@@ -410,7 +410,7 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>conteos/personas</code><code>(Trae conteo demogŕáfico de víctimas)</code></summary>
+ <summary><code>GET</code> <code><b>/</b></code> <code>conteos/personas</code><code>(Trae conteo demográfico de víctimas)</code></summary>
 Se ha construido también una ruta para poder obtener el número total de víctimas (personas individuales) en un intervalo de fechas con filtros especializados y de desagregación.
 Los parámetros de del filtro iniciales son las fechas tal como se especifica a continuación:
 ##### Parámetros
@@ -435,7 +435,7 @@ Adicionalmente hay 10 criterios diferentes por los cuales es posible desagregar 
 > | `ORGANIZACIÓN` |  Requerido | String   | Organización a la que pertenece la víctima|
 > | `PROFESIÓN` |  Requerido | String   | Profesión de la víctima|
 > | `RANGO DE EDAD` |  Requerido | String   | Rango de edad de la víctima|
-> | `SECTOR SOCIAL` |  Requerido | String   | Sector social de la victima|
+> | `SECTOR SOCIAL` |  Requerido | String   | Sector social de la víctima|
 > | `SEXO` |  Requerido | String   | Sexo de la persona |
 > | `VINCULO CON EL ESTADO` |  Requerido | String   | Vínculo con el estado|
 
@@ -461,7 +461,7 @@ Además de dos filtros especializados por los cuales de puede expandir el conteo
 > ```
 ##### Ejemplo de respuesta
 La respuesta es una tabla html en donde la primera columna es el criterio de desagregación, la segunda y tercera el filtro de geolocalización (departamento y/o municipio) y la última el número de las víctimas por fila. 
-![enter image description here](https://github.com/alejocruzrcc/sivel2/blob/img-victimas/doc/imagenes/conteo_perosnas.png)
+![enter image description here](https://github.com/alejocruzrcc/sivel2/blob/img-victimas/doc/imagenes/conteo_personas.png)
 
 ##### Control de acceso
 Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede realizar el conteo demográfico de las víctimas. Un usuario desde la consulta web pública o sin autenticarse no puede realizar el conteo. 
