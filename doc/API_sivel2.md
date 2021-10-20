@@ -410,7 +410,7 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>conteos/personas</code><code>(Trae conteo de víctimas diferentes en un intervalo de tiempo)</code></summary>
+ <summary><code>GET</code> <code><b>/</b></code> <code>conteos/personas</code><code>(Trae conteo demogŕáfico de víctimas)</code></summary>
 Se ha construido también una ruta para poder obtener el número total de víctimas (personas individuales) en un intervalo de fechas con filtros especializados y de desagregación.
 Los parámetros de del filtro iniciales son las fechas tal como se especifica a continuación:
 ##### Parámetros
@@ -460,6 +460,9 @@ Además de dos filtros especializados por los cuales de puede expandir el conteo
 >  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/conteos/personas?filtro[fechaini]=01/Ene/2000&filtro[fechafin]=31/Ene/2021&filtro[segun]=VÍNCULO CON EL ESTADO&filtro[departamento]=1&filtro[municipio]=0&commit=Contar
 > ```
 ##### Ejemplo de respuesta
-La respuesta es una tabla html en donde la primera columna es el criterio de desagregación, la segunda y tercera el filtro de geolocalización (departamento y/o municipio) y la última el número de las victimas por fila. 
+La respuesta es una tabla html en donde la primera columna es el criterio de desagregación, la segunda y tercera el filtro de geolocalización (departamento y/o municipio) y la última el número de las víctimas por fila. 
 ![enter image description here](https://github.com/alejocruzrcc/sivel2/blob/img-victimas/doc/imagenes/conteo_perosnas.png)
+
+##### Control de acceso
+Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede realizar el conteo demográfico de las víctimas. Un usuario desde la consulta web pública o sin autenticarse no puede realizar el conteo. 
  </details>
