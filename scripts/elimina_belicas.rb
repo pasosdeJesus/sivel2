@@ -3,7 +3,6 @@
 
 ActiveRecord::Base.connection.execute <<-SQL
   DELETE FROM sivel2_gen_antecedente_combatiente;
-  DELETE FROM antecedente_combatiente;
   DELETE FROM combatiente_presponsable;
   DELETE FROM combatiente;
   DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE id_categoria IN 

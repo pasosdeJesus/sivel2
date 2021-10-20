@@ -7,7 +7,10 @@
 rlocal=/var/www/resbase/sivel2/bd/
 base=$BD_DES
 dm=`date +%d`
-echo "Por generar datos de casos para enviar a  $usuarioact@$maquinaweb:$dirweb con opciones '$opscpweb'";
+
+echo "Por generar sólo datos de casos para enviar a "\
+  "$SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR "\
+  "con opciones '$SIVEL2_EXP_OPSCP'";
 echo "El usuario puede cambiarse en .env";
 echo "[ENTER] para continuar o [Ctrl]-[C] para detener";
 read a
@@ -86,12 +89,12 @@ echo "2 de 3 . Transformando..."
 gzip $rlocal/sivelpro-$dm.sql
 
 echo "3 de 3. Transfiriendo ..."
-cmd="scp $opscpweb $rlocal/sivelpro-$dm.sql.gz $usuarioact@$maquinaweb:$dirweb"
+cmd="scp $SIVEL2_EXP_OPSCP $rlocal/sivelpro-$dm.sql.gz $SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR"
 echo $cmd;
 eval $cmd;
 
 if (test "$?" = "0") then {
-        echo "Ahora ingrese al servidor $maquinaweb y ejecute desde el directorio del sitio:"
+        echo "Ahora ingrese al servidor $SIVEL2_EXP_MAQ y ejecute desde el directorio del sitio:"
         echo " $ RAILS_ENV=production bin/rails sip:vuelca";
         echo " $ bin/borra-excepto-usuarios-bitacora-y-etiquetas.sh";
 } fi;
