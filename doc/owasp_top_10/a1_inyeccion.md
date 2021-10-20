@@ -16,7 +16,7 @@
   (indicando que se antendieron todas las advertencias
   generadas por Rubocop):
   ![image](https://user-images.githubusercontent.com/701221/138012276-c091f7b1-cd15-4b65-b4a0-662e4dbc92b6.png)
-  Y en este momento el estado es:
+* En este momento el estado es:
   | Motor/Aplicación | Estado |
   |---|---|
   |`sip` | [![sip](https://hakiri.io/github/pasosdeJesus/sip/master.svg)](https://hakiri.io/github/pasosdeJesus/sip/master)  |
