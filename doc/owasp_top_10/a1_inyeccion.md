@@ -11,9 +11,12 @@
 * Utilizamos `LIMIT` por ejemplo en las consultas que presentan datos, pues 
   estos van paginados.
 * Como parte de la integración continua usamos el analizador estático de código 
-  Rubocop tanto con Hakiri como con gitlab-ci.  A la publicación de la versión
-  2.0b17 todos están en verde (indicando que se antendieron todas las advertencias
+  Rubocop tanto con Hakiri como con gitlab-ci.  El 19.Abr.2021, a la publicación de la versión
+  2.0b17 las banderas de todos los motores y la aplicación están en verde 
+  (indicando que se antendieron todas las advertencias
   generadas por Rubocop):
+  ![image](https://user-images.githubusercontent.com/701221/138012276-c091f7b1-cd15-4b65-b4a0-662e4dbc92b6.png)
+  Y en este momento el estado es:
   | Motor/Aplicación | Estado |
   |---|---|
   |`sip` | [![sip](https://hakiri.io/github/pasosdeJesus/sip/master.svg)](https://hakiri.io/github/pasosdeJesus/sip/master)  |
