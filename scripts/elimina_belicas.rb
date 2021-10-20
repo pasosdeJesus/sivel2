@@ -3,7 +3,6 @@
 
 ActiveRecord::Base.connection.execute <<-SQL
   DELETE FROM sivel2_gen_antecedente_combatiente;
-  DELETE FROM antecedente_combatiente;
   DELETE FROM combatiente_presponsable;
   DELETE FROM combatiente;
   DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE id_categoria IN 
@@ -36,6 +35,7 @@ SQL
  ['sivel2_gen_victimacolectiva_vinculoestado', 
   'sivel2_gen_antecedente_victimacolectiva',
   'sivel2_gen_profesion_victimacolectiva', 
+  'sivel2_gen_etnia_victimacolectiva', 
   'sivel2_gen_filiacion_victimacolectiva', 
   'sivel2_gen_organizacion_victimacolectiva', 
   'sivel2_gen_rangoedad_victimacolectiva', 
