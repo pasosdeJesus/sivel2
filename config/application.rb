@@ -24,7 +24,7 @@ module Sivel2
 
     config.hosts <<  ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase
 
-    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
+    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2.1")
 
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOW'
@@ -32,16 +32,6 @@ module Sivel2
 
     config.x.origen_cors = ENV.fetch('ORIGEN_CORS','').split(',')
     puts "config.x.origen_cors=#{config.x.origen_cors.inspect}"
-
-    # sip
-    config.x.formato_fecha = ENV.fetch('FORMATO_FECHA', 'dd/M/yyyy')
-
-    # heb412
-    config.x.heb412_ruta = Pathname(
-      ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)
-    )
-
-    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
 
     # sip
     config.x.formato_fecha = ENV.fetch('FORMATO_FECHA', 'dd/M/yyyy')
@@ -67,14 +57,6 @@ module Sivel2
     config.x.sivel2_mapaosm_diasatras = ENV.fetch(
       'SIVEL2_MAPAOSM_DIASATRAS', 182
     )
-
-    config.x.sivel2_consweb_epilogo = ENV.fetch(
-      'SIVEL2_CONSWEB_EPILOGO', 
-      "<br>Si requiere más puede suscribirse a SIVeL Pro"
-    ).html_safe
-
-      config.x.sivel2_mapaosm_diasatras = ENV.fetch('SIVEL2_CONSWEB_EPILOGO', 182)
-
 
   end
 end
