@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 0aa27860fe73592ff58f61fdac419e0b4b8f859a
+  revision: 736b55117638bac78bac63b718c9935566de7360
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 563d87e5a729442db722aa901d655fe32cc07832
+  revision: f75765a12814a384eebd2f5e0c84f93f7b1fe6e8
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5f69b2b6b725a5febe46d2ec5287ed85f1f230b6
+  revision: fc24fa659acb8e2a06009496858a5673fadd1655
   branch: main
   specs:
     sip (2.0.b12)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2fe6aa5482afef1d03899c6e2df49f56c5930c61
+  revision: b17c1afd635761213dc5c3f8d05543adb9e03dba
   branch: sivel2.0
   specs:
     sivel2_gen (2.0b17)
@@ -193,7 +193,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.6.0)
+    json (2.6.1)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
     loofah (2.12.0)
