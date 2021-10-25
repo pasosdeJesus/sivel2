@@ -6,6 +6,7 @@
   2. Que los controladores que están en `app/controllers si tengan `load_and_authorize_resource` o cuando no aplique un comentario explicando
 * En los motores y aplicaciones genéricas se especifica con brevedad el control de acceso llamando métodos
   de motores en la función `initialize` de `app/modles/ability.rb` (e.g `initialize_sip`, `initialize_mr519_gen`, 
-  `initialize_heb412_gen` e `initialize_sivel2_gen`).  En aplicaciones finales se recomienda escribir completas las reglas
+  `initialize_heb412_gen` e `initialize_sivel2_gen`).  En aplicaciones finales con exactamente el mismo control de acceso de las aplicaciones genéricas
+  pueden llamarse esas funciones.  Pero en aplicaciones que mezclen varios motoros se recomienda escribir completas las reglas
   en el archivo `app/models/ability.rb` para facilitar auditoria y evitar cambios inesperados al actualizar motores.
  
