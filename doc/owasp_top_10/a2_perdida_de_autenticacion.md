@@ -1,16 +1,18 @@
 
 # Prevenciones a perdida de autenticación
 
-* Implementar autenticación multi-factor -estaremos evaluando
-* Para poder configurar se despliega con unas credenciales por defecto de
-  un usuario sivel2, pero la práctica es remplazarlo de inmediato
-  por un usuario real de la aplicación.
-* Controles contra contraseñas débiles --por hacer
-* Políticas de longitude, complejidad y rotación --por hacer
 * Se emplean mensajes genéricos iguales para operaciones para las que no hay
   autorización.
-* Limitar o incrementar tiempo frente a intentos fallidos --por hacer
-* Registrar en bitácora todo intente fallido --por hacer
-* Alertar administradores ataques de fuerza bruta --por hacer
+* Las cuentas se deshabilitan tras 3 intentos de ingreso fallido.
+* Para poder desarrollar y configurar las aplicaciones inician base de datos
+  con unas credenciales por defecto de un usuario sivel2 y clave sivel2.
+  Pero en aplicaciones de produccińo la práctica tras la primera 
+  autenticación es remplazarlo por un usuario real de la aplicación con buena clave.
+* Está pendiente de hacerse:
+  * Autenticación multi-factor -estaremos evaluando
+  * Controles contra contraseñas débiles. Al respecto: https://github.com/pasosdeJesus/sivel2_gen/issues/405
+  * Políticas de longitude, complejidad y rotación.
+  * Registrar en bitácora todo intente fallido.
+  * Alertar administradores ataques de fuerza bruta.
 
-Al respecto: https://github.com/pasosdeJesus/sivel2_gen/issues/405
+
