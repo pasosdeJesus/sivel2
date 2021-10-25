@@ -1,7 +1,7 @@
 
 # Prevención de ataques de inyección de código
 
-* Estamos usando ActiveRecord como ORM para consultas SQL, el cual 
+* En general estamos usando ActiveRecord como ORM para consultas SQL, el cual 
   escapa automáticamente.
 * En entradas de información por formularios Rails usamos lista
   blanca de parámetros como es práctica estándar en aplicaciones
@@ -11,7 +11,9 @@
 * Utilizamos `LIMIT` por ejemplo en las consultas que presentan datos, pues 
   estos van paginados.
 * Como parte de la integración continua usamos el analizador estático de código 
-  Rubocop tanto con Hakiri como con gitlab-ci.  El 19.Abr.2021, a la publicación de la versión
+  Rubocop tanto con Hakiri como con gitlab-ci.   Este generador es especialmente
+  fuerte en detectar inyecciones de código (con varios falsos positivos).
+  El 19.Abr.2021, a la publicación de la versión
   2.0b17 las banderas de todos los motores y la aplicación están en verde 
   (indicando que se antendieron todas las advertencias
   generadas por Rubocop):
