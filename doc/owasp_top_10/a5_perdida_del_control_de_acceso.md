@@ -1,5 +1,5 @@
 * Para el control de acceso de utiliza la gema `cancancan` que centraliza las reglas en `app/models/ability.rb`
-* Se han desarrollado pruebas de regresión con minitest específicas para probar el control de acceso de sivel2.  Ver en 
+* Se han desarrollado pruebas de regresión con minitest específicas para probar el control de acceso de sivel2.  Ver en fuentes en directorio `test/controllers` las que comienzan con `control_acceso`
 * Se ha revisado en la aplicación y en todos sus motores: 
   1. Que los controladores que están en `lib` no tengan `load_and_authorize_resource` (es responsabilidad de clases finales, no de modulos)
   2. Que los controladores que están en `app/controllers si tengan `load_and_authorize_resource` o cuando no aplique un comentario explicando
