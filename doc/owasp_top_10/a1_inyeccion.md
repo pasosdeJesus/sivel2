@@ -2,7 +2,8 @@
 # Prevención de ataques de inyección de código
 
 * En general estamos usando ActiveRecord como ORM para consultas SQL, el cual 
-  escapa automáticamente.
+  escapa automáticamente.  En los casos que hemos construido consultas
+  SQL directamente hemos empleado funciones para escapar como `Sivel2Gen::Caso.connection.quote_string(c)`
 * En entradas de información por formularios Rails usamos lista
   blanca de parámetros como es práctica estándar en aplicaciones
   Rails. En filtros se usan sólo datos esperados y se
@@ -12,7 +13,7 @@
   estos van paginados.
 * Como parte de la integración continua usamos el analizador estático de código 
   Rubocop tanto con Hakiri como con gitlab-ci.   Este generador es especialmente
-  fuerte en detectar inyecciones de código (con varios falsos positivos).
+  fuerte en detectar inyecciones de código SQL y shell (con varios falsos positivos).
   El 19.Abr.2021, a la publicación de la versión
   2.0b17 las banderas de todos los motores y la aplicación están en verde 
   (indicando que se antendieron todas las advertencias
