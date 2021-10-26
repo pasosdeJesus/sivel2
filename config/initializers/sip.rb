@@ -1,3 +1,5 @@
+require 'sivel2_gen/version'
+
 Sip.setup do |config|
   config.ruta_anexos = ENV.fetch('SIP_RUTA_ANEXOS', 
                                  "#{Rails.root}/archivos/anexos/")
