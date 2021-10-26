@@ -5,12 +5,12 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
  Rails.application.config.content_security_policy do |policy|
-   policy.default_src :self, :https
-   policy.font_src    :self, :https, :data
-   policy.img_src     :self, :https, :data
+#   policy.default_src :self, :https
+#   policy.font_src    :self, :https, :data
+#   policy.img_src     :self, :https, :data
    policy.object_src  :none
-   policy.script_src  :self, :https
-   policy.style_src   :self, :https
+#   policy.script_src  :self, :https
+#   policy.style_src   :self, :https
    policy.frame_ancestors :self, 'https://www.nocheyniebla.org'
    # If you are using webpack-dev-server then specify webpack-dev-server host
 #   policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
