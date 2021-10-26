@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 conexion = ActiveRecord::Base.connection();
 
 # De motores y finalmente de este

@@ -1,5 +1,8 @@
 class MapatiempoController < ApplicationController
 
+  
+  load_and_authorize_resource class: ::Mapatiempo
+
   def mapatiempo
     render :mapatiempo, layout: 'application'
     return

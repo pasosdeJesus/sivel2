@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'sivel2_gen/concerns/models/usuario'
 
 class Usuario < ActiveRecord::Base
