@@ -25,6 +25,7 @@
     "jquery-ui": "^1.12.1",
     "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1",
+    "mini-css-extract-plugin": "^2.4.3",
     "popper.js": "^2.0.0-next.4",
     "postcss": "^8.2.10",
     "turbolinks": "^5.2.0",
@@ -35,7 +36,6 @@
     "css-what": "^5.0.1",
     "glob-parent": "^5.1.2",
     "jest": "^27.0.4",
-    "mini-css-extract-plugin": "^2.3.0",
     "normalize-url": "^4.5.1",
     "postcss": "^8.2.10"
   },

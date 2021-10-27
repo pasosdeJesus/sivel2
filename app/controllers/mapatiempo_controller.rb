@@ -1,9 +1,10 @@
 class MapatiempoController < ApplicationController
 
   
-  load_and_authorize_resource class: ::Mapatiempo
-
+  # No se autoriza con una clase porque no la hay, debe ser función a función
+  
   def mapatiempo
+    authorize! :read, Sivel2Gen::contar
     render :mapatiempo, layout: 'application'
     return
   end
