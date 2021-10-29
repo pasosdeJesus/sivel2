@@ -1551,13 +1551,18 @@ CREATE VIEW public.cvt1 AS
     acto.id_persona,
     acto.id_categoria,
     supracategoria.id_tviolencia,
-    categoria.nombre AS categoria
-   FROM (((((public.sivel2_gen_acto acto
+    categoria.nombre AS categoria,
+    ubicacion.id_departamento,
+    departamento.id_deplocal AS departamento_divipola,
+    initcap((departamento.nombre)::text) AS departamento_nombre
+   FROM (((((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
-     JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)));
+     JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)))
+     LEFT JOIN public.sip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
+     LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)));
 
 
 --
