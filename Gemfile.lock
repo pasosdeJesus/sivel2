@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 84fbef93b72527d198a9cbe496ddf34aed775079
+  revision: 059e5a869541c9aef6ef242826b2d857f5375b5a
   branch: main
   specs:
     apo214 (0.1.0)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7e37f8e2d4c638dbe0a67ac39300de3b72c364e2
+  revision: 91dd394bd34a6bc46263c3938d6f1ef09235a804
   branch: main
   specs:
     sip (2.0.b12)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f0845ed96bfdefdb2e7ff5c145f9dfbe1ec15956
+  revision: bf9304706fb4ea0d719eb3eec4455fcf04dd58f7
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -188,7 +188,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.0)
+    devise-i18n (1.10.1)
       devise (>= 4.8.0)
     docile (1.4.0)
     dotenv (2.7.6)
