@@ -3969,6 +3969,16 @@ CREATE TABLE public.sivel2_gen_organizacion_victimacolectiva (
 
 
 --
+-- Name: sivel2_gen_otraorga_victima; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_otraorga_victima (
+    organizacion_id integer,
+    victima_id integer
+);
+
+
+--
 -- Name: sivel2_gen_pconsolidado_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -5875,6 +5885,20 @@ CREATE INDEX index_sip_ubicacion_on_id_pais ON public.sip_ubicacion USING btree 
 
 
 --
+-- Name: index_sivel2_gen_otraorga_victima_on_organizacion_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_otraorga_victima_on_organizacion_id ON public.sivel2_gen_otraorga_victima USING btree (organizacion_id);
+
+
+--
+-- Name: index_sivel2_gen_otraorga_victima_on_victima_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_otraorga_victima_on_victima_id ON public.sivel2_gen_otraorga_victima USING btree (victima_id);
+
+
+--
 -- Name: index_sivel2_gen_sectorsocialsec_victima_on_sectorsocial_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -6026,6 +6050,13 @@ CREATE INDEX sivel2_gen_obs_fildep_d_idx ON public.sivel2_gen_observador_filtrod
 --
 
 CREATE INDEX sivel2_gen_obs_fildep_u_idx ON public.sivel2_gen_observador_filtrodepartamento USING btree (usuario_id);
+
+
+--
+-- Name: sivel2_gen_victima_id_rangoedad_ind; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX sivel2_gen_victima_id_rangoedad_ind ON public.sivel2_gen_victima USING btree (id_rangoedad);
 
 
 --
@@ -6644,6 +6675,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 
 --
+-- Name: sivel2_gen_otraorga_victima fk_rails_3029d2736a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_otraorga_victima
+    ADD CONSTRAINT fk_rails_3029d2736a FOREIGN KEY (organizacion_id) REFERENCES public.sivel2_gen_organizacion(id);
+
+
+--
 -- Name: apo214_infoanomalialugar fk_rails_3aa92f63a0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7057,6 +7096,14 @@ ALTER TABLE ONLY public.apo214_lugarpreliminar
 
 ALTER TABLE ONLY public.apo214_lugarpreliminar
     ADD CONSTRAINT fk_rails_d2074c8fa3 FOREIGN KEY (otrolubicacionpre_id) REFERENCES public.sip_ubicacionpre(id);
+
+
+--
+-- Name: sivel2_gen_otraorga_victima fk_rails_e023799a03; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_otraorga_victima
+    ADD CONSTRAINT fk_rails_e023799a03 FOREIGN KEY (victima_id) REFERENCES public.sivel2_gen_victima(id);
 
 
 --
@@ -7918,6 +7965,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211011214752'),
 ('20211011233005'),
 ('20211019121200'),
-('20211024105450');
+('20211020221141'),
+('20211024105450'),
+('20211024105507');
 
 
