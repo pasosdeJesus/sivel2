@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'acts_as_list'
 
+gem 'apexcharts'
+
 gem 'bcrypt'
 
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
