@@ -184,7 +184,7 @@ GEM
     ffi (1.15.4)
     globalid (0.5.2)
       activesupport (>= 5.0)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
@@ -412,4 +412,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.2.27
+   2.2.28
