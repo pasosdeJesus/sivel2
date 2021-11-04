@@ -1,6 +1,5 @@
-# API de casos de SiVel2
-Esta es la documentación oficial de la API de casos de la aplicación siVel2. Aquí están descritas todas las posibles peticiones y consultas posibles, los parámetros establecidos, respuestas posibles y controles de acceso definidos en la configuración. 
-Un susario puede consumir de la API tanto las generalidades básicas de un conjunto de casos, como también un caso con todos los detalles del mismo.  Esta API está siendo utilizada para el reporte de casos en la aplicación pero igualmente esta siendo consumida por servicios como mapas y reportes completos de informes en planillas. Se puede generar reportes en diferentes formatos: JSON, XRLAT (XML) y HTML..
+# API de SiVel2
+Esta es la documentación oficial de la API de la aplicación siVel2. Aquí están descritas todas las posibles peticiones y consultas posibles, los parámetros establecidos, respuestas posibles y controles de acceso definidos en la configuración. 
 - Inspirado por docuemtación Swagger API en estilo y estructura: https://petstore.swagger.io/#/pet
 ------------------------------------------------------------------------------------------
 
@@ -8,6 +7,8 @@ Un susario puede consumir de la API tanto las generalidades básicas de un conju
 
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>casos</code></summary>
+
+Un usuario puede consumir de la API tanto las generalidades básicas de un conjunto de casos, como también un caso con todos los detalles del mismo.  Esta API está siendo utilizada para el reporte de casos en la aplicación pero igualmente esta siendo consumida por servicios como mapas y reportes completos de informes en planillas. Se puede generar reportes en diferentes formatos: JSON, XRLAT (XML) y HTML..
 
 ##### Parámetros
 
@@ -465,4 +466,109 @@ La respuesta es una tabla html en donde la primera columna es el criterio de des
 
 ##### Control de acceso
 Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede realizar el conteo demográfico de las víctimas. Un usuario desde la consulta web pública o sin autenticarse no puede realizar el conteo. 
+ </details>
+
+ ------------------------------------------------------------------------------------------
+## Gestionando tablas básicas 
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>tablasbasicas</code></summary>
+
+Esta petición trae un listado de tablas básicas utilizadas por los formularios  y la aplicación en general. No recibe ningún parámetro adicional y su respuesta únicamente será en html de ser exitosa y tener la autorización necesaria.
+Las tablas básicas únicamente pueden ser accedidas tienen un control de acceso que depende del tipo de las mismas:
+
+- Rol Administrador: Puede acceder, editar, actualizar, eliminar datos de cualquier tabla básica propias de sivel2 o de Sip. 
+- Rol autenticado: No puede visualizar los datos, ni consultar información de cualquier tabla básica salvo que sea geográfica, sin poder editar.
+- Consulta pública: Únicamente puede visualizar los datos de las tablas básicas geográficas: País, departamento, municipio y centro poblado. 
+
+ </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>admin/tablabasica</code></summary>
+
+A través de esta petición es posible obtener los datos de una tabla básica especifica, escribiendo la ruta admin, seguida del nombre de la tabla básica en plural. Esta petición puede estar acompañada de los siguientes parámetros pertenecientes a filtro:
+
+##### Parámetros
+
+> | nombre            |  tipo     | tipo de dato      | descripción                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `filtro[busid]` |  Requerido | Integer   | Buscar por identificación|
+> | `filtro[busnombre]` |  Requerido | String   | Buscar por nombre  |
+>  | `filtro[busobservaciones]` |  Requerido | String   | Buscar por algún texto en las observaciones  |## Gestionando tablas básicas 
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/admin/categorias?filtro[busid]=23&filtro[busnombre]=ABORTO&filtro[busobservaciones]=OBSER&filtro[busfechacreacionini]=2021-10-01&filtro[busfechacreacionfin]=2021-10-28&filtro[bushabilitado]=Todos&filtrar=Filtrar
+> ```
+##### Respuestas
+El listado de datos de una tabla básica puede obtenerse en dos formatos
+> | código http   | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/json;charset=UTF-8`        | Página HTML / Objeto JSON                                                     |
+> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+
+ </details>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>admin/tablabasica/:id</code></summary>
+
+Es posible obtener un único valor de una tabla básica especificando en la ruta el dentificador de la tabla. La respuesta a esta petición está disponible en formato HTML y JSON. Por ejemplo suponiendo que se tiene la siguiente petición:
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/admin/antecedentes/6.json
+> ```
+Su respuesta ser así: 
+```json	
+{"id":6,"nombre":"ALLANAMIENTO","observaciones":null,"fechacreacion_localizada":"29/ene/2001","fechadeshabilitacion_localizada":null}`
+```
+ </details>
+
+## Gestionando plantillas
+
+Sivel2 tiene actualmente  2 tipos de llenadores de plantillas:
+-   Para llenar una plantilla ODS con datos de un listado (vista index), que se supone puede demorarse en generar una conjunto grande de datos. (Plantillahcm)
+-   Para llenar una plantilla ODS con datos de un resumen (vista show), que suponemos se genera rápido. (Plantillahcr)
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>plantillashcm</code> </summary>
+ 
+Es posible por medio de esta petición, obtener el listado de plantillas creadas para listados. El único parámetro de filtro es el identificador <code>filtro[:busid]</code>. La respuesta está disponible en HTML y JSON y los controles de accceso son los siguientes:
+
+- Rol administrador: Puede crear, consultar, editar, actualizar y eliminar plantillas de listado
+- Usuario autenticado no administrador: Puede leer las plantillas sin editar ni eliminar
+- Consulta pública: No puede acceder a las plantillas 
+ </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>plantillashcm/:id</code> </summary>
+ 
+ Con esta ruta realizamos una petición a una plantilla especifica indicando el identificador. la respuesta esta disponible en HTML o bien un objeto JSON y los permisos de control de acceso son los mismos mencionados para la petición del listado. Un ejemplo de una petición a una plantillahcm puede visualizarse así:
+ 
+ > ```javascript
+>  curl  -X GET http://rbd.nocheyniebla.org:3400/sivel2/plantillahcm/1.json
+> ```
+Obteniendo una respuesta así:
+```json	
+{"id":1,"ruta":"plantillas/ReporteTabla.ods","fuente":"Pasos de Jesús","licencia":"Dominio Público","vista":"Caso","nombremenu":"Listado genérico de casos","formulario":[],"filainicial":6}
+```
+ </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>plantillashcr</code> </summary>
+ 
+Es posible por medio de esta petición, obtener el listado de plantillas creadas para registros únicos. El úni parámetro de filtro es el identificador <code>filtro[:busid]</code>. La respuesta está disponible en HTML y JSON y los controles de accceso son los siguientes:
+
+- Rol administrador: Puede crear, consultar, editar, actualizar y eliminar plantillas de listado
+- Usuario autenticado no administrador: Puede leer las plantillas sin editar ni eliminar
+- Consulta pública: No puede acceder a las plantillas 
+ </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>plantillashcr/:id</code> </summary>
+ 
+ Con esta ruta realizamos una petición a una plantilla especifica indicando el identificador. la respuesta esta disponible en HTML o bien un objeto JSON y los permisos de control de acceso son los mismos mencionados para la petición del listado. Un ejemplo de una petición a una plantillahcm puede visualizarse así:
+ 
+ > ```javascript
+>  curl  -X GET http://rbd.nocheyniebla.org:3400/sivel2/plantillahcr/1.json
+> ```
+Obteniendo una respuesta así:
+```json	
+{"id":1,"ruta":"plantillas/reporte_un_caso.ods","fuente":"fuenet","licencia":"","vista":"Caso","nombremenu":"Ejemplo","formulario":[],"campoplantillahcr":[]}
+```
  </details>
