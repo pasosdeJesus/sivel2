@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: e86a2a90ef174231d220001b9570c39a5fb14a98
+  revision: 5eaaf88598d9f1b08d633b86f198dd4a30636b28
   branch: main
   specs:
     apo214 (0.1.0)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: dc0e19cd43e760d303b2d36548077f8c0277320c
+  revision: 2c46b6daa111781e2a9f9bc08c15cf8aaf3f924c
   branch: main
   specs:
     heb412_gen (1.0.b7)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5be7b03e93432fc1994f1f46ec36ed50829173a7
+  revision: fc020a2b47ca4e1b3637d8840991d96973708c7a
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c13e90196c7321167a61e459f5f8ac301a572aaf
+  revision: 8d48911ae6209d6dbf830806a2c0615ae53260ae
   branch: main
   specs:
     sip (2.0.b12)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: fcffc7a168efc5d4e53ed905c4956491e6809d57
+  revision: cd30285a9299127544c9d838f28680380feaccd5
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -382,7 +382,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stimulus-rails (0.7.1)
+    stimulus-rails (0.7.2)
       rails (>= 6.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
