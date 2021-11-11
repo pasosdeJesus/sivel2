@@ -1,6 +1,6 @@
 # API de SiVel2
-Esta es la documentación oficial de la API de la aplicación siVel2. Aquí están descritas todas las posibles peticiones y consultas posibles, los parámetros establecidos, respuestas posibles y controles de acceso definidos en la configuración. 
-- Inspirado por docuemtación Swagger API en estilo y estructura: https://petstore.swagger.io/#/pet
+Esta es la documentación oficial de la API de la aplicación siVel2. Aquí están descritas todas las posibles peticiones y consultas, los parámetros establecidos, respuestas posibles y controles de acceso definidos en la configuración. 
+- Inspirado por documentación Swagger API en estilo y estructura: https://petstore.swagger.io/#/pet
 ------------------------------------------------------------------------------------------
 
 ## Listando casos existentes 
@@ -467,7 +467,46 @@ La respuesta es una tabla html en donde la primera columna es el criterio de des
 ##### Control de acceso
 Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede realizar el conteo demográfico de las víctimas. Un usuario desde la consulta web pública o sin autenticarse no puede realizar el conteo. 
  </details>
+ ------------------------------------------------------------------------------------------
+## Listando organizaciones sociales
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>orgsociales</code></summary>
+Los parámetros que se pueden establecer en la url de la petición son los que hacen referencia al filtro y los cuales se describen a continuación
+ ##### Parámetros para filtros
 
+> | Parámetro    | Tipo y Accesos                   | Ejemplo	  | 
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `:busid`         | Integer / AUT      | Persona con id 145: `filtro[busid]=145`
+> | `:busgrupoper_id`         |Integer  / AUT      |Identificación del grupo es 1:  `filtro[busgrupoper_id]=1`
+> | `:bussectororgsocial_ids`         |String  / AUT      |Identificación de sector de organización social es 101  `filtro[bussectororgsocial_ids]=101`
+> | `:bushabilitado`         |String [Si, No, Todos] / AUT       | Solo habilitados: `filtro[bushabilitado]=Si`
+> | `:buscreated_atini`         |String / AUT        |Fecha inicial es 1 de Nov de 2021: `filtro[buscreated_atini]=2021-11-01`
+> | `:buscreated_atfin`         |String / AUT        |Fecha final es 20 de Nov de 2021: `filtro[buscreated_atfin]=2021-11-20`
+
+ ##### Respuestas
+
+> | código http    | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/html;charset=UTF-8` / `application/json;charset=UTF-8`     | Página html / Objeto JSON 
+> | `400`         |Error        | (Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados
+> | `401`         | Error        | (Unauthorized) No hay autorización para llamar al servicio
+> | `404`         | Error`        | (NotFound) No se encontró información
+> | `500`         | Error        | Error en servidor                                                   |
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/orgsociales.json?utf8=✓&filtro[busid]=&filtro[busgrupoper_id]=102&filtro[bussectororgsocial_ids]=101&filtro[bushabilitado]=Si&filtro[buscreated_atini]=2021-11-01&filtro[buscreated_atfin]=2021-11-20&filtrar=Filtrar
+> ```
+##### Ejemplo de respuesta
+La respuesta es una tabla html en donde la primera columna es el criterio de desagregación, la segunda y tercera el filtro de geolocalización (departamento y/o municipio) y la última el número de las víctimas por fila. 
+```json
+[{"id":2,"grupoper_id":102,"telefono":"3116494967","fax":"","direccion":"Calle 13 A # 11 -99","pais_id":170,"web":"","created_at":"2021-11-10T12:44:20.793-05:00","updated_at":"2021-11-10T12:44:20.793-05:00","fechadeshabilitacion":null}]
+```
+
+##### Control de acceso
+Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede consultar las organizaciones sociales en su totalidad. Sin embargo, un operador analista no puede eliminar organizaciones sociales existentes más si editar y un operador observador únicamente puede ver los registros sin editar o eliminar. Un usuario desde la consulta web pública o sin autenticarse no acceder a ningún registro.  
+  </details>
  ------------------------------------------------------------------------------------------
 ## Gestionando tablas básicas 
 
@@ -519,7 +558,43 @@ Su respuesta ser así:
 {"id":6,"nombre":"ALLANAMIENTO","observaciones":null,"fechacreacion_localizada":"29/ene/2001","fechadeshabilitacion_localizada":null}`
 ```
  </details>
+ 
+## Listando lugares preliminares de disposición irregular de cadáveres
 
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>lugarespreliminares</code> </summary>
+ 
+ A través de esta petición es posible obtener los datos del listado de registros de luagres preliminares de disposición irregular de cadáveres, modelo que hace parte del motor Apo214, el cual se asocia con varias tablas básicas de ese motor utilizadas para una mejor implementación dell formulario y facilitar consultas.  Esta petición puede estar acompañada de los siguientes parámetros pertenecientes a filtro:
+Un ejemplo de una petición es:
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/lugarespreliminares.json
+> ```
+##### Respuestas
+El listado de datos de una tabla básica puede obtenerse en dos formatos
+> | código http   | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/json;charset=UTF-8`        | Página HTML / Objeto JSON                                                     |
+> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+
+Y los objetos de respuesta JSON a esta petición son de la siguiente forma:
+```json	
+[{"id":4,"fecha":"2021-11-10","codigositio":"191030","created_at":"2021-11-06T19:39:08.247-05:00","updated_at":"2021-11-10T16:28:41.551-05:00","nombreusuario":"sivel2","organizacion":"organizacion ejemplo ","ubicacionpre_id":null,"id_persona":101,"parentezco":"AB","grabacion":false,"telefono":"35468489","tipotestigo_id":null,"otrotipotestigo":"","hechos":"","ubicaespecifica":"","disposicioncadaveres_id":null,"otradisposicioncadaveres":"","tipoentierro_id":null,"min_depositados":null,"max_depositados":null,"fechadis":null,"horadis":"1999-12-31T19:39:00.000-05:00","insitu":true,"otrolubicacionpre_id":null,"detallesasesinato":"","nombrepropiedad":"","detallesdisposicion":"","nomcomoseconoce":"","elementopaisaje_id":null,"cobertura_id":null,"interatroprevias":"","interatroactuales":"","usoterprevios":"","usoteractuales":"","accesolugar":"","perfilestratigrafico":"","observaciones":"","procesoscul":"","desgenanomalia":"","evaluacionlugar":"","riesgosdanios":"","archivokml_id":null}]`
+```
+ </details>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>admin/tablabasica/:id</code></summary>
+
+Es posible obtener un único valor de una tabla básica especificando en la ruta el dentificador de la tabla. La respuesta a esta petición está disponible en formato HTML y JSON. Por ejemplo suponiendo que se tiene la siguiente petición:
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/admin/antecedentes/6.json
+> ```
+Su respuesta ser así: 
+```json	
+{"id":6,"nombre":"ALLANAMIENTO","observaciones":null,"fechacreacion_localizada":"29/ene/2001","fechadeshabilitacion_localizada":null}`
+```
+ </details>
+ 
 ## Gestionando plantillas
 
 Sivel2 tiene actualmente  2 tipos de llenadores de plantillas:
@@ -572,3 +647,4 @@ Obteniendo una respuesta así:
 {"id":1,"ruta":"plantillas/reporte_un_caso.ods","fuente":"fuenet","licencia":"","vista":"Caso","nombremenu":"Ejemplo","formulario":[],"campoplantillahcr":[]}
 ```
  </details>
+

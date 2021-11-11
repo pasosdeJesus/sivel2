@@ -48,6 +48,7 @@ PRUEBA_USUARIO_AN = {
 
 
 PRUEBA_PERSONA = {
+  id: 1,
   nombres: 'Luis Alejandro',
   apellidos: 'Cruz Ordoñez',
   sexo: 'M',
@@ -66,6 +67,50 @@ PRUEBA_ORGSOCIAL = {
   updated_at: '2021-08-27'
 }
 
+PRUEBA_LUGARPRELIMINAR = {
+  fecha: "2021-11-10",
+  codigositio: "191030",
+  created_at: "2021-11-06T19:39:08.247-05:00",
+  updated_at: "2021-11-10T16:28:41.551-05:00",
+  nombreusuario: "sivel2",
+  organizacion: "organizacion ejemplo",
+  ubicacionpre_id: nil,
+  id_persona: 1,
+  parentezco: "AB",
+  grabacion: false,
+  telefono: "35468489",
+  tipotestigo_id: nil,
+  otrotipotestigo: "",
+  hechos: "",
+  ubicaespecifica: "",
+  disposicioncadaveres_id: nil,
+  otradisposicioncadaveres: "",
+  tipoentierro_id: nil,
+  min_depositados: nil,
+  max_depositados: nil,
+  fechadis: nil,
+  horadis: "1999-12-31T19:39:00.000-05:00",
+  insitu: true,
+  otrolubicacionpre_id: nil,
+  detallesasesinato: "",
+  nombrepropiedad: "",
+  detallesdisposicion: "",
+  nomcomoseconoce: "",
+  elementopaisaje_id: nil,
+  cobertura_id: nil,
+  interatroprevias: "",
+  interatroactuales: "",
+  usoterprevios: "",
+  usoteractuales: "",
+  accesolugar: "",
+  perfilestratigrafico: "",
+  observaciones: "",
+  procesoscul: "",
+  desgenanomalia: "",
+  evaluacionlugar: "",
+  riesgosdanios: "",
+  archivokml_id: nil
+}
 PRUEBA_CASO = {
   titulo: "Caso de prueba",
   fecha: "2021-09-11",
