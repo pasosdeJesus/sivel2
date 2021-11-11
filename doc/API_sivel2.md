@@ -1,6 +1,6 @@
 # API de SiVel2
-Esta es la documentación oficial de la API de la aplicación siVel2. Aquí están descritas todas las posibles peticiones y consultas posibles, los parámetros establecidos, respuestas posibles y controles de acceso definidos en la configuración. 
-- Inspirado por docuemtación Swagger API en estilo y estructura: https://petstore.swagger.io/#/pet
+Esta es la documentación oficial de la API de la aplicación siVel2. Aquí están descritas todas las posibles peticiones y consultas, los parámetros establecidos, respuestas posibles y controles de acceso definidos en la configuración. 
+- Inspirado por documentación Swagger API en estilo y estructura: https://petstore.swagger.io/#/pet
 ------------------------------------------------------------------------------------------
 
 ## Listando casos existentes 
@@ -467,7 +467,46 @@ La respuesta es una tabla html en donde la primera columna es el criterio de des
 ##### Control de acceso
 Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede realizar el conteo demográfico de las víctimas. Un usuario desde la consulta web pública o sin autenticarse no puede realizar el conteo. 
  </details>
+ ------------------------------------------------------------------------------------------
+## Listando organizaciones sociales
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>orgsociales</code></summary>
+Los parámetros que se pueden establecer en la url de la petición son los que hacen referencia al filtro y los cuales se describen a continuación
+ ##### Parámetros para filtros
 
+> | Parámetro    | Tipo y Accesos                   | Ejemplo	  | 
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `:busid`         | Integer / AUT      | Persona con id 145: `filtro[busid]=145`
+> | `:busgrupoper_id`         |Integer  / AUT      |Identificación del grupo es 1:  `filtro[busgrupoper_id]=1`
+> | `:bussectororgsocial_ids`         |String  / AUT      |Identificación de sector de organización social es 101  `filtro[bussectororgsocial_ids]=101`
+> | `:bushabilitado`         |String [Si, No, Todos] / AUT       | Solo habilitados: `filtro[bushabilitado]=Si`
+> | `:buscreated_atini`         |String / AUT        |Fecha inicial es 1 de Nov de 2021: `filtro[buscreated_atini]=2021-11-01`
+> | `:buscreated_atfin`         |String / AUT        |Fecha final es 20 de Nov de 2021: `filtro[buscreated_atfin]=2021-11-20`
+
+ ##### Respuestas
+
+> | código http    | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/html;charset=UTF-8` / `application/json;charset=UTF-8`     | Página html / Objeto JSON 
+> | `400`         |Error        | (Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados
+> | `401`         | Error        | (Unauthorized) No hay autorización para llamar al servicio
+> | `404`         | Error`        | (NotFound) No se encontró información
+> | `500`         | Error        | Error en servidor                                                   |
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/orgsociales.json?utf8=✓&filtro[busid]=&filtro[busgrupoper_id]=102&filtro[bussectororgsocial_ids]=101&filtro[bushabilitado]=Si&filtro[buscreated_atini]=2021-11-01&filtro[buscreated_atfin]=2021-11-20&filtrar=Filtrar
+> ```
+##### Ejemplo de respuesta
+La respuesta es una tabla html en donde la primera columna es el criterio de desagregación, la segunda y tercera el filtro de geolocalización (departamento y/o municipio) y la última el número de las víctimas por fila. 
+```json
+[{"id":2,"grupoper_id":102,"telefono":"3116494967","fax":"","direccion":"Calle 13 A # 11 -99","pais_id":170,"web":"","created_at":"2021-11-10T12:44:20.793-05:00","updated_at":"2021-11-10T12:44:20.793-05:00","fechadeshabilitacion":null}]
+```
+
+##### Control de acceso
+Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede consultar las organizaciones sociales en su totalidad. Sin embargo, un operador analista no puede eliminar organizaciones sociales existentes más si editar y un operador observador únicamente puede ver los registros sin editar o eliminar. Un usuario desde la consulta web pública o sin autenticarse no acceder a ningún registro.  
+  </details>
  ------------------------------------------------------------------------------------------
 ## Gestionando tablas básicas 
 
@@ -572,3 +611,4 @@ Obteniendo una respuesta así:
 {"id":1,"ruta":"plantillas/reporte_un_caso.ods","fuente":"fuenet","licencia":"","vista":"Caso","nombremenu":"Ejemplo","formulario":[],"campoplantillahcr":[]}
 ```
  </details>
+

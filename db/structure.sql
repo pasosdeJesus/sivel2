@@ -31,6 +31,20 @@ COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance betwe
 
 
 --
+-- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
+
+
+--
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -228,6 +242,15 @@ $_$;
 
 
 --
+-- Name: rand(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.rand() RETURNS double precision
+    LANGUAGE sql
+    AS $$SELECT random();$$;
+
+
+--
 -- Name: sip_edad_de_fechanac_fecharef(integer, integer, integer, integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -408,6 +431,770 @@ $_$;
 
 
 --
+-- Name: substring_index(text, text, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.substring_index(text, text, integer) RETURNS text
+    LANGUAGE sql
+    AS $_$SELECT array_to_string((string_to_array($1, $2)) [1:$3], $2);$_$;
+
+
+--
+-- Name: first(anyelement); Type: AGGREGATE; Schema: public; Owner: -
+--
+
+CREATE AGGREGATE public.first(anyelement) (
+    SFUNC = public.first_element_state,
+    STYPE = anyarray,
+    FINALFUNC = public.first_element
+);
+
+
+--
+-- Name: acto_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acto_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: apo214_asisreconocimiento; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_asisreconocimiento (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer,
+    persona_id integer,
+    organizacion character varying(5000),
+    posicion integer
+);
+
+
+--
+-- Name: apo214_asisreconocimiento_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_asisreconocimiento_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_asisreconocimiento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_asisreconocimiento_id_seq OWNED BY public.apo214_asisreconocimiento.id;
+
+
+--
+-- Name: apo214_cobertura; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_cobertura (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_cobertura_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_cobertura_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_cobertura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_cobertura_id_seq OWNED BY public.apo214_cobertura.id;
+
+
+--
+-- Name: apo214_disposicioncadaveres; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_disposicioncadaveres (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_disposicioncadaveres_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_disposicioncadaveres_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_disposicioncadaveres_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_disposicioncadaveres_id_seq OWNED BY public.apo214_disposicioncadaveres.id;
+
+
+--
+-- Name: apo214_elementopaisaje; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_elementopaisaje (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_elementopaisaje_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_elementopaisaje_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_elementopaisaje_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_elementopaisaje_id_seq OWNED BY public.apo214_elementopaisaje.id;
+
+
+--
+-- Name: apo214_evaluacionriesgo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_evaluacionriesgo (
+    id bigint NOT NULL,
+    riesgo_id integer,
+    descripcion character varying(5000),
+    calificacion integer
+);
+
+
+--
+-- Name: apo214_evaluacionriesgo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_evaluacionriesgo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_evaluacionriesgo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_evaluacionriesgo_id_seq OWNED BY public.apo214_evaluacionriesgo.id;
+
+
+--
+-- Name: apo214_infoanomalia; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_infoanomalia (
+    id bigint NOT NULL,
+    anomalia character varying(100),
+    descripcion character varying(5000),
+    latitud double precision,
+    longitud double precision,
+    area character varying(1024),
+    anexo_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_infoanomalia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_infoanomalia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_infoanomalia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_infoanomalia_id_seq OWNED BY public.apo214_infoanomalia.id;
+
+
+--
+-- Name: apo214_infoanomalialugar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_infoanomalialugar (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    infoanomalia_id integer NOT NULL
+);
+
+
+--
+-- Name: apo214_infoanomalialugar_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_infoanomalialugar_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_infoanomalialugar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_infoanomalialugar_id_seq OWNED BY public.apo214_infoanomalialugar.id;
+
+
+--
+-- Name: apo214_listaanexo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listaanexo (
+    id bigint NOT NULL,
+    fecha date,
+    lugarpreliminar_id integer NOT NULL,
+    anexo_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_listaanexo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listaanexo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listaanexo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listaanexo_id_seq OWNED BY public.apo214_listaanexo.id;
+
+
+--
+-- Name: apo214_listadepositados; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listadepositados (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    persona_id integer NOT NULL
+);
+
+
+--
+-- Name: apo214_listadepositados_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listadepositados_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listadepositados_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listadepositados_id_seq OWNED BY public.apo214_listadepositados.id;
+
+
+--
+-- Name: apo214_listaevariesgo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listaevariesgo (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    evaluacionriesgo_id integer NOT NULL
+);
+
+
+--
+-- Name: apo214_listaevariesgo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listaevariesgo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listaevariesgo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listaevariesgo_id_seq OWNED BY public.apo214_listaevariesgo.id;
+
+
+--
+-- Name: apo214_listainfofoto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listainfofoto (
+    id bigint NOT NULL,
+    fecha date,
+    lugarpreliminar_id integer NOT NULL,
+    anexo_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_listainfofoto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listainfofoto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listainfofoto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listainfofoto_id_seq OWNED BY public.apo214_listainfofoto.id;
+
+
+--
+-- Name: apo214_listapersofuentes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listapersofuentes (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    persona_id integer NOT NULL,
+    telefono character varying(1000),
+    observacion character varying(5000)
+);
+
+
+--
+-- Name: apo214_listapersofuentes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listapersofuentes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listapersofuentes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listapersofuentes_id_seq OWNED BY public.apo214_listapersofuentes.id;
+
+
+--
+-- Name: apo214_listasuelo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_listasuelo (
+    id bigint NOT NULL,
+    lugarpreliminar_id integer NOT NULL,
+    suelo_id integer NOT NULL
+);
+
+
+--
+-- Name: apo214_listasuelo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_listasuelo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_listasuelo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_listasuelo_id_seq OWNED BY public.apo214_listasuelo.id;
+
+
+--
+-- Name: apo214_lugarpreliminar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_lugarpreliminar (
+    id bigint NOT NULL,
+    fecha date,
+    codigositio character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    nombreusuario character varying,
+    organizacion character varying,
+    ubicacionpre_id integer,
+    id_persona integer,
+    parentezco character varying,
+    grabacion boolean,
+    telefono character varying,
+    tipotestigo_id integer,
+    otrotipotestigo character varying,
+    hechos text,
+    ubicaespecifica text,
+    disposicioncadaveres_id integer,
+    otradisposicioncadaveres character varying(1000),
+    tipoentierro_id integer,
+    min_depositados integer,
+    max_depositados integer,
+    fechadis date,
+    horadis time without time zone,
+    insitu boolean,
+    otrolubicacionpre_id integer,
+    detallesasesinato character varying(5000),
+    nombrepropiedad character varying(5000),
+    detallesdisposicion character varying(5000),
+    nomcomoseconoce character varying(1000),
+    elementopaisaje_id integer,
+    cobertura_id integer,
+    interatroprevias character varying(5000),
+    interatroactuales character varying(5000),
+    usoterprevios character varying(5000),
+    usoteractuales character varying(5000),
+    accesolugar character varying(5000),
+    perfilestratigrafico character varying(5000),
+    observaciones character varying(5000),
+    procesoscul character varying(5000),
+    desgenanomalia character varying(5000),
+    evaluacionlugar character varying(5000),
+    riesgosdanios character varying(500),
+    archivokml_id integer
+);
+
+
+--
+-- Name: apo214_lugarpreliminar_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_lugarpreliminar_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_lugarpreliminar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_lugarpreliminar_id_seq OWNED BY public.apo214_lugarpreliminar.id;
+
+
+--
+-- Name: apo214_propietario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_propietario (
+    id bigint NOT NULL,
+    id_lugarpreliminar integer,
+    id_persona integer,
+    telefono character varying,
+    observaciones character varying(5000)
+);
+
+
+--
+-- Name: apo214_propietario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_propietario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_propietario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_propietario_id_seq OWNED BY public.apo214_propietario.id;
+
+
+--
+-- Name: apo214_riesgo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_riesgo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_riesgo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_riesgo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_riesgo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_riesgo_id_seq OWNED BY public.apo214_riesgo.id;
+
+
+--
+-- Name: apo214_suelo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_suelo (
+    id bigint NOT NULL,
+    profinicial character varying(100),
+    proffinal character varying(100),
+    color character varying(100),
+    textura character varying(100),
+    humedad character varying(100),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: apo214_suelo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.apo214_suelo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apo214_suelo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.apo214_suelo_id_seq OWNED BY public.apo214_suelo.id;
+
+
+--
+-- Name: apo214_tipoentierro; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.apo214_tipoentierro (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+--
+-- Name: soundexesp(text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.soundexesp(input text) RETURNS text
+    LANGUAGE plpgsql IMMUTABLE STRICT COST 500
+    AS $$
+DECLARE
+	soundex text='';	
+	-- para determinar la primera letra
+	pri_letra text;
+	resto text;
+	sustituida text ='';
+	-- para quitar adyacentes
+	anterior text;
+	actual text;
+	corregido text;
+BEGIN
+       -- devolver null si recibi un string en blanco o con espacios en blanco
+	IF length(trim(input))= 0 then
+		RETURN NULL;
+	end IF;
+ 
+ 
+	-- 1: LIMPIEZA:
+		-- pasar a mayuscula, eliminar la letra "H" inicial, los acentos y la enie
+		-- 'holá coñó' => 'OLA CONO'
+        input=translate(ltrim(trim(upper(input)),'H'),'ÑÁÉÍÓÚÀÈÌÒÙÜ',
+            'NAEIOUAEIOUU');
+ 
+		-- eliminar caracteres no alfabéticos (números, símbolos como &,%,",*,!,+, etc.
+		input=regexp_replace(input, '[^a-zA-Z]', '', 'g');
+ 
+	-- 2: PRIMERA LETRA ES IMPORTANTE, DEBO ASOCIAR LAS SIMILARES
+	--  'vaca' se convierte en 'baca'  y 'zapote' se convierte en 'sapote'
+	-- un fenomeno importante es GE y GI se vuelven JE y JI; CA se vuelve KA, etc
+	pri_letra =substr(input,1,1);
+	resto =substr(input,2);
+	CASE 
+		when pri_letra IN ('V') then
+			sustituida='B';
+		when pri_letra IN ('Z','X') then
+			sustituida='S';
+		when pri_letra IN ('G') AND substr(input,2,1) IN ('E','I') then
+			sustituida='J';
+		when pri_letra IN('C') AND substr(input,2,1) NOT IN ('H','E','I') then
+			sustituida='K';
+		else
+			sustituida=pri_letra;
+ 
+	end case;
+	--corregir el parametro con las consonantes sustituidas:
+	input=sustituida || resto;		
+ 
+	-- 3: corregir "letras compuestas" y volverlas una sola
+	input=REPLACE(input,'CH','V');
+	input=REPLACE(input,'QU','K');
+	input=REPLACE(input,'LL','J');
+	input=REPLACE(input,'CE','S');
+	input=REPLACE(input,'CI','S');
+	input=REPLACE(input,'YA','J');
+	input=REPLACE(input,'YE','J');
+	input=REPLACE(input,'YI','J');
+	input=REPLACE(input,'YO','J');
+	input=REPLACE(input,'YU','J');
+	input=REPLACE(input,'GE','J');
+	input=REPLACE(input,'GI','J');
+	input=REPLACE(input,'NY','N');
+	-- para debug:    --return input;
+ 
+	-- EMPIEZA EL CALCULO DEL SOUNDEX
+	-- 4: OBTENER PRIMERA letra
+	pri_letra=substr(input,1,1);
+ 
+	-- 5: retener el resto del string
+	resto=substr(input,2);
+ 
+	--6: en el resto del string, quitar vocales y vocales fonéticas
+	resto=translate(resto,'@AEIOUHWY','@');
+ 
+    --7: convertir las letras foneticamente equivalentes a numeros  
+    --   (esto hace que B sea equivalente a V, C con S y Z, etc.)
+	resto=translate(resto, 'BPFVCGKSXZDTLMNRQJ', '111122222233455677');
+	-- así va quedando la cosa
+	soundex=pri_letra || resto;
+ 
+	--8: eliminar números iguales adyacentes (A11233 se vuelve A123)
+	anterior=substr(soundex,1,1);
+	corregido=anterior;
+ 
+	FOR i IN 2 .. length(soundex) LOOP
+		actual = substr(soundex, i, 1);
+		IF actual <> anterior THEN
+			corregido=corregido || actual;
+			anterior=actual;			
+		END IF;
+	END LOOP;
+	-- así va la cosa
+	soundex=corregido;
+ 
+	-- 9: siempre retornar un string de 4 posiciones
+	soundex=rpad(soundex,4,'0');
+	soundex=substr(soundex,1,4);		
+ 
+	-- YA ESTUVO
+	RETURN soundex;	
+END;	
+$$;
+
+
+--
+-- Name: soundexespm(text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.soundexespm(in_text text) RETURNS text
+    LANGUAGE sql IMMUTABLE
+    AS $_$
+SELECT ARRAY_TO_STRING(ARRAY_AGG(soundexesp(s)),' ')
+FROM (SELECT UNNEST(STRING_TO_ARRAY(
+		REGEXP_REPLACE(TRIM($1), '  *', ' '), ' ')) AS s                
+	      ORDER BY 1) AS n;
+$_$;
+
+
+--
 -- Name: first(anyelement); Type: AGGREGATE; Schema: public; Owner: -
 --
 
@@ -441,8 +1228,8 @@ SET default_table_access_method = heap;
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -468,45 +1255,6 @@ CREATE SEQUENCE public.caso_presponsable_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: sip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_persona_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sip_persona; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_persona (
-    id integer DEFAULT nextval('public.sip_persona_id_seq'::regclass) NOT NULL,
-    nombres character varying(100) NOT NULL COLLATE public.es_co_utf_8,
-    apellidos character varying(100) NOT NULL COLLATE public.es_co_utf_8,
-    anionac integer,
-    mesnac integer,
-    dianac integer,
-    sexo character(1) NOT NULL,
-    numerodocumento character varying(100),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id_pais integer,
-    nacionalde integer,
-    tdocumento_id integer,
-    id_departamento integer,
-    id_municipio integer,
-    id_clase integer,
-    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
-    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
-    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
-);
 
 
 --
@@ -598,9 +1346,8 @@ CREATE VIEW public.cben1 AS
     ( SELECT sivel2_gen_victima.id_persona,
             max(sivel2_gen_victima.id) AS id_victima
            FROM public.sivel2_gen_victima
-          GROUP BY sivel2_gen_victima.id_persona) subv,
-    public.sip_persona persona
-  WHERE ((subv.id_victima = victima.id) AND (caso.id = victima.id_caso) AND (persona.id = victima.id_persona));
+          GROUP BY sivel2_gen_victima.id_persona) subv
+  WHERE ((subv.id_victima = victima.id) AND (caso.id = victima.id_caso));
 
 
 --
@@ -771,36 +1518,41 @@ CREATE SEQUENCE public.combatiente_seq
 
 
 --
--- Name: combatiente; Type: TABLE; Schema: public; Owner: -
+-- Name: sip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.combatiente (
-    id integer DEFAULT nextval('public.combatiente_seq'::regclass) NOT NULL,
-    nombre character varying(100) NOT NULL,
-    alias character varying(100),
-    edad integer,
+CREATE SEQUENCE public.sip_persona_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_persona; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_persona (
+    id integer DEFAULT nextval('public.sip_persona_id_seq'::regclass) NOT NULL,
+    nombres character varying(100) NOT NULL COLLATE public.es_co_utf_8,
+    apellidos character varying(100) NOT NULL COLLATE public.es_co_utf_8,
+    anionac integer,
+    mesnac integer,
+    dianac integer,
     sexo character(1) NOT NULL,
-    id_resagresion integer NOT NULL,
-    id_profesion integer,
-    id_rangoedad integer,
-    id_filiacion integer,
-    id_sectorsocial integer,
-    id_organizacion integer,
-    id_vinculoestado integer,
-    id_caso integer,
-    organizacionarmada integer,
-    CONSTRAINT combatiente_edad_check CHECK (((edad IS NULL) OR (edad >= 0))),
-    CONSTRAINT combatiente_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'M'::bpchar) OR (sexo = 'F'::bpchar)))
-);
-
-
---
--- Name: combatiente_presponsable; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.combatiente_presponsable (
-    id_p_responsable integer NOT NULL,
-    id_combatiente integer NOT NULL
+    numerodocumento character varying(100),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id_pais integer,
+    nacionalde integer,
+    tdocumento_id integer,
+    id_departamento integer,
+    id_municipio integer,
+    id_clase integer,
+    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
+    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
+    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
 );
 
 
@@ -879,18 +1631,13 @@ CREATE VIEW public.cvt1 AS
     acto.id_persona,
     acto.id_categoria,
     supracategoria.id_tviolencia,
-    categoria.nombre AS categoria,
-    ubicacion.id_departamento,
-    departamento.id_deplocal AS departamento_divipola,
-    initcap((departamento.nombre)::text) AS departamento_nombre
-   FROM (((((((public.sivel2_gen_acto acto
+    categoria.nombre AS categoria
+   FROM (((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
-     JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)))
-     LEFT JOIN public.sip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
-     LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)));
+     JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)));
 
 
 --
@@ -2821,12 +3568,9 @@ CREATE MATERIALIZED VIEW public.sivel2_gen_consexpcaso AS
      JOIN public.sivel2_gen_caso caso ON ((caso.id = conscaso.caso_id)))
   WHERE (conscaso.caso_id IN ( SELECT sivel2_gen_conscaso.caso_id
            FROM public.sivel2_gen_conscaso
-          WHERE ((sivel2_gen_conscaso.caso_id IN ( SELECT sivel2_gen_caso.id
-                   FROM public.sivel2_gen_caso)) AND (sivel2_gen_conscaso.fecha >= '2019-07-01'::date) AND (sivel2_gen_conscaso.fecha <= '2019-12-31'::date) AND (sivel2_gen_conscaso.caso_id IN ( SELECT sivel2_gen_caso_presponsable.id_caso
-                   FROM public.sivel2_gen_caso_presponsable
-                  WHERE (sivel2_gen_caso_presponsable.id_presponsable = 7))))
-          ORDER BY sivel2_gen_conscaso.fecha, sivel2_gen_conscaso.caso_id))
-  ORDER BY conscaso.fecha, conscaso.caso_id
+          WHERE ((sivel2_gen_conscaso.fecha >= '2018-01-01'::date) AND (sivel2_gen_conscaso.fecha <= '2018-01-31'::date))
+          ORDER BY sivel2_gen_conscaso.ubicaciones, sivel2_gen_conscaso.caso_id))
+  ORDER BY conscaso.ubicaciones, conscaso.caso_id
   WITH NO DATA;
 
 
@@ -3956,27 +4700,11 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: combatiente combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_pkey PRIMARY KEY (id);
-
-
---
 -- Name: sivel2_gen_caso_frontera frontera_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_frontera
     ADD CONSTRAINT frontera_caso_pkey PRIMARY KEY (id_frontera, id_caso);
-
-
---
--- Name: sivel2_gen_caso_usuario funcionario_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_usuario
-    ADD CONSTRAINT funcionario_caso_pkey PRIMARY KEY (id_usuario, id_caso);
 
 
 --
@@ -4113,14 +4841,6 @@ ALTER TABLE ONLY public.mr519_gen_respuestafor
 
 ALTER TABLE ONLY public.mr519_gen_valorcampo
     ADD CONSTRAINT mr519_gen_valorcampo_pkey PRIMARY KEY (id);
-
-
---
--- Name: combatiente_presponsable p_responsable_agrede_combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente_presponsable
-    ADD CONSTRAINT p_responsable_agrede_combatiente_pkey PRIMARY KEY (id_p_responsable, id_combatiente);
 
 
 --
@@ -5183,14 +5903,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso
 
 
 --
--- Name: sivel2_gen_caso_presponsable $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
-    ADD CONSTRAINT "$1" FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
-
-
---
 -- Name: sivel2_gen_caso_frontera $1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5228,14 +5940,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_fotra
 
 ALTER TABLE ONLY public.sip_clase
     ADD CONSTRAINT "$1" FOREIGN KEY (id_tclase) REFERENCES public.sip_tclase(id);
-
-
---
--- Name: sivel2_gen_caso_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_presponsable) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -5284,14 +5988,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
 
 ALTER TABLE ONLY public.sivel2_gen_caso_fotra
     ADD CONSTRAINT "$2" FOREIGN KEY (id_fotra) REFERENCES public.sivel2_gen_fotra(id);
-
-
---
--- Name: combatiente_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente_presponsable
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_combatiente) REFERENCES public.combatiente(id);
 
 
 --
@@ -5527,14 +6223,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_contexto
 
 
 --
--- Name: sivel2_gen_caso_etiqueta caso_etiqueta_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_etiqueta
-    ADD CONSTRAINT caso_etiqueta_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id);
-
-
---
 -- Name: sivel2_gen_caso caso_id_intervalo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5572,14 +6260,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_respuestafor
 
 ALTER TABLE ONLY public.sivel2_gen_caso_respuestafor
     ADD CONSTRAINT caso_respuestafor_respuestafor_id_fkey1 FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
-
-
---
--- Name: sivel2_gen_caso_usuario caso_usuario_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_usuario
-    ADD CONSTRAINT caso_usuario_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id);
 
 
 --
