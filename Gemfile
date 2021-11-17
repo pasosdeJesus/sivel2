@@ -69,15 +69,15 @@ gem 'will_paginate' # Listados en páginas
 # estas ponerse en orden de apilamiento lógico y no alfabético).
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: 'v2.0'
   #path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: 'v2.0'
   #path: '../mr519_gen'
 
 gem 'heb412_gen',  # Motor de nube y llenado de plantillas
-  git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: 'v2.0'
   #path: '../heb412_gen'
 
 gem 'sivel2_gen', # Motor para manejo de casos
