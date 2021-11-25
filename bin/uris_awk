@@ -1,0 +1,31 @@
+#!/usr/bin/awk -f
+{   
+  search=" ";
+  n=split($0,array,search);
+    printf("- [ ]");
+  if(n == 3){
+    # Ruta típica con 3 elementos
+    for (i=1;i<=n;i++) {
+        if (i < n) {
+          printf(" %s", array[i]);
+        }
+        else {
+          printf(" --> %s\n", array[i]);
+        }
+    }
+  }
+  else{
+    # Ruta con alias o extendidas quitando alias y evitandola de assets (mas de
+    # 5)
+    if(n < 5 ){
+      for (i=2;i<=n;i++) {
+          if (i < n) {
+            printf(" %s", array[i]);
+          }
+          else {
+            printf(" --> %s\n", array[i]);
+          }
+       }
+      }
+  }
+}
