@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# para poder ejecutar programa recuerda ejecutar: chmod +x bin/*
+#
+# Este programa permite acceder a todas las rutas posibles de la aplicación
+# Organizarlas en un formato de listado para documentación de API y llevar seguimiento de
+# controles de acceso.
+require 'fileutils'
+require 'byebug'
+def system!(*args)
+  system(*args) || abort("\n== Falló la orden #{args} ==")
+end
+
+system! "bundle exec bin/rails routes | bin/uris_awk"
+ruta = "doc/rutas.txt"
+archivo_rutas = File.open("./#{ruta}", "w")
+archivo_rutas.puts(`bundle exec bin/rails routes | bin/uris_awk`)
+puts "Archivo creado con rutas en #{ruta}"
