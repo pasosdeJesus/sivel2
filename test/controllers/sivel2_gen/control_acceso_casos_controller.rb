@@ -30,6 +30,19 @@ module Sivel2Gen
       end
     end
 
+    test "sin activar consulta publica no puede acceder a revista de casos" do
+      ENV['SIVEL2_CONSWEB_PUBLICA'] = ""
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_path()
+      end
+    end
+    
+    test "activando consulta publica puede acceder a revista de casos" do
+      ENV['SIVEL2_CONSWEB_PUBLICA'] = "1"
+      get sivel2_gen.casos_cuenta_path
+      assert_response :ok
+    end
+
     test "sin autenticar puede contar todos los casos" do
       get sivel2_gen.casos_cuenta_path
       assert_response :ok
@@ -72,6 +85,8 @@ module Sivel2Gen
     end
 
     test "autenticado como operador sin grupo debe presentar resumen" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
       get sivel2_gen.caso_path(@caso.id)
       assert_response :ok
     end
