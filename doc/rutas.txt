@@ -1,548 +1,546 @@
-- [ ] config.x.origen_cors=["localhost:8080", "rbd.nocheyniebla.org", "192.168.177.45:3400 --> "]
-- [ ] Prefix Verb URI Pattern --> Controller#Action
-- [ ] /sivel2/assets #<Sprockets::Environment:0x10a7c root="/home/lcruz/sivel2.0/sivel2", paths=["/home/lcruz/sivel2.0/sivel2/app/assets/config", "/home/lcruz/sivel2.0/sivel2/app/assets/images", "/home/lcruz/sivel2.0/sivel2/app/assets/javascripts", "/home/lcruz/sivel2.0/sivel2/app/assets/stylesheets", "/home/lcruz/sivel2.0/sivel2/vendor/assets/javascripts", "/home/lcruz/sivel2.0/sivel2/vendor/assets/stylesheets", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/sivel2_gen-480fcae67116/app/assets/images", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/sivel2_gen-480fcae67116/app/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/sivel2_gen-480fcae67116/app/assets/stylesheets", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/heb412_gen-10de521d55a9/app/assets/images", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/heb412_gen-10de521d55a9/app/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/heb412_gen-10de521d55a9/app/assets/stylesheets", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/mr519_gen-fbcd0763396a/app/assets/config", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/mr519_gen-fbcd0763396a/app/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/mr519_gen-fbcd0763396a/app/assets/stylesheets", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/sip-438983aab2bc/app/assets/fonts", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/sip-438983aab2bc/app/assets/images", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/sip-438983aab2bc/app/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/sip-438983aab2bc/app/assets/stylesheets", "/var/www/bundler-lcruz/ruby/3.0/gems/coffee-rails-5.0.0/lib/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/bundler/gems/cocoon-9f1892403c3d/app/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/gems/actioncable-6.1.4.1/app/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/gems/activestorage-6.1.4.1/app/assets/javascripts", "/var/www/bundler-lcruz/ruby/3.0/gems/actionview-6.1.4.1/lib/assets/compiled", "/home/lcruz/sivel2.0/sivel2/node_modules", "/home/lcruz/sivel2.0/sivel2/node_modules/@fortawesome/fontawesome-free", --> "/home/lcruz/sivel2.0/sivel2/node_modules/chosen-js"]>
-- [ ] erd /erd --> Erd::Engine
-- [ ] sign_out GET /sivel2/sign_out(.:format) --> devise/sessions#destroy
-- [ ] sivel2_usuarios_sign_in POST /sivel2/sivel2/usuarios/sign_in(.:format) --> devise/sessions#create
+- [ ] "rbd.nocheyniebla.org", "192.168.177.45:3400 --> "]
+- [ ]- [ ]- [ ] erd /erd --> Erd::Engine
+- [ ] GET /sivel2/sign_out(.:format) --> devise/sessions#destroy
+- [ ] POST /sivel2/sivel2/usuarios/sign_in(.:format) --> devise/sessions#create
 - [ ] GET /sivel2/sivel2/usuarios/sign_in(.:format) --> devise/sessions#new
-- [ ] new_usuario_session GET /sivel2/usuarios/sign_in(.:format) --> devise/sessions#new
-- [ ] usuario_session POST /sivel2/usuarios/sign_in(.:format) --> devise/sessions#create
-- [ ] destroy_usuario_session DELETE /sivel2/usuarios/sign_out(.:format) --> devise/sessions#destroy
-- [ ] new_usuario_unlock GET /sivel2/usuarios/unlock/new(.:format) --> devise/unlocks#new
-- [ ] usuario_unlock GET /sivel2/usuarios/unlock(.:format) --> devise/unlocks#show
+- [ ] GET /sivel2/usuarios/sign_in(.:format) --> devise/sessions#new
+- [ ] POST /sivel2/usuarios/sign_in(.:format) --> devise/sessions#create
+- [ ] DELETE /sivel2/usuarios/sign_out(.:format) --> devise/sessions#destroy
+- [ ] GET /sivel2/usuarios/unlock/new(.:format) --> devise/unlocks#new
+- [ ] GET /sivel2/usuarios/unlock(.:format) --> devise/unlocks#show
 - [ ] POST /sivel2/usuarios/unlock(.:format) --> devise/unlocks#create
-- [ ] editar_registro_usuario GET /sivel2/usuarios/edit(.:format) --> devise/registrations#edit
-- [ ] registro_usuario PUT /sivel2/usuarios/:id(.:format) --> devise/registrations#update
-- [ ] usuarios GET /sivel2/usuarios(.:format) --> usuarios#index
+- [ ] GET /sivel2/usuarios/edit(.:format) --> devise/registrations#edit
+- [ ] PUT /sivel2/usuarios/:id(.:format) --> devise/registrations#update
+- [ ] GET /sivel2/usuarios(.:format) --> usuarios#index
 - [ ] POST /sivel2/usuarios(.:format) --> usuarios#create
-- [ ] new_usuario GET /sivel2/usuarios/nuevo(.:format) --> usuarios#new
-- [ ] edit_usuario GET /sivel2/usuarios/:id/edita(.:format) --> usuarios#edit
-- [ ] usuario GET /sivel2/usuarios/:id(.:format) --> usuarios#show
+- [ ] GET /sivel2/usuarios/nuevo(.:format) --> usuarios#new
+- [ ] GET /sivel2/usuarios/:id/edita(.:format) --> usuarios#edit
+- [ ] GET /sivel2/usuarios/:id(.:format) --> usuarios#show
 - [ ] PATCH /sivel2/usuarios/:id(.:format) --> usuarios#update
 - [ ] PUT /sivel2/usuarios/:id(.:format) --> usuarios#update
 - [ ] DELETE /sivel2/usuarios/:id(.:format) --> usuarios#destroy
-- [ ] casos_mapaosm GET /sivel2/casos/mapaosm(.:format) --> sivel2_gen/casos#mapaosm
-- [ ] root GET /sivel2(.:format) --> sivel2_gen/hogar#index
+- [ ] GET /sivel2/casos/mapaosm(.:format) --> sivel2_gen/casos#mapaosm
+- [ ] GET /sivel2(.:format) --> sivel2_gen/hogar#index
 - [ ] sip /sivel2 --> Sip::Engine
 - [ ] mr519_gen /sivel2 --> Mr519Gen::Engine
 - [ ] heb412_gen /sivel2 --> Heb412Gen::Engine
 - [ ] sivel2_gen /sivel2 --> Sivel2Gen::Engine
-- [ ] rails_postmark_inbound_emails POST /rails/action_mailbox/postmark/inbound_emails(.:format) --> action_mailbox/ingresses/postmark/inbound_emails#create
-- [ ] rails_relay_inbound_emails POST /rails/action_mailbox/relay/inbound_emails(.:format) --> action_mailbox/ingresses/relay/inbound_emails#create
-- [ ] rails_sendgrid_inbound_emails POST /rails/action_mailbox/sendgrid/inbound_emails(.:format) --> action_mailbox/ingresses/sendgrid/inbound_emails#create
-- [ ] rails_mandrill_inbound_health_check GET /rails/action_mailbox/mandrill/inbound_emails(.:format) --> action_mailbox/ingresses/mandrill/inbound_emails#health_check
-- [ ] rails_mandrill_inbound_emails POST /rails/action_mailbox/mandrill/inbound_emails(.:format) --> action_mailbox/ingresses/mandrill/inbound_emails#create
-- [ ] rails_mailgun_inbound_emails POST /rails/action_mailbox/mailgun/inbound_emails/mime(.:format) --> action_mailbox/ingresses/mailgun/inbound_emails#create
-- [ ] rails_conductor_inbound_emails GET /rails/conductor/action_mailbox/inbound_emails(.:format) --> rails/conductor/action_mailbox/inbound_emails#index
+- [ ] POST /rails/action_mailbox/postmark/inbound_emails(.:format) --> action_mailbox/ingresses/postmark/inbound_emails#create
+- [ ] POST /rails/action_mailbox/relay/inbound_emails(.:format) --> action_mailbox/ingresses/relay/inbound_emails#create
+- [ ] POST /rails/action_mailbox/sendgrid/inbound_emails(.:format) --> action_mailbox/ingresses/sendgrid/inbound_emails#create
+- [ ] GET /rails/action_mailbox/mandrill/inbound_emails(.:format) --> action_mailbox/ingresses/mandrill/inbound_emails#health_check
+- [ ] POST /rails/action_mailbox/mandrill/inbound_emails(.:format) --> action_mailbox/ingresses/mandrill/inbound_emails#create
+- [ ] POST /rails/action_mailbox/mailgun/inbound_emails/mime(.:format) --> action_mailbox/ingresses/mailgun/inbound_emails#create
+- [ ] GET /rails/conductor/action_mailbox/inbound_emails(.:format) --> rails/conductor/action_mailbox/inbound_emails#index
 - [ ] POST /rails/conductor/action_mailbox/inbound_emails(.:format) --> rails/conductor/action_mailbox/inbound_emails#create
-- [ ] new_rails_conductor_inbound_email GET /rails/conductor/action_mailbox/inbound_emails/new(.:format) --> rails/conductor/action_mailbox/inbound_emails#new
-- [ ] edit_rails_conductor_inbound_email GET /rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format) --> rails/conductor/action_mailbox/inbound_emails#edit
-- [ ] rails_conductor_inbound_email GET /rails/conductor/action_mailbox/inbound_emails/:id(.:format) --> rails/conductor/action_mailbox/inbound_emails#show
+- [ ] GET /rails/conductor/action_mailbox/inbound_emails/new(.:format) --> rails/conductor/action_mailbox/inbound_emails#new
+- [ ] GET /rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format) --> rails/conductor/action_mailbox/inbound_emails#edit
+- [ ] GET /rails/conductor/action_mailbox/inbound_emails/:id(.:format) --> rails/conductor/action_mailbox/inbound_emails#show
 - [ ] PATCH /rails/conductor/action_mailbox/inbound_emails/:id(.:format) --> rails/conductor/action_mailbox/inbound_emails#update
 - [ ] PUT /rails/conductor/action_mailbox/inbound_emails/:id(.:format) --> rails/conductor/action_mailbox/inbound_emails#update
 - [ ] DELETE /rails/conductor/action_mailbox/inbound_emails/:id(.:format) --> rails/conductor/action_mailbox/inbound_emails#destroy
-- [ ] new_rails_conductor_inbound_email_source GET /rails/conductor/action_mailbox/inbound_emails/sources/new(.:format) --> rails/conductor/action_mailbox/inbound_emails/sources#new
-- [ ] rails_conductor_inbound_email_sources POST /rails/conductor/action_mailbox/inbound_emails/sources(.:format) --> rails/conductor/action_mailbox/inbound_emails/sources#create
-- [ ] rails_conductor_inbound_email_reroute POST /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format) --> rails/conductor/action_mailbox/reroutes#create
-- [ ] rails_service_blob GET /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format) --> active_storage/blobs/redirect#show
-- [ ] rails_service_blob_proxy GET /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format) --> active_storage/blobs/proxy#show
+- [ ] GET /rails/conductor/action_mailbox/inbound_emails/sources/new(.:format) --> rails/conductor/action_mailbox/inbound_emails/sources#new
+- [ ] POST /rails/conductor/action_mailbox/inbound_emails/sources(.:format) --> rails/conductor/action_mailbox/inbound_emails/sources#create
+- [ ] POST /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format) --> rails/conductor/action_mailbox/reroutes#create
+- [ ] GET /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format) --> active_storage/blobs/redirect#show
+- [ ] GET /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format) --> active_storage/blobs/proxy#show
 - [ ] GET /rails/active_storage/blobs/:signed_id/*filename(.:format) --> active_storage/blobs/redirect#show
-- [ ] rails_blob_representation GET /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) --> active_storage/representations/redirect#show
-- [ ] rails_blob_representation_proxy GET /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format) --> active_storage/representations/proxy#show
+- [ ] GET /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) --> active_storage/representations/redirect#show
+- [ ] GET /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format) --> active_storage/representations/proxy#show
 - [ ] GET /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) --> active_storage/representations/redirect#show
-- [ ] rails_disk_service GET /rails/active_storage/disk/:encoded_key/*filename(.:format) --> active_storage/disk#show
-- [ ] update_rails_disk_service PUT /rails/active_storage/disk/:encoded_token(.:format) --> active_storage/disk#update
-- [ ] rails_direct_uploads POST /rails/active_storage/direct_uploads(.:format) --> active_storage/direct_uploads#create
+- [ ] GET /rails/active_storage/disk/:encoded_key/*filename(.:format) --> active_storage/disk#show
+- [ ] PUT /rails/active_storage/disk/:encoded_token(.:format) --> active_storage/disk#update
+- [ ] POST /rails/active_storage/direct_uploads(.:format) --> active_storage/direct_uploads#create
 - [ ]- [ ] Routes for --> Erd::Engine:
 - [ ] GET / --> erd/erd#index
-- [ ] edit GET /edit(.:format) --> erd/erd#edit
+- [ ] GET /edit(.:format) --> erd/erd#edit
 - [ ] PUT / --> erd/erd#update
-- [ ] migrate PUT /migrate(.:format) --> erd/erd#migrate
-- [ ] root GET / --> erd/erd#index
+- [ ] PUT /migrate(.:format) --> erd/erd#migrate
+- [ ] GET / --> erd/erd#index
 - [ ]- [ ] Routes for --> Sip::Engine:
-- [ ] acercade GET /acercade(.:format) --> sip/hogar#acercade
-- [ ] descarga_anexo GET /anexos/descarga_anexo/:id(.:format) --> sip/anexos#descarga_anexo
-- [ ] ayuda_controldeacceso GET /controldeacceso(.:format) --> sip/hogar#ayuda_controldeacceso
-- [ ] gruposper GET /gruposper(.:format) --> sip/gruposper#index
-- [ ] gruposper_remplazar GET /gruposper/remplazar(.:format) --> sip/gruposper#remplazar
-- [ ] hogar GET /hogar(.:format) --> sip/hogar#index
-- [ ] mundep GET /mundep(.:format) --> sip/admin/municipios#mundep
-- [ ] personas GET /personas(.:format) --> sip/personas#index
-- [ ] personas_datos GET /personas/datos(.:format) --> sip/personas#datos
-- [ ] personas_remplazar GET /personas/remplazar(.:format) --> sip/personas#remplazar
-- [ ] respaldo7z GET /respaldo7z(.:format) --> sip/respaldo7z#new
+- [ ] GET /acercade(.:format) --> sip/hogar#acercade
+- [ ] GET /anexos/descarga_anexo/:id(.:format) --> sip/anexos#descarga_anexo
+- [ ] GET /controldeacceso(.:format) --> sip/hogar#ayuda_controldeacceso
+- [ ] GET /gruposper(.:format) --> sip/gruposper#index
+- [ ] GET /gruposper/remplazar(.:format) --> sip/gruposper#remplazar
+- [ ] GET /hogar(.:format) --> sip/hogar#index
+- [ ] GET /mundep(.:format) --> sip/admin/municipios#mundep
+- [ ] GET /personas(.:format) --> sip/personas#index
+- [ ] GET /personas/datos(.:format) --> sip/personas#datos
+- [ ] GET /personas/remplazar(.:format) --> sip/personas#remplazar
+- [ ] GET /respaldo7z(.:format) --> sip/respaldo7z#new
 - [ ] POST /respaldo7z(.:format) --> sip/respaldo7z#create
-- [ ] tablasbasicas GET /tablasbasicas(.:format) --> sip/hogar#tablasbasicas
-- [ ] temausuario GET /temausuario(.:format) --> sip/admin/temas#temausuario
-- [ ] ubicaciones_nuevo GET /ubicaciones/nuevo(.:format) --> sip/ubicaciones#nuevo
-- [ ] tipoclase GET /tipoclase(.:format) --> sip/admin/clases#tipo_clase
-- [ ] ubicacionespre_mundep GET /ubicacionespre_mundep(.:format) --> sip/ubicacionespre#mundep
-- [ ] orgsociales GET /orgsociales(.:format) --> sip/orgsociales#index
+- [ ] GET /tablasbasicas(.:format) --> sip/hogar#tablasbasicas
+- [ ] GET /temausuario(.:format) --> sip/admin/temas#temausuario
+- [ ] GET /ubicaciones/nuevo(.:format) --> sip/ubicaciones#nuevo
+- [ ] GET /tipoclase(.:format) --> sip/admin/clases#tipo_clase
+- [ ] GET /ubicacionespre_mundep(.:format) --> sip/ubicacionespre#mundep
+- [ ] GET /orgsociales(.:format) --> sip/orgsociales#index
 - [ ] POST /orgsociales(.:format) --> sip/orgsociales#create
-- [ ] new_orgsocial GET /orgsociales/nueva(.:format) --> sip/orgsociales#new
-- [ ] edit_orgsocial GET /orgsociales/:id/edita(.:format) --> sip/orgsociales#edit
-- [ ] orgsocial GET /orgsociales/:id(.:format) --> sip/orgsociales#show
+- [ ] GET /orgsociales/nueva(.:format) --> sip/orgsociales#new
+- [ ] GET /orgsociales/:id/edita(.:format) --> sip/orgsociales#edit
+- [ ] GET /orgsociales/:id(.:format) --> sip/orgsociales#show
 - [ ] PATCH /orgsociales/:id(.:format) --> sip/orgsociales#update
 - [ ] PUT /orgsociales/:id(.:format) --> sip/orgsociales#update
 - [ ] DELETE /orgsociales/:id(.:format) --> sip/orgsociales#destroy
-- [ ] bitacoras GET /bitacoras(.:format) --> sip/bitacoras#index
+- [ ] GET /bitacoras(.:format) --> sip/bitacoras#index
 - [ ] POST /bitacoras(.:format) --> sip/bitacoras#create
-- [ ] new_bitacora GET /bitacoras/nueva(.:format) --> sip/bitacoras#new
-- [ ] edit_bitacora GET /bitacoras/:id/edita(.:format) --> sip/bitacoras#edit
-- [ ] bitacora GET /bitacoras/:id(.:format) --> sip/bitacoras#show
+- [ ] GET /bitacoras/nueva(.:format) --> sip/bitacoras#new
+- [ ] GET /bitacoras/:id/edita(.:format) --> sip/bitacoras#edit
+- [ ] GET /bitacoras/:id(.:format) --> sip/bitacoras#show
 - [ ] PATCH /bitacoras/:id(.:format) --> sip/bitacoras#update
 - [ ] PUT /bitacoras/:id(.:format) --> sip/bitacoras#update
 - [ ] DELETE /bitacoras/:id(.:format) --> sip/bitacoras#destroy
 - [ ] GET /personas(.:format) --> sip/personas#index
 - [ ] POST /personas(.:format) --> sip/personas#create
-- [ ] new_persona GET /personas/nueva(.:format) --> sip/personas#new
-- [ ] edit_persona GET /personas/:id/edita(.:format) --> sip/personas#edit
-- [ ] persona GET /personas/:id(.:format) --> sip/personas#show
+- [ ] GET /personas/nueva(.:format) --> sip/personas#new
+- [ ] GET /personas/:id/edita(.:format) --> sip/personas#edit
+- [ ] GET /personas/:id(.:format) --> sip/personas#show
 - [ ] PATCH /personas/:id(.:format) --> sip/personas#update
 - [ ] PUT /personas/:id(.:format) --> sip/personas#update
 - [ ] DELETE /personas/:id(.:format) --> sip/personas#destroy
-- [ ] ubicacionespre GET /ubicacionespre(.:format) --> sip/ubicacionespre#index
+- [ ] GET /ubicacionespre(.:format) --> sip/ubicacionespre#index
 - [ ] POST /ubicacionespre(.:format) --> sip/ubicacionespre#create
-- [ ] new_ubicacionpre GET /ubicacionespre/nueva(.:format) --> sip/ubicacionespre#new
-- [ ] edit_ubicacionpre GET /ubicacionespre/:id/edita(.:format) --> sip/ubicacionespre#edit
-- [ ] ubicacionpre GET /ubicacionespre/:id(.:format) --> sip/ubicacionespre#show
+- [ ] GET /ubicacionespre/nueva(.:format) --> sip/ubicacionespre#new
+- [ ] GET /ubicacionespre/:id/edita(.:format) --> sip/ubicacionespre#edit
+- [ ] GET /ubicacionespre/:id(.:format) --> sip/ubicacionespre#show
 - [ ] PATCH /ubicacionespre/:id(.:format) --> sip/ubicacionespre#update
 - [ ] PUT /ubicacionespre/:id(.:format) --> sip/ubicacionespre#update
 - [ ] DELETE /ubicacionespre/:id(.:format) --> sip/ubicacionespre#destroy
-- [ ] admin_clases GET /admin/clases(.:format) --> sip/admin/clases#index
+- [ ] GET /admin/clases(.:format) --> sip/admin/clases#index
 - [ ] POST /admin/clases(.:format) --> sip/admin/clases#create
-- [ ] new_admin_clase GET /admin/clases/nueva(.:format) --> sip/admin/clases#new
-- [ ] edit_admin_clase GET /admin/clases/:id/edita(.:format) --> sip/admin/clases#edit
-- [ ] admin_clase GET /admin/clases/:id(.:format) --> sip/admin/clases#show
+- [ ] GET /admin/clases/nueva(.:format) --> sip/admin/clases#new
+- [ ] GET /admin/clases/:id/edita(.:format) --> sip/admin/clases#edit
+- [ ] GET /admin/clases/:id(.:format) --> sip/admin/clases#show
 - [ ] PATCH /admin/clases/:id(.:format) --> sip/admin/clases#update
 - [ ] PUT /admin/clases/:id(.:format) --> sip/admin/clases#update
 - [ ] DELETE /admin/clases/:id(.:format) --> sip/admin/clases#destroy
-- [ ] admin_departamentos GET /admin/departamentos(.:format) --> sip/admin/departamentos#index
+- [ ] GET /admin/departamentos(.:format) --> sip/admin/departamentos#index
 - [ ] POST /admin/departamentos(.:format) --> sip/admin/departamentos#create
-- [ ] new_admin_departamento GET /admin/departamentos/nueva(.:format) --> sip/admin/departamentos#new
-- [ ] edit_admin_departamento GET /admin/departamentos/:id/edita(.:format) --> sip/admin/departamentos#edit
-- [ ] admin_departamento GET /admin/departamentos/:id(.:format) --> sip/admin/departamentos#show
+- [ ] GET /admin/departamentos/nueva(.:format) --> sip/admin/departamentos#new
+- [ ] GET /admin/departamentos/:id/edita(.:format) --> sip/admin/departamentos#edit
+- [ ] GET /admin/departamentos/:id(.:format) --> sip/admin/departamentos#show
 - [ ] PATCH /admin/departamentos/:id(.:format) --> sip/admin/departamentos#update
 - [ ] PUT /admin/departamentos/:id(.:format) --> sip/admin/departamentos#update
 - [ ] DELETE /admin/departamentos/:id(.:format) --> sip/admin/departamentos#destroy
-- [ ] admin_etiquetas GET /admin/etiquetas(.:format) --> sip/admin/etiquetas#index
+- [ ] GET /admin/etiquetas(.:format) --> sip/admin/etiquetas#index
 - [ ] POST /admin/etiquetas(.:format) --> sip/admin/etiquetas#create
-- [ ] new_admin_etiqueta GET /admin/etiquetas/nueva(.:format) --> sip/admin/etiquetas#new
-- [ ] edit_admin_etiqueta GET /admin/etiquetas/:id/edita(.:format) --> sip/admin/etiquetas#edit
-- [ ] admin_etiqueta GET /admin/etiquetas/:id(.:format) --> sip/admin/etiquetas#show
+- [ ] GET /admin/etiquetas/nueva(.:format) --> sip/admin/etiquetas#new
+- [ ] GET /admin/etiquetas/:id/edita(.:format) --> sip/admin/etiquetas#edit
+- [ ] GET /admin/etiquetas/:id(.:format) --> sip/admin/etiquetas#show
 - [ ] PATCH /admin/etiquetas/:id(.:format) --> sip/admin/etiquetas#update
 - [ ] PUT /admin/etiquetas/:id(.:format) --> sip/admin/etiquetas#update
 - [ ] DELETE /admin/etiquetas/:id(.:format) --> sip/admin/etiquetas#destroy
-- [ ] admin_fuentesprensa GET /admin/fuentesprensa(.:format) --> sip/admin/fuentesprensa#index
+- [ ] GET /admin/fuentesprensa(.:format) --> sip/admin/fuentesprensa#index
 - [ ] POST /admin/fuentesprensa(.:format) --> sip/admin/fuentesprensa#create
-- [ ] new_admin_fuenteprensa GET /admin/fuentesprensa/nueva(.:format) --> sip/admin/fuentesprensa#new
-- [ ] edit_admin_fuenteprensa GET /admin/fuentesprensa/:id/edita(.:format) --> sip/admin/fuentesprensa#edit
-- [ ] admin_fuenteprensa GET /admin/fuentesprensa/:id(.:format) --> sip/admin/fuentesprensa#show
+- [ ] GET /admin/fuentesprensa/nueva(.:format) --> sip/admin/fuentesprensa#new
+- [ ] GET /admin/fuentesprensa/:id/edita(.:format) --> sip/admin/fuentesprensa#edit
+- [ ] GET /admin/fuentesprensa/:id(.:format) --> sip/admin/fuentesprensa#show
 - [ ] PATCH /admin/fuentesprensa/:id(.:format) --> sip/admin/fuentesprensa#update
 - [ ] PUT /admin/fuentesprensa/:id(.:format) --> sip/admin/fuentesprensa#update
 - [ ] DELETE /admin/fuentesprensa/:id(.:format) --> sip/admin/fuentesprensa#destroy
-- [ ] admin_grupos GET /admin/grupos(.:format) --> sip/admin/grupos#index
+- [ ] GET /admin/grupos(.:format) --> sip/admin/grupos#index
 - [ ] POST /admin/grupos(.:format) --> sip/admin/grupos#create
-- [ ] new_admin_grupo GET /admin/grupos/nueva(.:format) --> sip/admin/grupos#new
-- [ ] edit_admin_grupo GET /admin/grupos/:id/edita(.:format) --> sip/admin/grupos#edit
-- [ ] admin_grupo GET /admin/grupos/:id(.:format) --> sip/admin/grupos#show
+- [ ] GET /admin/grupos/nueva(.:format) --> sip/admin/grupos#new
+- [ ] GET /admin/grupos/:id/edita(.:format) --> sip/admin/grupos#edit
+- [ ] GET /admin/grupos/:id(.:format) --> sip/admin/grupos#show
 - [ ] PATCH /admin/grupos/:id(.:format) --> sip/admin/grupos#update
 - [ ] PUT /admin/grupos/:id(.:format) --> sip/admin/grupos#update
 - [ ] DELETE /admin/grupos/:id(.:format) --> sip/admin/grupos#destroy
-- [ ] admin_municipios GET /admin/municipios(.:format) --> sip/admin/municipios#index
+- [ ] GET /admin/municipios(.:format) --> sip/admin/municipios#index
 - [ ] POST /admin/municipios(.:format) --> sip/admin/municipios#create
-- [ ] new_admin_municipio GET /admin/municipios/nueva(.:format) --> sip/admin/municipios#new
-- [ ] edit_admin_municipio GET /admin/municipios/:id/edita(.:format) --> sip/admin/municipios#edit
-- [ ] admin_municipio GET /admin/municipios/:id(.:format) --> sip/admin/municipios#show
+- [ ] GET /admin/municipios/nueva(.:format) --> sip/admin/municipios#new
+- [ ] GET /admin/municipios/:id/edita(.:format) --> sip/admin/municipios#edit
+- [ ] GET /admin/municipios/:id(.:format) --> sip/admin/municipios#show
 - [ ] PATCH /admin/municipios/:id(.:format) --> sip/admin/municipios#update
 - [ ] PUT /admin/municipios/:id(.:format) --> sip/admin/municipios#update
 - [ ] DELETE /admin/municipios/:id(.:format) --> sip/admin/municipios#destroy
-- [ ] admin_paises GET /admin/paises(.:format) --> sip/admin/paises#index
+- [ ] GET /admin/paises(.:format) --> sip/admin/paises#index
 - [ ] POST /admin/paises(.:format) --> sip/admin/paises#create
-- [ ] new_admin_pais GET /admin/paises/nueva(.:format) --> sip/admin/paises#new
-- [ ] edit_admin_pais GET /admin/paises/:id/edita(.:format) --> sip/admin/paises#edit
-- [ ] admin_pais GET /admin/paises/:id(.:format) --> sip/admin/paises#show
+- [ ] GET /admin/paises/nueva(.:format) --> sip/admin/paises#new
+- [ ] GET /admin/paises/:id/edita(.:format) --> sip/admin/paises#edit
+- [ ] GET /admin/paises/:id(.:format) --> sip/admin/paises#show
 - [ ] PATCH /admin/paises/:id(.:format) --> sip/admin/paises#update
 - [ ] PUT /admin/paises/:id(.:format) --> sip/admin/paises#update
 - [ ] DELETE /admin/paises/:id(.:format) --> sip/admin/paises#destroy
-- [ ] admin_perfilesorgsocial GET /admin/perfilesorgsocial(.:format) --> sip/admin/perfilesorgsocial#index
+- [ ] GET /admin/perfilesorgsocial(.:format) --> sip/admin/perfilesorgsocial#index
 - [ ] POST /admin/perfilesorgsocial(.:format) --> sip/admin/perfilesorgsocial#create
-- [ ] new_admin_perfilorgsocial GET /admin/perfilesorgsocial/nueva(.:format) --> sip/admin/perfilesorgsocial#new
-- [ ] edit_admin_perfilorgsocial GET /admin/perfilesorgsocial/:id/edita(.:format) --> sip/admin/perfilesorgsocial#edit
-- [ ] admin_perfilorgsocial GET /admin/perfilesorgsocial/:id(.:format) --> sip/admin/perfilesorgsocial#show
+- [ ] GET /admin/perfilesorgsocial/nueva(.:format) --> sip/admin/perfilesorgsocial#new
+- [ ] GET /admin/perfilesorgsocial/:id/edita(.:format) --> sip/admin/perfilesorgsocial#edit
+- [ ] GET /admin/perfilesorgsocial/:id(.:format) --> sip/admin/perfilesorgsocial#show
 - [ ] PATCH /admin/perfilesorgsocial/:id(.:format) --> sip/admin/perfilesorgsocial#update
 - [ ] PUT /admin/perfilesorgsocial/:id(.:format) --> sip/admin/perfilesorgsocial#update
 - [ ] DELETE /admin/perfilesorgsocial/:id(.:format) --> sip/admin/perfilesorgsocial#destroy
-- [ ] admin_sectoresorgsocial GET /admin/sectoresorgsocial(.:format) --> sip/admin/sectoresorgsocial#index
+- [ ] GET /admin/sectoresorgsocial(.:format) --> sip/admin/sectoresorgsocial#index
 - [ ] POST /admin/sectoresorgsocial(.:format) --> sip/admin/sectoresorgsocial#create
-- [ ] new_admin_sectororgsocial GET /admin/sectoresorgsocial/nueva(.:format) --> sip/admin/sectoresorgsocial#new
-- [ ] edit_admin_sectororgsocial GET /admin/sectoresorgsocial/:id/edita(.:format) --> sip/admin/sectoresorgsocial#edit
-- [ ] admin_sectororgsocial GET /admin/sectoresorgsocial/:id(.:format) --> sip/admin/sectoresorgsocial#show
+- [ ] GET /admin/sectoresorgsocial/nueva(.:format) --> sip/admin/sectoresorgsocial#new
+- [ ] GET /admin/sectoresorgsocial/:id/edita(.:format) --> sip/admin/sectoresorgsocial#edit
+- [ ] GET /admin/sectoresorgsocial/:id(.:format) --> sip/admin/sectoresorgsocial#show
 - [ ] PATCH /admin/sectoresorgsocial/:id(.:format) --> sip/admin/sectoresorgsocial#update
 - [ ] PUT /admin/sectoresorgsocial/:id(.:format) --> sip/admin/sectoresorgsocial#update
 - [ ] DELETE /admin/sectoresorgsocial/:id(.:format) --> sip/admin/sectoresorgsocial#destroy
-- [ ] admin_tclases GET /admin/tclases(.:format) --> sip/admin/tclases#index
+- [ ] GET /admin/tclases(.:format) --> sip/admin/tclases#index
 - [ ] POST /admin/tclases(.:format) --> sip/admin/tclases#create
-- [ ] new_admin_tclase GET /admin/tclases/nueva(.:format) --> sip/admin/tclases#new
-- [ ] edit_admin_tclase GET /admin/tclases/:id/edita(.:format) --> sip/admin/tclases#edit
-- [ ] admin_tclase GET /admin/tclases/:id(.:format) --> sip/admin/tclases#show
+- [ ] GET /admin/tclases/nueva(.:format) --> sip/admin/tclases#new
+- [ ] GET /admin/tclases/:id/edita(.:format) --> sip/admin/tclases#edit
+- [ ] GET /admin/tclases/:id(.:format) --> sip/admin/tclases#show
 - [ ] PATCH /admin/tclases/:id(.:format) --> sip/admin/tclases#update
 - [ ] PUT /admin/tclases/:id(.:format) --> sip/admin/tclases#update
 - [ ] DELETE /admin/tclases/:id(.:format) --> sip/admin/tclases#destroy
-- [ ] admin_temas GET /admin/temas(.:format) --> sip/admin/temas#index
+- [ ] GET /admin/temas(.:format) --> sip/admin/temas#index
 - [ ] POST /admin/temas(.:format) --> sip/admin/temas#create
-- [ ] new_admin_tema GET /admin/temas/nueva(.:format) --> sip/admin/temas#new
-- [ ] edit_admin_tema GET /admin/temas/:id/edita(.:format) --> sip/admin/temas#edit
-- [ ] admin_tema GET /admin/temas/:id(.:format) --> sip/admin/temas#show
+- [ ] GET /admin/temas/nueva(.:format) --> sip/admin/temas#new
+- [ ] GET /admin/temas/:id/edita(.:format) --> sip/admin/temas#edit
+- [ ] GET /admin/temas/:id(.:format) --> sip/admin/temas#show
 - [ ] PATCH /admin/temas/:id(.:format) --> sip/admin/temas#update
 - [ ] PUT /admin/temas/:id(.:format) --> sip/admin/temas#update
 - [ ] DELETE /admin/temas/:id(.:format) --> sip/admin/temas#destroy
-- [ ] admin_tdocumentos GET /admin/tdocumentos(.:format) --> sip/admin/tdocumentos#index
+- [ ] GET /admin/tdocumentos(.:format) --> sip/admin/tdocumentos#index
 - [ ] POST /admin/tdocumentos(.:format) --> sip/admin/tdocumentos#create
-- [ ] new_admin_tdocumento GET /admin/tdocumentos/nueva(.:format) --> sip/admin/tdocumentos#new
-- [ ] edit_admin_tdocumento GET /admin/tdocumentos/:id/edita(.:format) --> sip/admin/tdocumentos#edit
-- [ ] admin_tdocumento GET /admin/tdocumentos/:id(.:format) --> sip/admin/tdocumentos#show
+- [ ] GET /admin/tdocumentos/nueva(.:format) --> sip/admin/tdocumentos#new
+- [ ] GET /admin/tdocumentos/:id/edita(.:format) --> sip/admin/tdocumentos#edit
+- [ ] GET /admin/tdocumentos/:id(.:format) --> sip/admin/tdocumentos#show
 - [ ] PATCH /admin/tdocumentos/:id(.:format) --> sip/admin/tdocumentos#update
 - [ ] PUT /admin/tdocumentos/:id(.:format) --> sip/admin/tdocumentos#update
 - [ ] DELETE /admin/tdocumentos/:id(.:format) --> sip/admin/tdocumentos#destroy
-- [ ] admin_trelaciones GET /admin/trelaciones(.:format) --> sip/admin/trelaciones#index
+- [ ] GET /admin/trelaciones(.:format) --> sip/admin/trelaciones#index
 - [ ] POST /admin/trelaciones(.:format) --> sip/admin/trelaciones#create
-- [ ] new_admin_trelacion GET /admin/trelaciones/nueva(.:format) --> sip/admin/trelaciones#new
-- [ ] edit_admin_trelacion GET /admin/trelaciones/:id/edita(.:format) --> sip/admin/trelaciones#edit
-- [ ] admin_trelacion GET /admin/trelaciones/:id(.:format) --> sip/admin/trelaciones#show
+- [ ] GET /admin/trelaciones/nueva(.:format) --> sip/admin/trelaciones#new
+- [ ] GET /admin/trelaciones/:id/edita(.:format) --> sip/admin/trelaciones#edit
+- [ ] GET /admin/trelaciones/:id(.:format) --> sip/admin/trelaciones#show
 - [ ] PATCH /admin/trelaciones/:id(.:format) --> sip/admin/trelaciones#update
 - [ ] PUT /admin/trelaciones/:id(.:format) --> sip/admin/trelaciones#update
 - [ ] DELETE /admin/trelaciones/:id(.:format) --> sip/admin/trelaciones#destroy
-- [ ] admin_trivalentes GET /admin/trivalentes(.:format) --> sip/admin/trivalentes#index
+- [ ] GET /admin/trivalentes(.:format) --> sip/admin/trivalentes#index
 - [ ] POST /admin/trivalentes(.:format) --> sip/admin/trivalentes#create
-- [ ] new_admin_trivalente GET /admin/trivalentes/nueva(.:format) --> sip/admin/trivalentes#new
-- [ ] edit_admin_trivalente GET /admin/trivalentes/:id/edita(.:format) --> sip/admin/trivalentes#edit
-- [ ] admin_trivalente GET /admin/trivalentes/:id(.:format) --> sip/admin/trivalentes#show
+- [ ] GET /admin/trivalentes/nueva(.:format) --> sip/admin/trivalentes#new
+- [ ] GET /admin/trivalentes/:id/edita(.:format) --> sip/admin/trivalentes#edit
+- [ ] GET /admin/trivalentes/:id(.:format) --> sip/admin/trivalentes#show
 - [ ] PATCH /admin/trivalentes/:id(.:format) --> sip/admin/trivalentes#update
 - [ ] PUT /admin/trivalentes/:id(.:format) --> sip/admin/trivalentes#update
 - [ ] DELETE /admin/trivalentes/:id(.:format) --> sip/admin/trivalentes#destroy
-- [ ] admin_tsitios GET /admin/tsitios(.:format) --> sip/admin/tsitios#index
+- [ ] GET /admin/tsitios(.:format) --> sip/admin/tsitios#index
 - [ ] POST /admin/tsitios(.:format) --> sip/admin/tsitios#create
-- [ ] new_admin_tsitio GET /admin/tsitios/nueva(.:format) --> sip/admin/tsitios#new
-- [ ] edit_admin_tsitio GET /admin/tsitios/:id/edita(.:format) --> sip/admin/tsitios#edit
-- [ ] admin_tsitio GET /admin/tsitios/:id(.:format) --> sip/admin/tsitios#show
+- [ ] GET /admin/tsitios/nueva(.:format) --> sip/admin/tsitios#new
+- [ ] GET /admin/tsitios/:id/edita(.:format) --> sip/admin/tsitios#edit
+- [ ] GET /admin/tsitios/:id(.:format) --> sip/admin/tsitios#show
 - [ ] PATCH /admin/tsitios/:id(.:format) --> sip/admin/tsitios#update
 - [ ] PUT /admin/tsitios/:id(.:format) --> sip/admin/tsitios#update
 - [ ] DELETE /admin/tsitios/:id(.:format) --> sip/admin/tsitios#destroy
-- [ ] root GET / --> sip/hogar#index
+- [ ] GET / --> sip/hogar#index
 - [ ]- [ ] Routes for --> Mr519Gen::Engine:
-- [ ] new_campo GET /campos/new(.:format) --> mr519_gen/campos#new
-- [ ] campo DELETE /campos/:id(.:format) --> mr519_gen/campos#destroy
-- [ ] encuestaspersona GET /encuestaspersona(.:format) --> mr519_gen/encuestaspersona#index
+- [ ] GET /campos/new(.:format) --> mr519_gen/campos#new
+- [ ] DELETE /campos/:id(.:format) --> mr519_gen/campos#destroy
+- [ ] GET /encuestaspersona(.:format) --> mr519_gen/encuestaspersona#index
 - [ ] POST /encuestaspersona(.:format) --> mr519_gen/encuestaspersona#create
-- [ ] new_encuestapersona GET /encuestaspersona/nueva(.:format) --> mr519_gen/encuestaspersona#new
-- [ ] edit_encuestapersona GET /encuestaspersona/:id/edita(.:format) --> mr519_gen/encuestaspersona#edit
-- [ ] encuestapersona GET /encuestaspersona/:id(.:format) --> mr519_gen/encuestaspersona#show
+- [ ] GET /encuestaspersona/nueva(.:format) --> mr519_gen/encuestaspersona#new
+- [ ] GET /encuestaspersona/:id/edita(.:format) --> mr519_gen/encuestaspersona#edit
+- [ ] GET /encuestaspersona/:id(.:format) --> mr519_gen/encuestaspersona#show
 - [ ] PATCH /encuestaspersona/:id(.:format) --> mr519_gen/encuestaspersona#update
 - [ ] PUT /encuestaspersona/:id(.:format) --> mr519_gen/encuestaspersona#update
 - [ ] DELETE /encuestaspersona/:id(.:format) --> mr519_gen/encuestaspersona#destroy
-- [ ] encuestasusuario GET /encuestasusuario(.:format) --> mr519_gen/encuestasusuario#index
+- [ ] GET /encuestasusuario(.:format) --> mr519_gen/encuestasusuario#index
 - [ ] POST /encuestasusuario(.:format) --> mr519_gen/encuestasusuario#create
-- [ ] new_encuestausuario GET /encuestasusuario/nueva(.:format) --> mr519_gen/encuestasusuario#new
-- [ ] edit_encuestausuario GET /encuestasusuario/:id/edita(.:format) --> mr519_gen/encuestasusuario#edit
-- [ ] encuestausuario GET /encuestasusuario/:id(.:format) --> mr519_gen/encuestasusuario#show
+- [ ] GET /encuestasusuario/nueva(.:format) --> mr519_gen/encuestasusuario#new
+- [ ] GET /encuestasusuario/:id/edita(.:format) --> mr519_gen/encuestasusuario#edit
+- [ ] GET /encuestasusuario/:id(.:format) --> mr519_gen/encuestasusuario#show
 - [ ] PATCH /encuestasusuario/:id(.:format) --> mr519_gen/encuestasusuario#update
 - [ ] PUT /encuestasusuario/:id(.:format) --> mr519_gen/encuestasusuario#update
 - [ ] DELETE /encuestasusuario/:id(.:format) --> mr519_gen/encuestasusuario#destroy
-- [ ] formularios GET /formularios(.:format) --> mr519_gen/formularios#index
+- [ ] GET /formularios(.:format) --> mr519_gen/formularios#index
 - [ ] POST /formularios(.:format) --> mr519_gen/formularios#create
-- [ ] new_formulario GET /formularios/nuevo(.:format) --> mr519_gen/formularios#new
-- [ ] edit_formulario GET /formularios/:id/edita(.:format) --> mr519_gen/formularios#edit
-- [ ] formulario GET /formularios/:id(.:format) --> mr519_gen/formularios#show
+- [ ] GET /formularios/nuevo(.:format) --> mr519_gen/formularios#new
+- [ ] GET /formularios/:id/edita(.:format) --> mr519_gen/formularios#edit
+- [ ] GET /formularios/:id(.:format) --> mr519_gen/formularios#show
 - [ ] PATCH /formularios/:id(.:format) --> mr519_gen/formularios#update
 - [ ] PUT /formularios/:id(.:format) --> mr519_gen/formularios#update
 - [ ] DELETE /formularios/:id(.:format) --> mr519_gen/formularios#destroy
-- [ ] copia_formulario GET /formularios/copia/:formulario_id(.:format) --> mr519_gen/formularios#copia
-- [ ] new_opcioncs GET /opcionescs/new(.:format) --> mr519_gen/opcionescs#new
-- [ ] opcioncs DELETE /opcionescs/:id(.:format) --> mr519_gen/opcionescs#destroy
-- [ ] planesencuesta GET /planesencuesta(.:format) --> mr519_gen/planesencuesta#index
+- [ ] GET /formularios/copia/:formulario_id(.:format) --> mr519_gen/formularios#copia
+- [ ] GET /opcionescs/new(.:format) --> mr519_gen/opcionescs#new
+- [ ] DELETE /opcionescs/:id(.:format) --> mr519_gen/opcionescs#destroy
+- [ ] GET /planesencuesta(.:format) --> mr519_gen/planesencuesta#index
 - [ ] POST /planesencuesta(.:format) --> mr519_gen/planesencuesta#create
-- [ ] new_planesencuestum GET /planesencuesta/nuevo(.:format) --> mr519_gen/planesencuesta#new
-- [ ] edit_planesencuestum GET /planesencuesta/:id/edita(.:format) --> mr519_gen/planesencuesta#edit
-- [ ] planesencuestum GET /planesencuesta/:id(.:format) --> mr519_gen/planesencuesta#show
+- [ ] GET /planesencuesta/nuevo(.:format) --> mr519_gen/planesencuesta#new
+- [ ] GET /planesencuesta/:id/edita(.:format) --> mr519_gen/planesencuesta#edit
+- [ ] GET /planesencuesta/:id(.:format) --> mr519_gen/planesencuesta#show
 - [ ] PATCH /planesencuesta/:id(.:format) --> mr519_gen/planesencuesta#update
 - [ ] PUT /planesencuesta/:id(.:format) --> mr519_gen/planesencuesta#update
 - [ ] DELETE /planesencuesta/:id(.:format) --> mr519_gen/planesencuesta#destroy
-- [ ] resultadosencuestausuario GET /encuestasusuario/resultados/:encuestausuario_id(.:format) --> mr519_gen/encuestasusuario#resultados
-- [ ] creartodousuario GET /encuestasusuario/creartodousuario/:encuestausuario_id(.:format) --> mr519_gen/encuestasusuario#creartodousuario
-- [ ] encuestaexterna GET /encuestaexterna/:adurl(.:format) --> mr519_gen/encuestaspersona#externa
+- [ ] GET /encuestasusuario/resultados/:encuestausuario_id(.:format) --> mr519_gen/encuestasusuario#resultados
+- [ ] GET /encuestasusuario/creartodousuario/:encuestausuario_id(.:format) --> mr519_gen/encuestasusuario#creartodousuario
+- [ ] GET /encuestaexterna/:adurl(.:format) --> mr519_gen/encuestaspersona#externa
 - [ ]- [ ] Routes for --> Heb412Gen::Engine:
-- [ ] carpetasexclusivas GET /carpetasexclusivas(.:format) --> heb412_gen/carpetasexclusivas#index
+- [ ] GET /carpetasexclusivas(.:format) --> heb412_gen/carpetasexclusivas#index
 - [ ] POST /carpetasexclusivas(.:format) --> heb412_gen/carpetasexclusivas#create
-- [ ] new_carpetaexclusiva GET /carpetasexclusivas/nuevo(.:format) --> heb412_gen/carpetasexclusivas#new
-- [ ] edit_carpetaexclusiva GET /carpetasexclusivas/:id/edita(.:format) --> heb412_gen/carpetasexclusivas#edit
-- [ ] carpetaexclusiva GET /carpetasexclusivas/:id(.:format) --> heb412_gen/carpetasexclusivas#show
+- [ ] GET /carpetasexclusivas/nuevo(.:format) --> heb412_gen/carpetasexclusivas#new
+- [ ] GET /carpetasexclusivas/:id/edita(.:format) --> heb412_gen/carpetasexclusivas#edit
+- [ ] GET /carpetasexclusivas/:id(.:format) --> heb412_gen/carpetasexclusivas#show
 - [ ] PATCH /carpetasexclusivas/:id(.:format) --> heb412_gen/carpetasexclusivas#update
 - [ ] PUT /carpetasexclusivas/:id(.:format) --> heb412_gen/carpetasexclusivas#update
 - [ ] DELETE /carpetasexclusivas/:id(.:format) --> heb412_gen/carpetasexclusivas#destroy
-- [ ] docs GET /docs(.:format) --> heb412_gen/docs#index
+- [ ] GET /docs(.:format) --> heb412_gen/docs#index
 - [ ] POST /docs(.:format) --> heb412_gen/docs#create
-- [ ] new_doc GET /docs/nuevo(.:format) --> heb412_gen/docs#new
-- [ ] edit_doc GET /docs/:id/edita(.:format) --> heb412_gen/docs#edit
-- [ ] doc GET /docs/:id(.:format) --> heb412_gen/docs#show
+- [ ] GET /docs/nuevo(.:format) --> heb412_gen/docs#new
+- [ ] GET /docs/:id/edita(.:format) --> heb412_gen/docs#edit
+- [ ] GET /docs/:id(.:format) --> heb412_gen/docs#show
 - [ ] PATCH /docs/:id(.:format) --> heb412_gen/docs#update
 - [ ] PUT /docs/:id(.:format) --> heb412_gen/docs#update
 - [ ] DELETE /docs/:id(.:format) --> heb412_gen/docs#destroy
-- [ ] impreso GET /docs/:id/impreso(.:format) --> heb412_gen/docs#impreso
-- [ ] sisarch GET /sis/*ruta(.:format) --> heb412_gen/sisarch#index
-- [ ] sisini GET /sis/arch(.:format) --> heb412_gen/sisarch#index
-- [ ] nueva_carpeta POST /sis/nueva(.:format) --> heb412_gen/sisarch#nueva_carpeta
-- [ ] nuevo_archivo POST /sis/nuevo(.:format) --> heb412_gen/sisarch#nuevo_archivo
-- [ ] actleeme POST /sis/actleeme(.:format) --> heb412_gen/sisarch#actleeme
-- [ ] eliminar_archivo POST /sis/eliminararc(.:format) --> heb412_gen/sisarch#eliminar_archivo
-- [ ] eliminar_directorio POST /sis/eliminardir(.:format) --> heb412_gen/sisarch#eliminar_directorio
-- [ ] plantillahcm_pintacampos GET /plantillahcm/pintacampos(.:format) --> heb412_gen/plantillahcm#pintacampos
-- [ ] plantillashcm GET /plantillashcm(.:format) --> heb412_gen/plantillahcm#index
-- [ ] plantillashcm_importadatos GET /plantillashcm/importadatos(.:format) --> heb412_gen/plantillahcm#importadatos
-- [ ] plantillashcm_envia_importadatos POST /plantillashcm/importadatos(.:format) --> heb412_gen/plantillahcm#importadatos
-- [ ] plantillahcr_pintacampos GET /plantillahcr/pintacampos(.:format) --> heb412_gen/plantillahcr#pintacampos
-- [ ] plantillashcr GET /plantillashcr(.:format) --> heb412_gen/plantillahcr#index
-- [ ] crea_plantillahcm POST /plantillahcm(.:format) --> heb412_gen/plantillahcm#create
-- [ ] crea_plantillahcr POST /plantillahcr(.:format) --> heb412_gen/plantillahcr#create
-- [ ] plantillahcm_index GET /plantillahcm(.:format) --> heb412_gen/plantillahcm#index
+- [ ] GET /docs/:id/impreso(.:format) --> heb412_gen/docs#impreso
+- [ ] GET /sis/*ruta(.:format) --> heb412_gen/sisarch#index
+- [ ] GET /sis/arch(.:format) --> heb412_gen/sisarch#index
+- [ ] POST /sis/nueva(.:format) --> heb412_gen/sisarch#nueva_carpeta
+- [ ] POST /sis/nuevo(.:format) --> heb412_gen/sisarch#nuevo_archivo
+- [ ] POST /sis/actleeme(.:format) --> heb412_gen/sisarch#actleeme
+- [ ] POST /sis/eliminararc(.:format) --> heb412_gen/sisarch#eliminar_archivo
+- [ ] POST /sis/eliminardir(.:format) --> heb412_gen/sisarch#eliminar_directorio
+- [ ] GET /plantillahcm/pintacampos(.:format) --> heb412_gen/plantillahcm#pintacampos
+- [ ] GET /plantillashcm(.:format) --> heb412_gen/plantillahcm#index
+- [ ] GET /plantillashcm/importadatos(.:format) --> heb412_gen/plantillahcm#importadatos
+- [ ] POST /plantillashcm/importadatos(.:format) --> heb412_gen/plantillahcm#importadatos
+- [ ] GET /plantillahcr/pintacampos(.:format) --> heb412_gen/plantillahcr#pintacampos
+- [ ] GET /plantillashcr(.:format) --> heb412_gen/plantillahcr#index
 - [ ] POST /plantillahcm(.:format) --> heb412_gen/plantillahcm#create
-- [ ] new_plantillahcm GET /plantillahcm/nueva(.:format) --> heb412_gen/plantillahcm#new
-- [ ] edit_plantillahcm GET /plantillahcm/:id/edita(.:format) --> heb412_gen/plantillahcm#edit
-- [ ] plantillahcm GET /plantillahcm/:id(.:format) --> heb412_gen/plantillahcm#show
+- [ ] POST /plantillahcr(.:format) --> heb412_gen/plantillahcr#create
+- [ ] GET /plantillahcm(.:format) --> heb412_gen/plantillahcm#index
+- [ ] POST /plantillahcm(.:format) --> heb412_gen/plantillahcm#create
+- [ ] GET /plantillahcm/nueva(.:format) --> heb412_gen/plantillahcm#new
+- [ ] GET /plantillahcm/:id/edita(.:format) --> heb412_gen/plantillahcm#edit
+- [ ] GET /plantillahcm/:id(.:format) --> heb412_gen/plantillahcm#show
 - [ ] PATCH /plantillahcm/:id(.:format) --> heb412_gen/plantillahcm#update
 - [ ] PUT /plantillahcm/:id(.:format) --> heb412_gen/plantillahcm#update
 - [ ] DELETE /plantillahcm/:id(.:format) --> heb412_gen/plantillahcm#destroy
-- [ ] plantillahcr_index GET /plantillahcr(.:format) --> heb412_gen/plantillahcr#index
+- [ ] GET /plantillahcr(.:format) --> heb412_gen/plantillahcr#index
 - [ ] POST /plantillahcr(.:format) --> heb412_gen/plantillahcr#create
-- [ ] new_plantillahcr GET /plantillahcr/nueva(.:format) --> heb412_gen/plantillahcr#new
-- [ ] edit_plantillahcr GET /plantillahcr/:id/edita(.:format) --> heb412_gen/plantillahcr#edit
-- [ ] plantillahcr GET /plantillahcr/:id(.:format) --> heb412_gen/plantillahcr#show
+- [ ] GET /plantillahcr/nueva(.:format) --> heb412_gen/plantillahcr#new
+- [ ] GET /plantillahcr/:id/edita(.:format) --> heb412_gen/plantillahcr#edit
+- [ ] GET /plantillahcr/:id(.:format) --> heb412_gen/plantillahcr#show
 - [ ] PATCH /plantillahcr/:id(.:format) --> heb412_gen/plantillahcr#update
 - [ ] PUT /plantillahcr/:id(.:format) --> heb412_gen/plantillahcr#update
 - [ ] DELETE /plantillahcr/:id(.:format) --> heb412_gen/plantillahcr#destroy
-- [ ] plantillasdoc GET /plantillasdoc(.:format) --> heb412_gen/plantillasdoc#index
+- [ ] GET /plantillasdoc(.:format) --> heb412_gen/plantillasdoc#index
 - [ ] POST /plantillasdoc(.:format) --> heb412_gen/plantillasdoc#create
-- [ ] new_plantilladoc GET /plantillasdoc/nueva(.:format) --> heb412_gen/plantillasdoc#new
-- [ ] edit_plantilladoc GET /plantillasdoc/:id/edita(.:format) --> heb412_gen/plantillasdoc#edit
-- [ ] plantilladoc GET /plantillasdoc/:id(.:format) --> heb412_gen/plantillasdoc#show
+- [ ] GET /plantillasdoc/nueva(.:format) --> heb412_gen/plantillasdoc#new
+- [ ] GET /plantillasdoc/:id/edita(.:format) --> heb412_gen/plantillasdoc#edit
+- [ ] GET /plantillasdoc/:id(.:format) --> heb412_gen/plantillasdoc#show
 - [ ] PATCH /plantillasdoc/:id(.:format) --> heb412_gen/plantillasdoc#update
 - [ ] PUT /plantillasdoc/:id(.:format) --> heb412_gen/plantillasdoc#update
 - [ ] DELETE /plantillasdoc/:id(.:format) --> heb412_gen/plantillasdoc#destroy
-- [ ] plantillahcm_impresa GET /plantillahcm/:id/impreso(.:format) --> heb412_gen/plantillahcm#impreso
-- [ ] plantillahcr_impresa GET /plantillahcr/:id/impreso(.:format) --> heb412_gen/plantillahcr#impreso
-- [ ] orgsocial_fichaimp GET /orgsociales/:id/fichaimp(.:format) --> sip/orgsociales#fichaimp
-- [ ] orgsocial_fichapdf GET /orgsociales/:id/fichapdf(.:format) --> sip/orgsociales#fichapdf
-- [ ] persona_fichaimp GET /personas/:id/fichaimp(.:format) --> sip/personas#fichaimp
-- [ ] persona_fichapdf GET /personas/:id/fichapdf(.:format) --> sip/personas#fichapdf
-- [ ] usuario_fichaimp GET /usuarios/:id/fichaimp(.:format) --> usuarios#fichaimp
-- [ ] usuario_fichapdf GET /usuarios/:id/fichapdf(.:format) --> usuarios#fichapdf
+- [ ] GET /plantillahcm/:id/impreso(.:format) --> heb412_gen/plantillahcm#impreso
+- [ ] GET /plantillahcr/:id/impreso(.:format) --> heb412_gen/plantillahcr#impreso
+- [ ] GET /orgsociales/:id/fichaimp(.:format) --> sip/orgsociales#fichaimp
+- [ ] GET /orgsociales/:id/fichapdf(.:format) --> sip/orgsociales#fichapdf
+- [ ] GET /personas/:id/fichaimp(.:format) --> sip/personas#fichaimp
+- [ ] GET /personas/:id/fichapdf(.:format) --> sip/personas#fichapdf
+- [ ] GET /usuarios/:id/fichaimp(.:format) --> usuarios#fichaimp
+- [ ] GET /usuarios/:id/fichapdf(.:format) --> usuarios#fichapdf
 - [ ]- [ ] Routes for --> Sivel2Gen::Engine:
-- [ ] actos_agregar PATCH /actos/agregar(.:format) --> sivel2_gen/actos#agregar
-- [ ] actos_eliminar GET /actos/eliminar(.:format) --> sivel2_gen/actos#eliminar
-- [ ] actoscolectivos_agregar PATCH /actoscolectivos/agregar(.:format) --> sivel2_gen/actoscolectivos#agregar
-- [ ] actoscolectivos_eliminar GET /actoscolectivos/eliminar(.:format) --> sivel2_gen/actoscolectivos#eliminar
-- [ ] acercade GET /acercade(.:format) --> sivel2_gen/hogar#acercade
-- [ ] buscarrepetidos GET /buscarrepetidos(.:format) --> sivel2_gen/buscarrepetidos#reportar
-- [ ] envia_buscarrepetidos POST /buscarrepetidos(.:format) --> sivel2_gen/buscarrepetidos#reportar
-- [ ] casofotras_nuevo GET /casofotras/nuevo(.:format) --> sivel2_gen/casofotras#nuevo
+- [ ] PATCH /actos/agregar(.:format) --> sivel2_gen/actos#agregar
+- [ ] GET /actos/eliminar(.:format) --> sivel2_gen/actos#eliminar
+- [ ] PATCH /actoscolectivos/agregar(.:format) --> sivel2_gen/actoscolectivos#agregar
+- [ ] GET /actoscolectivos/eliminar(.:format) --> sivel2_gen/actoscolectivos#eliminar
+- [ ] GET /acercade(.:format) --> sivel2_gen/hogar#acercade
+- [ ] GET /buscarrepetidos(.:format) --> sivel2_gen/buscarrepetidos#reportar
+- [ ] POST /buscarrepetidos(.:format) --> sivel2_gen/buscarrepetidos#reportar
+- [ ] GET /casofotras/nuevo(.:format) --> sivel2_gen/casofotras#nuevo
 - [ ] GET /casofotras%23nuevo(.:format) --> sivel2_gen/casofotras#nuevo
-- [ ] casos_busca GET /casos/busca(.:format) --> sivel2_gen/casos#busca
-- [ ] casos_cuenta GET /casos/cuenta(.:format) --> sivel2_gen/casos#cuenta
-- [ ] casos_importarrelatos GET /casos/importarrelatos(.:format) --> sivel2_gen/casos#importarrelatos
-- [ ] caso_fichaimp GET /casos/:id/fichaimp(.:format) --> sivel2_gen/casos#fichaimp
-- [ ] caso_fichapdf GET /casos/:id/fichapdf(.:format) --> sivel2_gen/casos#fichapdf
-- [ ] casos_lista GET /casos/lista(.:format) --> sivel2_gen/casos#lista
-- [ ] casos_mapaosm GET /casos/mapaosm(.:format) --> sivel2_gen/casos#mapaosm
-- [ ] casos_nuevaubicacion GET /casos/nuevaubicacion(.:format) --> sivel2_gen/casos#nueva_ubicacion
-- [ ] casos_nuevavictima GET /casos/nuevavictima(.:format) --> sivel2_gen/casos#nueva_victima
-- [ ] casos_refresca GET /casos/refresca(.:format) --> sivel2_gen/casos#refresca
-- [ ] combatientes_nuevo GET /combatientes/nuevo(.:format) --> sivel2_gen/combatientes#nuevo
-- [ ] conteos_genvic GET /conteos/genvic(.:format) --> sivel2_gen/conteos#genvic
-- [ ] conteos_personas GET /conteos/personas(.:format) --> sivel2_gen/conteos#personas
-- [ ] conteos_victimizaciones GET /conteos/victimizaciones(.:format) --> sivel2_gen/conteos#victimizaciones
-- [ ] fichacasovertical GET /fichacasovertical(.:format) --> sivel2_gen/hogar#fichacasovertical
-- [ ] fuentesprensa_nuevo GET /fuentesprensa/nuevo(.:format) --> sivel2_gen/fuentesprensa#nuevo
+- [ ] GET /casos/busca(.:format) --> sivel2_gen/casos#busca
+- [ ] GET /casos/cuenta(.:format) --> sivel2_gen/casos#cuenta
+- [ ] GET /casos/importarrelatos(.:format) --> sivel2_gen/casos#importarrelatos
+- [ ] GET /casos/:id/fichaimp(.:format) --> sivel2_gen/casos#fichaimp
+- [ ] GET /casos/:id/fichapdf(.:format) --> sivel2_gen/casos#fichapdf
+- [ ] GET /casos/lista(.:format) --> sivel2_gen/casos#lista
+- [ ] GET /casos/mapaosm(.:format) --> sivel2_gen/casos#mapaosm
+- [ ] GET /casos/nuevaubicacion(.:format) --> sivel2_gen/casos#nueva_ubicacion
+- [ ] GET /casos/nuevavictima(.:format) --> sivel2_gen/casos#nueva_victima
+- [ ] GET /casos/refresca(.:format) --> sivel2_gen/casos#refresca
+- [ ] GET /combatientes/nuevo(.:format) --> sivel2_gen/combatientes#nuevo
+- [ ] GET /conteos/genvic(.:format) --> sivel2_gen/conteos#genvic
+- [ ] GET /conteos/personas(.:format) --> sivel2_gen/conteos#personas
+- [ ] GET /conteos/victimizaciones(.:format) --> sivel2_gen/conteos#victimizaciones
+- [ ] GET /fichacasovertical(.:format) --> sivel2_gen/hogar#fichacasovertical
+- [ ] GET /fuentesprensa/nuevo(.:format) --> sivel2_gen/fuentesprensa#nuevo
 - [ ] GET /fuentesprensa%23nuevo(.:format) --> sivel2_gen/fuentesprensa#nuevo
-- [ ] graficar_actos_individuales GET /graficar/actos_individuales(.:format) --> sivel2_gen/fil23_gen/graficar_plotly#actos_individuales
-- [ ] graficar_victimizaciones_individuales GET /graficar/victimizaciones_individuales(.:format) --> sivel2_gen/fil23_gen/graficar_apexcharts#victimizaciones_individuales
-- [ ] enviar_graficar_victimizaciones_individuales POST /graficar/victimizaciones_individuales(.:format) --> sivel2_gen/fil23_gen/graficar_apexcharts#victimizaciones_individuales
-- [ ] hogar GET /hogar(.:format) --> sivel2_gen/hogar#index
-- [ ] admin_presponsables_nuevo GET /admin/presponsables/nuevo(.:format) --> sivel2_gen/admin/presponsables#nuevo
-- [ ] arbol_presponsables GET /admin/presponsables/arbol(.:format) --> sivel2_gen/admin/presponsables#arbol
-- [ ] mapadepvic GET /mapadep/victimizaciones(.:format) --> sivel2_gen/mapadep#victimizaciones
-- [ ] tablasbasicas GET /tablasbasicas(.:format) --> sivel2_gen/hogar#tablasbasicas
-- [ ] ubicaciones_nuevo GET /ubicaciones/nuevo(.:format) --> sivel2_gen/ubicaciones#nuevo
-- [ ] validarcasos GET /validarcasos(.:format) --> sivel2_gen/validarcasos#validar
-- [ ] envia_validarcasos POST /validarcasos(.:format) --> sivel2_gen/validarcasos#validar
-- [ ] victimas GET /victimas(.:format) --> sivel2_gen/victimas#index
-- [ ] victimas_nuevo GET /victimas/nuevo(.:format) --> sivel2_gen/victimas#nuevo
-- [ ] victimascolectivas_nuevo GET /victimascolectivas/nuevo(.:format) --> sivel2_gen/victimascolectivas#nuevo
-- [ ] importa_casos POST /casos/importa(.:format) --> sivel2_gen/casos#importa
-- [ ] casos GET /casos(.:format) --> sivel2_gen/casos#index
+- [ ] GET /graficar/actos_individuales(.:format) --> sivel2_gen/fil23_gen/graficar_plotly#actos_individuales
+- [ ] GET /graficar/victimizaciones_individuales(.:format) --> sivel2_gen/fil23_gen/graficar_apexcharts#victimizaciones_individuales
+- [ ] POST /graficar/victimizaciones_individuales(.:format) --> sivel2_gen/fil23_gen/graficar_apexcharts#victimizaciones_individuales
+- [ ] GET /hogar(.:format) --> sivel2_gen/hogar#index
+- [ ] GET /admin/presponsables/nuevo(.:format) --> sivel2_gen/admin/presponsables#nuevo
+- [ ] GET /admin/presponsables/arbol(.:format) --> sivel2_gen/admin/presponsables#arbol
+- [ ] GET /mapadep/victimizaciones(.:format) --> sivel2_gen/mapadep#victimizaciones
+- [ ] GET /tablasbasicas(.:format) --> sivel2_gen/hogar#tablasbasicas
+- [ ] GET /ubicaciones/nuevo(.:format) --> sivel2_gen/ubicaciones#nuevo
+- [ ] GET /validarcasos(.:format) --> sivel2_gen/validarcasos#validar
+- [ ] POST /validarcasos(.:format) --> sivel2_gen/validarcasos#validar
+- [ ] GET /victimas(.:format) --> sivel2_gen/victimas#index
+- [ ] GET /victimas/nuevo(.:format) --> sivel2_gen/victimas#nuevo
+- [ ] GET /victimascolectivas/nuevo(.:format) --> sivel2_gen/victimascolectivas#nuevo
+- [ ] POST /casos/importa(.:format) --> sivel2_gen/casos#importa
+- [ ] GET /casos(.:format) --> sivel2_gen/casos#index
 - [ ] POST /casos(.:format) --> sivel2_gen/casos#create
-- [ ] new_caso GET /casos/nuevo(.:format) --> sivel2_gen/casos#new
-- [ ] edit_caso GET /casos/:id/edita(.:format) --> sivel2_gen/casos#edit
-- [ ] caso GET /casos/:id(.:format) --> sivel2_gen/casos#show
+- [ ] GET /casos/nuevo(.:format) --> sivel2_gen/casos#new
+- [ ] GET /casos/:id/edita(.:format) --> sivel2_gen/casos#edit
+- [ ] GET /casos/:id(.:format) --> sivel2_gen/casos#show
 - [ ] PATCH /casos/:id(.:format) --> sivel2_gen/casos#update
 - [ ] PUT /casos/:id(.:format) --> sivel2_gen/casos#update
 - [ ] DELETE /casos/:id(.:format) --> sivel2_gen/casos#destroy
-- [ ] admin_antecedentes GET /admin/antecedentes(.:format) --> sivel2_gen/admin/antecedentes#index
+- [ ] GET /admin/antecedentes(.:format) --> sivel2_gen/admin/antecedentes#index
 - [ ] POST /admin/antecedentes(.:format) --> sivel2_gen/admin/antecedentes#create
-- [ ] new_admin_antecedente GET /admin/antecedentes/nueva(.:format) --> sivel2_gen/admin/antecedentes#new
-- [ ] edit_admin_antecedente GET /admin/antecedentes/:id/edita(.:format) --> sivel2_gen/admin/antecedentes#edit
-- [ ] admin_antecedente GET /admin/antecedentes/:id(.:format) --> sivel2_gen/admin/antecedentes#show
+- [ ] GET /admin/antecedentes/nueva(.:format) --> sivel2_gen/admin/antecedentes#new
+- [ ] GET /admin/antecedentes/:id/edita(.:format) --> sivel2_gen/admin/antecedentes#edit
+- [ ] GET /admin/antecedentes/:id(.:format) --> sivel2_gen/admin/antecedentes#show
 - [ ] PATCH /admin/antecedentes/:id(.:format) --> sivel2_gen/admin/antecedentes#update
 - [ ] PUT /admin/antecedentes/:id(.:format) --> sivel2_gen/admin/antecedentes#update
 - [ ] DELETE /admin/antecedentes/:id(.:format) --> sivel2_gen/admin/antecedentes#destroy
-- [ ] admin_categorias GET /admin/categorias(.:format) --> sivel2_gen/admin/categorias#index
+- [ ] GET /admin/categorias(.:format) --> sivel2_gen/admin/categorias#index
 - [ ] POST /admin/categorias(.:format) --> sivel2_gen/admin/categorias#create
-- [ ] new_admin_categoria GET /admin/categorias/nueva(.:format) --> sivel2_gen/admin/categorias#new
-- [ ] edit_admin_categoria GET /admin/categorias/:id/edita(.:format) --> sivel2_gen/admin/categorias#edit
-- [ ] admin_categoria GET /admin/categorias/:id(.:format) --> sivel2_gen/admin/categorias#show
+- [ ] GET /admin/categorias/nueva(.:format) --> sivel2_gen/admin/categorias#new
+- [ ] GET /admin/categorias/:id/edita(.:format) --> sivel2_gen/admin/categorias#edit
+- [ ] GET /admin/categorias/:id(.:format) --> sivel2_gen/admin/categorias#show
 - [ ] PATCH /admin/categorias/:id(.:format) --> sivel2_gen/admin/categorias#update
 - [ ] PUT /admin/categorias/:id(.:format) --> sivel2_gen/admin/categorias#update
 - [ ] DELETE /admin/categorias/:id(.:format) --> sivel2_gen/admin/categorias#destroy
-- [ ] admin_contextosvictima GET /admin/contextosvictima(.:format) --> sivel2_gen/admin/contextosvictima#index
+- [ ] GET /admin/contextosvictima(.:format) --> sivel2_gen/admin/contextosvictima#index
 - [ ] POST /admin/contextosvictima(.:format) --> sivel2_gen/admin/contextosvictima#create
-- [ ] new_admin_contextovictima GET /admin/contextosvictima/nueva(.:format) --> sivel2_gen/admin/contextosvictima#new
-- [ ] edit_admin_contextovictima GET /admin/contextosvictima/:id/edita(.:format) --> sivel2_gen/admin/contextosvictima#edit
-- [ ] admin_contextovictima GET /admin/contextosvictima/:id(.:format) --> sivel2_gen/admin/contextosvictima#show
+- [ ] GET /admin/contextosvictima/nueva(.:format) --> sivel2_gen/admin/contextosvictima#new
+- [ ] GET /admin/contextosvictima/:id/edita(.:format) --> sivel2_gen/admin/contextosvictima#edit
+- [ ] GET /admin/contextosvictima/:id(.:format) --> sivel2_gen/admin/contextosvictima#show
 - [ ] PATCH /admin/contextosvictima/:id(.:format) --> sivel2_gen/admin/contextosvictima#update
 - [ ] PUT /admin/contextosvictima/:id(.:format) --> sivel2_gen/admin/contextosvictima#update
 - [ ] DELETE /admin/contextosvictima/:id(.:format) --> sivel2_gen/admin/contextosvictima#destroy
-- [ ] admin_contextos GET /admin/contextos(.:format) --> sivel2_gen/admin/contextos#index
+- [ ] GET /admin/contextos(.:format) --> sivel2_gen/admin/contextos#index
 - [ ] POST /admin/contextos(.:format) --> sivel2_gen/admin/contextos#create
-- [ ] new_admin_contexto GET /admin/contextos/nueva(.:format) --> sivel2_gen/admin/contextos#new
-- [ ] edit_admin_contexto GET /admin/contextos/:id/edita(.:format) --> sivel2_gen/admin/contextos#edit
-- [ ] admin_contexto GET /admin/contextos/:id(.:format) --> sivel2_gen/admin/contextos#show
+- [ ] GET /admin/contextos/nueva(.:format) --> sivel2_gen/admin/contextos#new
+- [ ] GET /admin/contextos/:id/edita(.:format) --> sivel2_gen/admin/contextos#edit
+- [ ] GET /admin/contextos/:id(.:format) --> sivel2_gen/admin/contextos#show
 - [ ] PATCH /admin/contextos/:id(.:format) --> sivel2_gen/admin/contextos#update
 - [ ] PUT /admin/contextos/:id(.:format) --> sivel2_gen/admin/contextos#update
 - [ ] DELETE /admin/contextos/:id(.:format) --> sivel2_gen/admin/contextos#destroy
-- [ ] admin_etnias GET /admin/etnias(.:format) --> sivel2_gen/admin/etnias#index
+- [ ] GET /admin/etnias(.:format) --> sivel2_gen/admin/etnias#index
 - [ ] POST /admin/etnias(.:format) --> sivel2_gen/admin/etnias#create
-- [ ] new_admin_etnia GET /admin/etnias/nueva(.:format) --> sivel2_gen/admin/etnias#new
-- [ ] edit_admin_etnia GET /admin/etnias/:id/edita(.:format) --> sivel2_gen/admin/etnias#edit
-- [ ] admin_etnia GET /admin/etnias/:id(.:format) --> sivel2_gen/admin/etnias#show
+- [ ] GET /admin/etnias/nueva(.:format) --> sivel2_gen/admin/etnias#new
+- [ ] GET /admin/etnias/:id/edita(.:format) --> sivel2_gen/admin/etnias#edit
+- [ ] GET /admin/etnias/:id(.:format) --> sivel2_gen/admin/etnias#show
 - [ ] PATCH /admin/etnias/:id(.:format) --> sivel2_gen/admin/etnias#update
 - [ ] PUT /admin/etnias/:id(.:format) --> sivel2_gen/admin/etnias#update
 - [ ] DELETE /admin/etnias/:id(.:format) --> sivel2_gen/admin/etnias#destroy
-- [ ] admin_filiaciones GET /admin/filiaciones(.:format) --> sivel2_gen/admin/filiaciones#index
+- [ ] GET /admin/filiaciones(.:format) --> sivel2_gen/admin/filiaciones#index
 - [ ] POST /admin/filiaciones(.:format) --> sivel2_gen/admin/filiaciones#create
-- [ ] new_admin_filiacion GET /admin/filiaciones/nueva(.:format) --> sivel2_gen/admin/filiaciones#new
-- [ ] edit_admin_filiacion GET /admin/filiaciones/:id/edita(.:format) --> sivel2_gen/admin/filiaciones#edit
-- [ ] admin_filiacion GET /admin/filiaciones/:id(.:format) --> sivel2_gen/admin/filiaciones#show
+- [ ] GET /admin/filiaciones/nueva(.:format) --> sivel2_gen/admin/filiaciones#new
+- [ ] GET /admin/filiaciones/:id/edita(.:format) --> sivel2_gen/admin/filiaciones#edit
+- [ ] GET /admin/filiaciones/:id(.:format) --> sivel2_gen/admin/filiaciones#show
 - [ ] PATCH /admin/filiaciones/:id(.:format) --> sivel2_gen/admin/filiaciones#update
 - [ ] PUT /admin/filiaciones/:id(.:format) --> sivel2_gen/admin/filiaciones#update
 - [ ] DELETE /admin/filiaciones/:id(.:format) --> sivel2_gen/admin/filiaciones#destroy
-- [ ] admin_fronteras GET /admin/fronteras(.:format) --> sivel2_gen/admin/fronteras#index
+- [ ] GET /admin/fronteras(.:format) --> sivel2_gen/admin/fronteras#index
 - [ ] POST /admin/fronteras(.:format) --> sivel2_gen/admin/fronteras#create
-- [ ] new_admin_frontera GET /admin/fronteras/nueva(.:format) --> sivel2_gen/admin/fronteras#new
-- [ ] edit_admin_frontera GET /admin/fronteras/:id/edita(.:format) --> sivel2_gen/admin/fronteras#edit
-- [ ] admin_frontera GET /admin/fronteras/:id(.:format) --> sivel2_gen/admin/fronteras#show
+- [ ] GET /admin/fronteras/nueva(.:format) --> sivel2_gen/admin/fronteras#new
+- [ ] GET /admin/fronteras/:id/edita(.:format) --> sivel2_gen/admin/fronteras#edit
+- [ ] GET /admin/fronteras/:id(.:format) --> sivel2_gen/admin/fronteras#show
 - [ ] PATCH /admin/fronteras/:id(.:format) --> sivel2_gen/admin/fronteras#update
 - [ ] PUT /admin/fronteras/:id(.:format) --> sivel2_gen/admin/fronteras#update
 - [ ] DELETE /admin/fronteras/:id(.:format) --> sivel2_gen/admin/fronteras#destroy
-- [ ] admin_iglesias GET /admin/iglesias(.:format) --> sivel2_gen/admin/iglesias#index
+- [ ] GET /admin/iglesias(.:format) --> sivel2_gen/admin/iglesias#index
 - [ ] POST /admin/iglesias(.:format) --> sivel2_gen/admin/iglesias#create
-- [ ] new_admin_iglesia GET /admin/iglesias/nueva(.:format) --> sivel2_gen/admin/iglesias#new
-- [ ] edit_admin_iglesia GET /admin/iglesias/:id/edita(.:format) --> sivel2_gen/admin/iglesias#edit
-- [ ] admin_iglesia GET /admin/iglesias/:id(.:format) --> sivel2_gen/admin/iglesias#show
+- [ ] GET /admin/iglesias/nueva(.:format) --> sivel2_gen/admin/iglesias#new
+- [ ] GET /admin/iglesias/:id/edita(.:format) --> sivel2_gen/admin/iglesias#edit
+- [ ] GET /admin/iglesias/:id(.:format) --> sivel2_gen/admin/iglesias#show
 - [ ] PATCH /admin/iglesias/:id(.:format) --> sivel2_gen/admin/iglesias#update
 - [ ] PUT /admin/iglesias/:id(.:format) --> sivel2_gen/admin/iglesias#update
 - [ ] DELETE /admin/iglesias/:id(.:format) --> sivel2_gen/admin/iglesias#destroy
-- [ ] admin_intervalos GET /admin/intervalos(.:format) --> sivel2_gen/admin/intervalos#index
+- [ ] GET /admin/intervalos(.:format) --> sivel2_gen/admin/intervalos#index
 - [ ] POST /admin/intervalos(.:format) --> sivel2_gen/admin/intervalos#create
-- [ ] new_admin_intervalo GET /admin/intervalos/nueva(.:format) --> sivel2_gen/admin/intervalos#new
-- [ ] edit_admin_intervalo GET /admin/intervalos/:id/edita(.:format) --> sivel2_gen/admin/intervalos#edit
-- [ ] admin_intervalo GET /admin/intervalos/:id(.:format) --> sivel2_gen/admin/intervalos#show
+- [ ] GET /admin/intervalos/nueva(.:format) --> sivel2_gen/admin/intervalos#new
+- [ ] GET /admin/intervalos/:id/edita(.:format) --> sivel2_gen/admin/intervalos#edit
+- [ ] GET /admin/intervalos/:id(.:format) --> sivel2_gen/admin/intervalos#show
 - [ ] PATCH /admin/intervalos/:id(.:format) --> sivel2_gen/admin/intervalos#update
 - [ ] PUT /admin/intervalos/:id(.:format) --> sivel2_gen/admin/intervalos#update
 - [ ] DELETE /admin/intervalos/:id(.:format) --> sivel2_gen/admin/intervalos#destroy
-- [ ] admin_organizaciones GET /admin/organizaciones(.:format) --> sivel2_gen/admin/organizaciones#index
+- [ ] GET /admin/organizaciones(.:format) --> sivel2_gen/admin/organizaciones#index
 - [ ] POST /admin/organizaciones(.:format) --> sivel2_gen/admin/organizaciones#create
-- [ ] new_admin_organizacion GET /admin/organizaciones/nueva(.:format) --> sivel2_gen/admin/organizaciones#new
-- [ ] edit_admin_organizacion GET /admin/organizaciones/:id/edita(.:format) --> sivel2_gen/admin/organizaciones#edit
-- [ ] admin_organizacion GET /admin/organizaciones/:id(.:format) --> sivel2_gen/admin/organizaciones#show
+- [ ] GET /admin/organizaciones/nueva(.:format) --> sivel2_gen/admin/organizaciones#new
+- [ ] GET /admin/organizaciones/:id/edita(.:format) --> sivel2_gen/admin/organizaciones#edit
+- [ ] GET /admin/organizaciones/:id(.:format) --> sivel2_gen/admin/organizaciones#show
 - [ ] PATCH /admin/organizaciones/:id(.:format) --> sivel2_gen/admin/organizaciones#update
 - [ ] PUT /admin/organizaciones/:id(.:format) --> sivel2_gen/admin/organizaciones#update
 - [ ] DELETE /admin/organizaciones/:id(.:format) --> sivel2_gen/admin/organizaciones#destroy
-- [ ] admin_pconsolidados GET /admin/pconsolidados(.:format) --> sivel2_gen/admin/pconsolidados#index
+- [ ] GET /admin/pconsolidados(.:format) --> sivel2_gen/admin/pconsolidados#index
 - [ ] POST /admin/pconsolidados(.:format) --> sivel2_gen/admin/pconsolidados#create
-- [ ] new_admin_pconsolidado GET /admin/pconsolidados/nueva(.:format) --> sivel2_gen/admin/pconsolidados#new
-- [ ] edit_admin_pconsolidado GET /admin/pconsolidados/:id/edita(.:format) --> sivel2_gen/admin/pconsolidados#edit
-- [ ] admin_pconsolidado GET /admin/pconsolidados/:id(.:format) --> sivel2_gen/admin/pconsolidados#show
+- [ ] GET /admin/pconsolidados/nueva(.:format) --> sivel2_gen/admin/pconsolidados#new
+- [ ] GET /admin/pconsolidados/:id/edita(.:format) --> sivel2_gen/admin/pconsolidados#edit
+- [ ] GET /admin/pconsolidados/:id(.:format) --> sivel2_gen/admin/pconsolidados#show
 - [ ] PATCH /admin/pconsolidados/:id(.:format) --> sivel2_gen/admin/pconsolidados#update
 - [ ] PUT /admin/pconsolidados/:id(.:format) --> sivel2_gen/admin/pconsolidados#update
 - [ ] DELETE /admin/pconsolidados/:id(.:format) --> sivel2_gen/admin/pconsolidados#destroy
-- [ ] admin_presponsables GET /admin/presponsables(.:format) --> sivel2_gen/admin/presponsables#index
+- [ ] GET /admin/presponsables(.:format) --> sivel2_gen/admin/presponsables#index
 - [ ] POST /admin/presponsables(.:format) --> sivel2_gen/admin/presponsables#create
-- [ ] new_admin_presponsable GET /admin/presponsables/nueva(.:format) --> sivel2_gen/admin/presponsables#new
-- [ ] edit_admin_presponsable GET /admin/presponsables/:id/edita(.:format) --> sivel2_gen/admin/presponsables#edit
-- [ ] admin_presponsable GET /admin/presponsables/:id(.:format) --> sivel2_gen/admin/presponsables#show
+- [ ] GET /admin/presponsables/nueva(.:format) --> sivel2_gen/admin/presponsables#new
+- [ ] GET /admin/presponsables/:id/edita(.:format) --> sivel2_gen/admin/presponsables#edit
+- [ ] GET /admin/presponsables/:id(.:format) --> sivel2_gen/admin/presponsables#show
 - [ ] PATCH /admin/presponsables/:id(.:format) --> sivel2_gen/admin/presponsables#update
 - [ ] PUT /admin/presponsables/:id(.:format) --> sivel2_gen/admin/presponsables#update
 - [ ] DELETE /admin/presponsables/:id(.:format) --> sivel2_gen/admin/presponsables#destroy
-- [ ] admin_profesiones GET /admin/profesiones(.:format) --> sivel2_gen/admin/profesiones#index
+- [ ] GET /admin/profesiones(.:format) --> sivel2_gen/admin/profesiones#index
 - [ ] POST /admin/profesiones(.:format) --> sivel2_gen/admin/profesiones#create
-- [ ] new_admin_profesion GET /admin/profesiones/nueva(.:format) --> sivel2_gen/admin/profesiones#new
-- [ ] edit_admin_profesion GET /admin/profesiones/:id/edita(.:format) --> sivel2_gen/admin/profesiones#edit
-- [ ] admin_profesion GET /admin/profesiones/:id(.:format) --> sivel2_gen/admin/profesiones#show
+- [ ] GET /admin/profesiones/nueva(.:format) --> sivel2_gen/admin/profesiones#new
+- [ ] GET /admin/profesiones/:id/edita(.:format) --> sivel2_gen/admin/profesiones#edit
+- [ ] GET /admin/profesiones/:id(.:format) --> sivel2_gen/admin/profesiones#show
 - [ ] PATCH /admin/profesiones/:id(.:format) --> sivel2_gen/admin/profesiones#update
 - [ ] PUT /admin/profesiones/:id(.:format) --> sivel2_gen/admin/profesiones#update
 - [ ] DELETE /admin/profesiones/:id(.:format) --> sivel2_gen/admin/profesiones#destroy
-- [ ] admin_rangosedad GET /admin/rangosedad(.:format) --> sivel2_gen/admin/rangosedad#index
+- [ ] GET /admin/rangosedad(.:format) --> sivel2_gen/admin/rangosedad#index
 - [ ] POST /admin/rangosedad(.:format) --> sivel2_gen/admin/rangosedad#create
-- [ ] new_admin_rangoedad GET /admin/rangosedad/nueva(.:format) --> sivel2_gen/admin/rangosedad#new
-- [ ] edit_admin_rangoedad GET /admin/rangosedad/:id/edita(.:format) --> sivel2_gen/admin/rangosedad#edit
-- [ ] admin_rangoedad GET /admin/rangosedad/:id(.:format) --> sivel2_gen/admin/rangosedad#show
+- [ ] GET /admin/rangosedad/nueva(.:format) --> sivel2_gen/admin/rangosedad#new
+- [ ] GET /admin/rangosedad/:id/edita(.:format) --> sivel2_gen/admin/rangosedad#edit
+- [ ] GET /admin/rangosedad/:id(.:format) --> sivel2_gen/admin/rangosedad#show
 - [ ] PATCH /admin/rangosedad/:id(.:format) --> sivel2_gen/admin/rangosedad#update
 - [ ] PUT /admin/rangosedad/:id(.:format) --> sivel2_gen/admin/rangosedad#update
 - [ ] DELETE /admin/rangosedad/:id(.:format) --> sivel2_gen/admin/rangosedad#destroy
-- [ ] admin_regiones GET /admin/regiones(.:format) --> sivel2_gen/admin/regiones#index
+- [ ] GET /admin/regiones(.:format) --> sivel2_gen/admin/regiones#index
 - [ ] POST /admin/regiones(.:format) --> sivel2_gen/admin/regiones#create
-- [ ] new_admin_region GET /admin/regiones/nueva(.:format) --> sivel2_gen/admin/regiones#new
-- [ ] edit_admin_region GET /admin/regiones/:id/edita(.:format) --> sivel2_gen/admin/regiones#edit
-- [ ] admin_region GET /admin/regiones/:id(.:format) --> sivel2_gen/admin/regiones#show
+- [ ] GET /admin/regiones/nueva(.:format) --> sivel2_gen/admin/regiones#new
+- [ ] GET /admin/regiones/:id/edita(.:format) --> sivel2_gen/admin/regiones#edit
+- [ ] GET /admin/regiones/:id(.:format) --> sivel2_gen/admin/regiones#show
 - [ ] PATCH /admin/regiones/:id(.:format) --> sivel2_gen/admin/regiones#update
 - [ ] PUT /admin/regiones/:id(.:format) --> sivel2_gen/admin/regiones#update
 - [ ] DELETE /admin/regiones/:id(.:format) --> sivel2_gen/admin/regiones#destroy
-- [ ] admin_resagresiones GET /admin/resagresiones(.:format) --> sivel2_gen/admin/resagresiones#index
+- [ ] GET /admin/resagresiones(.:format) --> sivel2_gen/admin/resagresiones#index
 - [ ] POST /admin/resagresiones(.:format) --> sivel2_gen/admin/resagresiones#create
-- [ ] new_admin_resagresion GET /admin/resagresiones/nueva(.:format) --> sivel2_gen/admin/resagresiones#new
-- [ ] edit_admin_resagresion GET /admin/resagresiones/:id/edita(.:format) --> sivel2_gen/admin/resagresiones#edit
-- [ ] admin_resagresion GET /admin/resagresiones/:id(.:format) --> sivel2_gen/admin/resagresiones#show
+- [ ] GET /admin/resagresiones/nueva(.:format) --> sivel2_gen/admin/resagresiones#new
+- [ ] GET /admin/resagresiones/:id/edita(.:format) --> sivel2_gen/admin/resagresiones#edit
+- [ ] GET /admin/resagresiones/:id(.:format) --> sivel2_gen/admin/resagresiones#show
 - [ ] PATCH /admin/resagresiones/:id(.:format) --> sivel2_gen/admin/resagresiones#update
 - [ ] PUT /admin/resagresiones/:id(.:format) --> sivel2_gen/admin/resagresiones#update
 - [ ] DELETE /admin/resagresiones/:id(.:format) --> sivel2_gen/admin/resagresiones#destroy
-- [ ] admin_sectoressociales GET /admin/sectoressociales(.:format) --> sivel2_gen/admin/sectoressociales#index
+- [ ] GET /admin/sectoressociales(.:format) --> sivel2_gen/admin/sectoressociales#index
 - [ ] POST /admin/sectoressociales(.:format) --> sivel2_gen/admin/sectoressociales#create
-- [ ] new_admin_sectorsocial GET /admin/sectoressociales/nueva(.:format) --> sivel2_gen/admin/sectoressociales#new
-- [ ] edit_admin_sectorsocial GET /admin/sectoressociales/:id/edita(.:format) --> sivel2_gen/admin/sectoressociales#edit
-- [ ] admin_sectorsocial GET /admin/sectoressociales/:id(.:format) --> sivel2_gen/admin/sectoressociales#show
+- [ ] GET /admin/sectoressociales/nueva(.:format) --> sivel2_gen/admin/sectoressociales#new
+- [ ] GET /admin/sectoressociales/:id/edita(.:format) --> sivel2_gen/admin/sectoressociales#edit
+- [ ] GET /admin/sectoressociales/:id(.:format) --> sivel2_gen/admin/sectoressociales#show
 - [ ] PATCH /admin/sectoressociales/:id(.:format) --> sivel2_gen/admin/sectoressociales#update
 - [ ] PUT /admin/sectoressociales/:id(.:format) --> sivel2_gen/admin/sectoressociales#update
 - [ ] DELETE /admin/sectoressociales/:id(.:format) --> sivel2_gen/admin/sectoressociales#destroy
-- [ ] admin_supracategorias GET /admin/supracategorias(.:format) --> sivel2_gen/admin/supracategorias#index
+- [ ] GET /admin/supracategorias(.:format) --> sivel2_gen/admin/supracategorias#index
 - [ ] POST /admin/supracategorias(.:format) --> sivel2_gen/admin/supracategorias#create
-- [ ] new_admin_supracategoria GET /admin/supracategorias/nueva(.:format) --> sivel2_gen/admin/supracategorias#new
-- [ ] edit_admin_supracategoria GET /admin/supracategorias/:id/edita(.:format) --> sivel2_gen/admin/supracategorias#edit
-- [ ] admin_supracategoria GET /admin/supracategorias/:id(.:format) --> sivel2_gen/admin/supracategorias#show
+- [ ] GET /admin/supracategorias/nueva(.:format) --> sivel2_gen/admin/supracategorias#new
+- [ ] GET /admin/supracategorias/:id/edita(.:format) --> sivel2_gen/admin/supracategorias#edit
+- [ ] GET /admin/supracategorias/:id(.:format) --> sivel2_gen/admin/supracategorias#show
 - [ ] PATCH /admin/supracategorias/:id(.:format) --> sivel2_gen/admin/supracategorias#update
 - [ ] PUT /admin/supracategorias/:id(.:format) --> sivel2_gen/admin/supracategorias#update
 - [ ] DELETE /admin/supracategorias/:id(.:format) --> sivel2_gen/admin/supracategorias#destroy
-- [ ] admin_tviolencias GET /admin/tviolencias(.:format) --> sivel2_gen/admin/tviolencias#index
+- [ ] GET /admin/tviolencias(.:format) --> sivel2_gen/admin/tviolencias#index
 - [ ] POST /admin/tviolencias(.:format) --> sivel2_gen/admin/tviolencias#create
-- [ ] new_admin_tviolencia GET /admin/tviolencias/nueva(.:format) --> sivel2_gen/admin/tviolencias#new
-- [ ] edit_admin_tviolencia GET /admin/tviolencias/:id/edita(.:format) --> sivel2_gen/admin/tviolencias#edit
-- [ ] admin_tviolencia GET /admin/tviolencias/:id(.:format) --> sivel2_gen/admin/tviolencias#show
+- [ ] GET /admin/tviolencias/nueva(.:format) --> sivel2_gen/admin/tviolencias#new
+- [ ] GET /admin/tviolencias/:id/edita(.:format) --> sivel2_gen/admin/tviolencias#edit
+- [ ] GET /admin/tviolencias/:id(.:format) --> sivel2_gen/admin/tviolencias#show
 - [ ] PATCH /admin/tviolencias/:id(.:format) --> sivel2_gen/admin/tviolencias#update
 - [ ] PUT /admin/tviolencias/:id(.:format) --> sivel2_gen/admin/tviolencias#update
 - [ ] DELETE /admin/tviolencias/:id(.:format) --> sivel2_gen/admin/tviolencias#destroy
-- [ ] admin_vinculosestado GET /admin/vinculosestado(.:format) --> sivel2_gen/admin/vinculosestado#index
+- [ ] GET /admin/vinculosestado(.:format) --> sivel2_gen/admin/vinculosestado#index
 - [ ] POST /admin/vinculosestado(.:format) --> sivel2_gen/admin/vinculosestado#create
-- [ ] new_admin_vinculoestado GET /admin/vinculosestado/nueva(.:format) --> sivel2_gen/admin/vinculosestado#new
-- [ ] edit_admin_vinculoestado GET /admin/vinculosestado/:id/edita(.:format) --> sivel2_gen/admin/vinculosestado#edit
-- [ ] admin_vinculoestado GET /admin/vinculosestado/:id(.:format) --> sivel2_gen/admin/vinculosestado#show
+- [ ] GET /admin/vinculosestado/nueva(.:format) --> sivel2_gen/admin/vinculosestado#new
+- [ ] GET /admin/vinculosestado/:id/edita(.:format) --> sivel2_gen/admin/vinculosestado#edit
+- [ ] GET /admin/vinculosestado/:id(.:format) --> sivel2_gen/admin/vinculosestado#show
 - [ ] PATCH /admin/vinculosestado/:id(.:format) --> sivel2_gen/admin/vinculosestado#update
 - [ ] PUT /admin/vinculosestado/:id(.:format) --> sivel2_gen/admin/vinculosestado#update
 - [ ] DELETE /admin/vinculosestado/:id(.:format) --> sivel2_gen/admin/vinculosestado#destroy

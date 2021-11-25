@@ -10,7 +10,7 @@ def system!(*args)
   system(*args) || abort("\n== Falló la orden #{args} ==")
 end
 
-#system! "bundle exec bin/rails routes | bin/uris_awk"
+system! "bundle exec bin/rails routes | bin/uris_awk"
 ruta = "doc/rutas.txt"
 archivo_rutas = File.open("./#{ruta}", "w")
 archivo_rutas.puts(`bundle exec bin/rails routes | bin/uris_awk`)
