@@ -11,7 +11,7 @@ def system!(*args)
 end
 
 system! "bundle exec bin/rails routes | bin/uris_awk"
-ruta = "doc/rutas.txt"
+ruta = "doc/rutas_control_probado.md"
 archivo_rutas = File.open("./#{ruta}", "w")
 archivo_rutas.puts(`bundle exec bin/rails routes | bin/uris_awk`)
 puts "Archivo creado con rutas en #{ruta}"
