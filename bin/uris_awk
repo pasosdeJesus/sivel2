@@ -1,0 +1,14 @@
+#!/usr/bin/awk -f
+{   
+  search=" ";
+  n=split($0,array,search);
+    printf("- [ ]");
+    for (i=1;i<=n;i++) {
+        if (i < n) {
+          printf(" %s", array[i]);
+        }
+        else {
+          printf(" --> %s\n", array[i]);
+        }
+    }
+}
