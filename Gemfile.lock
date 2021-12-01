@@ -65,22 +65,20 @@ GIT
       twitter_cldr
 
 GIT
-  remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 00118d40084bc540ae34cd99281403c79004e6c5
-  branch: main
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 9f1892403c3dbdb8f7d457a06f237ff58e7dfb07
+  branch: new_id_with_ajax
+  specs:
+    cocoon (1.2.11)
+
+PATH
+  remote: ../sivel2_gen
   specs:
     sivel2_gen (2.1a1)
       color
       devise
       jquery-rails
       rails
-
-GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 9f1892403c3dbdb8f7d457a06f237ff58e7dfb07
-  branch: new_id_with_ajax
-  specs:
-    cocoon (1.2.11)
 
 GEM
   remote: https://rubygems.org/
@@ -436,6 +434,7 @@ DEPENDENCIES
   capybara
   cocoon!
   coffee-rails
+  color
   colorize
   devise
   devise-i18n
