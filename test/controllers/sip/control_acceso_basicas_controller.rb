@@ -14,9 +14,6 @@ module Sip
       @persona = Sip::Persona.create!(PRUEBA_PERSONA)
     end
 
-    # No autenticado
-    ################
-
     test "sin autenticar no debe listar tablas básicas" do
       get sip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
@@ -24,15 +21,44 @@ module Sip
       assert(filas_index == 0)
     end
 
-    test "sin autenticar debe presentar el index de una basica geografica" do
-      get sip.admin_municipios_path
-      assert_response :ok
+    basicas_sip = Sip::Ability::BASICAS_PROPIAS
+    
+    basicas_sip.each do |basica|
+      if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
+        ## PROBANDO BASICAS GEOGRÁFICAS
+        #No autenticado
+        test "sin autenticar debe presentar el index de #{basica[1]}" do
+          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+          assert_response :ok
+        end
+
+        test "sin autenticar debe presentar el show de #{basica[1]}" do
+          skip
+          ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/1"
+          get ruta 
+          assert_response :ok
+        end
+
+        test "sin autenticar no puede crear registro de #{basica[1]}" do
+          skip
+          ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/1"
+          post ruta 
+          assert_response :ok
+        end
+
+        test "sin autenticar no debe dejar destruir un registro de #{basica[1]}" do
+          skip
+          assert_difference("Sip::#{basica[1].capitalize()}.count", -1, 'registro destruid') do 
+            delete :destroy, id: 1
+          end
+        end
+      else
+
+      end
     end
 
-    test "sin autenticar debe presentar el show de una tabla basica geografica" do
-      get sip.admin_municipio_path(Sip::Municipio.all.sample.id)
-      assert_response :ok
-    end
+    #No autenticado
+    ################
 
     test "sin autenticar no debe presentar listado de una tabla basica no geografica no propia" do
       assert_raise CanCan::AccessDenied do

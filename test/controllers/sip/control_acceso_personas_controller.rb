@@ -11,6 +11,9 @@ module Sip
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona2 = Sip::Persona.create!(PRUEBA_PERSONA)
+      @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
+      @victima = Sivel2Gen::Victima.create!(id_persona: @persona2.id, id_caso: @caso.id)
     end
 
     # No autenticado
@@ -31,6 +34,12 @@ module Sip
     test "sin autenticar no debe ver formulario de nueva" do
       assert_raise CanCan::AccessDenied do
         get sip.new_persona_path()
+      end
+    end
+
+    test "sin autenticar no debe acceder a personas remplazar" do
+      assert_raise CanCan::AccessDenied do
+        get sip.personas_remplazar_path
       end
     end
 
@@ -99,6 +108,14 @@ module Sip
       end
     end
 
+    test "autenticado como operados sin grupo no debe acceder a personas remplazar" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sip.personas_remplazar_path
+      end
+    end
+
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
@@ -127,6 +144,14 @@ module Sip
       current_usuario = inicia_analista
       sign_in current_usuario
       get sip.edit_persona_path(@persona.id)
+      assert_response :ok
+    end
+
+    test "autenticado como operador analista de casos debe acceder a personas remplazar" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      
+      get sip.personas_remplazar_path + "?id_persona=#{@persona.id}&id_victima=#{@victima.id}"
       assert_response :ok
     end
 
