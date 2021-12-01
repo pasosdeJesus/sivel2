@@ -48,7 +48,6 @@ PRUEBA_USUARIO_AN = {
 
 
 PRUEBA_PERSONA = {
-  id: 1,
   nombres: 'Luis Alejandro',
   apellidos: 'Cruz Ordoñez',
   sexo: 'M',
