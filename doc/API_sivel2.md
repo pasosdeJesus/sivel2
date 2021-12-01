@@ -493,6 +493,7 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 - Usuario con rol administrador:
 	- Todos los permisos de gestionar las víctimas
 </details>
+
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>personas</code></summary>
 
