@@ -353,7 +353,6 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 	- Todos los permisos de gestionar las víctimas
 </details>
 
-<details>
  <summary><code>GET</code> <code><b>/</b></code> <code>personas</code></summary>
 
 ##### Parámetros
@@ -410,8 +409,54 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 	```
 </details>
 
+
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>conteos/personas</code><code>(Trae conteo demográfico de víctimas)</code></summary>
+ <summary><code>GET</code> <code><b>/</b></code> <code>personas</code><code><b>/</b></code> <code>datos</code></summary>
+ 
+ Esta API permite traer datos de una persona organizado en un objeto JSON con los valores de id, nombres, apellidos, tipo de documento, numero de documento, sexo y fecha de nacimiento. Además si está autocompletando una persona de orgsocial persona agrega los campos de cargo y correo correspondiente.
+ 
+##### Parámetros
+Esta api recibe dos parámetros, uno obligatorio id_persona que es la identificación de la persona en la tabla sip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
+
+El único formato de respuesta establecido es Json. 
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/personas/datos.json?id_persona=253262&ac_orgsocial_persona=1
+> ```
+
+##### Ejemplos de respuestas
+```json
+	{"id":253262,"nombres":"Luis Alejandro","apellidos":"Cruz Ordoñez","sexo":"M","tdocumento":"CC","numerodocumento": "1061769227","dianac": 16,"mesnac": 04,"anionac": 1994}
+```
+##### Control de acceso 
+Para consumir esta API se manejan los mismo permisos establecidos para /personas
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>personas</code><code><b>/</b></code> <code>remplazar</code></summary>
+ 
+ Esta API permite remplazar personas en la tabla víctimas de caso. Más especificamente verifica y si la persona asociada a la victima corresponde con  una persona dada, si ya existe se obtiene un mensaje "Ya existe esa persona en el caso" y sino se hace el remplazo correspondiente guardando los valores de la víctima. 
+ 
+##### Parámetros
+Esta api recibe dos parámetros requeridos obligatorios: d_persona que es la identificación de la persona en la tabla sip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
+
+El único formato de respuesta establecido es Json. 
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/personas/remplazar?id_persona=94531&id_victima=98690```
+
+##### Ejemplos de respuestas
+Mensaje de ya existencia, o No layout correspondiente cuando se hace el remplazo 
+##### Control de acceso 
+Para esta ruta se manejan los mismo permisos establecidos para /personas
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>conteos/personas</code><code></code></summary>
+
+Trae conteo demográfico de víctimas
 Se ha construido también una ruta para poder obtener el número total de víctimas (personas individuales) en un intervalo de fechas con filtros especializados y de desagregación.
 Los parámetros de del filtro iniciales son las fechas tal como se especifica a continuación:
 ##### Parámetros
@@ -467,7 +512,177 @@ La respuesta es una tabla html en donde la primera columna es el criterio de des
 ##### Control de acceso
 Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede realizar el conteo demográfico de las víctimas. Un usuario desde la consulta web pública o sin autenticarse no puede realizar el conteo. 
  </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>gruposper</code></summary>
+
+Para consumir los grupos de personas existentes en la aplicación, esta dispuesta esta ruta. Esta trae registros asociados al modelo Sip::Grupoper.
+La estructura de los datos está dada por un objetos con dos propiedades: value, que es el nombre del grupo de personas e id, que es la identificación del grupo de personas. 
+
+##### Parámetros
+Es necesario fijar un parámetro en la ruta denominado "term",  que es usado también en autocompletación. Este es un string que va a buscar los grupos de personas que en su nombre contengan este valor.
+
+El único formato de respuesta establecido es Json. 
+
+##### Control de Acceso
+Cualquier persona autenticada puede acceder a este recurso.
+No disponible para consulta pública
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/gruposper.json?term='Cauca'
+> ```
+##### Ejemplos de respuestas
+
+```json	
+{"value":"5 ORGANIZACIONES SOCIALES DEL CAUCA","id":63971},{"value":"ALCALDES MUNICIPALES CAUCA","id":69038}
+```
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>gruposper/remplazar</code></summary>
+
+Para listar y buscar grupo de personas existentes en la aplicación, esta dispuesta esta ruta. Esta trae registros asociados al modelo Sip::Grupoper.
+La estructura de los datos está dada por un objetos con dos propiedades: value, que es el nombre del grupo de personas e id, que es la identificación del grupo de personas. 
+
+##### Parámetros
+Es necesario asignar dos parámetros: id_grupoper que hace referencia a la identificación del grupo de persona e id_victimacolectiva que hace referncia a la identificación de la víctima colectiva.  Esto buscará el grupo de persona correspondiente y  mostrará los casos en los que aparece dicho grupo.
+
+El único formato de respuesta establecido es HTML. 
+
+##### Control de Acceso
+No disponible para consulta pública.
+No disponible para un autenticado como observador de casos
+No disponible para un autenticado sin grupo
+No disponible para un autenticado con grupo por partes
+Disponible para un autenticado operador analista de casos
+Disponible para administrador
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/gruposper/remplazar?id_grupoper=71573&id_victimacolectiva=14796
+> ```
+##### Ejemplos de respuestas
+
+Nombre:  * COMUNIDAD INDIGENA
+Anotaciones:
+Casos en los que aparece: 18107
+</details>
+
+  ------------------------------------------------------------------------------------------
+ 
+## Accesos Informativos
+
+Existen algunas rutas que brindan información importante acerca de elementos de la aplicación. Estas rutas pueden accederse sin necesidad de autenticación alguna y la respuesta obtenida es en formato html. 
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>acercade</code></summary>
+ 
+ Esta ruta permite acceder a la información general de la aplicación suministrada en formato de texto, información de dominios, financiadores, colaboradores. Dispuesta para autenticados y no autenticados. No recibe parámetros adicionales y su único formato es HTML
+ </details>
+ 
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> 
+ <code>controldeacceso</code></summary>
+  
+Esta ruta permite acceder a la información general sobre los controles de acceso según los roles de los usuarios, está suministrada en una tabla formato de texto. Ruta dispuesta para autenticados y no autenticados. No recibe parámetros adicionales y su único formato es HTML
+ </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> 
+ <code>hogar</code></summary>
+  
+Esta ruta permite acceder a la página principal de la aplicación (index). Ruta que actualmente es equivalente a acceder a la ruta relativa. Accesible para autenticados y no autenticados. No recibe parámetros adicionales y su único formato es HTML
+ </details>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> 
+ <code>temausuario</code></summary>
+  
+Esta ruta permite acceder a la información general sobre los controles de acceso según los roles de los usuarios, está suministrada en una tabla formato de texto. Ruta dispuesta para autenticados y no autenticados. No recibe parámetros adicionales y su único formato es HTML.
+##### Ejemplo de respuesta:
+```json	
+{"fondo":"#ffffff","color_fuente":"#000000","color_flota_subitem_fuente":"#266dd3","color_flota_subitem_fondo":"#ffffff","nav_ini":"#95c4ff","nav_fin":"#266dd3","nav_fuente":"#ffffff","fondo_lista":"#95c4ff","btn_primario_fondo_ini":"#0088cc","btn_primario_fondo_fin":"#0044cc","btn_primario_fuente":"#ffffff","btn_peligro_fondo_ini":"#ee5f5b","btn_peligro_fondo_fin":"#bd362f","btn_peligro_fuente":"#ffffff","btn_accion_fondo_ini":"#ffffff","btn_accion_fondo_fin":"#e6e6e6","btn_accion_fuente":"#000000","alerta_exito_fondo":"#dff0d8","alerta_exito_fuente":"#468847","alerta_problema_fondo":"#f8d7da","alerta_problema_fuente":"#721c24"}
+```
+
+
+
+ </details>
+
+  ------------------------------------------------------------------------------------------
+ 
+## Respaldo
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>respaldo7z</code></summary>
+
+Esta ruta permite acceder a la vista de nuevo respaldo. Una página html donde se puede obtener un respaldo especificando una clave de cifrado.
+
+##### Parámetros
+No espera parámetros para acceder a la ruta
+
+##### Control de Acceso
+Solamente un administrador tiene permisos para acceder a la ruta y para realizar un respaldo (GET y POST)
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/respaldo7zterm="villa"
+> ``` 
+
+</details>
+
+------------------------------------------------------------------------------------------
+## Listando Ubicaciones
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>mundep</code></summary>
+
+Es posible obtener un listado de ubicaciones en el formato de departamento y municipio. Esta trae registros asociados al modelo Sip::Ubicacion re construido en dicho formato ejemplo: "SANTANDER DE QUILICHAO / CAUCA".
+La estructura de los datos está dada por un objetos con dos propiedades: label, que es el nombre de la ubicacion y value que equivale a la identificación de dicha ubicación. 
+
+##### Parámetros
+Es necesario fijar un parámetro en la ruta denominado "term",  que es usado también en autocompletación. Este es un string que va a buscar entre todos los nombres de las ubicaciones alguna coincidencia.
+
+El único formato de respuesta establecido es Json. 
+
+##### Control de Acceso
+Cualquier persona autenticada o sin autenticar puede acceder a esta consulta.
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/mundep.json?term="villa"
+> ```
+##### Ejemplos de respuestas
+
+```json	
+{"label":"VILLA CARO / NORTE DE SANTANDER","value":54871},{"label":"VILLA DE LEYVA / BOYACÁ","value":15407},{"label":"VILLA DE SAN DIEGO DE UBATÉ / CUNDINAMARCA","value":25843},{"label":"VILLA DEL ROSARIO / NORTE DE SANTANDER","value":54874},{"label":"VILLA RICA / CAUCA","value":19845},{"label":"VILLAGARZÓN / PUTUMAYO","value":86885},{"label":"VILLAGÓMEZ / CUNDINAMARCA","value":25871},{"label":"VILLAHERMOSA / TOLIMA","value":73870},{"label":"VILLAMARÍA / CALDAS","value":17873},{"label":"VILLANUEVA / BOLÍVAR","value":13873},{"label":"VILLANUEVA / CASANARE","value":85440},{"label":"VILLANUEVA / LA GUAJIRA","value":44874},{"label":"VILLANUEVA / SANTANDER","value":68872},{"label":"VILLAPINZÓN / CUNDINAMARCA","value":25873},{"label":"VILLARRICA / TOLIMA","value":73873},{"label":"VILLAVICENCIO / META","value":50001},{"label":"VILLAVIEJA / HUILA","value":41872},{"label":"VILLETA / CUNDINAMARCA","value":25875}
+```
+
+
+ </details>
+
  ------------------------------------------------------------------------------------------
+ 
+## Listando Anexos
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>anexos</code><code><b>/</b></code><code>:id</code></summary>
+ 
+ Esta ruta permite consultar un anexo específico guardado en la aplicación a través de su identificación. Es posible que hayan anexos en difernetes formatos, documentos o imágenes. El parámetro de identificación que se tiene que especificar es el campo id del objeto correspondiente de la tabla Sip::Anexo.
+Control de acceso: Cualquier persona autenticada puede acceder a descargar un anexo. Para la consulta pública no se autoriza descargar anexo.
+Al hacer la petición se descarga automáticamente el anexo y no hay redireccionamiento. 
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/anexos/descarga_anexo/104
+> ```
+
+</details>
+
+
+ ------------------------------------------------------------------------------------------
+ 
 ## Listando organizaciones sociales
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>orgsociales</code></summary>
@@ -507,7 +722,8 @@ La respuesta es una tabla html en donde la primera columna es el criterio de des
 ##### Control de acceso
 Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede consultar las organizaciones sociales en su totalidad. Sin embargo, un operador analista no puede eliminar organizaciones sociales existentes más si editar y un operador observador únicamente puede ver los registros sin editar o eliminar. Un usuario desde la consulta web pública o sin autenticarse no acceder a ningún registro.  
   </details>
- ------------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------------
+ 
 ## Gestionando tablas básicas 
 
 <details>
@@ -558,7 +774,43 @@ Su respuesta ser así:
 {"id":6,"nombre":"ALLANAMIENTO","observaciones":null,"fechacreacion_localizada":"29/ene/2001","fechadeshabilitacion_localizada":null}`
 ```
  </details>
+ 
+## Listando lugares preliminares de disposición irregular de cadáveres
 
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>lugarespreliminares</code> </summary>
+ 
+ A través de esta petición es posible obtener los datos del listado de registros de luagres preliminares de disposición irregular de cadáveres, modelo que hace parte del motor Apo214, el cual se asocia con varias tablas básicas de ese motor utilizadas para una mejor implementación dell formulario y facilitar consultas.  Esta petición puede estar acompañada de los siguientes parámetros pertenecientes a filtro:
+Un ejemplo de una petición es:
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/lugarespreliminares.json
+> ```
+##### Respuestas
+El listado de datos de una tabla básica puede obtenerse en dos formatos
+> | código http   | tipo de contenido                     | respuesta                                                          |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/json;charset=UTF-8`        | Página HTML / Objeto JSON                                                     |
+> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+
+Y los objetos de respuesta JSON a esta petición son de la siguiente forma:
+```json	
+[{"id":4,"fecha":"2021-11-10","codigositio":"191030","created_at":"2021-11-06T19:39:08.247-05:00","updated_at":"2021-11-10T16:28:41.551-05:00","nombreusuario":"sivel2","organizacion":"organizacion ejemplo ","ubicacionpre_id":null,"id_persona":101,"parentezco":"AB","grabacion":false,"telefono":"35468489","tipotestigo_id":null,"otrotipotestigo":"","hechos":"","ubicaespecifica":"","disposicioncadaveres_id":null,"otradisposicioncadaveres":"","tipoentierro_id":null,"min_depositados":null,"max_depositados":null,"fechadis":null,"horadis":"1999-12-31T19:39:00.000-05:00","insitu":true,"otrolubicacionpre_id":null,"detallesasesinato":"","nombrepropiedad":"","detallesdisposicion":"","nomcomoseconoce":"","elementopaisaje_id":null,"cobertura_id":null,"interatroprevias":"","interatroactuales":"","usoterprevios":"","usoteractuales":"","accesolugar":"","perfilestratigrafico":"","observaciones":"","procesoscul":"","desgenanomalia":"","evaluacionlugar":"","riesgosdanios":"","archivokml_id":null}]`
+```
+ </details>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>admin/tablabasica/:id</code></summary>
+
+Es posible obtener un único valor de una tabla básica especificando en la ruta el dentificador de la tabla. La respuesta a esta petición está disponible en formato HTML y JSON. Por ejemplo suponiendo que se tiene la siguiente petición:
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/admin/antecedentes/6.json
+> ```
+Su respuesta ser así: 
+```json	
+{"id":6,"nombre":"ALLANAMIENTO","observaciones":null,"fechacreacion_localizada":"29/ene/2001","fechadeshabilitacion_localizada":null}`
+```
+ </details>
+ 
 ## Gestionando plantillas
 
 Sivel2 tiene actualmente  2 tipos de llenadores de plantillas:
@@ -610,4 +862,5 @@ Obteniendo una respuesta así:
 ```json	
 {"id":1,"ruta":"plantillas/reporte_un_caso.ods","fuente":"fuenet","licencia":"","vista":"Caso","nombremenu":"Ejemplo","formulario":[],"campoplantillahcr":[]}
 ```
- </details>
+</details>
+
