@@ -776,7 +776,6 @@ Su respuesta ser así:
  </details>
  
 ## Listando lugares preliminares de disposición irregular de cadáveres
-<<<<<<< HEAD
 
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>lugarespreliminares</code> </summary>
@@ -802,33 +801,6 @@ Y los objetos de respuesta JSON a esta petición son de la siguiente forma:
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>admin/tablabasica/:id</code></summary>
 
-=======
-
-<details>
- <summary><code>GET</code> <code><b>/</b></code> <code>lugarespreliminares</code> </summary>
- 
- A través de esta petición es posible obtener los datos del listado de registros de luagres preliminares de disposición irregular de cadáveres, modelo que hace parte del motor Apo214, el cual se asocia con varias tablas básicas de ese motor utilizadas para una mejor implementación dell formulario y facilitar consultas.  Esta petición puede estar acompañada de los siguientes parámetros pertenecientes a filtro:
-Un ejemplo de una petición es:
-
-> ```javascript
->  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/lugarespreliminares.json
-> ```
-##### Respuestas
-El listado de datos de una tabla básica puede obtenerse en dos formatos
-> | código http   | tipo de contenido                     | respuesta                                                          |
-> |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `200`         | `text/json;charset=UTF-8`        | Página HTML / Objeto JSON                                                     |
-> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
-
-Y los objetos de respuesta JSON a esta petición son de la siguiente forma:
-```json	
-[{"id":4,"fecha":"2021-11-10","codigositio":"191030","created_at":"2021-11-06T19:39:08.247-05:00","updated_at":"2021-11-10T16:28:41.551-05:00","nombreusuario":"sivel2","organizacion":"organizacion ejemplo ","ubicacionpre_id":null,"id_persona":101,"parentezco":"AB","grabacion":false,"telefono":"35468489","tipotestigo_id":null,"otrotipotestigo":"","hechos":"","ubicaespecifica":"","disposicioncadaveres_id":null,"otradisposicioncadaveres":"","tipoentierro_id":null,"min_depositados":null,"max_depositados":null,"fechadis":null,"horadis":"1999-12-31T19:39:00.000-05:00","insitu":true,"otrolubicacionpre_id":null,"detallesasesinato":"","nombrepropiedad":"","detallesdisposicion":"","nomcomoseconoce":"","elementopaisaje_id":null,"cobertura_id":null,"interatroprevias":"","interatroactuales":"","usoterprevios":"","usoteractuales":"","accesolugar":"","perfilestratigrafico":"","observaciones":"","procesoscul":"","desgenanomalia":"","evaluacionlugar":"","riesgosdanios":"","archivokml_id":null}]`
-```
- </details>
-<details>
- <summary><code>GET</code> <code><b>/</b></code> <code>admin/tablabasica/:id</code></summary>
-
->>>>>>> 61e061f (R-578 pruebas y api SIP (#67))
 Es posible obtener un único valor de una tabla básica especificando en la ruta el dentificador de la tabla. La respuesta a esta petición está disponible en formato HTML y JSON. Por ejemplo suponiendo que se tiene la siguiente petición:
 > ```javascript
 >  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/admin/antecedentes/6.json
@@ -890,9 +862,5 @@ Obteniendo una respuesta así:
 ```json	
 {"id":1,"ruta":"plantillas/reporte_un_caso.ods","fuente":"fuenet","licencia":"","vista":"Caso","nombremenu":"Ejemplo","formulario":[],"campoplantillahcr":[]}
 ```
-<<<<<<< HEAD
- </details>
-=======
 </details>
->>>>>>> 61e061f (R-578 pruebas y api SIP (#67))
 
