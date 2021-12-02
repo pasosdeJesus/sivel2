@@ -5108,38 +5108,10 @@ CREATE INDEX sip_busca_mundep ON public.sip_mundep USING gin (mundep);
 
 
 --
--- Name: sip_clase_id_municipio; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sip_clase_id_municipio ON public.sip_clase USING btree (id_municipio);
-
-
---
--- Name: sip_departamento_id_pais; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sip_departamento_id_pais ON public.sip_departamento USING btree (id_pais);
-
-
---
--- Name: sip_municipio_id_departamento; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sip_municipio_id_departamento ON public.sip_municipio USING btree (id_departamento);
-
-
---
 -- Name: sip_nombre_ubicacionpre_b; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX sip_nombre_ubicacionpre_b ON public.sip_ubicacionpre USING gin (to_tsvector('spanish'::regconfig, public.f_unaccent((nombre)::text)));
-
-
---
--- Name: sip_persona_anionac; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sip_persona_anionac ON public.sip_persona USING btree (anionac);
 
 
 --
@@ -5150,24 +5122,10 @@ CREATE INDEX sip_persona_anionac_ind ON public.sip_persona USING btree (anionac)
 
 
 --
--- Name: sip_persona_sexo; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sip_persona_sexo ON public.sip_persona USING btree (sexo);
-
-
---
 -- Name: sip_persona_sexo_ind; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX sip_persona_sexo_ind ON public.sip_persona USING btree (sexo);
-
-
---
--- Name: sivel2_gen_caso_anio_mes; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_caso_anio_mes ON public.sivel2_gen_caso USING btree (((((date_part('year'::text, (fecha)::timestamp without time zone))::text || '-'::text) || lpad((date_part('month'::text, (fecha)::timestamp without time zone))::text, 2, '0'::text))));
 
 
 --
@@ -5185,87 +5143,10 @@ CREATE INDEX sivel2_gen_obs_fildep_u_idx ON public.sivel2_gen_observador_filtrod
 
 
 --
--- Name: sivel2_gen_victima_id_caso; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_caso ON public.sivel2_gen_victima USING btree (id_caso);
-
-
---
--- Name: sivel2_gen_victima_id_etnia; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_etnia ON public.sivel2_gen_victima USING btree (id_etnia);
-
-
---
--- Name: sivel2_gen_victima_id_filiacion; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_filiacion ON public.sivel2_gen_victima USING btree (id_filiacion);
-
-
---
--- Name: sivel2_gen_victima_id_iglesia; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_iglesia ON public.sivel2_gen_victima USING btree (id_iglesia);
-
-
---
--- Name: sivel2_gen_victima_id_organizacion; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_organizacion ON public.sivel2_gen_victima USING btree (id_organizacion);
-
-
---
--- Name: sivel2_gen_victima_id_persona; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_persona ON public.sivel2_gen_victima USING btree (id_persona);
-
-
---
--- Name: sivel2_gen_victima_id_profesion; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_profesion ON public.sivel2_gen_victima USING btree (id_profesion);
-
-
---
--- Name: sivel2_gen_victima_id_rangoedad; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_rangoedad ON public.sivel2_gen_victima USING btree (id_rangoedad);
-
-
---
 -- Name: sivel2_gen_victima_id_rangoedad_ind; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX sivel2_gen_victima_id_rangoedad_ind ON public.sivel2_gen_victima USING btree (id_rangoedad);
-
-
---
--- Name: sivel2_gen_victima_id_sectorsocial; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_sectorsocial ON public.sivel2_gen_victima USING btree (id_sectorsocial);
-
-
---
--- Name: sivel2_gen_victima_id_vinculoestado; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_id_vinculoestado ON public.sivel2_gen_victima USING btree (id_vinculoestado);
-
-
---
--- Name: sivel2_gen_victima_orientacionsexual; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX sivel2_gen_victima_orientacionsexual ON public.sivel2_gen_victima USING btree (orientacionsexual);
 
 
 --
@@ -5281,6 +5162,78 @@ CREATE UNIQUE INDEX usuario_nusuario ON public.usuario USING btree (nusuario);
 
 ALTER TABLE ONLY public.sivel2_gen_supracategoria
     ADD CONSTRAINT "$1" FOREIGN KEY (id_tviolencia) REFERENCES public.sivel2_gen_tviolencia(id);
+
+
+--
+-- Name: sivel2_gen_caso $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_intervalo) REFERENCES public.sivel2_gen_intervalo(id);
+
+
+--
+-- Name: sivel2_gen_caso_frontera $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_frontera
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_frontera) REFERENCES public.sivel2_gen_frontera(id);
+
+
+--
+-- Name: sivel2_gen_victima $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_profesion) REFERENCES public.sivel2_gen_profesion(id);
+
+
+--
+-- Name: combatiente $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.combatiente
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_resagresion) REFERENCES public.resagresion(id);
+
+
+--
+-- Name: combatiente_presponsable $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.combatiente_presponsable
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_p_responsable) REFERENCES public.sivel2_gen_presponsable(id);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT "$1" FOREIGN KEY (fuenteprensa_id) REFERENCES public.sip_fuenteprensa(id);
+
+
+--
+-- Name: sivel2_gen_caso_fotra $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fotra
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sip_clase $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_clase
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_tclase) REFERENCES public.sip_tclase(id);
+
+
+--
+-- Name: sivel2_gen_caso_categoria_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
+    ADD CONSTRAINT "$2" FOREIGN KEY (id_categoria) REFERENCES public.sivel2_gen_categoria(id);
 
 
 --
