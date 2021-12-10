@@ -596,6 +596,7 @@ Esta ruta permite acceder a la información general sobre los controles de acces
   
 Esta ruta permite acceder a la página principal de la aplicación (index). Ruta que actualmente es equivalente a acceder a la ruta relativa. Accesible para autenticados y no autenticados. No recibe parámetros adicionales y su único formato es HTML
  </details>
+
 <details>
  <summary><code>GET</code> <code><b>/</b></code> 
  <code>temausuario</code></summary>
@@ -609,11 +610,11 @@ Esta ruta permite acceder a la información general sobre los controles de acces
  </details>
 
 <details>
- <summary>CRUD Bitácoras</summary>
+ <summary><b>CRUD Bitácoras</b></summary>
 
 Permite la gestión de la tabla bitácoras perteneciente al motor Sip. Es una tabla cuyos registros son acciones las acciones realizadas por usuarios dentro de la aplicación 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+ <summary><code>GET / bitacoras / :id</code></summary>
 
 Permite acceder a listado de bitácoras en formato HTML y JSON. 
 ##### Parámetros
@@ -640,7 +641,7 @@ Un usuario con rol operador, podrá ver sus propios registros.
 </details>
 
 <details>
- <summary><code>POST</code> <code><b>/</b></code> <code>bitacoras</code><code></summary>
+ <summary><code>POST / bitacoras </code></summary>
  
 Permite crear registro de bitácoras por parte de un usuario siempre y cuando el usuario_id de la bitácora sea el identificador del usuario creador. Un usuario administrador si podra crear la bitácora con cualquier valor para los parámetros. 
 
@@ -651,43 +652,43 @@ Parameters: {"authenticity_token"=>"[FILTERED]", "bitacora"=>{"fecha(3i)"
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>nueva</code></summary>
+ <summary><code>GET / bitacoras / nueva</code></summary>
 
-Vista para acceder a formulario de nueva bitácora, responde con un HTML para ingresar la información de la nueva bitácora. Esta vista solo puede ser accedida por un usuario autenticado y con rol administador.
+Vista para acceder a formulario de nueva bitácora, responde con un HTML para ingresar la información de la nueva bitácora. Esta vista solo puede ser accedida por un usuario autenticado y con rol administrador.
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code><b>/</b></code><code>edita</code></summary>
+ <summary><code>GET / bitacoras / :id / edita</code></summary>
 
 Vista para acceder a formulario de edición de bitácora, responde con un HTML para ingresar la información de la bitácora la cual se desea editar. En la ruta se especifica el identificador de dicha bitácora. Esta vista solo puede ser accedida por un usuario autenticado y con rol administrador para el caso de cualquier bitácora; y como un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
 
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+ <summary><code>GET / bitacoras / :id</code></summary>
 
 Vista para acceder a la vista de registro de una bitácora, responde con un HTML con la información de la bitácora especificada en la ruta a través de su identificador. Esta vista solo puede ser accedida por:
 Un usuario autenticado y con rol administrador para el caso de cualquier bitácora
-Un usuario operador con o sin grupo para el caso de que la bitácora tenga su campo usuario_id tenga la idnetifcación del usuario editor.
+Un usuario operador con o sin grupo para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
 
 </details>
 
 <details>
- <summary><code>PATCH</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+ <summary><code>PATCH / bitacoras / :id</code></summary>
  
 Actualizar una parte de un registro de bitácora según parámetros de edición. Esta acción solo podrá ser realizada por un usuario administrador para cualquier registro y por un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
 </details>
 
 <details>
- <summary><code>PUT</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+ <summary><code>PUT / bitacoras / :id</code></summary>
 
 Actualizar completamente un registro de bitácora según parámetros de edición. Esta acción solo podrá ser realizada por un usuario administrador para cualquier registro y por un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
 </details>
 
- <summary><code>DELETE</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+<details>
+<summary><code>DELETE / bitacoras / :id</code></summary>
 
 Eliminar completamente un registro de bitácora especificando su identificación en la ruta. Esta acción solo podrá ser realizada por un usuario administrador para cualquier registro y por un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
-<details>
 </details>
 
 </details>
