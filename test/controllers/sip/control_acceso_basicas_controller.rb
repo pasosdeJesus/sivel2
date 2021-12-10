@@ -21,41 +21,60 @@ module Sip
       assert(filas_index == 0)
     end
 
-    basicas_sip = Sip::Ability::BASICAS_PROPIAS
-    
+    basicas_sip = Sip::Ability::BASICAS_PROPIAS - ["Sip", "oficina"]
+
+    ## PROBANDO BASICAS GEOGRÁFICAS
+    PAIS_PARAMS = {id: 1, nombre: "ejemplo", nombreiso: "eje", fechacreacion: "2021-12-09"}
     basicas_sip.each do |basica|
+
+      modulo_str = basica[0] + "::" + basica[1].capitalize
+      modelo = modulo_str.constantize()
+      muestra = modelo.all.sample
+
+      #No autenticado
+
       if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
-        ## PROBANDO BASICAS GEOGRÁFICAS
-        #No autenticado
         test "sin autenticar debe presentar el index de #{basica[1]}" do
           get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
           assert_response :ok
         end
-
-        test "sin autenticar debe presentar el show de #{basica[1]}" do
-          skip
-          ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/1"
-          get ruta 
-          assert_response :ok
-        end
-
-        test "sin autenticar no puede crear registro de #{basica[1]}" do
-          skip
-          ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/1"
-          post ruta 
-          assert_response :ok
-        end
-
-        test "sin autenticar no debe dejar destruir un registro de #{basica[1]}" do
-          skip
-          assert_difference("Sip::#{basica[1].capitalize()}.count", -1, 'registro destruid') do 
-            delete :destroy, id: 1
+      else 
+        test "sin autenticar debe presentar el index de #{basica[1]}" do
+          assert_raise CanCan::AccessDenied do
+            get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
           end
         end
-      else
+      end
 
+      test "sin autenticar debe presentar el show de #{basica[1]}" do
+        if basica[1] == "pais"
+          @pais = Sip::Pais.create!(PAIS_PARAMS)
+          ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/" + @pais.id.to_s
+          byebug
+          get ruta
+          assert_response :ok
+          @pais.destroy!
+        end
+      end
+
+      test "sin autenticar no puede crear registro de #{basica[1]}" do
+        if basica[1] == "pais"
+          assert_raise CanCan::AccessDenied do
+            ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+            post ruta, params: {pais: PAIS_PARAMS} 
+          end
+        end
+      end
+
+      test "sin autenticar no debe dejar destruir un registro de #{basica[1]}" do
+        assert_raise CanCan::AccessDenied do
+          ruta1 = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/" + modelo.all.sample.id.to_s
+          delete ruta1
+        end
       end
     end
+
+    ## PROBANDO BASICAS NO GEOGRÁFICAS
 
     #No autenticado
     ################

@@ -352,7 +352,7 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 - Usuario con rol administrador:
 	- Todos los permisos de gestionar las víctimas
 </details>
-
+<details>
  <summary><code>GET</code> <code><b>/</b></code> <code>personas</code></summary>
 
 ##### Parámetros
@@ -606,10 +606,91 @@ Esta ruta permite acceder a la información general sobre los controles de acces
 {"fondo":"#ffffff","color_fuente":"#000000","color_flota_subitem_fuente":"#266dd3","color_flota_subitem_fondo":"#ffffff","nav_ini":"#95c4ff","nav_fin":"#266dd3","nav_fuente":"#ffffff","fondo_lista":"#95c4ff","btn_primario_fondo_ini":"#0088cc","btn_primario_fondo_fin":"#0044cc","btn_primario_fuente":"#ffffff","btn_peligro_fondo_ini":"#ee5f5b","btn_peligro_fondo_fin":"#bd362f","btn_peligro_fuente":"#ffffff","btn_accion_fondo_ini":"#ffffff","btn_accion_fondo_fin":"#e6e6e6","btn_accion_fuente":"#000000","alerta_exito_fondo":"#dff0d8","alerta_exito_fuente":"#468847","alerta_problema_fondo":"#f8d7da","alerta_problema_fuente":"#721c24"}
 ```
 
-
-
  </details>
 
+<details>
+ <summary>CRUD Bitácoras</summary>
+
+Permite la gestión de la tabla bitácoras perteneciente al motor Sip. Es una tabla cuyos registros son acciones las acciones realizadas por usuarios dentro de la aplicación 
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+
+Permite acceder a listado de bitácoras en formato HTML y JSON. 
+##### Parámetros
+
+> | nombre            |  tipo     | tipo de dato      | descripción                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `filtro[busid]` | Opcional | Entero | Filtro identificación de caso.
+
+
+##### Control de Acceso
+Un usuario administrador puede ver todos los registros de bitácoras.
+Un usuario con rol operador, podrá ver sus propios registros.
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/bitacoras?utf8=✓&filtro[busid]=2358&commit=Enviar
+> ``` 
+##### Ejemplos de respuestas
+```json	
+[{"id":2388,"fecha":"2021-12-07T16:33:08.000-05:00","ip":"191.102.196.90","usuario_id":10080,"url":"http://nuevo.nocheyniebla.org:3400/sivel2/casos","params":"{\"controller\"=\u003e\"sivel2_gen/casos\", \"action\"=\u003e\"index\"}","modelo":"Sivel2Gen::Caso","modelo_id":0,"operacion":"listar","detalle":"{}","created_at":"2021-12-07T16:33:08.697-05:00","updated_at":"2021-12-07T16:33:08.697-05:00"},{"id":2383,"fecha":"2021-12-07T11:48:33.000-05:00","ip":"191.102.197.42","usuario_id":10080,"url":"http://nuevo.nocheyniebla.org:3400/sivel2/casos/15","params":"{\"controller\"=\u003e\"sivel2_gen/casos\", \"action\"=\u003e\"show\", \"id\"=\u003e\"159968\"}","modelo":"Sivel2Gen::Caso","modelo_id":159968,"operacion":"presentar","detalle":"{}","created_at":"2021-12-07T11:48:33.458-05:00","updated_at":"2021-12-07T11:48:33.458-05:00"}]
+```
+
+</details>
+
+<details>
+ <summary><code>POST</code> <code><b>/</b></code> <code>bitacoras</code><code></summary>
+ 
+Permite crear registro de bitácoras por parte de un usuario siempre y cuando el usuario_id de la bitácora sea el identificador del usuario creador. Un usuario administrador si podra crear la bitácora con cualquier valor para los parámetros. 
+
+##### Parámetros
+Parameters: {"authenticity_token"=>"[FILTERED]", "bitacora"=>{"fecha(3i)"
+=>"7", "fecha(2i)"=>"12", "fecha(1i)"=>"2021", "fecha(4i)"=>"18", "fecha(5i)"=>"51", "ip"=>"127.0.0.1", "usuario_id"=>"", "url"=>"lkjpijp", "modelo"=> "Sivel2Gen::Caso", "modelo_id"=>"47", "operacion"=>"listar", "detalle"=>"{nombre: }", "params"=>""}, "commit"=>"Crear"}
+
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>nueva</code></summary>
+
+Vista para acceder a formulario de nueva bitácora, responde con un HTML para ingresar la información de la nueva bitácora. Esta vista solo puede ser accedida por un usuario autenticado y con rol administador.
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code><b>/</b></code><code>edita</code></summary>
+
+Vista para acceder a formulario de edición de bitácora, responde con un HTML para ingresar la información de la bitácora la cual se desea editar. En la ruta se especifica el identificador de dicha bitácora. Esta vista solo puede ser accedida por un usuario autenticado y con rol administrador para el caso de cualquier bitácora; y como un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
+
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+
+Vista para acceder a la vista de registro de una bitácora, responde con un HTML con la información de la bitácora especificada en la ruta a través de su identificador. Esta vista solo puede ser accedida por:
+Un usuario autenticado y con rol administrador para el caso de cualquier bitácora
+Un usuario operador con o sin grupo para el caso de que la bitácora tenga su campo usuario_id tenga la idnetifcación del usuario editor.
+
+</details>
+
+<details>
+ <summary><code>PATCH</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+ 
+Actualizar una parte de un registro de bitácora según parámetros de edición. Esta acción solo podrá ser realizada por un usuario administrador para cualquier registro y por un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
+</details>
+
+<details>
+ <summary><code>PUT</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+
+Actualizar completamente un registro de bitácora según parámetros de edición. Esta acción solo podrá ser realizada por un usuario administrador para cualquier registro y por un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
+</details>
+
+ <summary><code>DELETE</code> <code><b>/</b></code> <code>bitacoras</code><code><b>/</b></code><code>:id</code></summary>
+
+Eliminar completamente un registro de bitácora especificando su identificación en la ruta. Esta acción solo podrá ser realizada por un usuario administrador para cualquier registro y por un usuario con rol operador y con grupo analista de casos para el caso de que la bitácora tenga su campo usuario_id tenga la identificación del usuario editor.
+<details>
+</details>
+
+</details>
   ------------------------------------------------------------------------------------------
  
 ## Respaldo
@@ -658,10 +739,139 @@ Cualquier persona autenticada o sin autenticar puede acceder a esta consulta.
 ```json	
 {"label":"VILLA CARO / NORTE DE SANTANDER","value":54871},{"label":"VILLA DE LEYVA / BOYACÁ","value":15407},{"label":"VILLA DE SAN DIEGO DE UBATÉ / CUNDINAMARCA","value":25843},{"label":"VILLA DEL ROSARIO / NORTE DE SANTANDER","value":54874},{"label":"VILLA RICA / CAUCA","value":19845},{"label":"VILLAGARZÓN / PUTUMAYO","value":86885},{"label":"VILLAGÓMEZ / CUNDINAMARCA","value":25871},{"label":"VILLAHERMOSA / TOLIMA","value":73870},{"label":"VILLAMARÍA / CALDAS","value":17873},{"label":"VILLANUEVA / BOLÍVAR","value":13873},{"label":"VILLANUEVA / CASANARE","value":85440},{"label":"VILLANUEVA / LA GUAJIRA","value":44874},{"label":"VILLANUEVA / SANTANDER","value":68872},{"label":"VILLAPINZÓN / CUNDINAMARCA","value":25873},{"label":"VILLARRICA / TOLIMA","value":73873},{"label":"VILLAVICENCIO / META","value":50001},{"label":"VILLAVIEJA / HUILA","value":41872},{"label":"VILLETA / CUNDINAMARCA","value":25875}
 ```
+ </details>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>ubicaciones </code> <code><b>/</b></code><code>nuevo</code></summary>
 
+Crea un nuevo registro para la tabla ubicaciones para el caso que recibe por parámetro a través de caso_id.
+
+Si no se especifica ningún parámetro, retorna un mensaje de "Falta identificación del caso". 
+Si se especifica el parámetro correspondiente a la identificación del caso y si la ubicación es creada correctamente, retorna su identificación
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/ubicaciones/nuevo?caso_id=17368
+> ```
+
+ </details>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>tipoclase</code></summary>
+
+Permite obtener un objeto con el nombre del tipo de centro poblado dada la identificación del centro poblado como parámetro.
+
+Si no se especifica ningún parámetro, retorna un objeto de "{"nombre":""}. 
+Si se especifica el parámetro correspondiente a la identificación del centro poblado y si el centro poblado existe, se obtiene en el objeto el nombre del tipo de centro poblado. 
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/tipoclase?id=15308
+> ```
+##### Ejemplo de respuesta
+
+```json
+[{"nombre":"CENTRO POBLADO"}
+```
+</details>
+ 
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>ubicacionespre_mundep</code></summary>
+
+Permite obtener un objeto con las coincidencias encontradas en la tabla ubicacionespre con el formato municipio/departamento. Esta ruta es utilizada para autocompletación y recibe como parámetro :term, una cadena de texto donde se buscarán las coincidencias. Importante: la única respuesta exitosa es para el formato JSON
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/ubicacionespre_mundep.json?term="villa"
+> ```
+##### Ejemplo de respuesta
+
+```json
+[{"value":"VILLA CARO / NORTE DE SANTANDER","id":1335},{"value":"VILLA DE LEYVA / BOYACÁ","id":788},{"value":"VILLA DE SAN DIEGO DE UBATÉ / CUNDINAMARCA","id":1391},{"value":"VILLA DEL ROSARIO / NORTE DE SANTANDER","id":1344},{"value":"VILLA RICA / CAUCA","id":1308},{"value":"VILLAGARZÓN / PUTUMAYO","id":1356},{"value":"VILLAGÓMEZ / CUNDINAMARCA","id":1336},{"value":"VILLAHERMOSA / TOLIMA","id":1334},{"value":"VILLAMARÍA / CALDAS","id":1340},{"value":"VILLANUEVA / BOLÍVAR","id":1341},{"value":"VILLANUEVA / CASANARE","id":825},{"value":"VILLANUEVA / LA GUAJIRA","id":1345},{"value":"VILLANUEVA / SANTANDER","id":1337},{"value":"VILLAPINZÓN / CUNDINAMARCA","id":1342},{"value":"VILLARRICA / TOLIMA","id":1343},{"value":"VILLAVICENCIO / META","id":405},{"value":"VILLAVIEJA / HUILA","id":1338},{"value":"VILLETA / CUNDINAMARCA","id":1346}]
+```
+ </details>
+
+<details>
+ <summary><code>CRUD ubicacionespre</code></summary>
+
+En la tabla ubicacionespre se almacenan los registros de ubicaciones completos desde un país solo, pasando por país/departamento, país/departamento/municipio y país/departamento/municipio/centro poblado. La peticiones pueden tener respuestas en formato HTML y en formato JSON. A continuación se presentan las posibles peticiones.
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>ubicacionespre</code></summary>
+
+Petición que permite listar las ubicacionespre, puede recibir un parámetro :term utilizado en autocompletación para buscar coincidencias de una cadena de texto con una ubicación. 
+
+##### Control de acceso
+Cualquier usuario autenticado o no, puede consultar el listado de ubicacionespre.
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/ubicacionespre.json?term=%22PALOMERA%22
+> ```
+##### Ejemplo de respuesta
+
+```json
+[{"value":"LA PALOMERA / CALOTO / CAUCA / COLOMBIA","id":1929},{"value":"LA PALOMERA / GUADALAJARA DE BUGA / VALLE DEL CAUCA / COLOMBIA","id":13292},{"value":"LA PALOMERA / SANTANDER DE QUILICHAO / CAUCA / COLOMBIA","id":13481}]
+```
+ </details>
+
+<details>
+ <summary><code>POST</code> <code><b>/</b></code> <code>ubicacionespre</code></summary>
+ 
+Crea un nuevo registro para ubicacionespre a través de los siguientes parámteros:
+id: integer, nombre: string, pais_id: integer, departamento_id: integer, municipio_id: integer, clase_id: integer, lugar: string, sitio: string, tsitio_id: integer, latitud: float, longitud: float, created_at: datetime, updated_at: datetime, nombre_sin_pais: string
+
+##### Control de acceso
+Crear un nuevo registro de ubicacionpre solo puede realizarse por parte de un usuario administrador
+
+##### Ejemplo cURL
+
+> ```javascript
+>  curl -X POST http://nuevo.nocheyniebla.org:3400/sivel2/ubicacionespre  id=14782&nombre="BARRANCOMINAS / BARRANCOMINAS / GUAINÍA / COLOMBIA"&pais_id=170&departamento_id= 56&municipio_id= 594& clase_id= 13064&created_at="2021-12-08"&updated_at: "2021-12-08"&nombre_sin_pais= "BARRANCOMINAS / BARRANCOMINAS / GUAINÍA"
+
+> ```
+##### Ejemplo de respuesta
+STATUS 200: OK
 
  </details>
 
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>ubicacionespre</code><code><b>/</b></code><code>nueva</code></summary>
+ 
+Obtener vista para crear nueva ubicacionpre. Retorna una vista HTML con un formulario para crear un nuevo registro. Esta vista solo puede ser accedida por un usuario administrador. 
+ </details>
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>ubicacionespre</code><code><b>/</b></code><code>:id</code><code><b>/</b></code><code>edita</code></summary>
+ 
+Vista para acceder a formulario de edición de ubicacionpre, responde con un HTML para ingresar la información de la ubicacionpre la cual se desea editar. En la ruta se especifica el identificador. Esta vista solo puede ser accedida por un usuario autenticado y con rol administrador.
+
+ </details>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>ubicacionespre</code><code><b>/</b></code><code>:id</code></summary>
+
+Ruta para acceder a la vista de registro de un ubicacionpre, responde con un HTML con la información de la ubicacionpre especificada en la ruta a través de su identificador. Esta vista puede ser accedida por cualquier usuario autenticado o no.
+
+ </details>
+
+<details>
+ <summary><code>PATCH</code> <code><b>/</b></code> <code>ubicacionespre</code><code><b>/</b></code><code>:id</code></summary>
+
+Actualizar una parte de un registro de ubicacionpre según parámetros de edición. Esta acción solo podrá ser realizada por un usuario administrador.
+
+ </details>
+
+<details>
+ <summary><code>PUT</code> <code><b>/</b></code> <code>ubicacionespre</code><code><b>/</b></code><code>:id</code></summary>
+
+Actualizar completamente un registro de bitácora según parámetros de edición. Esta acción solo podrá ser realizada por un usuario administrador.
+ </details>
+<details>
+ <summary><code>DELETE</code> <code><b>/</b></code> <code>ubicacionespre</code><code><b>/</b></code><code>:id</code></summary>
+
+Eliminar completamente un registro de bitácora especificando su identificación en la ruta. Esta acción solo podrá ser realizada por un usuario administrador.
+ </details>
+ 
+ </details>
  ------------------------------------------------------------------------------------------
  
 ## Listando Anexos
@@ -669,7 +879,7 @@ Cualquier persona autenticada o sin autenticar puede acceder a esta consulta.
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>anexos</code><code><b>/</b></code><code>:id</code></summary>
  
- Esta ruta permite consultar un anexo específico guardado en la aplicación a través de su identificación. Es posible que hayan anexos en difernetes formatos, documentos o imágenes. El parámetro de identificación que se tiene que especificar es el campo id del objeto correspondiente de la tabla Sip::Anexo.
+Esta ruta permite consultar un anexo específico guardado en la aplicación a través de su identificación. Es posible que hayan anexos en difernetes formatos, documentos o imágenes. El parámetro de identificación que se tiene que especificar es el campo id del objeto correspondiente de la tabla Sip::Anexo.
 Control de acceso: Cualquier persona autenticada puede acceder a descargar un anexo. Para la consulta pública no se autoriza descargar anexo.
 Al hacer la petición se descarga automáticamente el anexo y no hay redireccionamiento. 
 ##### Ejemplo cURL
@@ -863,4 +1073,3 @@ Obteniendo una respuesta así:
 {"id":1,"ruta":"plantillas/reporte_un_caso.ods","fuente":"fuenet","licencia":"","vista":"Caso","nombremenu":"Ejemplo","formulario":[],"campoplantillahcr":[]}
 ```
 </details>
-
