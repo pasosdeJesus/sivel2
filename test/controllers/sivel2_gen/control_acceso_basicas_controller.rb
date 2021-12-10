@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'nokogiri'
 
-module Sip
+module Sivel2Gen
   class ControlAccesoBasicasControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -11,7 +11,6 @@ module Sip
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
       @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
       @ope_analista = inicia_analista
     end
@@ -30,30 +29,32 @@ module Sip
       assert(filas_index == 0)
     end
 
-    basicas_sip = Sip::Ability::BASICAS_PROPIAS
+    basicas_sivel2_gen = Sivel2Gen::Ability::BASICAS_PROPIAS
 
     ## PROBANDO BASICAS GEOGRÁFICAS
-    PAIS_PARAMS = {id: 1, nombre: "ejemplo", nombreiso: "eje", fechacreacion: "2021-12-09"}
     MODELO_PARAMS = {nombre: "ejemplop",observaciones: "obs", fechacreacion: "2021-12-09"}
-    MODELO_PARAMS_IDSTR = { id: "a", nombre: "ejemplop", observaciones: "obs", fechacreacion: "2021-12-09"}
-
+    MODELO_PARAMS_IDSTR = { id: "z", nombre: "ejemplop", observaciones: "obs", fechacreacion: "2021-12-09"}
+   
     def crear_registro(modelo, basica)
       if modelo.columns_hash['id'].type == "string".to_sym
-        if basica == 'trelacion'
+        case basica
+        when 'trelacion'
           registro = modelo.create!(MODELO_PARAMS_IDSTR.merge({inverso: "a"}))
+        when 'tviolencia'
+          registro = modelo.create!(MODELO_PARAMS_IDSTR.merge({nomcorto: "nc"}))
         else
           registro = modelo.create!(MODELO_PARAMS_IDSTR)
         end
       else
         case basica
-        when "pais"
-          registro = modelo.create!(MODELO_PARAMS.merge({id: 1000, nombreiso: "iso"}))
-        when "departamento"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_pais: 170}))
-        when "municipio"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_departamento: 17}))
-        when "clase"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_municipio: 1360}))
+        when "categoria"
+          registro = modelo.create!(MODELO_PARAMS.merge({id: 1000, supracategoria_id: 9}))
+        when "pconsolidado"
+          registro = modelo.create!(MODELO_PARAMS.merge({tipoviolencia: "D", clasificacion: "clas"}))
+        when "intervalo"
+          registro = modelo.create!(MODELO_PARAMS.merge({rango: "SIN INFORMACIÓN"}))
+        when "supracategoria"
+          registro = modelo.create!(MODELO_PARAMS.merge({id: 1360, id_tviolencia: "D"}))
         else
           registro = modelo.create!(MODELO_PARAMS)
         end
@@ -61,8 +62,9 @@ module Sip
       return registro
     end
 
-    basicas_sip.each do |basica|
-      if basica[1] == "oficina"
+    basicas_sivel2_gen.each do |basica|
+      if basica[1] == "estadocivil" || basica[1] == "maternidad" || basica[1] == "actividadoficio" || basica[1] == "escolaridad"
+
         next
       end
 
@@ -72,30 +74,17 @@ module Sip
 
       #No autenticado
 
-      if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
-        test "sin autenticar debe presentar el index de #{basica[1]}" do
+      test "sin autenticar no debe presentar el index de #{basica[1]}" do
+        assert_raise CanCan::AccessDenied do
           get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
-          assert_response :ok
         end
-        test "sin autenticar debe presentar el show de #{basica[1]}" do
-          skip 
-          reg = modelo.all.take
+      end
+      test "sin autenticar no debe presentar el show de #{basica[1]}" do
+        reg = crear_registro(modelo, basica[1])
+        assert_raise CanCan::AccessDenied do
           get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
-          assert_response :ok
         end
-      else 
-        test "sin autenticar no debe presentar el index de #{basica[1]}" do
-          assert_raise CanCan::AccessDenied do
-            get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
-          end
-        end
-        test "sin autenticar no debe presentar el show de #{basica[1]}" do
-          reg = crear_registro(modelo, basica[1])
-          assert_raise CanCan::AccessDenied do
-            get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
-          end
-          reg.destroy!
-        end
+        reg.destroy!
       end
 
       test "sin autenticar no debe ver formulario de nuevo de #{basica[1]}" do
@@ -142,34 +131,19 @@ module Sip
 
       # Autenticado como operador sin grupo
 
-      if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
-        test "operador sin grupo debe presentar el index de #{basica[1]}" do
-          sign_in @ope_sin_grupo
+      test "operador sin grupo no debe presentar el index de #{basica[1]}" do
+        sign_in @ope_sin_grupo
+        assert_raise CanCan::AccessDenied do
           get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
-          assert_response :ok
         end
-        test "operador sin grupo debe presentar el show de #{basica[1]}" do
-          skip 
-          sign_in @ope_sin_grupo
-          reg = modelo.all.take
+      end
+      test "operador sin grupo no debe presentar el show de #{basica[1]}" do
+        sign_in @ope_sin_grupo
+        reg = crear_registro(modelo, basica[1])
+        assert_raise CanCan::AccessDenied do
           get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
-          assert_response :ok
         end
-      else 
-        test "operador sin grupo no debe presentar el index de #{basica[1]}" do
-          sign_in @ope_sin_grupo
-          assert_raise CanCan::AccessDenied do
-            get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
-          end
-        end
-        test "operador sin grupo no debe presentar el show de #{basica[1]}" do
-          sign_in @ope_sin_grupo
-          reg = crear_registro(modelo, basica[1])
-          assert_raise CanCan::AccessDenied do
-            get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
-          end
-          reg.destroy!
-        end
+        reg.destroy!
       end
 
       test "operador sin grupo no debe ver formulario de nuevo de #{basica[1]}" do
@@ -220,34 +194,19 @@ module Sip
 
       # Autenticado como operador con grupo Analista de Casos
 
-      if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
-        test "operador analista debe presentar el index de #{basica[1]}" do
-          sign_in @ope_analista
+      test "operador analista no debe presentar el index de #{basica[1]}" do
+        sign_in @ope_analista
+        assert_raise CanCan::AccessDenied do
           get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
-          assert_response :ok
         end
-        test "operador analista debe presentar el show de #{basica[1]}" do
-          skip 
-          sign_in @ope_analista
-          reg = modelo.all.take
+      end
+      test "operador analista no debe presentar el show de #{basica[1]}" do
+        sign_in @ope_analista
+        reg = crear_registro(modelo, basica[1])
+        assert_raise CanCan::AccessDenied do
           get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
-          assert_response :ok
         end
-      else 
-        test "operador analista no debe presentar el index de #{basica[1]}" do
-          sign_in @ope_analista
-          assert_raise CanCan::AccessDenied do
-            get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
-          end
-        end
-        test "operador analista no debe presentar el show de #{basica[1]}" do
-          sign_in @ope_analista
-          reg = crear_registro(modelo, basica[1])
-          assert_raise CanCan::AccessDenied do
-            get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
-          end
-          reg.destroy!
-        end
+        reg.destroy!
       end
 
       test "operador analista no debe ver formulario de nuevo de #{basica[1]}" do

@@ -1008,18 +1008,6 @@ Y los objetos de respuesta JSON a esta petición son de la siguiente forma:
 [{"id":4,"fecha":"2021-11-10","codigositio":"191030","created_at":"2021-11-06T19:39:08.247-05:00","updated_at":"2021-11-10T16:28:41.551-05:00","nombreusuario":"sivel2","organizacion":"organizacion ejemplo ","ubicacionpre_id":null,"id_persona":101,"parentezco":"AB","grabacion":false,"telefono":"35468489","tipotestigo_id":null,"otrotipotestigo":"","hechos":"","ubicaespecifica":"","disposicioncadaveres_id":null,"otradisposicioncadaveres":"","tipoentierro_id":null,"min_depositados":null,"max_depositados":null,"fechadis":null,"horadis":"1999-12-31T19:39:00.000-05:00","insitu":true,"otrolubicacionpre_id":null,"detallesasesinato":"","nombrepropiedad":"","detallesdisposicion":"","nomcomoseconoce":"","elementopaisaje_id":null,"cobertura_id":null,"interatroprevias":"","interatroactuales":"","usoterprevios":"","usoteractuales":"","accesolugar":"","perfilestratigrafico":"","observaciones":"","procesoscul":"","desgenanomalia":"","evaluacionlugar":"","riesgosdanios":"","archivokml_id":null}]`
 ```
  </details>
-<details>
- <summary><code>GET</code> <code><b>/</b></code> <code>admin/tablabasica/:id</code></summary>
-
-Es posible obtener un único valor de una tabla básica especificando en la ruta el dentificador de la tabla. La respuesta a esta petición está disponible en formato HTML y JSON. Por ejemplo suponiendo que se tiene la siguiente petición:
-> ```javascript
->  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/admin/antecedentes/6.json
-> ```
-Su respuesta ser así: 
-```json	
-{"id":6,"nombre":"ALLANAMIENTO","observaciones":null,"fechacreacion_localizada":"29/ene/2001","fechadeshabilitacion_localizada":null}`
-```
- </details>
  
 ## Gestionando plantillas
 
@@ -1053,7 +1041,7 @@ Obteniendo una respuesta así:
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>plantillashcr</code> </summary>
  
-Es posible por medio de esta petición, obtener el listado de plantillas creadas para registros únicos. El úni parámetro de filtro es el identificador <code>filtro[:busid]</code>. La respuesta está disponible en HTML y JSON y los controles de accceso son los siguientes:
+Es posible por medio de esta petición, obtener el listado de plantillas creadas para registros únicos. El único parámetro de filtro es el identificador <code>filtro[:busid]</code>. La respuesta está disponible en HTML y JSON y los controles de accceso son los siguientes:
 
 - Rol administrador: Puede crear, consultar, editar, actualizar y eliminar plantillas de listado
 - Usuario autenticado no administrador: Puede leer las plantillas sin editar ni eliminar
