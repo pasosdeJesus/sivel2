@@ -691,7 +691,8 @@ Eliminar completamente un registro de bitácora especificando su identificación
 </details>
 
 </details>
-  ------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
  
 ## Respaldo
 <details>
@@ -872,6 +873,7 @@ Eliminar completamente un registro de bitácora especificando su identificación
  </details>
  
  </details>
+ 
  ------------------------------------------------------------------------------------------
  
 ## Listando Anexos
@@ -896,6 +898,7 @@ Al hacer la petición se descarga automáticamente el anexo y no hay redireccion
 ## Listando organizaciones sociales
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>orgsociales</code></summary>
+
 Los parámetros que se pueden establecer en la url de la petición son los que hacen referencia al filtro y los cuales se describen a continuación
  ##### Parámetros para filtros
 
@@ -931,8 +934,9 @@ La respuesta es una tabla html en donde la primera columna es el criterio de des
 
 ##### Control de acceso
 Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Administrador, Directivo y Operador), puede consultar las organizaciones sociales en su totalidad. Sin embargo, un operador analista no puede eliminar organizaciones sociales existentes más si editar y un operador observador únicamente puede ver los registros sin editar o eliminar. Un usuario desde la consulta web pública o sin autenticarse no acceder a ningún registro.  
-  </details>
- -----------------------------------------------------------------------------------------
+</details>
+
+-----------------------------------------------------------------------------------------
  
 ## Gestionando tablas básicas 
 
