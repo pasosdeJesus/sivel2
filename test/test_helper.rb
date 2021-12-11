@@ -66,6 +66,22 @@ PRUEBA_ORGSOCIAL = {
   updated_at: '2021-08-27'
 }
 
+PRUEBA_UBICACIONPRE = {
+  nombre: "BARRANCOMINAS / BARRANCOMINAS / GUAINÍA / COLOMBIA",
+  pais_id: 170,
+  departamento_id: 56,
+  municipio_id: 594,
+  clase_id: 13064,
+  lugar: nil,
+  sitio: nil,
+  tsitio_id: nil,
+  latitud: nil,
+  longitud: nil,
+  created_at: "2021-12-08",
+  updated_at: "2021-12-08",
+  nombre_sin_pais: "BARRANCOMINAS / BARRANCOMINAS / GUAINÍA"
+}
+
 PRUEBA_LUGARPRELIMINAR = {
   fecha: "2021-11-10",
   codigositio: "191030",

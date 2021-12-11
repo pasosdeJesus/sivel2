@@ -48,6 +48,30 @@ module Sivel2Gen
       assert_response :ok
     end
 
+    test "sin autenticar no puede acceder importarrelatos casos" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_importarrelatos_path
+      end
+    end
+
+    test "sin autenticar no puede refrescar casos" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_refresca_path
+      end
+    end
+
+    test "sin autenticar no puede acceder a casos mapaosm" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_mapaosm_path
+      end
+    end
+
+    test "sin autenticar no puede acceder a casos lista" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_lista_path
+      end
+    end
+
     test "sin autenticar no debe ver formulario de nuevo" do
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.new_caso_path()
@@ -114,6 +138,36 @@ module Sivel2Gen
       end
     end
 
+    test "operador sin grupo puede acceder a casos mapaosm" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      get sivel2_gen.casos_mapaosm_path
+      assert_response :ok
+    end
+
+    test "operador sin grupo puede acceder a casos lista" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      get sivel2_gen.casos_lista_path
+      assert_response :ok
+    end
+
+    test "operador sin grupo  no puede refrescar casos" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_refresca_path
+      end
+    end
+
+    test "operador sin grupo no puede acceder importarrelatos casos" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_importarrelatos_path
+      end
+    end
+
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
@@ -151,6 +205,35 @@ module Sivel2Gen
       sign_in current_usuario
       get sivel2_gen.new_caso_path()
       assert_response :redirect
+    end
+
+    test "operador analista no puede acceder importarrelatos casos" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.casos_importarrelatos_path
+      end
+    end
+
+    test "operador analista  puede acceder a casos mapaosm" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      get sivel2_gen.casos_mapaosm_path
+      assert_response :ok
+    end
+
+    test "operador analista  puede acceder a casos lista" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      get sivel2_gen.casos_lista_path
+      assert_response :ok
+    end
+
+    test "operador analista  puede refrescar casos" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      get sivel2_gen.casos_refresca_path
+      assert_response :ok
     end
 
     test "analista debe poder crear un caso nuevo" do
