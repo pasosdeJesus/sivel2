@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f5e1c53d6c8f24be9cc654e875cb956b0e1fb834
+  revision: 5204326d567e7d53972547276302f08570d14038
   branch: main
   specs:
     sip (2.0)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 3a844ec21c4710cb014d05922769bd520a3134cc
+  revision: fc9a7bdfed276ef24a7286fa267af318756e4d7d
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -251,7 +251,7 @@ GEM
     json (2.6.1)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
-    loofah (2.12.0)
+    loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -376,7 +376,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
     smart_kv (0.2.8.1)
-    spring (3.1.1)
+    spring (4.0.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
