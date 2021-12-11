@@ -1207,3 +1207,93 @@ Obteniendo una respuesta así:
 {"id":1,"ruta":"plantillas/reporte_un_caso.ods","fuente":"fuenet","licencia":"","vista":"Caso","nombremenu":"Ejemplo","formulario":[],"campoplantillahcr":[]}
 ```
 </details>
+
+<details>
+ <summary><code>GET / sis / arch </code></summary>
+Presenta una vista con carpetas existentes y si es un usuario administrador tiene una funcionalidad para crear una carpeta nueva de archivos dentro de la aplicación.  
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/sis/arch
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es una página HTML con las carpetas.
+
+##### Control de Acceso
+Usuarios no autenticados no pueden visualizar carpetas
+Usuarios autenticados con rol operador pueden unicamente visualizar las carpetas más no crear
+Usuarios administradores tienes todos los permisos.
+ </details>
+ 
+<details>
+ <summary><code>POST / sis / nueva </code></summary>
+Permite crear una nueva carpeta en la nube de la aplicación. 
+
+##### Ejemplo url
+> ```javascript
+>  curl -X POST http://nuevo.nocheyniebla.org:3400/sivel2/sis/nueva
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es un HTML con el listado de carpetas con la nueva carpeta creada.
+
+##### Control de Acceso
+Solo usuarios administradores tiene permiso para crear carpeta.
+ </details>
+ 
+<details>
+ <summary><code>POST / sis / nuevo </code></summary>
+Permite crear un nuevo archivo en la nube de la aplicación. 
+
+##### Ejemplo url
+> ```javascript
+>  curl -X POST http://nuevo.nocheyniebla.org:3400/sivel2/sis/nuevo
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es un HTML con el listado de carpetas con el archivo nuevo creado.
+
+##### Control de Acceso
+Solo usuarios administradores tiene permiso para crear archivos.
+ </details>
+ 
+ <details>
+ <summary><code>POST / sis /actleeme </code></summary>
+Permite actualizar ruta o remplazar archivo LEEME.md
+
+##### Ejemplo url
+> ```javascript
+>  curl -X POST http://nuevo.nocheyniebla.org:3400/sivel2/sis/actleeme
+> ```
+
+##### Control de Acceso
+Solo usuarios administradores tiene permiso para actleeme.
+ </details>
+
+ <details>
+ <summary><code>GET / plantillashcm / importadatos </code></summary>
+Permite actualizar ruta o remplazar archivo LEEME.md
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/plantillashcm/importadatos
+> ```
+##### Ejemplo de respuestas
+La respuesta es un HTML con la vista del formulario para importar datos para plantillas hcm.
+##### Control de Acceso
+Solo usuarios administradores tiene permiso para importar datos en plantillashcm.
+ </details>
+ <details>
+ <summary><code>POST / plantillashcm / importadatos </code></summary>
+Petición que importa datos para nuevas plantillashcm
+
+##### Ejemplo url
+> ```javascript
+>  curl -X POST http://nuevo.nocheyniebla.org:3400/sivel2/plantillashcm/importadatos
+> ```
+##### Ejemplo de respuestas
+La respuesta es un HTML con la vista del formulario para importar datos para plantillas hcm.
+##### Control de Acceso
+Solo usuarios administradores tiene permiso para importar datos en plantillashcm.
+ </details>
