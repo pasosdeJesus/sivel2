@@ -3,10 +3,10 @@ Esta es la documentación oficial de la API de la aplicación siVel2. Aquí est�
 - Inspirado por documentación Swagger API en estilo y estructura: https://petstore.swagger.io/#/pet
 ------------------------------------------------------------------------------------------
 
-## Listando casos existentes 
+## Gestionando casos 
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>casos</code></summary>
+ <summary><code>GET / casos</code></summary>
 
 Un usuario puede consumir de la API tanto las generalidades básicas de un conjunto de casos, como también un caso con todos los detalles del mismo.  Esta API está siendo utilizada para el reporte de casos en la aplicación pero igualmente esta siendo consumida por servicios como mapas y reportes completos de informes en planillas. Se puede generar reportes en diferentes formatos: JSON, XRLAT (XML) y HTML..
 
@@ -152,8 +152,9 @@ SIVeL 2 mostrará el reporte completo siguiendo el docmuneto DTD ubicado en [htt
 	</relatos>
 	```
 </details>
+
 <details>
- <summary><code>GET</code> <code><b>/casos/ {id}</b></code> <code>(obtener un caso específico según el id proporcionado)</code></summary>
+ <summary><code>GET /casos/ :id </code></summary>
 
 ##### Parámetro
 
@@ -200,9 +201,10 @@ Para el caso de XRLAT sí se presenta un informe detallado del caso en formato x
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/casos/cuenta</b></code><code> (Trae conteo de casos en un intervalo de fechas)</code></summary>
+ <summary><code>GET / casos / cuenta</code></summary>
+ 
+Trae conteo de casos en un intervalo de fechas. Ruta para poder obtener mediante un arreglo el número total de casos por fecha y por departamento.
 
-Se ha construido también una ruta para poder obtener mediante un arreglo el número total de casos por fecha y por departamento.
 ##### Parámetros
 
 > | nombre            |  tipo     | tipo de dato      | descripción                         |
@@ -232,6 +234,7 @@ Se ha construido también una ruta para poder obtener mediante un arreglo el nú
 ```
 De esta forma vienen especificados lo objetos para todas las fechas dentro del rango y todos los departamentos. Es obligatorio especificar los parámetros de fecha inicial y fecha final, además si el caso no tiene ubicación, este entrará a sumar en el conteo de esa fecha con departamento nulo.
 </details>
+
  <details>
  <summary><code>Resumen control de acceso de casos</code><code>(permisos)</code></summary>
  
@@ -261,6 +264,144 @@ De esta forma vienen especificados lo objetos para todas las fechas dentro del r
 - Usuario con rol administrador:
 	- Todos los permisos de gestionar casos
 </details>
+
+<details>
+ <summary><code>GET / casos / importarrelatos</code></summary>
+
+Ruta utilizada para acceder a la vista de importación de relatos.
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/casos/importarrelatos"
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es una página HTML con un formulario que te permite seleccionar el archivo de relatos que desea importar
+
+##### Control de Acceso
+Únicamente pueden importar relatos usuarios autenticados con rol administrador. 
+ </details>
+
+<details>
+ <summary><code>GET / casos / mapaosm </code></summary>
+
+Ruta utilizada para acceder a la vista del mapa de casos de Open Street Map.
+##### Parámetros 
+fechaini: String, fecafin: String, departamento_id: integer, categoria_id: integer, presponsable_id: integer
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/casos/mapaosm"
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es una página HTML con un mapa que te permite visualizar los casos a través de marcadores con la longitud y latitud de la ubicación principal del caso. 
+
+##### Control de Acceso
+Cualquier usuario autenticado puede acceder a casos mapaosm.  
+ </details>
+
+<details>
+ <summary><code>GET / casofotras / nuevo</code></summary>
+
+Ruta utilizada para crear un registro de sivel2_gen_casofotra para el caso que recibe por parámetro caso_id. Pone valores simples en los casos requeridos.
+
+##### Parámetros 
+caso_id: integer
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/casofotras/nuevo?caso_id=1365"
+> ```
+
+##### Ejemplo de respuestas
+Las respuestas pueden ser en JS, JSON y HTML y retornan el identificador del nuevo registro de casofotra creado
+
+##### Control de Acceso
+Únicamente pueden eliminar actos colectivos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+ </details>
+
+<details>
+ <summary><code>GET / casos / refresca</code></summary>
+
+Ruta utilizada para refrescar el listado de casos existentes.
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/casos/refresca"
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es una página HTML y con el mensaje de éxito "Listado de Casos refrescado" con fecha y hora de la acción.
+
+##### Control de Acceso
+Únicamente pueden refrescar el listado de casos los usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+ </details>
+
+<details>
+ <summary><code>GET / casos / lista</code></summary>
+
+Ruta utilizada para listar ubicaciones según parámetro de tabla que puede ser departamento, municipio o clase.
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/casos/lista?tabla="departamento"&id_pais=170
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es una página HTML y con el listado de ubicaciones según los parámetros establecidos.
+
+##### Control de Acceso
+Únicamente pueden refrescar el listar, usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+ </details>
+
+## Actos 
+<details>
+ <summary><code>PATCH / actos / agregar</code></summary>
+
+Ruta utilizada para agregar actos dentro de la creación de un caso, actualmente no puede ser utilizada externamente del formulario de casos, sin embargo están establecidos permisos específicos para hacer uso del método.
+
+##### Parámetros 
+Sivel2Gen::Acto(id_presponsable: integer, id_categoria: integer, id_persona: integer, id_caso: integer, created_at: datetime, updated_at: datetime, id: integer)
+##### Control de Acceso
+Únicamente pueden crear actos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+
+ </details>
+<details>
+ <summary><code> GET / actos / eliminar</code></summary>
+
+Ruta utilizada para eliminar actos dentro de la creación de un caso, actualmente no puede ser utilizada externamente del formulario de casos, sin embargo están establecidos permisos específicos para hacer uso del método.
+
+##### Parámetros 
+id_acto: integer
+##### Control de Acceso
+Únicamente pueden eliminar actos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+</details>
+ 
+<details>
+ <summary><code>PATCH / actoscolectivos / agregar</code></summary>
+
+Ruta utilizada para agregar actos colectivos dentro de la creación de un caso, actualmente no puede ser utilizada externamente del formulario de casos, sin embargo están establecidos permisos específicos para hacer uso del método.
+
+##### Parámetros 
+Sivel2Gen::Actocolectivo(id_presponsable: integer, id_categoria: integer, id_grupoper: integer, id_caso: integer, created_at: datetime, updated_at: datetime, id: integer)
+
+##### Control de Acceso
+Únicamente pueden crear actos colectivos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+
+ </details>
+<details>
+ <summary><code>GET / actoscolectivos / eliminar</code></summary>
+
+Ruta utilizada para eliminar actos colectivos dentro de la creación de un caso, actualmente no puede ser utilizada externamente del formulario de casos, sin embargo están establecidos permisos específicos para hacer uso del método.
+
+##### Parámetros 
+id_actocolectivo: integer
+
+##### Control de Acceso
+Únicamente pueden eliminar actos colectivos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+
+</details>
+
 
 ------------------------------------------------------------------------------------------
 ## Listando víctimas 
