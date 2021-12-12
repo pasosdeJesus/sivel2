@@ -89,7 +89,7 @@ module Sip
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get sip.edit_orgsocial_path(@orgsocial.id)
+        get sip.edit_orgsocial_path(@orgsocial.id.to_s)
       end
     end
 
