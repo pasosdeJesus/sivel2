@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 1f56fb09c14c4eaf82f7ea71047705008fd7cfba
+  revision: 744f90d7b6dd59d9cd6ea5b5c944a4b5b0be7ba7
   branch: main
   specs:
     apo214 (0.1.0)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: bed3fa3d7b29ecb8d19a88da07a209a53ef6fbdd
+  revision: fb333776e455d7f2ef34858f69eca1e4b619e7f8
   branch: main
   specs:
     heb412_gen (2.0)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1f5a44cb5b45102fe0a281b990fabfba7a45bced
+  revision: ec051ccd4febf1f7a82963336ee2bdc1783448ff
   branch: main
   specs:
     mr519_gen (2.0)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5204326d567e7d53972547276302f08570d14038
+  revision: 45fd00188714cd9024131dc5f58b72afe035c7f7
   branch: main
   specs:
     sip (2.0)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: fc9a7bdfed276ef24a7286fa267af318756e4d7d
+  revision: e06ad05607f462db7572b18659a2b9d274a76319
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -380,7 +380,7 @@ GEM
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.4.1)
+    sprockets-rails (3.4.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
