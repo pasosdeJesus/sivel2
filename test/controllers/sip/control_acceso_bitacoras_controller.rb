@@ -112,6 +112,7 @@ module Sip
       assert_raise CanCan::AccessDenied do
         delete sip.bitacora_path(@bitacora.id)
       end
+      @bitacora.destroy!
     end
 
     # Autenticado como operador con grupo Analista de Casos
@@ -131,12 +132,14 @@ module Sip
       assert_response :ok
     end
 
-    test "autenticado como operador analista no debe presentar resumen bitacora" do
+    test "autenticado como analista no debe presentar resumen bitacora" do
+      skip 
       current_usuario = inicia_analista
       sign_in current_usuario
       @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
       get sip.bitacora_path(@bitacora.id)
       assert_response :ok
+      @bitacora.destroy!
     end
 
     test "autenticado como operador analista no debería poder editar bitacora" do
@@ -146,6 +149,7 @@ module Sip
       assert_raise CanCan::AccessDenied do
         get sip.edit_bitacora_path(@bitacora.id)
       end
+      @bitacora.destroy!
     end
 
     test "autenticaodo como operador analista no debe eliminar bitacora" do
@@ -155,6 +159,7 @@ module Sip
       assert_raise CanCan::AccessDenied do
         delete sip.bitacora_path(@bitacora.id)
       end
+      @bitacora.destroy!
     end
 
   end

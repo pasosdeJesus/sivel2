@@ -40,7 +40,7 @@ Un usuario puede consumir de la API tanto las generalidades básicas de un conju
 > | `:contexto_id`         |Integer / AUT     |El contexto es Proceso judicial: `filtro[contexto_id]=106`   
 > | `:contextovictima_id`         |Integer / AUT     |El contexto de víctima es Falso positivo: `filtro[contextovictima_id]=1`  
 > | `:orientacionsexual`         |String / AUT     |La orientación sexual es Heterosexual: `filtro[contextovictima_id]=H`                                          
-> | `:inc_casoid`         |Integer / AUT     |Incluir la identificación del caso en el reporte: `filtro[inc_casoid]=1`  
+> | `:inc_casoid`         |Integer / AUT     |Incluir la identificación del caso en el reporte: `filtro[inc_casid]=1`  
 > | `:inc_fecha`         |Integer / CP / AUT     |Incluir la fecha del caso en el reporte: `filtro[inc_casoid]=1`  
 > | `:inc_ubicaciones`         |Integer / CP / AUT     |Incluir las ubicaciones del caso: `filtro[inc_ubicaciones]=1`
 > | `:inc_presponsables`         |Integer / CP / AUT     |Incluir los presuntos responsables del caso en el reporte: `filtro[inc_presponsables]=1`    
@@ -352,6 +352,41 @@ La respuesta es una página HTML y con el listado de ubicaciones según los par�
 
 ##### Control de Acceso
 Únicamente pueden refrescar el listar, usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+ </details>
+
+<details>
+ <summary><code>GET / validarcasos</code></summary>
+
+Ruta utilizada para validar casos existentes, es un reporte de validaciones realizadas para verificar coherencia en los datos según el memo, fechas. ubicaciones, etc. 
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/validarcasos
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es una página HTML y con el reporte de validaciones.
+
+##### Control de Acceso
+Únicamente pueden acceder a validarcasos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
+ </details> 
+
+## Conteos 
+<details>
+ <summary><code>GET / conteos / genvic</code></summary>
+
+Ruta utilizada para listar ubicaciones según parámetro de tabla que puede ser departamento, municipio o clase.
+
+##### Ejemplo url
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/conteos/genvic
+> ```
+
+##### Ejemplo de respuestas
+La respuesta es una página HTML 
+
+##### Control de Acceso
+Únicamente puede realizar esta petición un usuario autenticado con rol administrador y con rol operador perteneciente a grupo analista de casos.
  </details>
 
 ## Actos 

@@ -17,7 +17,7 @@ module Sivel2Gen
     # Consulta pública de casos para usuarios no autenticados
     ################
 
-    test "sin autenticar no debe crear" do
+    test "sin autenticar no debe crear caso" do
       skip ##  en get sivel2_gen.casos_path ERROR:  current transaction is aborted, commands ignored until 
       assert_raise CanCan::AccessDenied do
         post sivel2_gen.casos_path, params: { 
@@ -30,7 +30,7 @@ module Sivel2Gen
       end
     end
 
-    test "sin activar consulta publica no puede acceder a revista de casos" do
+    test "sin activar la consulta publica no puede acceder a revista de casos" do
       ENV['SIVEL2_CONSWEB_PUBLICA'] = ""
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.casos_path()
@@ -65,6 +65,43 @@ module Sivel2Gen
         get sivel2_gen.casos_mapaosm_path
       end
     end
+
+    test "sin autenticar no puede acceder a validar casos" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.validarcasos_path
+      end
+    end
+
+    test "sin autenticar no post a validar casos" do
+      assert_raise CanCan::AccessDenied do
+        post sivel2_gen.validarcasos_path
+      end
+    end
+
+    test "sin autenticar no post a casos importa" do
+      assert_raise CanCan::AccessDenied do
+        post sivel2_gen.importa_casos_path
+      end
+    end
+
+    test "sin autenticar  no puede acceder a victimas" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.victimas_nuevo_path
+      end
+    end
+
+    test "sin autenticar  no puede acceder a victimascol" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.victimascolectivas_nuevo_path
+      end
+    end
+
+    test "sin autenticar  no puede acceder a nuevo fuentesprensa" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.fuentesprensa_nuevo_path
+      end
+    end
+
 
     test "sin autenticar no puede acceder a casos lista" do
       assert_raise CanCan::AccessDenied do
@@ -115,6 +152,39 @@ module Sivel2Gen
       assert_response :ok
     end
 
+    test "autenticado como operador sin grupo  no puede acceder a validar casos" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.validarcasos_path
+      end
+    end
+
+    test "autenticado como operador sin grupo  no puede post importa" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        post sivel2_gen.importa_casos_path
+      end
+    end
+
+
+    test "autenticado como operador sin grupo  no post a validar casos" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        post sivel2_gen.validarcasos_path
+      end
+    end
+
+    test "autenticado como operador sin grupo no accede a fuentesprensa neuvo" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.fuentesprensa_nuevo_path
+      end
+    end
+
     test "autenticado como operador sin grupo puede ver vista editar para etiquetas" do
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
@@ -142,6 +212,20 @@ module Sivel2Gen
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.casos_mapaosm_path
+      assert_response :ok
+    end
+
+    test "operador sin grupo  puede acceder a victimas" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      get sivel2_gen.victimas_nuevo_path
+      assert_response :ok
+    end
+
+    test "operador sin grupo puede acceder a victimascol" do
+      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      get sivel2_gen.victimascolectivas_nuevo_path
       assert_response :ok
     end
 
@@ -213,6 +297,50 @@ module Sivel2Gen
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.casos_importarrelatos_path
       end
+    end
+
+    test "operador analista no puede post importa casos" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        post sivel2_gen.importa_casos_path
+      end
+    end
+
+
+    test "operador analista  puede acceder a validar casos" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      get sivel2_gen.validarcasos_path
+      assert_response :ok
+    end
+
+    test "operador analista puede acceder a victimas" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      get sivel2_gen.victimas_nuevo_path
+      assert_response :ok
+    end
+
+    test "operador analista puede acceder a fuentesprensa nuevo" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      get sivel2_gen.fuentesprensa_nuevo_path
+      assert_response :ok
+    end
+
+    test "operador analista puede acceder a victimascol" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      get sivel2_gen.victimascolectivas_nuevo_path
+      assert_response :ok
+    end
+
+    test "operador analista  no post a validar casos" do
+      current_usuario = inicia_analista
+      sign_in current_usuario
+      post sivel2_gen.validarcasos_path
+      assert_response :ok
     end
 
     test "operador analista  puede acceder a casos mapaosm" do
