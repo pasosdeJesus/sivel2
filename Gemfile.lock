@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: b6b4326c8f25a3599f1b3ccc845f439a7adf3404
+  revision: 2c7c4d4fbbe19f94cfba4bf43f5bdc2aa9773327
   branch: main
   specs:
     apo214 (0.1.0)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c22a02cb726bc376f1b5ba1cdde9b47a33bb5e79
+  revision: 0223e8e5b72d8143e07d76fc7a825d8d1577c965
   branch: main
   specs:
     heb412_gen (2.0)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 274f0780cb6c13055cd8a2084d84b61ee43e4e10
+  revision: b7f404e2a46e5104e20ffb5e6be46cf80088fac6
   branch: main
   specs:
     mr519_gen (2.0)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 543e4a92badc3b66a3ed7830263f0f5a23b9cfd2
+  revision: b90543e16f676d68f8cacceb2370948536e7a36e
   branch: main
   specs:
     sip (2.0)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ab39b48b52bbe85688c0d77891f06cd5b762db87
+  revision: 317a4aed2146621d70b4a48a2abbe79512a3f226
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -85,60 +85,60 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (6.1.4.3)
-      actionpack (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    actioncable (6.1.4.4)
+      actionpack (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (6.1.4.3)
-      actionpack (= 6.1.4.3)
-      activejob (= 6.1.4.3)
-      activerecord (= 6.1.4.3)
-      activestorage (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    actionmailbox (6.1.4.4)
+      actionpack (= 6.1.4.4)
+      activejob (= 6.1.4.4)
+      activerecord (= 6.1.4.4)
+      activestorage (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       mail (>= 2.7.1)
-    actionmailer (6.1.4.3)
-      actionpack (= 6.1.4.3)
-      actionview (= 6.1.4.3)
-      activejob (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    actionmailer (6.1.4.4)
+      actionpack (= 6.1.4.4)
+      actionview (= 6.1.4.4)
+      activejob (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (6.1.4.3)
-      actionview (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    actionpack (6.1.4.4)
+      actionview (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       rack (~> 2.0, >= 2.0.9)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (6.1.4.3)
-      actionpack (= 6.1.4.3)
-      activerecord (= 6.1.4.3)
-      activestorage (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    actiontext (6.1.4.4)
+      actionpack (= 6.1.4.4)
+      activerecord (= 6.1.4.4)
+      activestorage (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       nokogiri (>= 1.8.5)
-    actionview (6.1.4.3)
-      activesupport (= 6.1.4.3)
+    actionview (6.1.4.4)
+      activesupport (= 6.1.4.4)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (6.1.4.3)
-      activesupport (= 6.1.4.3)
+    activejob (6.1.4.4)
+      activesupport (= 6.1.4.4)
       globalid (>= 0.3.6)
-    activemodel (6.1.4.3)
-      activesupport (= 6.1.4.3)
-    activerecord (6.1.4.3)
-      activemodel (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
-    activestorage (6.1.4.3)
-      actionpack (= 6.1.4.3)
-      activejob (= 6.1.4.3)
-      activerecord (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    activemodel (6.1.4.4)
+      activesupport (= 6.1.4.4)
+    activerecord (6.1.4.4)
+      activemodel (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
+    activestorage (6.1.4.4)
+      actionpack (= 6.1.4.4)
+      activejob (= 6.1.4.4)
+      activerecord (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       marcel (~> 1.0.0)
       mini_mime (>= 1.1.0)
-    activesupport (6.1.4.3)
+    activesupport (6.1.4.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -187,7 +187,7 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
-    devise (4.8.0)
+    devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -240,7 +240,7 @@ GEM
       turbo-rails
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.3)
+    jbuilder (2.11.4)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -305,20 +305,20 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (6.1.4.3)
-      actioncable (= 6.1.4.3)
-      actionmailbox (= 6.1.4.3)
-      actionmailer (= 6.1.4.3)
-      actionpack (= 6.1.4.3)
-      actiontext (= 6.1.4.3)
-      actionview (= 6.1.4.3)
-      activejob (= 6.1.4.3)
-      activemodel (= 6.1.4.3)
-      activerecord (= 6.1.4.3)
-      activestorage (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    rails (6.1.4.4)
+      actioncable (= 6.1.4.4)
+      actionmailbox (= 6.1.4.4)
+      actionmailer (= 6.1.4.4)
+      actionpack (= 6.1.4.4)
+      actiontext (= 6.1.4.4)
+      actionview (= 6.1.4.4)
+      activejob (= 6.1.4.4)
+      activemodel (= 6.1.4.4)
+      activerecord (= 6.1.4.4)
+      activestorage (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       bundler (>= 1.15.0)
-      railties (= 6.1.4.3)
+      railties (= 6.1.4.4)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -333,9 +333,9 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    railties (6.1.4.3)
-      actionpack (= 6.1.4.3)
-      activesupport (= 6.1.4.3)
+    railties (6.1.4.4)
+      actionpack (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
       method_source
       rake (>= 0.13)
       thor (~> 1.0)
@@ -384,7 +384,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stimulus-rails (1.0.0)
+    stimulus-rails (1.0.2)
       railties (>= 6.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
@@ -393,7 +393,7 @@ GEM
     ttfunk (1.7.0)
     turbo-rails (7.1.1)
       rails (>= 6.0.0)
-    twitter_cldr (6.9.0)
+    twitter_cldr (6.10.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
