@@ -10,12 +10,22 @@ module Sip
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @anexo_archivo = File.new("test/fixtures/sample_file.png")
       @anexo = Sip::Anexo.create(PRUEBA_ANEXO)
-      @anexo.adjunto_file_name =  @anexo_archivo.path
+      @anexo.adjunto_file_name =  'ej.txt'
       @anexo.save!
+      n = sprintf(Sip.ruta_anexos.to_s + "/%d_%s", @anexo.id.to_i, 
+                  @anexo.adjunto_file_name)
+      puts n
+      FileUtils.touch n
     end
 
+    teardown do
+      if @anexo
+        n = sprintf(Sip.ruta_anexos.to_s + "/%d_%s", @anexo.id.to_i, 
+                    @anexo.adjunto_file_name)
+        File.delete n
+      end
+    end
 
     PRUEBA_ANEXO= {
       descripcion: "grafica",
@@ -28,9 +38,8 @@ module Sip
     # No autenticado
     ################
     test "sin autenticar no debe poder descarga anexo" do
-      skip
       assert_raise CanCan::AccessDenied do
-        get descarga_anexo_path(@anexo.id)
+        get sip.descarga_anexo_path(@anexo.id)
       end
     end
 
@@ -38,10 +47,9 @@ module Sip
     #####################################
 
     test "autenticado como operador sin grupo debe descargar anexo" do
-      skip
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get descarga_anexo_path(@anexo.id)
+      get sip.descarga_anexo_path(@anexo.id)
       assert_response :ok
     end
 
@@ -56,10 +64,9 @@ module Sip
     end
 
     test "autenticado como operador analista debe presentar listado" do
-      skip
       current_usuario = inicia_analista
       sign_in current_usuario
-      get ENV['RUTA_RELATIVA'] + "anexos/descarga_anexo/" + @anexo.id.to_s
+      get sip.descarga_anexo_path(@anexo.id)
       assert_response :ok
     end
 
@@ -74,10 +81,9 @@ module Sip
     end
 
     test "autenticado como operador observador debe presentar listado" do
-      skip
       current_usuario = inicia_observador
       sign_in current_usuario
-      get ENV['RUTA_RELATIVA'] + "anexos/descarga_anexo/" + @anexo.id.to_s
+      get sip.descarga_anexo_path(@anexo.id)
       assert_response :ok
     end
   end
