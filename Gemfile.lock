@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7ecec7b03c3fc3d01d7cf464dda9d8bd197e57a1
+  revision: 4cbdf4d6654a4d30680eb754f57744676ca15849
   branch: sivel2.0
   specs:
     sivel2_gen (2.0b17)
@@ -186,7 +186,8 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.4)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
