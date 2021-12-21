@@ -15,7 +15,6 @@ module Sip
       @anexo.save!
       n = sprintf(Sip.ruta_anexos.to_s + "/%d_%s", @anexo.id.to_i, 
                   @anexo.adjunto_file_name)
-      puts n
       FileUtils.touch n
     end
 
@@ -47,7 +46,7 @@ module Sip
     #####################################
 
     test "autenticado como operador sin grupo debe descargar anexo" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.descarga_anexo_path(@anexo.id)
       assert_response :ok
@@ -56,15 +55,8 @@ module Sip
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista debe presentar listado" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.descarga_anexo_path(@anexo.id)
       assert_response :ok
@@ -73,15 +65,9 @@ module Sip
     # Autenticado como operador con grupo Observador de Casos
     #######################################################
 
-    def inicia_observador
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [21]
-      current_usuario.save
-      return current_usuario
-    end
 
     test "autenticado como operador observador debe presentar listado" do
-      current_usuario = inicia_observador
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OBS)
       sign_in current_usuario
       get sip.descarga_anexo_path(@anexo.id)
       assert_response :ok

@@ -15,36 +15,17 @@ class ActiveSupport::TestCase
   end
 end
 
-# Usuario operador para ingresar y hacer pruebas
-PRUEBA_USUARIO_OP = {
-  nusuario: "operador",
-  password: "sjrcol123",
-  nombre: "operador",
-  descripcion: "operador",
-  rol: 5,
-  idioma: "es_CO",
-  email: "operador@localhost",
-  encrypted_password: '$2a$10$uMAciEcJuUXDnpelfSH6He7BxW0yBeq6VMemlWc5xEl6NZRDYVA3G',
-  sign_in_count: 0,
-  fechacreacion: "2021-08-27",
-  fechadeshabilitacion: nil
-}
+# Usuarios para pruebas sincronizados con db/seed.rb
 
-# Usuario operador del grupo analista de casos 
-# (debe agregarse al grupo analista de casos después de creado)
-PRUEBA_USUARIO_AN = {
-  nusuario: "analista",
-  password: "sjrcol123",
-  nombre: "analista",
-  descripcion: "operador en grupo analista de casos",
-  rol: 5,
-  idioma: "es_CO",
-  email: "analista@localhost",
-  encrypted_password: '$2a$10$uMAciEcJuUXDnpelfSH6He7BxW0yBeq6VMemlWc5xEl6NZRDYVA3G',
-  sign_in_count: 0,
-  fechacreacion: "2021-08-27",
-  fechadeshabilitacion: nil
-}
+PRUEBA_USUARIO_ADMIN = 1 # Usuario con rol administrador
+
+PRUEBA_USUARIO_OP = 2 # Usuario con rol operador y sin grupo
+
+PRUEBA_USUARIO_AN = 3 # Usuario operador del grupo analista de casos 
+
+PRUEBA_USUARIO_OBS = 4 # Usuario operador del grupo observador
+
+PRUEBA_USUARIO_OBSPAR = 5 # Usuario operador del grupo observador de parte
 
 
 PRUEBA_PERSONA = {

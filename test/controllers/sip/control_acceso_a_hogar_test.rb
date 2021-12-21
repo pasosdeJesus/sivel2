@@ -10,8 +10,8 @@ module Sip
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @gupoper = Sip::Grupoper.create!(PRUEBA_GRUPOPER)
-      @orgsocial = Sip::Orgsocial.create!(PRUEBA_ORGSOCIAL)
+      #@gupoper = Sip::Grupoper.create!(PRUEBA_GRUPOPER)
+      #@orgsocial = Sip::Orgsocial.create!(PRUEBA_ORGSOCIAL)
     end
 
     # No autenticado
