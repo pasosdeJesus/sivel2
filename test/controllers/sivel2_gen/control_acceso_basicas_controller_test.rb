@@ -11,15 +11,8 @@ module Sivel2Gen
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
-      @ope_analista = inicia_analista
-    end
-
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
+      @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
+      @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)
     end
 
     test "sin autenticar no debe listar tablas básicas" do

@@ -12,15 +12,8 @@ module Sivel2Gen
       end
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
       #@actocolectivo = Sivel2Gen::Actocolectivo.create!(PRUEBA_ACTO.merge({id_caso: @caso.id, id_persona: @persona.id}))
-      @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
-      @ope_analista = inicia_analista
-    end
-
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
+      @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
+      @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)
     end
 
     # No autenticado

@@ -43,7 +43,7 @@ module Heb412Gen
     #####################################
 
     test "autenticado como operador sin grupo debe presentar listado plamtillahcr" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get heb412_gen.plantillashcr_path
       assert_response :ok
@@ -52,7 +52,7 @@ module Heb412Gen
     test "autenticado como operador sin grupo puede ver resumen de plantillahcr" do
       skip
       # get aquí produce NoMethodError: undefined method `id' for nil:NilClass
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcr/#{Heb412Gen::Plantillahcr.all.sample.id}"
       assert_response :ok
@@ -61,7 +61,7 @@ module Heb412Gen
     test "autenticado como operador no debería poder editar plantillahcr" do
       skip
       # get aquí produce NoMethodError: undefined method `id' for nil:NilClass
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get heb412_gen.edit_plantillahcr_path(Heb412Gen::Plantillahcr.all.sample.id)
@@ -69,7 +69,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador no debe crear plantillahcr" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       skip
       assert_difference 'Heb412Gen::Plantillahcr.count' do
@@ -79,15 +79,8 @@ module Heb412Gen
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista no debe presentar listado" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get heb412_gen.plantillashcr_path
       assert_response :ok
@@ -96,7 +89,7 @@ module Heb412Gen
     test "autenticado como operador analista debe presentar resumen de plantillahcr" do
       skip
       # get aquí produce NoMethodError: undefined method `id' for nil:NilClass
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcr/#{Heb412Gen::Plantillahcr.all.sample.id}"
       assert_response :ok
@@ -105,7 +98,7 @@ module Heb412Gen
     test "autenticado como operador analista no debería poder editar plantillahcr" do
       skip
       # get aquí produce NoMethodError: undefined method `id' for nil:NilClass
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get heb412_gen.edit_plantillahcr_path(Heb412Gen::Plantillahcr.all.sample.id)

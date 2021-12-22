@@ -24,7 +24,7 @@ module Sip
     #####################################
 
     test "autenticado como operador sin grupo debe acceder a tipoclase" do
-      current_usuario = Usuario.find(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.tipoclase_path + ".json?term=#{Sip::Clase.all.sample.id}"
       assert_response :ok

@@ -1,4 +1,3 @@
-require 'test_helper'
 
 module Sivel2Gen
   class ControlAccesoCasofotrasControllerTest < ActionDispatch::IntegrationTest
@@ -11,15 +10,8 @@ module Sivel2Gen
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
-      @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
-      @ope_analista = inicia_analista
-    end
-
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
+      @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
+      @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)
     end
 
     PRUEBA_ACTO = {

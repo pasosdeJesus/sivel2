@@ -139,21 +139,21 @@ module Sivel2Gen
 
     test "autenticado como operador sin grupo debe presentar listado" do
       skip ##  en get sivel2_gen.casos_path ERROR:  current transaction is aborted, commands ignored until 
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.casos_path 
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo debe presentar resumen" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.caso_path(@caso.id)
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo  no puede acceder a validar casos" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.validarcasos_path
@@ -161,7 +161,7 @@ module Sivel2Gen
     end
 
     test "autenticado como operador sin grupo  no puede post importa" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post sivel2_gen.importa_casos_path
@@ -170,7 +170,7 @@ module Sivel2Gen
 
 
     test "autenticado como operador sin grupo  no post a validar casos" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post sivel2_gen.validarcasos_path
@@ -178,7 +178,7 @@ module Sivel2Gen
     end
 
     test "autenticado como operador sin grupo no accede a fuentesprensa neuvo" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.fuentesprensa_nuevo_path
@@ -186,14 +186,14 @@ module Sivel2Gen
     end
 
     test "autenticado como operador sin grupo puede ver vista editar para etiquetas" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.edit_caso_path(@caso.id)
       assert_response :ok
     end
 
     test "autenticaodo como operador sin grupo u observador no elimina" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         delete sivel2_gen.caso_path(@caso.id)
@@ -201,7 +201,7 @@ module Sivel2Gen
     end
 
     test "Observador o sin grupo no debe ver formulario de nuevo" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.new_caso_path()
@@ -209,35 +209,35 @@ module Sivel2Gen
     end
 
     test "operador sin grupo puede acceder a casos mapaosm" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.casos_mapaosm_path
       assert_response :ok
     end
 
     test "operador sin grupo  puede acceder a victimas" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.victimas_nuevo_path
       assert_response :ok
     end
 
     test "operador sin grupo puede acceder a victimascol" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.victimascolectivas_nuevo_path
       assert_response :ok
     end
 
     test "operador sin grupo puede acceder a casos lista" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.casos_lista_path
       assert_response :ok
     end
 
     test "operador sin grupo  no puede refrescar casos" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.casos_refresca_path
@@ -245,7 +245,7 @@ module Sivel2Gen
     end
 
     test "operador sin grupo no puede acceder importarrelatos casos" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.casos_importarrelatos_path
@@ -255,44 +255,37 @@ module Sivel2Gen
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista debe presentar listado" do
       skip ##  en get sivel2_gen.casos_path ERROR:  current transaction is aborted, commands ignored until 
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.casos_path
       assert_response :ok
     end
 
     test "autenticado como operador analista debe presentar resumen" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.caso_path(@caso.id)
       assert_response :ok
     end
 
     test "autenticado como operador analista debería poder editar" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.edit_caso_path(@caso.id)
       assert_response :ok
     end
 
     test "analista debe ver formulario de nuevo" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.new_caso_path()
       assert_response :redirect
     end
 
     test "operador analista no puede acceder importarrelatos casos" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.casos_importarrelatos_path
@@ -300,7 +293,7 @@ module Sivel2Gen
     end
 
     test "operador analista no puede post importa casos" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post sivel2_gen.importa_casos_path
@@ -309,56 +302,56 @@ module Sivel2Gen
 
 
     test "operador analista  puede acceder a validar casos" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.validarcasos_path
       assert_response :ok
     end
 
     test "operador analista puede acceder a victimas" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.victimas_nuevo_path
       assert_response :ok
     end
 
     test "operador analista puede acceder a fuentesprensa nuevo" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.fuentesprensa_nuevo_path
       assert_response :ok
     end
 
     test "operador analista puede acceder a victimascol" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.victimascolectivas_nuevo_path
       assert_response :ok
     end
 
     test "operador analista  no post a validar casos" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       post sivel2_gen.validarcasos_path
       assert_response :ok
     end
 
     test "operador analista  puede acceder a casos mapaosm" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.casos_mapaosm_path
       assert_response :ok
     end
 
     test "operador analista  puede acceder a casos lista" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.casos_lista_path
       assert_response :ok
     end
 
     test "operador analista  puede refrescar casos" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.casos_refresca_path
       assert_response :ok
@@ -366,7 +359,7 @@ module Sivel2Gen
 
     test "analista debe poder crear un caso nuevo" do
       skip ##  en get sivel2_gen.casos_path ERROR:  current transaction is aborted, commands ignored until 
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       post sivel2_gen.casos_path, params: { 
         caso: {

@@ -74,21 +74,21 @@ module Heb412Gen
     #####################################
 
     test "operador sin grupo  no debe acceder a sisarch " do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get ENV['RUTA_RELATIVA'] + "/sis/arch"
       assert_response :ok
     end
 
     test "operador sin grupo  no debe acceder a sisini " do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get heb412_gen.sisini_path
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo  no crea  carpeta nueva" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/nueva"
@@ -96,7 +96,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador sin grupo no elimina carpeta" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/eliminardir"
@@ -104,7 +104,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador sin grupo  no crea archivo nuevo" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/nuevo"
@@ -112,7 +112,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador sin grupo no elimina archivo" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/eliminararc"
@@ -120,7 +120,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador sin grupo no actleeme" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/actleeme"
@@ -128,7 +128,7 @@ module Heb412Gen
     end
 
     test "operador sin grupo no accede a hcm importadatos" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get ENV['RUTA_RELATIVA'] + "/plantillashcm/importadatos"
@@ -136,7 +136,7 @@ module Heb412Gen
     end
 
     test "operador sin grupo no post hcm importadatos" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/plantillashcm/importadatos"
@@ -145,22 +145,15 @@ module Heb412Gen
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista debe presentar sisarch" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get ENV['RUTA_RELATIVA'] + "/sis/arch"
       assert_response :ok
     end
 
     test "autenticado como operador analista no crea  carpeta nueva" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/nueva"
@@ -168,7 +161,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador analista no elimina carpeta" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/eliminardir"
@@ -176,7 +169,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador analista no crea archivo nuevo" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/nuevo"
@@ -184,7 +177,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador analista no elimina archivo" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/eliminararc"
@@ -192,7 +185,7 @@ module Heb412Gen
     end
 
     test "autenticado como operador analista no actleeme" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/sis/actleeme"
@@ -200,14 +193,14 @@ module Heb412Gen
     end
 
     test "autenticado como operador analista debe presentar sisini" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get heb412_gen.sisini_path
       assert_response :ok
     end
 
     test "operador analista no accede a hcm importadatos" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get ENV['RUTA_RELATIVA'] + "/plantillashcm/importadatos"
@@ -215,7 +208,7 @@ module Heb412Gen
     end
 
     test "operador analista no post hcm importadatos" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post ENV['RUTA_RELATIVA'] + "/plantillashcm/importadatos"
