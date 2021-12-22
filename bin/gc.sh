@@ -49,14 +49,13 @@ if (test "$SINMIG" != "1") then {
 	} fi;
 } fi;
 
-RAILS_ENV=test bin/rails db:drop db:setup; RAILS_ENV=test bin/rails db:migrate
-db:seed sip:indices
+RAILS_ENV=test bin/rails db:drop db:create db:structure:load db:seed ; RAILS_ENV=test bin/rails sip:indices
 if (test "$?" != "0") then {
 	echo "No puede preparse base de prueba";
 	exit 1;
 } fi;
 
-CONFIG_HOSTS=www.example.com bin/rails test
+RAILS_ENV=test CONFIG_HOSTS=www.example.com bin/rails test
 if (test "$?" != "0") then {
 	echo "No pasaron pruebas";
 	exit 1;
