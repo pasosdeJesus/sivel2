@@ -28,12 +28,8 @@ Rails.start()
 import Turbolinks from "turbolinks"
 Turbolinks.start()
 
-import $ from "expose-loader?exposes=$,jQuery!jquery";
-import 'jquery-ui'
-import 'jquery-ui/ui/widgets/autocomplete'
-import 'jquery-ui/ui/focusable'
-import 'jquery-ui/ui/data'
-import 'jquery-ui/ui/widgets/tooltip'
+import './jquery'
+import '../../vendedor/recursos/javascripts/jquery-ui.js'
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
@@ -54,7 +50,7 @@ Apex.chart = {
 var L = require('leaflet');
 var mc= require('leaflet.markercluster');
 
-import plotly_serietiempo_actos from '../plotly_actos'
+import plotly_serietiempo_actos from './plotly_actos'
 
 document.addEventListener("DOMContentLoaded", function() {
 

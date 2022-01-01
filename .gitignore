@@ -47,3 +47,4 @@ yarn-debug.log*
 config/credentials.yml.enc
 .env
 *.cp
+app/assets/builds/
