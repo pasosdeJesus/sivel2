@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: fd4098ee4c990048f6bb77aadb784e1b992a965d
+  revision: a47ab23c1e98b27abaead7e777b3f3cd8be3f0b3
   branch: rails7jses
   specs:
     apo214 (2.1a1)
