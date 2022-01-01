@@ -43,7 +43,7 @@ if (test "$SININS" != "1") then {
 	} fi;
 } fi;
 if (test "$SINMIG" != "1") then {
-	(bin/rails db:migrate sip:indices db:structure:dump)
+	(bin/rails db:migrate sip:indices db:schema:dump)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
@@ -67,7 +67,7 @@ if (test "$?" != "0") then {
 #	exit 1;
 #} fi;
 
-RAILS_ENV=test bin/rails db:structure:dump
+RAILS_ENV=test bin/rails db:schema:dump
 b=`git branch | grep "^*" | sed -e  "s/^* //g"`
 git status -s
 if (test "$MENSCONS" = "") then {
