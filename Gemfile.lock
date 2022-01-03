@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 1aeab05dadb8e9089ffa96759d63d54c5120a422
+  revision: a5aabd204552c8e1a685ffcaa6c6a49aaf6e7913
   branch: rails7jses
   specs:
     heb412_gen (2.1a1)
