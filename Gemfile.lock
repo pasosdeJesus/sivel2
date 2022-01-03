@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 97a3d85b3df696bf48d03cffb78b50c0a4795c45
+  revision: 1aeab05dadb8e9089ffa96759d63d54c5120a422
   branch: rails7jses
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 41e8450c76ec572ff90b60a3fc28e87679e3539d
+  revision: fb37805d38e0253c4222b75d761d0ee69522e191
   branch: rails7jses
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b838ac247ad83996b08ab8a8e0f05b46bc87e5c2
+  revision: 1be63d69081e8683d7c2d0170ca53e6590556311
   branch: rails7jses
   specs:
     sip (2.1a1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: aac98059d5d9575bf05b161acc5d80fde1cfc5d9
+  revision: cfe22c35c29b7a9c596386118a3d52d204d0130e
   branch: rails7jses
   specs:
     sivel2_gen (2.1a1)
@@ -329,7 +329,7 @@ GEM
     redcarpet (3.5.1)
     redis (4.5.1)
     regexp_parser (2.2.0)
-    reline (0.3.0)
+    reline (0.3.1)
       io-console (~> 0.5)
     responders (3.0.1)
       actionpack (>= 5.0)
