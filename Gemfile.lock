@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1be63d69081e8683d7c2d0170ca53e6590556311
+  revision: c1571ff224c25d32d63166d5ad8b9092bb715c2e
   branch: rails7jses
   specs:
     sip (2.1a1)
@@ -462,4 +462,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.2.30
+   2.2.31
