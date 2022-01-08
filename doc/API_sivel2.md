@@ -1333,3 +1333,140 @@ La respuesta es un HTML con la vista del formulario para importar datos para pla
 ##### Control de Acceso
 Solo usuarios administradores tiene permiso para importar datos en plantillashcm.
  </details>
+ 
+<details>
+ <summary><b>CRUD Formularios</b></summary>
+
+Permite la gestión de la tabla formularios perteneciente al motor mr519_gen. Estos formulario son usados como auxiliares en otros formularios generales. 
+El control de acceso en principio solo lo tienen los usuarios con rol administradores. 
+<details>
+ <summary><code>GET / formularios </code></summary>
+
+Permite acceder a listado de formularios en formato HTML y JSON. 
+ </details>
+
+<details>
+ <summary><code>POST/ formularios </code></summary>
+
+Permite crear y agregar a listado un formulario  en formato HTML y JSON. 
+ </details>
+
+<details>
+ <summary><code>GET / formularios / nuevo </code></summary>
+
+Permite acceder a a la vista del formulario para crear un nuevo formulario. 
+ </details>
+
+<details>
+ <summary><code>GET / formularios / :id</code></summary>
+
+Permite acceder a la vista de un registro de un formulario segpun el identificador especificado en la ruta.  
+ </details>
+
+  </details>
+
+<details>
+ <summary><b>CRUD Encuesta Usuario</b></summary>
+
+<details>
+ <summary><code>GET / encuestasusuario</code></summary>
+ 
+ Permite acceder a listado de encuestas usuarios en formato HTML y JSON. 
+ </details>
+ <details>
+ <summary><code>POST / encustasusuario</code></summary>
+
+Permite crear y agregar a listado una encuesta usuario.
+Control de acceso: Solo un usuario administrador puede crear encuestas usuarios
+ </details>
+         
+   <details>
+ <summary><code>GET /encuestasusuario/nueva </code></summary>
+ </details>
+
+Muestra formulario de nueva encuesta usuario.
+Control de acceso: Solo un usuario administrador puede crear encuestas usuarios
+<details>
+ <summary><code>GET /encuestasusuario/:id/edita </code></summary> 
+ 
+Permite editar o responder una encuesta usuario.
+Control de acceso: Un usuario con rol operador analista de casos y administrador pueden editar encuestas usuario.
+ </details> 
+ 
+<details>
+ <summary><code>GET /encuestasusuario/:id</code></summary> 
+
+Permite acceder a una encuesta usuario.
+Control de acceso: Un usuario autenticado puede ver sus propias encuestas usuario. Un usuario administrador puede ver cualquier encuesta usuario. 
+ </details> 
+ 
+<details>
+<summary><code>PATCH/encuestasusuario/:id </code></summary>
+
+Permite actualizar parte de una encuesta usuario.
+Control de acceso: Un usuario autenticado puede actualizar sus propias encuestas usuario. Un usuario administrador puede ver cualquier encuesta usuario. 
+  </details>
+ 
+<details>
+<summary><code>PUT /encuestasusuario/:id </code></summary>
+
+Permite actualizar una encuesta usuario.
+Control de acceso: Un usuario autenticado puede actualizar sus propias encuestas usuario. Un usuario administrador puede ver cualquier encuesta usuario. 
+</details>
+
+<details>
+<summary><code>DELETE /encuestasusuario/:id </code></summary>
+
+Permite eliminar una encuesta usuario.
+Control de acceso: Un usuario administrador puede eliminar cualquier encuesta usuario. 
+</details>
+</details> 
+
+<details> 
+<summary><b>CRUD /encuestaspersona</b></summary>
+<details>   
+
+<summary><code>GET /encuestaspersona </code></summary>
+ </details> 
+ 
+ <details> 
+<summary><code>POST /encuestaspersona </code></summary>
+</details> 
+
+ <details> 
+<summary><code>GET /encuestaspersona/nueva </code></summary>
+</details>
+
+<details>
+<summary><code>GET /encuestaspersona/:id/edita </code></summary>
+</details>
+
+<details>
+<summary><code>GET /encuestaspersona/:id</code></summary>
+</details>
+
+<details>
+<summary><code>PATCH /encuestaspersona/:id</code></summary
+</details>  
+
+<details> 
+<summary><code>PUT /encuestaspersona/:id</code></summary
+</details>  
+
+<details> 
+<summary><code>DELETE /encuestaspersona/:id</code></summary
+</details> 
+
+</details>
+
+<details>
+
+<summary><code>GET /opcionescs/new</code></summary>
+
+Permite crear una nuevo registro de opcionescs. a través del parámetro formulario_campo_id que eqivale a un campo de un formulario. Las respuestas únicamente son en texto o en formato JSON. Un ejemplo de esta petición es el siguiente: 
+> ```javascript
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/opcionescs/new.json?formulario_campo_id=210 ``
+
+Control de acceso: Solo un usuario administrador puede crear una opcioncs. 
+</details>
+
