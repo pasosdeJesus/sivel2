@@ -5,6 +5,8 @@ gem 'acts_as_list'
 
 gem 'apexcharts'
 
+gem 'babel-transpiler'
+
 gem 'bcrypt'
 
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
@@ -68,6 +70,10 @@ gem 'simple_form' # Formularios simples
 
 gem 'sprockets-rails'
 
+gem 'stimulus-rails'
+
+gem 'turbo-rails'
+
 gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
@@ -92,7 +98,7 @@ gem 'heb412_gen',  # Motor de nube y llenado de plantillas
   #path: '../heb412_gen'
 
 gem 'sivel2_gen', # Motor para manejo de casos
-  git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: :rails7jses
+  git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: :rails7jsesturbo
   #path: '../sivel2_gen-rails7'
 
 gem 'apo214', # Motor para manejo de casos

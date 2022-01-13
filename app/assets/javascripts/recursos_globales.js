@@ -19,7 +19,7 @@
 //= require apo214/motor
 //= require_tree .
 
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbo:load', function() {
   var root;
   root = typeof exports !== "undefined" && exports !== null ? 
     exports : window;
@@ -30,21 +30,5 @@ document.addEventListener('turbolinks:load', function() {
   apo214_prepara_eventos_comunes(root);
   sivel2_gen_prepara_eventos_unicos(root);
 
-  // Siguiente de https://github.com/turbolinks/turbolinks/issues/75
-  // pero tampoco logra que permita pasar de una pestaña a otra
-  // en ficha caso.  Seguimos con turbolinks 2.5.3
-  //Turbolinks.Controller.prototype.nodeIsVisitableOld = 
-  //	Turbolinks.Controller.prototype.nodeIsVisitable;
-
-  //Turbolinks.Controller.prototype.nodeIsVisitable = function (elem) {
-  //	var href = elem.getAttribute('href') || '';
-  //	var anchor = false;
-  //	if (href[0] === "#") {
-  //	  anchor = document.querySelector(href);
-  //	} 
-
-  //	return !anchor && 
-  //		Turbolinks.Controller.prototype.nodeIsVisitableOld(elem);
-  //}; 
 });
 
