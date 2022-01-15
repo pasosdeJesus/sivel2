@@ -2,9 +2,11 @@
 
 console.log('Hola Mundo desde Javascript modular')
 
-import mrujs from "mrujs";
+import Rails from "@rails/ujs";
 import "@hotwired/turbo-rails";
-mrujs.start();
+Rails.start();
+window.Rails = Rails
+
 
 import './jquery'
 import '../../vendedor/recursos/javascripts/jquery-ui.js'
