@@ -95,7 +95,7 @@ gem 'mr519_gen', # Motor de gestion de formularios y encuestas
 
 gem 'heb412_gen',  # Motor de nube y llenado de plantillas
   git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: :rails7jses
-  #path: '../heb412_gen'
+  #path: '../heb412_gen-rails7'
 
 gem 'sivel2_gen', # Motor para manejo de casos
   git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: :rails7jsesturbo
@@ -130,6 +130,8 @@ end
 
 
 group :test do
+gem 'cuprite'
+
   gem 'capybara'
 
   gem 'selenium-webdriver'

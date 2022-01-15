@@ -15,6 +15,7 @@
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/actiontext": "^6.0.0",
     "@rails/activestorage": "^6.0.0-alpha",
+    "@rails/ujs": "^7.0.1",
     "apexcharts": "^3.29.0",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.1.0",
@@ -29,7 +30,6 @@
     "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1",
     "mini-css-extract-plugin": "^2.4.3",
-    "mrujs": "^0.7.4",
     "popper.js": "^2.0.0-next.4",
     "postcss": "^8.2.10"
   },
