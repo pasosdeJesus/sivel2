@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: a952bd11812d0aaa4dc05d70c9636215e5ba5fe6
+  revision: c545351d99a420c84c86b3a447d9a131a642cb77
   branch: rails7jses
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: eb59f1251335c0dd543f1c6bc2a0f46d5520703f
+  revision: 58aa4d417659da8e9deb535aca39d681b1c78070
   branch: rails7jses
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: bb97f33730a35f6bcc844b61a86e79c8b44ee397
+  revision: d3e1e3bc677513c641e800039653c9e74e1422a5
   branch: rails7jses
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 3fd30ab0b331626699143c09661b527bcc1e2d8b
+  revision: 16810474b1b223eea4808473073c6fec7af0ebaf
   branch: rails7jsesturbo
   specs:
     sivel2_gen (2.1a1)
@@ -163,8 +163,8 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.9.4)
-      msgpack (~> 1.0)
+    bootsnap (1.10.1)
+      msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.3.0)
@@ -222,7 +222,7 @@ GEM
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
     dry-inflector (0.2.1)
-    dry-initializer (3.0.4)
+    dry-initializer (3.1.0)
     dry-logic (1.2.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5)
@@ -269,7 +269,7 @@ GEM
       railties (>= 6.0.0)
     json (2.6.1)
     kgio (2.11.4)
-    libxml-ruby (3.2.1)
+    libxml-ruby (3.2.2)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -419,7 +419,7 @@ GEM
     ttfunk (1.7.0)
     turbo-rails (7.1.1)
       rails (>= 6.0.0)
-    twitter_cldr (6.11.0)
+    twitter_cldr (6.11.1)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
