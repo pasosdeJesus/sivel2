@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: daccfb27fbcde3fc70236515b00be99207986f74
+  revision: b568d2fbd69ede7cd0c51ccaef478f33beaed99b
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2daffa398ef3aca32896b8cc18a273436c9f442a
+  revision: 40abbc0e8aa62017bc989ef22d1c06976b1eabcb
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d25864e21cc730bc3929ca5b090c6a1bd467ce58
+  revision: 56f5dcf14468039a280bf2835c25ae6df3782505
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 85091844eb217840dc16522633cf4a95fe33534c
+  revision: 782e8b72115d6bff3ab8bf824d2ab674501a7aef
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -131,8 +131,8 @@ GEM
     andand (1.3.3)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.9.4)
-      msgpack (~> 1.0)
+    bootsnap (1.10.1)
+      msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.3.0)
@@ -163,6 +163,9 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    debug (1.4.0)
+      irb (>= 1.3.6)
+      reline (>= 0.2.7)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -186,6 +189,9 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
+    io-console (0.5.11)
+    irb (1.4.1)
+      reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -197,7 +203,7 @@ GEM
       railties (>= 3.2.16)
     json (2.6.1)
     kgio (2.11.4)
-    libxml-ruby (3.2.1)
+    libxml-ruby (3.2.2)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -290,6 +296,8 @@ GEM
     rake (13.0.6)
     redcarpet (3.5.1)
     regexp_parser (2.2.0)
+    reline (0.3.1)
+      io-console (~> 0.5)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -334,7 +342,7 @@ GEM
     thor (1.2.1)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    twitter_cldr (6.11.0)
+    twitter_cldr (6.11.1)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -374,6 +382,7 @@ DEPENDENCIES
   cocoon!
   coffee-rails
   colorize
+  debug
   devise
   devise-i18n
   dotenv-rails

@@ -87,7 +87,7 @@ gem 'sivel2_gen', # Motor para manejo de casos
 
 group  :development, :test do
  
-  gem 'byebug' # Depurar
+  gem 'debug' # Depurar
 
   gem 'colorize' # Colores en terminal
 
