@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: acadd24284fccf1adb80152bdda71c6e36b61780
+  revision: 4d65a286a5ba755bfff542d7394d293b38865829
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: a33f9ed9de0f7e1c1b92050df8b0822b4ec3af0a
+  revision: 4dd47fb0bf946a5deafaa10cff98a6b7aa59a0cb
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 97770afac36dc89fcc88dccc63072b961070e288
+  revision: 60c79c39b8d29053bdd7e68dc457deef4096a495
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f195f8c2ce1af3144ec15847e86b442fd44cfc63
+  revision: 2c103a60a74b1ce921f989f274816ea61ee10cb5
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: bd122192cac4f2a9c0e66ef6d144a9b7e9a28440
+  revision: f21bb9c6923ab81586808ad9fce4173b66b6c8f1
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -222,7 +222,7 @@ GEM
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
     dry-inflector (0.2.1)
-    dry-initializer (3.1.0)
+    dry-initializer (3.1.1)
     dry-logic (1.2.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5)
