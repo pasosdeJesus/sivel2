@@ -3649,6 +3649,139 @@ CREATE MATERIALIZED VIEW public.vvictimasoundexesp AS
 
 
 --
+-- Name: apo214_asisreconocimiento id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_asisreconocimiento ALTER COLUMN id SET DEFAULT nextval('public.apo214_asisreconocimiento_id_seq'::regclass);
+
+
+--
+-- Name: apo214_cobertura id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_cobertura ALTER COLUMN id SET DEFAULT nextval('public.apo214_cobertura_id_seq'::regclass);
+
+
+--
+-- Name: apo214_disposicioncadaveres id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_disposicioncadaveres ALTER COLUMN id SET DEFAULT nextval('public.apo214_disposicioncadaveres_id_seq'::regclass);
+
+
+--
+-- Name: apo214_elementopaisaje id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_elementopaisaje ALTER COLUMN id SET DEFAULT nextval('public.apo214_elementopaisaje_id_seq'::regclass);
+
+
+--
+-- Name: apo214_evaluacionriesgo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_evaluacionriesgo ALTER COLUMN id SET DEFAULT nextval('public.apo214_evaluacionriesgo_id_seq'::regclass);
+
+
+--
+-- Name: apo214_infoanomalia id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_infoanomalia ALTER COLUMN id SET DEFAULT nextval('public.apo214_infoanomalia_id_seq'::regclass);
+
+
+--
+-- Name: apo214_infoanomalialugar id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_infoanomalialugar ALTER COLUMN id SET DEFAULT nextval('public.apo214_infoanomalialugar_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listaanexo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listaanexo ALTER COLUMN id SET DEFAULT nextval('public.apo214_listaanexo_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listadepositados id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listadepositados ALTER COLUMN id SET DEFAULT nextval('public.apo214_listadepositados_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listaevariesgo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listaevariesgo ALTER COLUMN id SET DEFAULT nextval('public.apo214_listaevariesgo_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listainfofoto id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listainfofoto ALTER COLUMN id SET DEFAULT nextval('public.apo214_listainfofoto_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listapersofuentes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listapersofuentes ALTER COLUMN id SET DEFAULT nextval('public.apo214_listapersofuentes_id_seq'::regclass);
+
+
+--
+-- Name: apo214_listasuelo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_listasuelo ALTER COLUMN id SET DEFAULT nextval('public.apo214_listasuelo_id_seq'::regclass);
+
+
+--
+-- Name: apo214_lugarpreliminar id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_lugarpreliminar ALTER COLUMN id SET DEFAULT nextval('public.apo214_lugarpreliminar_id_seq'::regclass);
+
+
+--
+-- Name: apo214_propietario id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_propietario ALTER COLUMN id SET DEFAULT nextval('public.apo214_propietario_id_seq'::regclass);
+
+
+--
+-- Name: apo214_riesgo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_riesgo ALTER COLUMN id SET DEFAULT nextval('public.apo214_riesgo_id_seq'::regclass);
+
+
+--
+-- Name: apo214_suelo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_suelo ALTER COLUMN id SET DEFAULT nextval('public.apo214_suelo_id_seq'::regclass);
+
+
+--
+-- Name: apo214_tipoentierro id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_tipoentierro ALTER COLUMN id SET DEFAULT nextval('public.apo214_tipoentierro_id_seq'::regclass);
+
+
+--
+-- Name: apo214_tipotestigo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.apo214_tipotestigo ALTER COLUMN id SET DEFAULT nextval('public.apo214_tipotestigo_id_seq'::regclass);
+
+
+--
 -- Name: heb412_gen_campohc id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5286,6 +5419,78 @@ ALTER TABLE ONLY public.sivel2_gen_supracategoria
 
 
 --
+-- Name: sivel2_gen_caso $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_intervalo) REFERENCES public.sivel2_gen_intervalo(id);
+
+
+--
+-- Name: sivel2_gen_caso_frontera $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_frontera
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_frontera) REFERENCES public.sivel2_gen_frontera(id);
+
+
+--
+-- Name: sivel2_gen_victima $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_profesion) REFERENCES public.sivel2_gen_profesion(id);
+
+
+--
+-- Name: combatiente $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.combatiente
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_resagresion) REFERENCES public.resagresion(id);
+
+
+--
+-- Name: combatiente_presponsable $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.combatiente_presponsable
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_p_responsable) REFERENCES public.sivel2_gen_presponsable(id);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT "$1" FOREIGN KEY (fuenteprensa_id) REFERENCES public.sip_fuenteprensa(id);
+
+
+--
+-- Name: sivel2_gen_caso_fotra $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fotra
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sip_clase $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_clase
+    ADD CONSTRAINT "$1" FOREIGN KEY (id_tclase) REFERENCES public.sip_tclase(id);
+
+
+--
+-- Name: sivel2_gen_caso_categoria_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
+    ADD CONSTRAINT "$2" FOREIGN KEY (id_categoria) REFERENCES public.sivel2_gen_categoria(id);
+
+
+--
 -- Name: sivel2_gen_victimacolectiva $1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5326,15 +5531,15 @@ ALTER TABLE ONLY public.sivel2_gen_victima
 
 
 --
--- Name: sivel2_gen_caso_fuenteprensa $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_fuenteprensa $2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
-    ADD CONSTRAINT "$1" FOREIGN KEY (fuenteprensa_id) REFERENCES public.sip_fuenteprensa(id);
+    ADD CONSTRAINT "$2" FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
 
 
 --
--- Name: sivel2_gen_caso_fotra $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_fotra $2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_fotra
@@ -5361,20 +5566,20 @@ ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
 -- Name: sivel2_gen_caso_categoria_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_categoria) REFERENCES public.sivel2_gen_categoria(id);
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$3" FOREIGN KEY (id_filiacion) REFERENCES public.sivel2_gen_filiacion(id);
 
 
 --
--- Name: sivel2_gen_caso_frontera $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: combatiente $3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sivel2_gen_caso_frontera
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
+ALTER TABLE ONLY public.combatiente
+    ADD CONSTRAINT "$3" FOREIGN KEY (id_rangoedad) REFERENCES public.sivel2_gen_rangoedad(id);
 
 
 --
--- Name: sivel2_gen_victima $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_victima $4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_victima
@@ -5390,19 +5595,19 @@ ALTER TABLE ONLY public.sivel2_gen_caso_usuario
 
 
 --
--- Name: sivel2_gen_caso_fuenteprensa $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: combatiente $4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
+ALTER TABLE ONLY public.combatiente
+    ADD CONSTRAINT "$4" FOREIGN KEY (id_filiacion) REFERENCES public.sivel2_gen_filiacion(id);
 
 
 --
--- Name: sivel2_gen_caso_fotra $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_victima $5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sivel2_gen_caso_fotra
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_fotra) REFERENCES public.sivel2_gen_fotra(id);
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$5" FOREIGN KEY (id_organizacion) REFERENCES public.sivel2_gen_organizacion(id);
 
 
 --
