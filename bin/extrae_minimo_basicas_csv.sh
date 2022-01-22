@@ -21,7 +21,7 @@ for i in sip_etiqueta sip_tdocumento sivel2_gen_antecedente sivel2_gen_categoria
   sivel2_gen_profesion sivel2_gen_rangoedad sivel2_gen_region \
   sivel2_gen_resagresion sivel2_gen_sectorsocial sivel2_gen_supracategoria \
   sivel2_gen_tviolencia sivel2_gen_vinculoestado ; do
-  cmd="psql -h /var/www/var/run/postgresql -U $BD_USUARIO $BD_PRO -c \"SELECT id, nombre FROM $i ORDER BY id\" >> $sal"
+  cmd="psql --csv -h /var/www/var/run/postgresql -U $BD_USUARIO $BD_PRO -c \"SELECT id, nombre FROM $i ORDER BY id\" >> $sal"
 eval $cmd
 done
 
