@@ -11,6 +11,7 @@
     "@babel/preset-react": "^7.14.5",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@hotwired/turbo-rails": "^7.1.0",
+    "@pasosdejesus/autocompleta_ajax": "https://gitlab.com/pasosdeJesus/autocompleta_ajax.git",
     "@popperjs/core": "^2.10.1",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/actiontext": "^6.0.0",

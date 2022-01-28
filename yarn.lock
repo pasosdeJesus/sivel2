@@ -555,6 +555,10 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@pasosdejesus/autocompleta_ajax@https://gitlab.com/pasosdeJesus/autocompleta_ajax.git":
+  version "0.9.9-a4"
+  resolved "https://gitlab.com/pasosdeJesus/autocompleta_ajax.git#4bbe971d980830a9c2a5849970150cfc12c707d0"
+
 "@popperjs/core@^2.10.1":
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
