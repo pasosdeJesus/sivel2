@@ -140,6 +140,22 @@ module Sip
       assert_response :ok
     end
 
+
+    test "operador analista no puede acceder a fichaimp" do
+      skip 
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      get heb412_gen.persona_fichaimp_path(Sip::Persona.take.id)
+      assert_response :ok
+    end
+
+    test "operador analista no puede acceder a fichapdf" do
+      skip 
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      assert_response :ok
+    end
     test "autenticado como operador analista de casos debe acceder a personas remplazar" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
