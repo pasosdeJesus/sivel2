@@ -11,20 +11,13 @@
 require 'fileutils'
 #require 'byebug'
 
-#ENV.each {|l,v| puts "#{l}=#{v}" } # Depuración
+# ENV.each {|l,v| puts "#{l}=#{v}" } # Depuración
 
 # Ruta a directorio raíz de aplicación
 RAIZ_AP = File.expand_path('..', __dir__)
 
 def system!(*args)
   system(*args) || abort("\n== Falló la orden #{args} ==")
-end
-
-def completa_orden_var(orden, var, minusculas = false)
-  if ENV[var] && ENV[var] != ''
-    orden << "#{var}="
-    orden << (minusculas ? ENV[var].downcase : ENV[var])
-  end
 end
 
 FileUtils.chdir RAIZ_AP do
@@ -67,31 +60,42 @@ FileUtils.chdir RAIZ_AP do
     system! 'CXX=c++ bin/yarn'
 
     puts "\n== Preparando base de datos =="
-    system! 'bin/rails db:prepare'
+    system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails db:prepare"
 
     puts "\n== Actualizando índices =="
-    system!('bin/rails sip:indices')
+    system!("RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails sip:indices")
 
-    puts "\n== Eliminando bitácoras, archivos temporales y recursos =="
+    puts "\n== Eliminando bitácoras y archivos temporales =="
     system! 'bin/rails log:clear tmp:clear'
+  end
+
+  if !ENV['R'] || ENV['R'] == '' || ENV['R'] == 'r'
+    puts "\n== Eliminando recursos =="
     system! 'rm -rf public/packs/*'
     system! "rm -rf public/#{ENV['RAILS_RELATIVE_URL_ROOT']}/assets/*"
 
     puts "\n== Crea recursos CSS y Javascript =="
-    system! 'bin/rails assets:precompile --trace'
+    system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails assets:precompile --trace"
   end
-
-  ord = ""
 
   if ENV['RAILS_ENV'] == "development"
     puts "\n== Ejecutando en modo desarrollo  =="
-    ord = "RAILS_RELATIVE_URL_ROOT='' bin/rails s"
-    if ENV['PUERTODES'] != ''
-      ord += " -p #{ENV['PUERTODES']}"
+
+    ord = ""
+    if ENV['CONFIG_HOSTS'] && ENV['CONFIG_HOSTS'] != ''
+      ord += "CONFIG_HOSTS=\"#{ENV['CONFIG_HOSTS'].downcase}\" "
     end
-    ord += " -b '#{ENV['IPDES']}'"
+    ord += "RAILS_RELATIVE_URL_ROOT='' "
+    ord += "bin/rails s "
+    if ENV['PUERTODES'] != ''
+      ord += "-p #{ENV['PUERTODES']} "
+    end
+    ord += "-b '#{ENV['IPDES']}' "
     puts "#{ord}"
   elsif ENV['RAILS_ENV'] == 'production'
+    if File.exists?('bin/corre-local')
+      system!('bin/corre-local')
+    end
     if !File.exists?("/etc/rc.d/#{ENV['RC']}")
       puts "\nFalta script /etc/rc.d/#{ENV['RC']}"
       exit 1

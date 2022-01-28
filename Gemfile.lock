@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4dd47fb0bf946a5deafaa10cff98a6b7aa59a0cb
+  revision: 4e5b4729d6948e60ca4fc88dbe7aada5e8a55803
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 60c79c39b8d29053bdd7e68dc457deef4096a495
+  revision: 5ce2757b0849344e6b26fe782bfe7505e9fd0384
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2c103a60a74b1ce921f989f274816ea61ee10cb5
+  revision: fe6a248bde0daa98923c16c84f0e6fc10309fc1b
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f21bb9c6923ab81586808ad9fce4173b66b6c8f1
+  revision: ad46aaf9b6d3c41dcb5ff7574fff827e53a9f692
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -256,7 +256,7 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    i18n (1.8.11)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
     io-wait (0.2.1)
@@ -284,7 +284,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.7.1)
     minitest (5.15.0)
-    msgpack (1.4.3)
+    msgpack (1.4.4)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -310,7 +310,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pdf-core (0.9.0)
-    pg (1.2.3)
+    pg (1.3.0)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -320,7 +320,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.5.2)
+    puma (5.6.1)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -441,7 +441,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.3)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   x86_64-openbsd
@@ -506,4 +506,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.5
+   2.3.4
