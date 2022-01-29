@@ -11,7 +11,7 @@ module Mr519Gen
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @planencuesta = Mr519Gen::Planencuesta.create!(PRUEBA_PLANENCUESTA)
+      #@planencuesta = Mr519Gen::Planencuesta.create!(PRUEBA_PLANENCUESTA)
     end
 
     PRUEBA_PLANENCUESTA = {
