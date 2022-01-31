@@ -151,6 +151,12 @@ module Sivel2Gen
       end
     end
 
+    test "sin autenticar no debe acceder" do
+      assert_raise CanCan::AccessDenied do
+        get "/sivel2/casos/mapaosm"
+      end
+    end
+
     # Autenticado como operador sin grupo
     #####################################
 
@@ -290,6 +296,13 @@ module Sivel2Gen
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.caso_fichapdf_path(Sivel2Gen::Caso.take.id)
       end
+    end
+
+    test "operador sin grupo no debe acceder" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      get "/sivel2/casos/mapaosm"
+      assert_response :ok
     end
 
     # Autenticado como operador con grupo Analista de Casos
@@ -433,5 +446,13 @@ module Sivel2Gen
       } 
       assert_response :ok
     end
+
+    test "analista sin grupo no debe acceder" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      get "/sivel2/casos/mapaosm"
+      assert_response :ok
+    end
+
   end
 end
