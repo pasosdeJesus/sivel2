@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel2-04-admin-elimina-usuario</title>
+	<title>sivel2-02-03-admin-elimina-usuario</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -38,6 +38,8 @@
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/usuarios/2')])[2]</option><option>//a[3]</option></datalist></td><td>16,20</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success.alert-dismissible.fade.show &gt; span<datalist><option>css=div.alert.alert-success.alert-dismissible.fade.show &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>::Usuario eliminado.</td>
 </tr>
 </tbody></table>
 </body>
