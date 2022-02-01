@@ -45,7 +45,7 @@ test:
     - cp .env.gitlab .env
     - cp db/structure.sql db/structure.sql.copia 
     - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
-    - bin/rails db:drop db:create db:setup
+    - bin/rails db:drop db:create db:setup db:seed
     - bin/rails sip:indices
   script:
     - CONFIG_HOSTS=www.example.com bin/rails test
