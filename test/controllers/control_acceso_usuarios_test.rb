@@ -53,7 +53,7 @@ module Sip
 
     test "sin autenticar no puede acceder a usuarios" do
       get "/sivel2/usuarios"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "sin autenticar no debe mostrar usuarios nuevo" do
@@ -84,21 +84,21 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get "/sivel2/sign_out"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "observador de casos puede accceder a unlock new" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get "/sivel2/usuarios/unlock/new"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "observador de casos puede accceder a unlock" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get "/sivel2/usuarios/unlock"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "observador puede acceder a editar su usuario" do
@@ -129,7 +129,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get "/sivel2/usuarios"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "observador no puede acceder a post usuarios" do
@@ -182,21 +182,21 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get "/sivel2/sign_out"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "operador analista puede accceder a unlock new" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get "/sivel2/usuarios/unlock/new"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "operador analista puede accceder a unlock" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get "/sivel2/usuarios/unlock"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "analista puede acceder a editar su usuario" do
@@ -217,7 +217,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get "/sivel2/usuarios"
-      assert_redirected_to ENV['RUTA_RELATIVA'][0..-2]
+      assert_redirected_to Rails.application.config.relative_url_root[0..-2]
     end
 
     test "analista no puede acceder a post usuarios" do
