@@ -122,6 +122,23 @@ module Sivel2Gen
       end
     end
 
+    test "sin autenticar puede acceder a fichaimp" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.caso_fichaimp_path(Sivel2Gen::Caso.take.id)
+      end
+    end
+
+    test "sin autenticar puede acceder a fichapdf" do
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.caso_fichapdf_path(Sivel2Gen::Caso.take.id)
+      end
+    end
+
+    test "sin autenticar puede acceder a fichacasovertical" do
+      get sivel2_gen.fichacasovertical_path
+      assert_redirected_to ENV['RUTA_RELATIVA']
+    end
+
     test "sin autenticar no debe actualizar" do
       assert_raise CanCan::AccessDenied do
         patch sivel2_gen.caso_path(@caso.id)
@@ -131,6 +148,12 @@ module Sivel2Gen
     test "sin autenticar no debe eliminar" do
       assert_raise CanCan::AccessDenied do
         delete sivel2_gen.caso_path(@caso.id)
+      end
+    end
+
+    test "sin autenticar no debe acceder" do
+      assert_raise CanCan::AccessDenied do
+        get "/sivel2/casos/mapaosm"
       end
     end
 
@@ -222,6 +245,13 @@ module Sivel2Gen
       assert_response :ok
     end
 
+    test "operador sin grupo  puede acceder a fichacasovertical" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      get sivel2_gen.fichacasovertical_path
+      assert_redirected_to ENV['RUTA_RELATIVA']
+    end
+
     test "operador sin grupo puede acceder a victimascol" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
@@ -250,6 +280,29 @@ module Sivel2Gen
       assert_raise CanCan::AccessDenied do
         get sivel2_gen.casos_importarrelatos_path
       end
+    end
+
+    test "operador sin grupo no puede acceder a fichaimp" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.caso_fichaimp_path(Sivel2Gen::Caso.take.id)
+      end
+    end
+
+    test "operador sin grupo no puede acceder a fichapdf" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.caso_fichapdf_path(Sivel2Gen::Caso.take.id)
+      end
+    end
+
+    test "operador sin grupo no debe acceder" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      get "/sivel2/casos/mapaosm"
+      assert_response :ok
     end
 
     # Autenticado como operador con grupo Analista de Casos
@@ -308,6 +361,13 @@ module Sivel2Gen
       assert_response :ok
     end
 
+    test "operador analista puede acceder a fichacasovertical" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      get sivel2_gen.fichacasovertical_path
+      assert_redirected_to ENV['RUTA_RELATIVA']
+    end
+
     test "operador analista puede acceder a victimas" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
@@ -350,6 +410,22 @@ module Sivel2Gen
       assert_response :ok
     end
 
+    test "operador analista no puede acceder a fichaimp" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.caso_fichaimp_path(Sivel2Gen::Caso.take.id)
+      end
+    end
+
+    test "operador analista no puede acceder a fichapdf" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get sivel2_gen.caso_fichapdf_path(Sivel2Gen::Caso.take.id)
+      end
+    end
+
     test "operador analista  puede refrescar casos" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
@@ -370,5 +446,13 @@ module Sivel2Gen
       } 
       assert_response :ok
     end
+
+    test "analista sin grupo no debe acceder" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      get "/sivel2/casos/mapaosm"
+      assert_response :ok
+    end
+
   end
 end

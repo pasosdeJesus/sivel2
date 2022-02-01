@@ -68,6 +68,17 @@ module Sip
       end
     end
 
+    test "sin autenticar no puede acceder a fichaimp" do
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichaimp_path(Sip::Orgsocial.take.id)
+      end
+    end
+
+    test "sin autenticar no puede acceder a fichapdf" do
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      end
+    end
     # Autenticado como operador sin grupo
     #####################################
 
@@ -101,6 +112,21 @@ module Sip
       end
     end
 
+    test "operador sin grupo no puede acceder a fichaimp" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichaimp_path(Sip::Orgsocial.take.id)
+      end
+    end
+
+    test "operador sin grupo no puede acceder a fichapdf" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      end
+    end
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
@@ -129,6 +155,22 @@ module Sip
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         delete sip.orgsocial_path(@orgsocial.id)
+      end
+    end
+
+    test "operador analista no puede acceder a fichaimp" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichaimp_path(Sip::Orgsocial.take.id)
+      end
+    end
+
+    test "operador analista no puede acceder a fichapdf" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
       end
     end
 
