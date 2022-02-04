@@ -12,6 +12,7 @@ module Heb412Gen
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @ruta = Rails.application.config.relative_url_root
     end
 
     PRUEBA_PLANTILLAHCR = { 
@@ -54,7 +55,7 @@ module Heb412Gen
       # get aquí produce NoMethodError: undefined method `id' for nil:NilClass
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcr/#{Heb412Gen::Plantillahcr.all.sample.id}"
+      get "http://www.example.com:80#{@ruta}plantillahcr/#{Heb412Gen::Plantillahcr.all.sample.id}"
       assert_response :ok
     end
 
@@ -91,7 +92,7 @@ module Heb412Gen
       # get aquí produce NoMethodError: undefined method `id' for nil:NilClass
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcr/#{Heb412Gen::Plantillahcr.all.sample.id}"
+      get "http://www.example.com:80#{@ruta}/plantillahcr/#{Heb412Gen::Plantillahcr.all.sample.id}"
       assert_response :ok
     end
 

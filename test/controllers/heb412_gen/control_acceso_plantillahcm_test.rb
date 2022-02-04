@@ -12,6 +12,7 @@ module Heb412Gen
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @ruta = Rails.application.config.relative_url_root
     end
 
     PRUEBA_PLANTILLAHCM = { 
@@ -53,7 +54,7 @@ module Heb412Gen
     test "autenticado como operador sin grupo puede ver resumen de plantillahcm" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
+      get "http://www.example.com:80#{@ruta)}/plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
       assert_response :ok
     end
 
@@ -86,7 +87,7 @@ module Heb412Gen
     test "autenticado como operador analista debe presentar resumen de plantillahcm" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
+      get "http://www.example.com:80#{@ruta}/plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
       assert_response :ok
     end
 
