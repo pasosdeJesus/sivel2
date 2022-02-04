@@ -4,7 +4,7 @@
 Sistema de Información de Violencia Política en Línea versión 2
 
 
-[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Estado Construcción](https://gitlab.com/pasosdeJesus/sivel2/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines)[![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![security](https://hakiri.io/github/pasosdeJesus/sivel2/master.svg)](https://hakiri.io/github/pasosdeJesus/sivel2/master)
+[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Estado Construcción](https://gitlab.com/pasosdeJesus/sivel2/badges/sivel2.0/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines)[![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![security](https://hakiri.io/github/pasosdeJesus/sivel2/master.svg)](https://hakiri.io/github/pasosdeJesus/sivel2/master)
 
 ![Logo de sivel2](https://raw.githubusercontent.com/pasosdeJesus/sivel2/main/app/assets/images/logo.jpg)
 

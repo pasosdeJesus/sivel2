@@ -13,6 +13,7 @@ module Sivel2Gen
       end
       @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
       @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)
+      @raiz = Rails.application.config.relative_url_root.delete_suffix('/')
     end
 
     test "sin autenticar no debe listar tablas básicas" do
@@ -27,7 +28,7 @@ module Sivel2Gen
     ## PROBANDO BASICAS GEOGRÁFICAS
     MODELO_PARAMS = {nombre: "ejemplop",observaciones: "obs", fechacreacion: "2021-12-09"}
     MODELO_PARAMS_IDSTR = { id: "z", nombre: "ejemplop", observaciones: "obs", fechacreacion: "2021-12-09"}
-   
+
     def crear_registro(modelo, basica)
       if modelo.columns_hash['id'].type == "string".to_sym
         case basica
@@ -49,13 +50,18 @@ module Sivel2Gen
         when "supracategoria"
           registro = modelo.create!(MODELO_PARAMS.merge({id: 1360, id_tviolencia: "D"}))
         else
-          registro = modelo.create!(MODELO_PARAMS)
+          if modelo.where(nombre: MODELO_PARAMS[:nombre]).count == 1
+            registro = modelo.where(nombre: MODELO_PARAMS[:nombre]).take
+          else
+            registro = modelo.create!(MODELO_PARAMS)
+          end
         end
       end
       return registro
     end
 
     basicas_sivel2_gen.each do |basica|
+    #[['Sivel2Gen', 'contexto']].each do |basica|
       if basica[1] == "estadocivil" || basica[1] == "maternidad" || basica[1] == "actividadoficio" || basica[1] == "escolaridad"
 
         next
@@ -69,183 +75,189 @@ module Sivel2Gen
 
       test "sin autenticar no debe presentar el index de #{basica[1]}" do
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+          get @raiz + "/admin/#{basica[1].pluralize()}"
         end
-      end
-      test "sin autenticar no debe presentar el show de #{basica[1]}" do
+#  end
+
+      puts "sin autenticar no debe presentar el show de #{basica[1]}"
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
+          get @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}"
         end
         reg.destroy!
-      end
+      #end
 
-      test "sin autenticar no debe ver formulario de nuevo de #{basica[1]}" do
+      puts "sin autenticar no debe ver formulario de nuevo de #{basica[1]}"
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/nueva"
+          get @raiz + "/admin/#{basica[1].pluralize()}/nueva"
         end
-      end
+      #end
 
-      test "sin autenticar no puede crear registro de #{basica[1]}" do
-        ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+      puts "sin autenticar no puede crear registro de #{basica[1]}"
+        ruta = @raiz + "/admin/#{basica[1].pluralize()}"
+        #debugger
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
           post ruta, params: {"#{basica[1]}": reg.attributes} 
         end
         reg.destroy!
-      end
+      #end
 
-      test "sin autenticar no debe editar #{basica[1]}" do
+      puts "sin autenticar no debe editar #{basica[1]}"
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}/edita"
+          get @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}/edita"
         end
         reg.destroy!
-      end
+      #end
 
-      test "sin autenticar no debe actualizar #{basica[1]}" do
+      puts "sin autenticar no debe actualizar #{basica[1]}"
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          patch ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
+          patch @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}"
         end
         reg.destroy!
-      end
+      #end
 
-      test "sin autenticar no debe dejar destruir un registro de #{basica[1]}" do
+      puts "sin autenticar no debe dejar destruir un registro de #{basica[1]}"
         reg = crear_registro(modelo, basica[1])
-        ruta1 = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/" + reg.id.to_s
+        ruta1 = @raiz + "/admin/#{basica[1].pluralize()}" + "/" + reg.id.to_s
         assert_raise CanCan::AccessDenied do
           delete ruta1
         end
         reg.destroy!
-      end
+      #end
 
       ##### Finaliza No autenticado #####
 
       # Autenticado como operador sin grupo
 
-      test "operador sin grupo no debe presentar el index de #{basica[1]}" do
+      puts "operador sin grupo no debe presentar el index de #{basica[1]}"
         sign_in @ope_sin_grupo
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+          get @raiz + "/admin/#{basica[1].pluralize()}"
         end
-      end
-      test "operador sin grupo no debe presentar el show de #{basica[1]}" do
+      #end
+        
+      puts "operador sin grupo no debe presentar el show de #{basica[1]}"
         sign_in @ope_sin_grupo
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
+          get @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}"
         end
         reg.destroy!
-      end
+      #end
 
-      test "operador sin grupo no debe ver formulario de nuevo de #{basica[1]}" do
+      puts "operador sin grupo no debe ver formulario de nuevo de #{basica[1]}"
         sign_in @ope_sin_grupo
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/nueva"
+          get @raiz + "/admin/#{basica[1].pluralize()}/nueva"
         end
-      end
+      #end
 
-      test "operador sin grupo no puede crear registro de #{basica[1]}" do
+      puts "operador sin grupo no puede crear registro de #{basica[1]}"
         sign_in @ope_sin_grupo
-        ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+        ruta = @raiz + "/admin/#{basica[1].pluralize()}"
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
           post ruta, params: {"#{basica[1]}": reg.attributes} 
         end
         reg.destroy!
-      end
+      #end
 
-      test "operador sin grupo no debe editar #{basica[1]}" do
+      puts "operador sin grupo no debe editar #{basica[1]}"
         sign_in @ope_sin_grupo
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}/edita"
+          get @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}/edita"
         end
         reg.destroy!
-      end
+      #end
 
-      test "operador sin grupo no debe actualizar #{basica[1]}" do
+      puts "operador sin grupo no debe actualizar #{basica[1]}"
         sign_in @ope_sin_grupo
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          patch ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
+          patch @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}"
         end
         reg.destroy!
-      end
+      #end
 
-      test "oeprador sin grupo no debe dejar destruir un registro de #{basica[1]}" do
+      puts "oeprador sin grupo no debe dejar destruir un registro de #{basica[1]}"
         sign_in @ope_sin_grupo
         reg = crear_registro(modelo, basica[1])
-        ruta1 = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/" + reg.id.to_s
+        ruta1 = @raiz + "/admin/#{basica[1].pluralize()}" + "/" + reg.id.to_s
         assert_raise CanCan::AccessDenied do
           delete ruta1
         end
         reg.destroy!
-      end
+      #end
       ##### Finaliza operador sin grupo #####
 
       # Autenticado como operador con grupo Analista de Casos
 
-      test "operador analista no debe presentar el index de #{basica[1]}" do
+      puts "operador analista no debe presentar el index de #{basica[1]}"
         sign_in @ope_analista
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+          get @raiz + "/admin/#{basica[1].pluralize()}"
         end
-      end
-      test "operador analista no debe presentar el show de #{basica[1]}" do
+      #end
+
+      puts "operador analista no debe presentar el show de #{basica[1]}"
         sign_in @ope_analista
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
+          get @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}"
         end
         reg.destroy!
-      end
+      #end
 
-      test "operador analista no debe ver formulario de nuevo de #{basica[1]}" do
+      puts "operador analista no debe ver formulario de nuevo de #{basica[1]}"
         sign_in @ope_analista
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/nueva"
+          get @raiz + "/admin/#{basica[1].pluralize()}/nueva"
         end
-      end
+      #end
 
-      test "operador analista no puede crear registro de #{basica[1]}" do
+      puts "operador analista no puede crear registro de #{basica[1]}"
         sign_in @ope_analista
-        ruta = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}"
+        ruta = @raiz + "/admin/#{basica[1].pluralize()}"
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
           post ruta, params: {"#{basica[1]}": reg.attributes} 
         end
         reg.destroy!
-      end
+      #end
 
-      test "operador analista no debe editar #{basica[1]}" do
+      puts "operador analista no debe editar #{basica[1]}"
         sign_in @ope_analista
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          get ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}/edita"
+          get @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}/edita"
         end
         reg.destroy!
-      end
+      #end
 
-      test "operador analista no debe actualizar #{basica[1]}" do
+      puts "operador analista no debe actualizar #{basica[1]}"
         sign_in @ope_analista
         reg = crear_registro(modelo, basica[1])
         assert_raise CanCan::AccessDenied do
-          patch ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}/#{reg.id}"
+          patch @raiz + "/admin/#{basica[1].pluralize()}/#{reg.id}"
         end
         reg.destroy!
-      end
+      #end
 
-      test "oeprador analista no debe dejar destruir un registro de #{basica[1]}" do
+      puts "oeprador analista no debe dejar destruir un registro de #{basica[1]}"
         sign_in @ope_analista
         reg = crear_registro(modelo, basica[1])
-        ruta1 = ENV['RUTA_RELATIVA'] + "admin/#{basica[1].pluralize()}" + "/" + reg.id.to_s
+        ruta1 = @raiz + "/admin/#{basica[1].pluralize()}" + "/" + reg.id.to_s
         assert_raise CanCan::AccessDenied do
           delete ruta1
         end
         reg.destroy!
       end
+
+      #debugger
 
     end
 
@@ -265,7 +277,6 @@ module Sivel2Gen
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)
     end
-
 
 
   end
