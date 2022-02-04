@@ -51,3 +51,8 @@ test:
     - CONFIG_HOSTS=www.example.com bin/rails test
 
 
+
+sast:
+    stage: test
+include:
+- template: Security/SAST.gitlab-ci.yml
