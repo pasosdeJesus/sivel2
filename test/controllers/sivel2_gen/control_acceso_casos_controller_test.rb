@@ -11,6 +11,7 @@ module Sivel2Gen
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
+      @raiz = Rails.application.config.relative_url_root
     end
 
     # No autenticado
@@ -136,7 +137,7 @@ module Sivel2Gen
 
     test "sin autenticar puede acceder a fichacasovertical" do
       get sivel2_gen.fichacasovertical_path
-      assert_redirected_to @ruta
+      assert_redirected_to @raiz
     end
 
     test "sin autenticar no debe actualizar" do
@@ -249,7 +250,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.fichacasovertical_path
-      assert_redirected_to @ruta
+      assert_redirected_to @raiz
     end
 
     test "operador sin grupo puede acceder a victimascol" do
@@ -365,7 +366,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.fichacasovertical_path
-      assert_redirected_to @ruta
+      assert_redirected_to @raiz
     end
 
     test "operador analista puede acceder a victimas" do

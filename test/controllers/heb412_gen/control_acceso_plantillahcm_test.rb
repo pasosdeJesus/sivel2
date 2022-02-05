@@ -54,7 +54,7 @@ module Heb412Gen
     test "autenticado como operador sin grupo puede ver resumen de plantillahcm" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "http://www.example.com:80#{@ruta)}/plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
+      get "http://www.example.com:80#{@ruta}/plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
       assert_response :ok
     end
 
