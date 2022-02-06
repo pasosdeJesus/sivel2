@@ -1,3 +1,5 @@
+# Medidas para evitar ataques XSS
+
 * Empleamos Ruby on Rails como marco de trabajo que por diseño codifica el
   contenido para evitar XSS.
 * Los casos en los que hemos evitado el escapado automático de Ruby on Rails

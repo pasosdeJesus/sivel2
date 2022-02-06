@@ -1,9 +1,10 @@
 
-# Prevención de ataques de inyección de código
+# Medidas para evitar ataques de inyección de código
 
 * En general estamos usando ActiveRecord como ORM para consultas SQL, el cual 
   escapa automáticamente.  En los casos que hemos construido consultas
-  SQL directamente hemos empleado funciones para escapar como `Sivel2Gen::Caso.connection.quote_string(c)`
+  SQL directamente hemos empleado funciones para escapar como 
+  `Sip::SqlHelper.escapar_param` y `Sivel2Gen::Caso.connection.quote_string(c)`
 * En entradas de información por formularios Rails usamos lista
   blanca de parámetros como es práctica estándar en aplicaciones
   Rails. En filtros se usan sólo datos esperados y se
@@ -12,19 +13,16 @@
 * Utilizamos `LIMIT` por ejemplo en las consultas que presentan datos, pues 
   estos van paginados.
 * Como parte de la integración continua usamos el analizador estático de código 
-  Rubocop tanto con Hakiri como con gitlab-ci.   Este generador es especialmente
-  fuerte en detectar inyecciones de código SQL y shell (con varios falsos positivos).
-  El 19.Abr.2021, a la publicación de la versión
-  2.0b17 las banderas de todos los motores y la aplicación están en verde 
-  (indicando que se antendieron todas las advertencias
-  generadas por Rubocop):
-  ![image](https://user-images.githubusercontent.com/701221/138012276-c091f7b1-cd15-4b65-b4a0-662e4dbc92b6.png)
-* En este momento el estado es:
-  | Motor/Aplicación | Estado |
+  Rubocop en gitlab-ci.   Este generador es especialmente fuerte en detectar 
+  inyecciones de código SQL y shell (con varios falsos positivos).
+  A 5.Feb.2022 rubocop no encuentra falla alguna en sivel2 (rama sivel2.0) ni 
+  en sus motores:
+
+  | Motor/Aplicación | Enlace |
   |---|---|
-  |`sip` | [![sip](https://hakiri.io/github/pasosdeJesus/sip/master.svg)](https://hakiri.io/github/pasosdeJesus/sip/master)  |
-  | `mr519_gen` | [![mr519_gen](https://hakiri.io/github/pasosdeJesus/mr519_gen/master.svg)](https://hakiri.io/github/pasosdeJesus/mr519_gen/master)  |
-  | `heb412_gen` | [![heb412_gen](https://hakiri.io/github/pasosdeJesus/heb412_gen/master.svg)](https://hakiri.io/github/pasosdeJesus/heb412_gen/master) |
-  | `sivel2_gen` | [![sivel2_gen](https://hakiri.io/github/pasosdeJesus/sivel2_gen/master.svg)](https://hakiri.io/github/pasosdeJesus/sivel2_gen/master) |
-  | `sivel2` | [![sivel2](https://hakiri.io/github/pasosdeJesus/sivel2/master.svg)](https://hakiri.io/github/pasosdeJesus/sivel2/master) |
+  |`sip` rama `v2.0` | https://gitlab.com/pasosdeJesus/sip/-/jobs/2056728077 |
+  | `mr519_gen` rama `v2.0`| https://gitlab.com/pasosdeJesus/mr519_gen/-/jobs/2056408460 |
+  | `heb412_gen` rama `v2.0` | https://gitlab.com/pasosdeJesus/heb412_gen/-/jobs/2056469159 |
+  | `sivel2_gen` rama `sivel2.0` | https://gitlab.com/pasosdeJesus/sivel2_gen/-/jobs/2056756448 |
+  | `sivel2` rama `sivel2.0` | https://gitlab.com/pasosdeJesus/sivel2/-/jobs/2058146852 |
 
