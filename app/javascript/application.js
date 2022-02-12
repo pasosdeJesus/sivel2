@@ -25,7 +25,24 @@ Apex.chart = {
   defaultLocale: 'es',
 }
 
+// stimulus 
+
+import { Application } from "@hotwired/stimulus"
+
+import HelloController from "./controllers/hello_controller"
+import FormAsisreconocimientoController from "./controllers/form_asisreconocimiento_controller"
+import DragController from "./controllers/drag_controller"
+import ActualizaFilaController from "./controllers/actualiza_fila_controller"
+
+window.Stimulus = Application.start()
+Stimulus.register("drag", DragController)
+Stimulus.register("actualiza_fila", ActualizaFilaController)
+Stimulus.register("hello", HelloController)
+Stimulus.register("form_asisreconocimiento", FormAsisreconocimientoController)
+//
+
 import 'gridstack'
+
 
 // Leaflet
 var L = require('leaflet');
