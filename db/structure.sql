@@ -1541,7 +1541,8 @@ CREATE VIEW public.cvt1 AS
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
      JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)))
      LEFT JOIN public.sip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
-     LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)));
+     LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
+  WHERE (categoria.id = ANY (ARRAY[197, 777, 397, 297, 527, 427, 396, 526, 426, 776, 296, 196, 15, 35, 45, 73, 55, 25, 65, 92, 40, 50, 67, 801, 90, 46, 16, 57, 26, 37, 80, 85, 66, 64, 703, 59, 49, 18, 38, 28, 706, 401, 501, 904, 402, 331, 231, 17, 502, 705, 62, 906, 104, 713, 101, 21, 302, 11, 76, 34, 27, 903, 902, 102, 14, 24, 301, 10, 20, 30, 422, 772, 192, 292, 522, 392, 63, 93, 195, 395, 525, 775, 295, 425, 714, 78, 424, 394, 524, 294, 774, 194, 89, 905, 86, 701, 68, 241, 715, 141, 341, 704, 702, 33, 13, 43, 23, 53, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 773, 193, 423, 293, 523, 393, 58, 48, 75, 69, 41, 74, 22, 47, 56, 36, 72, 12, 771, 291, 521, 391, 421, 191, 77, 39, 29, 420, 19, 520, 712]));
 
 
 --
@@ -8120,6 +8121,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211117200456'),
 ('20211119085218'),
 ('20211119110211'),
-('20211216125250');
+('20211216125250'),
+('20220122105047');
 
 

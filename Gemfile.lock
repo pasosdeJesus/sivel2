@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 64ac41e10af276524fbde358a57f9af0f50d5066
+  revision: 6d3cfb9b2dae7a04111411172b803ee4884b56d0
   specs:
     kt-paperclip (7.1.0)
       activemodel (>= 4.2.0)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 92c6fdf3c7912b39aacc1e37c2460b5f51b588c2
+  revision: 839e064565f970c8baf7153cd79ec451ed85a3e0
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 385e57804181417b91112017efdee2981d667f51
+  revision: 9df0a3548933a9c47fd3bdc73eb93190b22c0bfa
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 3b91f89e6174a229380d40f87b4f7db6107ad596
+  revision: e7c743dcc173396a6a72d525dd1734567e6f7605
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4d6980ef9f278986daac9f84f0ef70635fa28d5b
+  revision: 848a305cb0fde1d71351af3f2c46aa873eb72501
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2e6bf964d48064718a526302a4244ccd340dd4a3
+  revision: bae16954bea6d23f4c5b3aee719632335bfb3053
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -93,67 +93,67 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.0.1)
-      actionpack (= 7.0.1)
-      activesupport (= 7.0.1)
+    actioncable (7.0.2.2)
+      actionpack (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (7.0.1)
-      actionpack (= 7.0.1)
-      activejob (= 7.0.1)
-      activerecord (= 7.0.1)
-      activestorage (= 7.0.1)
-      activesupport (= 7.0.1)
+    actionmailbox (7.0.2.2)
+      actionpack (= 7.0.2.2)
+      activejob (= 7.0.2.2)
+      activerecord (= 7.0.2.2)
+      activestorage (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       mail (>= 2.7.1)
       net-imap
       net-pop
       net-smtp
-    actionmailer (7.0.1)
-      actionpack (= 7.0.1)
-      actionview (= 7.0.1)
-      activejob (= 7.0.1)
-      activesupport (= 7.0.1)
+    actionmailer (7.0.2.2)
+      actionpack (= 7.0.2.2)
+      actionview (= 7.0.2.2)
+      activejob (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       mail (~> 2.5, >= 2.5.4)
       net-imap
       net-pop
       net-smtp
       rails-dom-testing (~> 2.0)
-    actionpack (7.0.1)
-      actionview (= 7.0.1)
-      activesupport (= 7.0.1)
+    actionpack (7.0.2.2)
+      actionview (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       rack (~> 2.0, >= 2.2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (7.0.1)
-      actionpack (= 7.0.1)
-      activerecord (= 7.0.1)
-      activestorage (= 7.0.1)
-      activesupport (= 7.0.1)
+    actiontext (7.0.2.2)
+      actionpack (= 7.0.2.2)
+      activerecord (= 7.0.2.2)
+      activestorage (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.0.1)
-      activesupport (= 7.0.1)
+    actionview (7.0.2.2)
+      activesupport (= 7.0.2.2)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (7.0.1)
-      activesupport (= 7.0.1)
+    activejob (7.0.2.2)
+      activesupport (= 7.0.2.2)
       globalid (>= 0.3.6)
-    activemodel (7.0.1)
-      activesupport (= 7.0.1)
-    activerecord (7.0.1)
-      activemodel (= 7.0.1)
-      activesupport (= 7.0.1)
-    activestorage (7.0.1)
-      actionpack (= 7.0.1)
-      activejob (= 7.0.1)
-      activerecord (= 7.0.1)
-      activesupport (= 7.0.1)
+    activemodel (7.0.2.2)
+      activesupport (= 7.0.2.2)
+    activerecord (7.0.2.2)
+      activemodel (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
+    activestorage (7.0.2.2)
+      actionpack (= 7.0.2.2)
+      activejob (= 7.0.2.2)
+      activerecord (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       marcel (~> 1.0)
       mini_mime (>= 1.1.0)
-    activesupport (7.0.1)
+    activesupport (7.0.2.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -276,7 +276,7 @@ GEM
     json (2.6.1)
     kgio (2.11.4)
     libxml-ruby (3.2.2)
-    loofah (2.13.0)
+    loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -326,7 +326,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.6.1)
+    puma (5.6.2)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -334,20 +334,20 @@ GEM
       rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (7.0.1)
-      actioncable (= 7.0.1)
-      actionmailbox (= 7.0.1)
-      actionmailer (= 7.0.1)
-      actionpack (= 7.0.1)
-      actiontext (= 7.0.1)
-      actionview (= 7.0.1)
-      activejob (= 7.0.1)
-      activemodel (= 7.0.1)
-      activerecord (= 7.0.1)
-      activestorage (= 7.0.1)
-      activesupport (= 7.0.1)
+    rails (7.0.2.2)
+      actioncable (= 7.0.2.2)
+      actionmailbox (= 7.0.2.2)
+      actionmailer (= 7.0.2.2)
+      actionpack (= 7.0.2.2)
+      actiontext (= 7.0.2.2)
+      actionview (= 7.0.2.2)
+      activejob (= 7.0.2.2)
+      activemodel (= 7.0.2.2)
+      activerecord (= 7.0.2.2)
+      activestorage (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       bundler (>= 1.15.0)
-      railties (= 7.0.1)
+      railties (= 7.0.2.2)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -358,12 +358,12 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    rails-i18n (7.0.1)
+    rails-i18n (7.0.2)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
-    railties (7.0.1)
-      actionpack (= 7.0.1)
-      activesupport (= 7.0.1)
+    railties (7.0.2.2)
+      actionpack (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
@@ -372,7 +372,7 @@ GEM
     rake (13.0.6)
     redcarpet (3.5.1)
     redis (4.6.0)
-    regexp_parser (2.2.0)
+    regexp_parser (2.2.1)
     reline (0.3.1)
       io-console (~> 0.5)
     responders (3.0.1)
