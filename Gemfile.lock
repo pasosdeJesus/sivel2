@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 839e064565f970c8baf7153cd79ec451ed85a3e0
+  revision: 336eae0148037afaa2026f76a2db92cc36ed6cb4
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9df0a3548933a9c47fd3bdc73eb93190b22c0bfa
+  revision: b916a91a1249e28a651c8207a42e634b4361af56
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e7c743dcc173396a6a72d525dd1734567e6f7605
+  revision: 5dcd85f7a8927a1bb28bd61e7edc005b9900a700
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 848a305cb0fde1d71351af3f2c46aa873eb72501
+  revision: e7fefd011bd2c5723a22ed291aa8cb003e6382c9
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: bae16954bea6d23f4c5b3aee719632335bfb3053
+  revision: 61a7b5533db81c10433b6b9898da798f43d73632
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -316,7 +316,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pdf-core (0.9.0)
-    pg (1.3.1)
+    pg (1.3.2)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
