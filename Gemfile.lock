@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 94fd5da38882799cffa0333f494fd710cedd76d4
+  revision: a99500d2b09a88736e61c7cf561b38d1c4edcf91
   branch: vere2020
   specs:
     sip (2.1a1)
@@ -66,8 +66,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 61a7b5533db81c10433b6b9898da798f43d73632
-  branch: main
+  revision: 6817f15345a349cdd5e21269f4aa33acd216b231
+  branch: vere2020
   specs:
     sivel2_gen (2.1a1)
       color
