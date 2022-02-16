@@ -48,8 +48,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: cbd9f3d80a369172e5b09dcd3365af4509581f62
-  branch: main
+  revision: 94fd5da38882799cffa0333f494fd710cedd76d4
+  branch: vere2020
   specs:
     sip (2.1a1)
       cancancan

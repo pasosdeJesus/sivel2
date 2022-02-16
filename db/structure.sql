@@ -3003,6 +3003,44 @@ ALTER SEQUENCE public.sip_ubicacionpre_id_seq OWNED BY public.sip_ubicacionpre.i
 
 
 --
+-- Name: sip_vereda; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_vereda (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    municipio_id integer,
+    verlocal_id integer,
+    observaciones character varying(5000),
+    latitud double precision,
+    longitud double precision,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: sip_vereda_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_vereda_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_vereda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_vereda_id_seq OWNED BY public.sip_vereda.id;
+
+
+--
 -- Name: sivel2_gen_actividadoficio; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4606,6 +4644,13 @@ ALTER TABLE ONLY public.sip_ubicacionpre ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: sip_vereda id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_vereda ALTER COLUMN id SET DEFAULT nextval('public.sip_vereda_id_seq'::regclass);
+
+
+--
 -- Name: sivel2_gen_actividadoficio id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5228,6 +5273,14 @@ ALTER TABLE ONLY public.sip_trivalente
 
 ALTER TABLE ONLY public.sip_ubicacionpre
     ADD CONSTRAINT sip_ubicacionpre_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_vereda sip_vereda_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_vereda
+    ADD CONSTRAINT sip_vereda_pkey PRIMARY KEY (id);
 
 
 --
@@ -8132,6 +8185,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211216125250'),
 ('20220122105047'),
 ('20220213031520'),
-('20220214121713');
+('20220214121713'),
+('20220214232150'),
+('20220215095957');
 
 
