@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 449a5c9b48399aead31d2f9b45c5aac051c15f2a
+  revision: 48aab7f832b10c694b825298999becc3cfc672b8
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -342,7 +342,7 @@ GEM
     thor (1.2.1)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    twitter_cldr (6.11.1)
+    twitter_cldr (6.11.2)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
