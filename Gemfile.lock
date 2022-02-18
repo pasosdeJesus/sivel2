@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 336eae0148037afaa2026f76a2db92cc36ed6cb4
+  revision: fa8ee565b6074125afb5193c658ca6268b194cf7
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b916a91a1249e28a651c8207a42e634b4361af56
+  revision: 556b1b7dc3fe4e75a4f167293e275fb2dfda51af
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5dcd85f7a8927a1bb28bd61e7edc005b9900a700
+  revision: 86ea29ff59b9ad0cc054d19f6743ec99923386e0
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: cbd9f3d80a369172e5b09dcd3365af4509581f62
+  revision: 3cadd546bf03328e0ee506d3ed7c023863a0b9d4
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 61a7b5533db81c10433b6b9898da798f43d73632
+  revision: 0cd1751ef1b09dd74d33ebe52c7883131a845c8b
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -232,7 +232,7 @@ GEM
     dry-logic (1.2.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5)
-    dry-schema (1.9.0)
+    dry-schema (1.9.1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.13, >= 0.13.0)
       dry-core (~> 0.5, >= 0.5)
@@ -426,7 +426,7 @@ GEM
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.11.1)
+    twitter_cldr (6.11.2)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
