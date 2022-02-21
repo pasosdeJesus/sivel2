@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 6d3cfb9b2dae7a04111411172b803ee4884b56d0
+  revision: 4d95c60665fbb5d453a3f710977a259760996cd9
   specs:
-    kt-paperclip (7.1.0)
+    kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: fa8ee565b6074125afb5193c658ca6268b194cf7
+  revision: 6bd2ed228a26788e14758b981f42d9dfb0c3ef35
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 556b1b7dc3fe4e75a4f167293e275fb2dfda51af
+  revision: 2ac9691882730bd6252f52d0ba0abddaf480c552
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 86ea29ff59b9ad0cc054d19f6743ec99923386e0
+  revision: 9f2eb7ad98db8e2516824c1f3cd665c8e863318a
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3cadd546bf03328e0ee506d3ed7c023863a0b9d4
+  revision: df8eb8c4da8dc61216f2758805a34e6a6739bb5d
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 0cd1751ef1b09dd74d33ebe52c7883131a845c8b
+  revision: 2717e6477dddf3a8493231908bb0930d0269a8c9
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -211,7 +211,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.1)
+    devise-i18n (1.10.2)
       devise (>= 4.8.0)
     digest (3.1.0)
     docile (1.4.0)
@@ -271,7 +271,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.0.0)
+    jsbundling-rails (1.0.1)
       railties (>= 6.0.0)
     json (2.6.1)
     kgio (2.11.4)
@@ -288,7 +288,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    mini_portile2 (2.7.1)
+    mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.4.5)
     net-imap (0.2.3)
@@ -307,8 +307,8 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.1)
-      mini_portile2 (~> 2.7.0)
+    nokogiri (1.13.2)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.2)
       mime-types
@@ -414,7 +414,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stimulus-rails (1.0.2)
+    stimulus-rails (1.0.3)
       railties (>= 6.0.0)
     strscan (3.0.1)
     terrapin (0.6.0)
