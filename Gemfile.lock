@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 6d3cfb9b2dae7a04111411172b803ee4884b56d0
+  revision: 4d95c60665fbb5d453a3f710977a259760996cd9
   specs:
-    kt-paperclip (7.1.0)
+    kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fc8d3a304b31a0b0d52b706364b9ccd407b2548d
+  revision: a03547b753237e7f1660e026ce6144003a17e496
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 3a661cf2526175e8124546c1d325c02613aff1ba
+  revision: 830056d8d8c7af0b0cdc8f18757c8dbff2bc0f24
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f79b50070aaba01a4ac9b7fab5471b750eb4393b
+  revision: e67dff6f91ba8379f7d88839af7b4bfc07978cf1
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: adb8c5f1a8c1c3d0c38805a7e88689fc69395de1
+  revision: 9a7f611a84c4e13fbd1a992358a76af4aa16f5b0
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -172,7 +172,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.1)
+    devise-i18n (1.10.2)
       devise (>= 4.8.0)
     docile (1.4.0)
     dotenv (2.7.6)
@@ -219,12 +219,12 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.2)
-    mini_portile2 (2.7.1)
+    mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.4.5)
     nio4r (2.5.8)
-    nokogiri (1.13.1)
-      mini_portile2 (~> 2.7.0)
+    nokogiri (1.13.2)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.2)
       mime-types
