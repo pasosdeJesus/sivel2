@@ -5,10 +5,10 @@
 if (test -f ".env") then {
   rutaap="./"
 } elif (test -f "test/dummy/.env") then {
-rutaap="test/dummy"
+  rutaap="test/dummy"
 } else {
-echo "No se determino ruta de aplicación. Falta archivo .env"
-exit 1;
+  echo "No se determino ruta de aplicación. Falta archivo .env"
+  exit 1;
 } fi;
 
 echo "Ruta de la aplicación: $rutaap"
@@ -35,10 +35,10 @@ if (test "$SINAC" != "1") then {
   if (test "$?" != "0") then {
     exit 1;
   } fi;
-(cd $rutaap; CXX=c++ yarn upgrade)
-if (test "$?" != "0") then {
-  exit 1;
-} fi;
+  (cd $rutaap; CXX=c++ yarn upgrade)
+  if (test "$?" != "0") then {
+    exit 1;
+  } fi;
 } fi;
 
 if (test "$SININS" != "1") then {
