@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 21f6566f8481edf86b65714c10bff5af3aa223e6
+  revision: 04ce0208a5379ab9ddbe6a37133f48512f443aa8
   branch: main
   specs:
     apo214 (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 22e9f51c0319cb77d257251cf280399b8fb0e313
+  revision: 508cb6d2d41469c71ad5fc40039a71d1f56ecea0
   branch: main
   specs:
     sip (2.1a1)
