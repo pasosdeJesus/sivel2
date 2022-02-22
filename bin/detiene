@@ -14,6 +14,23 @@ if (test "$RAILS_ENV" = "production") then {
     exit 1;
   } fi;
 
-doas sh /etc/rc.d/$RC -d stop
+  doas sh /etc/rc.d/$RC -d stop
+} elif (test "$RAILS_ENV" = "development") then {
+  # Intentando detener rails
+  if (test -f tmp/pids/server.pid) then { 
+    pp=`cat tmp/pids/server.pid`
+    ps -p $pp | grep "ruby: puma" > /dev/null
+    if (test "$?" = "0") then {
+      # Proceso activo y con ruby y puma seguramente es el de este
+      echo "Matando proceso con rails $pp"
+      kill -9 $pp
+    } fi;
+  } fi;
+  # Intentand detener proceso de recarga viva
+  pn=`fstat | grep $PUERTORECVIVA | sed -e "s/^[^\s]* node *\([0-9][0-9]*\) .*/\1/g" | sort -u`
+  if (test "$pn" != "") then {
+    echo "Matando proceso con node $pn"
+    kill -9 $pn
+  } fi;
 } fi;
 

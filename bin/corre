@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Ejecuta aplicación
+# Ejecuta aplicación usando Procfile de ser posible
 # Si hay un archivo .env toma variables de configuración de ese
 # Las variables usadas son:
 # RAILS_ENV:  Modo de ejecución development, production (o test que no se usa)
@@ -7,6 +7,8 @@
 # PUERTODES: En modo desarrollo puerto por usar
 # IPDES: En modo desarrollo IP por usar
 # R: Si tiene un valor ejecuta rápido (no instala dependencias ni elimina caches ni regenera recursos)
+#   Aunque si el valor es r recompila (sin eliminar dependencias)
+#   Y si el valor es f o si no hay Procfile no intenta correr con foreman
 
 require 'fileutils'
 #require 'byebug'
@@ -70,9 +72,13 @@ FileUtils.chdir RAIZ_AP do
   end
 
   if !ENV['R'] || ENV['R'] == '' || ENV['R'] == 'r'
-    puts "\n== Eliminando recursos =="
-    system! 'rm -rf public/packs/*'
-    system! "rm -rf public/#{ENV['RAILS_RELATIVE_URL_ROOT']}/assets/*"
+    puts "\n== Eliminando recursos public/packs* y public/#{ENV['RUTA_RELATIVA']}/assets/* =="
+    system! 'rm -rf public/packs*'
+    system! "rm -rf public/#{ENV['RUTA_RELATIVA']}/assets/*"
+    system! "rm -rf app/assets/builds/*"
+
+    puts "\n== Enlaza controladores stimulus de motores =="
+    system! 'bin/rails sip:stimulus_motores'
 
     puts "\n== Crea recursos CSS y Javascript =="
     system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails assets:precompile --trace"
@@ -81,16 +87,20 @@ FileUtils.chdir RAIZ_AP do
   if ENV['RAILS_ENV'] == "development"
     puts "\n== Ejecutando en modo desarrollo  =="
 
-    ord = ""
-    if ENV['CONFIG_HOSTS'] && ENV['CONFIG_HOSTS'] != ''
-      ord += "CONFIG_HOSTS=\"#{ENV['CONFIG_HOSTS'].downcase}\" "
+    if File.exist?('Procfile') && ENV['R'] != 'f'
+      ord="foreman start -f Procfile"
+    else
+      ord = ""
+      if ENV['CONFIG_HOSTS'] && ENV['CONFIG_HOSTS'] != ''
+        ord += "CONFIG_HOSTS=\"#{ENV['CONFIG_HOSTS'].downcase}\" "
+      end
+      ord += "RAILS_RELATIVE_URL_ROOT='' "
+      ord += "bin/rails s "
+      if ENV['PUERTODES'] != ''
+        ord += "-p #{ENV['PUERTODES']} "
+      end
+      ord += "-b '#{ENV['IPDES']}' "
     end
-    ord += "RAILS_RELATIVE_URL_ROOT='' "
-    ord += "bin/rails s "
-    if ENV['PUERTODES'] != ''
-      ord += "-p #{ENV['PUERTODES']} "
-    end
-    ord += "-b '#{ENV['IPDES']}' "
     puts "#{ord}"
   elsif ENV['RAILS_ENV'] == 'production'
     if File.exists?('bin/corre-local')

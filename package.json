@@ -3,8 +3,9 @@
   "version": "2.1-a.1",
   "private": false,
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch",
+    "build": "esbuild app/javascript/*.* --preserve-symlinks --bundle --sourcemap --outdir=app/assets/builds",
+    "start": "node esbuild-des.config.js"
+  },
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
   },
   "dependencies": {
