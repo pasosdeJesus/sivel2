@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>sivel2-06-02-admin-filtro-plantilla-para-un-registro-en-hoja-de-calculo</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">plantilla-registro-filtro-id</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=navbarDropdownDocumentos<datalist><option>id=navbarDropdownDocumentos</option><option>link=Documentos</option><option>css=#navbarDropdownDocumentos</option><option>//a[contains(text(),'Documentos')]</option><option>//a[@id='navbarDropdownDocumentos']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li/a</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li/a</option></datalist></td><td>59,25</td>
+</tr>
+<tr><td>clickAt</td><td>link=Plantillas para un registro en hoja de calculo<datalist><option>link=Plantillas para un registro en hoja de calculo</option><option>//a[contains(text(),'Plantillas para un registro en hoja de calculo')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li/div/a[4]</option><option>//a[contains(@href, '/sivel2/plantillashcr')]</option><option>//ul[2]/li/div/a[4]</option></datalist></td><td>65,11</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Plantilla para registro</td>
+</tr>
+<tr><td>runScript</td><td>document.querySelector('#filtro_busid').value = localStorage.getItem('regsivel2_pchr_id')<datalist><option>document.querySelector('#filtro_busid').value = localStorage.getItem('regsivel2_pchm_id')</option><option>document.querySelector('#filtro_busid').value = localStorage.getItem('regsivel2_pchr_id')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[6]/input</option><option>//td[6]/input</option></datalist></td><td>16,29</td>
+</tr>
+<tr><td>assertText</td><td>id=numregistros<datalist><option>id=numregistros</option><option>css=#numregistros</option><option>//span[@id='numregistros']</option><option>//div[2]/span</option></datalist></td><td>1</td>
+</tr>
+<tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div/h1</option><option>//h1</option></datalist></td><td>Plantilla para registro</td>
+</tr>
+</tbody></table>
+</body>
+</html>
