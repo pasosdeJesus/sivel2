@@ -3,12 +3,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel-07-01-admin-crea-encusta</title>
+	<title>sivel2-07-01-admin-crea-encuesta</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">encuesta-fecha-de-inicio</td></tr>
+<tr><td rowspan="1" colspan="3">crea-formulario</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=navbarDropdownAdministrar<datalist><option>id=navbarDropdownAdministrar</option><option>link=Administrar</option><option>css=#navbarDropdownAdministrar</option><option>//a[contains(text(),'Administrar')]</option><option>//a[@id='navbarDropdownAdministrar']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>28,29</td>
+</tr>
+<tr><td>clickAt</td><td>link=Formularios<datalist><option>link=Formularios</option><option>//a[contains(text(),'Formularios')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/ul/li[8]/a</option><option>//a[contains(@href, '/sivel2/formularios')]</option><option>//li[8]/a</option></datalist></td><td>51,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/sivel2/formularios/nuevo.%23%3CMr519Gen::Formulario::ActiveRecord_Relation:0x0000003991f74818%3E')]</option><option>//div[2]/a</option></datalist></td><td>21,30</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Edita Formulario</td>
+</tr>
+<tr><td>clickAt</td><td>id=formulario_nombre<datalist><option>id=formulario_nombre</option><option>name=formulario[nombre]</option><option>css=#formulario_nombre</option><option>//input[@id='formulario_nombre']</option><option>//form[@id='edit_formulario_7']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>6,17</td>
+</tr>
+<tr><td>type</td><td>id=formulario_nombre<datalist><option>id=formulario_nombre</option><option>name=formulario[nombre]</option><option>css=#formulario_nombre</option><option>//input[@id='formulario_nombre']</option><option>//form[@id='edit_formulario_7']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>Formulario para encuesta de prueba 2</td>
+</tr>
+<tr><td>clickAt</td><td>id=formulario_nombreinterno<datalist><option>id=formulario_nombreinterno</option><option>name=formulario[nombreinterno]</option><option>css=#formulario_nombreinterno</option><option>//input[@id='formulario_nombreinterno']</option><option>//form[@id='edit_formulario_7']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>120,22</td>
+</tr>
+<tr><td>type</td><td>id=formulario_nombreinterno<datalist><option>id=formulario_nombreinterno</option><option>name=formulario[nombreinterno]</option><option>css=#formulario_nombreinterno</option><option>//input[@id='formulario_nombreinterno']</option><option>//form[@id='edit_formulario_7']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>formulario_prueba_encuesta_2</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_formulario_7']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>41,32</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Formulario</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">encuesta-fecha-de-inicio-formulario</td></tr>
 </thead>
 <tbody>
 <tr><td>clickAt</td><td>id=navbarDropdownAdministrar<datalist><option>id=navbarDropdownAdministrar</option><option>link=Administrar</option><option>css=#navbarDropdownAdministrar</option><option>//a[contains(text(),'Administrar')]</option><option>//a[@id='navbarDropdownAdministrar']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>34,26</td>
@@ -21,9 +47,15 @@
 </tr>
 <tr><td>clickAt</td><td>//tr[3]/td<datalist><option>//tr[3]/td</option></datalist></td><td>17,15</td>
 </tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=encuestausuario_formulario_id<datalist><option>id=encuestausuario_formulario_id</option><option>name=encuestausuario[formulario_id]</option><option>css=#encuestausuario_formulario_id</option><option>//select[@id='encuestausuario_formulario_id']</option><option>//form[@id='edit_encuestausuario_5']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>label=Formulario para encuesta de prueba</td>
+</tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_encuestausuario_234']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>44,17</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Encuesta</td>
+</tr>
+<tr><td>runScript</td><td>localStorage.setItem('regsivel2_ace_id', +document.querySelector('dd').innerText)<datalist><option>localStorage.setItem('regsivel2_pchr_id', +document.querySelector('dd').innerText)</option><option>localStorage.setItem('regsivel2_pchm_id', +document.querySelector('dd').innerText)</option><option>localStorage.setItem('regsivel2_ace_id', +document.querySelector('dd').innerText)</option></datalist></td><td></td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Mr519Gen::Encuestausuario actualizada.</td>
 </tr>
@@ -76,26 +108,6 @@
 <tr><td>clickAt</td><td>//tr[6]/td<datalist><option>//tr[6]/td</option></datalist></td><td>6,18</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_encuestausuario_234']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>53,20</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Encuesta</td>
-</tr>
-<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Mr519Gen::Encuestausuario actualizada.</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">encuesta-formulario</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div/a[2]</option><option>//a[contains(@href, '/sivel2/encuestasusuario/235/edita')]</option><option>//div/div/a[2]</option></datalist></td><td>30,26</td>
-</tr>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>select</td><td>id=encuestausuario_formulario_id<datalist><option>id=encuestausuario_formulario_id</option><option>name=encuestausuario[formulario_id]</option><option>css=#encuestausuario_formulario_id</option><option>//select[@id='encuestausuario_formulario_id']</option><option>//form[@id='edit_encuestausuario_235']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>label=Formulario Nuevo 133</td>
-</tr>
-<tr><td>clickAt</td><td>id=encuestausuario_formulario_id<datalist><option>id=encuestausuario_formulario_id</option><option>name=encuestausuario[formulario_id]</option><option>css=#encuestausuario_formulario_id</option><option>//select[@id='encuestausuario_formulario_id']</option><option>//form[@id='edit_encuestausuario_235']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>-88,-539</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_encuestausuario_235']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>55,16</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Encuesta</td>
 </tr>

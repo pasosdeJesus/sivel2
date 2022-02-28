@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>sivel2-07-03-admin-elimina-encuesta</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">encuesta-elimina</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Encuestas<datalist><option>link=Encuestas</option><option>//a[contains(text(),'Encuestas')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/div/a[3]</option><option>//a[contains(@href, '/sivel2/encuestasusuario')]</option><option>//ul[2]/li[2]/div/a[3]</option></datalist></td><td>53,7</td>
+</tr>
+<tr><td>clickAt</td><td>id=navbarDropdownAdministrar<datalist><option>id=navbarDropdownAdministrar</option><option>link=Administrar</option><option>css=#navbarDropdownAdministrar</option><option>//a[contains(text(),'Administrar')]</option><option>//a[@id='navbarDropdownAdministrar']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>47,22</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Encuestas</td>
+</tr>
+<tr><td>runScript</td><td>document.querySelector('#filtro_busid').value = localStorage.getItem('regsivel2_ace_id')<datalist><option>document.querySelector('#filtro_busid').value = localStorage.getItem('regsivel2_ace_id')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[8]/input</option><option>//td[8]/input</option></datalist></td><td>27,20</td>
+</tr>
+<tr><td>assertText</td><td>id=numregistros<datalist><option>id=numregistros</option><option>css=#numregistros</option><option>//span[@id='numregistros']</option><option>//div[2]/span</option></datalist></td><td>1</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2/encuestasusuario/235')])[2]</option><option>//div[4]/a</option></datalist></td><td>49,18</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Encuestas</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Mr519Gen::Encuestausuario eliminada.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">elimina-formulario</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=navbarDropdownAdministrar<datalist><option>id=navbarDropdownAdministrar</option><option>link=Administrar</option><option>css=#navbarDropdownAdministrar</option><option>//a[contains(text(),'Administrar')]</option><option>//a[@id='navbarDropdownAdministrar']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>26,30</td>
+</tr>
+<tr><td>clickAt</td><td>link=Formularios<datalist><option>link=Formularios</option><option>//a[contains(text(),'Formularios')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/ul/li[8]/a</option><option>//a[contains(@href, '/sivel2/formularios')]</option><option>//li[8]/a</option></datalist></td><td>27,13</td>
+</tr>
+<tr><td>sendKeys</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//td[2]/div/input</option></datalist></td><td>Formulario para encuesta de prueba 2</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[5]/input</option></datalist></td><td>34,17</td>
+</tr>
+<tr><td>assertText</td><td>id=numregistros<datalist><option>id=numregistros</option><option>css=#numregistros</option><option>//span[@id='numregistros']</option><option>//div[2]/span</option></datalist></td><td>1</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-sm.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/formularios/10')])[3]</option><option>//a[3]</option></datalist></td><td>35,8</td>
+</tr>
+</tbody></table>
+</body>
+</html>
