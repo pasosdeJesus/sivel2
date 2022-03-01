@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 04ce0208a5379ab9ddbe6a37133f48512f443aa8
+  revision: 6dacc3f813de0fe8f5ee7692ec82b1daa8c67ed5
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 81e65bd23460b666038cc0a26e4f0b3ed0b4d1fb
+  revision: 3b097726842a34779af979ed017a439f9e1cc707
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 977212f6fc869c36195937e140b9606b8b48436d
+  revision: 275327e0e6d07b60cc42004fc5fb83602048ba38
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 805e4135e6fa48a6be70438ade9b2173c777f8e8
+  revision: 1bcf41ca57e112dce8f68e26657a0f356fdbfd99
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: dd69394cdac6b26868433a9e00b7a18529913b05
+  revision: 259e0d43bbbf94f50091eb1d537f3c441970782a
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -271,7 +271,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.0.1)
+    jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     json (2.6.1)
     kgio (2.11.4)
@@ -310,7 +310,7 @@ GEM
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    odf-report (0.7.2)
+    odf-report (0.7.3)
       mime-types
       nokogiri (>= 1.10.0)
       rubyzip (>= 1.3.0)
@@ -358,7 +358,7 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    rails-i18n (7.0.2)
+    rails-i18n (7.0.3)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
     railties (7.0.2.2)
