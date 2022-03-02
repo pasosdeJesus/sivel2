@@ -24,9 +24,11 @@ gem 'kt-paperclip',                 # Anexos
 
 gem 'libxml-ruby'
 
-gem 'odf-report' # Genera ODT
+gem 'net-smtp'
 
 gem 'nokogiri', '>=1.11.1'
+
+gem 'odf-report' # Genera ODT
 
 gem 'pg' # Postgresql
 
@@ -70,15 +72,15 @@ gem 'will_paginate' # Listados en páginas
 
 gem 'sip', # Motor generico
   git: 'https://github.com/pasosdeJesus/sip.git', branch: 'v2.0'
-  #path: '../sip'
+  #path: '../sip-2.0'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
   git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: 'v2.0'
-  #path: '../mr519_gen'
+  #path: '../mr519_gen-2.0'
 
 gem 'heb412_gen',  # Motor de nube y llenado de plantillas
   git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: 'v2.0'
-  #path: '../heb412_gen'
+  #path: '../heb412_gen-2.0'
 
 gem 'sivel2_gen', # Motor para manejo de casos
   git: 'https://github.com/pasosdeJesus/sivel2_gen.git', branch: 'sivel2.0'
