@@ -43,11 +43,11 @@ module Sip
         when "pais"
           registro = modelo.create!(MODELO_PARAMS.merge({id: 1000, nombreiso: "iso"}))
         when "departamento"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_pais: 170}))
+          registro = modelo.create!(MODELO_PARAMS.merge({id_pais: 170, id_deplocal:100000}))
         when "municipio"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_departamento: 17}))
+          registro = modelo.create!(MODELO_PARAMS.merge({id_departamento: 17, id_munlocal:10000}))
         when "clase"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_municipio: 1360}))
+          registro = modelo.create!(MODELO_PARAMS.merge({id_municipio: 1360, id_clalocal:10000}))
         else
           registro = modelo.create!(MODELO_PARAMS)
         end
