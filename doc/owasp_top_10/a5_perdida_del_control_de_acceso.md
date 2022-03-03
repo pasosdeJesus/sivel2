@@ -5,7 +5,7 @@
 * Se han desarrollado pruebas de regresión con minitest específicas para probar el control de acceso de sivel2.  Ver en fuentes en directorio `test/controllers` las que comienzan con `control_acceso`.  En total 1037 pruebas que se ejecutan en integración continúa de gitlab con cada cambio a fuentes, ver por ejemplo: https://github.com/pasosdeJesus/sivel2/blob/sivel2.0/config/initializers/content_security_policy.rb
 * Se ha revisado en la aplicación y en todos sus motores: 
   1. Que los controladores que están en `lib` no tengan `load_and_authorize_resource` (es responsabilidad de clases finales, no de modulos)
-  2. Que los controladores que están en `app/controllers si tengan `load_and_authorize_resource` o cuando no aplique un comentario explicando
+  2. Que los controladores que están en `app/controllers` si tengan `load_and_authorize_resource` o cuando no aplique un comentario explicando
 * En los motores y aplicaciones genéricas se especifica con brevedad el control de acceso llamando métodos
   de motores en la función `initialize` de `app/modles/ability.rb` (e.g `initialize_sip`, `initialize_mr519_gen`, 
   `initialize_heb412_gen` e `initialize_sivel2_gen`).  En aplicaciones finales con exactamente el mismo control de acceso de las aplicaciones genéricas
