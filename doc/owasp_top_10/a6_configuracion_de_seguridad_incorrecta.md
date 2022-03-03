@@ -1,7 +1,7 @@
 # Medidas para asegurar una configuración de seguridad correcta
 
-* Somos desarrolladores de la pila de software en la distribución adJ de
-  OpenBSD, que actualizamos, probamos y auditamos parcialmente cada 6 meses.
+* Somos desarrolladores de la pila de software en la [distribución adJ de OpenBSD](https://aprendiendo.pasosdeJesus.org), 
+* que actualizamos, probamos y auditamos parcialmente cada 6 meses.
 * La distribución adJ incluye SIVeL 2 como porte para automatizar más
   su instalación y configuración.
 * Para minimizar esfuerzo de asegurar entornos de desarrollo, prueba y 
