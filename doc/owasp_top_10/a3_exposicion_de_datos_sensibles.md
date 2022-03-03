@@ -1,4 +1,4 @@
-# Medias para evitar exponer datos sensibles
+# Medidas para evitar exponer datos sensibles
 
 * Se recomienda sistematizar casos que hayan aparecido en medios 
   públicos o que provenga directamente de víctimas que hayan dado 
