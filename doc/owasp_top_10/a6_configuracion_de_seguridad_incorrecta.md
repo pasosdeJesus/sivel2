@@ -13,4 +13,4 @@
 * La aplicación tiene una arquitectura segmentada sin acceso de o a terceros.
 * Se envían cabeceras seguras con un Content Security Policy ajustado.
   Ver
-  [config/initializers/content_security_policy](https://github.com/pasosdeJesus/sivel2/blob/sivel2.0/config/initializers/content_security_policy.rb) ).
+  [config/initializers/content_security_policy](https://github.com/pasosdeJesus/sivel2/blob/sivel2.0/config/initializers/content_security_policy.rb).
