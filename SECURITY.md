@@ -11,6 +11,17 @@
 
 ## Reportar vulnerabilidades
 
-Por favor reporte primero la vulnerabilidad por correo, escribiendo a seguridad@pasosdeJesus.org.
+Por favor siga estos 3 pasos en ese orden:
 
-10 días después, si hace falta, abra un reporte en https://github.com/pasosdeJesus/sivel2_gen/issues con un título que comience con "Falla de seguridad".
+1. Envíe por correo un reporte describiendo la falla y como explotarla 
+   a <seguridad@pasosdeJesus.org>.
+2. El mismo día que envía el reporte, si le es posible, abra una solicitud 
+   de cambio (Pull Request) cedida al dominio público que solucione la falla
+   pero sin dar indicaciones que se trata de una falla de seguridad
+   ni como explotarla.
+3. Diez días después por favor abra un reporte en el 
+   [Sistema de Seguimiento Público](https://github.com/pasosdeJesus/sivel2_gen/issues) con un título que comience con "Falla de seguridad" incluyendo
+   el reporte detallado y referenciando la solicitud de cambio.
+
+Hay una retribución monetaria para la primera falla que se reporte a la rama
+sivel2.0, ver detalles en [doc/Llamado.md]
