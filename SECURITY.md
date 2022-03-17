@@ -24,4 +24,5 @@ Por favor siga estos 3 pasos en ese orden:
    el reporte detallado y referenciando la solicitud de cambio.
 
 Hay una retribución monetaria para la primera falla que se reporte a la rama
-sivel2.0, ver detalles en [doc/Llamado.md]
+sivel2.0, ver detalles en
+<https://github.com/pasosdeJesus/sivel2/blob/sivel2.0/doc/Llamado.md>
