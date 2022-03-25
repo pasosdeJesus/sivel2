@@ -45,6 +45,8 @@ import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 var L = require('leaflet');
 var mc= require('leaflet.markercluster');
 
+import 'gridstack'
+
 document.addEventListener("DOMContentLoaded", function() {
 
 
