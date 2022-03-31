@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel2.1-06-01-admin-crea-plantilla-para-un-registro-en-hoja-de-calculo</title>
+	<title>sivel2-06-01-admin-crea-plantilla-para-un-registro-en-hoja-de-calculo</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -30,6 +30,8 @@
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Plantilla para registro</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Plantilla para hoja de cálculo con un registro llenada.</td>
+</tr>
+<tr><td>runScript</td><td>localStorage.setItem('plantilla-registro_id', +document.querySelector('dd').innerText)<datalist><option>localStorage.setItem('pchr_id', +document.querySelector('dd').innerText)</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(HUILA)').attr('selected', 'selected');</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(TOLIMA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salidam option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(COLOMBIA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_expulsion option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>localStorage.setItem('plantilla-registro_id', +document.querySelector('dd').innerText)</option></datalist></td><td>plantilla-registro</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
