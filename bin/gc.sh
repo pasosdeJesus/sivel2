@@ -47,7 +47,7 @@ if (test "$SININS" != "1") then {
     exit 1;
   } fi;
 
-  puts "\n== Enlaza controladores stimulus de motores =="
+  echo "\n== Enlaza controladores stimulus de motores =="
   (cd $rutaap; bin/rails sip:stimulus_motores)
   if (test "$?" != "0") then {
     exit 1;
