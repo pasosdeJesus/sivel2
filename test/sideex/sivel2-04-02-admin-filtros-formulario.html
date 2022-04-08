@@ -3,9 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>sivel2-04-02-admin-elimina-formulario</title>
+	<title>sivel2-04-02-admin-filtros-formulario</title>
 </head>
 <body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-filtro-localStorage</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=navbarDropdownAdministrar<datalist><option>id=navbarDropdownAdministrar</option><option>link=Administrar</option><option>css=#navbarDropdownAdministrar</option><option>//a[contains(text(),'Administrar')]</option><option>//a[@id='navbarDropdownAdministrar']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>37,20</td>
+</tr>
+<tr><td>clickAt</td><td>link=Formularios<datalist><option>link=Formularios</option><option>//a[contains(text(),'Formularios')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/div/a[7]</option><option>//a[contains(@href, '/sivel2/formularios')]</option><option>//a[7]</option></datalist></td><td>52,8</td>
+</tr>
+<tr><td>runScript</td><td>document.querySelector('#filtro_busid').value = localStorage.getItem('formulario_id')<datalist><option>document.querySelector('#filtro_busid').value = localStorage.getItem('pchr_id')</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(HUILA)').attr('selected', 'selected');</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(TOLIMA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salidam option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(COLOMBIA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_expulsion option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>localStorage.setItem('pchr_id', +document.querySelector('dd').innerText)</option><option>document.querySelector('#filtro_busid').value = localStorage.getItem('formulario_id')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/input</option><option>//td[5]/input</option></datalist></td><td>27,19</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td/div/input</option><option>//input</option></datalist></td><td>39,8</td>
+</tr>
+<tr><td>type</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td/div/input</option><option>//input</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/input</option><option>//td[5]/input</option></datalist></td><td>41,21</td>
+</tr>
+</tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
 <tr><td rowspan="1" colspan="3">formulario-filtro-id</td></tr>
@@ -22,8 +42,6 @@
 <tr><td>sendKeys</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td/div/input</option><option>//div/input</option></datalist></td><td>50</td>
 </tr>
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[5]/input</option><option>//td[5]/input</option></datalist></td><td>41,21</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td/div/input</option><option>//div/input</option></datalist></td><td>22,23</td>
 </tr>
 <tr><td>type</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td/div/input</option><option>//div/input</option></datalist></td><td></td>
 </tr>
