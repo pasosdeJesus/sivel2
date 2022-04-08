@@ -1,6 +1,6 @@
-# SIVeL 2 #
+# SIVeL2 #
 
-## Bienvenido al código fuente de SIVeL ##
+## Bienvenido al código fuente de SIVeL2 ##
 Sistema de Información de Violencia Política en Línea versión 2
 
 
@@ -9,15 +9,32 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 ![Logo de sivel2](https://raw.githubusercontent.com/pasosdeJesus/sivel2/main/app/assets/images/logo.jpg)
 
-## Documentación para usuarios finales
+## Sobre SIVeL2
 
-<https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing>
+SIVeL2 es una aplicación web para manejar casos de violencia política y desaparición.  Es segura y de fuentes abiertas.  Su desarrollo es liderado por el colectivo [Pasos de Jesús](https://www.pasosdeJesus.org).
 
-Si desea reportar un problema con sivel2 o conocer del desarrollo de esta aplicación por favor revise:
+Esta aplicación web es usada o incluida en sistemas de información de varias organizaciones que documentan casos de violencia socio política como las de la Red de Bancos de Datos, el Banco de Datos del CINEP/PPP, JRS-Colombia, CODACOP, ASOM, IAP, ANZORC entre otras.
 
-Reportar problemas: <https://github.com/pasosdeJesus/sivel2_gen/issues>
+Te invitamos a ver el manual de usuario en: <https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing>
 
-Tableros de seguimiento al desarrollo: <https://github.com/pasosdeJesus/sivel2_gen/projects>
+Puedes interactuar con una instalación de demostración en:
+<https://defensor.info/sivel2>
+
+Si necesitas una instancia de SIVeL2 para tu organización no gubernamental, o necesitas un sistema de información o incluir SIVeL2 en el sistema de información de tu organización por favor revisa <https://defensor.info>.
+
+Si quieres discutir requerimientos para SIVeL2 te invitamos a <https://github.com/pasosdeJesus/sivel2/discussions>
+
+Si quieres votar para que se implemente el requerimiento que necesitas más rápido te invitamos a suscribirte y votar en <https://cifrasdelconflicto.org>
+
+Si quieres desplegar tu propia instalación de SIVeL2 mira más adelante este documento.
+
+Si desea reportar un problema con sivel2 o conocer del desarrollo de esta aplicación por favor revisa:
+* Reportar problemas: <https://github.com/pasosdeJesus/sivel2_gen/issues>
+* Tableros de seguimiento al desarrollo: <https://github.com/pasosdeJesus/sivel2_gen/projects>
+
+Si quieres ayudar a mejorar esta aplicación web te recomendamos el repositorio del motor [sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen).  Desde Pasos de Jesús estaremos atentos a quienes hagan aportes para
+proponerles oportunidades labores cuando podamos.
+
 
 ## Documentación para administradores que despliegan y mantienen en operación la aplicación
 
