@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: d60085e92f44be2f9d04756410ca7018a78edd10
+  revision: 2fb9a47c54b6fcb6ef7ea00c6e5fffc1e9b12f3f
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d33acae3c161100694b1f07f929582c643f66eaa
+  revision: 1b13c84f9ade91dedfb57a4db8192eed88d0fd60
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2d10605470977b490b8812d7e4a81a06e8702246
+  revision: f295efddd04af10c2662975fd663dc17196caae8
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 92ab0779a12d1d3d4ec83bfba72f8842c1e6d854
+  revision: 1a2d2d6701f389fcf11bf3ce61ad795fc554593f
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -222,7 +222,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.15.0)
-    msgpack (1.5.0)
+    msgpack (1.5.1)
     net-protocol (0.1.3)
       timeout
     net-smtp (0.3.1)
