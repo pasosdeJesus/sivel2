@@ -33,7 +33,7 @@ Si desea reportar un problema con sivel2 o conocer del desarrollo de esta aplica
 * Tableros de seguimiento al desarrollo: <https://github.com/pasosdeJesus/sivel2_gen/projects>
 
 Si quieres ayudar a mejorar esta aplicación web te recomendamos el repositorio del motor [sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen).  Desde Pasos de Jesús estaremos atentos a quienes hagan aportes para
-proponerles oportunidades labores cuando podamos.
+proponerles oportunidades labores cuando las haya.
 
 
 ## Documentación para administradores que despliegan y mantienen en operación la aplicación
