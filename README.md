@@ -13,7 +13,7 @@ Sistema de Información de Violencia Política en Línea versión 2
 
 SIVeL2 es una aplicación web para manejar casos de violencia política y desaparición.  Es segura y de fuentes abiertas.  Su desarrollo es liderado por el colectivo [Pasos de Jesús](https://www.pasosdeJesus.org).
 
-Esta aplicación web es usada o incluida en sistemas de información de varias organizaciones que documentan casos de violencia socio política como las de la Red de Bancos de Datos, el Banco de Datos del CINEP/PPP, JRS-Colombia, CODACOP, ASOM, IAP, ANZORC entre otras.
+Esta aplicación web es usada o incluida o adaptada en sistemas de información de varias organizaciones que documentan casos de violencia socio política o refugio como las de la Red de Bancos de Datos, el Banco de Datos del CINEP/PPP, JRS-Colombia, CODACOP, ASOM, IAP, ANZORC entre otras.
 
 Te invitamos a ver el manual de usuario en: <https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing>
 
