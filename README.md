@@ -73,18 +73,19 @@ Además si vas a desplegar en producción:
   ```sh
   doas gem install --install-dir /var/www/bundler/ruby/3.1/ bindex -v 0.7.0
   ```
-* Copia y de requerirlo modifique las plantillas:
+* Copia la plantilla del archivo .env y editalo:
 ```sh
-  for i in `find . -name "*plantilla"`; do n=`echo $i | sed -e "s/.plantilla//g"`; if (test ! -e "$n") then {echo $n; cp $i $n; } fi; done 
+  cp .env.plantilla .env
+  $EDITOR .env
 ```
-  Estas plantillas dejan la aplicación en el URL /sivel2/ (tendrías que 
+  Las variables deinidas dejan la aplicación en el URL `/sivel2/` (tendrías que 
   modificarlas si prefiere una raíz de URL diferente, ver
   <https://github.com/pasosdeJesus/sip/blob/main/doc/punto-de-montaje.md> )
 
   Lo mínimo que debes establecer es el usuario PostgreSQL, su clave y 
   los nombres de las bases de datos (desarrollo, pruebas y producción) que configuraste en 
-  PostgreSQL en `config/database.yml` (también es recomendable que agregue el
-  usuario y la clave en el archivo `~/.pgpass`).
+  PostgreSQL en las variables `BD_USUARIO`, `BD_CLAVE`, `BD_DES`, `BD_PRUEBA` y `BD_PRO` respectivamente
+  (también es recomendable que agregue el usuario y la clave en el archivo `~/.pgpass`).
 
 * Las migraciones del directorio `db/migrate` de `sivel2_gen` permiten 
   migrar una SIVeL 1.2, actualizando estructura y agregando datos que hagan 
@@ -189,31 +190,30 @@ y
 ```sh
 RAILS_ENV=production EDITOR=vim bin/rails credentials:edit
 ```
-* Configura la misma base de datos en la sección `production`
-  de `config/databases.yml` y ejecuta
+* Configura la misma base de datos en la variable `BD_PRO` del archivo `.env` y ejecuta
 ```sh
   RAILS_ENV=production bin/rails db:setup 
   RAILS_ENV=production bin/rails db:migrate
   RAILS_ENV=production bin/rails sip:indices
 ```
-* Deja el mismo punto de montaje que usará con el servidor web en `config/application.rb`, `config/routes.rb` y `config/initializers/punto_montaje.rb`
-* Configura ruta para anexos y respaldos en `config/initializers/sip.rb` --recomendable en ruta que respalde con periodicidad.
-* Configura ruta para la nube (preferible donde quede también respaldada con periodicidad) en `config/application.rb`
-* Elige un puerto local no usado (digamos 2009)
+* El punto de montaje configuralo en la variable `RUTA_RELATIVA` del archivo `.env`
+* Configura la ruta para anexos y respaldos en las variables `SIP_RUTA_ANEXOS` y `SIP_RUTA_RESPALDOS` del archivo `.env` --recomendable en ruta que respaldes con periodicidad.
+* Configura la ruta para la nube (preferible donde quede también respaldada con periodicidad) en la variable `HEB412_RUTA` del archivo `.env`
+* Elige un puerto local no usado (digamos `2009`) y configuralo en la variable `PUERTOUNICORN` del archivo `.env`
 * Como servidor web recomendamos nginx, suponiendo que el puerto elegido es 2009, en la sección http agrega:
 ```
   upstream unicornsivel2 {
 	  server 127.0.0.1:2009 fail_timeout=0;
   }
 ```
-* Y agregue también un dominio virtual (digamos `sivel2.pasosdeJesus.org`) con:
+* Y agregue también un dominio virtual (digamos `sivel2.midominio.org`) con:
 ```
   server {
     listen 443 ssl;
     ssl_certificate /etc/ssl/server.crt;
     ssl_certificate_key /etc/ssl/private/server.key;
     root /var/www/htdocs/sivel2/;
-    server_name sivel2.pasosdeJesus.org
+    server_name sivel2.midominio.org
     error_log logs/s2error.log;
     
     location /sivel2 {
@@ -263,14 +263,14 @@ doas ln -sf /usr
 doas ln -sf /usr/local/bin/unicorn_rails31 /usr/local/bin/unicorn_rails
 ```
 
-* Tras reiniciar nginx, inicia unicorn desde directorio con fuentes con algo como (cambiando la llave, el servidor y el puerto):
+* Tras reiniciar nginx, inicia unicorn desde el directorio con fuentes con algo como (cambiando la llave, el servidor y el puerto):
 ```sh 
-CONFIG_HOSTS=servidor.miong.org PUERTOUNICORN=2009  DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=$USER SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
+DIRAP=/var/www/htdocs/sivel2 SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
 ```
 * Para iniciar en cada arranque, por ejemplo en adJ crea /etc/rc.d/sivel2
 ```sh
 
-servicio="CONFIG_HOSTS=servidor.miong.org PUERTOUNICORN=2009 DIRAP=/var/www/htdocs/sivel2 USUARIO_AP=miusuario SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
+servicio="DIRAP=/var/www/htdocs/sivel2 SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
 
 
 . /etc/rc.d/rc.subr
@@ -286,7 +286,7 @@ rc_stop() {
 
 rc_cmd $1
 ```
-  Inicielo con:
+  Inicialo con:
 ```
 doas sh /etc/rc.d/sivel2 -d start
 ```
