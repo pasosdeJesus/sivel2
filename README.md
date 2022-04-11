@@ -21,7 +21,7 @@ Puedes interactuar con una instalación de demostración en:
 
 Si necesitas una instancia de SIVeL2 para tu organización no gubernamental, o necesitas un sistema de información o incluir SIVeL2 en el sistema de información de tu organización por favor revisa <https://defensor.info>.
 
-Si quieres discutir requerimientos para SIVeL2 te invitamos a <https://github.com/pasosdeJesus/sivel2/discussions>
+Si tienes una idea de como mejorar SIVeL2 te invitamos a proponerla con la categoría Idea en <https://github.com/pasosdeJesus/sivel2/discussions>
 
 Si quieres votar para que se implemente el requerimiento que necesitas más rápido te invitamos a suscribirte y votar en <https://cifrasdelconflicto.org>
 
@@ -29,6 +29,7 @@ Si quieres desplegar tu propia instalación de SIVeL2 mira más adelante este do
 
 Si desea reportar un problema con sivel2 o conocer del desarrollo de esta aplicación por favor revisa:
 * Reportar problemas: <https://github.com/pasosdeJesus/sivel2_gen/issues>
+* Reportar una falla de seguridad: <https://github.com/pasosdeJesus/sivel2/blob/main/SECURITY.md>
 * Tableros de seguimiento al desarrollo: <https://github.com/pasosdeJesus/sivel2_gen/projects>
 
 Si quieres ayudar a mejorar esta aplicación web te recomendamos el repositorio del motor [sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen).  Desde Pasos de Jesús estaremos atentos a quienes hagan aportes para
