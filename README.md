@@ -1,16 +1,16 @@
-# SIVeL2 #
+# SIVeL 2.1 #
 
-## Bienvenido al código fuente de SIVeL2 ##
-Sistema de Información de Violencia Política en Línea versión 2
+## Bienvenido al código fuente de SIVeL 2.1##
+Sistema de Información de Violencia Política en Línea versión 2.1
 
 
 [![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad: [![Estado Construcción](https://gitlab.com/pasosdeJesus/sivel2/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines?page=1&scope=all&ref=main) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2)
 
-![Logo de sivel2](https://raw.githubusercontent.com/pasosdeJesus/sivel2/main/app/assets/images/logo.jpg)
+![Logo de sivel2_1](https://raw.githubusercontent.com/pasosdeJesus/sivel2/main/app/assets/images/logo.jpg)
 
-## Sobre SIVeL2
+## Sobre SIVeL 2.1
 
-SIVeL2 es una aplicación web para manejar casos de violencia política y
+SIVeL 2.1 es una aplicación web para manejar casos de violencia política y
 desaparición.  Es segura y de fuentes abiertas.  Su desarrollo es liderado
 por el colectivo [Pasos de Jesús](https://www.pasosdeJesus.org).
 
@@ -20,26 +20,23 @@ refugio como las de la Red de Bancos de Datos, el Banco de Datos del
 CINEP/PPP, JRS-Colombia, CODACOP, ASOM, IAP, ANZORC entre otras.
 
 Te invitamos a ver el manual de usuario en:
-<https://docs.google.com/document/d/1xr1vtkfpWdpM_VrEbHacm44NiMPCzAIcRUS1ENoBrQU/edit?usp=sharing>
+<https://docs.google.com/document/d/1IZK_PTTbXGoHYRCRZgmS4CrNTITU_F1bkEyyjRTNekg/edit?usp=sharing>
 
-Puedes interactuar con una instalación de demostración en:
-<https://defensor.info/sivel2>
-
-Si necesitas una instancia de SIVeL2 para tu organización no gubernamental,
-o necesitas un sistema de información o incluir y adaptar SIVeL2 en el
+Si necesitas una instancia de SIVeL 2.1 para tu organización no gubernamental,
+o necesitas un sistema de información o incluir y adaptar SIVeL 2.1 en el
 sistema de información de tu organización por favor revisa
 <https://defensor.info>.
 
-Si tienes una idea de como mejorar SIVeL2 te invitamos a proponerla con la
+Si tienes una idea de como mejorar SIVeL 2.1 te invitamos a proponerla con la
 categoría Idea en <https://github.com/pasosdeJesus/sivel2/discussions>
 
 Si quieres votar para que se implemente el requerimiento que necesitas más
 rápido te invitamos a suscribirte y votar en <https://cifrasdelconflicto.org>
 
-Si quieres desplegar tu propia instalación de SIVeL2 mira más adelante este
+Si quieres desplegar tu propia instalación de SIVeL 2.1 mira más adelante este
 documento.
 
-Si desea reportar un problema con sivel2 o conocer del desarrollo de esta
+Si desea reportar un problema con sivel 2.1 o conocer del desarrollo de esta
 aplicación por favor revisa:
 * Reportar problemas: <https://github.com/pasosdeJesus/sivel2_gen/issues>
 * Reportar una falla de seguridad:
@@ -71,7 +68,7 @@ Además si vas a desplegar en producción:
 * Asegura que las gemas estén instaladas. En el caso de adJ en
   `/var/www/bundler/ruby/3.1/` siguiendo las instrucciones de
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
-  y en el directorio con fuentes asegúrese de tener el archivo `.bundle/config`
+  y en el directorio con fuentes asegúrate de tener el archivo `.bundle/config`
   con contenido:
   ```
   ---
