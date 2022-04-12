@@ -62,6 +62,11 @@ Ver <https://github.com/pasosdeJesus/sip/blob/main/doc/requisitos.md>
 Además si vas a desplegar en producción:
 * nginx (>=1.18)
 
+Clona la rama sivel2.0 del repositorio con:
+```
+git clone -b sivel2.0 https://github.com/pasosdeJesus/sivel2.git
+```
+
 ### Probar operación en modo de desarrollo 🔧
 
 * Crea un usuario para PostgreSQL como se explica en
@@ -71,7 +76,7 @@ Además si vas a desplegar en producción:
 * Asegura que las gemas estén instaladas. En el caso de adJ en
   `/var/www/bundler/ruby/3.1/` siguiendo las instrucciones de
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
-  y en el directorio con fuentes asegúrese de tener el archivo `.bundle/config`
+  y en el directorio con fuentes asegúrate de tener el archivo `.bundle/config`
   con contenido:
   ```
   ---
