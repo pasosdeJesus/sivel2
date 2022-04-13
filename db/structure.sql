@@ -2664,7 +2664,7 @@ CREATE TABLE public.sip_orgsocial_sectororgsocial (
 CREATE TABLE public.sip_pais (
     id integer NOT NULL,
     nombre character varying(200) COLLATE public.es_co_utf_8,
-    nombreiso character varying(200),
+    nombreosm character varying(200),
     latitud double precision,
     longitud double precision,
     alfa2 character varying(2),
@@ -2677,7 +2677,9 @@ CREATE TABLE public.sip_pais (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8
+    observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    nombreiso_ingles character varying(512),
+    nombreiso_frances character varying(512)
 );
 
 
@@ -8221,6 +8223,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220316025851'),
 ('20220323001338'),
 ('20220323001645'),
-('20220323004929');
+('20220323004929'),
+('20220413123127');
 
 
