@@ -1488,6 +1488,34 @@ CREATE TABLE public.sivel2_gen_categoria (
 
 
 --
+-- Name: sivel2_gen_filiacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_filiacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_filiacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_filiacion (
+    id integer DEFAULT nextval('public.sivel2_gen_filiacion_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT filiacion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_supracategoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1527,18 +1555,16 @@ CREATE VIEW public.cvt1 AS
     acto.id_categoria,
     supracategoria.id_tviolencia,
     categoria.nombre AS categoria,
-    ubicacion.id_departamento,
-    departamento.id_deplocal AS departamento_divipola,
-    initcap((departamento.nombre)::text) AS departamento_nombre
-   FROM (((((((public.sivel2_gen_acto acto
+    filiacion.id,
+    initcap((filiacion.nombre)::text) AS filiacion_nombre
+   FROM ((((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
      JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)))
-     LEFT JOIN public.sip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
-     LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
-  WHERE (categoria.id = ANY (ARRAY[397, 197, 427, 297, 527, 777, 396, 196, 426, 776, 296, 526, 35, 25, 15, 45, 55, 73, 65, 92, 50, 40, 67, 801, 90, 57, 46, 26, 37, 16, 80, 85, 66, 64, 703, 38, 49, 28, 706, 59, 18, 401, 501, 904, 502, 231, 17, 331, 402, 705, 62, 906, 104, 713, 101, 11, 76, 302, 21, 903, 34, 902, 102, 27, 14, 301, 24, 30, 20, 10, 772, 522, 192, 422, 292, 392, 63, 93, 910, 525, 195, 425, 775, 295, 395, 714, 78, 424, 774, 394, 194, 294, 524, 89, 905, 86, 701, 68, 141, 241, 341, 715, 704, 702, 23, 43, 53, 13, 33, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 293, 523, 193, 423, 773, 393, 48, 58, 75, 69, 41, 74, 72, 56, 22, 12, 36, 47, 521, 291, 771, 391, 421, 191, 420, 19, 520, 39, 77, 29, 712]));
+     LEFT JOIN public.sivel2_gen_filiacion filiacion ON ((victima.id_filiacion = filiacion.id)))
+  WHERE (categoria.id = ANY (ARRAY[427, 297, 397, 197, 527, 777, 776, 426, 196, 526, 396, 296, 45, 73, 55, 15, 25, 35, 65, 92, 40, 50, 67, 801, 90, 57, 46, 37, 16, 26, 80, 85, 66, 64, 703, 38, 706, 59, 49, 18, 28, 401, 501, 904, 402, 17, 502, 331, 231, 705, 62, 104, 906, 713, 101, 76, 21, 302, 11, 102, 902, 903, 34, 27, 14, 24, 301, 20, 30, 10, 392, 192, 772, 422, 292, 522, 63, 93, 425, 775, 525, 295, 395, 195, 714, 78, 394, 294, 194, 424, 524, 774, 89, 905, 86, 701, 68, 341, 141, 241, 715, 704, 702, 33, 43, 53, 23, 13, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 393, 523, 423, 773, 193, 293, 58, 48, 75, 69, 41, 74, 22, 36, 12, 56, 72, 47, 191, 521, 391, 421, 291, 771, 29, 19, 520, 77, 39, 420, 712]));
 
 
 --
@@ -3700,34 +3726,6 @@ CREATE TABLE public.sivel2_gen_etnia (
 CREATE TABLE public.sivel2_gen_etnia_victimacolectiva (
     etnia_id integer NOT NULL,
     victimacolectiva_id integer NOT NULL
-);
-
-
---
--- Name: sivel2_gen_filiacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_filiacion_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_filiacion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_filiacion (
-    id integer DEFAULT nextval('public.sivel2_gen_filiacion_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT filiacion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
