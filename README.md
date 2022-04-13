@@ -97,6 +97,7 @@ git clone -b sivel2.0 https://github.com/pasosdeJesus/sivel2.git
   ```sh
   doas gem install --install-dir /var/www/bundler/ruby/3.1/ bindex -v 0.7.0
   ```
+
 * Copia la plantilla del archivo `.env` y editalo:
   ```sh
   cp .env.plantilla .env
@@ -106,9 +107,9 @@ git clone -b sivel2.0 https://github.com/pasosdeJesus/sivel2.git
   que modificar `RUTA_RELATIVA` si prefieres una raíz de URL diferente).
 
   Lo mínimo que debes establecer es el usuario PostgreSQL, su clave y
-  los nombres de las bases de datos (desarrollo, pruebas y producción) que 
+  los nombres de las bases de datos de desarrollo que 
   configuraste en PostgreSQL en las variables `BD_USUARIO`, `BD_CLAVE`, 
-  `BD_DES`, `BD_PRUEBA` y `BD_PRO` respectivamente
+  y `BD_DES` respectivamente
   (también es recomendable que agregues el usuario y la clave en el 
    archivo `~/.pgpass`).
 
@@ -147,6 +148,7 @@ git clone -b sivel2.0 https://github.com/pasosdeJesus/sivel2.git
   Por ejemplo si está empleando el punto de montaje por omisión `/sivel2/` 
   sería:
   ```sh
+  mkdir -p public/packs
   mkdir -p public/sivel2
   cd public/sivel2
   ln -s ../packs .
@@ -159,9 +161,9 @@ git clone -b sivel2.0 https://github.com/pasosdeJesus/sivel2.git
   ```
   y después verifica que se están poblando bien los directorios 
   `public/sivel2/assets` y `public/sivel2/packs`
-* Lanza la aplicación en modo de desarrollo. En el siguiente ejemplo el
-  parámetro `-p` indica el puerto por el cual escuchará la aplicación
-  y el parámetro `-b` indica la dirección IP como **0.0.0.0**
+* Lanza la aplicación en modo de desarrollo. En el siguiente ejemplo a la
+  opción `-p` le sigue el puerto por el cual escuchará la aplicación
+  y a la opción `-b` le sigue la dirección IP donde escucha, como **0.0.0.0**
   para que se pueda acceder desde cualquiera de las IPs configuradas en 
   las interfaces de red:
   ```sh
