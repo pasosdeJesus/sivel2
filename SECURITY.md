@@ -2,10 +2,10 @@
 
 ## Versiones soportadas
 
-| Version | Supported          |
+| Version | Soportada |
 | ------- | ------------------ |
 | 1.x     |  :x:               |
-| 2.0.x   | :green_check_mark: |
+| 2.0.x   | :heavy_check_mark: |
 | 2.1.x   | :x: (en desarrollo)|
 
 
