@@ -46,9 +46,9 @@ Para reportar la falla tenga en cuenta:
   <https://github.com/pasosdeJesus/sivel2/blob/sivel2.0/SECURITY.md>
 * Su aporte será evaluado y respondido y  en caso de que podamos
   reproducir la falla y haya seguido los lineamientos aquí descritos,
-  le entregaremos la retribución como lo prefiera: personalmente, 
-  transferencia a cuenta Bancaria en Colombia o enviando a una billetera
-  de Bitcoin, Ethereum o Toncoin.
+  le entregaremos la retribución como lo prefiera: personalmente
+  en Colombia, transferencia a cuenta Bancaria en Colombia o enviando 
+  a una billetera de Bitcoin, Ethereum o Toncoin.
 
 Agradecemos su interés en esta convocatoria pública, cuya versión
 más reciente está disponible en
