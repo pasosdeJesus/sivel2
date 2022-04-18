@@ -1,7 +1,7 @@
 # Llamado público a auditar SIVeL 2.0
 
-Gracias a Dios podemos ofrecer USD$50 por la primera falla
-de seguridad encontrada en la versión más reciente de
+Gracias a Dios podemos ofrecer USD$100 por la primera falla
+de seguridad que encuentre y resuelva en la versión más reciente de
 SIVeL 2.0.
 
 Si pertenece a una organización donde se documentan
@@ -17,7 +17,7 @@ experimentando en la instalación de prueba para este llamado,
 o bien haciendo su propia instalación siguiendo las
 recomendaciones para el ambiente de ejecución (ver
 [README.md](https://github.com/pasosdeJesus/sivel2/blob/sivel2.0/README.md) )
-o bien auditando las fuentes de dominio público escritas
+o bien auditando las fuentes que son de código abierto y escritas
 en Ruby con marco de trabajo Ruby on Rails.
 
 Para reportar la falla tenga en cuenta:
@@ -42,14 +42,13 @@ Para reportar la falla tenga en cuenta:
   https://github.com/pasosdeJesus/sivel2/tree/sivel2.0
   (puede ver ejemplos de auditorías a la versión 1.2
    en <https://github.com/pasosdeJesus/SIVeL/tree/master/doc>)
-* Reporte la falla como se indica en 
+* Reporte la falla y suministre la solución como se indica en 
   <https://github.com/pasosdeJesus/sivel2/blob/sivel2.0/SECURITY.md>
 * Su aporte será evaluado y respondido y  en caso de que podamos
   reproducir la falla y haya seguido los lineamientos aquí descritos,
   le entregaremos la retribución como lo prefiera: personalmente, 
   transferencia a cuenta Bancaria en Colombia o enviando a una billetera
-  de criptomonedas.
-
+  de Bitcoin, Ethereum o Toncoin.
 
 Agradecemos su interés en esta convocatoria pública, cuya versión
 más reciente está disponible en
