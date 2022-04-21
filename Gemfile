@@ -24,6 +24,10 @@ gem 'kt-paperclip',                 # Anexos
 
 gem 'libxml-ruby'
 
+gem 'net-imap'
+
+gem 'net-pop'
+
 gem 'net-smtp'
 
 gem 'nokogiri', '>=1.11.1'
