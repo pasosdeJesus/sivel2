@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 84b370ad1ebbf7a3b3f39bcfc130726e3582066a
+  revision: 08887bd3e85d95a49dc462a78e5616e87a716bab
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9e881b6b7850fcbabcb9f0b99d42e39f17e2307b
+  revision: a29d8f4e565d846901ede6197123fd3692672575
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 0b7932c2a8593cce7a9b2f358185dca4fca99b21
+  revision: 8caaec2b4010033519d0f96102a719d43d943d21
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 18099836a6325e74c3b8d20ef07ee71bccfdf881
+  revision: 11fcfd7f17ad66e687748d0ec2e3b98c8c19663c
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b742567511e97dab94d369c67b148ee510501c39
+  revision: bb97eeee6bd0a301b82dab4077c67461b14485ec
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -219,7 +219,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    dry-configurable (0.14.0)
+    dry-configurable (0.15.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
     dry-container (0.9.0)
@@ -424,7 +424,7 @@ GEM
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.11.2)
+    twitter_cldr (6.11.3)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -511,4 +511,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.9
+   2.3.12
