@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9ad918a7726eee8f309034c5558165c2e3311821
+  revision: 9fe04449329c7ca3ff58cfd118ecdee7493fda9e
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d11772d2da4dd0d2988958efece443dd1cef364b
+  revision: 376da274af4dd5bebb3c41a0f06097ba67e899c6
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0b3a0ddfa397c5fc6595c693107b5518cc07996d
+  revision: 55af4534ba5d21d7d978be4a1a7956cabafd82b7
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 990c73097ab4cddf767d58123667b5f93a3244c8
+  revision: 8c5aa2ccc775803e62158c2c4284ba8dca83948a
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -359,7 +359,7 @@ GEM
     tilt (2.0.10)
     timeout (0.2.0)
     ttfunk (1.7.0)
-    twitter_cldr (6.11.2)
+    twitter_cldr (6.11.3)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
