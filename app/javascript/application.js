@@ -7,7 +7,7 @@ Rails.start();
 window.Rails = Rails
 
 import './jquery'
-import '../../vendedor/recursos/javascripts/jquery-ui.js'
+import '../../vendor/assets/javascripts/jquery-ui.js'
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
