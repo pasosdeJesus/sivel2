@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5161aeb1c2e7522d9d6d7676a8ca67a6ed149f74
+  revision: 517e0e04be484faa50d827d4753f5550004d044b
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 43aab93d8397eaedfc5e544740def0b34daf508b
+  revision: a9642dd9967520f1fe5a1eb957d459030513c9b2
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 01d299323b30b521bd84f69e690da8576fa9f45c
+  revision: 2016e3d17a46081f6a368f057de8c4ad24de5d0f
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 9a90b96cb97c9d14e5502bfc286bfffcf93510b2
+  revision: ee5c69599d67b9c7d1f2abba20bebe81956e9ce0
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -136,7 +136,7 @@ GEM
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.3.0)
-    capybara (3.36.0)
+    capybara (3.37.0)
       addressable
       matrix
       mini_mime (>= 0.1.3)
@@ -238,7 +238,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.4)
+    nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -352,7 +352,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    strscan (3.0.1)
+    strscan (3.0.2)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.1)
