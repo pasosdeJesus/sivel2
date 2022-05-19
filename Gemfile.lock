@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 3d1da282c22eb8848c2fa8cec8af3a84937e53db
+  revision: a283485e48b3aaaa78ac3419826cbb690b7ca3fd
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 25463bfc404df05a72ea4dba7f7b841ed8f68673
+  revision: 5b8d611c8b654df847859c2e00f4ca31f1da4a2d
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ebe6633106d5d201093aedec96336687b6734305
+  revision: 92aa3b3ec94e64b51d9af90133e4c7444981aa17
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 17ae565405f07d1de201e9356fd63c62008db97a
+  revision: 35a41e1ebb9a8180266768ae3fd4ea7dfb843d32
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 54789dc7a5d59a8656ee805614c7552cd35b48e2
+  revision: 1710009ce02aee91647e18684df88a637a8ac5c5
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -167,7 +167,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.17)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
