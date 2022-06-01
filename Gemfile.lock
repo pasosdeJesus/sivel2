@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: e23ff387879b3db9b1cc9e91e6ee5a8da81f9e71
+  revision: 3ce266335ef814ff8b45ecb07353791f8e3decfe
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 52b90c9d7141a081814b21b13b46a211de4598dd
+  revision: 1df2aa7caac3625606ec70cb15de1ae65816cb90
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: c0e8f37349b5b5da05fa6efc68314bf24c373f0a
+  revision: 2a3a461c04bd15b8aad12222bb1d8ef3d1831753
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d460aa31682992e4a51cd7c56299624c8d35f2b3
+  revision: cdfed53c2ff8495e39cda2ddff9c9d385af1847c
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e63af21ebeef6859bd9f496dba6a8e9f6f1cd8d7
+  revision: f4aa04dee5c1d8c5cd02a805876522ed59930a7d
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -391,7 +391,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.2.0)
+    selenium-webdriver (4.2.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
