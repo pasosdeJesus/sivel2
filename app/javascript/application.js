@@ -3,12 +3,11 @@
 console.log('Hola Mundo desde ESM')
 
 import Rails from "@rails/ujs";
-import "@hotwired/turbo-rails";
 Rails.start();
 window.Rails = Rails
 
 import './jquery'
-import '../../vendedor/recursos/javascripts/jquery-ui.js'
+import '../../vendor/assets/javascripts/jquery-ui.js'
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
@@ -26,6 +25,7 @@ Apex.chart = {
 }
 
 import 'gridstack'
+
 
 // Leaflet
 var L = require('leaflet');
@@ -89,3 +89,4 @@ document.addEventListener('turbo:load', (e) => {
   sip_ejecutarAlCargarPagina(window)
 })
 
+import "./controllers"

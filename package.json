@@ -3,13 +3,13 @@
   "version": "2.1-a.1",
   "private": false,
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+    "build": "esbuild app/javascript/*.* --preserve-symlinks --bundle --sourcemap --outdir=app/assets/builds",
+    "start": "node esbuild-des.config.js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.14.5",
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.0",
     "@pasosdejesus/autocompleta_ajax": "https://gitlab.com/pasosdeJesus/autocompleta_ajax.git",
     "@popperjs/core": "^2.10.1",
@@ -32,7 +32,9 @@
     "leaflet.markercluster": "^1.4.1",
     "mini-css-extract-plugin": "^2.4.3",
     "popper.js": "^2.0.0-next.4",
-    "postcss": "^8.2.10"
+    "postcss": "^8.2.10",
+    "sortable": "^2.0.0",
+    "sortablejs": "^1.14.0"
   },
   "devDependencies": {
     "css-what": "^5.0.1",
