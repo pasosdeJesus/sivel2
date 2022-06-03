@@ -73,7 +73,7 @@ gem 'sprockets-rails'
 
 gem 'stimulus-rails'
 
-gem 'turbo-rails'
+gem 'turbo-rails', '~> 1.0'
 
 gem 'twitter_cldr' # ICU con CLDR
 
@@ -131,14 +131,13 @@ end
 
 
 group :test do
-gem 'cuprite'
+  gem 'cuprite'
 
   gem 'capybara'
 
   gem 'selenium-webdriver'
 
   gem 'simplecov', '<0.18' # Debido a https://github.com/codeclimate/test-reporter/issues/418
-
 end
 
 

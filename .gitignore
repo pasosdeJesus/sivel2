@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-config/database.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -19,14 +18,10 @@ config/database.yml
 *core
 
 public/assets/*
-config/initializers/sip.rb
-config/application.rb
-config/routes.rb
 archivos/
 public/heb412/
 public/sivel2/
 public/sivel2_1/
-config/initializers/punto_montaje.rb
 .byebug_history
 app/views/sip/hogar/
 bin/u.sh
@@ -48,3 +43,9 @@ config/credentials.yml.enc
 .env
 *.cp
 app/assets/builds/
+app/javascript/controllers/sip
+app/javascript/controllers/mr519_gen
+app/javascript/controllers/heb412_gen
+app/javascript/controllers/cor1440_gen
+app/javascript/controllers/sal7711_gen
+app/javascript/controllers/sivel2_gen

@@ -54,5 +54,5 @@ $DOAS su - ${USUARIO_AP} -c "cd $DIRAP;
     SIVEL2_CONSWEB_PIE=\"${SIVEL2_CONSWEB_PIE}\" \
     SIVEL2_CONSWEB_PUBLICA=\"${SIVEL2_CONSWEB_PUBLICA}\" \
     SIVEL2_MAPAOSM_DIASATRAS=\"${SIVEL2_MAPAOSM_DIASATRAS}\" \
-    bundle exec /usr/local/bin/unicorn_rails \
+    bundle exec unicorn_rails \
       -c ${DIRAP}/config/unicorn.conf.minimal.rb  -E production -D"
