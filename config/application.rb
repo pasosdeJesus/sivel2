@@ -43,7 +43,7 @@ module Sivel2
     puts "config.x.origen_cors=#{config.x.origen_cors.inspect}"
 
     # sip
-    config.x.formato_fecha = ENV.fetch('FORMATO_FECHA', 'dd/M/yyyy')
+    config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
 
     # heb412
     config.x.heb412_ruta = Pathname(
