@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fab5a8f9fc78422bc54f931b205f8a57e35340dd
+  revision: 9cefe16eba2346db800c1af9362d14c578fb4593
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ee9545d40d151bd75e2331eabdb5642d717668a6
+  revision: b11215b8c059825e317341250415117a34929bfa
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b5c50d8641e12fd988779c4bc346fbc63324ade6
+  revision: 6d39789609a5fc54274d47d64fe8ffba37d8896c
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 80ed9b799a50778a6b0f1b5c726fb0582483aa6f
+  revision: a8e0a4a6fbb5002dda4a5457e3a81208a5e119fd
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -354,7 +354,7 @@ GEM
       activesupport (>= 4.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     rails-i18n (7.0.3)
       i18n (>= 0.7, < 2)
