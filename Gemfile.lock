@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 7866dda48eab766e267f1bb4f5720c575745d57b
+  revision: ea261ef59fdaa884a862737bf57afaa674ef10a2
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 7b0f7b5562e8366a285379fea48c3658a1293c70
+  revision: 7ad6cafbbff2dd7fec5e9da05bc8711d52103d22
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 26dfa9cc0ff62ffe1857b5cdf1fb89c3d623acda
+  revision: bc14b468e0f4afa2a8fac52b462ac97ac6a1b8a4
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 8b37945f3b9bf10c6bae3b3318e70857495d871f
+  revision: cbb7d52e3f661fd070b283c2ce61a87df01c2340
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -221,7 +221,7 @@ GEM
       rake
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.0)
     msgpack (1.5.2)
     net-imap (0.2.3)
       digest
@@ -253,7 +253,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.9.0)
-    pg (1.3.5)
+    pg (1.4.0)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
