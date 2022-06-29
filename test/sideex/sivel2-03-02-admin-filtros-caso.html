@@ -8,42 +8,6 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">filtrocasos-localStorage</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>22,16</td>
-</tr>
-<tr><td>clickAt</td><td>link=Listado<datalist><option>link=Listado</option><option>css=li.active &gt; a</option><option>//a[contains(text(),'Listado')]</option><option>//a[contains(@href, '/narinoandino/sivel2/casos')]</option><option>//li/ul/li/a</option></datalist></td><td>42,16</td>
-</tr>
-<tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>css=#boton_filtro_avanzado</option><option>//button[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[4]/button</option><option>//div[4]/button</option></datalist></td><td>67,10</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[14]/div[2]/div/input</option><option>//div[14]/div[2]/div/input</option></datalist></td><td>41,23</td>
-</tr>
-<tr><td>runScript</td><td>document.querySelector('#filtro_codigo').value = localStorage.getItem('caso_id')<datalist><option>document.querySelector('#filtro_busid').value = localStorage.getItem('pchr_id')</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(HUILA)').attr('selected', 'selected');</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(TOLIMA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salidam option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(COLOMBIA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_expulsion option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>localStorage.setItem('pchr_id', +document.querySelector('dd').innerText)</option><option>document.querySelector('#filtro_busid').value = localStorage.getItem('caso_id')</option><option>document.querySelector('#filtro_codigo').value = localStorage.getItem('caso_id')</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-</tr>
-<tr><td>assertText</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
-</tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>29,19</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>54,21</td>
-</tr>
-<tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>css=#boton_filtro_avanzado</option><option>//button[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[4]/button</option><option>//div[4]/button</option></datalist></td><td>67,10</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Casos</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[14]/div[2]/div/input</option><option>//div[14]/div[2]/div/input</option></datalist></td><td>64,19</td>
-</tr>
-<tr><td>type</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[14]/div[2]/div/input</option><option>//div[14]/div[2]/div/input</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>28,23</td>
-</tr>
-<tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>css=#boton_filtro_avanzado</option><option>//button[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[4]/button</option><option>//div[4]/button</option></datalist></td><td>67,10</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
 <tr><td rowspan="1" colspan="3">filtro-casos-palabra-completa</td></tr>
 </thead>
 <tbody>
@@ -57,9 +21,11 @@
 </tr>
 <tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>29,19</td>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>23,19</td>
 </tr>
 <tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>29,19</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
 </tr>
@@ -135,6 +101,10 @@
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>30,19</td>
 </tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>29,17</td>
+</tr>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
+</tr>
 <tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
@@ -161,11 +131,27 @@
 </tr>
 <tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[5]/td[5]<datalist><option>//div[2]/div/table/tbody/tr[5]/td[5]</option></datalist></td><td>5,15</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>31,25</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>50,19</td>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>30,19</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>31,25</td>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>23,16</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_fechaini<datalist><option>id=filtro_fechaini</option><option>name=filtro[fechaini]</option><option>css=#filtro_fechaini</option><option>//input[@id='filtro_fechaini']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[2]/div/input</option><option>//div[3]/div[2]/div/input</option></datalist></td><td>52,17</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>53,11</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/table/thead/tr[2]/th[3]<datalist><option>//div[2]/table/thead/tr[2]/th[3]</option></datalist></td><td>14,22</td>
+</tr>
+<tr><td>clickAt</td><td>//span[7]<datalist><option>//span[7]</option></datalist></td><td>10,25</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[2]/td[4]<datalist><option>//div[2]/div/table/tbody/tr[2]/td[4]</option></datalist></td><td>18,20</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -179,37 +165,41 @@
 <tbody>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_fechafin<datalist><option>id=filtro_fechafin</option><option>name=filtro[fechafin]</option><option>css=#filtro_fechafin</option><option>//input[@id='filtro_fechafin']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>47,19</td>
-
+<tr><td>clickAt</td><td>id=filtro_fechafin<datalist><option>id=filtro_fechafin</option><option>name=filtro[fechafin]</option><option>css=#filtro_fechafin</option><option>//input[@id='filtro_fechafin']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>221,24</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_fechafin<datalist><option>id=filtro_fechafin</option><option>name=filtro[fechafin]</option><option>css=#filtro_fechafin</option><option>//input[@id='filtro_fechafin']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>95,19</td>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>68,14</td>
 </tr>
-<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>76,11</td>
+<tr><td>clickAt</td><td>//div[2]/table/thead/tr[2]/th[2]<datalist><option>//div[2]/table/thead/tr[2]/th[2]</option></datalist></td><td>76,15</td>
 </tr>
-<tr><td>clickAt</td><td>//div[2]/table/thead/tr[2]/th<datalist><option>//div[2]/table/thead/tr[2]/th</option></datalist></td><td>0,5</td>
+<tr><td>clickAt</td><td>//div[3]/table/tbody/tr/td/span[10]<datalist><option>//div[3]/table/tbody/tr/td/span[10]</option></datalist></td><td>21,36</td>
 </tr>
-<tr><td>clickAt</td><td>css=span.month.focused<datalist><option>css=span.month.focused</option><option>//span[5]</option></datalist></td><td>12,18</td>
+<tr><td>clickAt</td><td>//td/span[2]<datalist><option>//td/span[2]</option></datalist></td><td>23,22</td>
 </tr>
-<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[3]/td[6]<datalist><option>//div[2]/div/table/tbody/tr[3]/td[6]</option></datalist></td><td>19,16</td>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[5]/td[3]<datalist><option>//div[2]/div/table/tbody/tr[5]/td[3]</option></datalist></td><td>8,13</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>41,12</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_fechafin<datalist><option>id=filtro_fechafin</option><option>name=filtro[fechafin]</option><option>css=#filtro_fechafin</option><option>//input[@id='filtro_fechafin']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>95,19</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
-<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>76,11</td>
+<tr><td>clickAt</td><td>id=filtro_fechafin<datalist><option>id=filtro_fechafin</option><option>name=filtro[fechafin]</option><option>css=#filtro_fechafin</option><option>//input[@id='filtro_fechafin']</option><option>//div[@id='filtro_avanzado']/div/div[3]/div[3]/div/input</option><option>//div[3]/div[3]/div/input</option></datalist></td><td>50,15</td>
 </tr>
-<tr><td>clickAt</td><td>//div[2]/table/thead/tr[2]/th<datalist><option>//div[2]/table/thead/tr[2]/th</option></datalist></td><td>0,5</td>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>49,11</td>
 </tr>
-<tr><td>clickAt</td><td>css=span.month.focused<datalist><option>css=span.month.focused</option><option>//span[5]</option></datalist></td><td>12,18</td>
+<tr><td>clickAt</td><td>//div[2]/table/thead/tr[2]/th[2]<datalist><option>//div[2]/table/thead/tr[2]/th[2]</option></datalist></td><td>58,11</td>
 </tr>
-<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[3]/td[6]<datalist><option>//div[2]/div/table/tbody/tr[3]/td[6]</option></datalist></td><td>19,16</td>
+<tr><td>clickAt</td><td>//div[3]/table/tbody/tr/td/span[4]<datalist><option>//div[3]/table/tbody/tr/td/span[4]</option></datalist></td><td>18,27</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>41,12</td>
+<tr><td>clickAt</td><td>css=span.month.focused<datalist><option>css=span.month.focused</option><option>//td/span[2]</option></datalist></td><td>18,23</td>
 </tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>58,18</td>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[2]/td[3]<datalist><option>//div[2]/div/table/tbody/tr[2]/td[3]</option></datalist></td><td>20,18</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>41,20</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -257,13 +247,15 @@
 </tr>
 <tr><td>addSelection</td><td>id=filtro_categoria_id<datalist><option>id=filtro_categoria_id</option><option>name=filtro[categoria_id][]</option><option>css=#filtro_categoria_id</option><option>//select[@id='filtro_categoria_id']</option><option>//div[@id='filtro_avanzado']/div/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>label=A12 TORTURA</td>
 </tr>
+<tr><td>clickAt</td><td>css=#filtro_categoria_id &gt; option[value="12"]<datalist><option>css=#filtro_categoria_id &gt; option[value="12"]</option><option>xpath=(//option[@value='12'])[2]</option><option>//select[@id='filtro_categoria_id']/option[3]</option><option>//div[5]/div[2]/div/select/option[3]</option></datalist></td><td>69,2</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>43,21</td>
+</tr>
 <tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
-</tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>28,20</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
 </tr>
@@ -321,13 +313,25 @@
 </tr>
 <tr><td>type</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>aaa</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>32,19</td>
+<tr><td>type</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>aaa</td>
 </tr>
-<tr><td>assertText</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>32,19</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>22,14</td>
+</tr>
+<tr><td>type</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>victor</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -345,13 +349,13 @@
 </tr>
 <tr><td>type</td><td>id=filtro_apellidos<datalist><option>id=filtro_apellidos</option><option>name=filtro[apellidos]</option><option>css=#filtro_apellidos</option><option>//input[@id='filtro_apellidos']</option><option>//div[@id='filtro_avanzado']/div/div[6]/div[3]/div/input</option><option>//div[6]/div[3]/div/input</option></datalist></td><td>bbb</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>36,16</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
-<tr><td>assertText</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
+<tr><td>clickAt</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
 </tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>35,23</td>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>36,16</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -375,6 +379,8 @@
 </tr>
 <tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//div[4]/input</option></datalist></td><td>27,23</td>
+</tr>
 <tr><td>select</td><td>id=filtro_sexo<datalist><option>id=filtro_sexo</option><option>name=filtro[sexo]</option><option>css=#filtro_sexo</option><option>//select[@id='filtro_sexo']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[2]/div/select</option><option>//div[7]/div[2]/div/select</option></datalist></td><td>label=FEMENINO</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_sexo<datalist><option>id=filtro_sexo</option><option>name=filtro[sexo]</option><option>css=#filtro_sexo</option><option>//select[@id='filtro_sexo']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[2]/div/select</option><option>//div[7]/div[2]/div/select</option></datalist></td><td>-242,-346</td>
@@ -382,8 +388,6 @@
 <tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -507,22 +511,17 @@
 <tbody>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>27,19</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_victimacol<datalist><option>id=filtro_victimacol</option><option>name=filtro[victimacol]</option><option>css=#filtro_victimacol</option><option>//input[@id='filtro_victimacol']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[2]/div/input</option><option>//div[10]/div[2]/div/input</option></datalist></td><td>97,17</td>
+<tr><td>clickAt</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[2]/div/input</option><option>//div[7]/div[2]/div/input</option></datalist></td><td>136,26</td>
 </tr>
-<tr><td>type</td><td>id=filtro_victimacol<datalist><option>id=filtro_victimacol</option><option>name=filtro[victimacol]</option><option>css=#filtro_victimacol</option><option>//input[@id='filtro_victimacol']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[2]/div/input</option><option>//div[10]/div[2]/div/input</option></datalist></td><td>eee</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-</tr>
-<tr><td>assertText</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
-
 <tr><td>type</td><td>id=filtro_nombres<datalist><option>id=filtro_nombres</option><option>name=filtro[nombres]</option><option>css=#filtro_nombres</option><option>//input[@id='filtro_nombres']</option><option>//div[@id='filtro_avanzado']/div/div[7]/div[2]/div/input</option><option>//div[7]/div[2]/div/input</option></datalist></td><td>eee</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>36,19</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>36,19</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>50,13</td>
 </tr>
@@ -538,19 +537,17 @@
 </tr>
 <tr><td>clickAt</td><td>id=filtro_descripcion<datalist><option>id=filtro_descripcion</option><option>name=filtro[descripcion]</option><option>css=#filtro_descripcion</option><option>//input[@id='filtro_descripcion']</option><option>//div[@id='filtro_avanzado']/div/div[8]/div[2]/div/input</option><option>//div[8]/div[2]/div/input</option></datalist></td><td>76,21</td>
 </tr>
-<tr><td>type</td><td>id=filtro_descripcion<datalist><option>id=filtro_descripcion</option><option>name=filtro[descripcion]</option><option>css=#filtro_descripcion</option><option>//input[@id='filtro_descripcion']</option><option>//div[@id='filtro_avanzado']/div/div[8]/div[2]/div/input</option><option>//div[8]/div[2]/div/input</option></datalist></td><td>Tercer mundo</td>
-<tr><td>type</td><td>id=filtro_descripcion<datalist><option>id=filtro_descripcion</option><option>name=filtro[descripcion]</option><option>css=#filtro_descripcion</option><option>//input[@id='filtro_descripcion']</option><option>//div[@id='filtro_avanzado']/div/div[8]/div[2]/div/input</option><option>//div[8]/div[2]/div/input</option></datalist></td><td>Tercer</td>
-
+<tr><td>type</td><td>id=filtro_descripcion<datalist><option>id=filtro_descripcion</option><option>name=filtro[descripcion]</option><option>css=#filtro_descripcion</option><option>//input[@id='filtro_descripcion']</option><option>//div[@id='filtro_avanzado']/div/div[8]/div[2]/div/input</option><option>//div[8]/div[2]/div/input</option></datalist></td><td>en su informe</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>36,17</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
-<tr><td>assertText</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
+<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>40,20</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>35,23</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
 </tr>
@@ -566,19 +563,21 @@
 </tr>
 <tr><td>clickAt</td><td>id=filtro_etiqueta1<datalist><option>id=filtro_etiqueta1</option><option>name=filtro[etiqueta1]</option><option>css=#filtro_etiqueta1</option><option>//select[@id='filtro_etiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[3]/div/select</option><option>//div[9]/div[3]/div/select</option></datalist></td><td>-340,-426</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>25,24</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>25,24</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>select</td><td>id=filtro_etiqueta1<datalist><option>id=filtro_etiqueta1</option><option>name=filtro[etiqueta1]</option><option>css=#filtro_etiqueta1</option><option>//select[@id='filtro_etiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[3]/div/select</option><option>//div[9]/div[3]/div/select</option></datalist></td><td>label=MES_INEXACTO</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_etiqueta1<datalist><option>id=filtro_etiqueta1</option><option>name=filtro[etiqueta1]</option><option>css=#filtro_etiqueta1</option><option>//select[@id='filtro_etiqueta1']</option><option>//div[@id='filtro_avanzado']/div/div[9]/div[3]/div/select</option><option>//div[9]/div[3]/div/select</option></datalist></td><td>-340,-426</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>25,24</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
+</tr>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -638,13 +637,15 @@
 </tr>
 <tr><td>select</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[13]/div[2]/div/select</option><option>//div[13]/div[2]/div/select</option></datalist></td><td>label=sivel2 - sivel2</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[13]/div[2]/div/select</option><option>//div[13]/div[2]/div/select</option></datalist></td><td>-516.5,-445</td>
+<tr><td>clickAt</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[13]/div[2]/div/select</option><option>//div[13]/div[2]/div/select</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>33,26</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>33,26</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -660,33 +661,17 @@
 </tr>
 <tr><td>select</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[13]/div[2]/div/select</option><option>//div[13]/div[2]/div/select</option></datalist></td><td>label=sivel2 - sivel2</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[13]/div[2]/div/select</option><option>//div[13]/div[2]/div/select</option></datalist></td><td>-516.5,-604</td>
+<tr><td>clickAt</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[13]/div[2]/div/select</option><option>//div[13]/div[2]/div/select</option></datalist></td><td>-0.124969482421875,-0.49713134765625</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_fechaingini<datalist><option>id=filtro_fechaingini</option><option>name=filtro[fechaingini]</option><option>css=#filtro_fechaingini</option><option>//input[@id='filtro_fechaingini']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[3]/div/input</option><option>//div[10]/div[3]/div/input</option></datalist></td><td>36,16</td>
 </tr>
 <tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[2]/td[2]<datalist><option>//div[2]/div/table/tbody/tr[2]/td[2]</option></datalist></td><td>23,20</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>42,21</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-</tr>
-<tr><td>select</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[2]/div/select</option><option>//div[10]/div[2]/div/select</option></datalist></td><td>label=sivel2 - sivel2</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_usuario_id<datalist><option>id=filtro_usuario_id</option><option>name=filtro[usuario_id]</option><option>css=#filtro_usuario_id</option><option>//select[@id='filtro_usuario_id']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[2]/div/select</option><option>//div[10]/div[2]/div/select</option></datalist></td><td>-242,-507</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_fechaingini<datalist><option>id=filtro_fechaingini</option><option>name=filtro[fechaingini]</option><option>css=#filtro_fechaingini</option><option>//input[@id='filtro_fechaingini']</option><option>//div[@id='filtro_avanzado']/div/div[10]/div[3]/div/input</option><option>//div[10]/div[3]/div/input</option></datalist></td><td>41,14</td>
-</tr>
-<tr><td>clickAt</td><td>css=th.next<datalist><option>css=th.next</option><option>//tr[2]/th[3]</option></datalist></td><td>20,12</td>
-</tr>
-<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[3]/td[6]<datalist><option>//div[2]/div/table/tbody/tr[3]/td[6]</option></datalist></td><td>24,11</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-</tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>42,21</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
@@ -732,35 +717,15 @@
 </tr>
 <tr><td>clickAt</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>74,15</td>
 </tr>
-<tr><td>type</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>105</td>
+<tr><td>type</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>154</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>28,29</td>
 </tr>
-<tr><td>assertText</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
-
-<tr><td>type</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>122</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
+<tr><td>clickAt</td><td>css=div.offset-md-3.col-md-1<datalist><option>css=div.offset-md-3.col-md-1</option><option>//div[@id='div_contenido']/form/div/div/div[2]</option><option>//div/div/div[2]</option></datalist></td><td>Casos: 1</td>
 </tr>
 <tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-</tr>
-<tr><td>type</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>345</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-</tr>
-<tr><td>clickAt</td><td>css=#botones_finfiltro &gt; button.btn.btn-default<datalist><option>css=#botones_finfiltro &gt; button.btn.btn-default</option><option>//button[@type='reset']</option><option>//div[@id='botones_finfiltro']/button</option><option>//div[3]/div/div/button</option></datalist></td><td>24,12</td>
-</tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-
-</tr>
-<tr><td>clickAt</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td>74,15</td>
-</tr>
-<tr><td>type</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[11]/div[2]/div/input</option><option>//div[11]/div[2]/div/input</option></datalist></td><td></td>
-
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
-
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>28,29</td>
 </tr>
 <tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>link=Búsqueda Avanzada</option><option>css=#boton_filtro_avanzado</option><option>//a[contains(text(),'Búsqueda Avanzada')]</option><option>//a[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[5]/a</option><option>//a[contains(@href, '#filtro_avanzado')]</option><option>//div[5]/a</option></datalist></td><td>25,24</td>
 </tr>
