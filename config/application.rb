@@ -48,7 +48,7 @@ module Sivel2
 
     # sivel2
     config.x.sivel2_consulta_web_publica = 
-      (ENV['SIVEL2_CONSWEB_PUBLICA'] && ENV['SIVEL2_CONSWEB_PUBLICA'] != '')
+      ENV.fetch('SIVEL2_CONSWEB_PUBLICA', '') != ''
 
     config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
@@ -63,6 +63,7 @@ module Sivel2
       'SIVEL2_MAPAOSM_DIASATRAS', 182
     )
 
+    config.x.sivel2_desaparicion = (ENV.fetch('SIVEL2_DESAPARICION', '') != '')
   end
 end
 
