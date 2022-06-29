@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: d4a7e0cfafa5949543da854e111bda1edb9b5952
+  revision: fdf93c918d62a606e2aea781438af6b83956d9d5
   branch: main
   specs:
     apo214 (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 1d77713a1a047819d44d9cb357135f4acf3dae2a
+  revision: 6c1afced722bf859ffe55e62f4f1347ef7a4a302
   branch: main
   specs:
     sivel2_gen (2.1a1)
