@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: fdf93c918d62a606e2aea781438af6b83956d9d5
+  revision: bbabb23d8c55abc210158a7af2b0d4f2dfc8e944
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 57ec08a0f7273bc15751b8622fae2a00d45c4a21
+  revision: 74fbe57b8e2039e03e8b3197f8373b6f46c0b998
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ef0e617dac0336545d59f209bd56d3cccafd00ec
+  revision: bdeacca5126f19dba7b8dc859d1daa898fe92296
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: fcde5613d529c8a29eee8f7c5be16f0be527618e
+  revision: a3aa36110a086b82d9b8d6724d424ec43f7eaf47
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 6c1afced722bf859ffe55e62f4f1347ef7a4a302
+  revision: 0811ff4eb4b4269886278d757f25fd8420cd0174
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -289,7 +289,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.16.1)
-    msgpack (1.5.2)
+    msgpack (1.5.3)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -327,7 +327,7 @@ GEM
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
-    rack (2.2.3.1)
+    rack (2.2.4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-test (2.0.2)
@@ -369,7 +369,7 @@ GEM
     raindrops (0.20.0)
     rake (13.0.6)
     redcarpet (3.5.1)
-    redis (4.7.0)
+    redis (4.7.1)
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
