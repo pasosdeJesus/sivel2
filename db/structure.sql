@@ -1574,19 +1574,14 @@ CREATE VIEW public.cvt1 AS
     acto.id_persona,
     acto.id_categoria,
     supracategoria.id_tviolencia,
-    categoria.nombre AS categoria,
-    ((supracategoria.id_tviolencia)::text || (categoria.id)::text) AS nomcategoria,
-    departamento.nombre AS departamento_nombre,
-    departamento.id_deplocal AS departamento_divipola
-   FROM (((((((public.sivel2_gen_acto acto
+    categoria.nombre AS categoria
+   FROM (((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
      JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)))
-     JOIN public.sip_ubicacion ubicacion ON ((ubicacion.id = caso.ubicacion_id)))
-     LEFT JOIN public.sip_departamento departamento ON ((departamento.id = ubicacion.id_departamento)))
-  WHERE ((caso.fecha >= '2000-01-02'::date) AND (caso.fecha <= '2022-06-09'::date) AND (categoria.id = ANY (ARRAY[197, 397, 527, 297, 777, 427, 776, 396, 196, 426, 526, 296, 73, 45, 55, 25, 35, 15, 65, 92, 50, 40, 67, 801, 90, 37, 26, 16, 57, 46, 80, 85, 66, 64, 703, 28, 706, 59, 18, 49, 38, 501, 401, 904, 402, 502, 231, 17, 331, 705, 62, 104, 906, 713, 101, 302, 11, 21, 76, 902, 903, 102, 34, 27, 14, 24, 301, 30, 20, 10, 422, 192, 772, 292, 522, 392, 63, 93, 910, 425, 195, 775, 295, 525, 395, 714, 78, 394, 774, 424, 194, 294, 524, 89, 905, 86, 701, 68, 141, 241, 341, 715, 704, 702, 13, 53, 43, 33, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 773, 423, 193, 393, 523, 293, 48, 58, 75, 69, 41, 74, 12, 72, 47, 56, 22, 36, 391, 191, 421, 771, 291, 521, 420, 19, 39, 77, 29, 520, 712])) AND (departamento.id = ANY (ARRAY[3, 4, 7, 11, 13, 15, 17, 20, 24, 27, 29, 32, 33, 34, 35, 37, 38, 39, 41, 42, 43, 45, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 59])) AND (persona.sexo = ANY (ARRAY['F'::bpchar, 'M'::bpchar, 'S'::bpchar])));
+  WHERE (categoria.id = ANY (ARRAY[197, 397, 527, 297, 777, 427, 776, 396, 196, 426, 526, 296, 73, 45, 55, 25, 35, 15, 65, 92, 50, 40, 67, 801, 90, 37, 26, 16, 57, 46, 80, 85, 66, 64, 703, 28, 706, 59, 18, 49, 38, 501, 401, 904, 402, 502, 231, 17, 331, 705, 62, 104, 906, 713, 101, 302, 11, 21, 76, 902, 903, 102, 34, 27, 14, 24, 301, 30, 20, 10, 422, 192, 772, 292, 522, 392, 63, 93, 910, 425, 195, 775, 295, 525, 395, 714, 78, 394, 774, 424, 194, 294, 524, 89, 905, 86, 701, 68, 141, 241, 341, 715, 704, 702, 13, 53, 43, 33, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 773, 423, 193, 393, 523, 293, 48, 58, 75, 69, 41, 74, 12, 72, 47, 56, 22, 36, 391, 191, 421, 771, 291, 521, 420, 19, 39, 77, 29, 520, 712]));
 
 
 --
