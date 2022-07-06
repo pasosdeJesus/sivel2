@@ -1574,7 +1574,8 @@ CREATE VIEW public.cvt1 AS
     acto.id_persona,
     acto.id_categoria,
     supracategoria.id_tviolencia,
-    categoria.nombre AS categoria
+    categoria.nombre AS categoria,
+    ((to_char(EXTRACT(year FROM caso.fecha), '0000'::text) || '-'::text) || to_char(EXTRACT(month FROM caso.fecha), '00'::text)) AS mes_anio
    FROM (((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
