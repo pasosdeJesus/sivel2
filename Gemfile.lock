@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 830e8062ec3f9198bfdc734fea22c1cf7a51297a
+  revision: 28bbca743cd2abc966d76bd37d3d6aa5ae632946
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e6966b1af16d5e1445429e11f654d6769552ef4a
+  revision: eb462aa5fa28aa7db1a256e4e3547ec99ba5d12c
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -261,7 +261,7 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    i18n (1.11.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
     irb (1.4.1)
