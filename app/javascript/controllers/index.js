@@ -4,17 +4,17 @@
 
 import { application } from "./application"
 
-import ActualizaFilaController from "./actualiza_fila_controller.js"
+import ActualizaFilaController from "./actualiza_fila_controller"
 application.register("actualiza-fila", ActualizaFilaController)
 
-import DragController from "./drag_controller.js"
+import DragController from "./drag_controller"
 application.register("drag", DragController)
 
-import FormAsisreconocimientoController from "./form_asisreconocimiento_controller.js"
+import FormAsisreconocimientoController from "./form_asisreconocimiento_controller"
 application.register("form-asisreconocimiento", FormAsisreconocimientoController)
 
-import HelloController from "./hello_controller.js"
+import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import Sip__CancelarVacioEsEliminarController from "./sip/cancelar_vacio_es_eliminar_controller.js"
+import Sip__CancelarVacioEsEliminarController from "./sip/cancelar_vacio_es_eliminar_controller"
 application.register("sip--cancelar-vacio-es-eliminar", Sip__CancelarVacioEsEliminarController)
