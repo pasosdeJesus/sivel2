@@ -1356,6 +1356,7 @@ CREATE TABLE public.sip_departamento (
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     codiso character varying(6),
     catiso character varying(64),
+    codreg integer,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1388,6 +1389,7 @@ CREATE TABLE public.sip_municipio (
     id_departamento integer,
     id integer DEFAULT nextval('public.sip_municipio_id_seq'::regclass) NOT NULL,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    codreg integer,
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -8585,6 +8587,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220428145059'),
 ('20220525122150'),
 ('20220601111520'),
-('20220613224844');
+('20220613224844'),
+('20220713200101'),
+('20220713200444');
 
 
