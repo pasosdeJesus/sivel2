@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: b9de94f625d4ba8a4ffd65a4dc23f4c8ac38d41e
+  revision: 27f098cad4a05c23381a73a804eb93c72c161162
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 65f9432be21e18299d3a4b70c3f572a0ac6e3aa0
+  revision: b6a87807716c356d50d4c6618c8b05eb7193116f
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 68d437633c5d522b20ba7d0f60de261e9242fdbb
+  revision: b0298e9542c2670ad6a16eb2a6d9a6435c9aa482
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7ee65ec06f7d6a0dcab8789cb0d7db08d8b080ac
+  revision: 5aa1a401bab04946536114d61283e792ce03d93d
   branch: main
   specs:
     sip (2.1a1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 35c90b53a55da05bce80a20eff691b48e0d90d05
+  revision: f6e30eae3415bd1a5f177f86d8f2f42a44be97b8
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -429,7 +429,7 @@ GEM
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicorn (6.1.0)
       kgio (~> 2.6)
