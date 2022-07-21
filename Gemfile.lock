@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 357a7c7a265a5d6289b22a94ffe58253525afebd
+  revision: dc043d2b4da5e9c1c7e3d802111b60095c4d631d
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 26a952e6fe0384fa941a4c16534fd5cea19e0630
+  revision: ff0c887f4091ff8e9267ea27adcb023fc506689f
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6b70281ed7f2f5ab572b68a6825410f75430f202
+  revision: 4c12da2af598fd6ed8fd77f3e51965f1857c0eb7
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ff6841f9de6e87c1777dbbc2a9cdc01f73693106
+  revision: 2d51571da787e8080d03a8e4f830827656557f2f
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -364,7 +364,7 @@ GEM
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicorn (6.1.0)
       kgio (~> 2.6)
