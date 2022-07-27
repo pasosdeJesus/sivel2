@@ -1195,7 +1195,7 @@ CREATE TABLE public.sip_persona (
     id_clase integer,
     CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
     CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
-    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
+    CONSTRAINT persona_sexo_check CHECK (((length(sexo) = 1) AND ('FMS'::text ~~ (('%'::text || (sexo)::text) || '%'::text))))
 );
 
 
@@ -1282,7 +1282,7 @@ CREATE VIEW public.cben1 AS
     subv.id_victima,
     subv.id_persona,
     1 AS npersona,
-    'total'::text AS total
+    persona.sexo
    FROM public.sivel2_gen_caso caso,
     public.sivel2_gen_victima victima,
     ( SELECT sivel2_gen_victima.id_persona,
@@ -1290,7 +1290,7 @@ CREATE VIEW public.cben1 AS
            FROM public.sivel2_gen_victima
           GROUP BY sivel2_gen_victima.id_persona) subv,
     public.sip_persona persona
-  WHERE ((subv.id_victima = victima.id) AND (caso.id = victima.id_caso) AND (persona.id = victima.id_persona));
+  WHERE ((subv.id_victima = victima.id) AND (caso.id = victima.id_caso) AND ((persona.anionac IS NULL) OR (persona.anionac = ANY (ARRAY[1906, 1907, 1910, 1911, 1912, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923, 1924, 1925, 1926, 1927, 1928, 1929, 1930, 1931, 1932, 1933, 1934, 1935, 1936, 1937, 1938, 1939, 1940, 1941, 1942, 1943, 1944, 1945, 1946, 1947, 1948, 1949, 1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]))) AND (victima.id_etnia = ANY (ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 111, 112, 113, 114])) AND (victima.id_filiacion = ANY (ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 101, 102, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117])) AND ((((EXTRACT(year FROM caso.fecha))::text || '-'::text) || lpad((EXTRACT(month FROM caso.fecha))::text, 2, '0'::text)) = ANY (ARRAY['2000-01'::text, '2000-02'::text, '2000-03'::text, '2000-04'::text, '2000-05'::text, '2000-06'::text, '2000-07'::text, '2000-08'::text, '2000-09'::text, '2000-10'::text, '2000-11'::text, '2000-12'::text, '2001-01'::text, '2001-02'::text, '2001-03'::text, '2001-04'::text, '2001-05'::text, '2001-06'::text, '2001-07'::text, '2001-08'::text, '2001-09'::text, '2001-10'::text, '2001-11'::text, '2001-12'::text, '2002-01'::text, '2002-02'::text, '2002-03'::text, '2002-04'::text, '2002-05'::text, '2002-06'::text, '2002-07'::text, '2002-08'::text, '2002-09'::text, '2002-10'::text, '2002-11'::text, '2002-12'::text, '2003-01'::text, '2003-02'::text, '2003-03'::text, '2003-04'::text, '2003-05'::text, '2003-06'::text, '2003-07'::text, '2003-08'::text, '2003-09'::text, '2003-10'::text, '2003-11'::text, '2003-12'::text, '2004-01'::text, '2004-02'::text, '2004-03'::text, '2004-04'::text, '2004-05'::text, '2004-06'::text, '2004-07'::text, '2004-08'::text, '2004-09'::text, '2004-10'::text, '2004-11'::text, '2004-12'::text, '2005-01'::text, '2005-02'::text, '2005-03'::text, '2005-04'::text, '2005-05'::text, '2005-06'::text, '2005-07'::text, '2005-08'::text, '2005-09'::text, '2005-10'::text, '2005-11'::text, '2005-12'::text, '2006-01'::text, '2006-02'::text, '2006-03'::text, '2006-04'::text, '2006-05'::text, '2006-06'::text, '2006-07'::text, '2006-08'::text, '2006-09'::text, '2006-10'::text, '2006-11'::text, '2006-12'::text, '2007-01'::text, '2007-02'::text, '2007-03'::text, '2007-04'::text, '2007-05'::text, '2007-06'::text, '2007-07'::text, '2007-08'::text, '2007-09'::text, '2007-10'::text, '2007-11'::text, '2007-12'::text, '2008-01'::text, '2008-02'::text, '2008-03'::text, '2008-04'::text, '2008-05'::text, '2008-06'::text, '2008-07'::text, '2008-08'::text, '2008-09'::text, '2008-10'::text, '2008-11'::text, '2008-12'::text, '2009-01'::text, '2009-02'::text, '2009-03'::text, '2009-04'::text, '2009-05'::text, '2009-06'::text, '2009-07'::text, '2009-08'::text, '2009-09'::text, '2009-10'::text, '2009-11'::text, '2009-12'::text, '2010-01'::text, '2010-02'::text, '2010-03'::text, '2010-04'::text, '2010-05'::text, '2010-06'::text, '2010-07'::text, '2010-08'::text, '2010-09'::text, '2010-10'::text, '2010-11'::text, '2010-12'::text, '2011-01'::text, '2011-02'::text, '2011-03'::text, '2011-04'::text, '2011-05'::text, '2011-06'::text, '2011-07'::text, '2011-08'::text, '2011-09'::text, '2011-10'::text, '2011-11'::text, '2011-12'::text, '2012-01'::text, '2012-02'::text, '2012-03'::text, '2012-04'::text, '2012-05'::text, '2012-06'::text, '2012-07'::text, '2012-08'::text, '2012-09'::text, '2012-10'::text, '2012-11'::text, '2012-12'::text, '2013-01'::text, '2013-02'::text, '2013-03'::text, '2013-04'::text, '2013-05'::text, '2013-06'::text, '2013-07'::text, '2013-08'::text, '2013-09'::text, '2013-10'::text, '2013-11'::text, '2013-12'::text, '2014-01'::text, '2014-02'::text, '2014-03'::text, '2014-04'::text, '2014-05'::text, '2014-06'::text, '2014-07'::text, '2014-08'::text, '2014-09'::text, '2014-10'::text, '2014-11'::text, '2014-12'::text, '2015-01'::text, '2015-02'::text, '2015-03'::text, '2015-04'::text, '2015-05'::text, '2015-06'::text, '2015-07'::text, '2015-08'::text, '2015-09'::text, '2015-10'::text, '2015-11'::text, '2015-12'::text, '2016-01'::text, '2016-02'::text, '2016-03'::text, '2016-04'::text, '2016-05'::text, '2016-06'::text, '2016-07'::text, '2016-08'::text, '2016-09'::text, '2016-10'::text, '2016-11'::text, '2016-12'::text, '2017-01'::text, '2017-02'::text, '2017-03'::text, '2017-04'::text, '2017-05'::text, '2017-06'::text, '2017-07'::text, '2017-08'::text, '2017-09'::text, '2017-10'::text, '2017-11'::text, '2017-12'::text, '2018-01'::text, '2018-02'::text, '2018-03'::text, '2018-04'::text, '2018-05'::text, '2018-06'::text, '2018-07'::text, '2018-08'::text, '2018-09'::text, '2018-10'::text, '2018-11'::text, '2018-12'::text, '2019-01'::text, '2019-02'::text, '2019-03'::text, '2019-04'::text, '2019-05'::text, '2019-06'::text, '2019-07'::text, '2019-08'::text, '2019-09'::text, '2019-10'::text, '2019-11'::text, '2019-12'::text, '2020-01'::text, '2020-02'::text, '2020-03'::text, '2020-04'::text, '2020-05'::text, '2020-06'::text, '2020-07'::text, '2020-08'::text, '2020-09'::text, '2020-10'::text, '2020-11'::text, '2020-12'::text, '2021-01'::text, '2021-02'::text, '2021-03'::text, '2021-04'::text, '2021-05'::text, '2021-06'::text, '2021-07'::text, '2021-08'::text, '2021-09'::text, '2021-10'::text, '2021-11'::text, '2021-12'::text, '2022-04'::text, '2022-05'::text, '2022-06'::text])) AND (victima.id_organizacion = ANY (ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 101, 102, 103])) AND (victima.id_profesion = ANY (ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 101, 102, 103, 104, 105, 106, 108, 109, 110, 111, 112, 113, 114, 115, 116])) AND (victima.id_rangoedad = ANY (ARRAY[1, 2, 3, 4, 5, 6])) AND (victima.id_sectorsocial = ANY (ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 101, 102, 103, 104, 105, 106, 107])) AND (persona.sexo = ANY (ARRAY['H'::bpchar, 'M'::bpchar, 'S'::bpchar])) AND (victima.id_vinculoestado = ANY (ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 42, 43, 101])) AND (persona.id = victima.id_persona));
 
 
 --
@@ -1322,6 +1322,8 @@ CREATE TABLE public.sip_clase (
     id_municipio integer,
     id integer DEFAULT nextval('public.sip_clase_id_seq'::regclass) NOT NULL,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    ultvigenciaini date,
+    ultvigenciafin date,
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1357,6 +1359,8 @@ CREATE TABLE public.sip_departamento (
     codiso character varying(6),
     catiso character varying(64),
     codreg integer,
+    ultvigenciaini date,
+    ultvigenciafin date,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1390,6 +1394,9 @@ CREATE TABLE public.sip_municipio (
     id integer DEFAULT nextval('public.sip_municipio_id_seq'::regclass) NOT NULL,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     codreg integer,
+    ultvigenciaini date,
+    ultvigenciafin date,
+    tipomun character varying(32),
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1436,7 +1443,7 @@ CREATE VIEW public.cben2 AS
     cben1.id_victima,
     cben1.id_persona,
     cben1.npersona,
-    cben1.total,
+    cben1.sexo,
     ubicacion.id_departamento,
     departamento.id_deplocal AS departamento_divipola,
     departamento.nombre AS departamento_nombre,
@@ -1452,7 +1459,7 @@ CREATE VIEW public.cben2 AS
      LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
      LEFT JOIN public.sip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
      LEFT JOIN public.sip_clase clase ON ((ubicacion.id_clase = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_victima, cben1.id_persona, cben1.npersona, cben1.total, ubicacion.id_departamento, departamento.id_deplocal, departamento.nombre, ubicacion.id_municipio, municipio.id_munlocal, municipio.nombre, ubicacion.id_clase, clase.id_clalocal, clase.nombre;
+  GROUP BY cben1.id_caso, cben1.id_victima, cben1.id_persona, cben1.npersona, cben1.sexo, ubicacion.id_departamento, departamento.id_deplocal, departamento.nombre, ubicacion.id_municipio, municipio.id_munlocal, municipio.nombre, ubicacion.id_clase, clase.id_clalocal, clase.nombre;
 
 
 --
@@ -1577,14 +1584,19 @@ CREATE VIEW public.cvt1 AS
     acto.id_categoria,
     supracategoria.id_tviolencia,
     categoria.nombre AS categoria,
-    ((to_char(EXTRACT(year FROM caso.fecha), '0000'::text) || '-'::text) || to_char(EXTRACT(month FROM caso.fecha), '00'::text)) AS mes_anio
-   FROM (((((public.sivel2_gen_acto acto
+    ((supracategoria.id_tviolencia)::text || (categoria.id)::text) AS nomcategoria,
+    departamento.nombre AS departamento_nombre,
+    departamento.id_deplocal AS departamento_divipola,
+    persona.sexo
+   FROM (((((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
      JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)))
-  WHERE (categoria.id = ANY (ARRAY[197, 397, 527, 297, 777, 427, 776, 396, 196, 426, 526, 296, 73, 45, 55, 25, 35, 15, 65, 92, 50, 40, 67, 801, 90, 37, 26, 16, 57, 46, 80, 85, 66, 64, 703, 28, 706, 59, 18, 49, 38, 501, 401, 904, 402, 502, 231, 17, 331, 705, 62, 104, 906, 713, 101, 302, 11, 21, 76, 902, 903, 102, 34, 27, 14, 24, 301, 30, 20, 10, 422, 192, 772, 292, 522, 392, 63, 93, 910, 425, 195, 775, 295, 525, 395, 714, 78, 394, 774, 424, 194, 294, 524, 89, 905, 86, 701, 68, 141, 241, 341, 715, 704, 702, 13, 53, 43, 33, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 773, 423, 193, 393, 523, 293, 48, 58, 75, 69, 41, 74, 12, 72, 47, 56, 22, 36, 391, 191, 421, 771, 291, 521, 420, 19, 39, 77, 29, 520, 712]));
+     JOIN public.sip_ubicacion ubicacion ON ((ubicacion.id = caso.ubicacion_id)))
+     LEFT JOIN public.sip_departamento departamento ON ((departamento.id = ubicacion.id_departamento)))
+  WHERE ((caso.fecha >= '2000-01-02'::date) AND (caso.fecha <= '2022-06-09'::date) AND (categoria.id = ANY (ARRAY[197, 397, 527, 297, 777, 427, 776, 396, 196, 426, 526, 296, 73, 45, 55, 25, 35, 15, 65, 92, 50, 40, 67, 801, 90, 37, 26, 16, 57, 46, 80, 85, 66, 64, 703, 28, 706, 59, 18, 49, 38, 501, 401, 904, 402, 502, 231, 17, 331, 705, 62, 104, 906, 713, 101, 302, 11, 21, 76, 902, 903, 102, 34, 27, 14, 24, 301, 30, 20, 10, 422, 192, 772, 292, 522, 392, 63, 93, 910, 425, 195, 775, 295, 525, 395, 714, 78, 394, 774, 424, 194, 294, 524, 89, 905, 86, 701, 68, 141, 241, 341, 715, 704, 702, 13, 53, 43, 33, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 773, 423, 193, 393, 523, 293, 48, 58, 75, 69, 41, 74, 12, 72, 47, 56, 22, 36, 391, 191, 421, 771, 291, 521, 420, 19, 39, 77, 29, 520, 712])) AND (departamento.id = ANY (ARRAY[3, 4, 7, 11, 13, 15, 17, 20, 24, 27, 29, 32, 33, 34, 35, 37, 38, 39, 41, 42, 43, 45, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 59])) AND (persona.sexo = ANY (ARRAY['H'::bpchar, 'S'::bpchar])));
 
 
 --
@@ -2462,6 +2474,78 @@ ALTER SEQUENCE public.sip_bitacora_id_seq OWNED BY public.sip_bitacora.id;
 
 
 --
+-- Name: sip_clase_histvigencia; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_clase_histvigencia (
+    id bigint NOT NULL,
+    clase_id integer,
+    vigenciaini date,
+    vigenciafin date NOT NULL,
+    nombre character varying(256),
+    id_clalocal integer,
+    id_tclase character varying,
+    observaciones character varying(5000)
+);
+
+
+--
+-- Name: sip_clase_histvigencia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_clase_histvigencia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_clase_histvigencia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_clase_histvigencia_id_seq OWNED BY public.sip_clase_histvigencia.id;
+
+
+--
+-- Name: sip_departamento_histvigencia; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_departamento_histvigencia (
+    id bigint NOT NULL,
+    departamento_id integer,
+    vigenciaini date,
+    vigenciafin date NOT NULL,
+    nombre character varying(256),
+    id_deplocal integer,
+    codiso integer,
+    catiso integer,
+    codreg integer,
+    observaciones character varying(5000)
+);
+
+
+--
+-- Name: sip_departamento_histvigencia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_departamento_histvigencia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_departamento_histvigencia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_departamento_histvigencia_id_seq OWNED BY public.sip_departamento_histvigencia.id;
+
+
+--
 -- Name: sip_estadosol; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2660,6 +2744,41 @@ CREATE MATERIALIZED VIEW public.sip_mundep AS
    FROM public.sip_mundep_sinorden
   ORDER BY (sip_mundep_sinorden.nombre COLLATE public.es_co_utf_8)
   WITH NO DATA;
+
+
+--
+-- Name: sip_municipio_histvigencia; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_municipio_histvigencia (
+    id bigint NOT NULL,
+    municipio_id integer,
+    vigenciaini date,
+    vigenciafin date NOT NULL,
+    nombre character varying(256),
+    id_munlocal integer,
+    observaciones character varying(5000),
+    codreg integer
+);
+
+
+--
+-- Name: sip_municipio_histvigencia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_municipio_histvigencia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_municipio_histvigencia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_municipio_histvigencia_id_seq OWNED BY public.sip_municipio_histvigencia.id;
 
 
 --
@@ -3262,6 +3381,44 @@ CREATE SEQUENCE public.sip_ubicacionpre_id_seq
 --
 
 ALTER SEQUENCE public.sip_ubicacionpre_id_seq OWNED BY public.sip_ubicacionpre.id;
+
+
+--
+-- Name: sip_vereda; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_vereda (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    municipio_id integer,
+    verlocal_id integer,
+    observaciones character varying(5000),
+    latitud double precision,
+    longitud double precision,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: sip_vereda_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_vereda_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_vereda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_vereda_id_seq OWNED BY public.sip_vereda.id;
 
 
 --
@@ -4812,6 +4969,20 @@ ALTER TABLE ONLY public.sip_bitacora ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
+-- Name: sip_clase_histvigencia id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_clase_histvigencia ALTER COLUMN id SET DEFAULT nextval('public.sip_clase_histvigencia_id_seq'::regclass);
+
+
+--
+-- Name: sip_departamento_histvigencia id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_departamento_histvigencia ALTER COLUMN id SET DEFAULT nextval('public.sip_departamento_histvigencia_id_seq'::regclass);
+
+
+--
 -- Name: sip_estadosol id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4823,6 +4994,13 @@ ALTER TABLE ONLY public.sip_estadosol ALTER COLUMN id SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.sip_grupo ALTER COLUMN id SET DEFAULT nextval('public.sip_grupo_id_seq'::regclass);
+
+
+--
+-- Name: sip_municipio_histvigencia id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_municipio_histvigencia ALTER COLUMN id SET DEFAULT nextval('public.sip_municipio_histvigencia_id_seq'::regclass);
 
 
 --
@@ -4914,6 +5092,13 @@ ALTER TABLE ONLY public.sip_trivalente ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.sip_ubicacionpre ALTER COLUMN id SET DEFAULT nextval('public.sip_ubicacionpre_id_seq'::regclass);
+
+
+--
+-- Name: sip_vereda id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_vereda ALTER COLUMN id SET DEFAULT nextval('public.sip_vereda_id_seq'::regclass);
 
 
 --
@@ -5373,6 +5558,14 @@ ALTER TABLE ONLY public.sip_bitacora
 
 
 --
+-- Name: sip_clase_histvigencia sip_clase_histvigencia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_clase_histvigencia
+    ADD CONSTRAINT sip_clase_histvigencia_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_clase sip_clase_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5394,6 +5587,14 @@ ALTER TABLE ONLY public.sip_clase
 
 ALTER TABLE ONLY public.sip_clase
     ADD CONSTRAINT sip_clase_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_departamento_histvigencia sip_departamento_histvigencia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_departamento_histvigencia
+    ADD CONSTRAINT sip_departamento_histvigencia_pkey PRIMARY KEY (id);
 
 
 --
@@ -5442,6 +5643,14 @@ ALTER TABLE ONLY public.sip_grupo
 
 ALTER TABLE ONLY public.sip_grupoper
     ADD CONSTRAINT sip_grupoper_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_municipio_histvigencia sip_municipio_histvigencia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_municipio_histvigencia
+    ADD CONSTRAINT sip_municipio_histvigencia_pkey PRIMARY KEY (id);
 
 
 --
@@ -5578,6 +5787,14 @@ ALTER TABLE ONLY public.sip_trivalente
 
 ALTER TABLE ONLY public.sip_ubicacionpre
     ADD CONSTRAINT sip_ubicacionpre_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_vereda sip_vereda_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_vereda
+    ADD CONSTRAINT sip_vereda_pkey PRIMARY KEY (id);
 
 
 --
@@ -8572,6 +8789,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220122105047'),
 ('20220213031520'),
 ('20220214121713'),
+('20220214232150'),
+('20220215095957'),
 ('20220225222853'),
 ('20220316025851'),
 ('20220323001338'),
@@ -8590,6 +8809,14 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220613224844'),
 ('20220713200101'),
 ('20220713200444'),
-('20220719111148');
+('20220714191500'),
+('20220714191505'),
+('20220714191510'),
+('20220714191555'),
+('20220719111148'),
+('20220721170452'),
+('20220721200858'),
+('20220722000850'),
+('20220722192214');
 
 
