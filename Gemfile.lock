@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fb0d6c7254c433e617d929e7da05fd752c6aa270
+  revision: d8506362600fea1264340ee7141f6bc2740c0dd4
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 80e223ba6a3273b2c42b41acf6f0336c42ca8dd2
+  revision: 9b1ff6c163141732239aeace36a6e384b290cb39
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3531f85a1899dbae44a1a8d5abae9c5a64ae2b52
+  revision: e6307e47ca3cfe8f2a1e691da088e08cc4ecb167
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: dab947d77ab4cd9e1f765fd8f202ede98d39a963
+  revision: deff138ec5126a42a56b2473333dfab19131887a
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -163,7 +163,7 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    debug (1.6.1)
+    debug (1.6.2)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     devise (4.8.1)
@@ -253,7 +253,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.9.0)
-    pg (1.4.2)
+    pg (1.4.3)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -291,7 +291,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-erd (1.7.1)
+    rails-erd (1.7.2)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
       choice (~> 0.2.0)
@@ -331,7 +331,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.3.0)
+    selenium-webdriver (4.4.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
