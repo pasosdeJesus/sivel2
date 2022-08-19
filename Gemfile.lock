@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 99a68f32dd03927e64b32356bfe35c94b6344870
+  revision: dfa7019ade5094f4fcc934e4caf6b4b9d2e13dd8
   branch: main
   specs:
     sip (2.1a2)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: aa36c0779670ed868f2caac61afed552ae2f93a3
+  revision: 754738085ba24d304974ca21e2311ac572e54345
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -160,8 +160,8 @@ GEM
       tzinfo (~> 2.0)
     acts_as_list (1.0.4)
       activerecord (>= 4.2)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     andand (1.3.3)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -322,7 +322,7 @@ GEM
     prawnto_2 (0.3.1)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    public_suffix (4.0.7)
+    public_suffix (5.0.0)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
