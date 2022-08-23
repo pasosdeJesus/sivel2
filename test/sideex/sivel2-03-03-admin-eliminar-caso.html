@@ -8,31 +8,29 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">caso-busca-caso-localStorage-y-elimina</td></tr>
+<tr><td rowspan="1" colspan="3">casos-busca-caso-localStorage-y-elimina</td></tr>
 </thead>
 <tbody>
 <tr><td>clickAt</td><td>link=Casos<datalist><option>link=Casos</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Casos')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>22,16</td>
 </tr>
 <tr><td>clickAt</td><td>link=Listado<datalist><option>link=Listado</option><option>css=li.active &gt; a</option><option>//a[contains(text(),'Listado')]</option><option>//a[contains(@href, '/narinoandino/sivel2/casos')]</option><option>//li/ul/li/a</option></datalist></td><td>42,16</td>
 </tr>
-<tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>css=#boton_filtro_avanzado</option><option>//button[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[4]/button</option><option>//div[4]/button</option></datalist></td><td>65,12</td>
+<tr><td>clickAt</td><td>id=boton_filtro_avanzado<datalist><option>id=boton_filtro_avanzado</option><option>css=#boton_filtro_avanzado</option><option>//button[@id='boton_filtro_avanzado']</option><option>//div[@id='div_contenido']/form/div/div/div[4]/button</option><option>//div[4]/button</option></datalist></td><td>67,10</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[14]/div[2]/div/input</option><option>//div[14]/div[2]/div/input</option></datalist></td><td>56,20</td>
+<tr><td>clickAt</td><td>id=filtro_codigo<datalist><option>id=filtro_codigo</option><option>name=filtro[codigo]</option><option>css=#filtro_codigo</option><option>//input[@id='filtro_codigo']</option><option>//div[@id='filtro_avanzado']/div/div[14]/div[2]/div/input</option><option>//div[14]/div[2]/div/input</option></datalist></td><td>41,23</td>
 </tr>
 <tr><td>runScript</td><td>document.querySelector('#filtro_codigo').value = localStorage.getItem('caso_id')<datalist><option>document.querySelector('#filtro_codigo').value = localStorage.getItem('caso_id')</option><option>document.querySelector('#filtro_busid').value = localStorage.getItem('pchr_id')</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(HUILA)').attr('selected', 'selected');</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(TOLIMA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salidam option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(COLOMBIA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_expulsion option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>localStorage.setItem('pchr_id', +document.querySelector('dd').innerText)</option><option>document.querySelector('#filtro_busid').value = localStorage.getItem('caso_id')</option></datalist></td><td></td>
 
 <tr><td>runScript</td><td>document.querySelector('#filtro_codigo').value = localStorage.getItem('caso_id')<datalist><option>document.querySelector('#filtro_busid').value = localStorage.getItem('pchr_id')</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(HUILA)').attr('selected', 'selected');</option><option>$('[id^=caso_desplazamiento_attributes][id$=_id_expulsion] option:contains(TOLIMA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salidam option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(COLOMBIA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_llegada option:contains(VENEZUELA)').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_salida option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>$('#caso_casosjr_attributes_id_expulsion option:contains(COLOMBIA / CAUCA )').attr('selected', 'selected');</option><option>localStorage.setItem('pchr_id', +document.querySelector('dd').innerText)</option><option>document.querySelector('#filtro_busid').value = localStorage.getItem('caso_id')</option><option>document.querySelector('#filtro_codigo').value = localStorage.getItem('caso_id')</option></datalist></td><td></td>
 
 </tr>
-<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>27,19</td>
+<tr><td>clickAt</td><td>id=sivel2_gen-filtrar-casos<datalist><option>id=sivel2_gen-filtrar-casos</option><option>name=commit</option><option>css=#sivel2_gen-filtrar-casos</option><option>//input[@id='sivel2_gen-filtrar-casos']</option><option>//div[@id='botones_finfiltro']/input</option><option>//div[3]/div/div/input</option></datalist></td><td>43,15</td>
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-sm.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='casos']/table/tbody/tr/td[8]/a[2]</option><option>xpath=(//a[contains(@href, '/sivel2_1/casos/152')])[3]</option><option>//td[8]/a[2]</option></datalist></td><td>25,21</td>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-sm.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='casos']/table/tbody/tr/td[8]/a[2]</option><option>xpath=(//a[contains(@href, '/sivel2_1/casos/235')])[3]</option><option>//td[8]/a[2]</option></datalist></td><td>30,18</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Casos</td>
-</tr>
-<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Caso eliminado.</td>
 </tr>
 </tbody></table>
 </body>
