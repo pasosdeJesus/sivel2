@@ -11,11 +11,11 @@
 
 ## Reportar vulnerabilidades
 
-Por favor sigue estos 3 pasos en ese orden:
+Por favor sigue estos 3 pasos en orden:
 
 1. Envía por correo un reporte describiendo la falla y como explotarla 
    a <seguridad@pasosdeJesus.org>.
-2. El mismo día que envíes el reporte, si le es posible, abre una solicitud 
+2. El mismo día que envíes el reporte, si te es posible, abre una solicitud 
    de cambio (Pull Request) cedida al dominio público que solucione la falla
    pero sin dar indicaciones que se trata de una falla de seguridad
    ni como explotarla.
