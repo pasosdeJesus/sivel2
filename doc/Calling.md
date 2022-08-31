@@ -10,8 +10,8 @@ to offer an increase in the retribution, in order to
 make more interesting this public invitation for
 security auditors.
 
-If you are developer or securit auditor we invite you
-to look for vulnerabilities in SIVeL 2, either by
+If you are developer or a security auditor we invite you
+to look for vulnerabilities in SIVeL 2.0, either by
 experimenting with the test installation for this calling
 or by doing your own installation by following the
 recommendations for the running environment
@@ -19,7 +19,7 @@ recommendations for the running environment
 or by auditing the source code that is open source and written
 in Ruby with the framework Ruby on Rails.
 
-To report pleas have into account:
+To report please have into account:
 * You found the vulnerability
 * The vulnerability needs to be replicable in the test installation.
   Use for example the form that doesn't require authentication:
