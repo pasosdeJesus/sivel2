@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 7b04d4cdbb241288695c690f06f7f71c1c0385ab
+  revision: fd02bc790c1f176bf13bc103e24102469377662a
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 020d9817e5428a0aa109845cd3dba00aaf226b19
+  revision: b431f839533b758558a1c77314618319929a5481
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 8b13ee3b8bf6cd52a1c56942cc56a72b7d9b1b4f
+  revision: db24bd97c8c96533c362ddc589336f6f14f2e58a
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 579bef735c706df32baebd8297619bf58261613c
+  revision: 1c68366d206e1813d14e537d1faf21be83b35579
   branch: main
   specs:
     sip (2.1a2)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 39cf5893c4c9af82bee2d56a5d0783b0aaf1c04a
+  revision: 6d88f9da32186ef1adc83633b2a9343fb637076a
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -198,6 +198,7 @@ GEM
     color (1.8)
     colorize (0.8.1)
     concurrent-ruby (1.1.10)
+    connection_pool (2.2.5)
     crass (1.0.6)
     cuprite (0.13)
       capybara (>= 2.1, < 4)
@@ -368,7 +369,10 @@ GEM
     raindrops (0.20.0)
     rake (13.0.6)
     redcarpet (3.5.1)
-    redis (4.8.0)
+    redis (5.0.1)
+      redis-client (~> 0.7)
+    redis-client (0.7.1)
+      connection_pool
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
