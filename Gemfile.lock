@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: fd02bc790c1f176bf13bc103e24102469377662a
+  revision: 7335240a807bad6dc171f0b08e1fbac09c1fb2c5
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b431f839533b758558a1c77314618319929a5481
+  revision: 8ff961ba9774211159881079f53a626c81237b30
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: db24bd97c8c96533c362ddc589336f6f14f2e58a
+  revision: 7f48ce753cd9c362dedfb08e798750a31e503c47
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1c68366d206e1813d14e537d1faf21be83b35579
+  revision: 01c3f2a07c2816ffa5b4fbdcb4c78c209e754225
   branch: main
   specs:
     sip (2.1a2)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 6d88f9da32186ef1adc83633b2a9343fb637076a
+  revision: 86cfcc426d69fb5a28ddab933fe0638c5d3f9f1f
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -369,7 +369,7 @@ GEM
     raindrops (0.20.0)
     rake (13.0.6)
     redcarpet (3.5.1)
-    redis (5.0.1)
+    redis (5.0.2)
       redis-client (~> 0.7)
     redis-client (0.7.1)
       connection_pool
