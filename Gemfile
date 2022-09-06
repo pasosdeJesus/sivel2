@@ -122,7 +122,7 @@ group :development do
 
   gem 'rails-erd'
 
-  gem 'redis'
+  gem 'redis', '~> 4.0'
 
   gem 'spring' # Acelera ejecutando en fondo. 
 
