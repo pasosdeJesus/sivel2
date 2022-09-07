@@ -19,8 +19,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 0443dc6f1fe38e1046bcb2cfb16c741d8d534a8b
-  branch: contmotor
+  revision: fd9bba9b39045c83e67c33727ff9d45fe844cfaf
+  branch: main
   specs:
     apo214 (2.1a1)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ec26f6beb8403ccc6f1c010785055970d39ceefd
+  revision: 4f4ab39912c71b38ac9e87bbd211e95280d708bb
   branch: main
   specs:
     sip (2.1a2)
