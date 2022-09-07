@@ -19,8 +19,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 2649fdbbfb05c9e306357748ce549c2b8282a735
-  branch: main
+  revision: 0443dc6f1fe38e1046bcb2cfb16c741d8d534a8b
+  branch: contmotor
   specs:
     apo214 (2.1a1)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b11d6b2e5e04149dbdcf151adfdf791fa7d527a6
+  revision: ec26f6beb8403ccc6f1c010785055970d39ceefd
   branch: main
   specs:
     sip (2.1a2)
@@ -198,7 +198,6 @@ GEM
     color (1.8)
     colorize (0.8.1)
     concurrent-ruby (1.1.10)
-    connection_pool (2.2.5)
     crass (1.0.6)
     cuprite (0.13)
       capybara (>= 2.1, < 4)
@@ -369,10 +368,7 @@ GEM
     raindrops (0.20.0)
     rake (13.0.6)
     redcarpet (3.5.1)
-    redis (5.0.2)
-      redis-client (~> 0.7)
-    redis-client (0.7.1)
-      connection_pool
+    redis (4.8.0)
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -497,7 +493,7 @@ DEPENDENCIES
   rails-erd
   rails-i18n
   redcarpet
-  redis
+  redis (~> 4.0)
   rspreadsheet
   rubyzip (>= 2.0)
   sassc-rails
