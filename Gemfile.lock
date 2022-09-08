@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: fd9bba9b39045c83e67c33727ff9d45fe844cfaf
+  revision: 206640346e21eea0ac4c802f108859faa65626dc
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: dba9a2fdc0bf2e636b567d9355e6c6819fc039d1
+  revision: b6a10de108976248324d984190bef72f8b91f125
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 0a995467f8a437a9e231bff7e1122a0fb6b2d01b
+  revision: 20582e3e9381a56b93141265333f8b0b9a010635
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4f4ab39912c71b38ac9e87bbd211e95280d708bb
+  revision: fa08e77bf5221f26a6d4b946b6a19f0d97c152d7
   branch: main
   specs:
     sip (2.1a2)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: c25fc73e0a1a926ab73cadba605ba8430b179329
+  revision: 2f6903f80cdf734406116906317b7927366e7eef
   branch: main
   specs:
     sivel2_gen (2.1a1)
@@ -513,4 +513,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.21
+   2.3.22
