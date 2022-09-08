@@ -66,10 +66,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 2ac5f054a10f3a5515462d7f40871ef51d3e1f16
+  revision: 3c0d1d68598243648d62f8b8df47b4151e54baf2
   branch: main
   specs:
-    sivel2_gen (2.1a1)
+    sivel2_gen (2.1a2)
       color
       devise
       rails
