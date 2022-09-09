@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 7f73b7442743f57fb957b4bb54c1bca11ddd1c72
+  revision: b020191b3fc150d10b536757cdc2e263b7ce3a28
   specs:
     kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 69d84949ea4a54f5ea3db39ac03ac7563812c752
+  revision: 9797c572fe0285e31a047c92bfe73eb4fd5ceae5
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4081cb39cc7f78794addad5f2b3d8c74be2d4ded
+  revision: 1d03899628a71ee4b6027b0beda11e8308221750
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: eeaf449195aebe788baa1ea2d2421b0c7ccf867e
+  revision: eec3b8f84869ba8e7a607955443b0c6fb1cb9d8a
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2f0219ceb4e6cf5c7a43c8ae5a818b2f7ee54917
+  revision: 08e1a282ff73dad12ea7fac8428d82d799e05ffb
   branch: main
   specs:
     sip (2.1a2)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 3c0d1d68598243648d62f8b8df47b4151e54baf2
+  revision: 006e618fba7e73a69a12a4657290a2d871b6b1fd
   branch: main
   specs:
     sivel2_gen (2.1a2)
@@ -513,4 +513,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.21
+   2.3.22
