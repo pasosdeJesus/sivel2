@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: da7ff6e9c68fc01e48557320653a85ea50cc50dc
+  revision: a5308f5b9d8eb1eecc51e675940c12d862639bac
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 3f2a03346956c93221b78898c2e9af363463c700
+  revision: cf7252aa9130f554af25c959ac2e43faff4b8e23
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 059ba93de68e307d893ae1474b0846e7846102fe
+  revision: b4cca21191481dc9e6253b5c1d348e9bbd253694
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4d451472c5045a60594456bbc9372584f050dee9
+  revision: 1a3721bef698e6da633e35722518c900fa2aed66
   branch: main
   specs:
     sip (2.1a2)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: fe0bc4f67ba708943767f5dfeb17916d8fd7dfa6
+  revision: cbe065fbd12a469e23e40b353800dc83069f1106
   branch: main
   specs:
     sivel2_gen (2.1a2)
@@ -222,7 +222,7 @@ GEM
     dry-configurable (0.15.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
-    dry-container (0.10.1)
+    dry-container (0.11.0)
       concurrent-ruby (~> 1.0)
     dry-core (0.8.1)
       concurrent-ruby (~> 1.0)
@@ -231,12 +231,12 @@ GEM
     dry-logic (1.2.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5)
-    dry-schema (1.10.2)
+    dry-schema (1.10.4)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.13, >= 0.13.0)
       dry-core (~> 0.5, >= 0.5)
       dry-initializer (~> 3.0)
-      dry-logic (~> 1.0)
+      dry-logic (~> 1.2)
       dry-types (~> 1.5)
     dry-types (1.5.1)
       concurrent-ruby (~> 1.0)
@@ -274,7 +274,7 @@ GEM
     json (2.6.2)
     kgio (2.11.4)
     libxml-ruby (3.2.3)
-    loofah (2.18.0)
+    loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
