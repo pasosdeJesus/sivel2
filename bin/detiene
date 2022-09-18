@@ -14,6 +14,6 @@ if (test "$RAILS_ENV" = "production") then {
     exit 1;
   } fi;
 
-doas sh /etc/rc.d/$RC -d stop
+doas rcctl -d stop $RC
 } fi;
 
