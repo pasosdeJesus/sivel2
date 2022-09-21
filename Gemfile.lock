@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: b020191b3fc150d10b536757cdc2e263b7ce3a28
+  revision: 705092aa709076fc2d8d066f23e678f4d9323bc4
   specs:
     kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: fed2404b0dcf49cc95b6640ae6662c27dcd534d6
+  revision: a626a3ff264457a81ad9ea7fa3295d9f8cd6e0b8
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fa0162e02e7cd1b4316827ad53151f2bf7bcf961
+  revision: 9590182795ebb5dad3fdf4d76f03ae6bca8990d7
   branch: main
   specs:
     heb412_gen (2.1a1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: cba50f1413401074528155b2a7cdb5da905b2abb
+  revision: 32ee777c20b7a5d27469179b5a195917f623709a
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 964896c053090d375ef95dd8b8864adc0371e350
+  revision: 69e9b0137cc087fd00f6b56cd6064c349f85009c
   branch: main
   specs:
     sip (2.1a2)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: b24645189639dd3ee29fd77e80efe7f66c0ba0b3
+  revision: f704159d4b5f9099710785dbc300efa567b9cac9
   branch: main
   specs:
     sivel2_gen (2.1a2)
@@ -231,7 +231,7 @@ GEM
     dry-logic (1.2.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5)
-    dry-schema (1.10.4)
+    dry-schema (1.10.5)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.13, >= 0.13.0)
       dry-core (~> 0.5, >= 0.5)
@@ -404,7 +404,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
     smart_kv (0.2.8.1)
-    spring (4.0.0)
+    spring (4.1.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
