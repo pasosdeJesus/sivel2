@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>fasol-02-02-admin-filtro-usuarios</title>
+	<title>sivel2-02-02-admin-filtro-usuarios</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -26,8 +26,6 @@
 <tr><td>type</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td/div/input</option><option>//input</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[10]/input</option><option>//td[10]/input</option></datalist></td><td>41,16</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -73,11 +71,59 @@
 </tr>
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[8]/input</option></datalist></td><td>27,23</td>
 </tr>
-<tr><td>clickAt</td><td>css=div.offset-sm-4.col-sm-4<datalist><option>css=div.offset-sm-4.col-sm-4</option><option>//div[@id='div_contenido']/form/div/div[2]</option><option>//div/div[2]</option></datalist></td><td>Usuarios: 1</td>
+<tr><td>assertText</td><td>css=div.offset-sm-4.col-sm-4<datalist><option>css=div.offset-sm-4.col-sm-4</option><option>//div[@id='div_contenido']/form/div/div[2]</option><option>//form/div/div[2]</option></datalist></td><td>Usuarios: 1</td>
 </tr>
 <tr><td>clickAt</td><td>css=abbr.search-choice-close<datalist><option>css=abbr.search-choice-close</option><option>//div[@id='filtro_busrol_chosen']/a/abbr</option><option>//abbr</option></datalist></td><td>4.5,7</td>
 </tr>
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[8]/input</option></datalist></td><td>36,14</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-usuarios-nombre</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>26,12</td>
+</tr>
+<tr><td>type</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>runScript</td><td>$('#filtro_busnombre').val('aaa')<datalist><option>$('#filtro_busid').val('103')</option><option>$('#filtro_busid').val('102')</option><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div/input</option><option>$('#filtro_busnombre').val('aaa')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>28,11</td>
+</tr>
+<tr><td>assertText</td><td>css=div.offset-sm-4.col-sm-4<datalist><option>css=div.offset-sm-4.col-sm-4</option><option>//div[@id='div_contenido']/form/div/div[2]</option><option>//form/div/div[2]</option></datalist></td><td>Usuarios: 1</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>-1,16</td>
+</tr>
+<tr><td>type</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>20,16</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-usuarios-correo</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>74,18</td>
+</tr>
+<tr><td>type</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>aaa@aaab.org</td>
+</tr>
+<tr><td>runScript</td><td>$('#filtro_busemail').val('aaa@aaab.org')<datalist><option>$('#filtro_busid').val('103')</option><option>$('#filtro_busid').val('102')</option><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div/input</option><option>$('#filtro_busemail').val('aaa@aab.org')</option><option>$('#filtro_busemail').val('aaa@aaab.org')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>27,19</td>
+</tr>
+<tr><td>assertText</td><td>css=div.offset-sm-4.col-sm-4<datalist><option>css=div.offset-sm-4.col-sm-4</option><option>//div[@id='div_contenido']/form/div/div[2]</option><option>//form/div/div[2]</option></datalist></td><td>Usuarios: 1</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>10,16</td>
+</tr>
+<tr><td>type</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>24,20</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
 </tr>
@@ -92,6 +138,8 @@
 <tr><td>select</td><td>id=filtro_busrol<datalist><option>id=filtro_busrol</option><option>name=filtro[busrol]</option><option>css=#filtro_busrol</option><option>//select[@id='filtro_busrol']</option><option>//td[4]/div/select</option></datalist></td><td>label=Operador</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_busrol<datalist><option>id=filtro_busrol</option><option>name=filtro[busrol]</option><option>css=#filtro_busrol</option><option>//select[@id='filtro_busrol']</option><option>//td[4]/div/select</option></datalist></td><td>-482.5,-244</td>
+</tr>
+<tr><td>clickAt</td><td>id=filtro_busrol<datalist><option>id=filtro_busrol</option><option>name=filtro[busrol]</option><option>css=#filtro_busrol</option><option>//select[@id='filtro_busrol']</option><option>//td[4]/div/select</option></datalist></td><td>-483,-243</td>
 </tr>
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[8]/input</option></datalist></td><td>28,18</td>
 </tr>
@@ -158,82 +206,6 @@
 <tr><td>clickAt</td><td>//div[@id='filtro_bushabilitado_chosen']/div/ul/li<datalist><option>css=li.active-result.result-selected</option><option>//div[@id='filtro_bushabilitado_chosen']/div/ul/li</option><option>//div/div/ul/li</option></datalist></td><td>18,22</td>
 </tr>
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[10]/input</option><option>//td[10]/input</option></datalist></td><td>18,16</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-usuarios-nombre</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>33,8</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>aaa</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>aaa</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>28,11</td>
-</tr>
-<tr><td>assertText</td><td>css=div.offset-sm-4.col-sm-4<datalist><option>css=div.offset-sm-4.col-sm-4</option><option>//div[@id='div_contenido']/form/div/div[2]</option><option>//form/div/div[2]</option></datalist></td><td>Usuarios: 1</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>-1,16</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busnombre<datalist><option>id=filtro_busnombre</option><option>name=filtro[busnombre]</option><option>css=#filtro_busnombre</option><option>//input[@id='filtro_busnombre']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>20,16</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-usuarios-correo</td></tr>
-</thead>
-<tbody>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[4]/div/input</option><option>//td[4]/div/input</option></datalist></td><td>76,22</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[4]/div/input</option><option>//td[4]/div/input</option></datalist></td><td>aaas@aaab.org</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[4]/div/input</option><option>//td[4]/div/input</option></datalist></td><td>aaas@aaab.org</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>27,19</td>
-</tr>
-<tr><td>assertText</td><td>css=div.offset-sm-4.col-sm-4<datalist><option>css=div.offset-sm-4.col-sm-4</option><option>//div[@id='div_contenido']/form/div/div[2]</option><option>//form/div/div[2]</option></datalist></td><td>Usuarios: 1</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>10,16</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busemail<datalist><option>id=filtro_busemail</option><option>name=filtro[busemail]</option><option>css=#filtro_busemail</option><option>//input[@id='filtro_busemail']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[11]/input</option><option>//td[11]/input</option></datalist></td><td>24,20</td>
-</tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-usuarios- descripcion</td></tr>
-</thead>
-<tbody>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busdescripcion<datalist><option>id=filtro_busdescripcion</option><option>name=filtro[busdescripcion]</option><option>css=#filtro_busdescripcion</option><option>//input[@id='filtro_busdescripcion']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>30,10</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busdescripcion<datalist><option>id=filtro_busdescripcion</option><option>name=filtro[busdescripcion]</option><option>css=#filtro_busdescripcion</option><option>//input[@id='filtro_busdescripcion']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>ddd</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busdescripcion<datalist><option>id=filtro_busdescripcion</option><option>name=filtro[busdescripcion]</option><option>css=#filtro_busdescripcion</option><option>//input[@id='filtro_busdescripcion']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>ddd</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[10]/input</option><option>//td[10]/input</option></datalist></td><td>19,18</td>
-</tr>
-<tr><td>assertText</td><td>css=div.offset-sm-4.col-sm-4<datalist><option>css=div.offset-sm-4.col-sm-4</option><option>//div[@id='div_contenido']/form/div/div[2]</option><option>//form/div/div[2]</option></datalist></td><td>Usuarios: 1</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busdescripcion<datalist><option>id=filtro_busdescripcion</option><option>name=filtro[busdescripcion]</option><option>css=#filtro_busdescripcion</option><option>//input[@id='filtro_busdescripcion']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td>36,20</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busdescripcion<datalist><option>id=filtro_busdescripcion</option><option>name=filtro[busdescripcion]</option><option>css=#filtro_busdescripcion</option><option>//input[@id='filtro_busdescripcion']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[7]/div/input</option><option>//td[7]/div/input</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//div[@id='div_contenido']/form/table/thead/tr[2]/td[10]/input</option><option>//td[10]/input</option></datalist></td><td>26,15</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
 </tr>
