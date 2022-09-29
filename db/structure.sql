@@ -1286,6 +1286,9 @@ CREATE TABLE public.sip_clase (
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     ultvigenciaini date,
     ultvigenciafin date,
+    osm_id integer,
+    osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date,
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1323,6 +1326,9 @@ CREATE TABLE public.sip_departamento (
     codreg integer,
     ultvigenciaini date,
     ultvigenciafin date,
+    osm_id integer,
+    osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1359,6 +1365,9 @@ CREATE TABLE public.sip_municipio (
     ultvigenciaini date,
     ultvigenciafin date,
     tipomun character varying(32),
+    osm_id integer,
+    osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date,
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -2877,7 +2886,10 @@ CREATE TABLE public.sip_pais (
     nombreiso_ingles character varying(512),
     nombreiso_frances character varying(512),
     ultvigenciaini date,
-    ultvigenciafin date
+    ultvigenciafin date,
+    osm_id integer,
+    osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date
 );
 
 
@@ -8775,6 +8787,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220722000850'),
 ('20220722192214'),
 ('20220805181901'),
-('20220822132754');
+('20220822132754'),
+('20220921110923'),
+('20220922154705'),
+('20220927112516');
 
 
