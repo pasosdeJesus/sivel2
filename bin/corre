@@ -111,7 +111,7 @@ FileUtils.chdir RAIZ_AP do
       exit 1
     end
     puts "\n== Ejecutando en modo producción =="
-    ord = "doas sh /etc/rc.d/#{ENV['RC']} -d start"
+    ord = "doas rcctl -d start #{ENV['RC']}"
   end
   system!(ord)
 
