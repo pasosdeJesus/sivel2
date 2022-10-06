@@ -1289,6 +1289,8 @@ CREATE TABLE public.sip_clase (
     osm_id integer,
     osm_frontera public.geography(MultiPolygon,4326),
     osm_fecha date,
+    mgn_frontera public.geography,
+    mgn_fecha date,
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1329,6 +1331,8 @@ CREATE TABLE public.sip_departamento (
     osm_id integer,
     osm_frontera public.geography(MultiPolygon,4326),
     osm_fecha date,
+    mgn_frontera public.geography,
+    mgn_fecha date,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1368,6 +1372,8 @@ CREATE TABLE public.sip_municipio (
     osm_id integer,
     osm_frontera public.geography(MultiPolygon,4326),
     osm_fecha date,
+    mgn_frontera public.geography,
+    mgn_fecha date,
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -2889,7 +2895,9 @@ CREATE TABLE public.sip_pais (
     ultvigenciafin date,
     osm_id integer,
     osm_frontera public.geography(MultiPolygon,4326),
-    osm_fecha date
+    osm_fecha date,
+    mgn_frontera public.geography,
+    mgn_fecha date
 );
 
 
@@ -8790,6 +8798,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220822132754'),
 ('20220921110923'),
 ('20220922154705'),
-('20220927112516');
+('20220927112516'),
+('20220929160204'),
+('20220929195030'),
+('20220929195032'),
+('20220929195033'),
+('20220929195034');
 
 
