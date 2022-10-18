@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 61bd4a719c27b6cba6f11bce7989ab7aea3148e1
+  revision: 8749dc9671f5021028fba9e218bf332e6b1d457b
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5d5ddeede15419192ee64d773d096bf23d50a384
+  revision: 9935616380c48e0e97fa72931312582f94f3fe5e
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b295f63660e92477b79cb5ccdb2d892074e54b53
+  revision: 21e0c44e72ae354e0756fdd3245662ec7d1d3c14
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 98b08c4db99d52b50a2e2a713c3b334c9bffeaf2
+  revision: 89fec1d2aa2c9cbc0a7194c1a8a9430352f504bc
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -246,7 +246,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.9.0)
-    pg (1.4.3)
+    pg (1.4.4)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -256,7 +256,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.0)
-    puma (5.6.5)
+    puma (6.0.0)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
@@ -436,4 +436,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.23
+   2.3.24
