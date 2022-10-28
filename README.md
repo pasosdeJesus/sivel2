@@ -1,6 +1,6 @@
 # SIVeL 2.1 #
 
-## Bienvenido al código fuente de SIVeL 2.1##
+## Bienvenido al código fuente de SIVeL 2.1 ##
 Sistema de Información de Violencia Política en Línea versión 2.1
 
 
