@@ -28,10 +28,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 976da37a4b44216288dcee0860b8427ff0b9dbf8
+  revision: 79ec03951dcd86cede4d02082d870d32ac8e8886
   branch: main
   specs:
-    heb412_gen (2.1a1)
+    heb412_gen (2.1.0.beta1)
       mr519_gen
       redcarpet
       rspreadsheet
@@ -39,19 +39,19 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b62dfd5f46b8c395e97d22eb94bf6d12a7d5d585
+  revision: 7aea026d37b51d4af47f62b169670362254e47ff
   branch: main
   specs:
-    mr519_gen (2.1a1)
+    mr519_gen (2.1.0.beta1)
       rails
       sip
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 18e1e2d2acd4961df5d892e580e9b5fb93d8503d
+  revision: 2965ab8c5bd42a69abfe0720c395c4b7283b8864
   branch: main
   specs:
-    sip (2.1a2)
+    sip (2.1.0.beta1)
       cancancan
       coffee-rails
       devise
@@ -66,10 +66,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 93f2d695aa841af214271f2c7782b39f480dbb7d
+  revision: 6500476617fb261fea5d1f3ef78c93b3c6e39e84
   branch: main
   specs:
-    sivel2_gen (2.1a2)
+    sivel2_gen (2.1.0.beta1)
       color
       devise
       rails
