@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 3853cd55d874ea54ea24a843728e64575bfdc83c
+  revision: aca80f874bb5e1828c5c0084310b2552de41b3ff
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5670474b9d192a213b78e47e8a87bbda8c95d243
+  revision: 0367bb150640aaadb88bd2ae52545ad224fb3284
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: db31a3cae4fba8be1c2f7c1d203a6a064cd4bdb1
+  revision: 5ba96180c85306d55643a41dd91df47ca31e6164
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: eccd8df453c0e606345f517e86b912ddb14f4421
+  revision: 3848ba66123316302a93dd48f9b60a072f7cd823
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -203,7 +203,7 @@ GEM
       railties (>= 3.2.16)
     json (2.6.2)
     kgio (2.11.4)
-    libxml-ruby (3.2.3)
+    libxml-ruby (3.2.4)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -228,7 +228,7 @@ GEM
       net-protocol
     net-protocol (0.1.3)
       timeout
-    net-smtp (0.3.2)
+    net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
     nokogiri (1.13.9)
