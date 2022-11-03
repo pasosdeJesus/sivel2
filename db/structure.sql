@@ -10,38 +10,17 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+--
 -- Name: es_co_utf_8; Type: COLLATION; Schema: public; Owner: -
 --
 
 CREATE COLLATION public.es_co_utf_8 (provider = libc, locale = 'es_CO.UTF-8');
-
-
---
--- Name: fuzzystrmatch; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS fuzzystrmatch WITH SCHEMA public;
-
-
---
--- Name: EXTENSION fuzzystrmatch; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance between strings';
-
-
---
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry and geography spatial types and functions';
 
 
 --
@@ -56,6 +35,312 @@ CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
 --
 
 COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
+
+
+--
+-- Name: addauth(text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.addauth(text) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $_$ 
+DECLARE
+	lockid alias for $1;
+	okay boolean;
+	myrec record;
+BEGIN
+	-- check to see if table exists
+	--  if not, CREATE TEMP TABLE mylock (transid xid, lockcode text)
+	okay := 'f';
+	FOR myrec IN SELECT * FROM pg_class WHERE relname = 'temp_lock_have_table' LOOP
+		okay := 't';
+	END LOOP; 
+	IF (okay <> 't') THEN 
+		CREATE TEMP TABLE temp_lock_have_table (transid xid, lockcode text);
+			-- this will only work from pgsql7.4 up
+			-- ON COMMIT DELETE ROWS;
+	END IF;
+
+	--  INSERT INTO mylock VALUES ( $1)
+--	EXECUTE 'INSERT INTO temp_lock_have_table VALUES ( '||
+--		quote_literal(getTransactionID()) || ',' ||
+--		quote_literal(lockid) ||')';
+
+	INSERT INTO temp_lock_have_table VALUES (getTransactionID(), lockid);
+
+	RETURN true::boolean;
+END;
+$_$;
+
+
+--
+-- Name: addgeometrycolumn(character varying, character varying, integer, character varying, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.addgeometrycolumn(character varying, character varying, integer, character varying, integer) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$ 
+DECLARE
+	ret  text;
+BEGIN
+	SELECT AddGeometryColumn('','',$1,$2,$3,$4,$5) into ret;
+	RETURN ret;
+END;
+$_$;
+
+
+--
+-- Name: addgeometrycolumn(character varying, character varying, character varying, integer, character varying, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.addgeometrycolumn(character varying, character varying, character varying, integer, character varying, integer) RETURNS text
+    LANGUAGE plpgsql STABLE STRICT
+    AS $_$ 
+DECLARE
+	ret  text;
+BEGIN
+	SELECT AddGeometryColumn('',$1,$2,$3,$4,$5,$6) into ret;
+	RETURN ret;
+END;
+$_$;
+
+
+--
+-- Name: addgeometrycolumn(character varying, character varying, character varying, character varying, integer, character varying, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.addgeometrycolumn(character varying, character varying, character varying, character varying, integer, character varying, integer) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$
+DECLARE
+	catalog_name alias for $1;
+	schema_name alias for $2;
+	table_name alias for $3;
+	column_name alias for $4;
+	new_srid alias for $5;
+	new_type alias for $6;
+	new_dim alias for $7;
+	rec RECORD;
+	sr varchar;
+	real_schema name;
+	sql text;
+
+BEGIN
+
+	-- Verify geometry type
+	IF ( NOT ( (new_type = 'GEOMETRY') OR
+			   (new_type = 'GEOMETRYCOLLECTION') OR
+			   (new_type = 'POINT') OR
+			   (new_type = 'MULTIPOINT') OR
+			   (new_type = 'POLYGON') OR
+			   (new_type = 'MULTIPOLYGON') OR
+			   (new_type = 'LINESTRING') OR
+			   (new_type = 'MULTILINESTRING') OR
+			   (new_type = 'GEOMETRYCOLLECTIONM') OR
+			   (new_type = 'POINTM') OR
+			   (new_type = 'MULTIPOINTM') OR
+			   (new_type = 'POLYGONM') OR
+			   (new_type = 'MULTIPOLYGONM') OR
+			   (new_type = 'LINESTRINGM') OR
+			   (new_type = 'MULTILINESTRINGM') OR
+			   (new_type = 'CIRCULARSTRING') OR
+			   (new_type = 'CIRCULARSTRINGM') OR
+			   (new_type = 'COMPOUNDCURVE') OR
+			   (new_type = 'COMPOUNDCURVEM') OR
+			   (new_type = 'CURVEPOLYGON') OR
+			   (new_type = 'CURVEPOLYGONM') OR
+			   (new_type = 'MULTICURVE') OR
+			   (new_type = 'MULTICURVEM') OR
+			   (new_type = 'MULTISURFACE') OR
+			   (new_type = 'MULTISURFACEM')) )
+	THEN
+		RAISE EXCEPTION 'Invalid type name - valid ones are:
+	POINT, MULTIPOINT,
+	LINESTRING, MULTILINESTRING,
+	POLYGON, MULTIPOLYGON,
+	CIRCULARSTRING, COMPOUNDCURVE, MULTICURVE,
+	CURVEPOLYGON, MULTISURFACE,
+	GEOMETRY, GEOMETRYCOLLECTION,
+	POINTM, MULTIPOINTM,
+	LINESTRINGM, MULTILINESTRINGM,
+	POLYGONM, MULTIPOLYGONM,
+	CIRCULARSTRINGM, COMPOUNDCURVEM, MULTICURVEM
+	CURVEPOLYGONM, MULTISURFACEM,
+	or GEOMETRYCOLLECTIONM';
+		RETURN 'fail';
+	END IF;
+
+
+	-- Verify dimension
+	IF ( (new_dim >4) OR (new_dim <0) ) THEN
+		RAISE EXCEPTION 'invalid dimension';
+		RETURN 'fail';
+	END IF;
+
+	IF ( (new_type LIKE '%M') AND (new_dim!=3) ) THEN
+		RAISE EXCEPTION 'TypeM needs 3 dimensions';
+		RETURN 'fail';
+	END IF;
+
+
+	-- Verify SRID
+	IF ( new_srid != -1 ) THEN
+		SELECT SRID INTO sr FROM spatial_ref_sys WHERE SRID = new_srid;
+		IF NOT FOUND THEN
+			RAISE EXCEPTION 'AddGeometryColumns() - invalid SRID';
+			RETURN 'fail';
+		END IF;
+	END IF;
+
+
+	-- Verify schema
+	IF ( schema_name IS NOT NULL AND schema_name != '' ) THEN
+		sql := 'SELECT nspname FROM pg_namespace ' ||
+			'WHERE text(nspname) = ' || quote_literal(schema_name) ||
+			'LIMIT 1';
+		RAISE DEBUG '%', sql;
+		EXECUTE sql INTO real_schema;
+
+		IF ( real_schema IS NULL ) THEN
+			RAISE EXCEPTION 'Schema % is not a valid schemaname', quote_literal(schema_name);
+			RETURN 'fail';
+		END IF;
+	END IF;
+
+	IF ( real_schema IS NULL ) THEN
+		RAISE DEBUG 'Detecting schema';
+		sql := 'SELECT n.nspname AS schemaname ' ||
+			'FROM pg_catalog.pg_class c ' ||
+			  'JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace ' ||
+			'WHERE c.relkind = ' || quote_literal('r') ||
+			' AND n.nspname NOT IN (' || quote_literal('pg_catalog') || ', ' || quote_literal('pg_toast') || ')' ||
+			' AND pg_catalog.pg_table_is_visible(c.oid)' ||
+			' AND c.relname = ' || quote_literal(table_name);
+		RAISE DEBUG '%', sql;
+		EXECUTE sql INTO real_schema;
+
+		IF ( real_schema IS NULL ) THEN
+			RAISE EXCEPTION 'Table % does not occur in the search_path', quote_literal(table_name);
+			RETURN 'fail';
+		END IF;
+	END IF;
+	
+
+	-- Add geometry column to table
+	sql := 'ALTER TABLE ' ||
+		quote_ident(real_schema) || '.' || quote_ident(table_name)
+		|| ' ADD COLUMN ' || quote_ident(column_name) ||
+		' geometry ';
+	RAISE DEBUG '%', sql;
+	EXECUTE sql;
+
+
+	-- Delete stale record in geometry_columns (if any)
+	sql := 'DELETE FROM geometry_columns WHERE
+		f_table_catalog = ' || quote_literal('') ||
+		' AND f_table_schema = ' ||
+		quote_literal(real_schema) ||
+		' AND f_table_name = ' || quote_literal(table_name) ||
+		' AND f_geometry_column = ' || quote_literal(column_name);
+	RAISE DEBUG '%', sql;
+	EXECUTE sql;
+
+
+	-- Add record in geometry_columns
+	sql := 'INSERT INTO geometry_columns (f_table_catalog,f_table_schema,f_table_name,' ||
+										  'f_geometry_column,coord_dimension,srid,type)' ||
+		' VALUES (' ||
+		quote_literal('') || ',' ||
+		quote_literal(real_schema) || ',' ||
+		quote_literal(table_name) || ',' ||
+		quote_literal(column_name) || ',' ||
+		new_dim::text || ',' ||
+		new_srid::text || ',' ||
+		quote_literal(new_type) || ')';
+	RAISE DEBUG '%', sql;
+	EXECUTE sql;
+
+
+	-- Add table CHECKs
+	sql := 'ALTER TABLE ' ||
+		quote_ident(real_schema) || '.' || quote_ident(table_name)
+		|| ' ADD CONSTRAINT '
+		|| quote_ident('enforce_srid_' || column_name)
+		|| ' CHECK (ST_SRID(' || quote_ident(column_name) ||
+		') = ' || new_srid::text || ')' ;
+	RAISE DEBUG '%', sql;
+	EXECUTE sql;
+
+	sql := 'ALTER TABLE ' ||
+		quote_ident(real_schema) || '.' || quote_ident(table_name)
+		|| ' ADD CONSTRAINT '
+		|| quote_ident('enforce_dims_' || column_name)
+		|| ' CHECK (ST_NDims(' || quote_ident(column_name) ||
+		') = ' || new_dim::text || ')' ;
+	RAISE DEBUG '%', sql;
+	EXECUTE sql;
+
+	IF ( NOT (new_type = 'GEOMETRY')) THEN
+		sql := 'ALTER TABLE ' ||
+			quote_ident(real_schema) || '.' || quote_ident(table_name) || ' ADD CONSTRAINT ' ||
+			quote_ident('enforce_geotype_' || column_name) ||
+			' CHECK (GeometryType(' ||
+			quote_ident(column_name) || ')=' ||
+			quote_literal(new_type) || ' OR (' ||
+			quote_ident(column_name) || ') is null)';
+		RAISE DEBUG '%', sql;
+		EXECUTE sql;
+	END IF;
+
+	RETURN
+		real_schema || '.' ||
+		table_name || '.' || column_name ||
+		' SRID:' || new_srid::text ||
+		' TYPE:' || new_type ||
+		' DIMS:' || new_dim::text || ' ';
+END;
+$_$;
+
+
+--
+-- Name: checkauth(text, text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.checkauth(text, text) RETURNS integer
+    LANGUAGE sql
+    AS $_$ SELECT CheckAuth('', $1, $2) $_$;
+
+
+--
+-- Name: checkauth(text, text, text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.checkauth(text, text, text) RETURNS integer
+    LANGUAGE plpgsql
+    AS $_$ 
+DECLARE
+	schema text;
+BEGIN
+	IF NOT LongTransactionsEnabled() THEN
+		RAISE EXCEPTION 'Long transaction support disabled, use EnableLongTransaction() to enable.';
+	END IF;
+
+	if ( $1 != '' ) THEN
+		schema = $1;
+	ELSE
+		SELECT current_schema() into schema;
+	END IF;
+
+	-- TODO: check for an already existing trigger ?
+
+	EXECUTE 'CREATE TRIGGER check_auth BEFORE UPDATE OR DELETE ON ' 
+		|| quote_ident(schema) || '.' || quote_ident($2)
+		||' FOR EACH ROW EXECUTE PROCEDURE CheckAuthTrigger('
+		|| quote_literal($3) || ')';
+
+	RETURN 0;
+END;
+$_$;
 
 
 --
@@ -75,6 +360,48 @@ CREATE FUNCTION public.completa_obs(obs character varying, nuevaobs character va
 
 
 --
+-- Name: disablelongtransactions(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.disablelongtransactions() RETURNS text
+    LANGUAGE plpgsql
+    AS $$ 
+DECLARE
+	rec RECORD;
+
+BEGIN
+
+	--
+	-- Drop all triggers applied by CheckAuth()
+	--
+	FOR rec IN
+		SELECT c.relname, t.tgname, t.tgargs FROM pg_trigger t, pg_class c, pg_proc p
+		WHERE p.proname = 'checkauthtrigger' and t.tgfoid = p.oid and t.tgrelid = c.oid
+	LOOP
+		EXECUTE 'DROP TRIGGER ' || quote_ident(rec.tgname) ||
+			' ON ' || quote_ident(rec.relname);
+	END LOOP;
+
+	--
+	-- Drop the authorization_table table
+	--
+	FOR rec IN SELECT * FROM pg_class WHERE relname = 'authorization_table' LOOP
+		DROP TABLE authorization_table;
+	END LOOP;
+
+	--
+	-- Drop the authorized_tables view
+	--
+	FOR rec IN SELECT * FROM pg_class WHERE relname = 'authorized_tables' LOOP
+		DROP VIEW authorized_tables;
+	END LOOP;
+
+	RETURN 'Long transactions support disabled';
+END;
+$$;
+
+
+--
 -- Name: divarr(anyarray); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -86,35 +413,214 @@ $_$;
 
 
 --
--- Name: edad_de_fechanac(integer, integer, integer, date); Type: FUNCTION; Schema: public; Owner: -
+-- Name: dropgeometrycolumn(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.edad_de_fechanac(anionac integer, mesnac integer, dianac integer, fechahecho date) RETURNS integer
-    LANGUAGE plpgsql IMMUTABLE
-    AS $$
+CREATE FUNCTION public.dropgeometrycolumn(character varying, character varying) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$
 DECLARE
-	aniohecho INTEGER = EXTRACT(year FROM fechahecho);
-	meshecho INTEGER = EXTRACT(month FROM fechahecho);
-	diahecho INTEGER = EXTRACT(day FROM fechahecho);
-	na INTEGER;
+	ret text;
 BEGIN
-	na = CASE WHEN anionac IS NULL OR aniohecho IS NULL THEN 
-		NULL
-	ELSE
-		aniohecho - anionac
-	END;
-	na = CASE WHEN mesnac IS NOT NULL AND meshecho IS NOT NULL AND 
-		mesnac > meshecho OR 
-		(dianac IS NOT NULL AND diahecho IS NOT NULL 
-		  AND dianac > diahecho) THEN
-		na - 1
-	ELSE
-		na
-	END;
+	SELECT DropGeometryColumn('','',$1,$2) into ret;
+	RETURN ret;
+END;
+$_$;
 
-	RETURN na;
 
-END;$$;
+--
+-- Name: dropgeometrycolumn(character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.dropgeometrycolumn(character varying, character varying, character varying) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$
+DECLARE
+	ret text;
+BEGIN
+	SELECT DropGeometryColumn('',$1,$2,$3) into ret;
+	RETURN ret;
+END;
+$_$;
+
+
+--
+-- Name: dropgeometrycolumn(character varying, character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.dropgeometrycolumn(character varying, character varying, character varying, character varying) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$
+DECLARE
+	catalog_name alias for $1; 
+	schema_name alias for $2;
+	table_name alias for $3;
+	column_name alias for $4;
+	myrec RECORD;
+	okay boolean;
+	real_schema name;
+
+BEGIN
+
+
+	-- Find, check or fix schema_name
+	IF ( schema_name != '' ) THEN
+		okay = 'f';
+
+		FOR myrec IN SELECT nspname FROM pg_namespace WHERE text(nspname) = schema_name LOOP
+			okay := 't';
+		END LOOP;
+
+		IF ( okay <> 't' ) THEN
+			RAISE NOTICE 'Invalid schema name - using current_schema()';
+			SELECT current_schema() into real_schema;
+		ELSE
+			real_schema = schema_name;
+		END IF;
+	ELSE
+		SELECT current_schema() into real_schema;
+	END IF;
+
+ 	-- Find out if the column is in the geometry_columns table
+	okay = 'f';
+	FOR myrec IN SELECT * from geometry_columns where f_table_schema = text(real_schema) and f_table_name = table_name and f_geometry_column = column_name LOOP
+		okay := 't';
+	END LOOP; 
+	IF (okay <> 't') THEN 
+		RAISE EXCEPTION 'column not found in geometry_columns table';
+		RETURN 'f';
+	END IF;
+
+	-- Remove ref from geometry_columns table
+	EXECUTE 'delete from geometry_columns where f_table_schema = ' ||
+		quote_literal(real_schema) || ' and f_table_name = ' ||
+		quote_literal(table_name)  || ' and f_geometry_column = ' ||
+		quote_literal(column_name);
+	
+	-- Remove table column
+	EXECUTE 'ALTER TABLE ' || quote_ident(real_schema) || '.' ||
+		quote_ident(table_name) || ' DROP COLUMN ' ||
+		quote_ident(column_name);
+
+	RETURN real_schema || '.' || table_name || '.' || column_name ||' effectively removed.';
+	
+END;
+$_$;
+
+
+--
+-- Name: dropgeometrytable(character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.dropgeometrytable(character varying) RETURNS text
+    LANGUAGE sql STRICT
+    AS $_$ SELECT DropGeometryTable('','',$1) $_$;
+
+
+--
+-- Name: dropgeometrytable(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.dropgeometrytable(character varying, character varying) RETURNS text
+    LANGUAGE sql STRICT
+    AS $_$ SELECT DropGeometryTable('',$1,$2) $_$;
+
+
+--
+-- Name: dropgeometrytable(character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.dropgeometrytable(character varying, character varying, character varying) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$
+DECLARE
+	catalog_name alias for $1; 
+	schema_name alias for $2;
+	table_name alias for $3;
+	real_schema name;
+
+BEGIN
+
+	IF ( schema_name = '' ) THEN
+		SELECT current_schema() into real_schema;
+	ELSE
+		real_schema = schema_name;
+	END IF;
+
+	-- Remove refs from geometry_columns table
+	EXECUTE 'DELETE FROM geometry_columns WHERE ' ||
+		'f_table_schema = ' || quote_literal(real_schema) ||
+		' AND ' ||
+		' f_table_name = ' || quote_literal(table_name);
+	
+	-- Remove table 
+	EXECUTE 'DROP TABLE '
+		|| quote_ident(real_schema) || '.' ||
+		quote_ident(table_name);
+
+	RETURN
+		real_schema || '.' ||
+		table_name ||' dropped.';
+	
+END;
+$_$;
+
+
+--
+-- Name: enablelongtransactions(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.enablelongtransactions() RETURNS text
+    LANGUAGE plpgsql
+    AS $$ 
+DECLARE
+	"query" text;
+	exists bool;
+	rec RECORD;
+
+BEGIN
+
+	exists = 'f';
+	FOR rec IN SELECT * FROM pg_class WHERE relname = 'authorization_table'
+	LOOP
+		exists = 't';
+	END LOOP;
+
+	IF NOT exists
+	THEN
+		"query" = 'CREATE TABLE authorization_table (
+			toid oid, -- table oid
+			rid text, -- row id
+			expires timestamp,
+			authid text
+		)';
+		EXECUTE "query";
+	END IF;
+
+	exists = 'f';
+	FOR rec IN SELECT * FROM pg_class WHERE relname = 'authorized_tables'
+	LOOP
+		exists = 't';
+	END LOOP;
+
+	IF NOT exists THEN
+		"query" = 'CREATE VIEW authorized_tables AS ' ||
+			'SELECT ' ||
+			'n.nspname as schema, ' ||
+			'c.relname as table, trim(' ||
+			quote_literal(chr(92) || '000') ||
+			' from t.tgargs) as id_column ' ||
+			'FROM pg_trigger t, pg_class c, pg_proc p ' ||
+			', pg_namespace n ' ||
+			'WHERE p.proname = ' || quote_literal('checkauthtrigger') ||
+			' AND c.relnamespace = n.oid' ||
+			' AND t.tgfoid = p.oid and t.tgrelid = c.oid';
+		EXECUTE "query";
+	END IF;
+
+	RETURN 'Long transactions support enabled';
+END;
+$$;
 
 
 --
@@ -126,6 +632,48 @@ CREATE FUNCTION public.f_unaccent(text) RETURNS text
     AS $_$
       SELECT public.unaccent('public.unaccent', $1)  
       $_$;
+
+
+--
+-- Name: find_srid(character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.find_srid(character varying, character varying, character varying) RETURNS integer
+    LANGUAGE plpgsql IMMUTABLE STRICT
+    AS $_$
+DECLARE
+	schem text;
+	tabl text;
+	sr int4;
+BEGIN
+	IF $1 IS NULL THEN
+	  RAISE EXCEPTION 'find_srid() - schema is NULL!';
+	END IF;
+	IF $2 IS NULL THEN
+	  RAISE EXCEPTION 'find_srid() - table name is NULL!';
+	END IF;
+	IF $3 IS NULL THEN
+	  RAISE EXCEPTION 'find_srid() - column name is NULL!';
+	END IF;
+	schem = $1;
+	tabl = $2;
+-- if the table contains a . and the schema is empty
+-- split the table into a schema and a table
+-- otherwise drop through to default behavior
+	IF ( schem = '' and tabl LIKE '%.%' ) THEN
+	 schem = substr(tabl,1,strpos(tabl,'.')-1);
+	 tabl = substr(tabl,length(schem)+2);
+	ELSE
+	 schem = schem || '%';
+	END IF;
+
+	select SRID into sr from geometry_columns where f_table_schema like schem and f_table_name = tabl and f_geometry_column = $3;
+	IF NOT FOUND THEN
+	   RAISE EXCEPTION 'find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?';
+	END IF;
+	return sr;
+END;
+$_$;
 
 
 --
@@ -154,31 +702,569 @@ CREATE FUNCTION public.first_element_state(anyarray, anyelement) RETURNS anyarra
 
 
 --
+-- Name: fix_geometry_columns(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.fix_geometry_columns() RETURNS text
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	mislinked record;
+	result text;
+	linked integer;
+	deleted integer;
+	foundschema integer;
+BEGIN
+
+	-- Since 7.3 schema support has been added.
+	-- Previous postgis versions used to put the database name in
+	-- the schema column. This needs to be fixed, so we try to 
+	-- set the correct schema for each geometry_colums record
+	-- looking at table, column, type and srid.
+	UPDATE geometry_columns SET f_table_schema = n.nspname
+		FROM pg_namespace n, pg_class c, pg_attribute a,
+			pg_constraint sridcheck, pg_constraint typecheck
+	        WHERE ( f_table_schema is NULL
+		OR f_table_schema = ''
+	        OR f_table_schema NOT IN (
+	                SELECT nspname::varchar
+	                FROM pg_namespace nn, pg_class cc, pg_attribute aa
+	                WHERE cc.relnamespace = nn.oid
+	                AND cc.relname = f_table_name::name
+	                AND aa.attrelid = cc.oid
+	                AND aa.attname = f_geometry_column::name))
+	        AND f_table_name::name = c.relname
+	        AND c.oid = a.attrelid
+	        AND c.relnamespace = n.oid
+	        AND f_geometry_column::name = a.attname
+
+	        AND sridcheck.conrelid = c.oid
+		AND sridcheck.consrc LIKE '(srid(% = %)'
+	        AND sridcheck.consrc ~ textcat(' = ', srid::text)
+
+	        AND typecheck.conrelid = c.oid
+		AND typecheck.consrc LIKE
+		'((geometrytype(%) = ''%''::text) OR (% IS NULL))'
+	        AND typecheck.consrc ~ textcat(' = ''', type::text)
+
+	        AND NOT EXISTS (
+	                SELECT oid FROM geometry_columns gc
+	                WHERE c.relname::varchar = gc.f_table_name
+	                AND n.nspname::varchar = gc.f_table_schema
+	                AND a.attname::varchar = gc.f_geometry_column
+	        );
+
+	GET DIAGNOSTICS foundschema = ROW_COUNT;
+
+	-- no linkage to system table needed
+	return 'fixed:'||foundschema::text;
+
+END;
+$$;
+
+
+--
+-- Name: get_proj4_from_srid(integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.get_proj4_from_srid(integer) RETURNS text
+    LANGUAGE plpgsql IMMUTABLE STRICT
+    AS $_$
+BEGIN
+	RETURN proj4text::text FROM spatial_ref_sys WHERE srid= $1;
+END;
+$_$;
+
+
+--
+-- Name: lockrow(text, text, text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.lockrow(text, text, text) RETURNS integer
+    LANGUAGE sql STRICT
+    AS $_$ SELECT LockRow(current_schema(), $1, $2, $3, now()::timestamp+'1:00'); $_$;
+
+
+--
+-- Name: lockrow(text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.lockrow(text, text, text, text) RETURNS integer
+    LANGUAGE sql STRICT
+    AS $_$ SELECT LockRow($1, $2, $3, $4, now()::timestamp+'1:00'); $_$;
+
+
+--
+-- Name: lockrow(text, text, text, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.lockrow(text, text, text, timestamp without time zone) RETURNS integer
+    LANGUAGE sql STRICT
+    AS $_$ SELECT LockRow(current_schema(), $1, $2, $3, $4); $_$;
+
+
+--
+-- Name: lockrow(text, text, text, text, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.lockrow(text, text, text, text, timestamp without time zone) RETURNS integer
+    LANGUAGE plpgsql STRICT
+    AS $_$ 
+DECLARE
+	myschema alias for $1;
+	mytable alias for $2;
+	myrid   alias for $3;
+	authid alias for $4;
+	expires alias for $5;
+	ret int;
+	mytoid oid;
+	myrec RECORD;
+	
+BEGIN
+
+	IF NOT LongTransactionsEnabled() THEN
+		RAISE EXCEPTION 'Long transaction support disabled, use EnableLongTransaction() to enable.';
+	END IF;
+
+	EXECUTE 'DELETE FROM authorization_table WHERE expires < now()'; 
+
+	SELECT c.oid INTO mytoid FROM pg_class c, pg_namespace n
+		WHERE c.relname = mytable
+		AND c.relnamespace = n.oid
+		AND n.nspname = myschema;
+
+	-- RAISE NOTICE 'toid: %', mytoid;
+
+	FOR myrec IN SELECT * FROM authorization_table WHERE 
+		toid = mytoid AND rid = myrid
+	LOOP
+		IF myrec.authid != authid THEN
+			RETURN 0;
+		ELSE
+			RETURN 1;
+		END IF;
+	END LOOP;
+
+	EXECUTE 'INSERT INTO authorization_table VALUES ('||
+		quote_literal(mytoid::text)||','||quote_literal(myrid)||
+		','||quote_literal(expires::text)||
+		','||quote_literal(authid) ||')';
+
+	GET DIAGNOSTICS ret = ROW_COUNT;
+
+	RETURN ret;
+END;
+$_$;
+
+
+--
+-- Name: longtransactionsenabled(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.longtransactionsenabled() RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$ 
+DECLARE
+	rec RECORD;
+BEGIN
+	FOR rec IN SELECT oid FROM pg_class WHERE relname = 'authorized_tables'
+	LOOP
+		return 't';
+	END LOOP;
+	return 'f';
+END;
+$$;
+
+
+--
 -- Name: msip_edad_de_fechanac_fecharef(integer, integer, integer, integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.msip_edad_de_fechanac_fecharef(anionac integer, mesnac integer, dianac integer, anioref integer, mesref integer, diaref integer) RETURNS integer
     LANGUAGE sql IMMUTABLE
+    AS $$ SELECT CASE WHEN anionac IS NULL THEN NULL WHEN anioref IS NULL THEN NULL WHEN anioref < anionac THEN -1 WHEN mesnac IS NOT NULL AND mesnac > 0 AND mesref IS NOT NULL AND mesref > 0 AND mesnac >= mesref THEN CASE WHEN mesnac > mesref OR (dianac IS NOT NULL AND dianac > 0 AND diaref IS NOT NULL AND diaref > 0 AND dianac > diaref) THEN anioref-anionac-1 ELSE anioref-anionac END ELSE anioref-anionac END $$;
+
+
+--
+-- Name: populate_geometry_columns(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.populate_geometry_columns() RETURNS text
+    LANGUAGE plpgsql
     AS $$
-            SELECT CASE 
-              WHEN anionac IS NULL THEN NULL
-              WHEN anioref IS NULL THEN NULL
-              WHEN anioref < anionac THEN -1
-              WHEN mesnac IS NOT NULL AND mesnac > 0 
-                AND mesref IS NOT NULL AND mesref > 0 
-                AND mesnac >= mesref THEN
-                CASE 
-                  WHEN mesnac > mesref OR (dianac IS NOT NULL 
-                    AND dianac > 0 AND diaref IS NOT NULL 
-                    AND diaref > 0 AND dianac > diaref) THEN 
-                    anioref-anionac-1
-                  ELSE 
-                    anioref-anionac
-                END
-              ELSE
-                anioref-anionac
-            END 
-          $$;
+DECLARE
+	inserted    integer;
+	oldcount    integer;
+	probed      integer;
+	stale       integer;
+	gcs         RECORD;
+	gc          RECORD;
+	gsrid       integer;
+	gndims      integer;
+	gtype       text;
+	query       text;
+	gc_is_valid boolean;
+	
+BEGIN
+	SELECT count(*) INTO oldcount FROM geometry_columns;
+	inserted := 0;
+
+	EXECUTE 'TRUNCATE geometry_columns';
+
+	-- Count the number of geometry columns in all tables and views
+	SELECT count(DISTINCT c.oid) INTO probed
+	FROM pg_class c, 
+	     pg_attribute a, 
+	     pg_type t, 
+	     pg_namespace n
+	WHERE (c.relkind = 'r' OR c.relkind = 'v')
+	AND t.typname = 'geometry'
+	AND a.attisdropped = false
+	AND a.atttypid = t.oid
+	AND a.attrelid = c.oid
+	AND c.relnamespace = n.oid
+	AND n.nspname NOT ILIKE 'pg_temp%';
+
+	-- Iterate through all non-dropped geometry columns
+	RAISE DEBUG 'Processing Tables.....';
+
+	FOR gcs IN 
+	SELECT DISTINCT ON (c.oid) c.oid, n.nspname, c.relname
+	    FROM pg_class c, 
+	         pg_attribute a, 
+	         pg_type t, 
+	         pg_namespace n
+	    WHERE c.relkind = 'r'
+	    AND t.typname = 'geometry'
+	    AND a.attisdropped = false
+	    AND a.atttypid = t.oid
+	    AND a.attrelid = c.oid
+	    AND c.relnamespace = n.oid
+	    AND n.nspname NOT ILIKE 'pg_temp%'
+	LOOP
+	
+	inserted := inserted + populate_geometry_columns(gcs.oid);
+	END LOOP;
+	
+	-- Add views to geometry columns table
+	RAISE DEBUG 'Processing Views.....';
+	FOR gcs IN 
+	SELECT DISTINCT ON (c.oid) c.oid, n.nspname, c.relname
+	    FROM pg_class c, 
+	         pg_attribute a, 
+	         pg_type t, 
+	         pg_namespace n
+	    WHERE c.relkind = 'v'
+	    AND t.typname = 'geometry'
+	    AND a.attisdropped = false
+	    AND a.atttypid = t.oid
+	    AND a.attrelid = c.oid
+	    AND c.relnamespace = n.oid
+	LOOP            
+	    
+	inserted := inserted + populate_geometry_columns(gcs.oid);
+	END LOOP;
+
+	IF oldcount > inserted THEN
+	stale = oldcount-inserted;
+	ELSE
+	stale = 0;
+	END IF;
+
+	RETURN 'probed:' ||probed|| ' inserted:'||inserted|| ' conflicts:'||probed-inserted|| ' deleted:'||stale;
+END
+
+$$;
+
+
+--
+-- Name: populate_geometry_columns(oid); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.populate_geometry_columns(tbl_oid oid) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	gcs         RECORD;
+	gc          RECORD;
+	gsrid       integer;
+	gndims      integer;
+	gtype       text;
+	query       text;
+	gc_is_valid boolean;
+	inserted    integer;
+	
+BEGIN
+	inserted := 0;
+	
+	-- Iterate through all geometry columns in this table
+	FOR gcs IN 
+	SELECT n.nspname, c.relname, a.attname
+	    FROM pg_class c, 
+	         pg_attribute a, 
+	         pg_type t, 
+	         pg_namespace n
+	    WHERE c.relkind = 'r'
+	    AND t.typname = 'geometry'
+	    AND a.attisdropped = false
+	    AND a.atttypid = t.oid
+	    AND a.attrelid = c.oid
+	    AND c.relnamespace = n.oid
+	    AND n.nspname NOT ILIKE 'pg_temp%'
+	    AND c.oid = tbl_oid
+	LOOP
+	
+	RAISE DEBUG 'Processing table %.%.%', gcs.nspname, gcs.relname, gcs.attname;
+
+	DELETE FROM geometry_columns 
+	  WHERE f_table_schema = quote_ident(gcs.nspname) 
+	  AND f_table_name = quote_ident(gcs.relname)
+	  AND f_geometry_column = quote_ident(gcs.attname);
+	
+	gc_is_valid := true;
+	
+	-- Try to find srid check from system tables (pg_constraint)
+	gsrid := 
+	    (SELECT replace(replace(split_part(s.consrc, ' = ', 2), ')', ''), '(', '') 
+	     FROM pg_class c, pg_namespace n, pg_attribute a, pg_constraint s 
+	     WHERE n.nspname = gcs.nspname 
+	     AND c.relname = gcs.relname 
+	     AND a.attname = gcs.attname 
+	     AND a.attrelid = c.oid
+	     AND s.connamespace = n.oid
+	     AND s.conrelid = c.oid
+	     AND a.attnum = ANY (s.conkey)
+	     AND s.consrc LIKE '%srid(% = %');
+	IF (gsrid IS NULL) THEN 
+	    -- Try to find srid from the geometry itself
+	    EXECUTE 'SELECT public.srid(' || quote_ident(gcs.attname) || ') 
+	             FROM ONLY ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	             WHERE ' || quote_ident(gcs.attname) || ' IS NOT NULL LIMIT 1' 
+	        INTO gc;
+	    gsrid := gc.srid;
+	    
+	    -- Try to apply srid check to column
+	    IF (gsrid IS NOT NULL) THEN
+	        BEGIN
+	            EXECUTE 'ALTER TABLE ONLY ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	                     ADD CONSTRAINT ' || quote_ident('enforce_srid_' || gcs.attname) || ' 
+	                     CHECK (srid(' || quote_ident(gcs.attname) || ') = ' || gsrid || ')';
+	        EXCEPTION
+	            WHEN check_violation THEN
+	                RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not apply constraint CHECK (srid(%) = %)', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname), quote_ident(gcs.attname), gsrid;
+	                gc_is_valid := false;
+	        END;
+	    END IF;
+	END IF;
+	
+	-- Try to find ndims check from system tables (pg_constraint)
+	gndims := 
+	    (SELECT replace(split_part(s.consrc, ' = ', 2), ')', '') 
+	     FROM pg_class c, pg_namespace n, pg_attribute a, pg_constraint s 
+	     WHERE n.nspname = gcs.nspname 
+	     AND c.relname = gcs.relname 
+	     AND a.attname = gcs.attname 
+	     AND a.attrelid = c.oid
+	     AND s.connamespace = n.oid
+	     AND s.conrelid = c.oid
+	     AND a.attnum = ANY (s.conkey)
+	     AND s.consrc LIKE '%ndims(% = %');
+	IF (gndims IS NULL) THEN
+	    -- Try to find ndims from the geometry itself
+	    EXECUTE 'SELECT public.ndims(' || quote_ident(gcs.attname) || ') 
+	             FROM ONLY ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	             WHERE ' || quote_ident(gcs.attname) || ' IS NOT NULL LIMIT 1' 
+	        INTO gc;
+	    gndims := gc.ndims;
+	    
+	    -- Try to apply ndims check to column
+	    IF (gndims IS NOT NULL) THEN
+	        BEGIN
+	            EXECUTE 'ALTER TABLE ONLY ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	                     ADD CONSTRAINT ' || quote_ident('enforce_dims_' || gcs.attname) || ' 
+	                     CHECK (ndims(' || quote_ident(gcs.attname) || ') = '||gndims||')';
+	        EXCEPTION
+	            WHEN check_violation THEN
+	                RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not apply constraint CHECK (ndims(%) = %)', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname), quote_ident(gcs.attname), gndims;
+	                gc_is_valid := false;
+	        END;
+	    END IF;
+	END IF;
+	
+	-- Try to find geotype check from system tables (pg_constraint)
+	gtype := 
+	    (SELECT replace(split_part(s.consrc, '''', 2), ')', '') 
+	     FROM pg_class c, pg_namespace n, pg_attribute a, pg_constraint s 
+	     WHERE n.nspname = gcs.nspname 
+	     AND c.relname = gcs.relname 
+	     AND a.attname = gcs.attname 
+	     AND a.attrelid = c.oid
+	     AND s.connamespace = n.oid
+	     AND s.conrelid = c.oid
+	     AND a.attnum = ANY (s.conkey)
+	     AND s.consrc LIKE '%geometrytype(% = %');
+	IF (gtype IS NULL) THEN
+	    -- Try to find geotype from the geometry itself
+	    EXECUTE 'SELECT public.geometrytype(' || quote_ident(gcs.attname) || ') 
+	             FROM ONLY ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	             WHERE ' || quote_ident(gcs.attname) || ' IS NOT NULL LIMIT 1' 
+	        INTO gc;
+	    gtype := gc.geometrytype;
+	    --IF (gtype IS NULL) THEN
+	    --    gtype := 'GEOMETRY';
+	    --END IF;
+	    
+	    -- Try to apply geometrytype check to column
+	    IF (gtype IS NOT NULL) THEN
+	        BEGIN
+	            EXECUTE 'ALTER TABLE ONLY ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	            ADD CONSTRAINT ' || quote_ident('enforce_geotype_' || gcs.attname) || ' 
+	            CHECK ((geometrytype(' || quote_ident(gcs.attname) || ') = ' || quote_literal(gtype) || ') OR (' || quote_ident(gcs.attname) || ' IS NULL))';
+	        EXCEPTION
+	            WHEN check_violation THEN
+	                -- No geometry check can be applied. This column contains a number of geometry types.
+	                RAISE WARNING 'Could not add geometry type check (%) to table column: %.%.%', gtype, quote_ident(gcs.nspname),quote_ident(gcs.relname),quote_ident(gcs.attname);
+	        END;
+	    END IF;
+	END IF;
+	        
+	IF (gsrid IS NULL) THEN             
+	    RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not determine the srid', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname);
+	ELSIF (gndims IS NULL) THEN
+	    RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not determine the number of dimensions', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname);
+	ELSIF (gtype IS NULL) THEN
+	    RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not determine the geometry type', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname);
+	ELSE
+	    -- Only insert into geometry_columns if table constraints could be applied.
+	    IF (gc_is_valid) THEN
+	        INSERT INTO geometry_columns (f_table_catalog,f_table_schema, f_table_name, f_geometry_column, coord_dimension, srid, type) 
+	        VALUES ('', gcs.nspname, gcs.relname, gcs.attname, gndims, gsrid, gtype);
+	        inserted := inserted + 1;
+	    END IF;
+	END IF;
+	END LOOP;
+
+	-- Add views to geometry columns table
+	FOR gcs IN 
+	SELECT n.nspname, c.relname, a.attname
+	    FROM pg_class c, 
+	         pg_attribute a, 
+	         pg_type t, 
+	         pg_namespace n
+	    WHERE c.relkind = 'v'
+	    AND t.typname = 'geometry'
+	    AND a.attisdropped = false
+	    AND a.atttypid = t.oid
+	    AND a.attrelid = c.oid
+	    AND c.relnamespace = n.oid
+	    AND n.nspname NOT ILIKE 'pg_temp%'
+	    AND c.oid = tbl_oid
+	LOOP            
+	    RAISE DEBUG 'Processing view %.%.%', gcs.nspname, gcs.relname, gcs.attname;
+
+	    EXECUTE 'SELECT public.ndims(' || quote_ident(gcs.attname) || ') 
+	             FROM ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	             WHERE ' || quote_ident(gcs.attname) || ' IS NOT NULL LIMIT 1' 
+	        INTO gc;
+	    gndims := gc.ndims;
+	    
+	    EXECUTE 'SELECT public.srid(' || quote_ident(gcs.attname) || ') 
+	             FROM ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	             WHERE ' || quote_ident(gcs.attname) || ' IS NOT NULL LIMIT 1' 
+	        INTO gc;
+	    gsrid := gc.srid;
+	    
+	    EXECUTE 'SELECT public.geometrytype(' || quote_ident(gcs.attname) || ') 
+	             FROM ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' 
+	             WHERE ' || quote_ident(gcs.attname) || ' IS NOT NULL LIMIT 1' 
+	        INTO gc;
+	    gtype := gc.geometrytype;
+	    
+	    IF (gndims IS NULL) THEN
+	        RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not determine ndims', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname);
+	    ELSIF (gsrid IS NULL) THEN
+	        RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not determine srid', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname);
+	    ELSIF (gtype IS NULL) THEN
+	        RAISE WARNING 'Not inserting ''%'' in ''%.%'' into geometry_columns: could not determine gtype', quote_ident(gcs.attname), quote_ident(gcs.nspname), quote_ident(gcs.relname);
+	    ELSE
+	        query := 'INSERT INTO geometry_columns (f_table_catalog,f_table_schema, f_table_name, f_geometry_column, coord_dimension, srid, type) ' ||
+	                 'VALUES ('''', ' || quote_literal(gcs.nspname) || ',' || quote_literal(gcs.relname) || ',' || quote_literal(gcs.attname) || ',' || gndims || ',' || gsrid || ',' || quote_literal(gtype) || ')';
+	        EXECUTE query;
+	        inserted := inserted + 1;
+	    END IF;
+	END LOOP;
+	
+	RETURN inserted;
+END
+
+$$;
+
+
+--
+-- Name: postgis_full_version(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.postgis_full_version() RETURNS text
+    LANGUAGE plpgsql IMMUTABLE
+    AS $$ 
+DECLARE
+	libver text;
+	projver text;
+	geosver text;
+	usestats bool;
+	dbproc text;
+	relproc text;
+	fullver text;
+BEGIN
+	SELECT postgis_lib_version() INTO libver;
+	SELECT postgis_proj_version() INTO projver;
+	SELECT postgis_geos_version() INTO geosver;
+	SELECT postgis_uses_stats() INTO usestats;
+	SELECT postgis_scripts_installed() INTO dbproc;
+	SELECT postgis_scripts_released() INTO relproc;
+
+	fullver = 'POSTGIS="' || libver || '"';
+
+	IF  geosver IS NOT NULL THEN
+		fullver = fullver || ' GEOS="' || geosver || '"';
+	END IF;
+
+	IF  projver IS NOT NULL THEN
+		fullver = fullver || ' PROJ="' || projver || '"';
+	END IF;
+
+	IF usestats THEN
+		fullver = fullver || ' USE_STATS';
+	END IF;
+
+	-- fullver = fullver || ' DBPROC="' || dbproc || '"';
+	-- fullver = fullver || ' RELPROC="' || relproc || '"';
+
+	IF dbproc != relproc THEN
+		fullver = fullver || ' (procs from ' || dbproc || ' need upgrade)';
+	END IF;
+
+	RETURN fullver;
+END
+$$;
+
+
+--
+-- Name: postgis_scripts_build_date(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.postgis_scripts_build_date() RETURNS text
+    LANGUAGE sql IMMUTABLE
+    AS $$SELECT '2010-08-11 04:53:59'::text AS version$$;
+
+
+--
+-- Name: postgis_scripts_installed(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.postgis_scripts_installed() RETURNS text
+    LANGUAGE sql IMMUTABLE
+    AS $$SELECT '1.4.0'::text AS version$$;
 
 
 --
@@ -240,6 +1326,93 @@ $_$;
 
 
 --
+-- Name: probe_geometry_columns(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.probe_geometry_columns() RETURNS text
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	inserted integer;
+	oldcount integer;
+	probed integer;
+	stale integer;
+BEGIN
+
+	SELECT count(*) INTO oldcount FROM geometry_columns;
+
+	SELECT count(*) INTO probed
+		FROM pg_class c, pg_attribute a, pg_type t, 
+			pg_namespace n,
+			pg_constraint sridcheck, pg_constraint typecheck
+
+		WHERE t.typname = 'geometry'
+		AND a.atttypid = t.oid
+		AND a.attrelid = c.oid
+		AND c.relnamespace = n.oid
+		AND sridcheck.connamespace = n.oid
+		AND typecheck.connamespace = n.oid
+		AND sridcheck.conrelid = c.oid
+		AND sridcheck.consrc LIKE '(srid('||a.attname||') = %)'
+		AND typecheck.conrelid = c.oid
+		AND typecheck.consrc LIKE
+		'((geometrytype('||a.attname||') = ''%''::text) OR (% IS NULL))'
+		;
+
+	INSERT INTO geometry_columns SELECT
+		''::varchar as f_table_catalogue,
+		n.nspname::varchar as f_table_schema,
+		c.relname::varchar as f_table_name,
+		a.attname::varchar as f_geometry_column,
+		2 as coord_dimension,
+		trim(both  ' =)' from 
+			replace(replace(split_part(
+				sridcheck.consrc, ' = ', 2), ')', ''), '(', ''))::integer AS srid,
+		trim(both ' =)''' from substr(typecheck.consrc, 
+			strpos(typecheck.consrc, '='),
+			strpos(typecheck.consrc, '::')-
+			strpos(typecheck.consrc, '=')
+			))::varchar as type
+		FROM pg_class c, pg_attribute a, pg_type t, 
+			pg_namespace n,
+			pg_constraint sridcheck, pg_constraint typecheck
+		WHERE t.typname = 'geometry'
+		AND a.atttypid = t.oid
+		AND a.attrelid = c.oid
+		AND c.relnamespace = n.oid
+		AND sridcheck.connamespace = n.oid
+		AND typecheck.connamespace = n.oid
+		AND sridcheck.conrelid = c.oid
+		AND sridcheck.consrc LIKE '(st_srid('||a.attname||') = %)'
+		AND typecheck.conrelid = c.oid
+		AND typecheck.consrc LIKE
+		'((geometrytype('||a.attname||') = ''%''::text) OR (% IS NULL))'
+
+	        AND NOT EXISTS (
+	                SELECT oid FROM geometry_columns gc
+	                WHERE c.relname::varchar = gc.f_table_name
+	                AND n.nspname::varchar = gc.f_table_schema
+	                AND a.attname::varchar = gc.f_geometry_column
+	        );
+
+	GET DIAGNOSTICS inserted = ROW_COUNT;
+
+	IF oldcount > probed THEN
+		stale = oldcount-probed;
+	ELSE
+		stale = 0;
+	END IF;
+
+	RETURN 'probed:'||probed::text||
+		' inserted:'||inserted::text||
+		' conflicts:'||(probed-inserted)::text||
+		' stale:'||stale::text;
+END
+
+$$;
+
+
+--
 -- Name: probhombre(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -247,7 +1420,7 @@ CREATE FUNCTION public.probhombre(in_text text) RETURNS numeric
     LANGUAGE sql IMMUTABLE
     AS $_$
 	SELECT sum(ppar) FROM (SELECT p, peso*probcadh(p) AS ppar FROM (
-		SELECT p, CASE WHEN rnum=1 THEN 100 ELSE 1 END AS peso 
+		SELECT p, CASE WHEN rnum=1 THEN 9 ELSE 1 END AS peso 
 		FROM (SELECT p, row_number() OVER () AS rnum FROM 
 			divarr(string_to_array(trim($1), ' ')) AS p) 
 		AS s) AS s2) AS s3;
@@ -262,11 +1435,22 @@ CREATE FUNCTION public.probmujer(in_text text) RETURNS numeric
     LANGUAGE sql IMMUTABLE
     AS $_$
 	SELECT sum(ppar) FROM (SELECT p, peso*probcadm(p) AS ppar FROM (
-		SELECT p, CASE WHEN rnum=1 THEN 100 ELSE 1 END AS peso 
+		SELECT p, CASE WHEN rnum=1 THEN 9 ELSE 1 END AS peso 
 		FROM (SELECT p, row_number() OVER () AS rnum FROM 
 			divarr(string_to_array(trim($1), ' ')) AS p) 
 		AS s) AS s2) AS s3;
 $_$;
+
+
+--
+-- Name: rename_geometry_table_constraints(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.rename_geometry_table_constraints() RETURNS text
+    LANGUAGE sql IMMUTABLE
+    AS $$
+SELECT 'rename_geometry_table_constraint() is obsoleted'::text
+$$;
 
 
 --
@@ -446,6 +1630,146 @@ CREATE FUNCTION public.soundexespm(entrada text) RETURNS text
 
 
 --
+-- Name: unlockrows(text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.unlockrows(text) RETURNS integer
+    LANGUAGE plpgsql STRICT
+    AS $_$ 
+DECLARE
+	ret int;
+BEGIN
+
+	IF NOT LongTransactionsEnabled() THEN
+		RAISE EXCEPTION 'Long transaction support disabled, use EnableLongTransaction() to enable.';
+	END IF;
+
+	EXECUTE 'DELETE FROM authorization_table where authid = ' ||
+		quote_literal($1);
+
+	GET DIAGNOSTICS ret = ROW_COUNT;
+
+	RETURN ret;
+END;
+$_$;
+
+
+--
+-- Name: updategeometrysrid(character varying, character varying, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.updategeometrysrid(character varying, character varying, integer) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$ 
+DECLARE
+	ret  text;
+BEGIN
+	SELECT UpdateGeometrySRID('','',$1,$2,$3) into ret;
+	RETURN ret;
+END;
+$_$;
+
+
+--
+-- Name: updategeometrysrid(character varying, character varying, character varying, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.updategeometrysrid(character varying, character varying, character varying, integer) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$ 
+DECLARE
+	ret  text;
+BEGIN
+	SELECT UpdateGeometrySRID('',$1,$2,$3,$4) into ret;
+	RETURN ret;
+END;
+$_$;
+
+
+--
+-- Name: updategeometrysrid(character varying, character varying, character varying, character varying, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.updategeometrysrid(character varying, character varying, character varying, character varying, integer) RETURNS text
+    LANGUAGE plpgsql STRICT
+    AS $_$
+DECLARE
+	catalog_name alias for $1; 
+	schema_name alias for $2;
+	table_name alias for $3;
+	column_name alias for $4;
+	new_srid alias for $5;
+	myrec RECORD;
+	okay boolean;
+	cname varchar;
+	real_schema name;
+
+BEGIN
+
+
+	-- Find, check or fix schema_name
+	IF ( schema_name != '' ) THEN
+		okay = 'f';
+
+		FOR myrec IN SELECT nspname FROM pg_namespace WHERE text(nspname) = schema_name LOOP
+			okay := 't';
+		END LOOP;
+
+		IF ( okay <> 't' ) THEN
+			RAISE EXCEPTION 'Invalid schema name';
+		ELSE
+			real_schema = schema_name;
+		END IF;
+	ELSE
+		SELECT INTO real_schema current_schema()::text;
+	END IF;
+
+ 	-- Find out if the column is in the geometry_columns table
+	okay = 'f';
+	FOR myrec IN SELECT * from geometry_columns where f_table_schema = text(real_schema) and f_table_name = table_name and f_geometry_column = column_name LOOP
+		okay := 't';
+	END LOOP; 
+	IF (okay <> 't') THEN 
+		RAISE EXCEPTION 'column not found in geometry_columns table';
+		RETURN 'f';
+	END IF;
+
+	-- Update ref from geometry_columns table
+	EXECUTE 'UPDATE geometry_columns SET SRID = ' || new_srid::text || 
+		' where f_table_schema = ' ||
+		quote_literal(real_schema) || ' and f_table_name = ' ||
+		quote_literal(table_name)  || ' and f_geometry_column = ' ||
+		quote_literal(column_name);
+	
+	-- Make up constraint name
+	cname = 'enforce_srid_'  || column_name;
+
+	-- Drop enforce_srid constraint
+	EXECUTE 'ALTER TABLE ' || quote_ident(real_schema) ||
+		'.' || quote_ident(table_name) ||
+		' DROP constraint ' || quote_ident(cname);
+
+	-- Update geometries SRID
+	EXECUTE 'UPDATE ' || quote_ident(real_schema) ||
+		'.' || quote_ident(table_name) ||
+		' SET ' || quote_ident(column_name) ||
+		' = setSRID(' || quote_ident(column_name) ||
+		', ' || new_srid::text || ')';
+
+	-- Reset enforce_srid constraint
+	EXECUTE 'ALTER TABLE ' || quote_ident(real_schema) ||
+		'.' || quote_ident(table_name) ||
+		' ADD constraint ' || quote_ident(cname) ||
+		' CHECK (srid(' || quote_ident(column_name) ||
+		') = ' || new_srid::text || ')';
+
+	RETURN real_schema || '.' || table_name || '.' || column_name ||' SRID changed to ' || new_srid::text;
+	
+END;
+$_$;
+
+
+--
 -- Name: first(anyelement); Type: AGGREGATE; Schema: public; Owner: -
 --
 
@@ -456,9 +1780,34 @@ CREATE AGGREGATE public.first(anyelement) (
 );
 
 
+--
+-- Name: acreditacion_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acreditacion_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- Name: acreditacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acreditacion (
+    id integer DEFAULT nextval('public.acreditacion_seq'::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2013-05-24'::date NOT NULL,
+    fechadeshabilitacion date,
+    CONSTRAINT acreditacion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
 
 --
 -- Name: apo214_asisreconocimiento; Type: TABLE; Schema: public; Owner: -
@@ -1131,10 +2480,10 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: msip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: clasifdesp_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.msip_persona_id_seq
+CREATE SEQUENCE public.clasifdesp_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1143,420 +2492,118 @@ CREATE SEQUENCE public.msip_persona_id_seq
 
 
 --
--- Name: msip_persona; Type: TABLE; Schema: public; Owner: -
+-- Name: clasifdesp; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.msip_persona (
-    id integer DEFAULT nextval('public.msip_persona_id_seq'::regclass) NOT NULL,
-    nombres character varying(100) NOT NULL COLLATE public.es_co_utf_8,
-    apellidos character varying(100) NOT NULL COLLATE public.es_co_utf_8,
-    anionac integer,
-    mesnac integer,
-    dianac integer,
-    sexo character(1) NOT NULL,
-    numerodocumento character varying(100),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    pais_id integer,
-    nacionalde integer,
-    tdocumento_id integer,
-    departamento_id integer,
-    municipio_id integer,
-    clase_id integer,
-    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
-    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
-    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
-);
-
-
---
--- Name: sivel2_gen_caso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_caso_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_caso; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_caso (
-    id integer DEFAULT nextval('public.sivel2_gen_caso_id_seq'::regclass) NOT NULL,
-    titulo character varying(50),
-    fecha date NOT NULL,
-    hora character varying(10),
-    duracion character varying(10),
-    memo text NOT NULL,
-    grconfiabilidad character varying(5),
-    gresclarecimiento character varying(5),
-    grimpunidad character varying(8),
-    grinformacion character varying(8),
-    bienes text,
-    intervalo_id integer DEFAULT 5,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    ubicacion_id integer
-);
-
-
---
--- Name: sivel2_gen_victima_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_victima_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_victima (
-    hijos integer,
-    profesion_id integer DEFAULT 22 NOT NULL,
-    rangoedad_id integer DEFAULT 6 NOT NULL,
-    filiacion_id integer DEFAULT 10 NOT NULL,
-    sectorsocial_id integer DEFAULT 15 NOT NULL,
-    organizacion_id integer DEFAULT 16 NOT NULL,
-    vinculoestado_id integer DEFAULT 38 NOT NULL,
-    caso_id integer NOT NULL,
-    organizacionarmada integer DEFAULT 35 NOT NULL,
-    anotaciones character varying(1000),
-    persona_id integer NOT NULL,
-    etnia_id integer DEFAULT 1 NOT NULL,
-    iglesia_id integer DEFAULT 1,
-    orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.sivel2_gen_victima_id_seq'::regclass) NOT NULL,
-    CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
-    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'I'::bpchar) OR (orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'O'::bpchar) OR (orientacionsexual = 'S'::bpchar) OR (orientacionsexual = 'T'::bpchar)))
-);
-
-
---
--- Name: cben1; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.cben1 AS
- SELECT caso.id AS caso_id,
-    subv.victima_id,
-    subv.persona_id,
-    1 AS npersona,
-    'total'::text AS total
-   FROM public.sivel2_gen_caso caso,
-    public.sivel2_gen_victima victima,
-    ( SELECT sivel2_gen_victima.persona_id,
-            max(sivel2_gen_victima.id) AS victima_id
-           FROM public.sivel2_gen_victima
-          GROUP BY sivel2_gen_victima.persona_id) subv,
-    public.msip_persona persona
-  WHERE ((subv.victima_id = victima.id) AND (caso.id = victima.caso_id) AND (persona.id = victima.persona_id));
-
-
---
--- Name: msip_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.msip_clase_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: msip_clase; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.msip_clase (
-    clalocal_cod integer,
-    tclase_id character varying(10) DEFAULT 'CP'::character varying NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    latitud double precision,
-    longitud double precision,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    municipio_id integer,
-    id integer DEFAULT nextval('public.msip_clase_id_seq'::regclass) NOT NULL,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8,
-    ultvigenciaini date,
-    ultvigenciafin date,
-    svgruta character varying,
-    svgcdx integer,
-    svgcdy integer,
-    svgcdancho integer,
-    svgcdalto integer,
-    svgrotx double precision,
-    svgroty double precision,
-    CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: msip_departamento_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.msip_departamento_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: msip_departamento; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.msip_departamento (
-    deplocal_cod integer,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
-    fechadeshabilitacion date,
-    latitud double precision,
-    longitud double precision,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    pais_id integer NOT NULL,
-    id integer DEFAULT nextval('public.msip_departamento_id_seq'::regclass) NOT NULL,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8,
-    codiso character varying(6),
-    catiso character varying(64),
-    codreg integer,
-    ultvigenciaini date,
-    ultvigenciafin date,
-    svgruta character varying,
-    svgcdx integer,
-    svgcdy integer,
-    svgcdancho integer,
-    svgcdalto integer,
-    svgrotx double precision,
-    svgroty double precision,
-    CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: msip_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.msip_municipio_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: msip_municipio; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.msip_municipio (
-    munlocal_cod integer,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
-    fechadeshabilitacion date,
-    latitud double precision,
-    longitud double precision,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    departamento_id integer,
-    id integer DEFAULT nextval('public.msip_municipio_id_seq'::regclass) NOT NULL,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8,
-    codreg integer,
-    ultvigenciaini date,
-    ultvigenciafin date,
-    tipomun character varying(32),
-    svgruta character varying,
-    svgcdx integer,
-    svgcdy integer,
-    svgcdancho integer,
-    svgcdalto integer,
-    svgrotx double precision,
-    svgroty double precision,
-    CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: msip_ubicacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.msip_ubicacion_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: msip_ubicacion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.msip_ubicacion (
-    id integer DEFAULT nextval('public.msip_ubicacion_id_seq'::regclass) NOT NULL,
-    tsitio_id integer DEFAULT 1 NOT NULL,
-    caso_id integer NOT NULL,
-    latitud double precision,
-    longitud double precision,
-    sitio character varying(500) COLLATE public.es_co_utf_8,
-    lugar character varying(500) COLLATE public.es_co_utf_8,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    pais_id integer,
-    departamento_id integer,
-    municipio_id integer,
-    clase_id integer
-);
-
-
---
--- Name: cben2; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.cben2 AS
- SELECT cben1.caso_id,
-    cben1.victima_id,
-    cben1.persona_id,
-    cben1.npersona,
-    cben1.total,
-    ubicacion.departamento_id,
-    departamento.deplocal_cod AS departamento_divipola,
-    departamento.nombre AS departamento_nombre,
-    ubicacion.municipio_id,
-    ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod) AS municipio_divipola,
-    municipio.nombre AS municipio_nombre,
-    ubicacion.clase_id,
-    clase.clalocal_cod AS clase_divipola,
-    clase.nombre AS clase_nombre
-   FROM (((((public.cben1
-     JOIN public.sivel2_gen_caso caso ON ((cben1.caso_id = caso.id)))
-     LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
-     LEFT JOIN public.msip_departamento departamento ON ((ubicacion.departamento_id = departamento.id)))
-     LEFT JOIN public.msip_municipio municipio ON ((ubicacion.municipio_id = municipio.id)))
-     LEFT JOIN public.msip_clase clase ON ((ubicacion.clase_id = clase.id)))
-  GROUP BY cben1.caso_id, cben1.victima_id, cben1.persona_id, cben1.npersona, cben1.total, ubicacion.departamento_id, departamento.deplocal_cod, departamento.nombre, ubicacion.municipio_id, ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod), municipio.nombre, ubicacion.clase_id, clase.clalocal_cod, clase.nombre;
-
-
---
--- Name: sivel2_gen_acto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_acto_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_acto; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_acto (
-    presponsable_id integer NOT NULL,
-    categoria_id integer NOT NULL,
-    persona_id integer NOT NULL,
-    caso_id integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.sivel2_gen_acto_id_seq'::regclass) NOT NULL
-);
-
-
---
--- Name: sivel2_gen_categoria; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_categoria (
-    id integer NOT NULL,
-    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
-    fechadeshabilitacion date,
-    pconsolidado_id integer,
-    contadaen integer,
-    tipocat character(1) DEFAULT 'I'::bpchar,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    supracategoria_id integer,
-    CONSTRAINT "$3" CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
-    CONSTRAINT categoria_tipocat_check CHECK (((tipocat = 'I'::bpchar) OR (tipocat = 'C'::bpchar) OR (tipocat = 'O'::bpchar)))
-);
-
-
---
--- Name: sivel2_gen_supracategoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_supracategoria_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_supracategoria; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_supracategoria (
-    codigo integer,
+CREATE TABLE public.clasifdesp (
+    id integer DEFAULT nextval('public.clasifdesp_seq'::regclass) NOT NULL,
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    fechacreacion date DEFAULT '2013-05-24'::date NOT NULL,
     fechadeshabilitacion date,
-    tviolencia_id character varying(1) NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    id integer DEFAULT nextval('public.sivel2_gen_supracategoria_id_seq'::regclass) NOT NULL,
-    CONSTRAINT supracategoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+    CONSTRAINT clasifdesp_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
 --
--- Name: cvt1; Type: VIEW; Schema: public; Owner: -
+-- Name: declaroante_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE VIEW public.cvt1 AS
- SELECT DISTINCT acto.caso_id,
-    acto.persona_id,
-    acto.categoria_id,
-    supracategoria.tviolencia_id,
-    categoria.nombre AS categoria,
-    ubicacion.departamento_id,
-    departamento.deplocal_cod AS departamento_divipola,
-    departamento.nombre AS departamento_nombre,
-    ubicacion.municipio_id,
-    ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod) AS municipio_divipola,
-    municipio.nombre AS municipio_nombre
-   FROM ((((((((public.sivel2_gen_acto acto
-     JOIN public.sivel2_gen_caso caso ON ((acto.caso_id = caso.id)))
-     JOIN public.sivel2_gen_categoria categoria ON ((acto.categoria_id = categoria.id)))
-     JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
-     JOIN public.sivel2_gen_victima victima ON (((victima.persona_id = acto.persona_id) AND (victima.caso_id = caso.id))))
-     JOIN public.msip_persona persona ON ((persona.id = acto.persona_id)))
-     LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
-     LEFT JOIN public.msip_departamento departamento ON ((ubicacion.departamento_id = departamento.id)))
-     LEFT JOIN public.msip_municipio municipio ON ((ubicacion.municipio_id = municipio.id)))
-  WHERE (categoria.id = ANY (ARRAY[777, 427, 527, 397, 297, 197, 396, 296, 196, 426, 776, 526, 45, 25, 35, 15, 73, 55, 65, 92, 40, 50, 67, 801, 90, 37, 26, 46, 57, 16, 80, 85, 66, 64, 703, 706, 59, 49, 18, 38, 28, 401, 501, 904, 502, 231, 17, 331, 402, 705, 62, 906, 104, 713, 101, 76, 11, 302, 21, 902, 903, 34, 102, 27, 14, 24, 301, 10, 20, 30, 772, 522, 392, 292, 192, 422, 63, 93, 910, 295, 195, 425, 775, 525, 395, 714, 78, 524, 194, 424, 774, 394, 294, 89, 905, 86, 701, 68, 341, 241, 141, 715, 704, 702, 33, 53, 43, 13, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 293, 523, 393, 193, 773, 423, 58, 48, 75, 69, 41, 74, 12, 36, 72, 56, 22, 47, 291, 421, 521, 191, 391, 771, 520, 29, 39, 19, 77, 420, 712]));
+CREATE SEQUENCE public.declaroante_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: declaroante; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.declaroante (
+    id integer DEFAULT nextval('public.declaroante_seq'::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2013-05-24'::date NOT NULL,
+    fechadeshabilitacion date,
+    CONSTRAINT declaroante_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: desplazamiento; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.desplazamiento (
+    id_caso integer NOT NULL,
+    fechaexpulsion date NOT NULL,
+    expulsion integer NOT NULL,
+    fechallegada date NOT NULL,
+    llegada integer NOT NULL,
+    id_clasifdesp integer DEFAULT 0 NOT NULL,
+    id_tipodesp integer DEFAULT 0 NOT NULL,
+    descripcion character varying(5000),
+    otrosdatos character varying(1000),
+    declaro character(1),
+    hechosdeclarados character varying(5000),
+    fechadeclaracion date,
+    departamentodecl integer,
+    municipiodecl integer,
+    id_declaroante integer DEFAULT 0,
+    id_inclusion integer DEFAULT 0,
+    id_acreditacion integer DEFAULT 0,
+    retornado boolean,
+    reubicado boolean,
+    connacionalretorno boolean,
+    acompestado boolean,
+    connacionaldeportado boolean,
+    oficioantes character varying(5000),
+    id_modalidadtierra integer DEFAULT 0,
+    materialesperdidos character varying(5000),
+    inmaterialesperdidos character varying(5000),
+    protegiorupta boolean,
+    documentostierra character varying(5000),
+    CONSTRAINT desplazamiento_declaro_check CHECK (((declaro = 'S'::bpchar) OR (declaro = 'N'::bpchar) OR (declaro = 'R'::bpchar)))
+);
+
+
+--
+-- Name: desplazamiento_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.desplazamiento_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: geometry_columns; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.geometry_columns (
+    f_table_catalog character varying(256) NOT NULL,
+    f_table_schema character varying(256) NOT NULL,
+    f_table_name character varying(256) NOT NULL,
+    f_geometry_column character varying(256) NOT NULL,
+    coord_dimension integer NOT NULL,
+    srid integer NOT NULL,
+    type character varying(30) NOT NULL
+);
+
+
+--
+-- Name: geomunicipio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.geomunicipio (
+    id_departamento integer NOT NULL,
+    id_municipio integer NOT NULL,
+    srid integer,
+    the_geom text,
+    observaciones character varying(1000)
+);
 
 
 --
@@ -1875,6 +2922,56 @@ CREATE SEQUENCE public.heb412_gen_plantillahcr_id_seq
 --
 
 ALTER SEQUENCE public.heb412_gen_plantillahcr_id_seq OWNED BY public.heb412_gen_plantillahcr.id;
+
+
+--
+-- Name: inclusion_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.inclusion_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: inclusion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.inclusion (
+    id integer DEFAULT nextval('public.inclusion_seq'::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2013-05-24'::date NOT NULL,
+    fechadeshabilitacion date,
+    CONSTRAINT inclusion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: modalidadtierra_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.modalidadtierra_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: modalidadtierra; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.modalidadtierra (
+    id integer DEFAULT nextval('public.modalidadtierra_seq'::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2013-05-24'::date NOT NULL,
+    fechadeshabilitacion date,
+    CONSTRAINT modalidadtierra_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
 
 
 --
@@ -2216,6 +3313,48 @@ ALTER SEQUENCE public.msip_bitacora_id_seq OWNED BY public.msip_bitacora.id;
 
 
 --
+-- Name: msip_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.msip_clase_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: msip_clase; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.msip_clase (
+    clalocal_cod integer,
+    tclase_id character varying(10) DEFAULT 'CP'::character varying NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    latitud double precision,
+    longitud double precision,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    municipio_id integer,
+    id integer DEFAULT nextval('public.msip_clase_id_seq'::regclass) NOT NULL,
+    observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    ultvigenciaini date,
+    ultvigenciafin date,
+    svgruta character varying,
+    svgcdx integer,
+    svgcdy integer,
+    svgcdancho integer,
+    svgcdalto integer,
+    svgrotx double precision,
+    svgroty double precision,
+    CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: msip_clase_histvigencia; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2248,6 +3387,50 @@ CREATE SEQUENCE public.msip_clase_histvigencia_id_seq
 --
 
 ALTER SEQUENCE public.msip_clase_histvigencia_id_seq OWNED BY public.msip_clase_histvigencia.id;
+
+
+--
+-- Name: msip_departamento_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.msip_departamento_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: msip_departamento; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.msip_departamento (
+    deplocal_cod integer,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechadeshabilitacion date,
+    latitud double precision,
+    longitud double precision,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    pais_id integer NOT NULL,
+    id integer DEFAULT nextval('public.msip_departamento_id_seq'::regclass) NOT NULL,
+    observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    codiso character varying(6),
+    catiso character varying(64),
+    codreg integer,
+    ultvigenciaini date,
+    ultvigenciafin date,
+    svgruta character varying,
+    svgcdx integer,
+    svgcdy integer,
+    svgcdancho integer,
+    svgcdalto integer,
+    svgrotx double precision,
+    svgroty double precision,
+    CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
 
 
 --
@@ -2494,6 +3677,49 @@ CREATE TABLE public.msip_grupoper (
 
 
 --
+-- Name: msip_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.msip_municipio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: msip_municipio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.msip_municipio (
+    munlocal_cod integer,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechadeshabilitacion date,
+    latitud double precision,
+    longitud double precision,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    departamento_id integer,
+    id integer DEFAULT nextval('public.msip_municipio_id_seq'::regclass) NOT NULL,
+    observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    codreg integer,
+    ultvigenciaini date,
+    ultvigenciafin date,
+    tipomun character varying(32),
+    svgruta character varying,
+    svgcdx integer,
+    svgcdy integer,
+    svgcdancho integer,
+    svgcdalto integer,
+    svgrotx double precision,
+    svgroty double precision,
+    CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: msip_mundep_sinorden; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2642,8 +3868,8 @@ CREATE TABLE public.msip_orgsocial_persona (
     perfilorgsocial_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    correo character varying(100),
-    cargo character varying(254)
+    cargo character varying(254),
+    correo character varying(100)
 );
 
 
@@ -2798,6 +4024,45 @@ CREATE SEQUENCE public.msip_perfilorgsocial_id_seq
 --
 
 ALTER SEQUENCE public.msip_perfilorgsocial_id_seq OWNED BY public.msip_perfilorgsocial.id;
+
+
+--
+-- Name: msip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.msip_persona_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: msip_persona; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.msip_persona (
+    id integer DEFAULT nextval('public.msip_persona_id_seq'::regclass) NOT NULL,
+    nombres character varying(100) NOT NULL COLLATE public.es_co_utf_8,
+    apellidos character varying(100) NOT NULL COLLATE public.es_co_utf_8,
+    anionac integer,
+    mesnac integer,
+    dianac integer,
+    sexo character(1) NOT NULL,
+    numerodocumento character varying(100),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    pais_id integer,
+    nacionalde integer,
+    tdocumento_id integer,
+    departamento_id integer,
+    municipio_id integer,
+    clase_id integer,
+    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
+    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
+    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
+);
 
 
 --
@@ -3128,6 +4393,40 @@ CREATE TABLE public.msip_tsitio (
 
 
 --
+-- Name: msip_ubicacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.msip_ubicacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: msip_ubicacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.msip_ubicacion (
+    id integer DEFAULT nextval('public.msip_ubicacion_id_seq'::regclass) NOT NULL,
+    tipo character varying(1),
+    tsitio_id integer DEFAULT 1 NOT NULL,
+    caso_id integer NOT NULL,
+    latitud double precision,
+    longitud double precision,
+    sitio character varying(500) COLLATE public.es_co_utf_8,
+    lugar character varying(500) COLLATE public.es_co_utf_8,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    pais_id integer,
+    departamento_id integer,
+    municipio_id integer,
+    clase_id integer
+);
+
+
+--
 -- Name: msip_ubicacionpre; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3207,6 +4506,57 @@ ALTER SEQUENCE public.msip_vereda_id_seq OWNED BY public.msip_vereda.id;
 
 
 --
+-- Name: munres; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.munres (
+    codmun integer,
+    nombre character varying(1000),
+    nvic integer,
+    the_geom text
+);
+
+
+--
+-- Name: sivel2_gen_victima_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_victima_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_victima; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_victima (
+    hijos integer,
+    profesion_id integer DEFAULT 22 NOT NULL,
+    rangoedad_id integer DEFAULT 6 NOT NULL,
+    filiacion_id integer DEFAULT 10 NOT NULL,
+    sectorsocial_id integer DEFAULT 15 NOT NULL,
+    organizacion_id integer DEFAULT 16 NOT NULL,
+    vinculoestado_id integer DEFAULT 38 NOT NULL,
+    caso_id integer NOT NULL,
+    organizacionarmada integer DEFAULT 35 NOT NULL,
+    anotaciones character varying(1000),
+    persona_id integer NOT NULL,
+    etnia_id integer DEFAULT 1 NOT NULL,
+    iglesia_id integer DEFAULT 1,
+    orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('public.sivel2_gen_victima_id_seq'::regclass) NOT NULL,
+    CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
+    CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'I'::bpchar) OR (orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'O'::bpchar) OR (orientacionsexual = 'S'::bpchar) OR (orientacionsexual = 'T'::bpchar)))
+);
+
+
+--
 -- Name: napellidos; Type: MATERIALIZED VIEW; Schema: public; Owner: -
 --
 
@@ -3255,17 +4605,6 @@ CREATE MATERIALIZED VIEW public.nmujeres AS
 
 
 --
--- Name: persona_nomap; Type: MATERIALIZED VIEW; Schema: public; Owner: -
---
-
-CREATE MATERIALIZED VIEW public.persona_nomap AS
- SELECT msip_persona.id,
-    upper(btrim(((btrim((msip_persona.nombres)::text) || ' '::text) || btrim((msip_persona.apellidos)::text)))) AS nomap
-   FROM public.msip_persona
-  WITH NO DATA;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3306,6 +4645,33 @@ CREATE SEQUENCE public.sivel2_gen_actividadoficio_id_seq
 --
 
 ALTER SEQUENCE public.sivel2_gen_actividadoficio_id_seq OWNED BY public.sivel2_gen_actividadoficio.id;
+
+
+--
+-- Name: sivel2_gen_acto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_acto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_acto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_acto (
+    presponsable_id integer NOT NULL,
+    categoria_id integer NOT NULL,
+    persona_id integer NOT NULL,
+    caso_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('public.sivel2_gen_acto_id_seq'::regclass) NOT NULL
+);
 
 
 --
@@ -3388,7 +4754,7 @@ CREATE TABLE public.sivel2_gen_antecedente (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000),
-    CONSTRAINT "$1" CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion > fechacreacion)))
+    CONSTRAINT antecedente_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -3429,6 +4795,41 @@ CREATE TABLE public.sivel2_gen_antecedente_victima (
 CREATE TABLE public.sivel2_gen_antecedente_victimacolectiva (
     antecedente_id integer NOT NULL,
     victimacolectiva_id integer NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_caso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_caso_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_caso; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_caso (
+    id integer DEFAULT nextval('public.sivel2_gen_caso_id_seq'::regclass) NOT NULL,
+    titulo character varying(50),
+    fecha date NOT NULL,
+    hora character varying(10),
+    duracion character varying(10),
+    memo text NOT NULL,
+    grconfiabilidad character varying(5),
+    gresclarecimiento character varying(5),
+    grimpunidad character varying(8),
+    grinformacion character varying(8),
+    bienes text,
+    intervalo_id integer DEFAULT 5,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    ubicacion_id integer
 );
 
 
@@ -3488,7 +4889,7 @@ CREATE TABLE public.sivel2_gen_caso_etiqueta (
     etiqueta_id integer NOT NULL,
     usuario_id integer NOT NULL,
     fecha date NOT NULL,
-    observaciones character varying(5000),
+    observaciones character varying(2500),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('public.sivel2_gen_caso_etiqueta_id_seq'::regclass) NOT NULL
@@ -3662,6 +5063,27 @@ CREATE TABLE public.sivel2_gen_caso_usuario (
 
 
 --
+-- Name: sivel2_gen_categoria; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_categoria (
+    id integer NOT NULL,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechadeshabilitacion date,
+    pconsolidado_id integer,
+    contadaen integer,
+    tipocat character(1) DEFAULT 'I'::bpchar,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    supracategoria_id integer,
+    CONSTRAINT categoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
+    CONSTRAINT categoria_tipocat_check CHECK (((tipocat = 'I'::bpchar) OR (tipocat = 'C'::bpchar) OR (tipocat = 'O'::bpchar)))
+);
+
+
+--
 -- Name: sivel2_gen_combatiente; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3706,10 +5128,27 @@ ALTER SEQUENCE public.sivel2_gen_combatiente_id_seq OWNED BY public.sivel2_gen_c
 
 
 --
--- Name: sivel2_gen_presponsable_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sivel2_gen_presponsable; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sivel2_gen_presponsable_id_seq
+CREATE TABLE public.sivel2_gen_presponsable (
+    id integer DEFAULT nextval(('presuntos_responsables_seq'::text)::regclass) NOT NULL,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechadeshabilitacion date,
+    papa_id integer,
+    nombre character varying(500),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT presuntos_responsables_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: sivel2_gen_supracategoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_supracategoria_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3718,19 +5157,20 @@ CREATE SEQUENCE public.sivel2_gen_presponsable_id_seq
 
 
 --
--- Name: sivel2_gen_presponsable; Type: TABLE; Schema: public; Owner: -
+-- Name: sivel2_gen_supracategoria; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sivel2_gen_presponsable (
-    id integer DEFAULT nextval('public.sivel2_gen_presponsable_id_seq'::regclass) NOT NULL,
-    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+CREATE TABLE public.sivel2_gen_supracategoria (
+    codigo integer,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date NOT NULL,
     fechadeshabilitacion date,
-    papa_id integer,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
+    tviolencia_id character varying(1) NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000),
-    CONSTRAINT presuntos_responsables_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+    id integer DEFAULT nextval('public.sivel2_gen_supracategoria_id_seq'::regclass) NOT NULL,
+    CONSTRAINT supracategoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -3782,6 +5222,22 @@ CREATE MATERIALIZED VIEW public.sivel2_gen_conscaso AS
 
 
 --
+-- Name: sivel2_gen_contexto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_contexto (
+    id integer DEFAULT nextval(('contexto_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT contexto_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_contexto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3791,22 +5247,6 @@ CREATE SEQUENCE public.sivel2_gen_contexto_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: sivel2_gen_contexto; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_contexto (
-    id integer DEFAULT nextval('public.sivel2_gen_contexto_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT contexto_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -3971,6 +5411,22 @@ CREATE TABLE public.sivel2_gen_etnia_victimacolectiva (
 
 
 --
+-- Name: sivel2_gen_filiacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_filiacion (
+    id integer DEFAULT nextval(('filiacion_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT filiacion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_filiacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3980,22 +5436,6 @@ CREATE SEQUENCE public.sivel2_gen_filiacion_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: sivel2_gen_filiacion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_filiacion (
-    id integer DEFAULT nextval('public.sivel2_gen_filiacion_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT filiacion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -4033,6 +5473,22 @@ CREATE SEQUENCE public.sivel2_gen_fotra_id_seq
 
 
 --
+-- Name: sivel2_gen_frontera; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_frontera (
+    id integer DEFAULT nextval(('frontera_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT frontera_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_frontera_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -4042,22 +5498,6 @@ CREATE SEQUENCE public.sivel2_gen_frontera_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: sivel2_gen_frontera; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_frontera (
-    id integer DEFAULT nextval('public.sivel2_gen_frontera_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT frontera_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -4090,23 +5530,11 @@ CREATE TABLE public.sivel2_gen_iglesia (
 
 
 --
--- Name: sivel2_gen_intervalo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_intervalo_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
 -- Name: sivel2_gen_intervalo; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.sivel2_gen_intervalo (
-    id integer DEFAULT nextval('public.sivel2_gen_intervalo_id_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval(('intervalo_seq'::text)::regclass) NOT NULL,
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     rango character varying(25) NOT NULL,
     fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
@@ -4116,6 +5544,18 @@ CREATE TABLE public.sivel2_gen_intervalo (
     observaciones character varying(5000),
     CONSTRAINT intervalo_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
+
+
+--
+-- Name: sivel2_gen_intervalo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_intervalo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
 --
@@ -4173,6 +5613,22 @@ CREATE TABLE public.sivel2_gen_observador_filtrodepartamento (
 
 
 --
+-- Name: sivel2_gen_organizacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_organizacion (
+    id integer DEFAULT nextval(('organizacion_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT organizacion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_organizacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -4182,22 +5638,6 @@ CREATE SEQUENCE public.sivel2_gen_organizacion_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: sivel2_gen_organizacion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_organizacion (
-    id integer DEFAULT nextval('public.sivel2_gen_organizacion_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT organizacion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -4252,10 +5692,10 @@ CREATE TABLE public.sivel2_gen_pconsolidado (
 
 
 --
--- Name: sivel2_gen_profesion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sivel2_gen_presponsable_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sivel2_gen_profesion_id_seq
+CREATE SEQUENCE public.sivel2_gen_presponsable_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4268,7 +5708,7 @@ CREATE SEQUENCE public.sivel2_gen_profesion_id_seq
 --
 
 CREATE TABLE public.sivel2_gen_profesion (
-    id integer DEFAULT nextval('public.sivel2_gen_profesion_id_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval(('profesion_seq'::text)::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8,
     fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
@@ -4280,12 +5720,42 @@ CREATE TABLE public.sivel2_gen_profesion (
 
 
 --
+-- Name: sivel2_gen_profesion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_profesion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sivel2_gen_profesion_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.sivel2_gen_profesion_victimacolectiva (
     profesion_id integer NOT NULL,
     victimacolectiva_id integer NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_rangoedad (
+    id integer DEFAULT nextval(('rango_edad_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    limiteinferior integer DEFAULT 0 NOT NULL,
+    limitesuperior integer DEFAULT 0 NOT NULL,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT rango_edad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -4302,30 +5772,28 @@ CREATE SEQUENCE public.sivel2_gen_rangoedad_id_seq
 
 
 --
--- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_rangoedad (
-    id integer DEFAULT nextval('public.sivel2_gen_rangoedad_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    limiteinferior integer DEFAULT 0 NOT NULL,
-    limitesuperior integer DEFAULT 0 NOT NULL,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT rango_edad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
 -- Name: sivel2_gen_rangoedad_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.sivel2_gen_rangoedad_victimacolectiva (
     rangoedad_id integer NOT NULL,
     victimacolectiva_id integer NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_region; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_region (
+    id integer DEFAULT nextval(('region_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT region_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -4339,22 +5807,6 @@ CREATE SEQUENCE public.sivel2_gen_region_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: sivel2_gen_region; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_region (
-    id integer DEFAULT nextval('public.sivel2_gen_region_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT region_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -4393,6 +5845,22 @@ ALTER SEQUENCE public.sivel2_gen_resagresion_id_seq OWNED BY public.sivel2_gen_r
 
 
 --
+-- Name: sivel2_gen_sectorsocial; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_sectorsocial (
+    id integer DEFAULT nextval(('sector_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT sector_social_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_sectorsocial_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -4402,22 +5870,6 @@ CREATE SEQUENCE public.sivel2_gen_sectorsocial_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: sivel2_gen_sectorsocial; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_sectorsocial (
-    id integer DEFAULT nextval('public.sivel2_gen_sectorsocial_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT sector_social_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -4495,6 +5947,22 @@ CREATE TABLE public.sivel2_gen_victimacolectiva_vinculoestado (
 
 
 --
+-- Name: sivel2_gen_vinculoestado; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_vinculoestado (
+    id integer DEFAULT nextval(('vinculo_seq'::text)::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT vinculo_estado_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_vinculoestado_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -4507,18 +5975,40 @@ CREATE SEQUENCE public.sivel2_gen_vinculoestado_id_seq
 
 
 --
--- Name: sivel2_gen_vinculoestado; Type: TABLE; Schema: public; Owner: -
+-- Name: spatial_ref_sys; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sivel2_gen_vinculoestado (
-    id integer DEFAULT nextval('public.sivel2_gen_vinculoestado_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+CREATE TABLE public.spatial_ref_sys (
+    srid integer NOT NULL,
+    auth_name character varying(256),
+    auth_srid integer,
+    srtext character varying(2048),
+    proj4text character varying(2048)
+);
+
+
+--
+-- Name: tipodesp_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.tipodesp_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tipodesp; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.tipodesp (
+    id integer DEFAULT nextval('public.tipodesp_seq'::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2013-05-24'::date NOT NULL,
     fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT vinculo_estado_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+    CONSTRAINT tipodesp_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -4569,6 +6059,15 @@ CREATE TABLE public.usuario (
     observadorffechafin date,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
+);
+
+
+--
+-- Name: x; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.x (
+    n integer
 );
 
 
@@ -5035,6 +6534,14 @@ ALTER TABLE ONLY public.sivel2_gen_resagresion ALTER COLUMN id SET DEFAULT nextv
 
 
 --
+-- Name: acreditacion acreditacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acreditacion
+    ADD CONSTRAINT acreditacion_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_acto acto_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5235,6 +6742,30 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
+-- Name: clasifdesp clasifdesp_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.clasifdesp
+    ADD CONSTRAINT clasifdesp_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: declaroante declaroante_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.declaroante
+    ADD CONSTRAINT declaroante_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: desplazamiento desplazamiento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_pkey PRIMARY KEY (id_caso, fechaexpulsion);
+
+
+--
 -- Name: sivel2_gen_caso_frontera frontera_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5248,6 +6779,22 @@ ALTER TABLE ONLY public.sivel2_gen_caso_frontera
 
 ALTER TABLE ONLY public.sivel2_gen_caso_usuario
     ADD CONSTRAINT funcionario_caso_pkey PRIMARY KEY (usuario_id, caso_id);
+
+
+--
+-- Name: geometry_columns geometry_columns_pk; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.geometry_columns
+    ADD CONSTRAINT geometry_columns_pk PRIMARY KEY (f_table_catalog, f_table_schema, f_table_name, f_geometry_column);
+
+
+--
+-- Name: geomunicipio geomunicipio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.geomunicipio
+    ADD CONSTRAINT geomunicipio_pkey PRIMARY KEY (id_departamento, id_municipio);
 
 
 --
@@ -5320,6 +6867,22 @@ ALTER TABLE ONLY public.heb412_gen_plantillahcm
 
 ALTER TABLE ONLY public.heb412_gen_plantillahcr
     ADD CONSTRAINT heb412_gen_plantillahcr_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: inclusion inclusion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.inclusion
+    ADD CONSTRAINT inclusion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: modalidadtierra modalidadtierra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.modalidadtierra
+    ADD CONSTRAINT modalidadtierra_pkey PRIMARY KEY (id);
 
 
 --
@@ -5715,14 +7278,6 @@ ALTER TABLE ONLY public.msip_vereda
 
 
 --
--- Name: sivel2_gen_pconsolidado pconsolidado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_pconsolidado
-    ADD CONSTRAINT pconsolidado_pkey PRIMARY KEY (id);
-
-
---
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6067,6 +7622,14 @@ ALTER TABLE ONLY public.sivel2_gen_organizacion_victimacolectiva
 
 
 --
+-- Name: sivel2_gen_pconsolidado sivel2_gen_pconsolidado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_pconsolidado
+    ADD CONSTRAINT sivel2_gen_pconsolidado_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_presponsable sivel2_gen_presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6203,6 +7766,14 @@ ALTER TABLE ONLY public.sivel2_gen_vinculoestado
 
 
 --
+-- Name: spatial_ref_sys spatial_ref_sys_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.spatial_ref_sys
+    ADD CONSTRAINT spatial_ref_sys_pkey PRIMARY KEY (srid);
+
+
+--
 -- Name: msip_tclase tipo_clase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6224,6 +7795,14 @@ ALTER TABLE ONLY public.msip_trelacion
 
 ALTER TABLE ONLY public.sivel2_gen_tviolencia
     ADD CONSTRAINT tipo_violencia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tipodesp tipodesp_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tipodesp
+    ADD CONSTRAINT tipodesp_pkey PRIMARY KEY (id);
 
 
 --
@@ -6255,20 +7834,6 @@ ALTER TABLE ONLY public.sivel2_gen_victima
 --
 
 CREATE INDEX busca_sivel2_gen_conscaso ON public.sivel2_gen_conscaso USING gin (q);
-
-
---
--- Name: caso_fecha_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX caso_fecha_idx ON public.sivel2_gen_caso USING btree (fecha);
-
-
---
--- Name: caso_fecha_idx1; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX caso_fecha_idx1 ON public.sivel2_gen_caso USING btree (fecha);
 
 
 --
@@ -6657,182 +8222,6 @@ CREATE UNIQUE INDEX usuario_nusuario ON public.usuario USING btree (nusuario);
 
 
 --
--- Name: sivel2_gen_supracategoria $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_supracategoria
-    ADD CONSTRAINT "$1" FOREIGN KEY (tviolencia_id) REFERENCES public.sivel2_gen_tviolencia(id);
-
-
---
--- Name: sivel2_gen_victimacolectiva $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victimacolectiva
-    ADD CONSTRAINT "$1" FOREIGN KEY (organizacionarmada) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
--- Name: sivel2_gen_caso $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso
-    ADD CONSTRAINT "$1" FOREIGN KEY (intervalo_id) REFERENCES public.sivel2_gen_intervalo(id);
-
-
---
--- Name: sivel2_gen_caso_presponsable $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
-    ADD CONSTRAINT "$1" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_caso_frontera $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_frontera
-    ADD CONSTRAINT "$1" FOREIGN KEY (frontera_id) REFERENCES public.sivel2_gen_frontera(id);
-
-
---
--- Name: sivel2_gen_victima $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$1" FOREIGN KEY (profesion_id) REFERENCES public.sivel2_gen_profesion(id);
-
-
---
--- Name: sivel2_gen_caso_fuenteprensa $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
-    ADD CONSTRAINT "$1" FOREIGN KEY (fuenteprensa_id) REFERENCES public.msip_fuenteprensa(id);
-
-
---
--- Name: sivel2_gen_caso_fotra $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_fotra
-    ADD CONSTRAINT "$1" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: msip_clase $1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.msip_clase
-    ADD CONSTRAINT "$1" FOREIGN KEY (tclase_id) REFERENCES public.msip_tclase(id);
-
-
---
--- Name: sivel2_gen_caso_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
-    ADD CONSTRAINT "$2" FOREIGN KEY (presponsable_id) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
--- Name: sivel2_gen_caso_categoria_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
-    ADD CONSTRAINT "$2" FOREIGN KEY (categoria_id) REFERENCES public.sivel2_gen_categoria(id);
-
-
---
--- Name: sivel2_gen_caso_frontera $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_frontera
-    ADD CONSTRAINT "$2" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_victima $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$2" FOREIGN KEY (rangoedad_id) REFERENCES public.sivel2_gen_rangoedad(id);
-
-
---
--- Name: sivel2_gen_caso_usuario $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_usuario
-    ADD CONSTRAINT "$2" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_caso_fuenteprensa $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
-    ADD CONSTRAINT "$2" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_caso_fotra $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_fotra
-    ADD CONSTRAINT "$2" FOREIGN KEY (fotra_id) REFERENCES public.sivel2_gen_fotra(id);
-
-
---
--- Name: sivel2_gen_victima $3; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$3" FOREIGN KEY (filiacion_id) REFERENCES public.sivel2_gen_filiacion(id);
-
-
---
--- Name: sivel2_gen_victima $4; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$4" FOREIGN KEY (sectorsocial_id) REFERENCES public.sivel2_gen_sectorsocial(id);
-
-
---
--- Name: sivel2_gen_victima $5; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$5" FOREIGN KEY (organizacion_id) REFERENCES public.sivel2_gen_organizacion(id);
-
-
---
--- Name: sivel2_gen_victima $6; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$6" FOREIGN KEY (vinculoestado_id) REFERENCES public.sivel2_gen_vinculoestado(id);
-
-
---
--- Name: sivel2_gen_victima $7; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$7" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_victima $8; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT "$8" FOREIGN KEY (organizacionarmada) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
 -- Name: sivel2_gen_acto acto_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6921,19 +8310,19 @@ ALTER TABLE ONLY public.sivel2_gen_anexo_caso
 
 
 --
--- Name: sivel2_gen_antecedente_caso antecedente_caso_id_antecedente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_antecedente_caso antecedente_caso_id_antecedente_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_caso
-    ADD CONSTRAINT antecedente_caso_id_antecedente_fkey FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
+    ADD CONSTRAINT antecedente_caso_id_antecedente_fkey1 FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
 
 
 --
--- Name: sivel2_gen_antecedente_caso antecedente_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_antecedente_caso antecedente_caso_id_caso_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_caso
-    ADD CONSTRAINT antecedente_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+    ADD CONSTRAINT antecedente_caso_id_caso_fkey1 FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
 
 
 --
@@ -6953,11 +8342,11 @@ ALTER TABLE ONLY public.sivel2_gen_antecedente_combatiente
 
 
 --
--- Name: sivel2_gen_antecedente_victima antecedente_victima_id_antecedente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_antecedente_victima antecedente_victima_id_antecedente_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_victima
-    ADD CONSTRAINT antecedente_victima_id_antecedente_fkey FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
+    ADD CONSTRAINT antecedente_victima_id_antecedente_fkey1 FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
 
 
 --
@@ -6993,19 +8382,19 @@ ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
 
 
 --
--- Name: sivel2_gen_caso_contexto caso_contexto_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_contexto caso_contexto_id_caso_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_contexto
-    ADD CONSTRAINT caso_contexto_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+    ADD CONSTRAINT caso_contexto_id_caso_fkey1 FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
 
 
 --
--- Name: sivel2_gen_caso_contexto caso_contexto_id_contexto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_contexto caso_contexto_id_contexto_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_contexto
-    ADD CONSTRAINT caso_contexto_id_contexto_fkey FOREIGN KEY (contexto_id) REFERENCES public.sivel2_gen_contexto(id);
+    ADD CONSTRAINT caso_contexto_id_contexto_fkey1 FOREIGN KEY (contexto_id) REFERENCES public.sivel2_gen_contexto(id);
 
 
 --
@@ -7057,14 +8446,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_respuestafor
 
 
 --
--- Name: sivel2_gen_caso_usuario caso_usuario_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_usuario
-    ADD CONSTRAINT caso_usuario_id_usuario_fkey FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
-
-
---
 -- Name: sivel2_gen_categoria categoria_col_rep_consolidado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7081,11 +8462,19 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: sivel2_gen_categoria categoria_contadaen_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_categoria_presponsable categoria_p_responsable_caso_id_categoria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sivel2_gen_categoria
-    ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
+ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
+    ADD CONSTRAINT categoria_p_responsable_caso_id_categoria_fkey FOREIGN KEY (categoria_id) REFERENCES public.sivel2_gen_categoria(id);
+
+
+--
+-- Name: msip_clase clase_id_tipo_clase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_clase
+    ADD CONSTRAINT clase_id_tipo_clase_fkey FOREIGN KEY (tclase_id) REFERENCES public.msip_tclase(id);
 
 
 --
@@ -7110,6 +8499,70 @@ ALTER TABLE ONLY public.sivel2_gen_contextovictima_victima
 
 ALTER TABLE ONLY public.msip_departamento
     ADD CONSTRAINT departamento_id_pais_fkey FOREIGN KEY (pais_id) REFERENCES public.msip_pais(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_expulsion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_expulsion_fkey FOREIGN KEY (expulsion) REFERENCES public.msip_ubicacion(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_id_acreditacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_id_acreditacion_fkey FOREIGN KEY (id_acreditacion) REFERENCES public.acreditacion(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_id_clasifdesp_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_id_clasifdesp_fkey FOREIGN KEY (id_clasifdesp) REFERENCES public.clasifdesp(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_id_declaroante_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_id_declaroante_fkey FOREIGN KEY (id_declaroante) REFERENCES public.declaroante(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_id_inclusion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_id_inclusion_fkey FOREIGN KEY (id_inclusion) REFERENCES public.inclusion(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_id_modalidadtierra_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_id_modalidadtierra_fkey FOREIGN KEY (id_modalidadtierra) REFERENCES public.modalidadtierra(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_id_tipodesp_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_id_tipodesp_fkey FOREIGN KEY (id_tipodesp) REFERENCES public.tipodesp(id);
+
+
+--
+-- Name: desplazamiento desplazamiento_llegada_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.desplazamiento
+    ADD CONSTRAINT desplazamiento_llegada_fkey FOREIGN KEY (llegada) REFERENCES public.msip_ubicacion(id);
 
 
 --
@@ -7921,6 +9374,46 @@ ALTER TABLE ONLY public.msip_solicitud
 
 
 --
+-- Name: sivel2_gen_caso_frontera frontera_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_frontera
+    ADD CONSTRAINT frontera_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_caso_frontera frontera_caso_id_frontera_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_frontera
+    ADD CONSTRAINT frontera_caso_id_frontera_fkey FOREIGN KEY (frontera_id) REFERENCES public.sivel2_gen_frontera(id);
+
+
+--
+-- Name: sivel2_gen_caso_fotra fuente_directa_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fotra
+    ADD CONSTRAINT fuente_directa_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_caso_fotra fuente_directa_caso_id_fuente_directa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fotra
+    ADD CONSTRAINT fuente_directa_caso_id_fuente_directa_fkey FOREIGN KEY (fotra_id) REFERENCES public.sivel2_gen_fotra(id);
+
+
+--
+-- Name: sivel2_gen_caso_usuario funcionario_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_usuario
+    ADD CONSTRAINT funcionario_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
 -- Name: msip_clase msip_clase_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8022,14 +9515,6 @@ ALTER TABLE ONLY public.msip_persona
 
 ALTER TABLE ONLY public.msip_persona
     ADD CONSTRAINT persona_tdocumento_id_fkey FOREIGN KEY (tdocumento_id) REFERENCES public.msip_tdocumento(id);
-
-
---
--- Name: sivel2_gen_presponsable presponsable_papa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_presponsable
-    ADD CONSTRAINT presponsable_papa_fkey FOREIGN KEY (papa_id) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -8201,19 +9686,11 @@ ALTER TABLE ONLY public.sivel2_gen_supracategoria
 
 
 --
--- Name: msip_ubicacion ubicacion2_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: msip_ubicacion ubicacion_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.msip_ubicacion
-    ADD CONSTRAINT ubicacion2_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: msip_ubicacion ubicacion2_id_tipo_sitio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.msip_ubicacion
-    ADD CONSTRAINT ubicacion2_id_tipo_sitio_fkey FOREIGN KEY (tsitio_id) REFERENCES public.msip_tsitio(id);
+    ADD CONSTRAINT ubicacion_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
 
 
 --
@@ -8222,6 +9699,14 @@ ALTER TABLE ONLY public.msip_ubicacion
 
 ALTER TABLE ONLY public.msip_ubicacion
     ADD CONSTRAINT ubicacion_id_pais_fkey FOREIGN KEY (pais_id) REFERENCES public.msip_pais(id);
+
+
+--
+-- Name: msip_ubicacion ubicacion_id_tipo_sitio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_ubicacion
+    ADD CONSTRAINT ubicacion_id_tipo_sitio_fkey FOREIGN KEY (tsitio_id) REFERENCES public.msip_tsitio(id);
 
 
 --
@@ -8677,7 +10162,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220214121713'),
 ('20220214232150'),
 ('20220215095957'),
-('20220225222853'),
 ('20220316025851'),
 ('20220323001338'),
 ('20220323001645'),
@@ -8692,7 +10176,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220428145059'),
 ('20220525122150'),
 ('20220601111520'),
-('20220608044102'),
 ('20220613224844'),
 ('20220713200101'),
 ('20220713200444'),
