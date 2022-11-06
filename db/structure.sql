@@ -3229,7 +3229,8 @@ CREATE TABLE public.sip_tdocumento (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8
+    observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    ayuda character varying(1000)
 );
 
 
@@ -8643,6 +8644,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220722192214'),
 ('20220805181901'),
 ('20220822132754'),
-('20221005165307');
+('20221005165307'),
+('20221102144613'),
+('20221102145906');
 
 
