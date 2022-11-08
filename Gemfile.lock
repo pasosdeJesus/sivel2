@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 180d44ce351f773aea480ecb334f5f466a0fcbc1
+  revision: 27a150967d036f0a05133ef09d55ec53f94d9c64
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 87e43427f178acc905fbb3be60698902b765f3b6
+  revision: 5c105c06cde8c9cc6a60d5f2ea39302e0da047c4
   branch: main
   specs:
     heb412_gen (2.1.0.beta1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 947040d49f4bfe7b05152df616079c87a8d8a801
+  revision: db668c4f21be0c055b4a2d5ebfc209bf6910e1e0
   branch: main
   specs:
     mr519_gen (2.1.0.beta1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e6ed8907e324873b20372ff8821f8495be9d54a9
+  revision: 93c15bb5eb571395c56d39d6bdd6d3424069f376
   branch: main
   specs:
     sip (2.1.0.beta1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7241a5794f4ce5a9fee3a385b240e35622b9462d
+  revision: e9992e183a5170ccfb23214232efeebac6982a4a
   branch: main
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -441,7 +441,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.5)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   x86_64-openbsd
