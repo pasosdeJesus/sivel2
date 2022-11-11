@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 27a150967d036f0a05133ef09d55ec53f94d9c64
+  revision: 8eba6a085fdf8d954a7516e5b074a6ba020d648a
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5c105c06cde8c9cc6a60d5f2ea39302e0da047c4
+  revision: 67199baf0d599d5ddd7e2eab64296076907e3b8d
   branch: main
   specs:
     heb412_gen (2.1.0.beta1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: db668c4f21be0c055b4a2d5ebfc209bf6910e1e0
+  revision: 569883b5b396f76501df24b685cf044bbc77971c
   branch: main
   specs:
     mr519_gen (2.1.0.beta1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 93c15bb5eb571395c56d39d6bdd6d3424069f376
+  revision: 14272dc1722d7a44ec4eddee016a309ac8a1ecc6
   branch: main
   specs:
     sip (2.1.0.beta1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: e9992e183a5170ccfb23214232efeebac6982a4a
+  revision: d8a05d2093414905f1cf4994d01be8ed9999bf97
   branch: main
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -348,7 +348,7 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
-    rails-i18n (7.0.5)
+    rails-i18n (7.0.6)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
     railties (7.0.4)
