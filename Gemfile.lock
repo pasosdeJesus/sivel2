@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 705092aa709076fc2d8d066f23e678f4d9323bc4
+  revision: 11abf222dc31bff71160a1d138b445214f434b2b
   specs:
     kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 0ef992b567c274db050d85634ff3ff8c1893105b
+  revision: 60c6f155134094657c37a906b1c460081b5317e3
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5e008dab4bfc8f9286a3a4d019e552de1ecf7ef6
+  revision: 76e34fc0a413f193642c4f2994fabc8365fa7306
   branch: main
   specs:
     heb412_gen (2.1.0.beta1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 4438833cce626954e6970c21b3a9d1a7ff62c095
+  revision: 28d27b1ca62c2a16798c814a84d42b7aba24ded0
   branch: main
   specs:
     mr519_gen (2.1.0.beta1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 684198787e0b31260d490081ae865196c84aa8a3
+  revision: f6e0efff565110d41d447a9090b823f9f49289dd
   branch: main
   specs:
     sip (2.1.0.beta1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7dfcbf178711dcfa55442e57ef990f83110ea841
+  revision: 4538c1cd82a2786a4fa0e16f8a84d5ef63ad6900
   branch: main
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -169,7 +169,7 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.18)
     bindex (0.8.1)
-    bootsnap (1.14.0)
+    bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -225,16 +225,16 @@ GEM
       zeitwerk (~> 2.6)
     dry-inflector (1.0.0)
     dry-initializer (3.1.1)
-    dry-logic (1.4.0)
+    dry-logic (1.5.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-schema (1.12.0)
+    dry-schema (1.13.0)
       concurrent-ruby (~> 1.0)
-      dry-configurable (~> 1.0, < 2)
+      dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.0, < 2)
       dry-initializer (~> 3.0)
-      dry-logic (>= 1.4, < 2)
+      dry-logic (>= 1.5, < 2)
       dry-types (>= 1.7, < 2)
       zeitwerk (~> 2.6)
     dry-types (1.7.0)
@@ -263,7 +263,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
-    irb (1.4.3)
+    irb (1.5.0)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
