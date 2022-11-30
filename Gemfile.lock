@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 91a2c2eb54a9336718d0efaa44328b745ffe7453
+  revision: 448ce8ad62e027f9d6bd393009b269c9719e2299
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -190,7 +190,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
-    irb (1.5.0)
+    irb (1.5.1)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
