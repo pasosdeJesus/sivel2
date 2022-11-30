@@ -35,9 +35,43 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/antecedentes/101')])[2]</option><option>//a[3]</option></datalist></td><td>15,21</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Antecedentes</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Antecedente eliminado.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-estados-de-solicitudes</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>58,23</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>75,21</td>
+</tr>
+<tr><td>clickAt</td><td>link=Estados de solicitudes<datalist><option>link=Estados de solicitudes</option><option>//a[contains(text(),'Estados de solicitudes')]</option><option>//div[@id='div_contenido']/article/ul/li[10]/a</option><option>//a[contains(@href, 'admin/estadossol')]</option><option>//li[10]/a</option></datalist></td><td>82,5</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//div[@id='div_contenido']/form/div[2]/div[2]/a</option><option>//a[contains(@href, '/sivel2_1/admin/estadossol/nueva.%23%3CSip::Estadosol::ActiveRecord_Relation:0x000005377a0444b0%3E')]</option><option>//div[2]/a</option></datalist></td><td>28,23</td>
+</tr>
+<tr><td>clickAt</td><td>id=estadosol_nombre<datalist><option>id=estadosol_nombre</option><option>name=estadosol[nombre]</option><option>css=#estadosol_nombre</option><option>//input[@id='estadosol_nombre']</option><option>//form[@id='new_estadosol']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>104,23</td>
+</tr>
+<tr><td>type</td><td>id=estadosol_nombre<datalist><option>id=estadosol_nombre</option><option>name=estadosol[nombre]</option><option>css=#estadosol_nombre</option><option>//input[@id='estadosol_nombre']</option><option>//form[@id='new_estadosol']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=estadosol_observaciones<datalist><option>id=estadosol_observaciones</option><option>name=estadosol[observaciones]</option><option>css=#estadosol_observaciones</option><option>//textarea[@id='estadosol_observaciones']</option><option>//form[@id='new_estadosol']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>255,20</td>
+</tr>
+<tr><td>type</td><td>id=estadosol_observaciones<datalist><option>id=estadosol_observaciones</option><option>name=estadosol[observaciones]</option><option>css=#estadosol_observaciones</option><option>//textarea[@id='estadosol_observaciones']</option><option>//form[@id='new_estadosol']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_categoria']/div[11]/input</option><option>//div[11]/input</option></datalist></td><td>32,5</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/fasol/si/admin/categorias/435')])[2]</option><option>//div[4]/a</option></datalist></td><td>41,25</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Estados de solicitudes</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Estadosol eliminado.</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -88,6 +122,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/fasol/si/admin/categorias/435')])[2]</option><option>//div[4]/a</option></datalist></td><td>41,25</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Categoria</td>
 </tr>
@@ -141,6 +177,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/clases/100002')])[2]</option><option>//a[3]</option></datalist></td><td>49,9</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Centros poblados</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Clase eliminado.</td>
@@ -172,6 +210,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/coberturas/102')])[2]</option><option>//div[4]/a</option></datalist></td><td>50,15</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=body</option><option>//body</option><option>css=h1</option></datalist></td><td>Coberturas</td>
 </tr>
@@ -205,6 +245,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/contextos/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>50,17</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Contextos</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Contexto eliminado.</td>
@@ -236,6 +278,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2/admin/contextosvictima/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>42,18</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Contextos Víctimas</td>
 </tr>
@@ -283,6 +327,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/departamentos/100006')])[2]</option><option>//a[3]</option></datalist></td><td>34,20</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Departamentos/Estados</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Departamento eliminado.</td>
@@ -314,6 +360,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/disposicionescadaveres/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>25,14</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Disposiciones de cadáveres</td>
 </tr>
@@ -347,6 +395,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/elementospaisaje/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>29,24</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Elementos del paisaje</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success.alert-dismissible.fade.show &gt; span<datalist><option>css=div.alert.alert-success.alert-dismissible.fade.show &gt; span</option><option>//div[@id='div_contenido']/div[2]/span</option><option>//div[2]/span</option></datalist></td><td>Apo214::Elementopaisaje eliminado.</td>
@@ -378,6 +428,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/etiquetas/102')])[2]</option><option>//a[3]</option></datalist></td><td>53,19</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Etiquetas</td>
 </tr>
@@ -415,6 +467,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/etnias/113')])[2]</option><option>//a[3]</option></datalist></td><td>44,19</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Etnias</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Etnia eliminada.</td>
@@ -447,6 +501,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/filiaciones/102')])[2]</option><option>//a[3]</option></datalist></td><td>38,24</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Filiaciones</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Filiacion eliminada.</td>
@@ -478,6 +534,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/fronteras/103')])[2]</option><option>//a[3]</option></datalist></td><td>31,5</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Fronteras</td>
 </tr>
@@ -514,6 +572,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/fuentesprensa/104')])[2]</option><option>//a[3]</option></datalist></td><td>41,25</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Fuentes de prensa</td>
 </tr>
@@ -559,6 +619,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2/admin/grupos/105')])[2]</option><option>//div[4]/a</option></datalist></td><td>31,20</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Grupos</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Grupo eliminado.</td>
@@ -590,6 +652,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/iglesias/103')])[2]</option><option>//a[3]</option></datalist></td><td>51,16</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Iglesias</td>
 </tr>
@@ -626,6 +690,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/intervalos/104')])[2]</option><option>//a[3]</option></datalist></td><td>23,22</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Intervalos</td>
 </tr>
@@ -677,7 +743,9 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/municipios/100004')])[2]</option><option>//div[4]/a</option></datalist></td><td>12,19</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Municipios</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Municipios</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Municipio eliminado.</td>
 </tr>
@@ -708,6 +776,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/organizaciones/103')])[2]</option><option>//a[3]</option></datalist></td><td>29,20</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Organizaciones</td>
 </tr>
@@ -791,6 +861,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/paises/977')])[2]</option><option>//a[3]</option></datalist></td><td>55,9</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Países</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Pais eliminado.</td>
@@ -822,6 +894,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2/admin/perfilesactorsocial/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>48,17</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Perfiles en organización social</td>
 </tr>
@@ -855,6 +929,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/presponsables/108')])[2]</option><option>//a[3]</option></datalist></td><td>23,9</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Presuntos responsables</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Presponsable eliminado.</td>
@@ -886,6 +962,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/profesiones/104')])[2]</option><option>//a[3]</option></datalist></td><td>36,21</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Profesiones</td>
 </tr>
@@ -927,6 +1005,8 @@
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/rangosedad/101')])[2]</option><option>//a[3]</option></datalist></td><td>46,6</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Rangos de Edad</td>
@@ -951,19 +1031,19 @@
 </tr>
 <tr><td>type</td><td>id=region_nombre<datalist><option>id=region_nombre</option><option>name=region[nombre]</option><option>css=#region_nombre</option><option>//input[@id='region_nombre']</option><option>//form[@id='new_region']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
 </tr>
-<tr><td>clickAt</td><td>id=region_observaciones<datalist><option>id=region_observaciones</option><option>name=region[observaciones]</option><option>css=#region_observaciones</option><option>//textarea[@id='region_observaciones']</option><option>//form[@id='new_region']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>60,9</td>
-</tr>
-<tr><td>type</td><td>id=region_observaciones<datalist><option>id=region_observaciones</option><option>name=region[observaciones]</option><option>css=#region_observaciones</option><option>//textarea[@id='region_observaciones']</option><option>//form[@id='new_region']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
-</tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>addSelection</td><td>id=region_departamento_ids<datalist><option>id=region_departamento_ids</option><option>css=#region_departamento_ids</option><option>//select[@id='region_departamento_ids']</option><option>//form[@id='new_region']/div[4]/select</option><option>//select</option></datalist></td><td>label=Antioquia / Colombia</td>
+<tr><td>addSelection</td><td>id=region_departamento_ids<datalist><option>id=region_departamento_ids</option><option>css=#region_departamento_ids</option><option>//select[@id='region_departamento_ids']</option><option>//form[@id='new_region']/div[4]/select</option><option>//select</option></datalist></td><td>label=Amazonas / Colombia</td>
 </tr>
-<tr><td>clickAt</td><td>css=option[value="35"]<datalist><option>css=option[value="35"]</option><option>//option[@value='35']</option><option>//select[@id='region_departamento_ids']/option[4]</option><option>//option[4]</option></datalist></td><td>90,10</td>
+<tr><td>clickAt</td><td>css=option[value="55"]<datalist><option>css=option[value="55"]</option><option>//option[@value='55']</option><option>//select[@id='region_departamento_ids']/option[3]</option><option>//option[3]</option></datalist></td><td>29,9</td>
 </tr>
 <tr><td>addSelection</td><td>id=region_municipio_ids<datalist><option>id=region_municipio_ids</option><option>css=#region_municipio_ids</option><option>//select[@id='region_municipio_ids']</option><option>//form[@id='new_region']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=Acandí / Chocó</td>
 </tr>
 <tr><td>clickAt</td><td>css=option[value="987"]<datalist><option>css=option[value="987"]</option><option>//option[@value='987']</option><option>//select[@id='region_municipio_ids']/option[5]</option><option>//div[5]/select/option[5]</option></datalist></td><td>58,-49</td>
+</tr>
+<tr><td>clickAt</td><td>id=region_observaciones<datalist><option>id=region_observaciones</option><option>name=region[observaciones]</option><option>css=#region_observaciones</option><option>//textarea[@id='region_observaciones']</option><option>//form[@id='new_region']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>60,9</td>
+</tr>
+<tr><td>type</td><td>id=region_observaciones<datalist><option>id=region_observaciones</option><option>name=region[observaciones]</option><option>css=#region_observaciones</option><option>//textarea[@id='region_observaciones']</option><option>//form[@id='new_region']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_region']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>42,2</td>
 </tr>
@@ -978,6 +1058,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2/admin/regiones/129')])[2]</option><option>//div[4]/a</option></datalist></td><td>54,11</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Regiones</td>
 </tr>
@@ -1011,6 +1093,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/resagresiones/101')])[2]</option><option>//a[3]</option></datalist></td><td>46,23</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Resultados de acciones bélicas</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Resagresion eliminado.</td>
@@ -1042,6 +1126,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/riesgos/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>36,25</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Riesgos</td>
 </tr>
@@ -1105,6 +1191,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/pconsolidados/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>22,18</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Rótulos para el listado de víctimas y casos</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Pconsolidado eliminada.</td>
@@ -1137,6 +1225,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[4]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2/admin/sectoresorgsocial/105')])[2]</option><option>//div[4]/a</option></datalist></td><td>22,16</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Sectores de organizaciones sociales</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Sectororgsocial eliminado.</td>
@@ -1168,6 +1258,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/sectoressociales/101')])[2]</option><option>//a[3]</option></datalist></td><td>47,29</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Sectores Sociales</td>
 </tr>
@@ -1214,6 +1306,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/supracategorias/573')])[2]</option><option>//a[3]</option></datalist></td><td>41,10</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Supracategorias</td>
 </tr>
@@ -1289,6 +1383,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/municipios/100004')])[2]</option><option>//div[4]/a</option></datalist></td><td>12,19</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Temas</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Tema eliminado.</td>
@@ -1324,6 +1420,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/tclases/21')])[2]</option><option>//a[3]</option></datalist></td><td>49,17</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tipos de centros poblados</td>
 </tr>
@@ -1365,6 +1463,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/tdocumentos/101')])[2]</option><option>//a[3]</option></datalist></td><td>46,14</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tipos de documentos de identidad</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Tdocumento eliminado.</td>
@@ -1396,6 +1496,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/tiposentierro/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>55,17</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Tipos de enterramiento</td>
 </tr>
@@ -1437,6 +1539,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/trelaciones/7%20')])[2]</option><option>//a[3]</option></datalist></td><td>54,12</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tipos de relaciones familiares</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Trelacion eliminado.</td>
@@ -1469,6 +1573,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/tsitios/101')])[2]</option><option>//a[3]</option></datalist></td><td>46,24</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tipos de sitios</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Tsitio eliminado.</td>
@@ -1500,6 +1606,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/tipostestigo/102')])[2]</option><option>//div[4]/a</option></datalist></td><td>56,24</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Tipos de testigo</td>
 </tr>
@@ -1541,6 +1649,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/tviolencias/7')])[2]</option><option>//a[3]</option></datalist></td><td>16,10</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tipos de Violencia</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sivel2Gen::Tviolencia eliminado.</td>
@@ -1573,6 +1683,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/tiposorg/106')])[2]</option><option>//div[4]/a</option></datalist></td><td>38,17</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Tiposorg</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success.alert-dismissible.fade.show &gt; span<datalist><option>css=div.alert.alert-success.alert-dismissible.fade.show &gt; span</option><option>//div[@id='div_contenido']/div[2]/span</option><option>//div[2]/span</option></datalist></td><td>Sip::Tipoorg eliminado.</td>
@@ -1603,9 +1715,49 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-sm.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/form/table/tbody/tr/td[6]/a[2]</option><option>xpath=(//a[contains(@href, '/sivel2/admin/trivalentes/101')])[3]</option><option>//td[6]/a[2]</option></datalist></td><td>41,9</td>
 </tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
 <tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[2]/h1</option><option>//h1</option></datalist></td><td>Trivalentes</td>
 </tr>
 <tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Trivalente eliminado.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-veredas</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>58,23</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/anzorc/sivel2/tablasbasicas')]</option><option>//li[2]/ul/li[4]/a</option></datalist></td><td>68,17</td>
+</tr>
+<tr><td>clickAt</td><td>link=Veredas<datalist><option>link=Veredas</option><option>//a[contains(text(),'Veredas')]</option><option>//div[@id='div_contenido']/article/ul/li[43]/a</option><option>//a[contains(@href, 'admin/veredas')]</option><option>//li[43]/a</option></datalist></td><td>20,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nueva')]</option><option>//div[@id='div_contenido']/form/div/div/a</option><option>//a[contains(@href, '/sivel2_1/admin/veredas/nueva.%23%3CSip::Vereda::ActiveRecord_Relation:0x00000537ee4234b8%3E')]</option><option>//div/div/a</option></datalist></td><td>24,17</td>
+</tr>
+<tr><td>clickAt</td><td>id=vereda_nombre<datalist><option>id=vereda_nombre</option><option>name=vereda[nombre]</option><option>css=#vereda_nombre</option><option>//input[@id='vereda_nombre']</option><option>//form[@id='new_vereda']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>123,11</td>
+</tr>
+<tr><td>type</td><td>id=vereda_nombre<datalist><option>id=vereda_nombre</option><option>name=vereda[nombre]</option><option>css=#vereda_nombre</option><option>//input[@id='vereda_nombre']</option><option>//form[@id='new_vereda']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=vereda_municipio_id<datalist><option>id=vereda_municipio_id</option><option>name=vereda[municipio_id]</option><option>css=#vereda_municipio_id</option><option>//select[@id='vereda_municipio_id']</option><option>//form[@id='new_vereda']/div[3]/select</option><option>//select</option></datalist></td><td>label=Abejorral / Antioquia</td>
+</tr>
+<tr><td>clickAt</td><td>id=vereda_municipio_id<datalist><option>id=vereda_municipio_id</option><option>name=vereda[municipio_id]</option><option>css=#vereda_municipio_id</option><option>//select[@id='vereda_municipio_id']</option><option>//form[@id='new_vereda']/div[3]/select</option><option>//select</option></datalist></td><td>0,0</td>
+</tr>
+<tr><td>clickAt</td><td>id=vereda_observaciones<datalist><option>id=vereda_observaciones</option><option>name=vereda[observaciones]</option><option>css=#vereda_observaciones</option><option>//textarea[@id='vereda_observaciones']</option><option>//form[@id='new_vereda']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>37,27</td>
+</tr>
+<tr><td>type</td><td>id=vereda_observaciones<datalist><option>id=vereda_observaciones</option><option>name=vereda[observaciones]</option><option>css=#vereda_observaciones</option><option>//textarea[@id='vereda_observaciones']</option><option>//form[@id='new_vereda']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_vereda']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>24,29</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>//div[@id='div_contenido']/div[5]/form/div/div[4]/a</option><option>xpath=(//a[contains(@href, '/sivel2_1/admin/veredas/33267')])[2]</option><option>//div[4]/a</option></datalist></td><td>50,27</td>
+</tr>
+<tr><td>clickAt</td><td>css=h1<datalist><option>css=h1</option><option>//div[@id='div_contenido']/div[3]/h1</option><option>//h1</option></datalist></td><td>Veredas</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div[@id='div_contenido']/div/span</option><option>//div/span</option></datalist></td><td>Sip::Vereda eliminada.</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -1634,6 +1786,8 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/anzorc/sivel2/admin/vinculosestado/101')])[2]</option><option>//a[3]</option></datalist></td><td>33,7</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Vínculos con el Estado</td>
 </tr>
