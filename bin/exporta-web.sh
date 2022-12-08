@@ -18,17 +18,17 @@ echo "1 de 3. Copia ..."
 cat > /tmp/excluir <<EOF
 usuario
 mr519_gen_encuestausuario
-sip_anexo
-sip_bitacora
-sip_fuenteprensa
-sip_grupo
-sip_grupo_usuario
-sip_oficina
+msip_anexo
+msip_bitacora
+msip_fuenteprensa
+msip_grupo
+msip_grupo_usuario
+msip_oficina
 sivel2_gen_caso_etiqueta
 sivel2_gen_caso_fotra
 sivel2_gen_caso_fuenteprensa
 sivel2_gen_caso_usuario
-sip_etiqueta
+msip_etiqueta
 sivel2_gen_caso_usuario
 EOF
 

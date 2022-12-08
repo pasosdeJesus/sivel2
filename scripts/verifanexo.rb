@@ -17,22 +17,22 @@ Sivel2Gen::AnexoCaso.all.each do |ac|
     ultpor = por.to_i
     STDERR.puts "Porcentaje procesado: #{por}%"
   end
-  if (!ac.sip_anexo)
+  if (!ac.msip_anexo)
     #byebug
-    STDERR.puts "No se encontró sip_anexo en #{ac.id_caso}"
-  elsif (!ac.sip_anexo.adjunto)
+    STDERR.puts "No se encontró msip_anexo en #{ac.id_caso}"
+  elsif (!ac.msip_anexo.adjunto)
     #byebug
-    STDERR.puts "No se encontró sip_anexo en #{ac.sip_anexo}"
-  elsif (!ac.sip_anexo.adjunto.path)
-    STDERR.puts "No hay path en #{ac.sip_anexo.descripcion}"
+    STDERR.puts "No se encontró msip_anexo en #{ac.msip_anexo}"
+  elsif (!ac.msip_anexo.adjunto.path)
+    STDERR.puts "No hay path en #{ac.msip_anexo.descripcion}"
     u = Sivel2Gen::CasoUsuario.where(id_caso: ac.id_caso).order(:fechainicio)[0]
-    puts "#{ac.id_caso}\t#{ac.id}\t#{ac.fecha}\t#{ac.sip_anexo.descripcion}\t\t#{u.usuario.nusuario}"
+    puts "#{ac.id_caso}\t#{ac.id}\t#{ac.fecha}\t#{ac.msip_anexo.descripcion}\t\t#{u.usuario.nusuario}"
     numsinp += 1
-  elsif (!File.exist?(ac.sip_anexo.adjunto.path)) 
+  elsif (!File.exist?(ac.msip_anexo.adjunto.path)) 
     #byebug
-    STDERR.puts "No se encontró #{ac.sip_anexo.adjunto.path}"
+    STDERR.puts "No se encontró #{ac.msip_anexo.adjunto.path}"
     u = Sivel2Gen::CasoUsuario.where(id_caso: ac.id_caso).order(:fechainicio)[0]
-    puts "#{ac.id_caso}\t#{ac.id}\t#{ac.fecha}\t#{ac.sip_anexo.descripcion}\t#{ac.sip_anexo.adjunto.path}\t#{u.usuario.nusuario}"
+    puts "#{ac.id_caso}\t#{ac.id}\t#{ac.fecha}\t#{ac.msip_anexo.descripcion}\t#{ac.msip_anexo.adjunto.path}\t#{u.usuario.nusuario}"
     numsin += 1
   end
 end

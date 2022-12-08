@@ -243,11 +243,11 @@ function procesar_datos(filas, variable) {
   datosrEtiquetas = Object.keys(dicEtiquetas)
 
   seleccionmAsignarOpciones(selectorCategoria, datosrEtiquetas, true);
-  var fechaminLoc = sip_retorna_fecha_localizada(datosrFechamin, 'yyyy-mm-dd')
+  var fechaminLoc = msip_retorna_fecha_localizada(datosrFechamin, 'yyyy-mm-dd')
 
-  campoFechaini.value = sip_retorna_fecha_localizada(datosrFechamin, 'yyyy-mm-dd')
+  campoFechaini.value = msip_retorna_fecha_localizada(datosrFechamin, 'yyyy-mm-dd')
 
-  campoFechafin.value = sip_retorna_fecha_localizada(datosrFechamax, 'yyyy-mm-dd')
+  campoFechafin.value = msip_retorna_fecha_localizada(datosrFechamax, 'yyyy-mm-dd')
 
 
   /*var colores = {
@@ -258,8 +258,8 @@ function procesar_datos(filas, variable) {
 
   function actualizarGraficaFechas() {
     var opelegidas = seleccionmOpcionesElegidas(selectorCategoria)
-    var fechaini = sip_partes_fecha_localizada(campoFechaini.value, "dd/M/yyyy").join('-')
-    var fechafin = sip_partes_fecha_localizada(campoFechafin.value, "dd/M/yyyy").join('-')
+    var fechaini = msip_partes_fecha_localizada(campoFechaini.value, "dd/M/yyyy").join('-')
+    var fechafin = msip_partes_fecha_localizada(campoFechafin.value, "dd/M/yyyy").join('-')
     recalcularSeriesPresentadas(fechaini, fechafin, opelegidas);
   }
 

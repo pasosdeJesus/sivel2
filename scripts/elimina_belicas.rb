@@ -49,7 +49,7 @@ SQL
 
 	['sivel2_gen_caso_contexto', 
   'sivel2_gen_caso_presponsable', 'sivel2_gen_antecedente_caso', 
-  'sip_ubicacion', 'sivel2_gen_caso_usuario', 'sivel2_gen_acto', 
+  'msip_ubicacion', 'sivel2_gen_caso_usuario', 'sivel2_gen_acto', 
   'sivel2_gen_victima', 
   'sivel2_gen_caso_region', 'sivel2_gen_caso_frontera', 
    'sivel2_gen_actocolectivo', 
@@ -70,5 +70,5 @@ SQL
     "DELETE FROM sivel2_gen_caso WHERE id NOT IN " \
     "(SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1);")
 	ActiveRecord::Base.connection.execute(
-    "DELETE FROM sip_anexo WHERE id NOT IN " \
+    "DELETE FROM msip_anexo WHERE id NOT IN " \
     "(SELECT DISTINCT id_anexo FROM sivel2_gen_anexo_caso);")

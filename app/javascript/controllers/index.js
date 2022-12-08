@@ -16,8 +16,8 @@ application.register("apo214--form-asisreconocimiento", Apo214__FormAsisreconoci
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import Sip__CancelarVacioEsEliminarController from "./sip/cancelar_vacio_es_eliminar_controller"
-application.register("sip--cancelar-vacio-es-eliminar", Sip__CancelarVacioEsEliminarController)
+import Msip__CancelarVacioEsEliminarController from "./msip/cancelar_vacio_es_eliminar_controller"
+application.register("msip--cancelar-vacio-es-eliminar", Msip__CancelarVacioEsEliminarController)
 
-import Sip__SindocautController from "./sip/sindocaut_controller"
-application.register("sip--sindocaut", Sip__SindocautController)
+import Msip__SindocautController from "./msip/sindocaut_controller"
+application.register("msip--sindocaut", Msip__SindocautController)

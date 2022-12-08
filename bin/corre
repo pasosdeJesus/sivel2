@@ -65,7 +65,7 @@ FileUtils.chdir RAIZ_AP do
     system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails db:prepare"
 
     puts "\n== Actualizando índices =="
-    system!("RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails sip:indices")
+    system!("RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails msip:indices")
 
     puts "\n== Eliminando bitácoras y archivos temporales =="
     system! 'bin/rails log:clear tmp:clear'
@@ -78,7 +78,7 @@ FileUtils.chdir RAIZ_AP do
     system! "rm -rf app/assets/builds/*"
 
     puts "\n== Enlaza controladores stimulus de motores =="
-    system! 'bin/rails sip:stimulus_motores'
+    system! 'bin/rails msip:stimulus_motores'
 
     puts "\n== Crea recursos CSS y Javascript =="
     system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails assets:precompile --trace"

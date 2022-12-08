@@ -55,14 +55,14 @@ proponerles oportunidades labores cuando las haya.
 
 ### Requisitos 📋
 
-Ver <https://github.com/pasosdeJesus/sip/blob/main/doc/requisitos.md>
+Ver <https://github.com/pasosdeJesus/msip/blob/main/doc/requisitos.md>
 Además si vas a desplegar en producción:
 * nginx (>=1.18)
 
 ### Probar operación en modo de desarrollo 🔧
 
 * Crea un usuario para PostgreSQL como se explica en
-  <https://github.com/pasosdeJesus/sip/blob/main/doc/aplicacion-de-prueba.md>
+  <https://github.com/pasosdeJesus/msip/blob/main/doc/aplicacion-de-prueba.md>
   (si dejas el nombre `sipdes` se te facilitarán los siguientes pasos)
 * Ubica las fuentes en un directorio, por ejemplo en `/var/www/htdocs/sivel2/`
 * Asegura que las gemas estén instaladas. En el caso de adJ en
@@ -111,7 +111,7 @@ Además si vas a desplegar en producción:
   copia en `config/database.yml` y ejecuta:
   ```sh
   bin/rails db:migrate
-  bin/rails sip:indices
+  bin/rails msip:indices
   ```
   Si vas a empezar con una base nueva `sivel2gen_des` con el usuario de
   PostgreSQL `sipdes`:
@@ -122,7 +122,7 @@ Además si vas a desplegar en producción:
   ```sh
   bin/rails db:setup
   bin/rails db:migrate
-  bin/rails sip:indices
+  bin/rails msip:indices
   ```
 * Si no lo has hecho instala `yarn` para manejar paquetes javascript:
   ```sh
@@ -193,7 +193,7 @@ CONFIG_HOSTS=www.example.com bin/rails test
 ```
 Al respecto de modificar o crear pruebas con mini-test
 recomendamos  
-<https://github.com/pasosdeJesus/sip/blob/main/doc/pruebas-con-minitest.md>.
+<https://github.com/pasosdeJesus/msip/blob/main/doc/pruebas-con-minitest.md>.
 
 Para ejecutar las pruebas del sistema con Sideex, ejecuta la aplicación en 
 modo de desarrollo y desde el navegador compatible con Chrome en el que la 
@@ -227,7 +227,7 @@ entre ambos, deberían pasar).
   ```sh
   RAILS_ENV=production bin/rails db:setup
   RAILS_ENV=production bin/rails db:migrate
-  RAILS_ENV=production bin/rails sip:indices
+  RAILS_ENV=production bin/rails msip:indices
   ```
 * El punto de montaje configúralo en la variable `RUTA_RELATIVA` del archivo 
   `.env`
@@ -342,7 +342,7 @@ entre ambos, deberían pasar).
   ```
 * Aplica cambios a base de datos: `bin/rails db:migrate`
 * Actualiza tablas básicas: `bin/rails sivel:actbasicas`
-* Actualiza índices: `bin/rails sip:indices`
+* Actualiza índices: `bin/rails msip:indices`
 * Lanza nuevamente el servidor de desarrollo: `bin/rails s -p 2300 -b 0.0.0.0`
 
 ### Actualización de servidor de producción :arrows_clockwise:
@@ -357,7 +357,7 @@ debe usar `bin/railsp`
 En el sitio de producción se recomienda agregar una tarea `cron` con:
 
 ``` sh
-cd /var/www/htdocs/sivel2/; bin/railsp sip:vuelca
+cd /var/www/htdocs/sivel2/; bin/railsp msip:vuelca
 ```
 
 ## Desarrollo y documentación para desarrolladores :abc:
@@ -366,7 +366,7 @@ El desarrollo debe centrarse en los motores que constituyen esta aplicación,
 particularmente `sivel2_gen`.
 
 La documentación general para desarrolladores que mantenemos está en:
-<https://github.com/pasosdeJesus/sip/blob/main/doc/README.md>
+<https://github.com/pasosdeJesus/msip/blob/main/doc/README.md>
 
 
 ## Autores ✒️

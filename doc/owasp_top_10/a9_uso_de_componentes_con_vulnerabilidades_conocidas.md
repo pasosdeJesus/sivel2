@@ -8,7 +8,7 @@
   extensivas: sistema operativo, base de datos, lenguaje, marcos de trabajo.  
   Ante cambios es la pila que afectan la aplicación, se planea ruta de
   actualización y se documenta bien en incidentes o bien en los motores
-  (lo más tipico es en sip en https://github.com/pasosdeJesus/sip/wiki)
+  (lo más tipico es en msip en https://github.com/pasosdeJesus/msip/wiki)
 * Las gemas y paquetes npm se obtiene de repositorios oficiales rubygems y npm.
 * En ocasiones se ha requerido contribuir mejoras a componentes de terceros
   desactualizados o con problemas.  Como solo se emplean componentes de 

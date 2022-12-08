@@ -1,7 +1,7 @@
 require 'test_helper'
 
-module Sip
-  class ControlAccesoMundepTest < ActionDispatch::IntegrationTest
+module Msip
+  class ControlAccesoClasesControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
@@ -15,18 +15,18 @@ module Sip
     # No autenticado
     ################
 
-    test "sin autenticar no debe acceder a grupos de personas" do
-      get sip.mundep_path + '.json?term="villa"'
+    test "sin autenticar debe acceder a tipoclase" do
+      get msip.tipoclase_path + ".json?term=#{Msip::Clase.all.sample.id}"
       assert_response :ok
     end
 
     # Autenticado como operador sin grupo
     #####################################
 
-    test "autenticado como operador sin grupo debe presentar listado" do
+    test "autenticado como operador sin grupo debe acceder a tipoclase" do
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get sip.mundep_path + '.json?term="villa"'
+      get msip.tipoclase_path + ".json?term=#{Msip::Clase.all.sample.id}"
       assert_response :ok
     end
 
@@ -35,25 +35,25 @@ module Sip
 
     def inicia_ope(rol_id)
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [rol_id]
+      current_usuario.grupo_ids = [rol_id]
       current_usuario.save
       return current_usuario
     end
 
-    test "autenticado como operador analista debe presentar listado grupoper" do
+    test "autenticado como operador analista debe acceder a tipoclase" do
       current_usuario = inicia_ope(20)
       sign_in current_usuario
-      get sip.mundep_path + '.json?term="villa"'
+      get msip.tipoclase_path + ".json?term=#{Msip::Clase.all.sample.id}"
       assert_response :ok
     end
 
     # Autenticado como obeservador de casos
     #######################################################
 
-    test "autenticado como observador debe presentar listado grupoper" do
+    test "autenticado como observador debe acceder a tipoclase" do
       current_usuario = inicia_ope(21)
       sign_in current_usuario
-      get sip.mundep_path + '.json?term="villa"'
+      get msip.tipoclase_path + ".json?term=#{Msip::Clase.all.sample.id}"
       assert_response :ok
     end
   end

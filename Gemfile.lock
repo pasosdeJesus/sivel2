@@ -19,55 +19,57 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: b5bdf9e735dc410ad630491e057dab7426343f3a
-  branch: main
+  revision: 28263ad01b5f30a38ba7f364470ef125939971e7
+  branch: msip
   specs:
     apo214 (2.1a1)
+      msip
       rails
-      sip
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 0728394ca7e879c16e53a28b96a397bd991e59aa
-  branch: main
+  revision: 90954df65c5fd22e1b9e776ecbf66f8f2bb7be9c
+  branch: msip
   specs:
     heb412_gen (2.1.0.beta1)
       mr519_gen
+      msip
       redcarpet
       rspreadsheet
-      sip
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5637c98668779f7749618ca1863c24fb6f656af6
-  branch: main
+  revision: d5fab36f31fa721126501fbd2feeabe25fb18ebc
+  branch: msip
   specs:
     mr519_gen (2.1.0.beta1)
+      msip
       rails
-      sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3d05638bc7d0caa1197a2e67f705bae564a069c3
+  remote: https://github.com/pasosdeJesus/msip.git
+  revision: 374573cdc556e9da1dedbf80e2c88d6e81b6ad1c
   branch: main
   specs:
-    sip (2.1.0.beta1)
-      cancancan
-      coffee-rails
-      devise
-      devise-i18n
-      kt-paperclip
-      minitest
-      rails
-      rails-i18n
-      sassc-rails
-      simple_form
-      twitter_cldr
+    msip (2.2.0.alfa3)
+      cancancan (~> 3)
+      devise (~> 4)
+      devise-i18n (~> 1)
+      kt-paperclip (~> 7)
+      pg (~> 1)
+      rails (~> 7.0)
+      rails-i18n (~> 7)
+      sassc-rails (~> 2)
+      simple_form (~> 5)
+      sprockets-rails (~> 3)
+      stimulus-rails (~> 1)
+      twitter_cldr (~> 6)
+      will_paginate (~> 3)
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 573076105319522d9d45c383f001bf34e9da84e0
-  branch: main
+  revision: ab66d0a412f6501ce7295ab01f6a495789163bc8
+  branch: msip
   specs:
     sivel2_gen (2.1.0.beta1)
       color
@@ -474,6 +476,7 @@ DEPENDENCIES
   kt-paperclip!
   libxml-ruby
   mr519_gen!
+  msip!
   nokogiri (>= 1.11.1)
   odf-report
   pg
@@ -494,7 +497,6 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   simplecov (< 0.18)
-  sip!
   sivel2_gen!
   spring
   sprockets-rails

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoAnexos < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -11,7 +11,7 @@ module Sip
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @anexo_archivo = File.new("test/fixtures/sample_file.png")
-      @anexo = Sip::Anexo.create(PRUEBA_ANEXO)
+      @anexo = Msip::Anexo.create(PRUEBA_ANEXO)
       @anexo.adjunto_file_name =  @anexo_archivo.path
       @anexo.save!
     end
@@ -50,7 +50,7 @@ module Sip
 
     def inicia_analista
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
+      current_usuario.grupo_ids = [20]
       current_usuario.save
       return current_usuario
     end
@@ -68,7 +68,7 @@ module Sip
 
     def inicia_observador
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [21]
+      current_usuario.grupo_ids = [21]
       current_usuario.save
       return current_usuario
     end

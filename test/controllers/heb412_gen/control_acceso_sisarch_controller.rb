@@ -147,7 +147,7 @@ module Heb412Gen
 
     def inicia_analista
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
+      current_usuario.grupo_ids = [20]
       current_usuario.save
       return current_usuario
     end

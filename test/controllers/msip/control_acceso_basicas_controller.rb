@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'nokogiri'
 
-module Sip
+module Msip
   class ControlAccesoBasicasControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -11,26 +11,26 @@ module Sip
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
       @ope_analista = inicia_analista
     end
 
     def inicia_analista
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
+      current_usuario.grupo_ids = [20]
       current_usuario.save
       return current_usuario
     end
 
     test "sin autenticar no debe listar tablas básicas" do
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)
     end
 
-    basicas_sip = Sip::Ability::BASICAS_PROPIAS
+    basicas_msip = Msip::Ability::BASICAS_PROPIAS
 
     ## PROBANDO BASICAS GEOGRÁFICAS
     PAIS_PARAMS = {id: 1, nombre: "ejemplo", nombreiso: "eje", fechacreacion: "2021-12-09"}
@@ -61,7 +61,7 @@ module Sip
       return registro
     end
 
-    basicas_sip.each do |basica|
+    basicas_msip.each do |basica|
       if basica[1] == "oficina"
         next
       end
@@ -300,7 +300,7 @@ module Sip
 
     test "autenticado como operador sin grupo no debe presentar listado" do
       sign_in @ope_sin_grupo
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)
@@ -308,7 +308,7 @@ module Sip
 
     test "autenticado como operador analista no debe presentar listado" do
       sign_in @ope_analista
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)

@@ -78,7 +78,7 @@ ejecuta_sql("
     WHERE id<#{idini} or id>#{idfin};
     ")
 ejecuta_sql("
-  DELETE FROM sip_ubicacion 
+  DELETE FROM msip_ubicacion 
     WHERE id_caso<#{idini} or id_caso>#{idfin};
     ")
 ejecuta_sql("
@@ -133,23 +133,23 @@ ejecuta_sql("
     WHERE id_caso<#{idini} or id_caso>#{idfin};
     ")
 ejecuta_sql("
-  DELETE FROM sip_grupoper
+  DELETE FROM msip_grupoper
     WHERE id IN (select id_grupoper FROM sivel2_gen_victimacolectiva
       WHERE id_caso<#{idini} or id_caso>#{idfin});
     ")
 ejecuta_sql("
-  DELETE FROM sip_persona_trelacion
+  DELETE FROM msip_persona_trelacion
     WHERE persona1 IN (SELECT id_persona FROM sivel2_gen_victima
       WHERE id_caso<#{idini} or id_caso>#{idfin});
     ")
 ejecuta_sql("
-  DELETE FROM sip_persona_trelacion
+  DELETE FROM msip_persona_trelacion
     WHERE persona2 IN (SELECT id_persona FROM sivel2_gen_victima
       WHERE id_caso<#{idini} or id_caso>#{idfin});
     ")
 
 ejecuta_sql("
-  DELETE FROM sip_persona
+  DELETE FROM msip_persona
     WHERE id IN (select id_persona FROM sivel2_gen_victima
       WHERE id_caso<#{idini} or id_caso>#{idfin});
     ")

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoRespaldo7z < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -17,7 +17,7 @@ module Sip
 
     test "sin autenticar no debe acceder a respaldo7z" do
       assert_raise CanCan::AccessDenied do
-        get sip.respaldo7z_path
+        get msip.respaldo7z_path
       end
     end
 
@@ -26,7 +26,7 @@ module Sip
 
     test "ope sin grupo no debe acceder a respaldo7z" do
       assert_raise CanCan::AccessDenied do
-        get sip.respaldo7z_path
+        get msip.respaldo7z_path
       end
     end
 
@@ -36,7 +36,7 @@ module Sip
 
     def inicia_ope(rol_id)
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [rol_id]
+      current_usuario.grupo_ids = [rol_id]
       current_usuario.save
       return current_usuario
     end
@@ -45,7 +45,7 @@ module Sip
       assert_raise CanCan::AccessDenied do
         current_usuario = inicia_ope(20)
         sign_in current_usuario
-        get sip.respaldo7z_path
+        get msip.respaldo7z_path
       end
     end
 
@@ -56,7 +56,7 @@ module Sip
       assert_raise CanCan::AccessDenied do
         current_usuario = inicia_ope(21)
         sign_in current_usuario
-        get sip.respaldo7z_path
+        get msip.respaldo7z_path
       end
     end
 

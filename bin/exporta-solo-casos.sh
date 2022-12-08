@@ -17,10 +17,10 @@ read a
 echo "1 de 3. Copia ..."
 
 cat > /tmp/incluir <<EOF
-sip_perfilorgsocial
-sip_sectororgsocial
-sip_trelacion
-sip_tsitio
+msip_perfilorgsocial
+msip_sectororgsocial
+msip_trelacion
+msip_tsitio
 sivel2_gen_antecedente
 sivel2_gen_intervalo
 sivel2_gen_actividadoficio
@@ -44,14 +44,14 @@ sivel2_gen_escolaridad
 sivel2_gen_estadocivil
 sivel2_gen_maternidad
 sivel2_gen_contextovictima
-sip_orgsocial
-sip_grupoper
-sip_persona
+msip_orgsocial
+msip_grupoper
+msip_persona
 sivel2_gen_caso
-sip_orgsocial_persona
-sip_orgsocial_sectororgsocial
-sip_persona_trelacion
-sip_ubicacion
+msip_orgsocial_persona
+msip_orgsocial_sectororgsocial
+msip_persona_trelacion
+msip_ubicacion
 sivel2_gen_victima
 sivel2_gen_victimacolectiva
 sivel2_gen_acto
@@ -95,7 +95,7 @@ eval $cmd;
 
 if (test "$?" = "0") then {
         echo "Ahora ingrese al servidor $SIVEL2_EXP_MAQ y ejecute desde el directorio del sitio:"
-        echo " $ RAILS_ENV=production bin/rails sip:vuelca";
+        echo " $ RAILS_ENV=production bin/rails msip:vuelca";
         echo " $ bin/borra-excepto-usuarios-bitacora-y-etiquetas.sh";
 } fi;
 

@@ -77,7 +77,7 @@ def eliminar_casos(subconsulta_ids_por_eliminar)
     id in (#{subconsulta_ids_por_eliminar});
               ")
   ejecutar_sql("
-  DELETE FROM sip_ubicacion WHERE
+  DELETE FROM msip_ubicacion WHERE
     id_caso in (#{subconsulta_ids_por_eliminar});
               ")
   ejecutar_sql("
@@ -137,23 +137,23 @@ def eliminar_casos(subconsulta_ids_por_eliminar)
     id_caso in (#{subconsulta_ids_por_eliminar});
               ")
   ejecutar_sql("
-  DELETE FROM sip_grupoper WHERE 
+  DELETE FROM msip_grupoper WHERE 
     id IN (select id_grupoper FROM sivel2_gen_victimacolectiva WHERE
       id_caso in (#{subconsulta_ids_por_eliminar}));
               ")
   ejecutar_sql("
-  DELETE FROM sip_persona_trelacion
+  DELETE FROM msip_persona_trelacion
     WHERE persona1 IN (SELECT id_persona FROM sivel2_gen_victima WHERE
       id_caso in (#{subconsulta_ids_por_eliminar}));
               ")
   ejecutar_sql("
-  DELETE FROM sip_persona_trelacion
+  DELETE FROM msip_persona_trelacion
     WHERE persona2 IN (SELECT id_persona FROM sivel2_gen_victima WHERE
       id_caso in (#{subconsulta_ids_por_eliminar}));
               ")
 
   ejecutar_sql("
-  DELETE FROM sip_persona WHERE
+  DELETE FROM msip_persona WHERE
     id IN (SELECT id_persona FROM sivel2_gen_victima WHERE
       id_caso in (#{subconsulta_ids_por_eliminar}));
               ")
