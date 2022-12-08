@@ -7,7 +7,7 @@ if fechaini.nil?
   puts "Primer parametro debe ser fecha desde la cual eliminar y no '#{fechaini}'"
   exit 1
 end
-fechaini = Sip::FormatoFechaHelper.reconoce_adivinando_locale(fechaini)
+fechaini = Msip::FormatoFechaHelper.reconoce_adivinando_locale(fechaini)
 
 def ejecuta_sql(sql)
   puts "+ #{sql}"
@@ -66,7 +66,7 @@ ejecuta_sql("
     fecha<='#{fechaini}';
     ")
 ejecuta_sql("
-  DELETE FROM sip_ubicacion WHERE
+  DELETE FROM msip_ubicacion WHERE
     id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}');
     ")
 ejecuta_sql("
@@ -121,23 +121,23 @@ ejecuta_sql("
     id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}');
     ")
 ejecuta_sql("
-  DELETE FROM sip_grupoper WHERE 
+  DELETE FROM msip_grupoper WHERE 
     id IN (select id_grupoper FROM sivel2_gen_victimacolectiva WHERE
       id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}'));
     ")
 ejecuta_sql("
-  DELETE FROM sip_persona_trelacion
+  DELETE FROM msip_persona_trelacion
     WHERE persona1 IN (SELECT id_persona FROM sivel2_gen_victima WHERE
       id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}'));
     ")
 ejecuta_sql("
-  DELETE FROM sip_persona_trelacion
+  DELETE FROM msip_persona_trelacion
     WHERE persona2 IN (SELECT id_persona FROM sivel2_gen_victima WHERE
       id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}'));
     ")
 
 ejecuta_sql("
-  DELETE FROM sip_persona WHERE
+  DELETE FROM msip_persona WHERE
     id IN (SELECT id_persona FROM sivel2_gen_victima WHERE
       id_caso in (SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}'));
     ")

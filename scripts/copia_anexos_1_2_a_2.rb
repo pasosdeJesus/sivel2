@@ -68,7 +68,7 @@ Sivel2Gen::AnexoCaso.all.each do |r|
       narc = f[0]
     end
     g = File.new(narc)
-    r.sip_anexo.adjunto=g
+    r.msip_anexo.adjunto=g
     r.save!
     #byebug
     g.close

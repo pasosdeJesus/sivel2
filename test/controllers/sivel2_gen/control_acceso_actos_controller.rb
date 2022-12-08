@@ -11,7 +11,7 @@ module Sivel2Gen
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @victima = Sivel2Gen::Victima.create!(id_persona: @persona.id, id_caso: @caso.id)
       @acto = Sivel2Gen::Acto.create!(PRUEBA_ACTO.merge({id_caso: @caso.id, id_persona: @persona.id}))
       @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
@@ -20,7 +20,7 @@ module Sivel2Gen
 
     def inicia_analista
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
+      current_usuario.grupo_ids = [20]
       current_usuario.save
       return current_usuario
     end

@@ -9,7 +9,7 @@ if fechaini.nil?
   puts "Primer parametro debe ser fecha desde la cual eliminar y no '#{fechaini}'"
   exit 1
 end
-fechaini = Sip::FormatoFechaHelper.reconoce_adivinando_locale(fechaini)
+fechaini = Msip::FormatoFechaHelper.reconoce_adivinando_locale(fechaini)
 
 eliminar_casos("SELECT id FROM sivel2_gen_caso WHERE fecha>='#{fechaini}'");
 

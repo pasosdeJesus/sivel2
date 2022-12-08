@@ -1,5 +1,5 @@
 <% content_for :titulo do %>
-    <%= Sip.titulo %>
+    <%= Msip.titulo %>
 <% end %>
 
 <% content_for :menu do %>
@@ -109,8 +109,8 @@
           <%= opcion_menu "Tablas Básicas", sivel2_gen.tablasbasicas_path,
             desplegable: true %>
         <% end %>
-        <% if can? :manage, Sip::Respaldo7z %>
-          <%= opcion_menu "Respaldo cifrado", sip.respaldo7z_path,
+        <% if can? :manage, Msip::Respaldo7z %>
+          <%= opcion_menu "Respaldo cifrado", msip.respaldo7z_path,
             desplegable: true %>
         <% end %>
         <% if can? :manage, Mr519Gen::Formulario %>
@@ -138,4 +138,4 @@
   </span>
 <% end %>
 
-<%= render template: "layouts/sip/application" %>
+<%= render template: "layouts/msip/application" %>

@@ -10,7 +10,7 @@ module Apo214
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @lugarpreliminar = Apo214::Lugarpreliminar.create!(PRUEBA_LUGARPRELIMINAR)
     end
 

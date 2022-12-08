@@ -23,7 +23,7 @@ public/heb412/
 public/sivel2/
 public/sivel2_1/
 .byebug_history
-app/views/sip/hogar/
+app/views/msip/hogar/
 bin/u.sh
 coverage/
 bin/corre.sh
@@ -43,7 +43,7 @@ config/credentials.yml.enc
 .env
 *.cp
 app/assets/builds/
-app/javascript/controllers/sip
+app/javascript/controllers/msip
 app/javascript/controllers/mr519_gen
 app/javascript/controllers/heb412_gen
 app/javascript/controllers/cor1440_gen

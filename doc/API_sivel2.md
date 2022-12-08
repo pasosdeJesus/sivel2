@@ -453,7 +453,7 @@ La respuesta a esta petición es un reporte html de casos por víctima, donde ap
 - JSON
 Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar algunas generalidades o elementos básicos de la víctima como lo son:
 
-	- id_persona: identificador de la persona, tabla sip_persona a la que pertenece la víctima.
+	- id_persona: identificador de la persona, tabla msip_persona a la que pertenece la víctima.
 
 	- id_caso: identificador del caso al cual pertenece la víctima.
 
@@ -557,7 +557,7 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
  Esta API permite traer datos de una persona organizado en un objeto JSON con los valores de id, nombres, apellidos, tipo de documento, numero de documento, sexo y fecha de nacimiento. Además si está autocompletando una persona de orgsocial persona agrega los campos de cargo y correo correspondiente.
  
 ##### Parámetros
-Esta api recibe dos parámetros, uno obligatorio id_persona que es la identificación de la persona en la tabla sip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
+Esta api recibe dos parámetros, uno obligatorio id_persona que es la identificación de la persona en la tabla msip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
 
 El único formato de respuesta establecido es Json. 
 ##### Ejemplo cURL
@@ -580,7 +580,7 @@ Para consumir esta API se manejan los mismo permisos establecidos para /personas
  Esta API permite remplazar personas en la tabla víctimas de caso. Más especificamente verifica y si la persona asociada a la victima corresponde con  una persona dada, si ya existe se obtiene un mensaje "Ya existe esa persona en el caso" y sino se hace el remplazo correspondiente guardando los valores de la víctima. 
  
 ##### Parámetros
-Esta api recibe dos parámetros requeridos obligatorios: d_persona que es la identificación de la persona en la tabla sip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
+Esta api recibe dos parámetros requeridos obligatorios: d_persona que es la identificación de la persona en la tabla msip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
 
 El único formato de respuesta establecido es Json. 
 ##### Ejemplo cURL
@@ -626,7 +626,7 @@ Adicionalmente hay 10 criterios diferentes por los cuales es posible desagregar 
 > | `SEXO` |  Requerido | String   | Sexo de la persona |
 > | `VINCULO CON EL ESTADO` |  Requerido | String   | Vínculo con el estado|
 
-Además de dos filtros especializados por los cuales de puede expandir el conteo: Departamento y Municipio. Lugares geográficas de nacimiento de las víctimas asociadas mediante las tablas sip_departamento y sip_municipio respectivamente. El parámetro es booleano y se representa de la siguiente forma: 
+Además de dos filtros especializados por los cuales de puede expandir el conteo: Departamento y Municipio. Lugares geográficas de nacimiento de las víctimas asociadas mediante las tablas msip_departamento y msip_municipio respectivamente. El parámetro es booleano y se representa de la siguiente forma: 
 > ```javascript
 > filtro[departamento]=1
 > ```
@@ -657,7 +657,7 @@ Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Adm
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>gruposper</code></summary>
 
-Para consumir los grupos de personas existentes en la aplicación, esta dispuesta esta ruta. Esta trae registros asociados al modelo Sip::Grupoper.
+Para consumir los grupos de personas existentes en la aplicación, esta dispuesta esta ruta. Esta trae registros asociados al modelo Msip::Grupoper.
 La estructura de los datos está dada por un objetos con dos propiedades: value, que es el nombre del grupo de personas e id, que es la identificación del grupo de personas. 
 
 ##### Parámetros
@@ -684,7 +684,7 @@ No disponible para consulta pública
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>gruposper/remplazar</code></summary>
 
-Para listar y buscar grupo de personas existentes en la aplicación, esta dispuesta esta ruta. Esta trae registros asociados al modelo Sip::Grupoper.
+Para listar y buscar grupo de personas existentes en la aplicación, esta dispuesta esta ruta. Esta trae registros asociados al modelo Msip::Grupoper.
 La estructura de los datos está dada por un objetos con dos propiedades: value, que es el nombre del grupo de personas e id, que es la identificación del grupo de personas. 
 
 ##### Parámetros
@@ -753,7 +753,7 @@ Esta ruta permite acceder a la información general sobre los controles de acces
 <details>
  <summary><b>CRUD Bitácoras</b></summary>
 
-Permite la gestión de la tabla bitácoras perteneciente al motor Sip. Es una tabla cuyos registros son acciones las acciones realizadas por usuarios dentro de la aplicación 
+Permite la gestión de la tabla bitácoras perteneciente al motor Msip. Es una tabla cuyos registros son acciones las acciones realizadas por usuarios dentro de la aplicación 
 <details>
  <summary><code>GET / bitacoras / :id</code></summary>
 
@@ -861,7 +861,7 @@ Solamente un administrador tiene permisos para acceder a la ruta y para realizar
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>mundep</code></summary>
 
-Es posible obtener un listado de ubicaciones en el formato de departamento y municipio. Esta trae registros asociados al modelo Sip::Ubicacion re construido en dicho formato ejemplo: "SANTANDER DE QUILICHAO / CAUCA".
+Es posible obtener un listado de ubicaciones en el formato de departamento y municipio. Esta trae registros asociados al modelo Msip::Ubicacion re construido en dicho formato ejemplo: "SANTANDER DE QUILICHAO / CAUCA".
 La estructura de los datos está dada por un objetos con dos propiedades: label, que es el nombre de la ubicacion y value que equivale a la identificación de dicha ubicación. 
 
 ##### Parámetros
@@ -1023,7 +1023,7 @@ Eliminar completamente un registro de bitácora especificando su identificación
 <details>
  <summary><code>GET</code> <code><b>/</b></code> <code>anexos</code><code><b>/</b></code><code>:id</code></summary>
  
-Esta ruta permite consultar un anexo específico guardado en la aplicación a través de su identificación. Es posible que hayan anexos en difernetes formatos, documentos o imágenes. El parámetro de identificación que se tiene que especificar es el campo id del objeto correspondiente de la tabla Sip::Anexo.
+Esta ruta permite consultar un anexo específico guardado en la aplicación a través de su identificación. Es posible que hayan anexos en difernetes formatos, documentos o imágenes. El parámetro de identificación que se tiene que especificar es el campo id del objeto correspondiente de la tabla Msip::Anexo.
 Control de acceso: Cualquier persona autenticada puede acceder a descargar un anexo. Para la consulta pública no se autoriza descargar anexo.
 Al hacer la petición se descarga automáticamente el anexo y no hay redireccionamiento. 
 ##### Ejemplo cURL
@@ -1088,7 +1088,7 @@ Actualmente, cualquier usuario autenticado con cualquiera de los tres roles (Adm
 Esta petición trae un listado de tablas básicas utilizadas por los formularios  y la aplicación en general. No recibe ningún parámetro adicional y su respuesta únicamente será en html de ser exitosa y tener la autorización necesaria.
 Las tablas básicas únicamente pueden ser accedidas tienen un control de acceso que depende del tipo de las mismas:
 
-- Rol Administrador: Puede acceder, editar, actualizar, eliminar datos de cualquier tabla básica propias de sivel2 o de Sip. 
+- Rol Administrador: Puede acceder, editar, actualizar, eliminar datos de cualquier tabla básica propias de sivel2 o de Msip. 
 - Rol autenticado: No puede visualizar los datos, ni consultar información de cualquier tabla básica salvo que sea geográfica, sin poder editar.
 - Consulta pública: Únicamente puede visualizar los datos de las tablas básicas geográficas: País, departamento, municipio y centro poblado. 
 

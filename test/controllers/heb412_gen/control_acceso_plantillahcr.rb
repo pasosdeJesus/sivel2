@@ -11,7 +11,7 @@ module Heb412Gen
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona = Msip::Persona.create!(PRUEBA_PERSONA)
     end
 
     PRUEBA_PLANTILLAHCR = { 
@@ -77,7 +77,7 @@ module Heb412Gen
 
     def inicia_analista
       current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
+      current_usuario.grupo_ids = [20]
       current_usuario.save
       return current_usuario
     end
