@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 28263ad01b5f30a38ba7f364470ef125939971e7
+  revision: b6ee808599d8d57605280951dadaf1fb5f35949a
   branch: msip
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 90954df65c5fd22e1b9e776ecbf66f8f2bb7be9c
+  revision: ee22d8b89dba34d1ca177c63de39ec77c520f003
   branch: msip
   specs:
     heb412_gen (2.1.0.beta1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d5fab36f31fa721126501fbd2feeabe25fb18ebc
+  revision: eb974f91789ba5dd1f5a442d845b105ada7a2de5
   branch: msip
   specs:
     mr519_gen (2.1.0.beta1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/msip.git
-  revision: 374573cdc556e9da1dedbf80e2c88d6e81b6ad1c
+  revision: 0d31d41e04a53a3dae20ea1b7d55f0d18c98d65c
   branch: main
   specs:
     msip (2.2.0.alfa3)
@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: ab66d0a412f6501ce7295ab01f6a495789163bc8
+  revision: ebc80c9acd008c7d4cf006bf091eeebd9fe5ebe7
   branch: msip
   specs:
     sivel2_gen (2.1.0.beta1)
