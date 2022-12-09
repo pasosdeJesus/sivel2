@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: acc0ca295a0d2c94a1e659986ac404e8ef5d6e99
+  revision: 1c34e7ddac22aff95e339bd2ef16b698f3891dcc
   branch: main
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 88815bbc7a145fd223b34deecd3cbefc7d088447
+  revision: 2068b368571b7c5ffe21e52ee76dd25607ace11c
   branch: main
   specs:
     heb412_gen (2.1.0.beta1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 7900efc9b0ecafe4a56125129d163cd61b478c3a
+  revision: bf34d591ac8f99a00110a50217a01615b175c974
   branch: main
   specs:
     mr519_gen (2.1.0.beta1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 554c4eab9b3c6afca9917f35ad915b6095878deb
+  revision: a3e756f998528ef6124c654a62f41498ebb7bc2e
   branch: main
   specs:
     sip (2.1.0.beta1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 7b9e0871c514871b9c6c057b4079ffcb8c5f40bd
+  revision: 5f884d6de8fc8a23035caa59f92efbfeb0565b2d
   branch: main
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -200,6 +200,7 @@ GEM
     cuprite (0.14.3)
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
+    date (3.3.1)
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -262,7 +263,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
-    irb (1.5.1)
+    irb (1.6.0)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -290,7 +291,8 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.16.3)
     msgpack (1.6.0)
-    net-imap (0.3.1)
+    net-imap (0.3.2)
+      date
       net-protocol
     net-pop (0.1.2)
       net-protocol
