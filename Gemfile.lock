@@ -273,7 +273,7 @@ GEM
     json (2.6.3)
     kgio (2.11.4)
     libxml-ruby (3.2.4)
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.0)
@@ -303,6 +303,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     odf-report (0.7.3)
       mime-types
@@ -447,6 +449,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
+  x86_64-linux
   x86_64-openbsd
 
 DEPENDENCIES
