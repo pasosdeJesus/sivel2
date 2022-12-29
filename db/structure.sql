@@ -455,18 +455,6 @@ CREATE AGGREGATE public.first(anyelement) (
 );
 
 
---
--- Name: acto_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.acto_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -1142,18 +1130,6 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: caso_presponsable_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.caso_presponsable_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
 -- Name: sivel2_gen_caso_categoria_presponsable_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1179,6 +1155,18 @@ CREATE TABLE public.sivel2_gen_caso_categoria_presponsable (
 
 
 --
+-- Name: sivel2_gen_caso_presponsable_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_caso_presponsable_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sivel2_gen_caso_presponsable; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1188,7 +1176,7 @@ CREATE TABLE public.sivel2_gen_caso_presponsable (
     tipo integer DEFAULT 0 NOT NULL,
     bloque character varying(50),
     frente character varying(50),
-    id integer DEFAULT nextval('public.caso_presponsable_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('public.sivel2_gen_caso_presponsable_id_seq'::regclass) NOT NULL,
     otro character varying(500),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -1260,18 +1248,6 @@ CREATE VIEW public.belicas AS
              JOIN public.sivel2_gen_supracategoria s ON ((s.id = c.supracategoria_id)))
           WHERE ((s.id_tviolencia)::text = 'C'::text)))
   ORDER BY cp.id_caso;
-
-
---
--- Name: caso_etiqueta_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.caso_etiqueta_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 
 --
@@ -1349,10 +1325,10 @@ CREATE TABLE public.sivel2_gen_caso (
 
 
 --
--- Name: victima_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sivel2_gen_victima_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.victima_seq
+CREATE SEQUENCE public.sivel2_gen_victima_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1381,7 +1357,7 @@ CREATE TABLE public.sivel2_gen_victima (
     orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.victima_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('public.sivel2_gen_victima_id_seq'::regclass) NOT NULL,
     CONSTRAINT victima_hijos_check CHECK (((hijos IS NULL) OR ((hijos >= 0) AND (hijos <= 100)))),
     CONSTRAINT victima_orientacionsexual_check CHECK (((orientacionsexual = 'B'::bpchar) OR (orientacionsexual = 'G'::bpchar) OR (orientacionsexual = 'H'::bpchar) OR (orientacionsexual = 'I'::bpchar) OR (orientacionsexual = 'L'::bpchar) OR (orientacionsexual = 'O'::bpchar) OR (orientacionsexual = 'S'::bpchar) OR (orientacionsexual = 'T'::bpchar)))
 );
@@ -1438,6 +1414,11 @@ CREATE TABLE public.msip_clase (
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     ultvigenciaini date,
     ultvigenciafin date,
+    svgruta character varying,
+    svgcdx integer,
+    svgcdy integer,
+    svgcdancho integer,
+    svgcdalto integer,
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1475,6 +1456,11 @@ CREATE TABLE public.msip_departamento (
     codreg integer,
     ultvigenciaini date,
     ultvigenciafin date,
+    svgruta character varying,
+    svgcdx integer,
+    svgcdy integer,
+    svgcdancho integer,
+    svgcdalto integer,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1511,6 +1497,11 @@ CREATE TABLE public.msip_municipio (
     ultvigenciaini date,
     ultvigenciafin date,
     tipomun character varying(32),
+    svgruta character varying,
+    svgcdx integer,
+    svgcdy integer,
+    svgcdancho integer,
+    svgcdalto integer,
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1577,49 +1568,15 @@ CREATE VIEW public.cben2 AS
 
 
 --
--- Name: combatiente_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sivel2_gen_acto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.combatiente_seq
+CREATE SEQUENCE public.sivel2_gen_acto_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: combatiente; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.combatiente (
-    id integer DEFAULT nextval('public.combatiente_seq'::regclass) NOT NULL,
-    nombre character varying(100) NOT NULL,
-    alias character varying(100),
-    edad integer,
-    sexo character(1) NOT NULL,
-    id_resagresion integer NOT NULL,
-    id_profesion integer,
-    id_rangoedad integer,
-    id_filiacion integer,
-    id_sectorsocial integer,
-    id_organizacion integer,
-    id_vinculoestado integer,
-    id_caso integer,
-    organizacionarmada integer,
-    CONSTRAINT combatiente_edad_check CHECK (((edad IS NULL) OR (edad >= 0))),
-    CONSTRAINT combatiente_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'M'::bpchar) OR (sexo = 'F'::bpchar)))
-);
-
-
---
--- Name: combatiente_presponsable; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.combatiente_presponsable (
-    id_p_responsable integer NOT NULL,
-    id_combatiente integer NOT NULL
-);
 
 
 --
@@ -1633,7 +1590,7 @@ CREATE TABLE public.sivel2_gen_acto (
     id_caso integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.acto_seq'::regclass) NOT NULL
+    id integer DEFAULT nextval('public.sivel2_gen_acto_id_seq'::regclass) NOT NULL
 );
 
 
@@ -1654,18 +1611,6 @@ CREATE VIEW public.cvt1 AS
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
      JOIN public.msip_persona persona ON ((persona.id = acto.id_persona)))
   WHERE (categoria.id = ANY (ARRAY[777, 297, 527, 397, 427, 197, 396, 526, 426, 776, 296, 196, 55, 35, 15, 73, 45, 25, 65, 92, 50, 40, 67, 801, 90, 46, 26, 37, 16, 57, 80, 85, 66, 64, 703, 706, 28, 59, 49, 38, 18, 501, 401, 904, 17, 231, 331, 402, 502, 705, 62, 906, 104, 713, 101, 302, 21, 11, 76, 102, 27, 902, 34, 903, 14, 24, 301, 10, 30, 20, 772, 292, 522, 392, 192, 422, 63, 93, 910, 395, 195, 425, 775, 295, 525, 714, 78, 774, 394, 194, 524, 294, 424, 89, 905, 86, 701, 68, 141, 341, 241, 715, 704, 702, 23, 43, 33, 53, 13, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 193, 523, 773, 423, 393, 293, 48, 58, 75, 69, 41, 74, 22, 36, 56, 72, 47, 12, 421, 391, 521, 291, 771, 191, 77, 520, 420, 29, 19, 39, 712]));
-
-
---
--- Name: fotra_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.fotra_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 
 --
@@ -1984,18 +1929,6 @@ CREATE SEQUENCE public.heb412_gen_plantillahcr_id_seq
 --
 
 ALTER SEQUENCE public.heb412_gen_plantillahcr_id_seq OWNED BY public.heb412_gen_plantillahcr.id;
-
-
---
--- Name: homonimosim_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.homonimosim_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 
 --
@@ -2817,7 +2750,12 @@ CREATE TABLE public.msip_pais (
     nombreiso_ingles character varying(512),
     nombreiso_frances character varying(512),
     ultvigenciaini date,
-    ultvigenciafin date
+    ultvigenciafin date,
+    svgruta character varying,
+    svgcdx integer,
+    svgcdy integer,
+    svgcdancho integer,
+    svgcdalto integer
 );
 
 
@@ -3432,18 +3370,6 @@ CREATE VIEW public.primerusuario AS
 
 
 --
--- Name: resagresion_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.resagresion_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3594,6 +3520,18 @@ CREATE TABLE public.sivel2_gen_caso_contexto (
 
 
 --
+-- Name: sivel2_gen_caso_etiqueta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_caso_etiqueta_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sivel2_gen_caso_etiqueta; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3605,15 +3543,15 @@ CREATE TABLE public.sivel2_gen_caso_etiqueta (
     observaciones character varying(5000),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.caso_etiqueta_seq'::regclass) NOT NULL
+    id integer DEFAULT nextval('public.sivel2_gen_caso_etiqueta_id_seq'::regclass) NOT NULL
 );
 
 
 --
--- Name: sivel2_gen_caso_fotra_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_fotra_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sivel2_gen_caso_fotra_seq
+CREATE SEQUENCE public.sivel2_gen_caso_fotra_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3635,7 +3573,7 @@ CREATE TABLE public.sivel2_gen_caso_fotra (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    id integer DEFAULT nextval('public.sivel2_gen_caso_fotra_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('public.sivel2_gen_caso_fotra_id_seq'::regclass) NOT NULL,
     anexo_caso_id integer
 );
 
@@ -3653,10 +3591,10 @@ CREATE TABLE public.sivel2_gen_caso_frontera (
 
 
 --
--- Name: sivel2_gen_caso_fuenteprensa_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_fuenteprensa_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sivel2_gen_caso_fuenteprensa_seq
+CREATE SEQUENCE public.sivel2_gen_caso_fuenteprensa_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3677,7 +3615,7 @@ CREATE TABLE public.sivel2_gen_caso_fuenteprensa (
     id_caso integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.sivel2_gen_caso_fuenteprensa_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('public.sivel2_gen_caso_fuenteprensa_id_seq'::regclass) NOT NULL,
     anexo_caso_id integer
 );
 
@@ -3774,6 +3712,16 @@ CREATE SEQUENCE public.sivel2_gen_combatiente_id_seq
 --
 
 ALTER SEQUENCE public.sivel2_gen_combatiente_id_seq OWNED BY public.sivel2_gen_combatiente.id;
+
+
+--
+-- Name: sivel2_gen_combatiente_presponsable; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_combatiente_presponsable (
+    id_p_responsable integer NOT NULL,
+    id_combatiente integer NOT NULL
+);
 
 
 --
@@ -4124,11 +4072,23 @@ CREATE TABLE public.sivel2_gen_filiacion_victimacolectiva (
 --
 
 CREATE TABLE public.sivel2_gen_fotra (
-    id integer DEFAULT nextval(('fuente_directa_seq'::text)::regclass) NOT NULL,
+    id integer DEFAULT nextval(('sivel2_gen_fotra_id_seq'::text)::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
+
+
+--
+-- Name: sivel2_gen_fotra_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_fotra_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
 --
@@ -5319,14 +5279,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_etiqueta
 
 
 --
--- Name: combatiente combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente
-    ADD CONSTRAINT combatiente_pkey PRIMARY KEY (id);
-
-
---
 -- Name: sivel2_gen_caso_frontera frontera_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5799,10 +5751,10 @@ ALTER TABLE ONLY public.msip_vereda
 
 
 --
--- Name: combatiente_presponsable p_responsable_agrede_combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_combatiente_presponsable p_responsable_agrede_combatiente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.combatiente_presponsable
+ALTER TABLE ONLY public.sivel2_gen_combatiente_presponsable
     ADD CONSTRAINT p_responsable_agrede_combatiente_pkey PRIMARY KEY (id_p_responsable, id_combatiente);
 
 
@@ -6814,14 +6766,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_fotra
 
 
 --
--- Name: combatiente_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.combatiente_presponsable
-    ADD CONSTRAINT "$2" FOREIGN KEY (id_combatiente) REFERENCES public.combatiente(id);
-
-
---
 -- Name: sivel2_gen_victima $3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6939,14 +6883,6 @@ ALTER TABLE ONLY public.sivel2_gen_anexo_caso
 
 ALTER TABLE ONLY public.sivel2_gen_anexo_caso
     ADD CONSTRAINT anexo_id_caso_fkey FOREIGN KEY (id_caso) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_anexo_caso anexo_id_fuente_directa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_anexo_caso
-    ADD CONSTRAINT anexo_id_fuente_directa_fkey FOREIGN KEY (id_fotra) REFERENCES public.sivel2_gen_fotra(id);
 
 
 --
@@ -8078,6 +8014,14 @@ ALTER TABLE ONLY public.sivel2_gen_sectorsocial_victimacolectiva
 
 
 --
+-- Name: sivel2_gen_anexo_caso sivel2_gen_anexo_caso_fotra_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_anexo_caso
+    ADD CONSTRAINT sivel2_gen_anexo_caso_fotra_id_fkey FOREIGN KEY (id_fotra) REFERENCES public.sivel2_gen_fotra(id);
+
+
+--
 -- Name: sivel2_gen_caso_fotra sivel2_gen_caso_fotra_anexo_caso_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8642,6 +8586,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20221201143440'),
 ('20221201154025'),
 ('20221208173349'),
-('20221209142327');
+('20221209142327'),
+('20221210155527'),
+('20221211005549'),
+('20221211012152'),
+('20221211141207'),
+('20221211141208'),
+('20221211141209'),
+('20221212021533');
 
 

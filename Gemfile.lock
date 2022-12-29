@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/apo214.git
-  revision: 01b1c3352583614e036642b569987c8bb03dd0e9
+  revision: c0b06035313a3f92e1840c6b41020e6cc2253da4
   branch: msip
   specs:
     apo214 (2.1a1)
@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9af9e60f7009a764fa470462415cf070d6d81356
+  revision: c0681184c852bf2310cf164d6712fc04c919ee23
   branch: msip
   specs:
     heb412_gen (2.1.0.beta1)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1ae9946e0950a46fa56492c4c5083195ec062311
+  revision: 89181f22ac22bcd2e1b10ee4ec6393e3fdc88c23
   branch: msip
   specs:
     mr519_gen (2.1.0.beta1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/msip.git
-  revision: 0bd8237429dbef8fc3e4148a91c7d4acd479dde7
+  revision: 999528ab2edccc235757b09e7877fa3658884f5e
   branch: main
   specs:
     msip (2.2.0.alfa3)
@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 145b454d843d8248d1471dad00896f23c340f811
+  revision: 98c43f27fd17bf929333e8d449eb976a9e75a103
   branch: msip
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -202,8 +202,8 @@ GEM
     cuprite (0.14.3)
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
-    date (3.3.1)
-    debug (1.7.0)
+    date (3.3.3)
+    debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     devise (4.8.1)
@@ -248,7 +248,7 @@ GEM
     erd (0.8.1)
       nokogiri
       ruby-graphviz
-    erubi (1.11.0)
+    erubi (1.12.0)
     execjs (2.8.1)
     ferrum (0.13)
       addressable (~> 2.5)
@@ -264,18 +264,18 @@ GEM
       turbo-rails
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    io-console (0.5.11)
-    irb (1.6.0)
+    io-console (0.6.0)
+    irb (1.6.2)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.0.3)
+    jsbundling-rails (1.1.1)
       railties (>= 6.0.0)
     json (2.6.3)
     kgio (2.11.4)
-    libxml-ruby (3.2.4)
-    loofah (2.19.0)
+    libxml-ruby (4.0.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.0)
@@ -290,10 +290,10 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
+    mini_portile2 (2.8.1)
     minitest (5.16.3)
     msgpack (1.6.0)
-    net-imap (0.3.2)
+    net-imap (0.3.4)
       date
       net-protocol
     net-pop (0.1.2)
@@ -322,10 +322,10 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.0.0)
+    puma (6.0.1)
       nio4r (~> 2.0)
-    racc (1.6.1)
-    rack (2.2.4)
+    racc (1.6.2)
+    rack (2.2.5)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-test (2.0.2)
@@ -352,8 +352,8 @@ GEM
       activesupport (>= 4.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.4.3)
-      loofah (~> 2.3)
+    rails-html-sanitizer (1.4.4)
+      loofah (~> 2.19, >= 2.19.1)
     rails-i18n (7.0.6)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
@@ -369,7 +369,7 @@ GEM
     redcarpet (3.5.1)
     redis (4.8.0)
     regexp_parser (2.6.1)
-    reline (0.3.1)
+    reline (0.3.2)
       io-console (~> 0.5)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -403,9 +403,9 @@ GEM
     simplecov-html (0.10.2)
     smart_kv (0.2.8.1)
     spring (4.1.0)
-    sprockets (4.1.1)
+    sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
+      rack (>= 2.2.4, < 4)
     sprockets-rails (3.4.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
@@ -511,4 +511,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.26
+   2.4.1
