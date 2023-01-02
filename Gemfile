@@ -22,7 +22,7 @@ gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem 'kt-paperclip',                 # Anexos
   git: 'https://github.com/kreeti/kt-paperclip.git'
 
-gem 'libxml-ruby'
+gem 'libxml-ruby', '4.0.0'
 
 gem 'net-imap'
 

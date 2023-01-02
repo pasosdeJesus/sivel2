@@ -404,7 +404,7 @@ DEPENDENCIES
   heb412_gen!
   jbuilder
   kt-paperclip!
-  libxml-ruby
+  libxml-ruby (= 4.0.0)
   mr519_gen!
   net-imap
   net-pop
