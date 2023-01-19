@@ -2452,10 +2452,10 @@ CREATE TABLE public.msip_grupo (
 
 
 --
--- Name: msip_grupo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: mgrupo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.msip_grupo_id_seq
+CREATE SEQUENCE public.mgrupo_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -2465,10 +2465,10 @@ CREATE SEQUENCE public.msip_grupo_id_seq
 
 
 --
--- Name: msip_grupo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: mgrupo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.msip_grupo_id_seq OWNED BY public.msip_grupo.id;
+ALTER SEQUENCE public.mgrupo_id_seq OWNED BY public.msip_grupo.id;
 
 
 --
@@ -4936,7 +4936,7 @@ ALTER TABLE ONLY public.msip_estadosol ALTER COLUMN id SET DEFAULT nextval('publ
 -- Name: msip_grupo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.msip_grupo ALTER COLUMN id SET DEFAULT nextval('public.msip_grupo_id_seq'::regclass);
+ALTER TABLE ONLY public.msip_grupo ALTER COLUMN id SET DEFAULT nextval('public.mgrupo_id_seq'::regclass);
 
 
 --
@@ -6471,10 +6471,10 @@ CREATE UNIQUE INDEX index_usuario_on_reset_password_token ON public.usuario USIN
 
 
 --
--- Name: indice_sip_ubicacion_sobre_id_caso; Type: INDEX; Schema: public; Owner: -
+-- Name: indice_msip_ubicacion_sobre_id_caso; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX indice_sip_ubicacion_sobre_id_caso ON public.msip_ubicacion USING btree (id_caso);
+CREATE INDEX indice_msip_ubicacion_sobre_id_caso ON public.msip_ubicacion USING btree (id_caso);
 
 
 --
