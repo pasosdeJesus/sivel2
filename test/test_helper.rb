@@ -1,7 +1,9 @@
 ENV['RAILS_ENV'] ||= 'test'
 
+require 'zeitwerk'
 require 'simplecov'
-SimpleCov.start 'rails'
+Zeitwerk::Loader.eager_load_all # buscando que simplecov cubra más
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
