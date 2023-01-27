@@ -9,7 +9,7 @@ Sip.setup do |config|
   if ENV["HEROKU_POSTGRESQL_MAUVE_URL"]
     config.ruta_anexos = "#{Rails.root}/tmp/"
   end
-  config.titulo = ENV.fetch('SIP_TITULO', "SIVeL") + " #{Sivel2Gen::VERSION}"
+  config.titulo = ENV.fetch('SIP_TITULO', "SIVeL").dup.force_encoding("UTF-8") + " #{Sivel2Gen::VERSION}"
 
   config.descripcion = "Sistema de Información de Violencia Política en Línea"
   config.codigofuente = "https://github.com/pasosdeJesus/sivel2"
