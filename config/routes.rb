@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
     devise_scope :usuario do
       get 'sign_out' => 'devise/sessions#destroy'
+      get 'salir' => 'devise/sessions#destroy',
+        as: :terminar_sesion
+
+      post 'usuarios/iniciar_sesion', to: 'devise/sessions#create'
+      get 'usuarios/iniciar_sesion', to: 'devise/sessions#new',
+        as: :iniciar_sesion
 
       # El siguiente para superar mala generación del action en el formulario
       # cuando se monta en sitio diferente a / y se autentica mal (genera 
