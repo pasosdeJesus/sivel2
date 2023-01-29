@@ -95,7 +95,7 @@ FileUtils.chdir RAIZ_AP do
         ord += "CONFIG_HOSTS=\"#{ENV['CONFIG_HOSTS'].downcase}\" "
       end
       ord += "RAILS_RELATIVE_URL_ROOT='' "
-      ord += "bin/rails s "
+      ord += "ruby --jit bin/rails s "
       if ENV['PUERTODES'] != ''
         ord += "-p #{ENV['PUERTODES']} "
       end
