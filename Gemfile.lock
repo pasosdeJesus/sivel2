@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b4aeedcc643f40eeab4d101964fe07ef4b05d3ca
+  revision: 48c6c9c1fa3fa3b31a8e61783910c17b2bcc29e6
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 9faab320678ded1a70a089e442a2fbbf999ace9b
+  revision: 1359dec5ebc19f738a4d9a5fbfdfb34a2ed6bdbc
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 45b8d540df58a9c3b9df8ce6ccfb22160cf0dd65
+  revision: 1217cafabb5252fd6e3fac7291236a0aa748ff8e
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 07aadec2edf6716a74e804649f5d3f28805b520f
+  revision: bf37cda380ecb2f1fb7bb25fd21ab8bbd3e1d82d
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -207,7 +207,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -235,7 +235,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.0)
+    nokogiri (1.14.1)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -306,13 +306,13 @@ GEM
       thor (~> 1.0)
     raindrops (0.20.0)
     rake (13.0.6)
-    redcarpet (3.5.1)
+    redcarpet (3.6.0)
     regexp_parser (2.6.2)
     reline (0.3.2)
       io-console (~> 0.5)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
+    responders (3.1.0)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rexml (3.2.5)
     rspreadsheet (0.5.3)
       andand (>= 1.3)
@@ -333,7 +333,7 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
-    simple_form (5.1.0)
+    simple_form (5.2.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     simplecov (0.17.1)
@@ -439,4 +439,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.5
+   2.4.6
