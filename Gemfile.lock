@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 32a02acc10fb2834561ab5627fcf7375a0be3628
+  revision: f657f97c372393633d2096e1ed9e15e01e64f8ae
   branch: main
   specs:
     apo214 (2.2.0.beta1)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 84099b7b866c6dd16c3f5cced82315007d31a260
+  revision: 8e76cdf6e82a77f3bb9834085d3d35cea06529f4
   branch: main
   specs:
     heb412_gen (2.2.0.alfa1)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: c80276ac1a0710728fb1e02864c41d658b3e33c8
+  revision: 771fca4e79efb2796da694c7e5df0e17466a212e
   branch: main
   specs:
     mr519_gen (2.2.0.beta1)
@@ -64,10 +64,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 86ddbe0cb764c9e32b211d2b11c4a5427aef2058
+  revision: 1580edcff46d6f8b6176a9cb3e2f49da54d0e780
   branch: main
   specs:
-    msip (2.2.0.alfa3)
+    msip (2.2.0.beta1)
       cancancan (~> 3)
       devise (~> 4)
       devise-i18n (~> 1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 048f24bb3e1faa422adde2bc66e5e6984441f655
+  revision: d594d6aa7783264ac351bbd3a75b4858f0072091
   branch: main
   specs:
     sivel2_gen (2.2.0.beta1)
@@ -160,7 +160,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    acts_as_list (1.0.4)
+    acts_as_list (1.1.0)
       activerecord (>= 4.2)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
@@ -278,7 +278,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -303,7 +303,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.0)
+    nokogiri (1.14.1)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -366,14 +366,14 @@ GEM
       zeitwerk (~> 2.5)
     raindrops (0.20.0)
     rake (13.0.6)
-    redcarpet (3.5.1)
+    redcarpet (3.6.0)
     redis (4.8.0)
     regexp_parser (2.6.2)
     reline (0.3.2)
       io-console (~> 0.5)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
+    responders (3.1.0)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rexml (3.2.5)
     rspreadsheet (0.5.3)
       andand (>= 1.3)
@@ -393,7 +393,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_form (5.1.0)
+    simple_form (5.2.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     simplecov (0.17.1)
@@ -418,7 +418,7 @@ GEM
     tilt (2.0.11)
     timeout (0.3.1)
     ttfunk (1.7.0)
-    turbo-rails (1.3.2)
+    turbo-rails (1.3.3)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
@@ -511,4 +511,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.5
+   2.4.6
