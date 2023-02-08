@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 0b9bd0e77b8b4fb256ce25d639f437ad2dd88ccf
+  revision: b6aa68b7d964e54ceaf185b2b92b0cdd15244f27
   branch: v2.1
   specs:
     apo214 (2.1a1)
