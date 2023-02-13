@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: b6aa68b7d964e54ceaf185b2b92b0cdd15244f27
+  revision: d4c6d53cb6aff035f981975ef3d4cd833ef81489
   branch: v2.1
   specs:
     apo214 (2.1a1)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: ab6cc862d9076be13756f4560467099c6e61db73
+  revision: 975b20e437ed77d8c994b85054d62791fdf20bfc
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: cb86fe51ccde572b771ab00826a9d47edfd88341
+  revision: 10c5ecad4778f16e778dad7d1403c69fb6fdd736
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: f8928b6deaab66a615ef2c4c3c8e1d5d6cf9e7c4
+  revision: db5b66b4973c84e5333042e404ba1f2804cff750
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -320,7 +320,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.0.2)
+    puma (6.1.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -365,8 +365,8 @@ GEM
     raindrops (0.20.0)
     rake (13.0.6)
     redcarpet (3.6.0)
-    redis (4.8.0)
-    regexp_parser (2.6.2)
+    redis (4.8.1)
+    regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
     responders (3.1.0)
@@ -444,7 +444,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   x86_64-openbsd
