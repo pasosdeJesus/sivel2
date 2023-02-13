@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 48c6c9c1fa3fa3b31a8e61783910c17b2bcc29e6
+  revision: 5bde57b1e381c452287334a46196c0b17a66bf8b
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1359dec5ebc19f738a4d9a5fbfdfb34a2ed6bdbc
+  revision: 52c2cd8f46ca4d6069c16ec6454dbf1b9935efca
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: bf37cda380ecb2f1fb7bb25fd21ab8bbd3e1d82d
+  revision: bfee25f089f28f256449305e086cfc78934b0dca
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -260,7 +260,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.0.2)
+    puma (6.1.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -307,7 +307,7 @@ GEM
     raindrops (0.20.0)
     rake (13.0.6)
     redcarpet (3.6.0)
-    regexp_parser (2.6.2)
+    regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
     responders (3.1.0)
@@ -383,7 +383,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   x86_64-openbsd
