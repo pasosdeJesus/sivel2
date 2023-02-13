@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 456cb570e60679967aaf4b036bf46b344f86408a
+  revision: a33144467261c0899f3420cb9f92db38f29fb463
   branch: main
   specs:
     apo214 (2.2.0.beta1)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 789984060580479cae4f083bcaf47b59b47d039e
+  revision: 75b43073f9836691ea45a90b23e0b0c8e54b81ae
   branch: main
   specs:
     heb412_gen (2.2.0.alfa1)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e0109fe64d450a587e797817377a1a80eb3b5a25
+  revision: 8b35299dbf000a1f11ddf6ace9a178fccca56d7f
   branch: main
   specs:
     mr519_gen (2.2.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: b65fc7d91decdc9a238b206a2785d6d36f1fdf31
+  revision: f5a5e59d51cd2f3bc818e39cd6f7d3fd5238ad7e
   branch: main
   specs:
     msip (2.2.0.beta1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 8107b0c3ef34a736e3c87220d99c7cd238946279
+  revision: f8438d674742777adb749026390b07ef0e39d61f
   branch: main
   specs:
     sivel2_gen (2.2.0.beta1)
@@ -322,7 +322,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.0.2)
+    puma (6.1.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -367,7 +367,7 @@ GEM
     raindrops (0.20.0)
     rake (13.0.6)
     redcarpet (3.6.0)
-    redis (4.8.0)
+    redis (4.8.1)
     regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
@@ -446,7 +446,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   x86_64-openbsd
