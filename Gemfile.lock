@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2a6c5ef28c3c76eaba7f59b6033af67bf76995c8
+  revision: cf349b757b47e98e2584d5255efac9bf6775fe14
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 975b20e437ed77d8c994b85054d62791fdf20bfc
+  revision: c9c5324b08afd4de95085286db3b7e3afa24975a
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 10c5ecad4778f16e778dad7d1403c69fb6fdd736
+  revision: f91631b545e7c54eabf9e3d645b81204fc022c3b
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: db5b66b4973c84e5333042e404ba1f2804cff750
+  revision: 0de091cbd4c09dfe30226f02cd0846861cb4da14
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -210,7 +210,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.2)
+    devise-i18n (1.10.3)
       devise (>= 4.8.0)
     docile (1.4.0)
     dotenv (2.8.1)
@@ -301,7 +301,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.1)
+    nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -324,7 +324,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
-    rack-cors (1.1.1)
+    rack-cors (2.0.0)
       rack (>= 2.0.0)
     rack-test (2.0.2)
       rack (>= 1.3)
@@ -414,7 +414,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.1)
     tilt (2.0.11)
-    timeout (0.3.1)
+    timeout (0.3.2)
     ttfunk (1.7.0)
     turbo-rails (1.3.3)
       actionpack (>= 6.0.0)
@@ -509,4 +509,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.6
+   2.4.7
