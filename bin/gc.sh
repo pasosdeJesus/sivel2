@@ -75,6 +75,9 @@ if (test "$SINMIG" != "1") then {
 } fi;
 
 bin/regresion.sh
+if (test "$?" != "0") then {
+  exit 1;
+} fi;
 
 
 (cd $rutaap; RAILS_ENV=test bin/rails db:schema:dump)
