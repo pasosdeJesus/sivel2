@@ -44,10 +44,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 63e413bbf27e06d33680eb0f25e3b3a504bd58ef
+  revision: 4b604ecbc4e5a499ebb9e11e6f96dbe94fb6c581
   branch: main
   specs:
-    heb412_gen (2.2.0.alfa1)
+    heb412_gen (2.2.0.beta1)
       mr519_gen
       msip
       redcarpet
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: b707fab42611385b249f3474e2a219d96c263864
+  revision: 693935ba84c86a3633d6cc86012a4d313f238017
   branch: main
   specs:
     mr519_gen (2.2.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 5deb7f4402b33cbc0437bffa34ed4e53b0a59b44
+  revision: 4351000979a4c5d96dbacb81390ef2bd16d3d055
   branch: main
   specs:
     msip (2.2.0.beta1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 9cd8be653f4cfc20ba861442571623ddc4e5f74e
+  revision: 08685aa3de819103a775e4e7e0594fb5b6d3f393
   branch: main
   specs:
     sivel2_gen (2.2.0.beta1)
@@ -197,7 +197,7 @@ GEM
     coffee-script-source (1.12.2)
     color (1.8)
     colorize (0.8.1)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     crass (1.0.6)
     cuprite (0.14.3)
       capybara (~> 3.0)
@@ -311,7 +311,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pdf-core (0.9.0)
-    pg (1.4.5)
+    pg (1.4.6)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -321,7 +321,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.1.0)
+    puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -363,7 +363,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    raindrops (0.20.0)
+    raindrops (0.20.1)
     rake (13.0.6)
     redcarpet (3.6.0)
     redis (4.8.1)
@@ -418,7 +418,7 @@ GEM
     tilt (2.1.0)
     timeout (0.3.2)
     ttfunk (1.7.0)
-    turbo-rails (1.3.3)
+    turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
