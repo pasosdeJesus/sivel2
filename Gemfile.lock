@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 8ebeda4bd33f58203edf37ea3bf3db78faa39e94
+  revision: 97642b84d37bd414299ce00d5efd0f17a7a963fa
   branch: main
   specs:
     apo214 (2.2.0.beta1)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 4b604ecbc4e5a499ebb9e11e6f96dbe94fb6c581
+  revision: 81ed3f2716f31b29afeceae943b959eadff63ab0
   branch: main
   specs:
     heb412_gen (2.2.0.beta1)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 693935ba84c86a3633d6cc86012a4d313f238017
+  revision: bcab6b78966944b74a4bf78f1e2b9333a660a6ae
   branch: main
   specs:
     mr519_gen (2.2.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 4351000979a4c5d96dbacb81390ef2bd16d3d055
+  revision: e568e5a3de8227e41d54e74a4aa9391a34c8326d
   branch: main
   specs:
     msip (2.2.0.beta1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 08685aa3de819103a775e4e7e0594fb5b6d3f393
+  revision: d38b76c31e62a1c9fd79ed7d56bec4b100c18c5b
   branch: main
   specs:
     sivel2_gen (2.2.0.beta1)
@@ -175,7 +175,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
-    cancancan (3.4.0)
+    cancancan (3.5.0)
     capybara (3.38.0)
       addressable
       matrix
@@ -290,8 +290,8 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
-    minitest (5.17.0)
-    msgpack (1.6.0)
+    minitest (5.18.0)
+    msgpack (1.6.1)
     net-imap (0.3.4)
       date
       net-protocol
@@ -324,7 +324,7 @@ GEM
     puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.2)
+    rack (2.2.6.3)
     rack-cors (2.0.0)
       rack (>= 2.0.0)
     rack-test (2.0.2)
