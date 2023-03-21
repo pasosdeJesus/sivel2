@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 600712dac83f694f80f73974d792b49d3b11298a
+  revision: 41962e2e50b9d46b9f807675343887b4d3676b8a
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 97814dd0668e950b01b2297d3bc3463ba11f0641
+  revision: a0e60304b494f498e2e684f2542187ec77ee9848
   branch: v2.1
   specs:
     apo214 (2.1a1)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: ddfa5d06de9154a2be23490301354c3a3f81567f
+  revision: f3e54a941daa9d4f09d8c85b340618b4c275c197
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 7141da9282e0ec9066b239d2316d86a4d105478f
+  revision: 9159df0d315040ced396497e34effa1d8f905a41
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 2209fbc400c9fee6245d01399e769803a173b160
+  revision: be4a68a14e29ab07ee83c4b4e3406f20faa3bd1f
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -420,7 +420,7 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.11.4)
+    twitter_cldr (6.11.5)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -509,4 +509,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.8
+   2.4.9
