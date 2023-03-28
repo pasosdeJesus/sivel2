@@ -1,17 +1,19 @@
 #!/bin/sh
-# Actualiza dependencias, revisa errores comunes, 
+# Actualiza dependencias, revisa errores comunes,
 # ejecuta pruebas y envía a repositorio
 
 if (test -f ".env") then {
   rutaap="./"
 } elif (test -f "test/dummy/.env") then {
-  rutaap="test/dummy"
+  rutaap="test/dummy/"
 } else {
   echo "No se determino ruta de aplicación. Falta archivo .env"
   exit 1;
 } fi;
 
 echo "Ruta de la aplicación: $rutaap"
+
+. ${rutaap}.env
 
 s=`grep -B 1 "^ *path" Gemfile 2> /dev/null`
 if (test "$?" = "0") then {
@@ -43,9 +45,11 @@ if (test "$SINAC" != "1") then {
   if (test "$?" != "0") then {
     exit 1;
   } fi;
-  (cd $rutaap; CXX=c++ yarn upgrade)
-  if (test "$?" != "0") then {
-    exit 1;
+  if (test "$MSIP_API" != "1") then {
+    (cd $rutaap; CXX=c++ yarn upgrade)
+    if (test "$?" != "0") then {
+      exit 1;
+    } fi;
   } fi;
 } fi;
 
@@ -55,17 +59,20 @@ if (test "$SININS" != "1") then {
     exit 1;
   } fi;
 
-  echo "\n== Enlaza controladores stimulus de motores =="
-  (cd $rutaap; bin/rails msip:stimulus_motores)
-  if (test "$?" != "0") then {
-    exit 1;
-  } fi;
+  if (test "$MSIP_API" != "1") then {
+    echo "\n== Enlaza controladores stimulus de motores =="
+    (cd $rutaap; bin/rails msip:stimulus_motores)
+    if (test "$?" != "0") then {
+      exit 1;
+    } fi;
 
-  (cd $rutaap; CXX=c++ yarn install; bin/rails assets:precompile)
-  if (test "$?" != "0") then {
-    exit 1;
-  } fi;
-} fi;
+    (cd $rutaap; CXX=c++ yarn install; bin/rails assets:precompile)
+    if (test "$?" != "0") then {
+      exit 1;
+    } fi;
+  } fi; # MSIP_API
+
+} fi; # SININS
 
 if (test "$SINMIG" != "1") then {
   (cd $rutaap; bin/rails db:migrate msip:indices db:schema:dump)

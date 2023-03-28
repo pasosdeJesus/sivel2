@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 105ad4970f18f9c06f089b7de29660a44cbb85f2
+  revision: 8ce0d2400d1294083081e063d1cceea9926cb15b
   branch: main
   specs:
     apo214 (2.2.0.beta1)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 15444b92ea7eb02d0eaac6c6f71eeb0332b4b2a3
+  revision: 62c5c8f94e9edf167d27c3ee940361c0a644e320
   branch: main
   specs:
     heb412_gen (2.2.0.beta1)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 436096e174a2ef021fd5cb5803e091ded6bbd22f
+  revision: e239bb3b56f1a253f478945b36c33f4227eacd21
   branch: main
   specs:
     mr519_gen (2.2.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 7fb23f69a665db884eeed5f7b87a07ace28309f4
+  revision: ce832af4e98368bf7a71a2da09f8bb9bd3b6f7e6
   branch: main
   specs:
     msip (2.2.0.beta1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 0b4d9d8a736e1c424541cdf785ec19b8e5580834
+  revision: 4ec5023d3249dfe70bf83d6d05643fefa323fad1
   branch: main
   specs:
     sivel2_gen (2.2.0.beta1)
@@ -368,7 +368,7 @@ GEM
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.7.0)
-    reline (0.3.2)
+    reline (0.3.3)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
@@ -388,7 +388,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.8.1)
+    selenium-webdriver (4.8.3)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -511,4 +511,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.9
+   2.4.10
