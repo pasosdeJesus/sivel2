@@ -1498,6 +1498,34 @@ CREATE TABLE public.sivel2_gen_categoria (
 
 
 --
+-- Name: sivel2_gen_profesion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_profesion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_profesion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_profesion (
+    id integer DEFAULT nextval('public.sivel2_gen_profesion_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT profesion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sivel2_gen_supracategoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1537,22 +1565,19 @@ CREATE VIEW public.cvt1 AS
     acto.id_categoria,
     supracategoria.id_tviolencia,
     categoria.nombre AS categoria,
-    ubicacion.id_departamento,
-    departamento.id_deplocal AS departamento_divipola,
-    departamento.nombre AS departamento_nombre,
-    ubicacion.id_municipio,
-    ((departamento.id_deplocal * 1000) + municipio.id_munlocal) AS municipio_divipola,
-    municipio.nombre AS municipio_nombre
-   FROM ((((((((public.sivel2_gen_acto acto
+        CASE
+            WHEN (persona.sexo = 'F'::bpchar) THEN 'FEMENINO'::text
+            WHEN (persona.sexo = 'M'::bpchar) THEN 'MASCULINO'::text
+            ELSE 'SIN INFORMACIÓN'::text
+        END AS sexo
+   FROM ((((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
      JOIN public.msip_persona persona ON ((persona.id = acto.id_persona)))
-     LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
-     LEFT JOIN public.msip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
-     LEFT JOIN public.msip_municipio municipio ON ((ubicacion.id_municipio = municipio.id)))
-  WHERE (categoria.id = ANY (ARRAY[777, 427, 527, 397, 297, 197, 396, 296, 196, 426, 776, 526, 45, 25, 35, 15, 73, 55, 65, 92, 40, 50, 67, 801, 90, 37, 26, 46, 57, 16, 80, 85, 66, 64, 703, 706, 59, 49, 18, 38, 28, 401, 501, 904, 502, 231, 17, 331, 402, 705, 62, 906, 104, 713, 101, 76, 11, 302, 21, 902, 903, 34, 102, 27, 14, 24, 301, 10, 20, 30, 772, 522, 392, 292, 192, 422, 63, 93, 910, 295, 195, 425, 775, 525, 395, 714, 78, 524, 194, 424, 774, 394, 294, 89, 905, 86, 701, 68, 341, 241, 141, 715, 704, 702, 33, 53, 43, 13, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 293, 523, 393, 193, 773, 423, 58, 48, 75, 69, 41, 74, 12, 36, 72, 56, 22, 47, 291, 421, 521, 191, 391, 771, 520, 29, 39, 19, 77, 420, 712]));
+     LEFT JOIN public.sivel2_gen_profesion profesion ON ((victima.id_profesion = profesion.id)))
+  WHERE ((caso.fecha >= '2021-01-01'::date) AND (caso.fecha <= '2021-06-30'::date) AND ((supracategoria.id_tviolencia)::text = 'B'::text) AND (categoria.id = ANY (ARRAY[777, 427, 527, 397, 297, 197, 396, 296, 196, 426, 776, 526, 45, 25, 35, 15, 73, 55, 65, 92, 40, 50, 67, 801, 90, 37, 26, 46, 57, 16, 80, 85, 66, 64, 703, 706, 59, 49, 18, 38, 28, 401, 501, 904, 502, 231, 17, 331, 402, 705, 62, 906, 104, 713, 101, 76, 11, 302, 21, 902, 903, 34, 102, 27, 14, 24, 301, 10, 20, 30, 772, 522, 392, 292, 192, 422, 63, 93, 910, 295, 195, 425, 775, 525, 395, 714, 78, 524, 194, 424, 774, 394, 294, 89, 905, 86, 701, 68, 341, 241, 141, 715, 704, 702, 33, 53, 43, 13, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 293, 523, 393, 193, 773, 423, 58, 48, 75, 69, 41, 74, 12, 36, 72, 56, 22, 47, 291, 421, 521, 191, 391, 771, 520, 29, 39, 19, 77, 420, 712])));
 
 
 --
@@ -4380,34 +4405,6 @@ CREATE TABLE public.sivel2_gen_pconsolidado (
     updated_at timestamp without time zone,
     observaciones character varying(500),
     CONSTRAINT parametros_reporte_consolidado_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: sivel2_gen_profesion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_profesion_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_profesion; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_profesion (
-    id integer DEFAULT nextval('public.sivel2_gen_profesion_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT profesion_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
