@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e239bb3b56f1a253f478945b36c33f4227eacd21
+  revision: 4addd31d8762753879f16a9ca4c66a4e3f0da2ea
   branch: main
   specs:
     mr519_gen (2.2.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: ce832af4e98368bf7a71a2da09f8bb9bd3b6f7e6
+  revision: 523386e8531dfd9d0731ff3e96b57e109f64b1ae
   branch: main
   specs:
     msip (2.2.0.beta1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 4ec5023d3249dfe70bf83d6d05643fefa323fad1
+  revision: 5050cffd7fb769e3b1d282205fee3cadca5cf377
   branch: main
   specs:
     sivel2_gen (2.2.0.beta1)
@@ -162,7 +162,7 @@ GEM
       tzinfo (~> 2.0)
     acts_as_list (1.1.0)
       activerecord (>= 4.2)
-    addressable (2.8.1)
+    addressable (2.8.3)
       public_suffix (>= 2.0.2, < 6.0)
     andand (1.3.3)
     babel-source (5.8.35)
@@ -176,7 +176,7 @@ GEM
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.5.0)
-    capybara (3.38.0)
+    capybara (3.39.0)
       addressable
       matrix
       mini_mime (>= 0.1.3)
@@ -203,10 +203,10 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
     date (3.3.3)
-    debug (1.7.1)
+    debug (1.7.2)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
-    devise (4.9.0)
+    devise (4.9.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -274,7 +274,7 @@ GEM
       railties (>= 6.0.0)
     kgio (2.11.4)
     libxml-ruby (4.0.0)
-    loofah (2.19.1)
+    loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.1)
@@ -291,7 +291,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
     minitest (5.18.0)
-    msgpack (1.6.1)
+    msgpack (1.7.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -301,7 +301,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -321,7 +321,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.1.1)
+    puma (6.2.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
@@ -388,7 +388,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.8.3)
+    selenium-webdriver (4.8.6)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
