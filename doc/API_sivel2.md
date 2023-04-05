@@ -344,7 +344,7 @@ Ruta utilizada para listar ubicaciones según parámetro de tabla que puede ser 
 
 ##### Ejemplo url
 > ```javascript
->  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/casos/lista?tabla="departamento"&id_pais=170
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/casos/lista?tabla="departamento"&pais_id=170
 > ```
 
 ##### Ejemplo de respuestas
@@ -361,7 +361,7 @@ La respuesta es una página HTML y con el listado de ubicaciones según los par�
 Ruta utilizada para agregar actos dentro de la creación de un caso, actualmente no puede ser utilizada externamente del formulario de casos, sin embargo están establecidos permisos específicos para hacer uso del método.
 
 ##### Parámetros 
-Sivel2Gen::Acto(id_presponsable: integer, id_categoria: integer, id_persona: integer, id_caso: integer, created_at: datetime, updated_at: datetime, id: integer)
+Sivel2Gen::Acto(presponsable_id: integer, categoria_id: integer, persona_id: integer, caso_id: integer, created_at: datetime, updated_at: datetime, id: integer)
 ##### Control de Acceso
 Únicamente pueden crear actos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
 
@@ -383,7 +383,7 @@ id_acto: integer
 Ruta utilizada para agregar actos colectivos dentro de la creación de un caso, actualmente no puede ser utilizada externamente del formulario de casos, sin embargo están establecidos permisos específicos para hacer uso del método.
 
 ##### Parámetros 
-Sivel2Gen::Actocolectivo(id_presponsable: integer, id_categoria: integer, id_grupoper: integer, id_caso: integer, created_at: datetime, updated_at: datetime, id: integer)
+Sivel2Gen::Actocolectivo(presponsable_id: integer, categoria_id: integer, grupoper_id: integer, caso_id: integer, created_at: datetime, updated_at: datetime, id: integer)
 
 ##### Control de Acceso
 Únicamente pueden crear actos colectivos usuarios autenticados con rol administrador y con rol operador perteneciente a grupo analista de casos.
@@ -415,7 +415,7 @@ id_actocolectivo: integer
 
 > | Parámetro    | Tipo y Accesos                   | Ejemplo	  | 
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `:busid_caso`         | Integer / CP / AUT      | Víctimas en caso 154: `filtro[busid_caso]=154`
+> | `:buscaso_id`         | Integer / CP / AUT      | Víctimas en caso 154: `filtro[buscaso_id]=154`
 > | `:busfecha_caso_localizadaini`         |String  / AUT      |Fecha de inicio es el 1 de Enero:  `filtro[busfecha_caso_localizadaini]=2018-01-01`
 > | `:busfecha_caso_localizadafin`         |String  / AUT      |Fecha de fin es el 31 de Enero:  `filtro[busfecha_caso_localizadafin]=2018-01-31`
 > | `:busubicacion_caso`         |String / AUT       | Ubicación de caso de víctima es Caldas: `filtro[busubicacion_caso]=CALDAS`
@@ -442,7 +442,7 @@ La respuesta a esta petición es un reporte html de casos por víctima, donde ap
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/victimas?filtro[busid_caso]=&filtro[busfecha_caso_localizadaini]=&filtro[busfecha_caso_localizadafin]=&filtro[busubicacion_caso]=&filtro[busnombre]=Juan&filtro[buspconsolidado_1]=Si&filtro[buspconsolidado_2]=Todos&filtro[buspconsolidado_3]=Todos&filtro[buspconsolidado_4]=Todos&filtro[buspconsolidado_5]=Todos&filtro[buspconsolidado_6]=Todos&filtro[buspconsolidado_7]=Todos&filtro[buspconsolidado_8]=Todos&filtro[buspconsolidado_9]=Todos&filtro[buspconsolidado_10]=Todos&filtro[buspconsolidado_11]=Todos&filtro[buspconsolidado_12]=Todos&filtro[buspconsolidado_13]=Todos&filtro[buspconsolidado_14]=Todos&filtro[buspconsolidado_15]=Todos&filtro[buspconsolidado_16]=Todos&filtro[buspconsolidado_17]=Todos&filtro[buspconsolidado_18]=Todos&filtro[buspconsolidado_19]=Todos&filtro[buspconsolidado_20]=Todos&filtro[buspconsolidado_21]=Todos&filtro[buspconsolidado_22]=Todos&filtro[buspconsolidado_23]=Todos&filtro[buspconsolidado_24]=Todos&filtro[buspconsolidado_25]=Todos&filtro[buspconsolidado_26]=Todos&filtro[buspconsolidado_27]=Todos&filtro[buspconsolidado_28]=Todos&filtro[buspconsolidado_29]=Todos&filtro[buspconsolidado_30]=Todos&filtro[buspconsolidado_31]=Todos&filtro[buspconsolidado_32]=Todos&filtro[buspconsolidado_129]=Todos&filtro[buspconsolidado_130]=Todos&filtro[buspconsolidado_131]=Todos&filtrar=Filtrar&filtro[disgenera]=
+>  curl -X GET http://rbd.nocheyniebla.org:3400/sivel2/victimas?filtro[buscaso_id]=&filtro[busfecha_caso_localizadaini]=&filtro[busfecha_caso_localizadafin]=&filtro[busubicacion_caso]=&filtro[busnombre]=Juan&filtro[buspconsolidado_1]=Si&filtro[buspconsolidado_2]=Todos&filtro[buspconsolidado_3]=Todos&filtro[buspconsolidado_4]=Todos&filtro[buspconsolidado_5]=Todos&filtro[buspconsolidado_6]=Todos&filtro[buspconsolidado_7]=Todos&filtro[buspconsolidado_8]=Todos&filtro[buspconsolidado_9]=Todos&filtro[buspconsolidado_10]=Todos&filtro[buspconsolidado_11]=Todos&filtro[buspconsolidado_12]=Todos&filtro[buspconsolidado_13]=Todos&filtro[buspconsolidado_14]=Todos&filtro[buspconsolidado_15]=Todos&filtro[buspconsolidado_16]=Todos&filtro[buspconsolidado_17]=Todos&filtro[buspconsolidado_18]=Todos&filtro[buspconsolidado_19]=Todos&filtro[buspconsolidado_20]=Todos&filtro[buspconsolidado_21]=Todos&filtro[buspconsolidado_22]=Todos&filtro[buspconsolidado_23]=Todos&filtro[buspconsolidado_24]=Todos&filtro[buspconsolidado_25]=Todos&filtro[buspconsolidado_26]=Todos&filtro[buspconsolidado_27]=Todos&filtro[buspconsolidado_28]=Todos&filtro[buspconsolidado_29]=Todos&filtro[buspconsolidado_30]=Todos&filtro[buspconsolidado_31]=Todos&filtro[buspconsolidado_32]=Todos&filtro[buspconsolidado_129]=Todos&filtro[buspconsolidado_130]=Todos&filtro[buspconsolidado_131]=Todos&filtrar=Filtrar&filtro[disgenera]=
 > ```
 ##### Ejemplos de respuestas
 - HTML:
@@ -453,26 +453,26 @@ La respuesta a esta petición es un reporte html de casos por víctima, donde ap
 - JSON
 Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar algunas generalidades o elementos básicos de la víctima como lo son:
 
-	- id_persona: identificador de la persona, tabla msip_persona a la que pertenece la víctima.
+	- persona_id: identificador de la persona, tabla msip_persona a la que pertenece la víctima.
 
-	- id_caso: identificador del caso al cual pertenece la víctima.
+	- caso_id: identificador del caso al cual pertenece la víctima.
 
 	- hijos: número de hijos de la víctima.
 
-	- id_profesion: identificación de la tabla sivel2_gen_profesion de la profesión que tiene la vćitima.
-	- id_rangoedad: identificación de la tabla sivel2_gen_rangoedad a la cual pertenece el rango de edad de la víctima
-	- id_filiacion: identificación de la filiación política de la víctima.
-	- id_sectorsocial: identificación del sector social de la víctima
-	- id_organizacion: identificiación de la organización a la cual pertenece la víctima
-	- id_vinculoestado: identificación del vínculo con el estado que tiene la víctima
+	- profesion_id: identificación de la tabla sivel2_gen_profesion de la profesión que tiene la vćitima.
+	- rangoedad_id: identificación de la tabla sivel2_gen_rangoedad a la cual pertenece el rango de edad de la víctima
+	- filiacion_id: identificación de la filiación política de la víctima.
+	- sectorsocial_id: identificación del sector social de la víctima
+	- organizacion_id: identificiación de la organización a la cual pertenece la víctima
+	- vinculoestado_id: identificación del vínculo con el estado que tiene la víctima
 	- organizacionarmada: Organización armada a la que pertenece la víctima
 	- anotaciones: anotaciones sobre la víctima
-	- id_etnia: identificación de la etnia de la víctima
-	- id_iglesia: identificación de la iglesia de la víctima
+	- etnia_id: identificación de la etnia de la víctima
+	- iglesia_id: identificación de la iglesia de la víctima
 	- orientacionsexual: Orientación sexual de la víctima
 	
 	```json
-	[{"id_persona":326,"id_caso":932,"hijos":null,"id_profesion":22,"id_rangoedad":4,"id_filiacion":10,"id_sectorsocial":15,"id_organizacion":16,"id_vinculoestado":38,"organizacionarmada":35,"anotaciones":"","id_etnia":1,"id_iglesia":1,"orientacionsexual":"S","created_at":"2020-07-23T16:10:57.041-05:00","updated_at":"2020-07-23T16:11:28.060-05:00","id":246}]
+	[{"persona_id":326,"caso_id":932,"hijos":null,"profesion_id":22,"rangoedad_id":4,"filiacion_id":10,"sectorsocial_id":15,"organizacion_id":16,"vinculoestado_id":38,"organizacionarmada":35,"anotaciones":"","etnia_id":1,"iglesia_id":1,"orientacionsexual":"S","created_at":"2020-07-23T16:10:57.041-05:00","updated_at":"2020-07-23T16:11:28.060-05:00","id":246}]
 	```
 </details>
 
@@ -540,13 +540,13 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 	- mesnac: Mes de nacimiento
 	- dianac: Día de nacimiento
 	- numerodocumento: Número de documento
-	- id_pais: Identificación del país de nacimiento
-	- id_departamento: Identificación del departamento de nacimiento
-	- id_municipio: Identificación del municipio de nacimiento
-	- id_clase: Identificación del centro poblado de nacimiento
+	- pais_id: Identificación del país de nacimiento
+	- departamento_id: Identificación del departamento de nacimiento
+	- municipio_id: Identificación del municipio de nacimiento
+	- clase_id: Identificación del centro poblado de nacimiento
 	
 	```json
-	[{"id":253110,"nombres":"Alejo","apellidos":"Cruz","anionac":1998,"mesnac":3,"dianac":5,"sexo":"S","numerodocumento":"104524","created_at":"2021-06-22T10:09:25.262-05:00","updated_at":"2021-06-22T10:09:25.262-05:00","id_pais":170,"nacionalde":null,"tdocumento_id":1,"id_departamento":null,"id_municipio":null,"id_clase":null}]
+	[{"id":253110,"nombres":"Alejo","apellidos":"Cruz","anionac":1998,"mesnac":3,"dianac":5,"sexo":"S","numerodocumento":"104524","created_at":"2021-06-22T10:09:25.262-05:00","updated_at":"2021-06-22T10:09:25.262-05:00","pais_id":170,"nacionalde":null,"tdocumento_id":1,"departamento_id":null,"municipio_id":null,"clase_id":null}]
 	```
 </details>
 
@@ -557,13 +557,13 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
  Esta API permite traer datos de una persona organizado en un objeto JSON con los valores de id, nombres, apellidos, tipo de documento, numero de documento, sexo y fecha de nacimiento. Además si está autocompletando una persona de orgsocial persona agrega los campos de cargo y correo correspondiente.
  
 ##### Parámetros
-Esta api recibe dos parámetros, uno obligatorio id_persona que es la identificación de la persona en la tabla msip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
+Esta api recibe dos parámetros, uno obligatorio persona_id que es la identificación de la persona en la tabla msip_persona y otro parámetro opcional ac_orgsocial_persona con algún valor, cuando la persona hace parte de alguna organización social.  
 
 El único formato de respuesta establecido es Json. 
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/personas/datos.json?id_persona=253262&ac_orgsocial_persona=1
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/personas/datos.json?persona_id=253262&ac_orgsocial_persona=1
 > ```
 
 ##### Ejemplos de respuestas
@@ -586,7 +586,7 @@ El único formato de respuesta establecido es Json.
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/personas/remplazar?id_persona=94531&id_victima=98690```
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/personas/remplazar?persona_id=94531&victima_id=98690```
 
 ##### Ejemplos de respuestas
 Mensaje de ya existencia, o No layout correspondiente cuando se hace el remplazo 
@@ -688,7 +688,7 @@ Para listar y buscar grupo de personas existentes en la aplicación, esta dispue
 La estructura de los datos está dada por un objetos con dos propiedades: value, que es el nombre del grupo de personas e id, que es la identificación del grupo de personas. 
 
 ##### Parámetros
-Es necesario asignar dos parámetros: id_grupoper que hace referencia a la identificación del grupo de persona e id_victimacolectiva que hace referncia a la identificación de la víctima colectiva.  Esto buscará el grupo de persona correspondiente y  mostrará los casos en los que aparece dicho grupo.
+Es necesario asignar dos parámetros: grupoper_id que hace referencia a la identificación del grupo de persona e victima_idcolectiva que hace referncia a la identificación de la víctima colectiva.  Esto buscará el grupo de persona correspondiente y  mostrará los casos en los que aparece dicho grupo.
 
 El único formato de respuesta establecido es HTML. 
 
@@ -703,7 +703,7 @@ Disponible para administrador
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/gruposper/remplazar?id_grupoper=71573&id_victimacolectiva=14796
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/gruposper/remplazar?grupoper_id=71573&victima_idcolectiva=14796
 > ```
 ##### Ejemplos de respuestas
 
@@ -1151,7 +1151,7 @@ El listado de datos de una tabla básica puede obtenerse en dos formatos
 
 Y los objetos de respuesta JSON a esta petición son de la siguiente forma:
 ```json	
-[{"id":4,"fecha":"2021-11-10","codigositio":"191030","created_at":"2021-11-06T19:39:08.247-05:00","updated_at":"2021-11-10T16:28:41.551-05:00","nombreusuario":"sivel2","organizacion":"organizacion ejemplo ","ubicacionpre_id":null,"id_persona":101,"parentezco":"AB","grabacion":false,"telefono":"35468489","tipotestigo_id":null,"otrotipotestigo":"","hechos":"","ubicaespecifica":"","disposicioncadaveres_id":null,"otradisposicioncadaveres":"","tipoentierro_id":null,"min_depositados":null,"max_depositados":null,"fechadis":null,"horadis":"1999-12-31T19:39:00.000-05:00","insitu":true,"otrolubicacionpre_id":null,"detallesasesinato":"","nombrepropiedad":"","detallesdisposicion":"","nomcomoseconoce":"","elementopaisaje_id":null,"cobertura_id":null,"interatroprevias":"","interatroactuales":"","usoterprevios":"","usoteractuales":"","accesolugar":"","perfilestratigrafico":"","observaciones":"","procesoscul":"","desgenanomalia":"","evaluacionlugar":"","riesgosdanios":"","archivokml_id":null}]`
+[{"id":4,"fecha":"2021-11-10","codigositio":"191030","created_at":"2021-11-06T19:39:08.247-05:00","updated_at":"2021-11-10T16:28:41.551-05:00","nombreusuario":"sivel2","organizacion":"organizacion ejemplo ","ubicacionpre_id":null,"persona_id":101,"parentezco":"AB","grabacion":false,"telefono":"35468489","tipotestigo_id":null,"otrotipotestigo":"","hechos":"","ubicaespecifica":"","disposicioncadaveres_id":null,"otradisposicioncadaveres":"","tipoentierro_id":null,"min_depositados":null,"max_depositados":null,"fechadis":null,"horadis":"1999-12-31T19:39:00.000-05:00","insitu":true,"otrolubicacionpre_id":null,"detallesasesinato":"","nombrepropiedad":"","detallesdisposicion":"","nomcomoseconoce":"","elementopaisaje_id":null,"cobertura_id":null,"interatroprevias":"","interatroactuales":"","usoterprevios":"","usoteractuales":"","accesolugar":"","perfilestratigrafico":"","observaciones":"","procesoscul":"","desgenanomalia":"","evaluacionlugar":"","riesgosdanios":"","archivokml_id":null}]`
 ```
  </details>
  

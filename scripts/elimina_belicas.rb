@@ -5,30 +5,30 @@ ActiveRecord::Base.connection.execute <<-SQL
   DELETE FROM sivel2_gen_antecedente_combatiente;
   DELETE FROM combatiente_presponsable;
   DELETE FROM combatiente;
-  DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE id_categoria IN 
+  DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE categoria_id IN 
     (SELECT c.id FROM  sivel2_gen_categoria AS c JOIN 
     sivel2_gen_supracategoria AS s ON c.supracategoria_id=s.id WHERE 
-    id_tviolencia='C');
-  DELETE FROM sivel2_gen_actocolectivo WHERE id_categoria IN (SELECT c.id 
+    tviolencia_id='C');
+  DELETE FROM sivel2_gen_actocolectivo WHERE categoria_id IN (SELECT c.id 
     FROM  sivel2_gen_categoria AS c JOIN sivel2_gen_supracategoria AS s ON 
-    c.supracategoria_id=s.id WHERE id_tviolencia='C');
-  DELETE FROM sivel2_gen_acto WHERE id_categoria IN (SELECT c.id 
+    c.supracategoria_id=s.id WHERE tviolencia_id='C');
+  DELETE FROM sivel2_gen_acto WHERE categoria_id IN (SELECT c.id 
     FROM  sivel2_gen_categoria AS c JOIN sivel2_gen_supracategoria AS s ON 
-    c.supracategoria_id=s.id WHERE id_tviolencia='C');
+    c.supracategoria_id=s.id WHERE tviolencia_id='C');
 	DROP VIEW IF EXISTS nobelicas;
-	CREATE VIEW nobelicas AS (SELECT id_caso FROM sivel2_gen_acto) UNION 
-    (SELECT id_caso FROM sivel2_gen_actocolectivo) UNION 
-    (SELECT id_caso_presponsable/10000 FROM sivel2_gen_caso_categoria_presponsable) ORDER BY 1;
+	CREATE VIEW nobelicas AS (SELECT caso_id FROM sivel2_gen_acto) UNION 
+    (SELECT caso_id FROM sivel2_gen_actocolectivo) UNION 
+    (SELECT caso_presponsable_id/10000 FROM sivel2_gen_caso_categoria_presponsable) ORDER BY 1;
 
   DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE 
-    id_caso_presponsable IN 
+    caso_presponsable_id IN 
       (SELECT DISTINCT id from sivel2_gen_caso_presponsable WHERE
-      id_caso NOT IN (SELECT id_caso FROM nobelicas ORDER BY 1));
+      caso_id NOT IN (SELECT caso_id FROM nobelicas ORDER BY 1));
   UPDATE sivel2_gen_caso SET ubicacion_id=NULL WHERE
-    id NOT IN (SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1);
+    id NOT IN (SELECT DISTINCT caso_id FROM nobelicas ORDER BY 1);
   DELETE FROM sivel2_gen_antecedente_victima WHERE
-    id_victima IN (SELECT id FROM sivel2_gen_victima WHERE
-      id_caso NOT IN (SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1));
+    victima_id IN (SELECT id FROM sivel2_gen_victima WHERE
+      caso_id NOT IN (SELECT DISTINCT caso_id FROM nobelicas ORDER BY 1));
 SQL
 	puts ActiveRecord::Base.connection.execute("SELECT COUNT(*) FROM nobelicas")
 
@@ -43,8 +43,8 @@ SQL
 	  ActiveRecord::Base.connection.execute(
       "DELETE FROM #{nt} WHERE victimacolectiva_id IN
       (SELECT id FROM sivel2_gen_victimacolectiva WHERE
-        id_caso NOT IN 
-        (SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1))")
+        caso_id NOT IN 
+        (SELECT DISTINCT caso_id FROM nobelicas ORDER BY 1))")
   end
 
 	['sivel2_gen_caso_contexto', 
@@ -60,15 +60,15 @@ SQL
   'sivel2_gen_anexo_caso'].each do |nt|
     puts nt
 	  ActiveRecord::Base.connection.execute(
-      "DELETE FROM #{nt} WHERE id_caso NOT IN " \
-      "(SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1);")
+      "DELETE FROM #{nt} WHERE caso_id NOT IN " \
+      "(SELECT DISTINCT caso_id FROM nobelicas ORDER BY 1);")
   end
 	ActiveRecord::Base.connection.execute(
     "DELETE FROM sivel2_gen_caso_respuestafor WHERE caso_id NOT IN " \
-    "(SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1);")
+    "(SELECT DISTINCT caso_id FROM nobelicas ORDER BY 1);")
 	ActiveRecord::Base.connection.execute(
     "DELETE FROM sivel2_gen_caso WHERE id NOT IN " \
-    "(SELECT DISTINCT id_caso FROM nobelicas ORDER BY 1);")
+    "(SELECT DISTINCT caso_id FROM nobelicas ORDER BY 1);")
 	ActiveRecord::Base.connection.execute(
     "DELETE FROM msip_anexo WHERE id NOT IN " \
-    "(SELECT DISTINCT id_anexo FROM sivel2_gen_anexo_caso);")
+    "(SELECT DISTINCT anexo_id FROM sivel2_gen_anexo_caso);")

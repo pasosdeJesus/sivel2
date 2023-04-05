@@ -25,13 +25,13 @@ Sivel2Gen::AnexoCaso.all.each do |r|
     ultpor = por.to_i
     puts "Porcentaje procesado: #{por}%"
   end
-  #puts "#{r.id_caso}_#{r.id}"
-  f = Dir["#{ranexos}/#{r.id_caso}_#{r.id}_*"]
+  #puts "#{r.caso_id}_#{r.id}"
+  f = Dir["#{ranexos}/#{r.caso_id}_#{r.id}_*"]
   if f.count == 0 
-    puts "No existe archivo para #{r.id_caso}_#{r.id}"
+    puts "No existe archivo para #{r.caso_id}_#{r.id}"
     numsin += 1
   elsif f.count > 1
-    puts "Más de un archivo asociado a #{r.id_caso}_#{r.id}"
+    puts "Más de un archivo asociado a #{r.caso_id}_#{r.id}"
     numvarios += 1
   else
     # Si el nombre del archivo está codificado en LATIN1 copiarlo en otro 

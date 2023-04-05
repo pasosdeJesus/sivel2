@@ -13,7 +13,7 @@ module Msip
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @persona2 = Msip::Persona.create!(PRUEBA_PERSONA)
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
-      @victima = Sivel2Gen::Victima.create!(id_persona: @persona2.id, id_caso: @caso.id)
+      @victima = Sivel2Gen::Victima.create!(persona_id: @persona2.id, caso_id: @caso.id)
     end
 
     # No autenticado
@@ -151,7 +151,7 @@ module Msip
       current_usuario = inicia_analista
       sign_in current_usuario
       
-      get msip.personas_remplazar_path + "?id_persona=#{@persona.id}&id_victima=#{@victima.id}"
+      get msip.personas_remplazar_path + "?persona_id=#{@persona.id}&victima_id=#{@victima.id}"
       assert_response :ok
     end
 

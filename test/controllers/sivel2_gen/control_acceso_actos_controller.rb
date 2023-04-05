@@ -12,8 +12,8 @@ module Sivel2Gen
       end
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
-      @victima = Sivel2Gen::Victima.create!(id_persona: @persona.id, id_caso: @caso.id)
-      @acto = Sivel2Gen::Acto.create!(PRUEBA_ACTO.merge({id_caso: @caso.id, id_persona: @persona.id}))
+      @victima = Sivel2Gen::Victima.create!(persona_id: @persona.id, caso_id: @caso.id)
+      @acto = Sivel2Gen::Acto.create!(PRUEBA_ACTO.merge({caso_id: @caso.id, persona_id: @persona.id}))
       @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
       @ope_analista = inicia_analista
     end
@@ -26,8 +26,8 @@ module Sivel2Gen
     end
 
     PRUEBA_ACTO = {
-      id_presponsable: 28,
-      id_categoria: 77,
+      presponsable_id: 28,
+      categoria_id: 77,
     }
 
     # No autenticado

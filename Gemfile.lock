@@ -44,10 +44,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 62c5c8f94e9edf167d27c3ee940361c0a644e320
+  revision: 2756cdf73e81649f5f41aec0bc03425583692ce2
   branch: main
   specs:
-    heb412_gen (2.2.0.beta1)
+    heb412_gen (2.2.0.beta2)
       mr519_gen
       msip
       redcarpet
@@ -55,19 +55,19 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 4addd31d8762753879f16a9ca4c66a4e3f0da2ea
+  revision: 3ebb0575f23781bb53f1942b2ef70f7ff4719365
   branch: main
   specs:
-    mr519_gen (2.2.0.beta1)
+    mr519_gen (2.2.0.beta2)
       msip
       rails
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 523386e8531dfd9d0731ff3e96b57e109f64b1ae
+  revision: fe87198e3c81056cda121f744f5f96694fda2e3f
   branch: main
   specs:
-    msip (2.2.0.beta1)
+    msip (2.2.0.beta2)
       cancancan (~> 3)
       devise (~> 4)
       devise-i18n (~> 1)
@@ -84,10 +84,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 5050cffd7fb769e3b1d282205fee3cadca5cf377
+  revision: 5498c55037f03b1c7613e1b3678c12f4c92cdd21
   branch: main
   specs:
-    sivel2_gen (2.2.0.beta1)
+    sivel2_gen (2.2.0.beta2)
       color
       devise
       rails
@@ -231,12 +231,12 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-schema (1.13.0)
+    dry-schema (1.13.1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.0, < 2)
       dry-initializer (~> 3.0)
-      dry-logic (>= 1.5, < 2)
+      dry-logic (>= 1.4, < 2)
       dry-types (>= 1.7, < 2)
       zeitwerk (~> 2.6)
     dry-types (1.7.1)

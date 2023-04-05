@@ -49,11 +49,11 @@ module Msip
         when "pais"
           registro = modelo.create!(MODELO_PARAMS.merge({id: 1000, nombreiso: "iso"}))
         when "departamento"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_pais: 170}))
+          registro = modelo.create!(MODELO_PARAMS.merge({pais_id: 170}))
         when "municipio"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_departamento: 17}))
+          registro = modelo.create!(MODELO_PARAMS.merge({departamento_id: 17}))
         when "clase"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_municipio: 1360}))
+          registro = modelo.create!(MODELO_PARAMS.merge({municipio_id: 1360}))
         else
           registro = modelo.create!(MODELO_PARAMS)
         end

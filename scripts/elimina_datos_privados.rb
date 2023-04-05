@@ -3,7 +3,7 @@
 
 ActiveRecord::Base.connection.execute <<-SQL
   DELETE FROM sivel2_gen_caso_etiqueta WHERE 
-    id_etiqueta NOT IN (SELECT id FROM msip_etiqueta
+    etiqueta_id NOT IN (SELECT id FROM msip_etiqueta
     WHERE (nombre LIKE '%01%' or nombre like '%02%')
     AND NOT NOMBRE LIKE '%20%');
 
@@ -27,7 +27,7 @@ ActiveRecord::Base.connection.execute <<-SQL
       WHERE NOT EXISTS (SELECT 1 FROM usuario WHERE id=1);
 
   DELETE FROM msip_grupo_usuario WHERE usuario_id<>1;
-  UPDATE sivel2_gen_caso_etiqueta SET id_usuario=1;
+  UPDATE sivel2_gen_caso_etiqueta SET usuario_id=1;
   DELETE FROM usuario WHERE id<>1;
   DELETE FROM msip_oficina ;
 SQL

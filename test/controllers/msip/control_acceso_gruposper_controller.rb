@@ -13,8 +13,8 @@ module Msip
       @grupoper = Msip::Grupoper.create!(PRUEBA_GRUPOPER)
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
       @vicol = Sivel2Gen::Victimacolectiva.create!(
-        id_grupoper: @grupoper.id,
-        id_caso: @caso.id
+        grupoper_id: @grupoper.id,
+        caso_id: @caso.id
       )
       @vicol.save!
       @orgsocial = Msip::Orgsocial.create!(PRUEBA_ORGSOCIAL)
@@ -31,7 +31,7 @@ module Msip
 
     test "sin autenticar no debe acceder a grupos de personas reemplazar" do
       assert_raise CanCan::AccessDenied do
-        get msip.gruposper_remplazar_path + "?id_grupoper=#{@grupoper.id}&id_victimacolectiva=#{@vicol.id}"
+        get msip.gruposper_remplazar_path + "?grupoper_id=#{@grupoper.id}&victima_idcolectiva=#{@vicol.id}"
       end
     end
 
@@ -49,7 +49,7 @@ module Msip
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get msip.gruposper_remplazar_path + "?id_grupoper=#{@grupoper.id}&id_victimacolectiva=#{@vicol.id}"
+        get msip.gruposper_remplazar_path + "?grupoper_id=#{@grupoper.id}&victima_idcolectiva=#{@vicol.id}"
       end
     end
 
@@ -73,7 +73,7 @@ module Msip
     test "autenticado como operador analista debe presentar listado grupoper remplazar" do
       current_usuario = inicia_ope(20)
       sign_in current_usuario
-      get msip.gruposper_remplazar_path + "?id_grupoper=#{@grupoper.id}&id_victimacolectiva=#{@vicol.id}"
+      get msip.gruposper_remplazar_path + "?grupoper_id=#{@grupoper.id}&victima_idcolectiva=#{@vicol.id}"
       assert_response :ok
     end
 
