@@ -23,8 +23,8 @@ module Sivel2Gen
     end
 
     PRUEBA_ACTO = {
-      id_presponsable: 28,
-      id_categoria: 77,
+      presponsable_id: 28,
+      categoria_id: 77,
     }
 
     # No autenticado

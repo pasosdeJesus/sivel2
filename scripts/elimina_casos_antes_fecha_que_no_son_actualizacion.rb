@@ -12,8 +12,8 @@ end
 fechaini = Msip::FormatoFechaHelper.reconoce_adivinando_locale(fechaini)
 
 ids_por_eliminar = "SELECT id FROM sivel2_gen_caso WHERE fecha<='#{fechaini}'
-    AND id NOT IN (SELECT DISTINCT id_caso FROM sivel2_gen_caso_etiqueta 
-      WHERE id_etiqueta IN (SELECT id FROM msip_etiqueta 
+    AND id NOT IN (SELECT DISTINCT caso_id FROM sivel2_gen_caso_etiqueta 
+      WHERE etiqueta_id IN (SELECT id FROM msip_etiqueta 
         WHERE (nombre LIKE '%01%' or nombre like '%02%') 
         AND NOT NOMBRE LIKE '%20%'
       )

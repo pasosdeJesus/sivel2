@@ -19,20 +19,20 @@ Sivel2Gen::AnexoCaso.all.each do |ac|
   end
   if (!ac.msip_anexo)
     #byebug
-    STDERR.puts "No se encontró msip_anexo en #{ac.id_caso}"
+    STDERR.puts "No se encontró msip_anexo en #{ac.caso_id}"
   elsif (!ac.msip_anexo.adjunto)
     #byebug
     STDERR.puts "No se encontró msip_anexo en #{ac.msip_anexo}"
   elsif (!ac.msip_anexo.adjunto.path)
     STDERR.puts "No hay path en #{ac.msip_anexo.descripcion}"
-    u = Sivel2Gen::CasoUsuario.where(id_caso: ac.id_caso).order(:fechainicio)[0]
-    puts "#{ac.id_caso}\t#{ac.id}\t#{ac.fecha}\t#{ac.msip_anexo.descripcion}\t\t#{u.usuario.nusuario}"
+    u = Sivel2Gen::CasoUsuario.where(caso_id: ac.caso_id).order(:fechainicio)[0]
+    puts "#{ac.caso_id}\t#{ac.id}\t#{ac.fecha}\t#{ac.msip_anexo.descripcion}\t\t#{u.usuario.nusuario}"
     numsinp += 1
   elsif (!File.exist?(ac.msip_anexo.adjunto.path)) 
     #byebug
     STDERR.puts "No se encontró #{ac.msip_anexo.adjunto.path}"
-    u = Sivel2Gen::CasoUsuario.where(id_caso: ac.id_caso).order(:fechainicio)[0]
-    puts "#{ac.id_caso}\t#{ac.id}\t#{ac.fecha}\t#{ac.msip_anexo.descripcion}\t#{ac.msip_anexo.adjunto.path}\t#{u.usuario.nusuario}"
+    u = Sivel2Gen::CasoUsuario.where(caso_id: ac.caso_id).order(:fechainicio)[0]
+    puts "#{ac.caso_id}\t#{ac.id}\t#{ac.fecha}\t#{ac.msip_anexo.descripcion}\t#{ac.msip_anexo.adjunto.path}\t#{u.usuario.nusuario}"
     numsin += 1
   end
 end

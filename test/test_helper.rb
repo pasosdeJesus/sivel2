@@ -92,7 +92,7 @@ PRUEBA_LUGARPRELIMINAR = {
   nombreusuario: "sivel2",
   organizacion: "organizacion ejemplo",
   ubicacionpre_id: nil,
-  id_persona: 1,
+  persona_id: 1,
   parentezco: "AB",
   grabacion: false,
   telefono: "35468489",

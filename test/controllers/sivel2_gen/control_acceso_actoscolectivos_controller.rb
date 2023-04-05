@@ -11,7 +11,7 @@ module Sivel2Gen
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
-      #@actocolectivo = Sivel2Gen::Actocolectivo.create!(PRUEBA_ACTO.merge({id_caso: @caso.id, id_persona: @persona.id}))
+      #@actocolectivo = Sivel2Gen::Actocolectivo.create!(PRUEBA_ACTO.merge({caso_id: @caso.id, persona_id: @persona.id}))
       @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
       @ope_analista = inicia_analista
     end
