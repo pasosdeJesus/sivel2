@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: b081f4cea19b7dc0aec82905378d09edb36f32b5
+  revision: 679ed407de4bc938e7778606d3a4be6f2c6316e0
   branch: main
   specs:
     apo214 (2.2.0.beta2)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: c116df66d46937370cf72b0d931f368c3c9f743a
+  revision: 69df11a3c8760b947fe2e8fd470b4629bb3fa432
   branch: main
   specs:
     sivel2_gen (2.2.0.beta2)
@@ -321,7 +321,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.2.1)
+    puma (6.2.2)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
@@ -367,7 +367,7 @@ GEM
     rake (13.0.6)
     redcarpet (3.6.0)
     redis (4.8.1)
-    regexp_parser (2.7.0)
+    regexp_parser (2.8.0)
     reline (0.3.3)
       io-console (~> 0.5)
     responders (3.1.0)
