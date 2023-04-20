@@ -102,10 +102,6 @@ gem 'sivel2_gen', # Motor para manejo de casos
   git: 'https://gitlab.com/pasosdeJesus/sivel2_gen.git', branch: 'v2.1'
   #path: '../sivel2_gen'
 
-gem 'apo214', # Motor para manejo de casos
-  git: 'https://gitlab.com/pasosdeJesus/apo214.git', branch: 'v2.1'
-  #path: '../apo214'
-
 group  :development, :test do
   gem 'debug' # Depurar
 
