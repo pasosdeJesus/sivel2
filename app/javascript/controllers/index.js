@@ -4,6 +4,15 @@
 
 import { application } from "./application"
 
+import Apo214__ActualizaFilaController from "./apo214/actualiza_fila_controller"
+application.register("apo214--actualiza-fila", Apo214__ActualizaFilaController)
+
+import Apo214__DragController from "./apo214/drag_controller"
+application.register("apo214--drag", Apo214__DragController)
+
+import Apo214__FormAsisreconocimientoController from "./apo214/form_asisreconocimiento_controller"
+application.register("apo214--form-asisreconocimiento", Apo214__FormAsisreconocimientoController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
