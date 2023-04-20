@@ -52,15 +52,6 @@ GIT
     cocoon (1.2.11)
 
 GIT
-  remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 687a6f86a0e74eaa41b3760bc98bbb89e6467a01
-  branch: v2.1
-  specs:
-    apo214 (2.1a1)
-      rails
-      sip
-
-GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
   revision: 02767f11850270420ee2d6aae1dc03a34ca406b2
   branch: v2.1
@@ -452,7 +443,6 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   apexcharts!
-  apo214!
   babel-transpiler
   bcrypt
   best_in_place!
