@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: e7f5ba30bd1325cca82535beb5bb3d4fd06e38c1
+  revision: f0f888633ccd4dd7d098eb24315ca1ed5f449708
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -378,7 +378,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.8.6)
+    selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
