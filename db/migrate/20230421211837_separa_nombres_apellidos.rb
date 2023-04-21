@@ -8,6 +8,11 @@ class SeparaNombresApellidos < ActiveRecord::Migration[7.0]
       porc.each do |p|
         a = ""
         n = ""
+        cid = ""
+        v = Sivel2Gen::Victima.where(id_persona: p.id)
+        if v.count > 0
+          cid = v.map(&:id_caso).join(";")
+        end
         if p.nombres == "PERSONA SIN IDENTIFICAR"
           a = "N"
           n = "N"
@@ -15,17 +20,17 @@ class SeparaNombresApellidos < ActiveRecord::Migration[7.0]
           menserror = ""
           na = Sip::ImportaHelper.separa_apellidos_nombres(p.nombres, menserror)
           if menserror != ""
-            puts "** #{p.id} menserror"
+            puts "#{p.id},#{cid},,,,#{menserror}"
           else
             a = na[0]
             n = na[1]
           end
         end
         if a != '' and n  != ''
-          puts "n=#{n}, a=#{a}"
-           p.nombres = n
-           p.apellidos = a
-           p.save
+          puts "#{p.id},#{cid},#{p.nombres},#{n},#{a},"
+          p.nombres = n
+          p.apellidos = a
+          p.save
         end
       end
     end
