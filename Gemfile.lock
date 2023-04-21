@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: a490654ecfe63846455fc09fbae4a9f7c9eda719
+  revision: d0c1a0ffea9aa3f467c5f060a67e151bded62272
   branch: main
   specs:
     apo214 (2.2.0.beta2)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: a04b8c380a5afe64a7332ed14227945302a03127
+  revision: df2fa1fc26506936f070336b37ca5427040468a9
   branch: main
   specs:
     sivel2_gen (2.2.0.beta2)
@@ -388,7 +388,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.8.6)
+    selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
