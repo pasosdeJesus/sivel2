@@ -1,6 +1,6 @@
 class SeparaNombresApellidos < ActiveRecord::Migration[7.0]
   def up
-    porc = Msip::Persona.where("apellidos IS NULL OR trim(apellidos)=''").
+    porc = Sip::Persona.where("apellidos IS NULL OR trim(apellidos)=''").
       where("nombres IS NOT NULL AND trim(nombres)<>''")
     if porc.count > 0
       puts "Se encontrarion #{porc.count} personas por cambiar. [Enter] para continuar"
@@ -13,7 +13,7 @@ class SeparaNombresApellidos < ActiveRecord::Migration[7.0]
           n = "N"
         else
           menserror = ""
-          na = Msip::ImportaHelper.separa_apellidos_nombres(p.nombres, menserror)
+          na = Sip::ImportaHelper.separa_apellidos_nombres(p.nombres, menserror)
           if menserror != ""
             puts "** #{p.id} menserror"
           else
