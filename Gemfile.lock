@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 55e76974c5d3cdf9f5686004189af17b5f6eec77
+  revision: dc8a7a8dc543f346bf4f01eb2f1dfc859b53763d
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 2e14ec86ed9d326ae36aa757533ec53edc3df3f0
+  revision: 3c2014ac433eedc8be2ce78514a37ce539c83035
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: f0f888633ccd4dd7d098eb24315ca1ed5f449708
+  revision: ba65a379e3f369761ae73b305ac35110a965024c
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -251,7 +251,7 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     irb (1.6.4)
@@ -301,7 +301,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pdf-core (0.9.0)
-    pg (1.4.6)
+    pg (1.5.2)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -314,7 +314,7 @@ GEM
     puma (6.2.2)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-test (2.1.0)
