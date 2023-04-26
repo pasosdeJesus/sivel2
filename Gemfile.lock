@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fcb3cd4e147c582fe929ff3e0a91f90e75a142f4
+  revision: 5bef52e0ac50032e469cb9f4c10272c48051b4eb
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 8f3293d7aa95c07e6e574038cd467329899d3bff
+  revision: 646a99d98eefa33b93a706f1e4e70dcacf9afbe1
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 732244a258c98777a73a3ee32f098d0370025703
+  revision: 65a0c5338992ef47f47df1dcf4c43b0f606e74d3
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -187,7 +187,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     irb (1.6.4)
@@ -250,7 +250,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.9.0)
-    pg (1.4.6)
+    pg (1.5.2)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -263,7 +263,7 @@ GEM
     puma (6.2.2)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-proxy (0.7.6)
