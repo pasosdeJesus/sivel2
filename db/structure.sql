@@ -2351,6 +2351,41 @@ CREATE TABLE public.msip_etiqueta_municipio (
 
 
 --
+-- Name: msip_etiqueta_persona; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.msip_etiqueta_persona (
+    id bigint NOT NULL,
+    etiqueta_id integer NOT NULL,
+    persona_id integer NOT NULL,
+    usuario_id integer NOT NULL,
+    fecha date NOT NULL,
+    observaciones character varying(5000),
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: msip_etiqueta_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.msip_etiqueta_persona_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: msip_etiqueta_persona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.msip_etiqueta_persona_id_seq OWNED BY public.msip_etiqueta_persona.id;
+
+
+--
 -- Name: msip_fuenteprensa_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -4816,6 +4851,13 @@ ALTER TABLE ONLY public.msip_estadosol ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: msip_etiqueta_persona id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_etiqueta_persona ALTER COLUMN id SET DEFAULT nextval('public.msip_etiqueta_persona_id_seq'::regclass);
+
+
+--
 -- Name: msip_grupo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5421,6 +5463,14 @@ ALTER TABLE ONLY public.msip_departamento
 
 ALTER TABLE ONLY public.msip_estadosol
     ADD CONSTRAINT msip_estadosol_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: msip_etiqueta_persona msip_etiqueta_persona_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_etiqueta_persona
+    ADD CONSTRAINT msip_etiqueta_persona_pkey PRIMARY KEY (id);
 
 
 --
@@ -7022,6 +7072,14 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
+-- Name: sivel2_gen_categoria categoria_contadaen_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_categoria
+    ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
+
+
+--
 -- Name: sivel2_gen_contextovictima_victima contextovictima_victima_contextovictima_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7102,6 +7160,14 @@ ALTER TABLE ONLY public.apo214_propietario
 
 
 --
+-- Name: msip_etiqueta_persona fk_rails_05a9a878fd; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_etiqueta_persona
+    ADD CONSTRAINT fk_rails_05a9a878fd FOREIGN KEY (etiqueta_id) REFERENCES public.msip_etiqueta(id);
+
+
+--
 -- Name: apo214_propietario fk_rails_0629f9fb2c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7171,6 +7237,14 @@ ALTER TABLE ONLY public.mr519_gen_encuestapersona
 
 ALTER TABLE ONLY public.apo214_listaanexo
     ADD CONSTRAINT fk_rails_15d910fc26 FOREIGN KEY (anexo_id) REFERENCES public.msip_anexo(id);
+
+
+--
+-- Name: msip_etiqueta_persona fk_rails_1856abc5d3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_etiqueta_persona
+    ADD CONSTRAINT fk_rails_1856abc5d3 FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
 
 
 --
@@ -7630,6 +7704,14 @@ ALTER TABLE ONLY public.apo214_asisreconocimiento
 
 
 --
+-- Name: msip_etiqueta_persona fk_rails_beb3a49837; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_etiqueta_persona
+    ADD CONSTRAINT fk_rails_beb3a49837 FOREIGN KEY (persona_id) REFERENCES public.msip_persona(id);
+
+
+--
 -- Name: sivel2_gen_combatiente fk_rails_bfb49597e1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7931,6 +8013,14 @@ ALTER TABLE ONLY public.msip_persona
 
 ALTER TABLE ONLY public.msip_persona
     ADD CONSTRAINT persona_tdocumento_id_fkey FOREIGN KEY (tdocumento_id) REFERENCES public.msip_tdocumento(id);
+
+
+--
+-- Name: sivel2_gen_presponsable presponsable_papa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_presponsable
+    ADD CONSTRAINT presponsable_papa_fkey FOREIGN KEY (papa_id) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -8607,6 +8697,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220722000850'),
 ('20220722192214'),
 ('20220805181901'),
+('20220808141102'),
 ('20220822132754'),
 ('20221005165307'),
 ('20221024000000'),
