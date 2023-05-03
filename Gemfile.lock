@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5bef52e0ac50032e469cb9f4c10272c48051b4eb
+  revision: 1a22f3dde44d71cc01b00594e4d20eb46fe455ce
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 646a99d98eefa33b93a706f1e4e70dcacf9afbe1
+  revision: 0942655444dcaba67dac6f0d0060ddcb08534c98
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: 65a0c5338992ef47f47df1dcf4c43b0f606e74d3
+  revision: e07a813d5579583618f1dbcb912002a99bc8687c
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -222,7 +222,7 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.2)
-    mini_portile2 (2.8.1)
+    mini_portile2 (2.8.2)
     minitest (5.18.0)
     msgpack (1.7.0)
     net-imap (0.3.4)
@@ -250,7 +250,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.9.0)
-    pg (1.5.2)
+    pg (1.5.3)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -383,7 +383,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   x86_64-openbsd
