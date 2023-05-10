@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 11abf222dc31bff71160a1d138b445214f434b2b
+  revision: 4f45bd4c6b7d54ae3c88eede3d033542769c1f63
   specs:
     kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ced812765ed23ea7595bb38b08556a7c36067ad5
+  revision: 5ff415aa794c0fd67d3e8dee2c783852d2811bbd
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: d683685abafd5e9a6ef38d98886757a281d8a43d
+  revision: 4f08dcac9fa27149e528e7fcb30b77c1b9c68873
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 7dec8f0a826c678a633db1fa4c20fc2e56bd79cf
+  revision: f5af959900b9753499834fc4a7ebd95e01810866
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: be631ab472baab76a2ed9b11e19ea108e195faca
+  revision: 51af6bf11b3bc0e309a0536835eec7c8fc10c1bf
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -192,7 +192,7 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
     date (3.3.3)
-    debug (1.7.2)
+    debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     devise (4.9.2)
@@ -499,4 +499,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.12
+   2.4.13
