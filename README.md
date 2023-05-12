@@ -276,7 +276,6 @@ entre ambos, deberían pasar).
       root /var/www/htdocs/sivel2/public/;
     }
 
-
   }
   ```
 * Precompila los recursos
