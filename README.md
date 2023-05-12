@@ -269,25 +269,13 @@ entre ambos, deberían pasar).
       keepalive_timeout 10;
     }
 
-    location ^~ /sivel2/assets/ {
+    location ~ ^/sivel2/(assets|csv|images)/ {
       gzip_static on;
       expires max;
       add_header Cache-Control public;
       root /var/www/htdocs/sivel2/public/;
     }
 
-    location ^~ /sivel2/images/ {
-      gzip_static on;
-      expires max;
-      add_header Cache-Control public;
-      root /var/www/htdocs/sivel2/public/;
-    }
-
-    location ^~ /sivel2/packs/ {
-      gzip_static on;
-      add_header Cache-Control public;
-      root /var/www/htdocs/sivel2/public/;
-    }
 
   }
   ```
