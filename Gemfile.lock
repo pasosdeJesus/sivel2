@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 4f45bd4c6b7d54ae3c88eede3d033542769c1f63
+  revision: 91923a6ee1bd692696b51ea839f2f2578cb485b4
   specs:
-    kt-paperclip (7.1.1)
+    kt-paperclip (7.2.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 7e9186d31638f9341282e9c073305a75f020e94e
+  revision: e11d843f8210903375b51b4c60dda449a84d04ab
   branch: main
   specs:
     apo214 (2.2.0.beta2)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: afa45f62244c4691dcbef9b7779f7f66ba196126
+  revision: 7f949c3e6bedb1c725c3397c8bce8e1eb689d149
   branch: main
   specs:
     sivel2_gen (2.2.0.beta2)
@@ -274,9 +274,9 @@ GEM
       railties (>= 6.0.0)
     kgio (2.11.4)
     libxml-ruby (4.1.1)
-    loofah (2.20.0)
+    loofah (2.21.2)
       crass (~> 1.0.2)
-      nokogiri (>= 1.5.9)
+      nokogiri (>= 1.12.0)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -302,7 +302,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.14.3)
+    nokogiri (1.14.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -414,7 +414,7 @@ GEM
       railties (>= 6.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (1.2.1)
+    thor (1.2.2)
     tilt (2.1.0)
     timeout (0.3.2)
     ttfunk (1.7.0)
