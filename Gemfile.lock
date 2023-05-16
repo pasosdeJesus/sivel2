@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 4f08dcac9fa27149e528e7fcb30b77c1b9c68873
+  revision: f40d16a27f5d1564b1b9f536beea577cfa06169f
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: f5af959900b9753499834fc4a7ebd95e01810866
+  revision: 5f65c80520178860aba94656e64868163ca0593e
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 51af6bf11b3bc0e309a0536835eec7c8fc10c1bf
+  revision: 9b8e8ff68ea2a500451915697a248730bcd795aa
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -264,7 +264,7 @@ GEM
     json (2.6.3)
     kgio (2.11.4)
     libxml-ruby (4.1.1)
-    loofah (2.21.2)
+    loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -292,8 +292,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.14.4)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.15.0)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
       mime-types
@@ -343,7 +343,7 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
-    rails-i18n (7.0.6)
+    rails-i18n (7.0.7)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
     railties (7.0.4.3)
