@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: a5e485d1594ce0f41a8a40f5e9bd3a2097310ae8
+  revision: 54ec5eea393b1c394c4ea414f1cf85e416104707
   branch: main
   specs:
     msip (2.2.0.beta2)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: ba0f5608f3d323bbda40fe2fea58d5fb8556cd07
+  revision: 2733e3280244e0e1c1a708e065734df8867b1911
   branch: main
   specs:
     sivel2_gen (2.2.0.beta2)
@@ -291,7 +291,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.2)
     minitest (5.18.0)
-    msgpack (1.7.0)
+    msgpack (1.7.1)
     net-imap (0.3.4)
       date
       net-protocol
@@ -302,7 +302,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.0)
+    nokogiri (1.15.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -368,7 +368,7 @@ GEM
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.8.0)
-    reline (0.3.3)
+    reline (0.3.4)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)

@@ -51,6 +51,10 @@
           sivel2_gen.mapadepvic_path,
           'data-turbo' => false,
           desplegable: true %>
+        <%= opcion_menu "Victimizaciones individuales por municipio", 
+          sivel2_gen.mapamunvic_path, 
+          'data-turbo' => false,
+          desplegable: true %>
 
       <% end %>
       <% if Rails.configuration.x.sivel2_desaparicion &&

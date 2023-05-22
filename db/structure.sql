@@ -1540,14 +1540,23 @@ CREATE VIEW public.cvt1 AS
     acto.persona_id,
     acto.categoria_id,
     supracategoria.tviolencia_id,
-    categoria.nombre AS categoria
-   FROM (((((public.sivel2_gen_acto acto
+    categoria.nombre AS categoria,
+    ubicacion.departamento_id,
+    departamento.deplocal_cod AS departamento_divipola,
+    departamento.nombre AS departamento_nombre,
+    ubicacion.municipio_id,
+    ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod) AS municipio_divipola,
+    municipio.nombre AS municipio_nombre
+   FROM ((((((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.caso_id = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.categoria_id = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.persona_id = acto.persona_id) AND (victima.caso_id = caso.id))))
      JOIN public.msip_persona persona ON ((persona.id = acto.persona_id)))
-  WHERE (((supracategoria.tviolencia_id)::text = 'B'::text) AND (categoria.id = ANY (ARRAY[427, 527, 426, 45, 55, 40, 50, 46, 57, 59, 49, 401, 501, 502, 402, 522, 422, 425, 525, 524, 424, 53, 43, 523, 423, 58, 48, 41, 56, 47, 421, 521, 520, 420])));
+     LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
+     LEFT JOIN public.msip_departamento departamento ON ((ubicacion.departamento_id = departamento.id)))
+     LEFT JOIN public.msip_municipio municipio ON ((ubicacion.municipio_id = municipio.id)))
+  WHERE (categoria.id = ANY (ARRAY[777, 427, 527, 397, 297, 197, 396, 296, 196, 426, 776, 526, 45, 25, 35, 15, 73, 55, 65, 92, 40, 50, 67, 801, 90, 37, 26, 46, 57, 16, 80, 85, 66, 64, 703, 706, 59, 49, 18, 38, 28, 401, 501, 904, 502, 231, 17, 331, 402, 705, 62, 906, 104, 713, 101, 76, 11, 302, 21, 902, 903, 34, 102, 27, 14, 24, 301, 10, 20, 30, 772, 522, 392, 292, 192, 422, 63, 93, 910, 295, 195, 425, 775, 525, 395, 714, 78, 524, 194, 424, 774, 394, 294, 89, 905, 86, 701, 68, 341, 241, 141, 715, 704, 702, 33, 53, 43, 13, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 293, 523, 393, 193, 773, 423, 58, 48, 75, 69, 41, 74, 12, 36, 72, 56, 22, 47, 291, 421, 521, 191, 391, 771, 520, 29, 39, 19, 77, 420, 712]));
 
 
 --
