@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: bbf3d54223df5f9b50a6257a3a8489a9999f21a6
+  revision: 239876692f5e024886c59bf35b2b8a873c229f33
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 4093e608743820463a22b4972d6cde189d86c130
+  revision: b892aef32fa6a3faf317ee5724cec656d3ddc73f
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: cf57455c05e805d542c58825043d2653f4eb5de5
+  revision: f87aaacaf9c557ab10aef3de2f1e89f399f8b6a2
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -224,7 +224,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.2)
     minitest (5.18.0)
-    msgpack (1.7.0)
+    msgpack (1.7.1)
     net-imap (0.3.4)
       date
       net-protocol
@@ -235,7 +235,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.0)
+    nokogiri (1.15.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -308,7 +308,7 @@ GEM
     rake (13.0.6)
     redcarpet (3.6.0)
     regexp_parser (2.8.0)
-    reline (0.3.3)
+    reline (0.3.4)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
