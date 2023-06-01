@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5ff415aa794c0fd67d3e8dee2c783852d2811bbd
+  revision: ca20a159407613c5c7c6ea57b0a2fb55c572b980
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: dc412680a23e6d5154276bd6231a0e7fb20e74d8
+  revision: 8ce1d0ec128cfebda5e6ae8a4421a893689ebadf
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 208dfd470d6dea1c1f4735da36b41fe92d739c20
+  revision: 55a48ec1a185476ae462642a6e382ebbd412cdd6
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 60624fef1da3d1eb6ba5f8e7b703f3c3fd639b29
+  revision: 679f2deae18b6e68e999b4435e394ec1bf4793e4
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -84,67 +84,67 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.0.4.3)
-      actionpack (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+    actioncable (7.0.5)
+      actionpack (= 7.0.5)
+      activesupport (= 7.0.5)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (7.0.4.3)
-      actionpack (= 7.0.4.3)
-      activejob (= 7.0.4.3)
-      activerecord (= 7.0.4.3)
-      activestorage (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+    actionmailbox (7.0.5)
+      actionpack (= 7.0.5)
+      activejob (= 7.0.5)
+      activerecord (= 7.0.5)
+      activestorage (= 7.0.5)
+      activesupport (= 7.0.5)
       mail (>= 2.7.1)
       net-imap
       net-pop
       net-smtp
-    actionmailer (7.0.4.3)
-      actionpack (= 7.0.4.3)
-      actionview (= 7.0.4.3)
-      activejob (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+    actionmailer (7.0.5)
+      actionpack (= 7.0.5)
+      actionview (= 7.0.5)
+      activejob (= 7.0.5)
+      activesupport (= 7.0.5)
       mail (~> 2.5, >= 2.5.4)
       net-imap
       net-pop
       net-smtp
       rails-dom-testing (~> 2.0)
-    actionpack (7.0.4.3)
-      actionview (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
-      rack (~> 2.0, >= 2.2.0)
+    actionpack (7.0.5)
+      actionview (= 7.0.5)
+      activesupport (= 7.0.5)
+      rack (~> 2.0, >= 2.2.4)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (7.0.4.3)
-      actionpack (= 7.0.4.3)
-      activerecord (= 7.0.4.3)
-      activestorage (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+    actiontext (7.0.5)
+      actionpack (= 7.0.5)
+      activerecord (= 7.0.5)
+      activestorage (= 7.0.5)
+      activesupport (= 7.0.5)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.0.4.3)
-      activesupport (= 7.0.4.3)
+    actionview (7.0.5)
+      activesupport (= 7.0.5)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (7.0.4.3)
-      activesupport (= 7.0.4.3)
+    activejob (7.0.5)
+      activesupport (= 7.0.5)
       globalid (>= 0.3.6)
-    activemodel (7.0.4.3)
-      activesupport (= 7.0.4.3)
-    activerecord (7.0.4.3)
-      activemodel (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
-    activestorage (7.0.4.3)
-      actionpack (= 7.0.4.3)
-      activejob (= 7.0.4.3)
-      activerecord (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+    activemodel (7.0.5)
+      activesupport (= 7.0.5)
+    activerecord (7.0.5)
+      activemodel (= 7.0.5)
+      activesupport (= 7.0.5)
+    activestorage (7.0.5)
+      actionpack (= 7.0.5)
+      activejob (= 7.0.5)
+      activerecord (= 7.0.5)
+      activesupport (= 7.0.5)
       marcel (~> 1.0)
       mini_mime (>= 1.1.0)
-    activesupport (7.0.4.3)
+    activesupport (7.0.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -220,7 +220,7 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-schema (1.13.1)
+    dry-schema (1.13.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.0, < 2)
@@ -292,7 +292,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.1)
+    nokogiri (1.15.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -311,7 +311,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
@@ -319,20 +319,20 @@ GEM
       rack (>= 2.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rails (7.0.4.3)
-      actioncable (= 7.0.4.3)
-      actionmailbox (= 7.0.4.3)
-      actionmailer (= 7.0.4.3)
-      actionpack (= 7.0.4.3)
-      actiontext (= 7.0.4.3)
-      actionview (= 7.0.4.3)
-      activejob (= 7.0.4.3)
-      activemodel (= 7.0.4.3)
-      activerecord (= 7.0.4.3)
-      activestorage (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+    rails (7.0.5)
+      actioncable (= 7.0.5)
+      actionmailbox (= 7.0.5)
+      actionmailer (= 7.0.5)
+      actionpack (= 7.0.5)
+      actiontext (= 7.0.5)
+      actionview (= 7.0.5)
+      activejob (= 7.0.5)
+      activemodel (= 7.0.5)
+      activerecord (= 7.0.5)
+      activestorage (= 7.0.5)
+      activesupport (= 7.0.5)
       bundler (>= 1.15.0)
-      railties (= 7.0.4.3)
+      railties (= 7.0.5)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -341,14 +341,15 @@ GEM
       activesupport (>= 4.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.5.0)
-      loofah (~> 2.19, >= 2.19.1)
+    rails-html-sanitizer (1.6.0)
+      loofah (~> 2.21)
+      nokogiri (~> 1.14)
     rails-i18n (7.0.7)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
-    railties (7.0.4.3)
-      actionpack (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+    railties (7.0.5)
+      actionpack (= 7.0.5)
+      activesupport (= 7.0.5)
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
@@ -432,7 +433,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.1)
+    will_paginate (4.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.8)
