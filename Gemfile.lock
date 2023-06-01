@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 239876692f5e024886c59bf35b2b8a873c229f33
+  revision: f259245ba15608e9e4803ce1d6a0c8ced49d1b55
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b892aef32fa6a3faf317ee5724cec656d3ddc73f
+  revision: be007ace0f19795ce75573898ac3bde0ca267387
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: f87aaacaf9c557ab10aef3de2f1e89f399f8b6a2
+  revision: 7ae3d5823aba1f05f9d5b463e26916a45f80c2cc
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -235,7 +235,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.1)
+    nokogiri (1.15.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -260,7 +260,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
@@ -293,8 +293,9 @@ GEM
       activesupport (>= 4.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.5.0)
-      loofah (~> 2.19, >= 2.19.1)
+    rails-html-sanitizer (1.6.0)
+      loofah (~> 2.21)
+      nokogiri (~> 1.14)
     rails-i18n (7.0.7)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
@@ -380,7 +381,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.1)
+    will_paginate (4.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.8)
