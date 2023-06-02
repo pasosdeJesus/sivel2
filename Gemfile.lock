@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 8ce1d0ec128cfebda5e6ae8a4421a893689ebadf
+  revision: f71f71fa10fe3d759359913b4dde0e3b2639f629
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 55a48ec1a185476ae462642a6e382ebbd412cdd6
+  revision: f5cbc0e1bac4bb6f5333ea57a1c9a696c476f6e1
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 679f2deae18b6e68e999b4435e394ec1bf4793e4
+  revision: 2b69a07771f0dbc250eca2a0b04b685f4ce1ff0f
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -251,7 +251,7 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    i18n (1.13.0)
+    i18n (1.14.0)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     irb (1.6.4)
