@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: f71f71fa10fe3d759359913b4dde0e3b2639f629
+  revision: b992cfabaebfe43eb1b1ecaaf700c4d077ca06bc
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: f5cbc0e1bac4bb6f5333ea57a1c9a696c476f6e1
+  revision: 83118b9d52857193e4001d97c45ddde6829d95c1
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 2b69a07771f0dbc250eca2a0b04b685f4ce1ff0f
+  revision: 52fbf9215544d1314bb5f55661c20faaede017d0
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -251,10 +251,10 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    i18n (1.14.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.6.4)
+    irb (1.7.0)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -359,7 +359,7 @@ GEM
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.8.0)
-    reline (0.3.4)
+    reline (0.3.5)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
@@ -405,7 +405,7 @@ GEM
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.2)
-    tilt (2.1.0)
+    tilt (2.2.0)
     timeout (0.3.2)
     ttfunk (1.7.0)
     turbo-rails (1.4.0)
