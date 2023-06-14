@@ -10,13 +10,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: public; Type: SCHEMA; Schema: -; Owner: -
---
-
--- *not* creating schema, since initdb creates it
-
-
---
 -- Name: es_co_utf_8; Type: COLLATION; Schema: public; Owner: -
 --
 
@@ -1138,6 +1131,45 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: msip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.msip_persona_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: msip_persona; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.msip_persona (
+    id integer DEFAULT nextval('public.msip_persona_id_seq'::regclass) NOT NULL,
+    nombres character varying(100) NOT NULL COLLATE public.es_co_utf_8,
+    apellidos character varying(100) NOT NULL COLLATE public.es_co_utf_8,
+    anionac integer,
+    mesnac integer,
+    dianac integer,
+    sexo character(1) NOT NULL,
+    numerodocumento character varying(100),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    pais_id integer,
+    nacionalde integer,
+    tdocumento_id integer,
+    departamento_id integer,
+    municipio_id integer,
+    clase_id integer,
+    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
+    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
+    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
+);
+
+
+--
 -- Name: sivel2_gen_caso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1216,18 +1248,19 @@ CREATE TABLE public.sivel2_gen_victima (
 --
 
 CREATE VIEW public.cben1 AS
- SELECT caso.id AS id_caso,
-    subv.id_victima,
-    subv.id_persona,
+ SELECT caso.id AS caso_id,
+    subv.victima_id,
+    subv.persona_id,
     1 AS npersona,
     'total'::text AS total
    FROM public.sivel2_gen_caso caso,
     public.sivel2_gen_victima victima,
-    ( SELECT sivel2_gen_victima.persona_id AS id_persona,
-            max(sivel2_gen_victima.id) AS id_victima
+    ( SELECT sivel2_gen_victima.persona_id,
+            max(sivel2_gen_victima.id) AS victima_id
            FROM public.sivel2_gen_victima
-          GROUP BY sivel2_gen_victima.persona_id) subv
-  WHERE ((caso.fecha >= '1999-12-25'::date) AND (caso.fecha <= '1999-12-25'::date) AND (subv.id_victima = victima.id) AND (caso.id = victima.caso_id));
+          GROUP BY sivel2_gen_victima.persona_id) subv,
+    public.msip_persona persona
+  WHERE ((subv.victima_id = victima.id) AND (caso.id = victima.caso_id) AND (persona.id = victima.persona_id));
 
 
 --
@@ -1397,63 +1430,27 @@ CREATE TABLE public.msip_ubicacion (
 --
 
 CREATE VIEW public.cben2 AS
- SELECT cben1.id_caso,
-    cben1.id_victima,
-    cben1.id_persona,
+ SELECT cben1.caso_id,
+    cben1.victima_id,
+    cben1.persona_id,
     cben1.npersona,
     cben1.total,
-    ubicacion.departamento_id AS id_departamento,
+    ubicacion.departamento_id,
+    departamento.deplocal_cod AS departamento_divipola,
     departamento.nombre AS departamento_nombre,
-    ubicacion.municipio_id AS id_municipio,
+    ubicacion.municipio_id,
+    ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod) AS municipio_divipola,
     municipio.nombre AS municipio_nombre,
-    ubicacion.clase_id AS id_clase,
+    ubicacion.clase_id,
+    clase.clalocal_cod AS clase_divipola,
     clase.nombre AS clase_nombre
    FROM (((((public.cben1
-     JOIN public.sivel2_gen_caso caso ON ((cben1.id_caso = caso.id)))
+     JOIN public.sivel2_gen_caso caso ON ((cben1.caso_id = caso.id)))
      LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
      LEFT JOIN public.msip_departamento departamento ON ((ubicacion.departamento_id = departamento.id)))
      LEFT JOIN public.msip_municipio municipio ON ((ubicacion.municipio_id = municipio.id)))
      LEFT JOIN public.msip_clase clase ON ((ubicacion.clase_id = clase.id)))
-  GROUP BY cben1.id_caso, cben1.id_victima, cben1.id_persona, cben1.npersona, cben1.total, ubicacion.departamento_id, departamento.nombre, ubicacion.municipio_id, municipio.nombre, ubicacion.clase_id, clase.nombre;
-
-
---
--- Name: msip_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.msip_persona_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: msip_persona; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.msip_persona (
-    id integer DEFAULT nextval('public.msip_persona_id_seq'::regclass) NOT NULL,
-    nombres character varying(100) NOT NULL COLLATE public.es_co_utf_8,
-    apellidos character varying(100) NOT NULL COLLATE public.es_co_utf_8,
-    anionac integer,
-    mesnac integer,
-    dianac integer,
-    sexo character(1) NOT NULL,
-    numerodocumento character varying(100),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    pais_id integer,
-    nacionalde integer,
-    tdocumento_id integer,
-    departamento_id integer,
-    municipio_id integer,
-    clase_id integer,
-    CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
-    CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
-    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
-);
+  GROUP BY cben1.caso_id, cben1.victima_id, cben1.persona_id, cben1.npersona, cben1.total, ubicacion.departamento_id, departamento.deplocal_cod, departamento.nombre, ubicacion.municipio_id, ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod), municipio.nombre, ubicacion.clase_id, clase.clalocal_cod, clase.nombre;
 
 
 --
@@ -1544,19 +1541,22 @@ CREATE VIEW public.cvt1 AS
     acto.categoria_id,
     supracategoria.tviolencia_id,
     categoria.nombre AS categoria,
-    ((supracategoria.tviolencia_id)::text || (categoria.id)::text) AS nomcategoria,
-    departamento.nombre AS departamento_nombre,
+    ubicacion.departamento_id,
     departamento.deplocal_cod AS departamento_divipola,
-    'total'::text AS total
-   FROM (((((((public.sivel2_gen_acto acto
+    departamento.nombre AS departamento_nombre,
+    ubicacion.municipio_id,
+    ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod) AS municipio_divipola,
+    municipio.nombre AS municipio_nombre
+   FROM ((((((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.caso_id = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.categoria_id = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.persona_id = acto.persona_id) AND (victima.caso_id = caso.id))))
      JOIN public.msip_persona persona ON ((persona.id = acto.persona_id)))
-     JOIN public.msip_ubicacion ubicacion ON ((ubicacion.id = caso.ubicacion_id)))
-     LEFT JOIN public.msip_departamento departamento ON ((departamento.id = ubicacion.departamento_id)))
-  WHERE ((caso.fecha >= '2022-11-19'::date) AND (caso.fecha <= '2023-03-27'::date) AND (categoria.id = ANY (ARRAY[427, 527, 777, 197, 297, 397, 196, 776, 526, 426, 396, 296, 55, 15, 45, 25, 35, 73, 65, 92, 40, 50, 67, 801, 90, 37, 46, 26, 57, 16, 80, 85, 66, 64, 703, 706, 18, 28, 49, 59, 38, 501, 401, 904, 231, 331, 17, 402, 502, 705, 62, 104, 906, 713, 101, 11, 21, 76, 302, 27, 34, 902, 102, 903, 14, 24, 301, 30, 20, 10, 192, 522, 392, 422, 292, 772, 63, 93, 425, 775, 395, 525, 295, 195, 714, 78, 424, 394, 194, 524, 294, 774, 89, 905, 86, 701, 68, 241, 341, 141, 715, 704, 702, 43, 23, 53, 33, 13, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 393, 773, 193, 423, 523, 293, 48, 58, 75, 69, 41, 74, 22, 12, 56, 72, 47, 36, 421, 771, 391, 291, 191, 521, 39, 19, 420, 29, 77, 520, 712])));
+     LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
+     LEFT JOIN public.msip_departamento departamento ON ((ubicacion.departamento_id = departamento.id)))
+     LEFT JOIN public.msip_municipio municipio ON ((ubicacion.municipio_id = municipio.id)))
+  WHERE (categoria.id = ANY (ARRAY[777, 427, 527, 397, 297, 197, 396, 296, 196, 426, 776, 526, 45, 25, 35, 15, 73, 55, 65, 92, 40, 50, 67, 801, 90, 37, 26, 46, 57, 16, 80, 85, 66, 64, 703, 706, 59, 49, 18, 38, 28, 401, 501, 904, 502, 231, 17, 331, 402, 705, 62, 906, 104, 713, 101, 76, 11, 302, 21, 902, 903, 34, 102, 27, 14, 24, 301, 10, 20, 30, 772, 522, 392, 292, 192, 422, 63, 93, 910, 295, 195, 425, 775, 525, 395, 714, 78, 524, 194, 424, 774, 394, 294, 89, 905, 86, 701, 68, 341, 241, 141, 715, 704, 702, 33, 53, 43, 13, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 293, 523, 393, 193, 773, 423, 58, 48, 75, 69, 41, 74, 12, 36, 72, 56, 22, 47, 291, 421, 521, 191, 391, 771, 520, 29, 39, 19, 77, 420, 712]));
 
 
 --
