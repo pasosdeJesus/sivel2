@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 70aef02c4b7cda1e7a53672c22f298a908ceba7c
+  revision: 3360ee9406edd4bdd5bfad455426ac6a9e4bdb08
   branch: main
   specs:
     heb412_gen (2.2.0.beta2)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 894fe324a7d881e77e9b3a1cd985bda1324e45c7
+  revision: 1da8abe63e24a6e4fca89e8e3b3ba0584f93813f
   branch: main
   specs:
     mr519_gen (2.2.0.beta2)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: cbbf443dc7ed5ee29358c94560276d43dc679ff9
+  revision: 0c9a6fab4a43f436a2d68681337ce03fab68d28f
   branch: main
   specs:
     msip (2.2.0.beta2)
@@ -84,10 +84,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 4a8ae3d38e197cee7ed7e12d79a08e65febc2ff4
+  revision: 57ee63e9b3fdccb7148b3b2d9c13c356a0233174
   branch: main
   specs:
-    sivel2_gen (2.2.0.beta2)
+    sivel2_gen (2.2.0.beta3)
       color
       devise
       rails
@@ -196,7 +196,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     color (1.8)
-    colorize (0.8.1)
+    colorize (1.0.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cuprite (0.14.3)
@@ -270,7 +270,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.1.1)
+    jsbundling-rails (1.1.2)
       railties (>= 6.0.0)
     kgio (2.11.4)
     libxml-ruby (4.1.1)
@@ -290,7 +290,7 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
     mini_portile2 (2.8.2)
-    minitest (5.18.0)
+    minitest (5.18.1)
     msgpack (1.7.1)
     net-imap (0.3.6)
       date
