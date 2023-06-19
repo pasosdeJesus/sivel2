@@ -44,10 +44,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 3360ee9406edd4bdd5bfad455426ac6a9e4bdb08
+  revision: 0cbe622cc015e0a2ca143bf2f4b70c4211f9ece9
   branch: main
   specs:
-    heb412_gen (2.2.0.beta2)
+    heb412_gen (2.2.0.beta4)
       mr519_gen
       msip
       redcarpet
@@ -55,19 +55,19 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 1da8abe63e24a6e4fca89e8e3b3ba0584f93813f
+  revision: 02f6eef517fdf27d11e854d1b6538d908ae04032
   branch: main
   specs:
-    mr519_gen (2.2.0.beta2)
+    mr519_gen (2.2.0.beta4)
       msip
       rails
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 0c9a6fab4a43f436a2d68681337ce03fab68d28f
+  revision: c832165fa1e103ed52eba7afd39ab9be2f2e708f
   branch: main
   specs:
-    msip (2.2.0.beta2)
+    msip (2.2.0.beta4)
       cancancan (~> 3)
       devise (~> 4)
       devise-i18n (~> 1)
@@ -84,10 +84,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 57ee63e9b3fdccb7148b3b2d9c13c356a0233174
+  revision: 37726354666635391f007f60f9394ce992c476b2
   branch: main
   specs:
-    sivel2_gen (2.2.0.beta3)
+    sivel2_gen (2.2.0.beta4)
       color
       devise
       rails
@@ -196,7 +196,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     color (1.8)
-    colorize (1.0.0)
+    colorize (1.0.1)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cuprite (0.14.3)
