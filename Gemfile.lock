@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 545e813e120a1aed6f33d32ddf83a437372718e8
+  revision: e0bf14343d983290d908ba4a3c4347d5fbb63b54
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: cdaf09b16765f6c8b790d5f355e3c230185fcf32
+  revision: 7bdb4b8dc015b8ecba3a379ad21c568b7f374265
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 67048c7d12bd474721bf9477380e72d9e7ff66f2
+  revision: cdca53053a1b6d2dd58a4de7edf8d3cda3a4917b
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -185,7 +185,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     color (1.8)
-    colorize (0.8.1)
+    colorize (1.0.1)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cuprite (0.14.3)
@@ -259,7 +259,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.1.1)
+    jsbundling-rails (1.1.2)
       railties (>= 6.0.0)
     json (2.6.3)
     kgio (2.11.4)
@@ -280,7 +280,7 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
     mini_portile2 (2.8.2)
-    minitest (5.18.0)
+    minitest (5.18.1)
     msgpack (1.7.1)
     net-imap (0.3.6)
       date
