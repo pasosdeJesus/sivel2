@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 07f9e6c576e1193696d74942f4626d8ee0d10728
+  revision: 0b172458ce1ac338bca6a706eab163bd64c42f95
   branch: main
   specs:
     apo214 (2.2.0.beta4)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 7e6faaf96d30ff220eaef9b60bde9b2779ca5775
+  revision: d486825414b8f9b5acbb70f42195de7c07b3c66b
   branch: main
   specs:
     heb412_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e53876a3a7597df6127f187004a83dd7e9732374
+  revision: c98b47dc091eda3afa5efcc6e01842ee64155d0c
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 808e9a3efe20e6b4824b1e72e78542e0e1861ba1
+  revision: 642fcc4740a734e40b682a059b3e39f0338cb010
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 30d62228136b0323a434afc086b3af3c8561d27e
+  revision: 64878484b6d5e48cc323b160733b491a0ef280a2
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -196,7 +196,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     color (1.8)
-    colorize (1.0.5)
+    colorize (1.1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cuprite (0.14.3)
