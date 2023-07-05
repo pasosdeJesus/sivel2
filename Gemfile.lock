@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 0b172458ce1ac338bca6a706eab163bd64c42f95
+  revision: 0d65266203dcaaf9a3f66f42eb5a8e62f0b2e5e1
   branch: main
   specs:
     apo214 (2.2.0.beta4)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: d486825414b8f9b5acbb70f42195de7c07b3c66b
+  revision: 009f72afbe094888480e0d2cb44498983448a638
   branch: main
   specs:
     heb412_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: c98b47dc091eda3afa5efcc6e01842ee64155d0c
+  revision: a20dfa41dad850e3ddf82a351cdf161169cf4b44
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 9f9bbd10e67743549d1406ba3fb0bde047b88841
+  revision: 2375bf923e444754d74aaa201e09b95972211c27
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 3d29a367dcc2ebb8338c1fa29d8c508ffb390f10
+  revision: fe45c00bf055148f7d22b96750ebb0ba37f1a7fd
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -302,7 +302,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.2)
+    nokogiri (1.15.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
