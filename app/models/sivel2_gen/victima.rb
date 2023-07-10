@@ -8,7 +8,6 @@ module Sivel2Gen
     validate :hijos_valido
 
     def hijos_valido
-      debugger
       if self.hijos && (self.hijos < 0 || self.hijos > 100)
         errors.add(
           :hijos, "El número de hijos debe estar en blanco o "\
