@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 0d65266203dcaaf9a3f66f42eb5a8e62f0b2e5e1
+  revision: c93a4cb3b505ceef58a172f9ac179cdc1628b2a5
   branch: main
   specs:
     apo214 (2.2.0.beta4)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 40d009770c6102be4d17128b9a30b0e6d94ec381
+  revision: f6c397f2ccddeaaeb3eb9b15fc73bd7f47fc7279
   branch: main
   specs:
     heb412_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e09cc1328818222ff3675965ff7c19ee0d21e6bb
+  revision: 0714aa1298dcbd912260450dd10e6f106e5fe5a8
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: bfe18a8b4d5d799f10eb37d85258ffb706d6ffaf
+  revision: 9e70d579ebb8a1870349d238e6101b665bbf1c09
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 8859df950c424d3ffad51636637277c6fbece224
+  revision: aa8171e516bae5048fcac19076da3e44325e5407
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -320,7 +320,7 @@ GEM
     prawnto_2 (0.3.1)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    public_suffix (5.0.1)
+    public_suffix (5.0.3)
     puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.7.1)
