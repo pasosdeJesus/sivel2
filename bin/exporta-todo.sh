@@ -29,18 +29,19 @@ function eval_con_eco {
 echo "1 de 3. Genera volcado ..."
 ord="pg_dump $b --no-owner --clean -h /var/www/var/run/postgresql -U $BD_USUARIO --no-owner"
 eval_con_eco "pg_dump $b --no-owner --clean -h /var/www/var/run/postgresql -U
-$BD_USUARIO --no-owner | grep -v 'DROP TABLE public.usuario;' | grep -v 'DROP SEQUENCE public.usuario_id_seq;' > $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql"
-#eval $ord > $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql #Todo por procesar mas
+$BD_USUARIO --no-owner | grep -v 'DROP TABLE public.usuario;' | grep -v 'DROP
+SEQUENCE public.usuario_id_seq;' > $MSIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql"
+#eval $ord > $MSIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql #Todo por procesar mas
 
 echo "2 de 3. Comprime ..."
-eval_con_eco "gzip $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql"
+eval_con_eco "gzip $MSIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql"
 
 if (test "$SIVEL2_EXP_USUARIO" != "") then {
   echo "3 de 3. Envía ..."
   if (test "$SIVEL2_EXP_MAQ" = "localhost" -o "$SIVEL2_EXP_MAQ" = "127.0.0.1") then {
-    eval_con_eco "cp $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_DIR "
+    eval_con_eco "cp $MSIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_DIR "
   } else {
-    eval_con_eco "scp $SIVEL2_EXP_OPSCP $SIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR "
+    eval_con_eco "scp $SIVEL2_EXP_OPSCP $MSIP_RUTA_VOLCADOS/sivel2-todo-$dm.sql.gz $SIVEL2_EXP_USUARIO@$SIVEL2_EXP_MAQ:$SIVEL2_EXP_DIR "
   } fi;
 } fi;
 
