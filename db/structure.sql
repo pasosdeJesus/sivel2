@@ -7066,7 +7066,11 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
+<<<<<<< HEAD
 -- Name: sivel2_gen_contextovictima_victima contextovictima_victima_contextovictima_id_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
+=======
+-- Name: sivel2_gen_contextovictima_victima contextovictima_victima_contextovictima_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+>>>>>>> 43432c7 (Actualiza)
 --
 
 ALTER TABLE ONLY public.sivel2_gen_contextovictima_victima
@@ -8718,6 +8722,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230613111532'),
 ('20230622205529'),
 ('20230622205530'),
-('20230712163859');
+('20230712163859'),
+('20230722180204'),
+('20230723011110');
 
 

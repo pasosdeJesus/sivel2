@@ -16,6 +16,9 @@ application.register("apo214--form-asisreconocimiento", Apo214__FormAsisreconoci
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import Msip__BitacoraapController from "./msip/bitacoraap_controller"
+application.register("msip--bitacoraap", Msip__BitacoraapController)
+
 import Msip__CancelarVacioEsEliminarController from "./msip/cancelar_vacio_es_eliminar_controller"
 application.register("msip--cancelar-vacio-es-eliminar", Msip__CancelarVacioEsEliminarController)
 

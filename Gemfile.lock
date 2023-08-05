@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 91923a6ee1bd692696b51ea839f2f2578cb485b4
+  revision: edd1d9d6c6a9e66f5a31bf2068fc6777bfeade0a
   specs:
     kt-paperclip (7.2.0)
       activemodel (>= 4.2.0)
@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: c93a4cb3b505ceef58a172f9ac179cdc1628b2a5
+  revision: 0326a9c018f74c3d0ce7d8bb9496e46c33712e4e
   branch: main
   specs:
     apo214 (2.2.0.beta4)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 0040971f69b13149dda2dd57d24c70901451a533
+  revision: 574fe853a6baf3c98318abf06310e94cca9ab4e6
   branch: main
   specs:
     heb412_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 92100ecb503e95a8a4500480623ce685e55faf2e
+  revision: f2ee6ba67e9f5d5e28f6dca5478fea5bf7f45460
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 8d2f85445ae9643ad935009c68a12a5ca3f28a11
+  revision: 606497d3c5f11f85081d351b8891b89df41ed043
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 63de58eff93d214a1665dc3242577787b464128f
+  revision: c6918882b729da418682398b34ed5a75c0febf9a
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -162,7 +162,7 @@ GEM
       tzinfo (~> 2.0)
     acts_as_list (1.1.0)
       activerecord (>= 4.2)
-    addressable (2.8.4)
+    addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     andand (1.3.3)
     babel-source (5.8.35)
@@ -219,7 +219,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    dry-configurable (1.0.1)
+    dry-configurable (1.1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
     dry-core (1.0.0)
@@ -265,7 +265,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.7.3)
+    irb (1.7.4)
       reline (>= 0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -289,10 +289,10 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.2)
-    minitest (5.18.1)
-    msgpack (1.7.1)
-    net-imap (0.3.6)
+    mini_portile2 (2.8.4)
+    minitest (5.19.0)
+    msgpack (1.7.2)
+    net-imap (0.3.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -324,7 +324,7 @@ GEM
     puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.7.1)
-    rack (2.2.7)
+    rack (2.2.8)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-test (2.1.0)
@@ -343,7 +343,7 @@ GEM
       activesupport (= 7.0.6)
       bundler (>= 1.15.0)
       railties (= 7.0.6)
-    rails-dom-testing (2.1.1)
+    rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -370,12 +370,12 @@ GEM
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.8.1)
-    reline (0.3.6)
+    reline (0.3.7)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.2.5)
+    rexml (3.2.6)
     rspreadsheet (0.5.3)
       andand (>= 1.3)
       rubyzip (>= 1.3)
@@ -390,7 +390,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.10.0)
+    selenium-webdriver (4.11.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -442,13 +442,13 @@ GEM
       railties (>= 6.0.0)
     webrick (1.8.1)
     websocket (1.2.9)
-    websocket-driver (0.7.5)
+    websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   x86_64-openbsd
@@ -513,4 +513,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.16
+   2.4.18
