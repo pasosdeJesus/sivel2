@@ -23,6 +23,8 @@
     "webpack-cli": "^4.8.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
     "@webpack-cli/serve": "^1.5.2",
     "css-what": "^5.0.1",
     "glob-parent": "^5.1.2",
