@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 743979bb57f5a680d9bc17399149a759d1e0b873
+  revision: 8a6631b598eb8a248927ab39acd1b10c0c4cf445
   specs:
-    kt-paperclip (7.2.0)
+    kt-paperclip (7.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 300217722ef1072f4cf9b912d30d22c4ee04f8df
+  revision: 9eb0edfb73c1d00ba5dcdceb18623239e54802bc
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 88c821ae4b4ae7ff13396bbef3ffdf68bf34c082
+  revision: a37f12bba7cc079304fc72130e4b00edf79a2675
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 6d98b957fe6e4508f2503fba2052b8b4edebddc1
+  revision: 30f6ac569eac2043666ca85479baefc5f28c6ad1
   branch: v2.1
   specs:
     sivel2_gen (2.1.0.beta1)
@@ -84,67 +84,67 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.0.7.2)
-      actionpack (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    actioncable (7.0.8)
+      actionpack (= 7.0.8)
+      activesupport (= 7.0.8)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (7.0.7.2)
-      actionpack (= 7.0.7.2)
-      activejob (= 7.0.7.2)
-      activerecord (= 7.0.7.2)
-      activestorage (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    actionmailbox (7.0.8)
+      actionpack (= 7.0.8)
+      activejob (= 7.0.8)
+      activerecord (= 7.0.8)
+      activestorage (= 7.0.8)
+      activesupport (= 7.0.8)
       mail (>= 2.7.1)
       net-imap
       net-pop
       net-smtp
-    actionmailer (7.0.7.2)
-      actionpack (= 7.0.7.2)
-      actionview (= 7.0.7.2)
-      activejob (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    actionmailer (7.0.8)
+      actionpack (= 7.0.8)
+      actionview (= 7.0.8)
+      activejob (= 7.0.8)
+      activesupport (= 7.0.8)
       mail (~> 2.5, >= 2.5.4)
       net-imap
       net-pop
       net-smtp
       rails-dom-testing (~> 2.0)
-    actionpack (7.0.7.2)
-      actionview (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    actionpack (7.0.8)
+      actionview (= 7.0.8)
+      activesupport (= 7.0.8)
       rack (~> 2.0, >= 2.2.4)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (7.0.7.2)
-      actionpack (= 7.0.7.2)
-      activerecord (= 7.0.7.2)
-      activestorage (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    actiontext (7.0.8)
+      actionpack (= 7.0.8)
+      activerecord (= 7.0.8)
+      activestorage (= 7.0.8)
+      activesupport (= 7.0.8)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.0.7.2)
-      activesupport (= 7.0.7.2)
+    actionview (7.0.8)
+      activesupport (= 7.0.8)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (7.0.7.2)
-      activesupport (= 7.0.7.2)
+    activejob (7.0.8)
+      activesupport (= 7.0.8)
       globalid (>= 0.3.6)
-    activemodel (7.0.7.2)
-      activesupport (= 7.0.7.2)
-    activerecord (7.0.7.2)
-      activemodel (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
-    activestorage (7.0.7.2)
-      actionpack (= 7.0.7.2)
-      activejob (= 7.0.7.2)
-      activerecord (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    activemodel (7.0.8)
+      activesupport (= 7.0.8)
+    activerecord (7.0.8)
+      activemodel (= 7.0.8)
+      activesupport (= 7.0.8)
+    activestorage (7.0.8)
+      actionpack (= 7.0.8)
+      activejob (= 7.0.8)
+      activerecord (= 7.0.8)
+      activesupport (= 7.0.8)
       marcel (~> 1.0)
       mini_mime (>= 1.1.0)
-    activesupport (7.0.7.2)
+    activesupport (7.0.8)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -238,7 +238,7 @@ GEM
       nokogiri
       ruby-graphviz
     erubi (1.12.0)
-    execjs (2.8.1)
+    execjs (2.9.1)
     ferrum (0.13)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
@@ -260,7 +260,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.1.2)
+    jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
     json (2.6.3)
     kgio (2.11.4)
@@ -281,7 +281,7 @@ GEM
     mime-types-data (3.2023.0808)
     mini_mime (1.1.5)
     mini_portile2 (2.8.4)
-    minitest (5.19.0)
+    minitest (5.20.0)
     msgpack (1.7.2)
     net-imap (0.3.7)
       date
@@ -322,20 +322,20 @@ GEM
       rack (>= 2.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rails (7.0.7.2)
-      actioncable (= 7.0.7.2)
-      actionmailbox (= 7.0.7.2)
-      actionmailer (= 7.0.7.2)
-      actionpack (= 7.0.7.2)
-      actiontext (= 7.0.7.2)
-      actionview (= 7.0.7.2)
-      activejob (= 7.0.7.2)
-      activemodel (= 7.0.7.2)
-      activerecord (= 7.0.7.2)
-      activestorage (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    rails (7.0.8)
+      actioncable (= 7.0.8)
+      actionmailbox (= 7.0.8)
+      actionmailer (= 7.0.8)
+      actionpack (= 7.0.8)
+      actiontext (= 7.0.8)
+      actionview (= 7.0.8)
+      activejob (= 7.0.8)
+      activemodel (= 7.0.8)
+      activerecord (= 7.0.8)
+      activestorage (= 7.0.8)
+      activesupport (= 7.0.8)
       bundler (>= 1.15.0)
-      railties (= 7.0.7.2)
+      railties (= 7.0.8)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -351,9 +351,9 @@ GEM
     rails-i18n (7.0.8)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
-    railties (7.0.7.2)
-      actionpack (= 7.0.7.2)
-      activesupport (= 7.0.7.2)
+    railties (7.0.8)
+      actionpack (= 7.0.8)
+      activesupport (= 7.0.8)
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
@@ -412,7 +412,7 @@ GEM
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.2)
-    tilt (2.2.0)
+    tilt (2.3.0)
     timeout (0.4.0)
     ttfunk (1.7.0)
     turbo-rails (1.4.0)
