@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 1f7dfaf8ab4faae43e2082db7e3af4bf24faa60b
+  revision: fc50b26c35f0964db23ac7b23aa99bca9f4cdcb5
   branch: main
   specs:
     apo214 (2.2.0.beta4)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 3508d31bc0af92a43137f03cace09a142a1d511a
+  revision: d52ba35198275dfe6eb2b21a711012949b758e93
   branch: main
   specs:
     heb412_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: a6270706b5f6019c34ad7e40fa31377e4e251cbc
+  revision: e1145e67286320069d48e159c81ea1b30ee77524
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: cd8649fd776db25e83c771a03f1172e72465b1c5
+  revision: 76a5fc04d1c6d26e52d4f15e1e0c68b499f96db2
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 2ff20852fd34c1d36d25c4449fa0b0d053f80c80
+  revision: 0fa38a4c02552b76cf4ea1a66235e9183fc60f43
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -300,7 +300,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4)
@@ -324,7 +324,7 @@ GEM
     psych (5.1.0)
       stringio
     public_suffix (5.0.3)
-    puma (6.3.1)
+    puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
@@ -447,7 +447,7 @@ GEM
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
     webrick (1.8.1)
-    websocket (1.2.9)
+    websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
