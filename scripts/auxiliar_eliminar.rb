@@ -63,6 +63,12 @@ def eliminar_casos(subconsulta_ids_por_eliminar)
     victima_id IN (SELECT id from sivel2_gen_victima WHERE
       id_caso in (#{subconsulta_ids_por_eliminar}));
               ")
+  ejecutar_sql(
+    "DELETE FROM sivel2_gen_otraorga_victima WHERE "\
+    "  victima_id IN (SELECT id from sivel2_gen_victima WHERE"\
+    "    id_caso in (#{subconsulta_ids_por_eliminar}));"
+  )
+
 
   ejecutar_sql("
   DELETE FROM sivel2_gen_victima WHERE
