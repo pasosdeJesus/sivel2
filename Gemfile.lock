@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b865ea5bf5363982bca06818017ef69b62bf47dd
+  revision: c0b66d8454db6e1a02fa495b07292fdfd1fede97
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e9d94c7ccc931fa3c61fd9c290798ce0ee6b239c
+  revision: 4cc56fbac1bb71546d514e042d71f1a94ee336c8
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7e8559d6bcb51b5afecfda8dfe11f846d5761aa2
+  revision: f26efac07b01070edd4b5b966114bb7a4390dd42
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a58a1995d962cc7a8b838cd75ccedf5c1c579108
+  revision: ff737dd29895b8aa5274af6905a214fda731978b
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -172,7 +172,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.11.0)
+    devise-i18n (1.11.1)
       devise (>= 4.9.0)
     docile (1.4.0)
     dotenv (2.8.1)
@@ -184,7 +184,7 @@ GEM
       ruby-graphviz
     erubi (1.12.0)
     execjs (2.9.1)
-    ffi (1.15.5)
+    ffi (1.16.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -335,7 +335,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.12.0)
+    selenium-webdriver (4.13.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -391,7 +391,7 @@ GEM
     will_paginate (4.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   x86_64-openbsd
@@ -447,4 +447,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.19
+   2.4.20
