@@ -154,6 +154,58 @@ CREATE FUNCTION public.first_element_state(anyarray, anyelement) RETURNS anyarra
 
 
 --
+-- Name: msip_agregar_o_remplazar_familiar_inverso(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_agregar_o_remplazar_familiar_inverso() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        num2 INTEGER;
+        rinv CHAR(2);
+        rexistente CHAR(2);
+      BEGIN
+        ASSERT(TG_OP = 'INSERT' OR TG_OP = 'UPDATE');
+        RAISE NOTICE 'Insertando o actualizando en msip_persona_trelacion';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'NEW.id = %', NEW.id;
+        RAISE NOTICE 'NEW.persona1 = %', NEW.persona1;
+        RAISE NOTICE 'NEW.persona2 = %', NEW.persona2;
+        RAISE NOTICE 'NEW.trelacion_id = %', NEW.trelacion_id;
+        RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+        SELECT COUNT(*) INTO num2 FROM msip_persona_trelacion
+          WHERE persona1 = NEW.persona2 AND persona2=NEW.persona1;
+        RAISE NOTICE 'num2 = %', num2;
+        ASSERT(num2 < 2);
+        SELECT inverso INTO rinv FROM msip_trelacion 
+          WHERE id = NEW.trelacion_id;
+        RAISE NOTICE 'rinv = %', rinv;
+        ASSERT(rinv IS NOT NULL);
+        CASE num2
+          WHEN 0 THEN
+            INSERT INTO msip_persona_trelacion 
+            (persona1, persona2, trelacion_id, observaciones, created_at, updated_at)
+            VALUES (NEW.persona2, NEW.persona1, rinv, 'Inverso agregado automaticamente', NOW(), NOW());
+          ELSE -- num2 = 1
+            SELECT trelacion_id INTO rexistente FROM msip_persona_trelacion
+              WHERE persona1=NEW.persona2 AND persona2=NEW.persona1;
+            RAISE NOTICE 'rexistente = %', rexistente;
+            IF rinv <> rexistente THEN
+              UPDATE msip_persona_trelacion 
+                SET trelacion_id = rinv,
+                 observaciones = 'Inverso cambiado automaticamente (era ' ||
+                   rexistente || '). ' || COALESCE(observaciones, ''),
+                 updated_at = NOW()
+                WHERE persona1=NEW.persona2 AND persona2=NEW.persona1;
+            END IF;
+        END CASE;
+        RETURN NULL;
+      END ;
+      $$;
+
+
+--
 -- Name: msip_edad_de_fechanac_fecharef(integer, integer, integer, integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -179,6 +231,31 @@ CREATE FUNCTION public.msip_edad_de_fechanac_fecharef(anionac integer, mesnac in
                 anioref-anionac
             END 
           $$;
+
+
+--
+-- Name: msip_eliminar_familiar_inverso(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_eliminar_familiar_inverso() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        num2 INTEGER;
+      BEGIN
+        ASSERT(TG_OP = 'DELETE');
+        RAISE NOTICE 'Eliminando inverso de msip_persona_trelacion';
+        SELECT COUNT(*) INTO num2 FROM msip_persona_trelacion
+          WHERE persona1 = OLD.persona2 AND persona2=OLD.persona1;
+        RAISE NOTICE 'num2 = %', num2;
+        ASSERT(num2 < 2);
+        IF num2 = 1 THEN
+            DELETE FROM msip_persona_trelacion 
+            WHERE persona1 = OLD.persona2 AND persona2 = OLD.persona1;
+        END IF;
+        RETURN NULL;
+      END ;
+      $$;
 
 
 --
@@ -6657,6 +6734,20 @@ CREATE UNIQUE INDEX usuario_nusuario ON public.usuario USING btree (nusuario);
 
 
 --
+-- Name: msip_persona_trelacion msip_eliminar_familiar; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_eliminar_familiar AFTER DELETE ON public.msip_persona_trelacion FOR EACH ROW EXECUTE FUNCTION public.msip_eliminar_familiar_inverso();
+
+
+--
+-- Name: msip_persona_trelacion msip_insertar_familiar; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_insertar_familiar AFTER INSERT OR UPDATE ON public.msip_persona_trelacion FOR EACH ROW EXECUTE FUNCTION public.msip_agregar_o_remplazar_familiar_inverso();
+
+
+--
 -- Name: sivel2_gen_supracategoria $1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8739,10 +8830,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230505024430'),
 ('20230505031324'),
 ('20230613111532'),
+('20230616203948'),
 ('20230622205529'),
 ('20230622205530'),
 ('20230712163859'),
 ('20230722180204'),
-('20230723011110');
+('20230723011110'),
+('20230927001422');
 
 

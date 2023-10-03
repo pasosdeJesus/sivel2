@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: fc50b26c35f0964db23ac7b23aa99bca9f4cdcb5
+  revision: 27912baf59328eb283a6fe1e9ba1da6a1038f675
   branch: main
   specs:
     apo214 (2.2.0.beta4)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: d52ba35198275dfe6eb2b21a711012949b758e93
+  revision: 71495453bb62ca518ca00be3aee5add3f3faa8ff
   branch: main
   specs:
     heb412_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e1145e67286320069d48e159c81ea1b30ee77524
+  revision: 43e4dfbf40204a240bfac5366aa9bc785e7579b3
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 76a5fc04d1c6d26e52d4f15e1e0c68b499f96db2
+  revision: 090470149b6fc798f1c056e60c27af6de486543f
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 0fa38a4c02552b76cf4ea1a66235e9183fc60f43
+  revision: d7b620d767f0f9d4d83866affb74fc2893adcda4
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -212,7 +212,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.11.0)
+    devise-i18n (1.11.1)
       devise (>= 4.9.0)
     docile (1.4.0)
     dotenv (2.8.1)
@@ -255,7 +255,7 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
-    ffi (1.15.5)
+    ffi (1.16.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hotwire-rails (0.1.3)
@@ -395,7 +395,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.12.0)
+    selenium-webdriver (4.13.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -454,7 +454,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   x86_64-openbsd
@@ -519,4 +519,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.19
+   2.4.20
