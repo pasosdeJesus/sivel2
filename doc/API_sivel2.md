@@ -18,7 +18,7 @@ Un usuario puede consumir de la API tanto las generalidades básicas de un conju
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
 > | `:departamento_id`         | Integer / CP / AUT      | Departamento es Cauca: `filtro[departamento_id]=17`
 > | `:municipio_id`         |Integer  / CP / AUT      | Municipio es Popayán: `filtro[municipio_id]=46` 
-> | `:clase_id`         |Integer / CP / AUT          | Centro Poblado es Puelenje: `filtro[clase_id]=1959`
+> | `:centropoblado_id`         |Integer / CP / AUT          | Centro Poblado es Puelenje: `filtro[centropoblado_id]=1959`
 > | `:fechaini`         |String / CP / AUT       | Fecha de inicio es el 1 de Enero de 2018: `filtro[fechaini]=2018-01-01`
 > | `:fechafin`         |String / CP  / AUT      | Fecha final es el 6 de Julio de 2019: `filtro[fechafin]=2019-07-06`
 > | `:categoria_id`         |Integer / CP / AUT       | Tipificación es Tortura: `filtro[categoria_id]=12`
@@ -73,7 +73,7 @@ Esta misma ruta es empleada por SIVeL 2 para los reportes de casos en JSON y XRL
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos.html?filtro[q]=&filtro[departamento_id]=17&filtro[municipio_id]=1152&filtro[clase_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id][]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[orientacionsexual]=&filtro[rangoedad_id]=&filtro[sectorsocial_id]=&filtro[organizacion_id]=&filtro[profesion_id]=&filtro[victimacol]=&filtro[inc_victimacol]=0&filtro[inc_victimacol]=1&filtro[descripcion]=&filtro[inc_memo]=`application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8``application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8`0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&formato=html&formatosalida=html&commit=Enviar
+>  curl -X GET http://nodos.pasosdejesus.org:2400/sivel2/casos.html?filtro[q]=&filtro[departamento_id]=17&filtro[municipio_id]=1152&filtro[centropoblado_id]=&filtro[inc_ubicaciones]=0&filtro[inc_ubicaciones]=1&filtro[orden]=ubicacion&filtro[fechaini]=&filtro[fechafin]=&filtro[inc_fecha]=0&filtro[inc_fecha]=1&filtro[presponsable_id][]=&filtro[inc_presponsables]=0&filtro[inc_presponsables]=1&filtro[inc_tipificacion]=0&filtro[inc_tipificacion]=1&filtro[nombres]=&filtro[apellidos]=&filtro[inc_victimas]=0&filtro[inc_victimas]=1&filtro[sexo]=&filtro[orientacionsexual]=&filtro[rangoedad_id]=&filtro[sectorsocial_id]=&filtro[organizacion_id]=&filtro[profesion_id]=&filtro[victimacol]=&filtro[inc_victimacol]=0&filtro[inc_victimacol]=1&filtro[descripcion]=&filtro[inc_memo]=`application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8``application/html;charset=UTF-8` / `application/json;charset=UTF-8` `application/xml;charset=UTF-8`0&filtro[inc_memo]=1&filtro[conetiqueta1]=true&filtro[etiqueta1]=&filtro[conetiqueta2]=true&filtro[etiqueta2]=&filtro[usuario_id]=&filtro[fechaingini]=&filtro[fechaingfin]=&filtro[codigo]=&filtro[inc_casoid]=0&filtro[inc_casoid]=1&filtro[paginar]=0&filtro[paginar]=1&filtro[disgenera]=reprevista.html&idplantilla=reprevista&formato=html&formatosalida=html&commit=Enviar
 > ```
 ##### Ejemplos de respuestas
 - HTML:
@@ -340,7 +340,7 @@ La respuesta es una página HTML y con el mensaje de éxito "Listado de Casos re
 <details>
  <summary><code>GET / casos / lista</code></summary>
 
-Ruta utilizada para listar ubicaciones según parámetro de tabla que puede ser departamento, municipio o clase.
+Ruta utilizada para listar ubicaciones según parámetro de tabla que puede ser departamento, municipio o centropoblado.
 
 ##### Ejemplo url
 > ```javascript
@@ -543,10 +543,10 @@ Para mostrar un reporte JSON de varias víctimas, se ha optado por solo mostrar 
 	- pais_id: Identificación del país de nacimiento
 	- departamento_id: Identificación del departamento de nacimiento
 	- municipio_id: Identificación del municipio de nacimiento
-	- clase_id: Identificación del centro poblado de nacimiento
+	- centropoblado_id: Identificación del centro poblado de nacimiento
 	
 	```json
-	[{"id":253110,"nombres":"Alejo","apellidos":"Cruz","anionac":1998,"mesnac":3,"dianac":5,"sexo":"S","numerodocumento":"104524","created_at":"2021-06-22T10:09:25.262-05:00","updated_at":"2021-06-22T10:09:25.262-05:00","pais_id":170,"nacionalde":null,"tdocumento_id":1,"departamento_id":null,"municipio_id":null,"clase_id":null}]
+	[{"id":253110,"nombres":"Alejo","apellidos":"Cruz","anionac":1998,"mesnac":3,"dianac":5,"sexo":"S","numerodocumento":"104524","created_at":"2021-06-22T10:09:25.262-05:00","updated_at":"2021-06-22T10:09:25.262-05:00","pais_id":170,"nacionalde":null,"tdocumento_id":1,"departamento_id":null,"municipio_id":null,"centropoblado_id":null}]
 	```
 </details>
 
@@ -898,7 +898,7 @@ Si se especifica el parámetro correspondiente a la identificación del caso y s
 
  </details>
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>tipoclase</code></summary>
+ <summary><code>GET</code> <code><b>/</b></code> <code>tipocentropoblado</code></summary>
 
 Permite obtener un objeto con el nombre del tipo de centro poblado dada la identificación del centro poblado como parámetro.
 
@@ -907,7 +907,7 @@ Si se especifica el parámetro correspondiente a la identificación del centro p
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/tipoclase?id=15308
+>  curl -X GET http://nuevo.nocheyniebla.org:3400/sivel2/tipocentropoblado?id=15308
 > ```
 ##### Ejemplo de respuesta
 
@@ -961,7 +961,7 @@ Cualquier usuario autenticado o no, puede consultar el listado de ubicacionespre
  <summary><code>POST</code> <code><b>/</b></code> <code>ubicacionespre</code></summary>
  
 Crea un nuevo registro para ubicacionespre a través de los siguientes parámteros:
-id: integer, nombre: string, pais_id: integer, departamento_id: integer, municipio_id: integer, clase_id: integer, lugar: string, sitio: string, tsitio_id: integer, latitud: float, longitud: float, created_at: datetime, updated_at: datetime, nombre_sin_pais: string
+id: integer, nombre: string, pais_id: integer, departamento_id: integer, municipio_id: integer, centropoblado_id: integer, lugar: string, sitio: string, tsitio_id: integer, latitud: float, longitud: float, created_at: datetime, updated_at: datetime, nombre_sin_pais: string
 
 ##### Control de acceso
 Crear un nuevo registro de ubicacionpre solo puede realizarse por parte de un usuario administrador
@@ -969,7 +969,7 @@ Crear un nuevo registro de ubicacionpre solo puede realizarse por parte de un us
 ##### Ejemplo cURL
 
 > ```javascript
->  curl -X POST http://nuevo.nocheyniebla.org:3400/sivel2/ubicacionespre  id=14782&nombre="BARRANCOMINAS / BARRANCOMINAS / GUAINÍA / COLOMBIA"&pais_id=170&departamento_id= 56&municipio_id= 594& clase_id= 13064&created_at="2021-12-08"&updated_at: "2021-12-08"&nombre_sin_pais= "BARRANCOMINAS / BARRANCOMINAS / GUAINÍA"
+>  curl -X POST http://nuevo.nocheyniebla.org:3400/sivel2/ubicacionespre  id=14782&nombre="BARRANCOMINAS / BARRANCOMINAS / GUAINÍA / COLOMBIA"&pais_id=170&departamento_id= 56&municipio_id= 594& centropoblado_id= 13064&created_at="2021-12-08"&updated_at: "2021-12-08"&nombre_sin_pais= "BARRANCOMINAS / BARRANCOMINAS / GUAINÍA"
 
 > ```
 ##### Ejemplo de respuesta

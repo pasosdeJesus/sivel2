@@ -73,7 +73,7 @@ PRUEBA_UBICACIONPRE = {
   pais_id: 170,
   departamento_id: 56,
   municipio_id: 594,
-  clase_id: 13064,
+  centropoblado_id: 13064,
   lugar: nil,
   sitio: nil,
   tsitio_id: nil,

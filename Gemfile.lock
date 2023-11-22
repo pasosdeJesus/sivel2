@@ -35,8 +35,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 27912baf59328eb283a6fe1e9ba1da6a1038f675
-  branch: main
+  revision: b6e52e071b396d263c1c4b69a5dd2b4a6483194b
+  branch: renclase
   specs:
     apo214 (2.2.0.beta4)
       msip
@@ -44,8 +44,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 31f166f4c14aae30f070b28707338f052b6ba82b
-  branch: main
+  revision: a044ff731677281d6c5f85d2d1e5a812fe330e28
+  branch: renclase
   specs:
     heb412_gen (2.2.0.beta4)
       mr519_gen
@@ -55,8 +55,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 43e4dfbf40204a240bfac5366aa9bc785e7579b3
-  branch: main
+  revision: 2ba047bdc09de9e808cc66f1f77e4f7add3c6b08
+  branch: renclase
   specs:
     mr519_gen (2.2.0.beta4)
       msip
@@ -64,8 +64,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 1b98b3ba2b146f2768d4699049b0a2c322adb4ae
-  branch: main
+  revision: 2aa8302570f55447d741cb20b90f02a1f7e96712
+  branch: renclase
   specs:
     msip (2.2.0.beta4)
       cancancan (~> 3)
@@ -84,8 +84,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 7f4448f16811cc58c2633bba7866d99d4aac54e6
-  branch: main
+  revision: e98249c8fbdfb8276b4a6df42e4fdb4e690905aa
+  branch: renclase
   specs:
     sivel2_gen (2.2.0.beta4)
       color
@@ -169,9 +169,9 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.19)
+    bcrypt (3.1.20)
     bindex (0.8.1)
-    bootsnap (1.16.0)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -199,14 +199,14 @@ GEM
     colorize (1.1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
-    cuprite (0.14.3)
+    cuprite (0.15)
       capybara (~> 3.0)
-      ferrum (~> 0.13.0)
-    date (3.3.3)
+      ferrum (~> 0.14.0)
+    date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
-    devise (4.9.2)
+    devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -250,7 +250,7 @@ GEM
       ruby-graphviz
     erubi (1.12.0)
     execjs (2.9.1)
-    ferrum (0.13)
+    ferrum (0.14)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
@@ -265,7 +265,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.8.1)
+    irb (1.9.1)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
@@ -274,8 +274,8 @@ GEM
     jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
     kgio (2.11.4)
-    libxml-ruby (4.1.1)
-    loofah (2.21.3)
+    libxml-ruby (4.1.2)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -290,20 +290,20 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.1003)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.0)
+    net-imap (0.4.6)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.5.9)
-    nokogiri (1.15.4)
+    nio4r (2.6.1)
+    nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -321,12 +321,12 @@ GEM
     prawnto_2 (0.3.1)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    psych (5.1.0)
+    psych (5.1.1.1)
       stringio
-    public_suffix (5.0.3)
+    public_suffix (5.0.4)
     puma (6.4.0)
       nio4r (~> 2.0)
-    racc (1.7.1)
+    racc (1.7.3)
     rack (2.2.8)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
@@ -369,15 +369,15 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     raindrops (0.20.1)
-    rake (13.0.6)
-    rdoc (6.5.0)
+    rake (13.1.0)
+    rdoc (6.6.0)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
     redis (4.8.1)
-    regexp_parser (2.8.1)
-    reline (0.3.9)
+    regexp_parser (2.8.2)
+    reline (0.4.0)
       io-console (~> 0.5)
-    responders (3.1.0)
+    responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
@@ -395,11 +395,11 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.13.1)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_form (5.2.0)
+    simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     simplecov (0.22.0)
@@ -409,7 +409,7 @@ GEM
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     smart_kv (0.2.8.1)
-    spring (4.1.1)
+    spring (4.1.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -417,16 +417,16 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stimulus-rails (1.2.2)
+    stimulus-rails (1.3.0)
       railties (>= 6.0.0)
-    stringio (3.0.8)
+    stringio (3.0.9)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (1.2.2)
+    thor (1.3.0)
     tilt (2.3.0)
-    timeout (0.4.0)
+    timeout (0.4.1)
     ttfunk (1.7.0)
-    turbo-rails (1.4.0)
+    turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
