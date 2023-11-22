@@ -27,3 +27,6 @@ application.register("msip--filtro-tan", Msip__FiltroTanController)
 
 import Msip__SindocautController from "./msip/sindocaut_controller"
 application.register("msip--sindocaut", Msip__SindocautController)
+
+import Sivel2Gen__EdadController from "./sivel2_gen/edad_controller"
+application.register("sivel2-gen--edad", Sivel2Gen__EdadController)
