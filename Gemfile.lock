@@ -26,8 +26,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: b6e52e071b396d263c1c4b69a5dd2b4a6483194b
-  branch: renclase
+  revision: a4c7a38b7ea9e7f23668745ec67071ff940641e4
+  branch: main
   specs:
     apo214 (2.2.0.beta4)
       msip
@@ -35,8 +35,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: a044ff731677281d6c5f85d2d1e5a812fe330e28
-  branch: renclase
+  revision: 7cd8b4b7de0898ab2a3b049217e4a0e9d3c2cc81
+  branch: main
   specs:
     heb412_gen (2.2.0.beta4)
       mr519_gen
@@ -46,8 +46,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 2ba047bdc09de9e808cc66f1f77e4f7add3c6b08
-  branch: renclase
+  revision: 8ac5cf474570620c29569b5ddfe31327113063c8
+  branch: main
   specs:
     mr519_gen (2.2.0.beta4)
       msip
@@ -55,8 +55,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 2aa8302570f55447d741cb20b90f02a1f7e96712
-  branch: renclase
+  revision: 932966920f125f0f47e37ace5574ec80ca7a8366
+  branch: main
   specs:
     msip (2.2.0.beta4)
       cancancan (~> 3)
@@ -75,8 +75,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: e98249c8fbdfb8276b4a6df42e4fdb4e690905aa
-  branch: renclase
+  revision: 9e0c2c69f7832aede185bfd0062530ff3f97b565
+  branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
       color
