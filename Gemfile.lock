@@ -1,17 +1,17 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 8a6631b598eb8a248927ab39acd1b10c0c4cf445
+  revision: 1c6dfe65e73fb6bdd7a1ae326b551b45c501e5c5
   specs:
     kt-paperclip (7.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
       mime-types
-      terrapin (~> 0.6.0)
+      terrapin (>= 0.6.0, < 2.0)
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 3dec499a7032cbfb84f2beb05a77261f63140435
+  revision: 1a812717a746fb74cf1cb195bc834c616db56ce6
   branch: v2.0
   specs:
     heb412_gen (2.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 46b169f03033a756ab1008591e41bf29bd87fa4a
+  revision: b0085b93349c74516442ca1db8b613a3e7b6b411
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5a83afc60d2824c134b13155b5381a9e9d6d2178
+  revision: 088c6dfc1bd39f29a486f27f1e180921b55d39bb
   branch: v2.0
   specs:
     sip (2.0)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sivel2_gen.git
-  revision: a1761d138994430ec371444f7c78fccc95fd6fc4
+  revision: f83c58158e6c3e3194f3e309c490f55e3dd2a087
   branch: sivel2.0
   specs:
     sivel2_gen (2.0)
@@ -131,7 +131,7 @@ GEM
     andand (1.3.3)
     bcrypt (3.1.20)
     bindex (0.8.1)
-    bootsnap (1.17.0)
+    bootsnap (1.17.1)
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -160,12 +160,12 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (1.1.0)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     crass (1.0.6)
     date (3.3.4)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
+    debug (1.9.1)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -179,7 +179,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    erd (0.8.1)
+    erd (0.8.2)
       nokogiri
       ruby-graphviz
     erubi (1.12.0)
@@ -189,10 +189,10 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    io-console (0.6.0)
-    irb (1.10.1)
+    io-console (0.7.2)
+    irb (1.11.1)
       rdoc
-      reline (>= 0.3.8)
+      reline (>= 0.4.2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -216,7 +216,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
-    mime-types (3.5.1)
+    mime-types (3.5.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.1205)
     mimemagic (0.3.10)
@@ -224,19 +224,19 @@ GEM
       rake
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.20.0)
+    minitest (5.21.2)
     msgpack (1.7.2)
-    net-imap (0.4.7)
+    net-imap (0.4.9.1)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0)
+    net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.15.5)
+    nokogiri (1.16.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -260,10 +260,10 @@ GEM
     prawnto_2 (0.3.1)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    psych (5.1.1.1)
+    psych (5.1.2)
       stringio
     public_suffix (5.0.4)
-    puma (6.4.0)
+    puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.8)
@@ -311,11 +311,11 @@ GEM
       thor (~> 1.0)
     raindrops (0.20.1)
     rake (13.1.0)
-    rdoc (6.6.1)
+    rdoc (6.6.2)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
-    regexp_parser (2.8.3)
-    reline (0.4.1)
+    regexp_parser (2.9.0)
+    reline (0.4.2)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -447,4 +447,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.22
+   2.5.4
