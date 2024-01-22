@@ -26,8 +26,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 33a582b9293fb9cc69d2387fecdf6b3be9629345
-  branch: main
+  revision: 3993b563fbf57ff9d2aed5a79e1bca0dcac997f7
+  branch: rails7.0fin
   specs:
     apo214 (2.2.0.beta4)
       msip
@@ -35,8 +35,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: b08ea2fccc9a63cf890f4037360a786b783eea55
-  branch: main
+  revision: 48e3315154e96603871a5b8554f1f8d05291669a
+  branch: rails7.0fin
   specs:
     heb412_gen (2.2.0.beta4)
       mr519_gen
@@ -46,8 +46,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 1f15fbbb2e262f2c92192fa805da509a5ce742f6
-  branch: main
+  revision: b874b659b07c76638147e803d5a4084f9bc3edea
+  branch: rails7.0fin
   specs:
     mr519_gen (2.2.0.beta4)
       msip
@@ -55,8 +55,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: aafe487e6d7c568918452f6104d54d84927d317d
-  branch: main
+  revision: 89a073192a6f27559237d1966c044aeaee7c8837
+  branch: rails7.0fin
   specs:
     msip (2.2.0.beta4)
       cancancan (~> 3)
@@ -75,8 +75,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 78b8653362977f26959116fe5e6bf3cce00f14e5
-  branch: main
+  revision: d19d8d713c3fab08343364a7bbeda7c9c7f8a163
+  branch: rails7.0fin
   specs:
     sivel2_gen (2.2.0.beta4)
       color
@@ -237,7 +237,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.2.2)
+    jsbundling-rails (1.3.0)
       railties (>= 6.0.0)
     kgio (2.11.4)
     libxml-ruby (5.0.2)
