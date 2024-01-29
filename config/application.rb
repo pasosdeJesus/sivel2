@@ -21,9 +21,13 @@ Bundler.require(*Rails.groups)
 module Sivel2
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
-config.load_defaults Rails::VERSION::STRING.to_f
+    config.load_defaults Rails::VERSION::STRING.to_f
 
-config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w(assets tasks))
+
+    config.railties_order = [:main_app, Sivel2Gen::Engine,
+                             Heb412Gen::Engine, Mr519Gen::Engine, 
+                             Msip::Engine, :all]
 
 
     config.action_view.form_with_generates_remote_forms = false
