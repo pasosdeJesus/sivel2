@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: abf5d908f6dc000193ed45b1845ea9d4ca06b9b8
+  revision: 895934c4f2b780b943cbd4a1aae6139f132cf32e
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 762f6db0ae3aee730a53a98a8857aac07937db90
+  revision: aa0e08be022d58340ed7b96bf45fc6d2487e6fac
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: c40b3dbc36b1edb6052c4229d33512282d9fbf10
+  revision: 98e34c2b02ec8608865c3b2a477374598400bf9f
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -174,7 +174,7 @@ GEM
     bcrypt (3.1.20)
     bigdecimal (3.1.6)
     bindex (0.8.1)
-    bootsnap (1.17.1)
+    bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
