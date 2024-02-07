@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 1fb4ec862836e856151504f4084fb4701c1b990d
+  revision: efb0a43506f8cf5bc327ace436feaf0c32260d98
   branch: main
   specs:
     heb412_gen (2.2.0.beta4)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 895934c4f2b780b943cbd4a1aae6139f132cf32e
+  revision: 44446bcafef7dac19ac2a47c807950b10dbfe21a
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: aa0e08be022d58340ed7b96bf45fc6d2487e6fac
+  revision: 0f184ae0dd0979cdd79328f2886b58b15c417e08
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 98e34c2b02ec8608865c3b2a477374598400bf9f
+  revision: c65c500abc78419d2fdd8acc2c5294b5a62ec425
   branch: main
   specs:
     sivel2_gen (2.2.0.beta4)
@@ -267,13 +267,13 @@ GEM
     matrix (0.4.2)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1205)
+    mime-types-data (3.2024.0206)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.21.2)
+    minitest (5.22.1)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    net-imap (0.4.9.1)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -283,7 +283,7 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.0)
+    nokogiri (1.16.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -441,7 +441,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
   x86_64-openbsd
@@ -506,4 +506,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.5
+   2.5.6
