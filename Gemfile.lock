@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 44446bcafef7dac19ac2a47c807950b10dbfe21a
+  revision: 257869ab3ba9ff0ec262a63309abac3e333f6769
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 0f184ae0dd0979cdd79328f2886b58b15c417e08
+  revision: cd4a9a1fb08cd2213c94f918d2aaeb099d915e22
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -219,10 +219,10 @@ GEM
     devise-i18n (1.12.0)
       devise (>= 4.9.0)
     docile (1.4.0)
-    dotenv (2.8.1)
-    dotenv-rails (2.8.1)
-      dotenv (= 2.8.1)
-      railties (>= 3.2)
+    dotenv (3.0.1)
+    dotenv-rails (3.0.1)
+      dotenv (= 3.0.1)
+      railties (>= 6.1)
     drb (2.2.0)
       ruby2_keywords
     erd (0.8.2)
@@ -245,7 +245,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
-    irb (1.11.1)
+    irb (1.11.2)
       rdoc
       reline (>= 0.4.2)
     jbuilder (2.11.5)
@@ -270,7 +270,7 @@ GEM
     mime-types-data (3.2024.0206)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.22.1)
+    minitest (5.22.2)
     msgpack (1.7.2)
     mutex_m (0.2.0)
     net-imap (0.4.10)
@@ -292,7 +292,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pdf-core (0.9.0)
-    pg (1.5.4)
+    pg (1.5.5)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
