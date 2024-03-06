@@ -11,18 +11,18 @@ gem "bcrypt"
 
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 
-gem "bootsnap", ">=1.1.0", require: false
+gem "bootsnap", require: false
 
-gem "cancancan"
+gem "cancancan" # Roles
 
 gem "cocoon", git: "https://github.com/vtamara/cocoon.git", 
   branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
 
-gem "coffee-rails" # CoffeeScript para recuersos .js.coffee y vistas
+gem "coffee-rails" # CoffeeScript mientras reemplazamos por Javascript
 
 gem "color"
 
-gem "devise" # Autenticación y roles
+gem "devise" # Autenticación
 
 gem "devise-i18n"
 
@@ -37,9 +37,9 @@ gem "kt-paperclip",                 # Anexos
 
 gem "libxml-ruby"
 
-gem "odf-report" # Genera ODT
+gem "nokogiri"
 
-gem "nokogiri", ">=1.11.1"
+gem "odf-report" # Genera ODT
 
 gem "pg" # Postgresql
 
@@ -60,9 +60,9 @@ gem "rails-i18n"
 
 gem "redcarpet" # Markdown
 
-gem "rspreadsheet" # Genera ODS
+gem "rspreadsheet"
 
-gem "rubyzip", ">= 2.0"
+gem "rubyzip"
 
 gem "sassc-rails" # Hojas de estilo con SCSS
 
@@ -72,7 +72,7 @@ gem "sprockets-rails"
 
 gem "stimulus-rails"
 
-gem "turbo-rails", "~> 1.0"
+gem "turbo-rails"
 
 gem "twitter_cldr" # ICU con CLDR
 
@@ -106,20 +106,29 @@ gem "apo214", # Motor para manejo de casos
   #path: "../apo214"
 
 group  :development, :test do
-  gem "debug" # Depurar
+  gem "brakeman"
+
+  gem "bundler-audit"
+
+  #gem "code-scanning-rubocop"
 
   gem "colorize" # Colores en terminal
 
-  gem "dotenv-rails"
-end
+  gem "debug" # Depurar
 
+  gem "dotenv-rails"
+
+  gem "rails-erd"
+
+  #gem "rubocop-minitest"
+
+  #gem "rubocop-rails"
+end
 
 group :development do
   gem "erd"
 
   gem "puma"
-
-  gem "rails-erd"
 
   gem "redis", "~> 4.0"
 
@@ -128,13 +137,10 @@ group :development do
   gem "web-console"
 end
 
-
 group :test do
-  gem "cuprite"
-
   gem "capybara"
 
-  gem "selenium-webdriver"
+  gem "cuprite"
 
   gem "simplecov"
 end
