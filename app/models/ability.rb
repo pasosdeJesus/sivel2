@@ -12,7 +12,7 @@ class Ability  < Sivel2Gen::Ability
           ['Sivel2Gen', 'escolaridad'],
           ['Sivel2Gen', 'estadocivil'],
           ['Sivel2Gen', 'maternidad']
-        ] + Sivel2Gen::Ability::BASICAS_PROPIAS
+        ]
     return r
   end
 
