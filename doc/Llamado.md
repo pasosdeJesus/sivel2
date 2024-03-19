@@ -52,6 +52,6 @@ Para reportar la falla tenga en cuenta:
 
 Agradecemos su interés en esta convocatoria pública, cuya versión
 más reciente está disponible en
-<https://github.com/pasosdeJesus/sivel2/blob/sivel2.1/doc/Llamado.md>
+<https://github.com/pasosdeJesus/sivel2/blob/v2.1/doc/Llamado.md>
 
 Le invitamos a distribuirla solidariamente y sin cambios.
