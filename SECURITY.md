@@ -27,7 +27,7 @@ Por favor sigue estos 3 pasos en ese orden:
 
 Hay una retribución monetaria para la primera falla que se reporte a la rama
 sivel2.1, ver detalles en
-<https://github.com/pasosdeJesus/sivel2/blob/sivel2.1/doc/Llamado.md>
+<https://github.com/pasosdeJesus/sivel2/blob/v2.1/doc/Llamado.md>
 
 ----
 

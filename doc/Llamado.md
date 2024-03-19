@@ -16,7 +16,7 @@ l@ invitamos a buscar fallas de seguridad en SIVeL 2.1, bien
 experimentando en la instalación de prueba para este llamado,
 o bien haciendo su propia instalación siguiendo las
 recomendaciones para el ambiente de ejecución (ver
-[README.md](https://github.com/pasosdeJesus/sivel2/blob/sivel2.1/README.md) )
+[README.md](https://github.com/pasosdeJesus/sivel2/blob/v2.1/README.md) )
 o bien auditando las fuentes que son de código abierto y escritas
 en Ruby con marco de trabajo Ruby on Rails.
 
@@ -39,11 +39,11 @@ Para reportar la falla tenga en cuenta:
 * Su reporte debe incluir la metodología que empleó para encontrarla 
   y proponer una solución para las fuentes de la rama `v2.1`
   disponibles en el repositorio git 
-  https://github.com/pasosdeJesus/sivel2/tree/sivel2.1
+  https://github.com/pasosdeJesus/sivel2/tree/v2.1
   (puede ver ejemplos de auditorías a la versión 1.2
    en <https://github.com/pasosdeJesus/SIVeL/tree/master/doc>)
 * Reporte la falla y suministre la solución como se indica en 
-  <https://github.com/pasosdeJesus/sivel2/blob/sivel2.1/SECURITY.md>
+  <https://github.com/pasosdeJesus/sivel2/blob/v2.1/SECURITY.md>
 * Su aporte será evaluado y respondido y  en caso de que podamos
   reproducir la falla y haya seguido los lineamientos aquí descritos,
   le entregaremos la retribución como lo prefiera: personalmente
