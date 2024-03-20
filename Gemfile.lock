@@ -71,10 +71,8 @@ GIT
       rails
       sip
 
-GIT
-  remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 66a70b645a19b33c08b15dc6e84178ee11eab468
-  branch: v2.1
+PATH
+  remote: ../sivel2_gen-2.1
   specs:
     sivel2_gen (2.1.0)
       color

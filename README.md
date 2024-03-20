@@ -57,8 +57,8 @@ Además si vas a desplegar en producción:
 ### Probar operación en modo de desarrollo 🔧
 
 * Crea un usuario para PostgreSQL como se explica en
-  <https://github.com/pasosdeJesus/sip/blob/main/doc/aplicacion-de-prueba.md>
-  (si dejas el nombre `sipdes` se te facilitarán los siguientes pasos)
+  <https://gitlab.com/pasosdeJesus/msip/-/blob/main/doc/aplicacion-de-prueba.md>
+  (si dejas el nombre `sipdes` se te facilitarán los siguientes pasos
 * Ubica las fuentes en un directorio, por ejemplo en `/var/www/htdocs/sivel2/`
 * Asegura que las gemas estén instaladas. En el caso de adJ en
   `/var/www/bundler/ruby/3.3/` siguiendo las instrucciones de
@@ -121,31 +121,20 @@ Además si vas a desplegar en producción:
   ```
 * Si no lo has hecho instala `yarn` para manejar paquetes javascript:
   ```sh
-  doas pkg_add bash
-  ftp -o- https://yarnpkg.com/install.sh | bash
-  . ~/.profile
+  doas npm install -g yarn
   ```
 * Instala las librerías Javascript requeridas al lado del cliente con:
   ```sh
-  CXX=c++ yarn install
-  ```
-* Crea un enlace a `public/packs` desde la carpeta `public` apropiada para el 
-  punto de montaje.
-  Por ejemplo si está empleando el punto de montaje por omisión `/sivel2/` 
-  sería:
-  ```sh
-  mkdir -p public/sivel2
-  cd public/sivel2
-  ln -s ../packs .
-  cd ../..
+  yarn install
   ```
 * Para verificar que se están generando bien los recursos ejecuta:
   ```sh
-    rm -rf public/sivel2/assets/* public/sivel2/packs/*
+    rm -rf public/sivel2_1/assets/*
+    bin/rails sip:stimulus_motores
     bin/rails assets:precompile --trace
   ```
-  y después verifica que se están poblando bien los directorios 
-  `public/sivel2/assets` y `public/sivel2/packs`
+  y después verifica que se está poblando el directorio
+  `public/sivel2_1/assets`
 * Lanza la aplicación en modo de desarrollo. En el siguiente ejemplo el
   parámetro `-p` indica el puerto por el cual escuchará la aplicación
   y el parámetro `-b` indica la dirección IP como **0.0.0.0**
@@ -160,20 +149,16 @@ Además si vas a desplegar en producción:
   ```
   que eliminará y recreará recursos y lanzará la aplicación.
 * Examina con un navegador que tenga habilitadas las galletas (cookies) en el
-  puerto 2300: `http://127.0.0.1:2300/sivel2`.  (Por eso si usas el
+  puerto 2300: `http://127.0.0.1:2300/sivel2_1`.  (Por eso si usas el
   navegador `w3m` añade la opción `-cookie`)
 * Si al ejecutarse te aprece un mensaje indicando que pongas el dominio
   que usaste en config.hosts edita el archivo .env y pon el dominio en la
   variable `CONFIG_HOSTS`
 * Cuando quieras detener basta que presiones Control-C o que busques el
-  proceso con ruby que corre en el puerto 3000 y lo elimines con `kill`:
+  proceso con ruby que corre en el puerto 2300 y lo elimines con `kill`:
   ```sh
   ps ax | grep "ruby.*2300"
-  kill 323122
-  ```
-* En este modo es recomendable que borres recursos pre-compilados
-  ```sh
-  rm -rf public/assets/*
+  kill 323122 # Cambia por el número de proceso
   ```
 
 ### Pruebas ⚙️
@@ -184,11 +169,12 @@ minitest y pruebas al sistema con sideex.
 
 Puede ejecutar las pruebas de control de acceso con:
 ```sh
+RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed sip:indices
 CONFIG_HOSTS=www.example.com bin/rails test
 ```
 Al respecto de modificar o crear pruebas con mini-test
 recomendamos  
-<https://github.com/pasosdeJesus/sip/blob/main/doc/pruebas-con-minitest.md>.
+<https://gitlab.com/pasosdeJesus/msip/-/blob/main/doc/pruebas-con-minitest.md>.
 
 Para ejecutar las pruebas del sistema con Sideex, ejecuta la aplicación en 
 modo de desarrollo y desde el navegador compatible con Chrome en el que la 

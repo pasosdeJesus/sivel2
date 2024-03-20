@@ -53,7 +53,7 @@ module Heb412Gen
     test "autenticado como operador sin grupo puede ver resumen de plantillahcm" do
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
+      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2_1/')}plantillahcm/#{Heb412Gen::Plantillahcm.all.take.id}"
       assert_response :ok
     end
 
@@ -61,7 +61,7 @@ module Heb412Gen
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get heb412_gen.edit_plantillahcm_path(Heb412Gen::Plantillahcm.all.sample.id)
+        get heb412_gen.edit_plantillahcm_path(Heb412Gen::Plantillahcm.all.take.id)
       end
     end
 
@@ -93,7 +93,7 @@ module Heb412Gen
     test "autenticado como operador analista debe presentar resumen de plantillahcm" do
       current_usuario = inicia_analista
       sign_in current_usuario
-      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2/')}plantillahcm/#{Heb412Gen::Plantillahcm.all.sample.id}"
+      get "http://www.example.com:80#{ENV.fetch('RUTA_RELATIVA', '/sivel2_1/')}plantillahcm/#{Heb412Gen::Plantillahcm.all.take.id}"
       assert_response :ok
     end
 
@@ -101,7 +101,7 @@ module Heb412Gen
       current_usuario = inicia_analista
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get heb412_gen.edit_plantillahcm_path(Heb412Gen::Plantillahcm.all.sample.id)
+        get heb412_gen.edit_plantillahcm_path(Heb412Gen::Plantillahcm.all.take.id)
       end
     end
 
