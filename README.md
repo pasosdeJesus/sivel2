@@ -27,26 +27,21 @@ o necesitas un sistema de información o incluir y adaptar SIVeL 2.1 en el
 sistema de información de tu organización por favor revisa
 <https://defensor.info>.
 
-Si tienes una idea de como mejorar SIVeL 2.1 te invitamos a proponerla con la
-categoría Idea en <https://github.com/pasosdeJesus/sivel2/discussions>
-
-Si quieres votar para que se implemente el requerimiento que necesitas más
-rápido te invitamos a suscribirte y votar en <https://cifrasdelconflicto.org>
-
 Si quieres desplegar tu propia instalación de SIVeL 2.1 mira más adelante este
 documento.
 
 Si desea reportar un problema con sivel 2.1 o conocer del desarrollo de esta
 aplicación por favor revisa:
-* Reportar problemas: <https://github.com/pasosdeJesus/sivel2_gen/issues>
+* Reportar problemas: <https://gitlab.com/pasosdeJesus/sivel2_gen/-/issues>
 * Reportar una falla de seguridad:
-  <https://github.com/pasosdeJesus/sivel2/blob/main/SECURITY.md>
+  <https://gitlab.com/pasosdeJesus/sivel2/-/blob/main/SECURITY.md>
 * Tableros de seguimiento al desarrollo:
-  <https://github.com/pasosdeJesus/sivel2_gen/projects>
+  <https://gitlab.com/pasosdeJesus/sivel2_gen/-/milestones>
 
 Si quieres ayudar a mejorar esta aplicación de fuentes abiertas te
 recomendamos el repositorio del motor
 [sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen).
+
 Desde Pasos de Jesús estaremos atentos a quienes hagan aportes para
 proponerles oportunidades labores cuando las haya.
 
@@ -55,7 +50,7 @@ proponerles oportunidades labores cuando las haya.
 
 ### Requisitos 📋
 
-Ver <https://github.com/pasosdeJesus/sip/blob/main/doc/requisitos.md>
+Ver <https://gitlab.com/pasosdeJesus/msip/-/blob/main/doc/requisitos.md>
 Además si vas a desplegar en producción:
 * nginx (>=1.18)
 
@@ -66,8 +61,8 @@ Además si vas a desplegar en producción:
   (si dejas el nombre `sipdes` se te facilitarán los siguientes pasos)
 * Ubica las fuentes en un directorio, por ejemplo en `/var/www/htdocs/sivel2/`
 * Asegura que las gemas estén instaladas. En el caso de adJ en
-  `/var/www/bundler/ruby/3.1/` siguiendo las instrucciones de
-  <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
+  `/var/www/bundler/ruby/3.3/` siguiendo las instrucciones de
+  <https://pasosdejesus.org/doc/usuario_adJ/conf-programas.html#ruby>
   y en el directorio con fuentes asegúrate de tener el archivo `.bundle/config`
   con contenido:
   ```
@@ -87,14 +82,14 @@ Además si vas a desplegar en producción:
   Si se interrumpe el proceso por problemas de permisos en instalación de una
   gema, instálala como en el siguiente ejemplo (cambiando la gema y la versión):
   ```sh
-  doas gem install --install-dir /var/www/bundler/ruby/3.1/ bindex -v 0.7.0
+  doas gem install --install-dir /var/www/bundler/ruby/3.3/ bindex -v 0.7.0
   ```
 * Copia la plantilla del archivo `.env` y editalo:
   ```sh
   cp .env.plantilla .env
   $EDITOR .env
   ```
-  Las variables definidas dejan la aplicación en el URL `/sivel2/` (tendrías 
+  Las variables definidas dejan la aplicación en el URL `/sivel2_1/` (tendrías 
   que modificar `RUTA_RELATIVA` si prefieres una raíz de URL diferente).
 
   Lo mínimo que debes establecer es el usuario PostgreSQL, su clave y
@@ -113,10 +108,10 @@ Además si vas a desplegar en producción:
   bin/rails db:migrate
   bin/rails sip:indices
   ```
-  Si vas a empezar con una base nueva `sivel2gen_des` con el usuario de
+  Si vas a empezar con una base nueva `sivel21gen_des` con el usuario de
   PostgreSQL `sipdes`:
   ```sh
-  createdb -U sipdes -h /var/www/var/run/postgresql/ sivel2gen_des
+  createdb -U sipdes -h /var/www/var/run/postgresql/ sivel21gen_des
   ```
   y desde el directorio de la aplicación:
   ```sh
@@ -209,10 +204,10 @@ entre ambos, deberían pasar).
 * Se recomienda que dejes fuentes en `/var/www/htdocs/sivel2`
 * Sigue los mismos pasos para configurar un servidor de desarrollo --excepto
   lanzar
-* Crea la base de datos `sivel2gen_pro` con dueño `sipdes`.  Por ejemplo en adJ
-  desde el usuario `_postgresql`:
+* Crea la base de datos `sivel21gen_pro` con dueño `sipdes`.  
+  Por ejemplo en adJ desde el usuario `_postgresql`:
   ```sh
-    createdb -Upostgres -h/var/www/var/run/postgresql -Osipdes sivel2gen_pro
+    createdb -Upostgres -h/var/www/var/run/postgresql -Osipdes sivel21gen_pro
   ```
 * Edita credenciales cifradas con:
   ```sh
@@ -236,7 +231,7 @@ entre ambos, deberían pasar).
   respaldes con periodicidad.
 * Configura la ruta para la nube (preferible donde quede también respaldada 
   con periodicidad) en la variable `HEB412_RUTA` del archivo `.env`
-* Elige un puerto local no usado (digamos `2009`) y configuralo en la 
+* Elige un puerto local no usado (digamos `2009`) y configúralo en la 
   variable `PUERTOUNICORN` del archivo `.env`
 * Como servidor web recomendamos nginx, suponiendo que el puerto elegido es 
   2009, en la sección http agrega:
@@ -298,7 +293,7 @@ entre ambos, deberían pasar).
 * Instala de manera global `unicorn` y el enlace `/usr/local/bin/rails_unicorn`:
   ```sh
   doas gem install unicorn
-  doas ln -sf /usr/local/bin/unicorn_rails31 /usr/local/bin/unicorn_rails
+  doas ln -sf /usr/local/bin/unicorn_rails33 /usr/local/bin/unicorn_rails
   ```
 
 * Tras reiniciar nginx, inicia unicorn desde el directorio con fuentes con 
@@ -306,7 +301,7 @@ entre ambos, deberían pasar).
   ```sh
   DIRAP=/var/www/htdocs/sivel2 SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 ./bin/u.sh
   ```
-* Para iniciar en cada arranque, por ejemplo en adJ crea /etc/rc.d/sivel2
+* Para iniciar en cada arranque, por ejemplo en adJ crea /etc/rc.d/sivel21
   ```sh
 
   servicio="DIRAP=/var/www/htdocs/sivel2 SECRET_KEY_BASE=9ff0ee3b245d827293e0ae9f46e684a5232347fecf772e650cc59bb9c7b0d199070c89165f52179a531c5c28f0d3ec1652a16f88a47c28a03600e7db2aab2745 /var/www/htdocs/sivel2/bin/u.sh"
@@ -327,7 +322,7 @@ entre ambos, deberían pasar).
   ```
   Inicialo con:
   ```
-  doas sh /etc/rc.d/sivel2 -d start
+  doas sh /etc/rc.d/sivel21 -d start
   ```
   Y una vez opere bien, incluye `sivel2` en la variable `pkg_scripts` 
   de `/etc/rc.conf.local`
