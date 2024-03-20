@@ -347,11 +347,11 @@ El desarrollo debe centrarse en los motores que constituyen esta aplicación,
 particularmente `sivel2_gen`.
 
 La documentación general para desarrolladores que mantenemos está en:
-<https://github.com/pasosdeJesus/sip/blob/main/doc/README.md>
+<https://gitlab.com/pasosdeJesus/msip/-/blob/main/doc/README.md>
 
 
 ## Autores ✒️
 
 Ver 
-[contribuyentes](https://github.com/pasosdeJesus/sivel2/graphs/contributors) y
-<https://github.com/pasosdeJesus/sivel2/blob/main/CREDITOS.md>
+[contribuyentes](https://gitlab.com/pasosdeJesus/sivel2/-/graphs/main) y
+<https://gitlab.com/pasosdeJesus/sivel2/-/blob/main/CREDITOS.md>
