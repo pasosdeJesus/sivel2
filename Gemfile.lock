@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1385c9989d4fd4181c98bc79b6dc094105c6c083
+  revision: 9307e800d9a99f0ff918d294751c49d58c7e8053
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 2015433f6edf530b56d7509c455cde02c5b0bfeb
+  revision: 303c33f2261149c83c5cefc5785a3572aa60e877
   branch: v2.1
   specs:
     sivel2_gen (2.1.0)
@@ -295,7 +295,7 @@ GEM
       timeout
     net-smtp (0.4.0.1)
       net-protocol
-    nio4r (2.7.0)
+    nio4r (2.7.1)
     nokogiri (1.16.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -333,7 +333,7 @@ GEM
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (2.2.8.1)
+    rack (2.2.9)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-test (2.1.0)
@@ -376,7 +376,7 @@ GEM
       zeitwerk (~> 2.5)
     raindrops (0.20.1)
     rake (13.1.0)
-    rdoc (6.6.2)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
     redis (4.8.1)
