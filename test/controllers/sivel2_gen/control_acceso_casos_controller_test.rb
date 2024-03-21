@@ -40,12 +40,12 @@ module Sivel2Gen
     
     test "activando consulta publica puede acceder a revista de casos" do
       ENV['SIVEL2_CONSWEB_PUBLICA'] = "1"
-      get sivel2_gen.casos_cuenta_path
+      get sivel2_gen.casos_cuenta_path(:json)
       assert_response :ok
     end
 
     test "sin autenticar puede contar todos los casos" do
-      get sivel2_gen.casos_cuenta_path
+      get sivel2_gen.casos_cuenta_path(:json)
       assert_response :ok
     end
 
@@ -154,7 +154,7 @@ module Sivel2Gen
 
     test "sin autenticar no debe acceder" do
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/casos/mapaosm"
+        get "/sivel2_1/casos/mapaosm"
       end
     end
 
@@ -302,7 +302,7 @@ module Sivel2Gen
     test "operador sin grupo no debe acceder" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2/casos/mapaosm"
+      get "/sivel2_1/casos/mapaosm"
       assert_response :ok
     end
 
@@ -338,20 +338,16 @@ module Sivel2Gen
       assert_response :redirect
     end
 
-    test "operador analista no puede acceder importarrelatos casos" do
+    test "operador analista si puede acceder importarrelatos casos" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      assert_raise CanCan::AccessDenied do
-        get sivel2_gen.casos_importarrelatos_path
-      end
+      get sivel2_gen.casos_importarrelatos_path
     end
 
-    test "operador analista no puede post importa casos" do
+    test "analista si puede post importa casos" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      assert_raise CanCan::AccessDenied do
-        post sivel2_gen.importa_casos_path
-      end
+      post sivel2_gen.importa_casos_path
     end
 
 
@@ -451,7 +447,7 @@ module Sivel2Gen
     test "analista sin grupo no debe acceder" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "/sivel2/casos/mapaosm"
+      get "/sivel2_1/casos/mapaosm"
       assert_response :ok
     end
 

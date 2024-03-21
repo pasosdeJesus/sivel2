@@ -22,59 +22,59 @@ module Sip
 
     test "sin autenticar no debe presentar usuarios nuevo" do
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/nuevo"
+        get "/sivel2_1/usuarios/nuevo"
       end
     end
 
     test "sin autenticar puede accceder a unlock new" do
-      get "/sivel2/usuarios/unlock/new"
+      get "/sivel2_1/usuarios/unlock/new"
       assert_response :ok
     end
 
     test "sin autenticar puede accceder a unlock" do
-      get "/sivel2/usuarios/unlock"
+      get "/sivel2_1/usuarios/unlock"
       assert_response :ok
     end
 
     test "sin autenticar puede redirige a iniciar sesion en registrar" do
-      get "/sivel2/usuarios/edit"
-      assert_redirected_to "/sivel2/sivel2/usuarios/sign_in"
+      get "/sivel2_1/usuarios/edit"
+      assert_redirected_to "/sivel2_1/sivel2_1/usuarios/sign_in"
     end
 
     test "sin autenticar no puede acceder a put edit usuario" do
-      put "/sivel2/usuarios/edit"
-      assert_redirected_to "/sivel2/sivel2/usuarios/sign_in"
+      put "/sivel2_1/usuarios/edit"
+      assert_redirected_to "/sivel2_1/sivel2_1/usuarios/sign_in"
     end
 
     test "sin autenticar no puede acceder a post usuarios" do
       assert_raise CanCan::AccessDenied do
-        post "/sivel2/usuarios", params: {usuario: {nombre: "ale"}}
+        post "/sivel2_1/usuarios", params: {usuario: {nombre: "ale"}}
       end
     end
 
     test "sin autenticar no puede acceder a usuarios" do
-      get "/sivel2/usuarios"
+      get "/sivel2_1/usuarios"
       assert_redirected_to @raiz
     end
 
     test "sin autenticar no debe mostrar usuarios nuevo" do
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/" + id_usuario.to_s
+        get "/sivel2_1/usuarios/" + id_usuario.to_s
       end
     end
 
     test "sin autenticar no debe editar usuarios" do
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/" + id_usuario.to_s + "/edita"
+        get "/sivel2_1/usuarios/" + id_usuario.to_s + "/edita"
       end
     end
 
     test "sin autenticar no debe acceder a eliminar usuarios" do
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        delete "/sivel2/usuarios/" + id_usuario.to_s
+        delete "/sivel2_1/usuarios/" + id_usuario.to_s
       end
     end
 
@@ -84,35 +84,35 @@ module Sip
     test "autenticado como operador sin grupo puede" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2/sign_out"
+      get "/sivel2_1/sign_out"
       assert_redirected_to @raiz
     end
 
     test "observador de casos puede accceder a unlock new" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2/usuarios/unlock/new"
+      get "/sivel2_1/usuarios/unlock/new"
       assert_redirected_to @raiz
     end
 
     test "observador de casos puede accceder a unlock" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2/usuarios/unlock"
+      get "/sivel2_1/usuarios/unlock"
       assert_redirected_to @raiz
     end
 
     test "observador puede acceder a editar su usuario" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2/usuarios/edit"
+      get "/sivel2_1/usuarios/edit"
       assert_response :ok
     end
 
     test "observador  puede acceder a put edit su usuario" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      put "/sivel2/usuarios/edit"
+      put "/sivel2_1/usuarios/edit"
       assert_response :ok
     end
 
@@ -121,7 +121,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        patch "/sivel2/usuarios/" + id_usuario.to_s, params: {usuario: {nombre: "ale"}}
+        patch "/sivel2_1/usuarios/" + id_usuario.to_s, params: {usuario: {nombre: "ale"}}
       end
     end
 
@@ -129,7 +129,7 @@ module Sip
     test "observador no puede acceder a usuarios" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2/usuarios"
+      get "/sivel2_1/usuarios"
       assert_redirected_to @raiz
     end
 
@@ -137,7 +137,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        post "/sivel2/usuarios", params: {usuario: {nombre: "ale"}}
+        post "/sivel2_1/usuarios", params: {usuario: {nombre: "ale"}}
       end
     end
 
@@ -145,7 +145,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/nuevo"
+        get "/sivel2_1/usuarios/nuevo"
       end
     end
 
@@ -154,7 +154,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/" + id_usuario.to_s
+        get "/sivel2_1/usuarios/" + id_usuario.to_s
       end
     end
 
@@ -163,7 +163,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/" + id_usuario.to_s + "/edita"
+        get "/sivel2_1/usuarios/" + id_usuario.to_s + "/edita"
       end
     end
 
@@ -172,7 +172,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        delete "/sivel2/usuarios/" + id_usuario.to_s
+        delete "/sivel2_1/usuarios/" + id_usuario.to_s
       end
     end
 
@@ -182,42 +182,42 @@ module Sip
     test "autenticado como operador analista puede salir" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "/sivel2/sign_out"
+      get "/sivel2_1/sign_out"
       assert_redirected_to @raiz
     end
 
     test "operador analista puede accceder a unlock new" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "/sivel2/usuarios/unlock/new"
+      get "/sivel2_1/usuarios/unlock/new"
       assert_redirected_to @raiz
     end
 
     test "operador analista puede accceder a unlock" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "/sivel2/usuarios/unlock"
+      get "/sivel2_1/usuarios/unlock"
       assert_redirected_to @raiz
     end
 
     test "analista puede acceder a editar su usuario" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2/usuarios/edit"
+      get "/sivel2_1/usuarios/edit"
       assert_response :ok
     end
 
     test "analista puede acceder a put edit su usuario" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      put "/sivel2/usuarios/edit"
+      put "/sivel2_1/usuarios/edit"
       assert_response :ok
     end
 
     test "analista no puede acceder a usuarios" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "/sivel2/usuarios"
+      get "/sivel2_1/usuarios"
       assert_redirected_to @raiz
     end
 
@@ -225,7 +225,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        post "/sivel2/usuarios", params: {usuario: {nombre: "ale"}}
+        post "/sivel2_1/usuarios", params: {usuario: {nombre: "ale"}}
       end
     end
 
@@ -233,7 +233,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/nuevo"
+        get "/sivel2_1/usuarios/nuevo"
       end
     end
 
@@ -242,7 +242,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/" + id_usuario.to_s
+        get "/sivel2_1/usuarios/" + id_usuario.to_s
       end
     end
 
@@ -251,7 +251,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        get "/sivel2/usuarios/" + id_usuario.to_s + "/edita"
+        get "/sivel2_1/usuarios/" + id_usuario.to_s + "/edita"
       end
     end
 
@@ -260,7 +260,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        delete "/sivel2/usuarios/" + id_usuario.to_s
+        delete "/sivel2_1/usuarios/" + id_usuario.to_s
       end
     end
 
@@ -269,7 +269,7 @@ module Sip
       sign_in current_usuario
       id_usuario = Sip::Usuario.take.id
       assert_raise CanCan::AccessDenied do
-        patch "/sivel2/usuarios/" + id_usuario.to_s, params: {usuario: {nombre: "ale"}}
+        patch "/sivel2_1/usuarios/" + id_usuario.to_s, params: {usuario: {nombre: "ale"}}
       end
     end
 

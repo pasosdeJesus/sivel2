@@ -48,7 +48,8 @@ module Sivel2
 
     # sivel2
     config.x.sivel2_consulta_web_publica = 
-      ENV.fetch('SIVEL2_CONSWEB_PUBLICA', '') != ''
+      ENV.fetch('SIVEL2_CONSWEB_PUBLICA', '') != '' &&
+      ENV.fetch('SIVEL2_CONSWEB_PUBLICA', '') != '0'
 
     config.x.sivel2_consweb_max = ENV.fetch('SIVEL2_CONSWEB_MAX', 2000)
 
