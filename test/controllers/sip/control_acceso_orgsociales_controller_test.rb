@@ -68,78 +68,111 @@ module Sip
       end
     end
 
+    test "sin autenticar no puede acceder a fichaimp" do
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichaimp_path(Sip::Orgsocial.take.id)
+      end
+    end
+
+    test "sin autenticar no puede acceder a fichapdf" do
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      end
+    end
     # Autenticado como operador sin grupo
     #####################################
 
     test "autenticado como operador sin grupo debe presentar listado" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.orgsociales_path
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo debe presentar resumen" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.orgsocial_path(@orgsocial.id)
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo no edita" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get sip.edit_orgsocial_path(@orgsocial.id)
+        get sip.edit_orgsocial_path(@orgsocial.id.to_s)
       end
     end
 
     test "autenticaodo como operador no elimina" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         delete sip.orgsocial_path(@orgsocial.id)
       end
     end
 
+    test "operador sin grupo no puede acceder a fichaimp" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichaimp_path(Sip::Orgsocial.take.id)
+      end
+    end
+
+    test "operador sin grupo no puede acceder a fichapdf" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      end
+    end
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista debe presentar listado" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.orgsociales_path
       assert_response :ok
     end
 
     test "autenticado como operador analista debe presentar resumen" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.orgsocial_path(@orgsocial.id)
       assert_response :ok
     end
 
     test "autenticado como operador analista debería poder editar" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.edit_orgsocial_path(@orgsocial.id)
     end
 
     test "autenticaodo como operador analista no debe eliminar" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         delete sip.orgsocial_path(@orgsocial.id)
       end
     end
 
+    test "operador analista no puede acceder a fichaimp" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichaimp_path(Sip::Orgsocial.take.id)
+      end
+    end
 
+    test "operador analista no puede acceder a fichapdf" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      end
+    end
 
   end
 end

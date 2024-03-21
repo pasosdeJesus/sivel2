@@ -39,14 +39,14 @@ module Sip
     #####################################
 
     test "autenticado como operador sin grupo debe presentar listado" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.gruposper_path + '.json?term="Cauca"'
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo debe presentar gruposper remplazar" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sip.gruposper_remplazar_path + "?id_grupoper=#{@grupoper.id}&id_victimacolectiva=#{@vicol.id}"
@@ -56,22 +56,15 @@ module Sip
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_ope(rol_id)
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [rol_id]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista debe presentar listado grupoper" do
-      current_usuario = inicia_ope(20)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.gruposper_path + '.json?term="Cauca"'
       assert_response :ok
     end
 
     test "autenticado como operador analista debe presentar listado grupoper remplazar" do
-      current_usuario = inicia_ope(20)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.gruposper_remplazar_path + "?id_grupoper=#{@grupoper.id}&id_victimacolectiva=#{@vicol.id}"
       assert_response :ok
@@ -81,7 +74,7 @@ module Sip
     #######################################################
 
     test "autenticado como observador debe presentar listado grupoper" do
-      current_usuario = inicia_ope(21)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OBS)
       sign_in current_usuario
       get sip.gruposper_path + '.json?term="Cauca"'
       assert_response :ok

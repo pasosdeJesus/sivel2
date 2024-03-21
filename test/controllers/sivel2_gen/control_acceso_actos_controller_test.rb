@@ -14,15 +14,8 @@ module Sivel2Gen
       @persona = Sip::Persona.create!(PRUEBA_PERSONA)
       @victima = Sivel2Gen::Victima.create!(id_persona: @persona.id, id_caso: @caso.id)
       @acto = Sivel2Gen::Acto.create!(PRUEBA_ACTO.merge({id_caso: @caso.id, id_persona: @persona.id}))
-      @ope_sin_grupo = Usuario.create!(PRUEBA_USUARIO_OP)
-      @ope_analista = inicia_analista
-    end
-
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
+      @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
+      @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)
     end
 
     PRUEBA_ACTO = {

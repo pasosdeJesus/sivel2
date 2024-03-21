@@ -79,21 +79,21 @@ module Sip
     #####################################
 
     test "autenticado como operador sin grupo debe presentar listado" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.personas_path
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo debe presentar resumen" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.persona_path(@persona.id)
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo no edita" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sip.edit_persona_path(@persona.id)
@@ -101,7 +101,7 @@ module Sip
     end
 
     test "autenticaodo como operador sin grupo u observador no elimina" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         delete sip.persona_path(@persona.id)
@@ -109,7 +109,7 @@ module Sip
     end
 
     test "autenticado como operados sin grupo no debe acceder a personas remplazar" do
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         get sip.personas_remplazar_path
@@ -119,36 +119,45 @@ module Sip
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_analista
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [20]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista debe presentar listado" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.personas_path
       assert_response :ok
     end
 
     test "autenticado como operador analista debe presentar resumen" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.persona_path(@persona.id)
       assert_response :ok
     end
 
     test "autenticado como operador analista debería poder editar" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sip.edit_persona_path(@persona.id)
       assert_response :ok
     end
 
+
+    test "operador analista no puede acceder a fichaimp" do
+      skip 
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      get heb412_gen.persona_fichaimp_path(Sip::Persona.take.id)
+      assert_response :ok
+    end
+
+    test "operador analista no puede acceder a fichapdf" do
+      skip 
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      assert_response :ok
+    end
     test "autenticado como operador analista de casos debe acceder a personas remplazar" do
-      current_usuario = inicia_analista
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       
       get sip.personas_remplazar_path + "?id_persona=#{@persona.id}&id_victima=#{@victima.id}"

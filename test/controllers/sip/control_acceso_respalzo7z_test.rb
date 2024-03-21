@@ -34,16 +34,9 @@ module Sip
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
 
-    def inicia_ope(rol_id)
-      current_usuario = Usuario.create!(PRUEBA_USUARIO_AN)
-      current_usuario.sip_grupo_ids = [rol_id]
-      current_usuario.save
-      return current_usuario
-    end
-
     test "autenticado como operador analista debe acceder a respaldo7z" do
       assert_raise CanCan::AccessDenied do
-        current_usuario = inicia_ope(20)
+        current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
         sign_in current_usuario
         get sip.respaldo7z_path
       end
@@ -54,7 +47,7 @@ module Sip
 
     test "autenticado como observador debe presentar listado grupoper" do
       assert_raise CanCan::AccessDenied do
-        current_usuario = inicia_ope(21)
+        current_usuario = ::Usuario.find(PRUEBA_USUARIO_OBS)
         sign_in current_usuario
         get sip.respaldo7z_path
       end
