@@ -21,13 +21,13 @@ Por favor sigue estos 3 pasos en ese orden:
    pero sin dar indicaciones que se trata de una falla de seguridad
    ni como explotarla.
 3. Diez días después por favor abre un reporte en el 
-   [Sistema de Seguimiento Público](https://github.com/pasosdeJesus/sivel2_gen/issues) 
+   [Sistema de Seguimiento Público](https://gitlab.com/pasosdeJesus/sivel2_gen/-/issues) 
    con un título que comience con "Falla de seguridad" incluyendo
    el reporte detallado y referenciando la solicitud de cambio.
 
 Hay una retribución monetaria para la primera falla que se reporte a la rama
 sivel2.1, ver detalles en
-<https://github.com/pasosdeJesus/sivel2/blob/v2.1/doc/Llamado.md>
+<https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.1/doc/Llamado.md>
 
 ----
 
@@ -53,11 +53,11 @@ Please follow the next 3 steps in that order:
    the security bug but withouth giving hints that it is a vulnerability
    neither how to exploit it.
 3. Ten days after, please, open an issue in the
-   [Public Tracking System](https://github.com/pasosdeJesus/sivel2_gen/issues) 
+   [Public Tracking System](https://gitlab.com/pasosdeJesus/sivel2_gen/-/issues) 
    with a title starting with "Vulnerability" including
    the detailed report and referring the Pull Request you created.
 
 There is an economical reward for the first person who reports a
 vulnerability in the branch `sivel2.1`, see details at
-<https://github.com/pasosdeJesus/sivel2/blob/sivel2.1/doc/Calling.md>
+  <https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.1/doc/Llamado.md>
 
