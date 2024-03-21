@@ -1567,13 +1567,13 @@ ALTER SEQUENCE public.mr519_gen_valorcampo_id_seq OWNED BY public.mr519_gen_valo
 --
 
 CREATE MATERIALIZED VIEW public.napellidos AS
- SELECT s.apellido,
+ SELECT apellido,
     count(*) AS frec
    FROM ( SELECT public.divarr(string_to_array(btrim((sip_persona.apellidos)::text), ' '::text)) AS apellido
            FROM public.sip_persona,
             public.sivel2_gen_victima
           WHERE (sivel2_gen_victima.id_persona = sip_persona.id)) s
-  GROUP BY s.apellido
+  GROUP BY apellido
   ORDER BY (count(*))
   WITH NO DATA;
 
@@ -1583,13 +1583,13 @@ CREATE MATERIALIZED VIEW public.napellidos AS
 --
 
 CREATE MATERIALIZED VIEW public.nhombres AS
- SELECT s.nombre,
+ SELECT nombre,
     count(*) AS frec
    FROM ( SELECT public.divarr(string_to_array(btrim((sip_persona.nombres)::text), ' '::text)) AS nombre
            FROM public.sip_persona,
             public.sivel2_gen_victima
           WHERE ((sivel2_gen_victima.id_persona = sip_persona.id) AND (sip_persona.sexo = 'M'::bpchar))) s
-  GROUP BY s.nombre
+  GROUP BY nombre
   ORDER BY (count(*))
   WITH NO DATA;
 
@@ -1599,13 +1599,13 @@ CREATE MATERIALIZED VIEW public.nhombres AS
 --
 
 CREATE MATERIALIZED VIEW public.nmujeres AS
- SELECT s.nombre,
+ SELECT nombre,
     count(*) AS frec
    FROM ( SELECT public.divarr(string_to_array(btrim((sip_persona.nombres)::text), ' '::text)) AS nombre
            FROM public.sip_persona,
             public.sivel2_gen_victima
           WHERE ((sivel2_gen_victima.id_persona = sip_persona.id) AND (sip_persona.sexo = 'F'::bpchar))) s
-  GROUP BY s.nombre
+  GROUP BY nombre
   ORDER BY (count(*))
   WITH NO DATA;
 
@@ -1683,8 +1683,8 @@ UNION
 --
 
 CREATE MATERIALIZED VIEW public.persona_nomap AS
- SELECT sip_persona.id,
-    upper(btrim(((btrim((sip_persona.nombres)::text) || ' '::text) || btrim((sip_persona.apellidos)::text)))) AS nomap
+ SELECT id,
+    upper(btrim(((btrim((nombres)::text) || ' '::text) || btrim((apellidos)::text)))) AS nomap
    FROM public.sip_persona
   WITH NO DATA;
 
@@ -1694,12 +1694,12 @@ CREATE MATERIALIZED VIEW public.persona_nomap AS
 --
 
 CREATE VIEW public.primerusuario AS
- SELECT sivel2_gen_caso_usuario.id_caso,
-    min(sivel2_gen_caso_usuario.fechainicio) AS fechainicio,
-    public.first(sivel2_gen_caso_usuario.id_usuario) AS id_usuario
+ SELECT id_caso,
+    min(fechainicio) AS fechainicio,
+    public.first(id_usuario) AS id_usuario
    FROM public.sivel2_gen_caso_usuario
-  GROUP BY sivel2_gen_caso_usuario.id_caso
-  ORDER BY sivel2_gen_caso_usuario.id_caso;
+  GROUP BY id_caso
+  ORDER BY id_caso;
 
 
 --
@@ -1957,11 +1957,11 @@ UNION
 --
 
 CREATE MATERIALIZED VIEW public.sip_mundep AS
- SELECT sip_mundep_sinorden.idlocal,
-    sip_mundep_sinorden.nombre,
-    to_tsvector('spanish'::regconfig, public.unaccent(sip_mundep_sinorden.nombre)) AS mundep
+ SELECT idlocal,
+    nombre,
+    to_tsvector('spanish'::regconfig, public.unaccent(nombre)) AS mundep
    FROM public.sip_mundep_sinorden
-  ORDER BY (sip_mundep_sinorden.nombre COLLATE public.es_co_utf_8)
+  ORDER BY (nombre COLLATE public.es_co_utf_8)
   WITH NO DATA;
 
 
@@ -2797,9 +2797,9 @@ CREATE TABLE public.sivel2_gen_presponsable (
 --
 
 CREATE VIEW public.sivel2_gen_conscaso1 AS
- SELECT caso.id AS caso_id,
-    caso.fecha,
-    caso.memo,
+ SELECT id AS caso_id,
+    fecha,
+    memo,
     array_to_string(ARRAY( SELECT (((COALESCE(departamento.nombre, ''::character varying))::text || ' / '::text) || (COALESCE(municipio.nombre, ''::character varying))::text)
            FROM ((public.sip_ubicacion ubicacion
              LEFT JOIN public.sip_departamento departamento ON ((ubicacion.id_departamento = departamento.id)))
@@ -2826,15 +2826,15 @@ CREATE VIEW public.sivel2_gen_conscaso1 AS
 --
 
 CREATE MATERIALIZED VIEW public.sivel2_gen_conscaso AS
- SELECT sivel2_gen_conscaso1.caso_id,
-    sivel2_gen_conscaso1.fecha,
-    sivel2_gen_conscaso1.memo,
-    sivel2_gen_conscaso1.ubicaciones,
-    sivel2_gen_conscaso1.victimas,
-    sivel2_gen_conscaso1.presponsables,
-    sivel2_gen_conscaso1.tipificacion,
+ SELECT caso_id,
+    fecha,
+    memo,
+    ubicaciones,
+    victimas,
+    presponsables,
+    tipificacion,
     now() AS ultimo_refresco,
-    to_tsvector('spanish'::regconfig, public.unaccent(((((((((((((sivel2_gen_conscaso1.caso_id || ' '::text) || replace(((sivel2_gen_conscaso1.fecha)::character varying)::text, '-'::text, ' '::text)) || ' '::text) || sivel2_gen_conscaso1.memo) || ' '::text) || sivel2_gen_conscaso1.ubicaciones) || ' '::text) || sivel2_gen_conscaso1.victimas) || ' '::text) || sivel2_gen_conscaso1.presponsables) || ' '::text) || sivel2_gen_conscaso1.tipificacion))) AS q
+    to_tsvector('spanish'::regconfig, public.unaccent(((((((((((((caso_id || ' '::text) || replace(((fecha)::character varying)::text, '-'::text, ' '::text)) || ' '::text) || memo) || ' '::text) || ubicaciones) || ' '::text) || victimas) || ' '::text) || presponsables) || ' '::text) || tipificacion))) AS q
    FROM public.sivel2_gen_conscaso1
   WITH NO DATA;
 
@@ -5621,14 +5621,6 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: sivel2_gen_categoria categoria_contadaen_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_categoria
-    ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
-
-
---
 -- Name: sivel2_gen_contextovictima_victima contextovictima_victima_contextovictima_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6194,14 +6186,6 @@ ALTER TABLE ONLY public.sip_persona
 
 ALTER TABLE ONLY public.sip_persona
     ADD CONSTRAINT persona_tdocumento_id_fkey FOREIGN KEY (tdocumento_id) REFERENCES public.sip_tdocumento(id);
-
-
---
--- Name: sivel2_gen_presponsable presponsable_papa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_presponsable
-    ADD CONSTRAINT presponsable_papa_fkey FOREIGN KEY (papa_id) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --

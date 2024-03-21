@@ -183,6 +183,7 @@ module Heb412Gen
     test "autenticado como operador analista no elimina archivo" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
+      debugger
       assert_raise CanCan::AccessDenied do
         post @ruta + "/sis/eliminararc"
       end
