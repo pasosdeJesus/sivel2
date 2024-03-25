@@ -74,13 +74,13 @@ if (test "$SINMIG" != "1") then {
   } fi;
 } fi;
 
-(cd $rutaap; RAILS_ENV=test bin/rails db:drop db:setup; RAILS_ENV=test bin/rails db:migrate sip:indices)
+(cd $rutaap; RAILS_ENV=test bin/rails db:drop db:create db:setup db:migrate sip:indices)
 if (test "$?" != "0") then {
   echo "No puede preparse base de prueba";
   exit 1;
 } fi;
 
-CONFIG_HOSTS=www.example.com bin/rails test
+SIVEL2_CONSWEB_PUBLICA=0 CONFIG_HOSTS=www.example.com bin/rails test
 if (test "$?" != "0") then {
   echo "No pasaron pruebas de regresion";
   exit 1;

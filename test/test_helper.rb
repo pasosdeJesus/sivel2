@@ -5,15 +5,21 @@ SimpleCov.start 'rails'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+
 class ActiveSupport::TestCase
 
-  fixtures :all
-  
+  if Sip::Tclase.all.count == 0
+    load "#{Rails.root}/db/seeds.rb"
+    Sivel2::Application.load_tasks
+    Rake::Task['sip:indices'].invoke
+  end
+
   protected
   def load_seeds
     load "#{Rails.root}/db/seeds.rb"
   end
 end
+
 
 # Usuarios para pruebas sincronizados con db/seed.rb
 
