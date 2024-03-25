@@ -11,6 +11,10 @@ class ActiveSupport::TestCase
   if Sip::Tclase.all.count == 0
     load "#{Rails.root}/db/seeds.rb"
     Sivel2::Application.load_tasks
+    ActiveRecord::Base.connection.execute <<-EOF
+      REFRESH MATERIALIZED VIEW sip_mundep;
+    EOF
+
     Rake::Task['sip:indices'].invoke
   end
 

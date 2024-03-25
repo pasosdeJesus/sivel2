@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9d8cc2703087de0e3ae25623130e51d23c950a5b
+  revision: 15e94e221f577b212261dd313523f3f3c42c37e2
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 1e3b5658c93140d10ab224177c36a1cdcc4a76d2
+  revision: 5a69121b4cffc49655d237cc3786967ff487bc46
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 945129b6f783b7243ee0919bdfa5f4f2dca3f5c9
+  revision: d5d6cff11533c8f689b496d70a392f958beb52f4
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 8af2d794bc02bb6f40a973eff49a0a2b3d976a7e
+  revision: 4efc242a598910a589d5934591a86f5c36d76c8a
   branch: v2.1
   specs:
     sivel2_gen (2.1.0)
@@ -311,7 +311,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
-    odf-report (0.8.0)
+    odf-report (0.8.1)
       mime-types
       nokogiri (>= 1.12.0)
       rubyzip (>= 1.3.0)
@@ -381,7 +381,7 @@ GEM
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.9.0)
-    reline (0.4.3)
+    reline (0.5.0)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -532,4 +532,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.6
+   2.5.7
