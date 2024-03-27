@@ -17,7 +17,7 @@ module Sivel2Gen
     end
 
     test "sin autenticar no debe listar tablas básicas" do
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)
@@ -48,7 +48,7 @@ module Sivel2Gen
         when "intervalo"
           registro = modelo.create!(MODELO_PARAMS.merge({rango: "SIN INFORMACIÓN"}))
         when "supracategoria"
-          registro = modelo.create!(MODELO_PARAMS.merge({id: 1360, id_tviolencia: "D"}))
+          registro = modelo.create!(MODELO_PARAMS.merge({id: 1360, tviolencia_id: "D"}))
         else
           if modelo.where(nombre: MODELO_PARAMS[:nombre]).count == 1
             registro = modelo.where(nombre: MODELO_PARAMS[:nombre]).take
@@ -264,7 +264,7 @@ module Sivel2Gen
 
     test "autenticado como operador sin grupo no debe presentar listado" do
       sign_in @ope_sin_grupo
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)
@@ -272,7 +272,7 @@ module Sivel2Gen
 
     test "autenticado como operador analista no debe presentar listado" do
       sign_in @ope_analista
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)

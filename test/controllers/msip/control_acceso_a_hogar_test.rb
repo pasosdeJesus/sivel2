@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoAHogarTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -11,8 +11,8 @@ module Sip
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
       @ruta = Rails.application.config.relative_url_root
-      #@gupoper = Sip::Grupoper.create!(PRUEBA_GRUPOPER)
-      #@orgsocial = Sip::Orgsocial.create!(PRUEBA_ORGSOCIAL)
+      #@gupoper = Msip::Grupoper.create!(PRUEBA_GRUPOPER)
+      #@orgsocial = Msip::Orgsocial.create!(PRUEBA_ORGSOCIAL)
     end
 
     # No autenticado

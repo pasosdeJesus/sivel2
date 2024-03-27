@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoOrgsocialesControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -26,49 +26,49 @@ module Sip
 
     test "sin autenticar no debe presentar listado botacoras" do
       assert_raise CanCan::AccessDenied do
-        get sip.bitacoras_path
+        get msip.bitacoras_path
       end
     end
 
     test "sin autenticar no debe presentar resumen de bitacora existente" do
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        get sip.bitacora_path(@bitacora.id)
+        get msip.bitacora_path(@bitacora.id)
       end
     end
 
     test "sin autenticar no debe ver formulario de nueva botacora" do
       assert_raise CanCan::AccessDenied do
-        get sip.new_bitacora_path
+        get msip.new_bitacora_path
       end
     end
 
     test "sin autenticar no debe crear bitacora" do
       assert_raise CanCan::AccessDenied do
-        post sip.bitacoras_path, params: { 
+        post msip.bitacoras_path, params: { 
           bitacora: PRUEBA_BITACORA }
       end
     end
 
 
     test "sin autenticar no debe editar bitacora" do
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        get sip.edit_bitacora_path(@bitacora.id)
+        get msip.edit_bitacora_path(@bitacora.id)
       end
     end
 
     test "sin autenticar no debe actualizar bitacora" do
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        patch sip.bitacora_path(@bitacora.id)
+        patch msip.bitacora_path(@bitacora.id)
       end
     end
 
     test "sin autenticar no debe eliminar bitacora" do
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        delete sip.bitacora_path(@bitacora.id)
+        delete msip.bitacora_path(@bitacora.id)
       end
     end
 
@@ -80,7 +80,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get sip.bitacoras_path
+        get msip.bitacoras_path
       end
     end
 
@@ -88,9 +88,9 @@ module Sip
       skip 
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        get sip.bitacora_path(@bitacora.id)
+        get msip.bitacora_path(@bitacora.id)
       end
     end
 
@@ -98,9 +98,9 @@ module Sip
       skip 
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        get sip.edit_bitacora_path(@bitacora.id)
+        get msip.edit_bitacora_path(@bitacora.id)
       end
     end
 
@@ -108,9 +108,9 @@ module Sip
       skip 
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        delete sip.bitacora_path(@bitacora.id)
+        delete msip.bitacora_path(@bitacora.id)
       end
       @bitacora.destroy!
     end
@@ -121,7 +121,7 @@ module Sip
     test "autenticado como operador analista no debepresentar listado bitacoras" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.bitacoras_path
+      get msip.bitacoras_path
       assert_response :ok
     end
 
@@ -129,8 +129,8 @@ module Sip
       skip 
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
-      get sip.bitacora_path(@bitacora.id)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
+      get msip.bitacora_path(@bitacora.id)
       assert_response :ok
       @bitacora.destroy!
     end
@@ -138,9 +138,9 @@ module Sip
     test "autenticado como operador analista no debería poder editar bitacora" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        get sip.edit_bitacora_path(@bitacora.id)
+        get msip.edit_bitacora_path(@bitacora.id)
       end
       @bitacora.destroy!
     end
@@ -148,9 +148,9 @@ module Sip
     test "autenticaodo como operador analista no debe eliminar bitacora" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      @bitacora = Sip::Bitacora.create!(PRUEBA_BITACORA)
+      @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       assert_raise CanCan::AccessDenied do
-        delete sip.bitacora_path(@bitacora.id)
+        delete msip.bitacora_path(@bitacora.id)
       end
       @bitacora.destroy!
 

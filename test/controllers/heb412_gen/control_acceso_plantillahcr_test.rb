@@ -11,7 +11,7 @@ module Heb412Gen
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @ruta = Rails.application.config.relative_url_root
     end
 

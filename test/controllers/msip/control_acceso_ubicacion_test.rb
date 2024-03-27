@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoOrgsocialesControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -18,14 +18,14 @@ module Sip
 
     test "sin autenticar no debe permitir acceder ubicaciones/nuevo" do
       assert_raise CanCan::AccessDenied do
-        get sip.ubicaciones_nuevo_path
+        get msip.nueva_ubicacion_path
       end
     end
 
 
     test "sin autenticar no debe crear ubicaciones nuevo" do
       assert_raise CanCan::AccessDenied do
-        get sip.ubicaciones_nuevo_path + "?caso_id=#{@caso.id}"
+        get msip.nueva_ubicacion_path + "?caso_id=#{@caso.id}"
       end
     end
 
@@ -36,7 +36,7 @@ module Sip
     test "autenticado como operador sin grupo debe presentar ubicaciones/nuevo" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get sip.ubicaciones_nuevo_path
+      get msip.nueva_ubicacion_path
       assert_response :ok
     end
 
@@ -47,7 +47,7 @@ module Sip
     test "autenticado como operador analista debe presentar ubi/nuevo" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.ubicaciones_nuevo_path
+      get msip.nueva_ubicacion_path
       assert_response :ok
     end
 

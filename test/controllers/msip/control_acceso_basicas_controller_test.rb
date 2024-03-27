@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'nokogiri'
 
-module Sip
+module Msip
   class ControlAccesoBasicasControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -11,20 +11,20 @@ module Sip
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
       @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)
       @raiz = Rails.application.config.relative_url_root.delete_suffix('/')
     end
 
     test "sin autenticar no debe listar tablas básicas" do
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)
     end
 
-    basicas_sip = Sip::Ability::BASICAS_PROPIAS
+    basicas_msip = Msip::Ability::BASICAS_PROPIAS
 
     ## PROBANDO BASICAS GEOGRÁFICAS
     PAIS_PARAMS = {id: 1, nombre: "ejemplo", nombreiso: "eje", fechacreacion: "2021-12-09"}
@@ -40,14 +40,19 @@ module Sip
         end
       else
         case basica
+        when "centropoblado"
+          registro = modelo.create!(MODELO_PARAMS.merge({municipio_id: 1360, cplocal_cod:10000}))
+        when "departamento"
+          registro = modelo.create!(MODELO_PARAMS.merge({pais_id: 170, deplocal_cod:100000}))
+        when "municipio"
+          registro = modelo.create!(MODELO_PARAMS.merge({departamento_id: 17, munlocal_cod:10000}))
         when "pais"
           registro = modelo.create!(MODELO_PARAMS.merge({id: 1000, nombreiso_espanol: "iso"}))
-        when "departamento"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_pais: 170, id_deplocal:100000}))
-        when "municipio"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_departamento: 17, id_munlocal:10000}))
-        when "clase"
-          registro = modelo.create!(MODELO_PARAMS.merge({id_municipio: 1360, id_clalocal:10000}))
+        when "tdocumento"
+          registro = modelo.create!(MODELO_PARAMS.merge({sigla: "X"}))
+        when "ubicacionpre"
+          registro = modelo.create!(MODELO_PARAMS.merge({
+            pais_id: 170, departamento_id: 17, municipio_id: 1360}))
         when "vereda"
           registro = modelo.create!(MODELO_PARAMS.merge({municipio_id: 1360}))
         else
@@ -57,7 +62,7 @@ module Sip
       return registro
     end
 
-    basicas_sip.each do |basica|
+    basicas_msip.each do |basica|
       if basica[1] == "oficina"
         next
       end
@@ -68,7 +73,7 @@ module Sip
 
       #No autenticado
 
-      if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
+      if basica[1] == "centropoblado" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais" || basica[1] == "ubicacionpre"
         test "sin autenticar debe presentar el index de #{basica[1]}" do
           get @raiz + "/admin/#{basica[1].pluralize()}"
           assert_response :ok
@@ -138,7 +143,7 @@ module Sip
 
       # Autenticado como operador sin grupo
 
-      if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
+      if basica[1] == "centropoblado" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais" || basica[1] == "ubicacionpre"
         test "operador sin grupo debe presentar el index de #{basica[1]}" do
           sign_in @ope_sin_grupo
           get @raiz + "/admin/#{basica[1].pluralize()}"
@@ -216,7 +221,7 @@ module Sip
 
       # Autenticado como operador con grupo Analista de Casos
 
-      if basica[1] == "clase" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais"
+      if basica[1] == "centropoblado" || basica[1] == "municipio" || basica[1] == "departamento" || basica[1] == "pais" || basica[1] == "ubicacionpre"
         test "operador analista debe presentar el index de #{basica[1]}" do
           sign_in @ope_analista
           get @raiz + "/admin/#{basica[1].pluralize()}"
@@ -296,7 +301,7 @@ module Sip
 
     test "autenticado como operador sin grupo no debe presentar listado" do
       sign_in @ope_sin_grupo
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)
@@ -304,7 +309,7 @@ module Sip
 
     test "autenticado como operador analista no debe presentar listado" do
       sign_in @ope_analista
-      get sip.tablasbasicas_path
+      get msip.tablasbasicas_path
       mih = Nokogiri::HTML(@response.body)
       filas_index = mih.at_css('div#div_contenido').at_css('ul').count
       assert(filas_index == 0)

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoPersonasControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -10,10 +10,10 @@ module Sip
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @persona = Sip::Persona.create!(PRUEBA_PERSONA)
-      @persona2 = Sip::Persona.create!(PRUEBA_PERSONA)
+      @persona = Msip::Persona.create!(PRUEBA_PERSONA)
+      @persona2 = Msip::Persona.create!(PRUEBA_PERSONA)
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
-      @victima = Sivel2Gen::Victima.create!(id_persona: @persona2.id, id_caso: @caso.id)
+      @victima = Sivel2Gen::Victima.create!(persona_id: @persona2.id, caso_id: @caso.id)
     end
 
     # No autenticado
@@ -21,31 +21,31 @@ module Sip
 
     test "sin autenticar no debe gestionar ni leer personas" do
       assert_raise CanCan::AccessDenied do
-        get sip.personas_path
+        get msip.personas_path
       end
     end
 
     test "sin autenticar no debe presentar una persona existente" do
       assert_raise CanCan::AccessDenied do
-        get sip.persona_path(@persona.id)
+        get msip.persona_path(@persona.id)
       end
     end
 
     test "sin autenticar no debe ver formulario de nueva" do
       assert_raise CanCan::AccessDenied do
-        get sip.new_persona_path()
+        get msip.new_persona_path()
       end
     end
 
     test "sin autenticar no debe acceder a personas remplazar" do
       assert_raise CanCan::AccessDenied do
-        get sip.personas_remplazar_path
+        get msip.personas_remplazar_path
       end
     end
 
     test "sin autenticar no debe crear" do
       assert_raise CanCan::AccessDenied do
-        post sip.personas_path, params: { 
+        post msip.personas_path, params: { 
           persona: { 
             id: nil,
             nombres: "Luis Alejandro",
@@ -59,19 +59,19 @@ module Sip
 
     test "sin autenticar no debe editar" do
       assert_raise CanCan::AccessDenied do
-        get sip.edit_persona_path(@persona.id)
+        get msip.edit_persona_path(@persona.id)
       end
     end
 
     test "sin autenticar no debe actualizar" do
       assert_raise CanCan::AccessDenied do
-        patch sip.persona_path(@persona.id)
+        patch msip.persona_path(@persona.id)
       end
     end
 
     test "sin autenticar no debe eliminar" do
       assert_raise CanCan::AccessDenied do
-        delete sip.persona_path(@persona.id)
+        delete msip.persona_path(@persona.id)
       end
     end
 
@@ -81,14 +81,14 @@ module Sip
     test "autenticado como operador sin grupo debe presentar listado" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get sip.personas_path
+      get msip.personas_path
       assert_response :ok
     end
 
     test "autenticado como operador sin grupo debe presentar resumen" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get sip.persona_path(@persona.id)
+      get msip.persona_path(@persona.id)
       assert_response :ok
     end
 
@@ -96,7 +96,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get sip.edit_persona_path(@persona.id)
+        get msip.edit_persona_path(@persona.id)
       end
     end
 
@@ -104,7 +104,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        delete sip.persona_path(@persona.id)
+        delete msip.persona_path(@persona.id)
       end
     end
 
@@ -112,7 +112,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get sip.personas_remplazar_path
+        get msip.personas_remplazar_path
       end
     end
 
@@ -122,21 +122,21 @@ module Sip
     test "autenticado como operador analista debe presentar listado" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.personas_path
+      get msip.personas_path
       assert_response :ok
     end
 
     test "autenticado como operador analista debe presentar resumen" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.persona_path(@persona.id)
+      get msip.persona_path(@persona.id)
       assert_response :ok
     end
 
     test "autenticado como operador analista debería poder editar" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.edit_persona_path(@persona.id)
+      get msip.edit_persona_path(@persona.id)
       assert_response :ok
     end
 
@@ -145,7 +145,7 @@ module Sip
       skip 
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get heb412_gen.persona_fichaimp_path(Sip::Persona.take.id)
+      get heb412_gen.persona_fichaimp_path(Msip::Persona.take.id)
       assert_response :ok
     end
 
@@ -153,14 +153,15 @@ module Sip
       skip 
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get heb412_gen.orgsocial_fichapdf_path(Sip::Orgsocial.take.id)
+      get heb412_gen.orgsocial_fichapdf_path(Msip::Orgsocial.take.id)
       assert_response :ok
     end
+
     test "autenticado como operador analista de casos debe acceder a personas remplazar" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       
-      get sip.personas_remplazar_path + "?id_persona=#{@persona.id}&id_victima=#{@victima.id}"
+      get msip.personas_remplazar_path + "?persona_id=#{@persona.id}&victima_id=#{@victima.id}&caso_id=#{@caso.id}"
       assert_response :ok
     end
 

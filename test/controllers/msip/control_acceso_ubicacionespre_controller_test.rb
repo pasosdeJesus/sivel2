@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoUbicacionespreControllerTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -10,34 +10,34 @@ module Sip
       if ENV['CONFIG_HOSTS'] != 'www.example.com'
         raise 'CONFIG_HOSTS debe ser www.example.com'
       end
-      @gupoper = Sip::Grupoper.create!(PRUEBA_GRUPOPER)
-      @ubicacionpre = Sip::Ubicacionpre.create!(PRUEBA_UBICACIONPRE)
+      @gupoper = Msip::Grupoper.create!(PRUEBA_GRUPOPER)
+      @ubicacionpre = Msip::Ubicacionpre.create!(PRUEBA_UBICACIONPRE)
     end
 
     # No autenticado
     ################
 
     test "sin autenticar debe presentar listado" do
-      get sip.ubicacionespre_path
+      get msip.admin_ubicacionespre_path
       assert_response :ok
     end
 
     test "sin autenticar debe presentar resumen de existente" do
       skip # get -> NoMethodError: undefined method `id' for nil:NilClass
-      ruta = sip.ubicacionpre_path(@ubicacionpre.id)
+      ruta = msip.admin_ubicacionpre_path(@ubicacionpre.id)
       get ruta
       assert_response :ok
     end
 
     test "sin autenticar no debe ver formulario de nuevo" do
       assert_raise CanCan::AccessDenied do
-        get sip.new_ubicacionpre_path()
+        get msip.new_admin_ubicacionpre_path()
       end
     end
 
     test "sin autenticar no debe crear" do
       assert_raise CanCan::AccessDenied do
-        post sip.ubicacionespre_path, params: { 
+        post msip.admin_ubicacionespre_path, params: { 
           ubicacionpre: PRUEBA_UBICACIONPRE
         }
       end
@@ -45,19 +45,19 @@ module Sip
 
     test "sin autenticar no debe editar" do
       assert_raise CanCan::AccessDenied do
-        get sip.edit_ubicacionpre_path(@ubicacionpre.id)
+        get msip.edit_admin_ubicacionpre_path(@ubicacionpre.id)
       end
     end
 
     test "sin autenticar no debe actualizar" do
       assert_raise CanCan::AccessDenied do
-        patch sip.ubicacionpre_path(@ubicacionpre.id)
+        patch msip.admin_ubicacionpre_path(@ubicacionpre.id)
       end
     end
 
     test "sin autenticar no debe eliminar" do
       assert_raise CanCan::AccessDenied do
-        delete sip.ubicacionpre_path(@ubicacionpre.id)
+        delete msip.admin_ubicacionpre_path(@ubicacionpre.id)
       end
     end
 
@@ -67,7 +67,7 @@ module Sip
     test "autenticado como operador sin grupo debe presentar listado" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get sip.ubicacionespre_path
+      get msip.admin_ubicacionespre_path
       assert_response :ok
     end
 
@@ -75,7 +75,7 @@ module Sip
       skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get sip.ubicacionpre_path(@ubicacionpre.id)
+      get msip.admin_ubicacionpre_path(@ubicacionpre.id)
       assert_response :ok
     end
 
@@ -83,7 +83,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get sip.edit_ubicacionpre_path(@ubicacionpre.id)
+        get msip.edit_admin_ubicacionpre_path(@ubicacionpre.id)
       end
     end
 
@@ -91,7 +91,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        delete sip.ubicacionpre_path(@ubicacionpre.id)
+        delete msip.admin_ubicacionpre_path(@ubicacionpre.id)
       end
     end
 
@@ -102,7 +102,7 @@ module Sip
     test "autenticado como operador analista debe presentar listado" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.ubicacionespre_path
+      get msip.admin_ubicacionespre_path
       assert_response :ok
     end
 
@@ -110,7 +110,7 @@ module Sip
       skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.ubicacionpre_path(@ubicacionpre.id)
+      get msip.admin_ubicacionpre_path(@ubicacionpre.id)
       assert_response :ok
     end
 
@@ -119,7 +119,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get sip.edit_ubicacionpre_path(@ubicacionpre.id)
+        get msip.edit_admin_ubicacionpre_path(@ubicacionpre.id)
       end
     end
 
@@ -127,7 +127,7 @@ module Sip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        delete sip.ubicacionpre_path(@ubicacionpre.id)
+        delete msip.admin_ubicacionpre_path(@ubicacionpre.id)
       end
     end
 

@@ -97,12 +97,6 @@ module Sivel2Gen
       end
     end
 
-    test "sin autenticar  no puede acceder a nuevo fuentesprensa" do
-      assert_raise CanCan::AccessDenied do
-        get sivel2_gen.fuentesprensa_nuevo_path
-      end
-    end
-
 
     test "sin autenticar no puede acceder a casos lista" do
       assert_raise CanCan::AccessDenied do
@@ -154,7 +148,7 @@ module Sivel2Gen
 
     test "sin autenticar no debe acceder" do
       assert_raise CanCan::AccessDenied do
-        get "/sivel2_1/casos/mapaosm"
+        get "/casos/mapaosm"
       end
     end
 
@@ -198,14 +192,6 @@ module Sivel2Gen
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post sivel2_gen.validarcasos_path
-      end
-    end
-
-    test "autenticado como operador sin grupo no accede a fuentesprensa neuvo" do
-      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
-      sign_in current_usuario
-      assert_raise CanCan::AccessDenied do
-        get sivel2_gen.fuentesprensa_nuevo_path
       end
     end
 
@@ -302,7 +288,7 @@ module Sivel2Gen
     test "operador sin grupo no debe acceder" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get "/sivel2_1/casos/mapaosm"
+      get "/casos/mapaosm"
       assert_response :ok
     end
 
@@ -369,13 +355,6 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.victimas_nuevo_path
-      assert_response :ok
-    end
-
-    test "operador analista puede acceder a fuentesprensa nuevo" do
-      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
-      sign_in current_usuario
-      get sivel2_gen.fuentesprensa_nuevo_path
       assert_response :ok
     end
 
@@ -447,7 +426,7 @@ module Sivel2Gen
     test "analista sin grupo no debe acceder" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get "/sivel2_1/casos/mapaosm"
+      get "/casos/mapaosm"
       assert_response :ok
     end
 

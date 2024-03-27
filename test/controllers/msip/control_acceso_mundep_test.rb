@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Sip
+module Msip
   class ControlAccesoMundepTest < ActionDispatch::IntegrationTest
 
     include Rails.application.routes.url_helpers
@@ -16,7 +16,7 @@ module Sip
     ################
 
     test "sin autenticar no debe acceder a grupos de personas" do
-      get sip.mundep_path + '.json?term="villa"'
+      get msip.mundep_path + '.json?term="villa"'
       assert_response :ok
     end
 
@@ -26,7 +26,7 @@ module Sip
     test "autenticado como operador sin grupo debe presentar listado" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      get sip.mundep_path + '.json?term="villa"'
+      get msip.mundep_path + '.json?term="villa"'
       assert_response :ok
     end
 
@@ -36,7 +36,7 @@ module Sip
     test "autenticado como operador analista debe presentar listado grupoper" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      get sip.mundep_path + '.json?term="villa"'
+      get msip.mundep_path + '.json?term="villa"'
       assert_response :ok
     end
 
@@ -46,7 +46,7 @@ module Sip
     test "autenticado como observador debe presentar listado grupoper" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OBS)
       sign_in current_usuario
-      get sip.mundep_path + '.json?term="villa"'
+      get msip.mundep_path + '.json?term="villa"'
       assert_response :ok
     end
   end
