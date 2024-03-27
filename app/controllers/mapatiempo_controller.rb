@@ -1,7 +1,7 @@
 class MapatiempoController < ApplicationController
 
   
-  # No se autoriza con una clase porque no la hay, debe ser función a función
+  # No se autoriza con una centropoblado porque no la hay, debe ser función a función
   
   def mapatiempo
     authorize! :read, Sivel2Gen::contar

@@ -106,7 +106,7 @@ Además si vas a desplegar en producción:
   copia en `config/database.yml` y ejecuta:
   ```sh
   bin/rails db:migrate
-  bin/rails sip:indices
+  bin/rails msip:indices
   ```
   Si vas a empezar con una base nueva `sivel21gen_des` con el usuario de
   PostgreSQL `sipdes`:
@@ -117,7 +117,7 @@ Además si vas a desplegar en producción:
   ```sh
   bin/rails db:setup
   bin/rails db:migrate
-  bin/rails sip:indices
+  bin/rails msip:indices
   ```
 * Si no lo has hecho instala `yarn` para manejar paquetes javascript:
   ```sh
@@ -130,7 +130,7 @@ Además si vas a desplegar en producción:
 * Para verificar que se están generando bien los recursos ejecuta:
   ```sh
     rm -rf public/sivel2_1/assets/*
-    bin/rails sip:stimulus_motores
+    bin/rails msip:stimulus_motores
     bin/rails assets:precompile --trace
   ```
   y después verifica que se está poblando el directorio
@@ -169,7 +169,7 @@ minitest y pruebas al sistema con sideex.
 
 Puede ejecutar las pruebas de control de acceso con:
 ```sh
-RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed sip:indices
+RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices
 CONFIG_HOSTS=www.example.com bin/rails test
 ```
 Al respecto de modificar o crear pruebas con mini-test
@@ -208,7 +208,7 @@ entre ambos, deberían pasar).
   ```sh
   RAILS_ENV=production bin/rails db:setup
   RAILS_ENV=production bin/rails db:migrate
-  RAILS_ENV=production bin/rails sip:indices
+  RAILS_ENV=production bin/rails msip:indices
   ```
 * El punto de montaje configúralo en la variable `RUTA_RELATIVA` del archivo 
   `.env`
@@ -323,7 +323,7 @@ entre ambos, deberían pasar).
   ```
 * Aplica cambios a base de datos: `bin/rails db:migrate`
 * Actualiza tablas básicas: `bin/rails sivel:actbasicas`
-* Actualiza índices: `bin/rails sip:indices`
+* Actualiza índices: `bin/rails msip:indices`
 * Lanza nuevamente el servidor de desarrollo: `bin/rails s -p 2300 -b 0.0.0.0`
 
 ### Actualización de servidor de producción :arrows_clockwise:
@@ -338,7 +338,7 @@ debe usar `bin/railsp`
 En el sitio de producción se recomienda agregar una tarea `cron` con:
 
 ``` sh
-cd /var/www/htdocs/sivel2/; bin/railsp sip:vuelca
+cd /var/www/htdocs/sivel2/; bin/railsp msip:vuelca
 ```
 
 ## Desarrollo y documentación para desarrolladores :abc:

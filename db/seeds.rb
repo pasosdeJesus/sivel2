@@ -3,8 +3,9 @@ conexion = ActiveRecord::Base.connection();
 # De motores y finalmente de este
 motor = ['msip', 'mr519_gen', 'heb412_gen', 'sivel2_gen', nil]
 motor.each do |m|
-    Msip::carga_semillas_sql(conexion, m, :cambios)
-    Msip::carga_semillas_sql(conexion, m, :datos)
+  puts "OJO seed en #{m}"
+  Msip::carga_semillas_sql(conexion, m, :cambios)
+  Msip::carga_semillas_sql(conexion, m, :datos)
 end
 
 # usuario sivel2 con clave sivel2
