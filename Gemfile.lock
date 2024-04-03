@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 15e94e221f577b212261dd313523f3f3c42c37e2
+  revision: 6c50edec40d24e648073936d33a998d2774643c8
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 5a69121b4cffc49655d237cc3786967ff487bc46
+  revision: b161915b816cefdb82cde6b59732da18ab0c22db
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: d5d6cff11533c8f689b496d70a392f958beb52f4
+  revision: 4f386fc0e41baa539c764d1f13efed99f30040d4
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 4efc242a598910a589d5934591a86f5c36d76c8a
+  revision: 2e55161e20a6438bdaaa2723c17e7ec8df12ee21
   branch: v2.1
   specs:
     sivel2_gen (2.1.0)
@@ -194,7 +194,7 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.14.0)
     date (3.3.4)
-    debug (1.9.1)
+    debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
     devise (4.9.3)
@@ -293,7 +293,7 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0.1)
+    net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.1)
     nokogiri (1.16.3)
@@ -329,7 +329,7 @@ GEM
       rails (>= 3.2)
     psych (5.1.2)
       stringio
-    public_suffix (5.0.4)
+    public_suffix (5.0.5)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
@@ -375,7 +375,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     raindrops (0.20.1)
-    rake (13.1.0)
+    rake (13.2.0)
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
@@ -401,7 +401,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.18.1)
+    selenium-webdriver (4.19.0)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)

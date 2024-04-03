@@ -38,7 +38,7 @@ module Sivel2Gen
 
     # Autenticado como analista
 
-    test "analista no puede crear casofotras" do
+    test "analista puede crear casofotras" do
       sign_in @ope_analista
       get sivel2_gen.casofotras_nuevo_path + "?caso_id=#{@caso.id}"
       assert_response :ok
