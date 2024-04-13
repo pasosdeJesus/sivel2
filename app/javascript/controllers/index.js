@@ -25,6 +25,9 @@ application.register("msip--cancelar-vacio-es-eliminar", Msip__CancelarVacioEsEl
 import Msip__FiltroTanController from "./msip/filtro_tan_controller"
 application.register("msip--filtro-tan", Msip__FiltroTanController)
 
+import Msip__GeodepController from "./msip/geodep_controller"
+application.register("msip--geodep", Msip__GeodepController)
+
 import Msip__SindocautController from "./msip/sindocaut_controller"
 application.register("msip--sindocaut", Msip__SindocautController)
 
