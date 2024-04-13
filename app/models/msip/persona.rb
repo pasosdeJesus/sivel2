@@ -1,7 +1,7 @@
-require 'apo214/concerns/models/persona'
+require 'sivel2_gen/concerns/models/persona'
 
 module Msip
   class Persona < ActiveRecord::Base
-    include Apo214::Concerns::Models::Persona
+    include Sivel2Gen::Concerns::Models::Persona
   end
 end

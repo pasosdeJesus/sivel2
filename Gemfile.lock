@@ -25,18 +25,9 @@ GIT
     cocoon (1.2.11)
 
 GIT
-  remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: cf03d63b4db092bb370d829748a7bb08c4465aa2
-  branch: main
-  specs:
-    apo214 (2.2.0.beta4)
-      msip
-      rails
-
-GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 14cb063c0370fbdb4df5400cd9ece8077750f404
-  branch: main
+  revision: a3baaf388bacfb32a41b1b19827162ea58fc5814
+  branch: v2.2
   specs:
     heb412_gen (2.2.0.beta4)
       mr519_gen
@@ -46,8 +37,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: ca8b8e82313374119355a57e21e2bbdf615f9f34
-  branch: main
+  revision: d8313cfeb2f5a63be2fd6ad9b9ca3116b9d7be93
+  branch: v2.2
   specs:
     mr519_gen (2.2.0.beta4)
       msip
@@ -55,8 +46,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 9d6954b1f8e0b41124f549ae385a904543494db2
-  branch: main
+  revision: 89594aaf2613cc4c6dde69c1a7954941b59b0d75
+  branch: v2.2
   specs:
     msip (2.2.0.beta5)
       cancancan (~> 3)
@@ -75,8 +66,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 3669f53c6a6f0fa500808b4e28e7842b60b16b1d
-  branch: main
+  revision: d804e97ffcf970bc41c924e028af6a1b1773719c
+  branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta4)
       color
@@ -467,7 +458,6 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   apexcharts
-  apo214!
   babel-transpiler
   bcrypt
   best_in_place!
