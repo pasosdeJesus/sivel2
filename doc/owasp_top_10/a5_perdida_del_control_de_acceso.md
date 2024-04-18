@@ -3,7 +3,7 @@
 * Para el control de acceso de utiliza la gema `cancancan` que centraliza
   las reglas en `app/models/ability.rb`
 * Se ha documentado el control de acceso en detalle junto con la documentación
-  del API, ver <https://github.com/pasosdeJesus/sivel2/blob/main/doc/API_sivel2.md>
+  del API, ver <https://gitlab.com/pasosdeJesus/sivel2/-/blob/main/doc/API_sivel2.md>
 * Se han desarrollado pruebas de regresión con minitest específicas para
   probar el control de acceso de sivel2.  Ver en fuentes en directorio
   `test/controllers` las que comienzan con `control_acceso`

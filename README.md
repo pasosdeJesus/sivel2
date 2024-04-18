@@ -1,36 +1,36 @@
-# SIVeL 2.1 #
+# SIVeL 2.2 #
 
-## Bienvenido al código fuente de SIVeL 2.1 ##
-Sistema de Información de Violencia Política en Línea versión 2.1
+## Bienvenido al código fuente de SIVeL 2.2 ##
+Sistema de Información de Violencia Política en Línea versión 2.2
 
 
 [![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad: [![Estado Construcción](https://gitlab.com/pasosdeJesus/sivel2/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines?page=1&scope=all&ref=main) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2)
 
-![Logo de sivel2_1](https://raw.githubusercontent.com/pasosdeJesus/sivel2/main/app/assets/images/logo.jpg)
+![Logo de sivel2_2](https://gitlab.com/pasosdeJesus/sivel2/-/raw/main/app/assets/images/logo.png)
 
-## Sobre SIVeL 2.1
+## Sobre SIVeL 2.2
 
-SIVeL 2.1 es una aplicación web para manejar casos de violencia política y
+SIVeL 2.2 es una aplicación web para manejar casos de violencia política y
 desaparición.  Es segura y de fuentes abiertas.  Su desarrollo es liderado
 por el colectivo [Pasos de Jesús](https://www.pasosdeJesus.org).
 
 Esta aplicación web es usada o incluida o adaptada en sistemas de información
 de varias organizaciones que documentan casos de violencia socio política o
 refugio como las de la Red de Bancos de Datos, el Banco de Datos del
-CINEP/PPP, JRS-Colombia, CODACOP, ASOM, IAP, ANZORC entre otras.
+CINEP/PPP, JRS-Colombia, CODACOP, ASOM, FASOL entre otras.
 
 Te invitamos a ver el manual de usuario en:
 <https://docs.google.com/document/d/1IZK_PTTbXGoHYRCRZgmS4CrNTITU_F1bkEyyjRTNekg/edit?usp=sharing>
 
-Si necesitas una instancia de SIVeL 2.1 para tu organización no gubernamental,
-o necesitas un sistema de información o incluir y adaptar SIVeL 2.1 en el
+Si necesitas una instancia de SIVeL 2.2 para tu organización no gubernamental,
+o necesitas un sistema de información o incluir y adaptar SIVeL 2.2 en el
 sistema de información de tu organización por favor revisa
 <https://defensor.info>.
 
-Si quieres desplegar tu propia instalación de SIVeL 2.1 mira más adelante este
+Si quieres desplegar tu propia instalación de SIVeL 2.2 mira más adelante este
 documento.
 
-Si desea reportar un problema con sivel 2.1 o conocer del desarrollo de esta
+Si desea reportar un problema con sivel 2.2 o conocer del desarrollo de esta
 aplicación por favor revisa:
 * Reportar problemas: <https://gitlab.com/pasosdeJesus/sivel2_gen/-/issues>
 * Reportar una falla de seguridad:
@@ -40,7 +40,7 @@ aplicación por favor revisa:
 
 Si quieres ayudar a mejorar esta aplicación de fuentes abiertas te
 recomendamos el repositorio del motor
-[sivel2_gen](https://github.com/pasosdeJesus/sivel2_gen).
+[sivel2_gen](https://gitlab.com/pasosdeJesus/sivel2_gen).
 
 Desde Pasos de Jesús estaremos atentos a quienes hagan aportes para
 proponerles oportunidades labores cuando las haya.
