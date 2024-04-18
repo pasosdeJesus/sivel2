@@ -28,7 +28,7 @@ upstream unicornsivel2fian {
 
 ### Págia inicial sin recursos gráficos
 
-![Pantallazo de inicio sin recursos](https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/inicio-sin-assets.png)
+![Pantallazo de inicio sin recursos](https://gitlab.com/pasosdeJesus/sivel2/-/raw/main/doc/imagenes/inicio-sin-assets.png)
 O al inspeccionar fuentes y revisar consola ve mensajes del estilo:
 ```
 GET https://rbd.nocheyniebla.org:15443/csofb/sivel2/application-3f56911d83c1e4aab6ce1f08fbd92f8d83166c1f765cee5dd29f1ae0ebad9219.js net::ERR_ABORTED 404 (Not Found)
@@ -55,17 +55,6 @@ location ^~ /csofb/sivel2/images/ {
         add_header Cache-Control public;
         root /var/www/htdocs/sivel2_csofb/public/;  
 }
-```
-
-### Mapa y otras experiencias interactivas no operan
-
-Por ejemplo el mapa se ve así:
-![Mapa sin webpack](https://github.com/pasosdeJesus/sivel2/raw/master/doc/imagenes/sivel2-sin-js-webpack.png)
-
-Es posible que no se estén cargando los recursos Javascript preparados con webpack, asegurese de que exista el enlace packs:
-```
-cd public/laorg/sivel2
-ln -s ../../packs .
 ```
 
 

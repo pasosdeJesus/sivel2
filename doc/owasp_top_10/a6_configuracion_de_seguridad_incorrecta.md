@@ -20,7 +20,7 @@ Deben implementarse procesos seguros de instalación, incluyendo:
   para un servidor que pueda alojar SIVeL2 u otro de los sistemas
   de información activos que desarrolla Pasos de Jesús, con posibilidad 
   de ser sistema de desarrollo.
-* Se recomienda actualizar con regularidad del repositorio github.
+* Se recomienda actualizar con regularidad del repositorio gitlab.
 * La aplicación tiene una arquitectura bastante segmentada porque está
   dividida la funcionalidad en motores.
 * Las cabeceras de seguridad servidas por un sitio en producción con

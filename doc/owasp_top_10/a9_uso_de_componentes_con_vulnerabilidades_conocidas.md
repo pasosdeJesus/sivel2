@@ -8,14 +8,14 @@
   extensivas: sistema operativo, base de datos, lenguaje, marcos de trabajo.  
   Ante cambios es la pila que afectan la aplicación, se planea ruta de
   actualización y se documenta bien en incidentes o bien en los motores
-  (lo más tipico es en msip en https://github.com/pasosdeJesus/msip/wiki)
+  (lo más tipico es en msip en https://gitlab.com/pasosdeJesus/msip/-/wikis)
 * Las gemas y paquetes npm se obtiene de repositorios oficiales rubygems y npm.
 * En ocasiones se ha requerido contribuir mejoras a componentes de terceros
   desactualizados o con problemas.  Como solo se emplean componentes de 
-  fuentes abiertas, esto se ha hecho de manera pública en github.com o en
+  fuentes abiertas, esto se ha hecho de manera pública en gitlab.com o en
   el repositorio y canales públicos del software al que se contribuye.
   Cuando ha sido indispensable se ha bifurcado un repositorio público de
   un tercer (también de manera pública) para implementar un cambio que 
   requerimos  y que no ha sido aceptado por quienes mantiene (e.g
-  https://github.com/pasosdeJesus/adJ y https://github.com/vtamara/cocoon ).
+  https://gitlab.com/pasosdeJesus/adJ y https://github.com/vtamara/cocoon ).
 
