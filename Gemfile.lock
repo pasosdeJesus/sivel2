@@ -26,10 +26,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 72c92b3b1b93f6bafa6e567c6e7753c8d1909736
+  revision: 57b9b4a334b1d0f1c87ed650f9bfb5e204f92905
   branch: v2.2
   specs:
-    heb412_gen (2.2.0.beta4)
+    heb412_gen (2.2.0.beta5)
       mr519_gen
       msip
       redcarpet
@@ -37,16 +37,16 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 77703f6ba8bdd69c6cfd6dd1bdd6f928fd493d3b
+  revision: 0a40f10e2759671366764a3244a3b26ae6ec063d
   branch: v2.2
   specs:
-    mr519_gen (2.2.0.beta4)
+    mr519_gen (2.2.0.beta5)
       msip
       rails
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: b8d48a6b621ba42dc5a032c91a6327c7e25096f4
+  revision: 9ad803fbf57846d880d6c8d5ef50ca756ffd2697
   branch: v2.2
   specs:
     msip (2.2.0.beta5)
@@ -66,10 +66,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 74201a0ce910ad79414cea2f8f6054fce6ce591f
+  revision: 3b86b69cb48d7a7f01ebd0f5d1dae3333c1dd064
   branch: v2.2
   specs:
-    sivel2_gen (2.2.0.beta4)
+    sivel2_gen (2.2.0.beta5)
       color
       devise
       rails
