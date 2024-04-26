@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 57b9b4a334b1d0f1c87ed650f9bfb5e204f92905
+  revision: 128502851db2e46f6b081c82b407a7bd03b27576
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta5)
@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 0a40f10e2759671366764a3244a3b26ae6ec063d
+  revision: 5e37cee8d77bbe39d05bb8ca7d32afcdde1a31d3
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta5)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 9ad803fbf57846d880d6c8d5ef50ca756ffd2697
+  revision: 6b4dba4691bae64ace82ae138c2f0122eb1a6097
   branch: v2.2
   specs:
     msip (2.2.0.beta5)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 3b86b69cb48d7a7f01ebd0f5d1dae3333c1dd064
+  revision: ad87a94b5978892fed80bbd4b875e672b61948d5
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta5)
@@ -398,7 +398,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    spring (4.2.0)
+    spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
