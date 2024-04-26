@@ -1674,7 +1674,7 @@ ALTER SEQUENCE public.heb412_gen_campohc_id_seq OWNED BY public.heb412_gen_campo
 CREATE TABLE public.heb412_gen_campoplantillahcm (
     id integer NOT NULL,
     plantillahcm_id integer,
-    nombrecampo character varying(183),
+    nombrecampo character varying(183) COLLATE public.es_co_utf_8,
     columna character varying(5)
 );
 
@@ -1706,7 +1706,7 @@ ALTER SEQUENCE public.heb412_gen_campoplantillahcm_id_seq OWNED BY public.heb412
 CREATE TABLE public.heb412_gen_campoplantillahcr (
     id bigint NOT NULL,
     plantillahcr_id integer,
-    nombrecampo character varying(127),
+    nombrecampo character varying(127) COLLATE public.es_co_utf_8,
     columna character varying(5),
     fila integer
 );
@@ -8653,6 +8653,7 @@ ALTER TABLE ONLY public.sivel2_gen_victimacolectiva_vinculoestado
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240423143517'),
 ('20240319141612'),
 ('20240312182320'),
 ('20240305165644'),
