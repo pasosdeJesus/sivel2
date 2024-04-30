@@ -38,11 +38,30 @@ PRUEBA_USUARIO_OBS = 4 # Usuario operador del grupo observador
 PRUEBA_USUARIO_OBSPAR = 5 # Usuario operador del grupo observador de parte
 
 
+PRUEBA_ANEXO = {
+  descripcion: "x",
+  created_at: "2014-11-11",
+}
+
 PRUEBA_PERSONA = {
   nombres: 'Luis Alejandro',
   apellidos: 'Cruz Ordoñez',
   sexo: 'M',
   numerodocumento: '1061769227' 
+}
+
+PRUEBA_FUENTEPRENSA = {
+  id: 1000,
+  nombre: "Fuenteprensa",
+  fechacreacion: "2015-05-11",
+  created_at: "2015-05-11",
+}
+
+PRUEBA_FOTRA = {
+  id: 1000 ,
+  nombre: 'Fotra',
+  created_at: "2014-09-09",
+  updated_at: "2014-09-09",
 }
 
 PRUEBA_GRUPOPER = {
