@@ -3,15 +3,20 @@ echo "=== Pruebas de regresión al sistema con Javascript"
 # Para ejecutar en navegador visible ejecutar con
 #  CONCABEZA=1 bin/pruebasjs
 
+if (test ! -d test/puppeteer) then {
+  echo "No hay pruebas puppeteer"
+  exit 0;
+} fi;
+
 export IPDES=127.0.0.1
 if (test "$RAILS_ENV" = "") then {
 # Si ejecutamos en RAILS_ENV=test RUTA_RELATIVA será / por
 # https://github.com/rails/rails/issues/49688
- 	export RAILS_ENV=development
- 	#export RAILS_ENV=test
+   export RAILS_ENV=development
+   #export RAILS_ENV=test
 } fi;
 if (test "$CONFIG_HOSTS" = "") then {
-	export CONFIG_HOSTS=127.0.0.1
+  export CONFIG_HOSTS=127.0.0.1
 } fi;
 
 . ./.env
@@ -33,8 +38,8 @@ echo "IPDES=$IPDES"
 echo "PUERTODES=$PUERTODES"
 
 if (test "$IPDES" = "127.0.0.1") then {
-	echo "=== Deteniendo"
-	bin/detiene
+  echo "=== Deteniendo"
+  bin/detiene
 
   if (test "$SALTAPRECOMPILA" != "1") then {
     echo "=== Precompilando"
@@ -43,10 +48,13 @@ if (test "$IPDES" = "127.0.0.1") then {
     bin/rails assets:precompile
   } fi;
 
-	echo "=== Iniciando servidor"
-	CONFIG_HOSTS=127.0.0.1 R=f bin/corre &
+  echo "=== Iniciando servidor"
+  # La siguiente puede fallar mientras reline no arregle situación.
+  # Ver https://github.com/ruby/reline/issues/690
+  # Extra-temporal modificar lib/reline como se describe en ese incidente.
+  CONFIG_HOSTS=127.0.0.1 R=f bin/corre &
   CORRE_PID=$!
-	sleep 5;
+  sleep 5;
   echo "CORRE_PID=$CORRE_PID"
 } fi;
 
