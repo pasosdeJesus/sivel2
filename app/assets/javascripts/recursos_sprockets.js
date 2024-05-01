@@ -10,7 +10,6 @@
 // Lea el README de Sprockets (https://github.com/sstephenson/sprockets#sprockets-directives) para ver 
 // de las directivas soportadas.
 //
-//= require best_in_place
 //= require msip/motor
 //= require heb412_gen/motor
 //= require mr519_gen/motor
