@@ -52,6 +52,39 @@ module Sivel2Gen
     end
     # Autenticado como operador sin grupo
     #####################################
+    test "Operador sin grupo puede crear presponsable con turbo" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      @casopr = Sivel2Gen::Caso.create(PRUEBA_CASO)
+      assert @casopr.valid?
+      pr = Sivel2Gen::Presponsable.take
+      cof = Sivel2Gen::CasoPresponsable.create(
+        caso_id: @casopr.id,
+        presponsable_id: pr.id,
+        tipo: 0
+      )
+      post sivel2_gen.crear_caso_fotra_path(@casopr, cof, format: :turbo_stream)
+      assert_response :success 
+      cof.destroy
+      @casopr.destroy
+    end
+
+    test "Operador sin grupo puede eliminar presponsable con turbo" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      @casopr = Sivel2Gen::Caso.create(PRUEBA_CASO)
+      assert @casopr.valid?
+      pr = Sivel2Gen::Presponsable.take
+      cpr = Sivel2Gen::CasoPresponsable.create(
+        caso_id: @casopr.id,
+        presponsable_id: pr.id,
+        tipo: 0
+      )
+      delete sivel2_gen.eliminar_caso_presponsable_path(
+        id: cpr.id, index: 0)
+      assert_response :success 
+      @caso.destroy
+    end
 
     # Autenticado como operador con grupo Analista de Casos
     #######################################################

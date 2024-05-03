@@ -52,12 +52,82 @@ module Sivel2Gen
       end
       @caso.destroy
     end
+
     # Autenticado como operador sin grupo
     #####################################
+    test "Operador sin grupo puede agregar anexo con turbo" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+      assert @casoan.valid?
+      anexo = Msip::Anexo.create(
+        PRUEBA_ANEXO
+      )
+      caso_anexo = Sivel2Gen::AnexoCaso.create(
+        caso_id: @casoan.id,
+        anexo_id: anexo.id
+      )
+      post sivel2_gen.crear_anexo_caso_path(@casoan, caso_anexo, format: :turbo_stream)
+      assert_response :success
+      @casoan.destroy
+      anexo.destroy
+    end
+
+    test "Operador sin grupo puede eliminar anexo con turbo" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+      assert @casoan.valid?
+      anexo = Msip::Anexo.create(
+        PRUEBA_ANEXO
+      )
+      anexo_caso = Sivel2Gen::AnexoCaso.create(
+        caso_id: @caso.id,
+        anexo_id: anexo.id
+      )
+      delete sivel2_gen.eliminar_anexo_caso_path(
+        id: anexo_caso.id, index: 0)
+      assert_response :success
+      @caso.destroy
+    end
 
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
+    test "Analista puede agregar anexo con turbo" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+      assert @casoan.valid?
+      anexo = Msip::Anexo.create(
+        PRUEBA_ANEXO
+      )
+      caso_anexo = Sivel2Gen::AnexoCaso.create(
+        caso_id: @casoan.id,
+        anexo_id: anexo.id
+      )
+      post sivel2_gen.crear_anexo_caso_path(@casoan, caso_anexo, format: :turbo_stream)
+      assert_response :success
+      @casoan.destroy
+      anexo.destroy
+    end
 
+    test "Analista sin grupo puede eliminar anexo con turbo" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+      sign_in current_usuario
+      @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+      assert @casoan.valid?
+      anexo = Msip::Anexo.create(
+        PRUEBA_ANEXO
+      )
+      anexo_caso = Sivel2Gen::AnexoCaso.create(
+        caso_id: @caso.id,
+        anexo_id: anexo.id
+      )
+      delete sivel2_gen.eliminar_anexo_caso_path(
+        id: anexo_caso.id, index: 0)
+      assert_response :success
+      @caso.destroy
+    end
 
   end
 end
