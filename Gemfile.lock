@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: dfadb2986d71d565a4b4ede1646622a25e704962
+  revision: e481e2c73906e8e637480cf73b8ab8b77c6aa6e2
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 84c8925b41fbebdbe0d0e4bc41a11f6bb60a186f
+  revision: 2e73a03b4ece5557c803c7e3a5be77bf49f982c3
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 44fcc68821a9b1bd1ddacb76ab662f3f2eac4a50
+  revision: 2b753907b83c05fbb3a520abc37412e3d6dcfb29
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 0e7844c7999c3189aa0e8aad6e8cd2f88e29b8d0
+  revision: e7b985569035e7ac0f54e31b882aa57fdd7c0a0d
   branch: v2.1
   specs:
     sivel2_gen (2.1.0)
@@ -160,7 +160,7 @@ GEM
       execjs (~> 2.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
-    bigdecimal (3.1.7)
+    bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
@@ -206,9 +206,9 @@ GEM
     devise-i18n (1.12.0)
       devise (>= 4.9.0)
     docile (1.4.0)
-    dotenv (3.1.1)
-    dotenv-rails (3.1.1)
-      dotenv (= 3.1.1)
+    dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
       railties (>= 6.1)
     dry-configurable (1.1.0)
       dry-core (~> 1.0, < 2)
@@ -254,10 +254,10 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    i18n (1.14.4)
+    i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
-    irb (1.13.0)
+    irb (1.13.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.12.0)
@@ -281,12 +281,12 @@ GEM
     method_source (1.1.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.0305)
+    mime-types-data (3.2024.0507)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
     minitest (5.22.3)
     msgpack (1.7.2)
-    net-imap (0.4.10)
+    net-imap (0.4.11)
       date
       net-protocol
     net-pop (0.1.2)
@@ -295,7 +295,7 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.1)
+    nio4r (2.7.3)
     nokogiri (1.16.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -381,7 +381,7 @@ GEM
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.9.0)
-    reline (0.5.4)
+    reline (0.5.6)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -532,4 +532,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.9
+   2.5.10
