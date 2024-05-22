@@ -12,3 +12,6 @@ application.register("sip--cancelar-vacio-es-eliminar", Sip__CancelarVacioEsElim
 
 import Sip__SindocautController from "./sip/sindocaut_controller"
 application.register("sip--sindocaut", Sip__SindocautController)
+
+import Sivel2Gen__EdadController from "./sivel2_gen/edad_controller"
+application.register("sivel2-gen--edad", Sivel2Gen__EdadController)

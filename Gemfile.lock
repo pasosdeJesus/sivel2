@@ -73,10 +73,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: c48f00df7879271f9595f8ca7ccd50dcd2791176
+  revision: 14ced37d79ad364cb3e5808c57b0db129f847a7a
   branch: v2.1
   specs:
-    sivel2_gen (2.1.0)
+    sivel2_gen (2.1.1)
       color
       devise
       rails
@@ -284,7 +284,7 @@ GEM
     mime-types-data (3.2024.0507)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
-    minitest (5.23.0)
+    minitest (5.23.1)
     msgpack (1.7.2)
     net-imap (0.4.11)
       date
