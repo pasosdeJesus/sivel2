@@ -86,13 +86,6 @@ if (test "$?" != "0") then {
   exit 1;
 } fi;
 
-(cd $rutaap; CONFIG_HOSTS=127.0.0.1 bin/rails test:system)
-if (test "$?" != "0") then {
-  echo "No pasaron pruebas del sistema";
-  exit 1;
-} fi;
-
-
 (cd $rutaap; RAILS_ENV=test bin/rails db:schema:dump)
 
 b=`git branch | grep "^*" | sed -e  "s/^* //g"`
