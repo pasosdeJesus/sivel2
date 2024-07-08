@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2242153b412642f8acedaaac23f0b51859613e60
+  revision: d0fe2faf00377f0d4e0378fd4c77acba95234e65
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 69b66bf2a95e1e2e07bad736df821e02dddd46c1
+  revision: 83c4ed4269de8451305a6a297e1802e598ce2de1
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: bcd0facfc625d3169c2af44d064c839fa921f0d2
+  revision: 2e90fa1279f727011fc7d95b3c13a806bfd57ab0
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 48b5278deec4909274bb50d2fc1129026990eef2
+  revision: dc34ba0f0962cb0058f1bcbb772c1c620e5ff80f
   branch: v2.1
   specs:
     sivel2_gen (2.1.1)
@@ -211,7 +211,7 @@ GEM
     dotenv-rails (3.1.2)
       dotenv (= 3.1.2)
       railties (>= 6.1)
-    dry-configurable (1.1.0)
+    dry-configurable (1.2.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
     dry-core (1.0.1)
@@ -264,7 +264,7 @@ GEM
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
-    irb (1.13.2)
+    irb (1.14.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.12.0)
