@@ -4420,6 +4420,36 @@ CREATE TABLE public.sivel2_gen_profesion (
 
 
 --
+-- Name: sivel2_gen_profesion_victima; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_profesion_victima (
+    id bigint NOT NULL,
+    victima_id bigint NOT NULL,
+    profesion_id bigint NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_profesion_victima_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_profesion_victima_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_profesion_victima_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sivel2_gen_profesion_victima_id_seq OWNED BY public.sivel2_gen_profesion_victima.id;
+
+
+--
 -- Name: sivel2_gen_profesion_victimacolectiva; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -5172,6 +5202,13 @@ ALTER TABLE ONLY public.sivel2_gen_estadocivil ALTER COLUMN id SET DEFAULT nextv
 --
 
 ALTER TABLE ONLY public.sivel2_gen_maternidad ALTER COLUMN id SET DEFAULT nextval('public.sivel2_gen_maternidad_id_seq'::regclass);
+
+
+--
+-- Name: sivel2_gen_profesion_victima id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_profesion_victima ALTER COLUMN id SET DEFAULT nextval('public.sivel2_gen_profesion_victima_id_seq'::regclass);
 
 
 --
@@ -6270,6 +6307,14 @@ ALTER TABLE ONLY public.sivel2_gen_profesion
 
 
 --
+-- Name: sivel2_gen_profesion_victima sivel2_gen_profesion_victima_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_profesion_victima
+    ADD CONSTRAINT sivel2_gen_profesion_victima_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_profesion_victimacolectiva sivel2_gen_profesion_victimacolectiva_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6560,6 +6605,20 @@ CREATE INDEX index_sivel2_gen_otraorga_victima_on_organizacion_id ON public.sive
 --
 
 CREATE INDEX index_sivel2_gen_otraorga_victima_on_victima_id ON public.sivel2_gen_otraorga_victima USING btree (victima_id);
+
+
+--
+-- Name: index_sivel2_gen_profesion_victima_on_profesion_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_profesion_victima_on_profesion_id ON public.sivel2_gen_profesion_victima USING btree (profesion_id);
+
+
+--
+-- Name: index_sivel2_gen_profesion_victima_on_victima_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sivel2_gen_profesion_victima_on_victima_id ON public.sivel2_gen_profesion_victima USING btree (victima_id);
 
 
 --
@@ -7503,6 +7562,14 @@ ALTER TABLE ONLY public.apo214_listaanexo
 
 
 --
+-- Name: sivel2_gen_profesion_victima fk_rails_16a578e865; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_profesion_victima
+    ADD CONSTRAINT fk_rails_16a578e865 FOREIGN KEY (profesion_id) REFERENCES public.sivel2_gen_profesion(id);
+
+
+--
 -- Name: msip_etiqueta_persona fk_rails_1856abc5d3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7516,6 +7583,14 @@ ALTER TABLE ONLY public.msip_etiqueta_persona
 
 ALTER TABLE ONLY public.mr519_gen_encuestausuario
     ADD CONSTRAINT fk_rails_1b24d10e82 FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
+
+
+--
+-- Name: sivel2_gen_profesion_victima fk_rails_1b333ee743; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_profesion_victima
+    ADD CONSTRAINT fk_rails_1b333ee743 FOREIGN KEY (victima_id) REFERENCES public.sivel2_gen_victima(id);
 
 
 --
@@ -8653,6 +8728,7 @@ ALTER TABLE ONLY public.sivel2_gen_victimacolectiva_vinculoestado
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240619170550'),
 ('20240423143517'),
 ('20240319141612'),
 ('20240312182320'),
