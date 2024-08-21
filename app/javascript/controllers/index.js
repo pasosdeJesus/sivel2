@@ -25,6 +25,9 @@ application.register("msip--cancelar-vacio-es-eliminar", Msip__CancelarVacioEsEl
 import Msip__FiltroTanController from "./msip/filtro_tan_controller"
 application.register("msip--filtro-tan", Msip__FiltroTanController)
 
+import Msip__GeodepController from "./msip/geodep_controller"
+application.register("msip--geodep", Msip__GeodepController)
+
 import Msip__SindocautController from "./msip/sindocaut_controller"
 application.register("msip--sindocaut", Msip__SindocautController)
 
@@ -33,3 +36,9 @@ application.register("sivel2-gen--edad", Sivel2Gen__EdadController)
 
 import Sivel2Gen__EnviarFichaCasoController from "./sivel2_gen/enviar_ficha_caso_controller"
 application.register("sivel2-gen--enviar-ficha-caso", Sivel2Gen__EnviarFichaCasoController)
+
+import Sivel2Gen__MapaosmController from "./sivel2_gen/mapaosm_controller"
+application.register("sivel2-gen--mapaosm", Sivel2Gen__MapaosmController)
+
+import Sivel2Gen__MotorController from "./sivel2_gen/motor_controller"
+application.register("sivel2-gen--motor", Sivel2Gen__MotorController)
