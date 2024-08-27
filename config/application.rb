@@ -49,7 +49,7 @@ module Sivel2
     config.hosts.concat(
       ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase.split(";"))
 
-    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2_2")
+    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', "/sivel2")
 
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOW'

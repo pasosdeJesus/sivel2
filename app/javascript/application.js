@@ -12,8 +12,10 @@ import './jquery'
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
 import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
-import 'bootstrap-datepicker'
-import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
+
+import Msip__Motor from "./controllers/msip/motor"
+window.Msip__Motor = Msip__Motor
+Msip__Motor.iniciar()  // Este se ejecuta una vez cuando se está cargando la aplicación tal vez antes que la página completa o los recursos
 
 // Apexcharts
 import ApexCharts from 'apexcharts'
@@ -65,6 +67,8 @@ promesaRecursosSprocketsYDocumento.then((mensaje) => {
   apo214_prepara_eventos_comunes(root);
   sivel2_gen_prepara_eventos_unicos(root);
 
+  Msip__Motor.ejecutarAlCargarDocumentoYRecursos()  // Este se ejecuta cada vez que se carga una página que no está en cache y tipicamente después de que se ha cargado la página completa y los recursos
+
   var p = new URL(document.URL).pathname.split('/')
   var p2ult = ''
   if (p.length>2) { 
@@ -86,7 +90,9 @@ document.addEventListener('turbo:load', (e) => {
   
   console.log('Escuchador turbo:load')
 
-  msip_ejecutarAlCargarPagina(window)
+  msip_ejecutarAlCargarPagina(window) // Establece puntomontaje
+  Msip__Motor.ejecutarAlCargarPagina()
+
 })
 
 import "./controllers"
