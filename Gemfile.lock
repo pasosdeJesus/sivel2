@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 21f8b8ab7fa2100d40b95ae6f853e89930e3055e
+  revision: 219090d1858201ac9d21066d3ddaf993b0b8efe9
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: cd856ea3f150cb807bdbd2871dab257e76e4ad2e
+  revision: 352a74b68f1951bca15393f4f3d841bb56f44f5d
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 9fb2d2aeb365c30ddd7db906ee2dbd3abd87ab5f
+  revision: b853f22656f2e1bb5d05db5fec45a6f3347b7426
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 17815d11750396ebf76b23e989b2620d9a6e926c
+  revision: 0dbfdc2a4bdc9c51c48e4a489a650f3c0fc90093
   branch: v2.1
   specs:
     sivel2_gen (2.1.1)
@@ -325,7 +325,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pdf-core (0.10.0)
-    pg (1.5.7)
+    pg (1.5.8)
     prawn (2.5.0)
       matrix (~> 0.4)
       pdf-core (~> 0.10.0)
