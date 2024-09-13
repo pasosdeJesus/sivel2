@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 036e85b87e2d483254ddb9b59aa53597c0b931d2
+  revision: 5fe07a68e34b076c1ab2efb8e545a5f40255a7f2
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta6)
@@ -406,7 +406,7 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.6)
+    turbo-rails (2.0.7)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
