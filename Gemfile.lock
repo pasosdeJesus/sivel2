@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 219090d1858201ac9d21066d3ddaf993b0b8efe9
+  revision: f83a5f021f2fdcd3a07995430a8cbdb62b95ab8a
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 352a74b68f1951bca15393f4f3d841bb56f44f5d
+  revision: a2e71f7d0320cdc01ee47a20b856afbce7bbadac
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: b853f22656f2e1bb5d05db5fec45a6f3347b7426
+  revision: 81bbc5bcf1249991eb8295d77a7ea68ab35fd6e2
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 0dbfdc2a4bdc9c51c48e4a489a650f3c0fc90093
+  revision: a618f2161ffdb5859be4d99d610062f88aa1b604
   branch: v2.1
   specs:
     sivel2_gen (2.1.1)
@@ -267,7 +267,7 @@ GEM
     irb (1.14.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    jbuilder (2.12.0)
+    jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jsbundling-rails (1.3.1)
