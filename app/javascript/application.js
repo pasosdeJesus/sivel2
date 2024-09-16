@@ -17,6 +17,14 @@ import Msip__Motor from "./controllers/msip/motor"
 window.Msip__Motor = Msip__Motor
 Msip__Motor.iniciar()  // Este se ejecuta una vez cuando se está cargando la aplicación tal vez antes que la página completa o los recursos
 
+import L from 'leaflet'
+window.L = L
+import 'leaflet.markercluster'
+
+import Sivel2Gen__Motor from "./controllers/sivel2_gen/motor"
+window.Sivel2Gen__Motor = Sivel2Gen__Motor
+Sivel2Gen__Motor.iniciar()  // Este cargará leaflet en window.L
+
 // Apexcharts
 import ApexCharts from 'apexcharts'
 window.ApexCharts = ApexCharts
@@ -27,18 +35,6 @@ Apex.chart = {
 }
 
 import 'gridstack'
-
-
-// Leaflet
-import L from 'leaflet';
-import 'leaflet.markercluster';
-
-
-L.Icon.Default.mergeOptions({
-      iconUrl: "marker-icon.png",
-      iconRetinaUrl: "marker-icon-2x.png",
-      shadowUrl: "marker-shadow.png"
-});
 
 import plotly_serietiempo_actos from './plotly_actos'
 
@@ -75,6 +71,7 @@ promesaRecursosSprocketsYDocumento.then((mensaje) => {
   sivel2_gen_prepara_eventos_unicos(root);
 
   Msip__Motor.ejecutarAlCargarDocumentoYRecursos()  // Este se ejecuta cada vez que se carga una página que no está en cache y tipicamente después de que se ha cargado la página completa y los recursos
+  Sivel2Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
 
   var p = new URL(document.URL).pathname.split('/')
   var p2ult = ''
@@ -99,6 +96,7 @@ document.addEventListener('turbo:load', (e) => {
 
   msip_ejecutarAlCargarPagina(window) // Establece puntomontaje
   Msip__Motor.ejecutarAlCargarPagina()
+  Sivel2Gen__Motor.ejecutarAlCargarPagina()
 
 })
 

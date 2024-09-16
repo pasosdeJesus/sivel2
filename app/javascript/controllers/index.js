@@ -42,6 +42,3 @@ application.register("sivel2-gen--filtro-avanzado", Sivel2Gen__FiltroAvanzadoCon
 
 import Sivel2Gen__MapaosmController from "./sivel2_gen/mapaosm_controller"
 application.register("sivel2-gen--mapaosm", Sivel2Gen__MapaosmController)
-
-import Sivel2Gen__MotorController from "./sivel2_gen/motor_controller"
-application.register("sivel2-gen--motor", Sivel2Gen__MotorController)
