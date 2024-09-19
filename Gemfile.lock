@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f83a5f021f2fdcd3a07995430a8cbdb62b95ab8a
+  revision: 7805bd21ecaf6e4e0b1ef5c0ade131aee87d8056
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: a2e71f7d0320cdc01ee47a20b856afbce7bbadac
+  revision: 7b1cf860e1b357d3ef232280abdee8a9108a7fed
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 81bbc5bcf1249991eb8295d77a7ea68ab35fd6e2
+  revision: 382e04667c7eb6ee34a765fcd795c7637931aeaa
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: a618f2161ffdb5859be4d99d610062f88aa1b604
+  revision: 4d6eab4bdea5d92a9ca025028acffaf3169131f2
   branch: v2.1
   specs:
     sivel2_gen (2.1.1)
@@ -207,9 +207,9 @@ GEM
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
     docile (1.4.1)
-    dotenv (3.1.2)
-    dotenv-rails (3.1.2)
-      dotenv (= 3.1.2)
+    dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
       railties (>= 6.1)
     dry-configurable (1.2.0)
       dry-core (~> 1.0, < 2)
@@ -261,7 +261,7 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    i18n (1.14.5)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     irb (1.14.0)
@@ -338,7 +338,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
-    puma (6.4.2)
+    puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.9)
