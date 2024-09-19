@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7805bd21ecaf6e4e0b1ef5c0ade131aee87d8056
+  revision: b2c84d69c9663df78bb6f113e302087aa90c689a
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 7b1cf860e1b357d3ef232280abdee8a9108a7fed
+  revision: caf267c78326ae84dab20f65fed905c7a5f8162e
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 382e04667c7eb6ee34a765fcd795c7637931aeaa
+  revision: a6b5aadf8e1d7b0ed013f400b2a895ad2d41150e
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 4d6eab4bdea5d92a9ca025028acffaf3169131f2
+  revision: 6ae2bd851f758e3fdd02d9b45760df4a60aa9522
   branch: v2.1
   specs:
     sivel2_gen (2.1.1)
@@ -541,4 +541,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.18
+   2.5.19
