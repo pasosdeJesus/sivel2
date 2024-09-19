@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 54b40c71f38ce873d637c7966dbde3bcaa7ff3b0
+  revision: 5ed3ae3305a7d32e8b8c347fcd8bc6bdbf74cdac
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta6)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 4ef12b1a60bba4afdd51db6d1ffc3c3dc89cfbcc
+  revision: 1560acefae307e749393b3b6ac2a3198e3765b32
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta6)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 5651c8320eef9a1ccdd15c76e40968f1d6b29c33
+  revision: 5435b2db2b536198bdee3dfa37ea281bc6b26e68
   branch: v2.2
   specs:
     msip (2.2.0.beta6)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 789f65c993d36595761466e1fd140101f99e65bc
+  revision: 0f150c1bfbd2d60cd207fc2fe22e024e31c9cb05
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta6)
@@ -308,7 +308,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
-    puma (6.4.2)
+    puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.9)
@@ -412,9 +412,8 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.7)
+    turbo-rails (2.0.9)
       actionpack (>= 6.0.0)
-      activejob (>= 6.0.0)
       railties (>= 6.0.0)
     twitter_cldr (6.12.1)
       camertron-eprun
@@ -509,4 +508,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.18
+   2.5.19
