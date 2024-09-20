@@ -13,10 +13,10 @@ Msip.setup do |config|
 
   config.descripcion = "Sistema de Información de Violencia Política en Línea"
 
-  config.codigofuente = "https://gitlab.com/pasosdeJesus/sivel2/-/tree/v2.2"
-  config.urlcontribuyentes = "https://gitlab.com/pasosdeJesus/sivel2/-/graphs/v2.2"
-  config.urllicencia = "https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.2/LICENCIA.md"
-  config.urlcreditos = "https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.2/CREDITOS.md"
+  config.codigofuente = "https://gitlab.com/pasosdeJesus/sivel2/-/tree/main"
+  config.urlcontribuyentes = "https://gitlab.com/pasosdeJesus/sivel2/-/graphs/main"
+  config.urllicencia = "https://gitlab.com/pasosdeJesus/sivel2/-/blob/main/LICENCIA.md"
+  config.urlcreditos = "https://gitlab.com/pasosdeJesus/sivel2/-/blob/main/CREDITOS.md"
   config.agradecimientoDios = "<p>
 El mayor agradecimiento al Dios trino, el de la Biblia, a quien dedicamos 
 este trabajo y a quien oramos para que no sea usado por estructuras armadas

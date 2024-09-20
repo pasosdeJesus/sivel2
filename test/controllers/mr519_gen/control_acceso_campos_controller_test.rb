@@ -29,7 +29,7 @@ module Mr519Gen
 
     test "sin autenticar no debe acceder a campos/new" do
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_campo_path
+        post mr519_gen.crear_campo_path(index: 0), params: nil
       end
     end
 
@@ -49,7 +49,7 @@ module Mr519Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_campo_path
+        post mr519_gen.crear_campo_path(index: 0), params: nil
       end
     end
 
@@ -70,7 +70,7 @@ module Mr519Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_campo_path
+        post mr519_gen.crear_campo_path(index: 0), params: nil
       end
     end
 

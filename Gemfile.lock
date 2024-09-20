@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 29af106b4eaa77f0eecc0a6764fcecf0c9270edf
+  revision: c0047aa4146769c145d7b716f86288c5a677fe0c
   branch: main
   specs:
     apo214 (2.2.0.beta4)
@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 721bffbad28fc9570fcc8137ca8677b4f90689eb
+  revision: 731c20a491c622123f7b7990d7c5103b2a8a7ff9
   branch: main
   specs:
     heb412_gen (2.3.0.alfa2)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 1f252269fe870dd2794a0a1ced0a090581834e37
+  revision: 8dd29640445450ea9958ad9a6e3fb067299854ad
   branch: main
   specs:
     mr519_gen (2.3.0.alfa2)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 0f3194d499e681b342e3c015befd6d85c4758acf
+  revision: 12574b5c700a9af702969fa0e42264d3e1daa9ca
   branch: main
   specs:
     msip (2.3.0.alfa2)
@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: df1cdd240c272f09ee7ab5ec72aca14dc388f8ca
+  revision: 92ae33e3d1705f87737f85b10122ad885792bd9f
   branch: main
   specs:
     sivel2_gen (2.3.0.alfa2)
@@ -221,9 +221,9 @@ GEM
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
     docile (1.4.1)
-    dotenv (3.1.2)
-    dotenv-rails (3.1.2)
-      dotenv (= 3.1.2)
+    dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
       railties (>= 6.1)
     drb (2.2.1)
     erd (0.8.2)
@@ -252,7 +252,7 @@ GEM
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
-    irb (1.14.0)
+    irb (1.14.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.13.0)
@@ -324,7 +324,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
-    puma (6.4.2)
+    puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.9)
@@ -429,9 +429,8 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.7)
+    turbo-rails (2.0.10)
       actionpack (>= 6.0.0)
-      activejob (>= 6.0.0)
       railties (>= 6.0.0)
     twitter_cldr (6.12.1)
       camertron-eprun
@@ -450,7 +449,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webrick (1.8.1)
+    webrick (1.8.2)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -530,4 +529,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.18
+   2.5.20
