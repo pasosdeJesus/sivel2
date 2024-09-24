@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 5ed3ae3305a7d32e8b8c347fcd8bc6bdbf74cdac
+  revision: b2db8d77e290fd87c16099ac1c47e2be3185b85b
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta6)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 1560acefae307e749393b3b6ac2a3198e3765b32
+  revision: a5f7b4efe33358ca02f7959f510469522291ecda
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta6)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 5435b2db2b536198bdee3dfa37ea281bc6b26e68
+  revision: cb2ca677c79f8f386ad45819fd59b0196a1dd04b
   branch: v2.2
   specs:
     msip (2.2.0.beta6)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 0f150c1bfbd2d60cd207fc2fe22e024e31c9cb05
+  revision: bdc9f58434e4362d9aeb648bd156a1f217cc8498
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta6)
@@ -412,7 +412,7 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.9)
+    turbo-rails (2.0.10)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     twitter_cldr (6.12.1)
