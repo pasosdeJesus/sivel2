@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: b2db8d77e290fd87c16099ac1c47e2be3185b85b
+  revision: 973774472f90de115c4684b8520af449bbed9797
   branch: v2.2
   specs:
-    heb412_gen (2.2.0.beta6)
+    heb412_gen (2.2.0.beta7)
       mr519_gen
       msip
       redcarpet
@@ -29,19 +29,19 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: a5f7b4efe33358ca02f7959f510469522291ecda
+  revision: 92b52cf6295f60d61026af2ef2f3437e8aab4db0
   branch: v2.2
   specs:
-    mr519_gen (2.2.0.beta6)
+    mr519_gen (2.2.0.beta7)
       msip
       rails
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: cb2ca677c79f8f386ad45819fd59b0196a1dd04b
+  revision: 8f7591822636c09f1ecb4a286e412682fca61bd3
   branch: v2.2
   specs:
-    msip (2.2.0.beta6)
+    msip (2.2.0.beta7)
       cancancan (~> 3)
       devise (~> 4)
       devise-i18n (~> 1)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: abb78bd0f9d0ed2d70269229f4c8860d5ef08e67
+  revision: e0b9a241545285181c9f2a04ad656a0458a2d221
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta6)
@@ -205,9 +205,9 @@ GEM
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
     docile (1.4.1)
-    dotenv (3.1.3)
-    dotenv-rails (3.1.3)
-      dotenv (= 3.1.3)
+    dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
       railties (>= 6.1)
     drb (2.2.1)
     erd (0.8.2)
@@ -236,7 +236,7 @@ GEM
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
-    irb (1.14.0)
+    irb (1.14.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.13.0)
@@ -431,7 +431,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webrick (1.8.1)
+    webrick (1.8.2)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
