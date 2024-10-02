@@ -11,12 +11,21 @@ import './jquery'
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
-import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
-import 'bootstrap-datepicker'
-import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
+
+import TomSelect from 'tom-select';
+window.TomSelect = TomSelect;
+window.configuracionTomSelect = {
+    create: false,
+    diacritics: true, //no sensitivo a acentos
+    sortField: {
+          field: "text",
+          direction: "asc"
+        }
+}
 
 import Msip__Motor from "./controllers/msip/motor"
 window.Msip__Motor = Msip__Motor
+Msip__Motor.iniciar()
 import Mr519Gen__Motor from "./controllers/mr519_gen/motor"
 window.Mr519Gen__Motor = Mr519Gen__Motor
 import Heb412Gen__Motor from "./controllers/heb412_gen/motor"
@@ -75,12 +84,12 @@ promesaRecursosSprocketsYDocumento.then((mensaje) => {
 
   var p = new URL(document.URL).pathname.split('/')
   var p2ult = ''
-  if (p.length>2) { 
+  if (p.length>2) {
     p2ult = p[p.length - 2] + "/" + p[p.length - 1]
   }
   console.log("p2ult=" + p2ult)
   if (p2ult == 'graficar/actos_individuales') {
-    plotly_serietiempo_actos() 
+    plotly_serietiempo_actos()
   }
 
 
@@ -91,7 +100,7 @@ document.addEventListener('turbo:load', (e) => {
  * tener cuidado porque puede dispararse el evento turbo varias
  * veces consecutivas al cargar una página.
  */
-  
+
   console.log('Escuchador turbo:load')
 
   msip_ejecutarAlCargarPagina(window) // Establece root.puntomontaje
