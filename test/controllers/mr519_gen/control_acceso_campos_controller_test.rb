@@ -4,7 +4,7 @@ require 'nokogiri'
 module Mr519Gen
   class ControlAccesoCamposControllerTest < ActionDispatch::IntegrationTest
 
-    include Rails.application.routes.url_helpers
+    #include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
     setup  do
