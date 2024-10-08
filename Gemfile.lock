@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: a4106aee602528687161ed278b98e114497bb126
+  revision: 0ee4fc1a422cc210b805236e18a2753413938d3e
   branch: v2.2
   specs:
     msip (2.2.0.beta7)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 268c4b12493abf810762c324ae69e629b3a82723
+  revision: ac1663910f40a269c4c6155e8df5dba484928228
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta7)
@@ -260,7 +260,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitest (5.25.1)
-    msgpack (1.7.2)
+    msgpack (1.7.3)
     net-imap (0.4.16)
       date
       net-protocol
