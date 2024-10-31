@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 1eb514580b22f3ae50bf1681ced77bf21953ad80
+  revision: 478c77757536017e2ef4bfd217510805e06fbc12
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta7)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e52c0bacd4ea9ce761122ea118935e4726e41dd2
+  revision: 2c6a15a787fa354e7fae3c029a7af8723ef37031
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta7)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 4360d38892e22341355be982ace131a71317b0da
+  revision: e9083e4ebcfa584475267f9bdd177beef3ed35dc
   branch: v2.2
   specs:
     msip (2.2.0.beta7)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: ff9f6797f8e544800afa0759124bfd95c6ae080a
+  revision: 9cf97bf9706adbbf4ca4efec722c2530e02e26ac
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta7)
@@ -292,7 +292,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pdf-core (0.10.0)
-    pg (1.5.8)
+    pg (1.5.9)
     prawn (2.5.0)
       matrix (~> 0.4)
       pdf-core (~> 0.10.0)
@@ -344,7 +344,7 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails-i18n (7.0.9)
+    rails-i18n (7.0.10)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
     railties (7.2.1)
