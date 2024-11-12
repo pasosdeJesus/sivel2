@@ -74,7 +74,7 @@ if (test "$SINMIG" != "1") then {
   } fi;
 } fi;
 
-(cd $rutaap; RAILS_ENV=test bin/rails db:drop db:create db:setup db:migrate sip:indices)
+(cd $rutaap; RAILS_ENV=test bin/rails db:drop db:create db:setup sip:indices)
 if (test "$?" != "0") then {
   echo "No puede preparse base de prueba";
   exit 1;

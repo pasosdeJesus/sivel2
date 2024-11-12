@@ -38,6 +38,8 @@ gem "kt-paperclip",                 # Anexos
 
 gem "libxml-ruby"
 
+gem "mutex_m"
+
 gem "odf-report" # Genera ODT
 
 gem "nokogiri", ">=1.11.1"
