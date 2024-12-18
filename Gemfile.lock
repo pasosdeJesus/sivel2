@@ -187,6 +187,7 @@ GEM
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     crass (1.0.6)
+    csv (3.3.1)
     cuprite (0.15.1)
       capybara (~> 3.0)
       ferrum (~> 0.15.0)
@@ -203,9 +204,9 @@ GEM
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
     docile (1.4.1)
-    dotenv (3.1.5)
-    dotenv-rails (3.1.5)
-      dotenv (= 3.1.5)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
       railties (>= 6.1)
     drb (2.2.1)
     erd (0.8.2)
@@ -244,7 +245,7 @@ GEM
       railties (>= 6.0.0)
     kgio (2.11.4)
     libxml-ruby (5.0.3)
-    logger (1.6.2)
+    logger (1.6.3)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -263,7 +264,7 @@ GEM
     mini_portile2 (2.8.8)
     minitest (5.25.4)
     msgpack (1.7.5)
-    net-imap (0.5.1)
+    net-imap (0.5.2)
       date
       net-protocol
     net-pop (0.1.2)
@@ -304,7 +305,7 @@ GEM
     prawnto_2 (0.3.1)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    psych (5.2.1)
+    psych (5.2.2)
       date
       stringio
     public_suffix (6.0.1)
@@ -360,17 +361,17 @@ GEM
       zeitwerk (~> 2.6)
     raindrops (0.20.1)
     rake (13.2.1)
-    rdoc (6.8.1)
+    rdoc (6.9.1)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.9.3)
-    reline (0.5.12)
+    reline (0.6.0)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.9)
+    rexml (3.4.0)
     rspreadsheet (0.5.3)
       andand (>= 1.3)
       rubyzip (>= 1.3)
@@ -385,7 +386,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    securerandom (0.4.0)
+    securerandom (0.4.1)
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -410,7 +411,7 @@ GEM
       climate_control
     thor (1.3.2)
     tilt (2.4.0)
-    timeout (0.4.2)
+    timeout (0.4.3)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
     turbo-rails (2.0.11)
@@ -465,6 +466,7 @@ DEPENDENCIES
   coffee-rails
   color
   colorize
+  csv
   cuprite
   debug
   devise

@@ -18,6 +18,8 @@ gem "coffee-rails" # CoffeeScript mientras reemplazamos por Javascript
 
 gem "color"
 
+gem "csv"
+
 gem "devise" # Autenticación
 
 gem "devise-i18n"
@@ -141,3 +143,4 @@ end
 group :production do
   gem "unicorn" # Para despliegue
 end
+
