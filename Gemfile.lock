@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 19d6a98b05858d6de5add5eb7be42bf5b3dc478d
+  revision: b1d2f246f03f5bf6f743ac4e11899d8cc9aeae75
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta7)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 0f9dce1fa5d576234c515bd33c7aa8a077a03d59
+  revision: 92f0c915fb60421a343bd3b50761d21f374af21e
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta7)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: d15114bf3a5f8d9826f9765c375fa0f524934368
+  revision: db59b30004ae8ec6688f744cf7cdd011223ed1fb
   branch: v2.2
   specs:
     msip (2.2.0.beta7)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 7730c05b2611d948dd4b67407a951805487ab270
+  revision: 39f8f2320d8507e33185d51c1e28546387dd27da
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta7)
@@ -192,7 +192,7 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.15.0)
     date (3.4.1)
-    debug (1.9.2)
+    debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
     devise (4.9.4)
