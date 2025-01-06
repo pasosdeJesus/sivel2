@@ -3,8 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "acts_as_list"
 
-gem "apexcharts",
-  git: "https://github.com/vtamara/apexcharts.rb.git", branch: :master
+gem "apexcharts"
 
 gem "babel-transpiler"
 
@@ -26,6 +25,8 @@ gem "cocoon", git: "https://github.com/vtamara/cocoon.git",
 gem "coffee-rails" # CoffeeScript para recuersos .js.coffee y vistas
 
 gem "color"
+
+gem "csv"
 
 gem "devise" # Autenticación y roles
 
