@@ -8,9 +8,13 @@ gem "apexcharts",
 
 gem "babel-transpiler"
 
+gem "benchmark"
+
 gem "bcrypt"
 
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
+
+gem "bigdecimal"
 
 gem "bootsnap", ">=1.1.0", require: false
 
@@ -26,6 +30,8 @@ gem "color"
 gem "devise" # Autenticación y roles
 
 gem "devise-i18n"
+
+gem "drb"
 
 gem "hotwire-rails"
 
