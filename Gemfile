@@ -1,17 +1,19 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "apexcharts"#, git: "https://github.com/vtamara/apexcharts.rb.git", branch: :master
+gem "apexcharts"
 
 gem "babel-transpiler"
 
 gem "bcrypt"
 
+gem "benchmark"
+
 gem "bootsnap", require: false
 
 gem "cancancan" # Roles
 
-gem "cocoon", git: "https://github.com/vtamara/cocoon.git", 
+gem "cocoon", git: "https://github.com/vtamara/cocoon.git",
   branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
 
 gem "coffee-rails" # CoffeeScript mientras reemplazamos por Javascript
@@ -64,7 +66,7 @@ gem "rubyzip"
 
 gem "sassc-rails" # Hojas de estilo con SCSS
 
-gem "simple_form" # Formularios simples 
+gem "simple_form" # Formularios simples
 
 gem "sprockets-rails"
 
@@ -104,7 +106,7 @@ group  :development, :test do
 
   gem "bundler-audit"
 
-  #gem "code-scanning-rubocop"
+  gem "code-scanning-rubocop"
 
   gem "colorize" # Colores en terminal
 
@@ -114,19 +116,17 @@ group  :development, :test do
 
   gem "rails-erd"
 
-  #gem "rubocop-minitest"
+  gem "rubocop-minitest"
 
-  #gem "rubocop-rails"
+  gem "rubocop-rails"
+
+  gem "rubocop-shopify"
 end
 
 group :development do
   gem "erd"
 
   gem "puma"
-
-  gem "redis", "~> 4.0"
-
-  gem "spring" # Acelera ejecutando en fondo. 
 
   gem "web-console"
 end
