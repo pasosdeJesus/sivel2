@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: da1340e054d49d1c0ca2df0ca238be029857163c
+  revision: 2fe240ef0b0c713e8c132c6a467eb1465c58e5fb
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta7)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 969acee5fad3108a241156dcedf632958d59ffed
+  revision: 6dfd7037285b80c6805b169a499195b04829d637
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta7)
@@ -375,7 +375,7 @@ GEM
       rubyzip (>= 1.3)
     ruby-graphviz (1.2.5)
       rexml
-    rubyzip (2.3.2)
+    rubyzip (2.4.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
