@@ -3,7 +3,6 @@
 //= link_tree ../stylesheets
 //= link_directory ../stylesheets .css
 //= link application.css
-//= link_directory ../../../node_modules/chosen-js .png
 //= link recursos_sprockets.js
 //= link recursos_sprockets.js.map
 //= link_tree ../builds

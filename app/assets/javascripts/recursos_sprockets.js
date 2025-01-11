@@ -11,12 +11,6 @@
 // de las directivas soportadas.
 //
 //= require best_in_place
-//= require msip/motor
-//= require heb412_gen/motor
-//= require mr519_gen/motor
-//= require sivel2_gen/motor
-//= require sivel2_gen/motor2
-//= require sivel2_gen/motor_es6
 //= require apo214/motor
 //= require_tree .
 

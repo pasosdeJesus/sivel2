@@ -3,15 +3,15 @@
 console.log('Hola Mundo desde ESM')
 
 import Rails from "@rails/ujs";
-import "@hotwired/turbo-rails";
-Rails.start();
-window.Rails = Rails
-
-import './jquery'
+if (typeof window.Rails == 'undefined') {
+  Rails.start();
+  window.Rails = Rails
+}
+import {Turbo} from '@hotwired/turbo-rails';
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
-import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
+window.bootstrap = bootstrap
 
 import L from 'leaflet'
 window.L = L
@@ -33,6 +33,17 @@ import Sivel2Gen__Motor from "./controllers/sivel2_gen/motor"
 window.Sivel2Gen__Motor = Sivel2Gen__Motor
 Sivel2Gen__Motor.iniciar()
 
+import TomSelect from 'tom-select';
+window.TomSelect = TomSelect;
+window.configuracionTomSelect = {
+    create: false,
+    diacritics: true, //no sensitivo a acentos
+    sortField: {
+          field: "text",
+          direction: "asc"
+        }
+}
+
 // Apexcharts
 import ApexCharts from 'apexcharts'
 window.ApexCharts = ApexCharts
@@ -50,7 +61,7 @@ import {AutocompletaAjaxExpreg} from '@pasosdejesus/autocompleta_ajax'
 window.AutocompletaAjaxExpreg = AutocompletaAjaxExpreg
 
 let esperarRecursosSprocketsYDocumento = function (resolver) {
-  if (typeof window.puntomontaje == 'undefined') {
+  if (typeof window.puntoMontaje == 'undefined') {
     setTimeout(esperarRecursosSprocketsYDocumento, 100, resolver)
     return false
   }
@@ -72,14 +83,7 @@ promesaRecursosSprocketsYDocumento.then((mensaje) => {
   // cache y tipicamente después de que se ha cargado la página completa 
   // y los recursos
   console.log(mensaje)
-  var root = window;
-
-  msip_prepara_eventos_comunes(root, null, false);
-  heb412_gen_prepara_eventos_comunes(root);
-  mr519_gen_prepara_eventos_comunes(root);
-  sivel2_gen_prepara_eventos_comunes(root);
-  apo214_prepara_eventos_comunes(root);
-  sivel2_gen_prepara_eventos_unicos(root);
+  var window = window;
 
   Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
   Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
@@ -108,7 +112,6 @@ document.addEventListener('turbo:load', (e) => {
   
   console.log('Escuchador turbo:load')
 
-  msip_ejecutarAlCargarPagina(window) // Establece root.puntomontaje
   Msip__Motor.ejecutarAlCargarPagina()
   Mr519Gen__Motor.ejecutarAlCargarPagina()
   Heb412Gen__Motor.ejecutarAlCargarPagina()

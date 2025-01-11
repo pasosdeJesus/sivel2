@@ -15,9 +15,6 @@ gem "bootsnap", require: false
 
 gem "cancancan" # Roles
 
-gem "cocoon", git: "https://github.com/vtamara/cocoon.git", 
-  branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
-
 gem "coffee-rails" # CoffeeScript mientras reemplazamos por Javascript
 
 gem "color"

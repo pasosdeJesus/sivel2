@@ -45,3 +45,6 @@ application.register("sivel2-gen--filtro-avanzado", Sivel2Gen__FiltroAvanzadoCon
 
 import Sivel2Gen__MapaosmController from "./sivel2_gen/mapaosm_controller"
 application.register("sivel2-gen--mapaosm", Sivel2Gen__MapaosmController)
+
+import Sivel2Gen__PlotlyActosController from "./sivel2_gen/plotly_actos_controller"
+application.register("sivel2-gen--plotly-actos", Sivel2Gen__PlotlyActosController)
