@@ -2245,7 +2245,8 @@ CREATE TABLE public.sivel2_gen_caso (
     intervalo_id integer DEFAULT 5,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    ubicacion_id integer
+    ubicacion_id integer,
+    ubicacionpreprincipal_id integer
 );
 
 
@@ -8718,6 +8719,14 @@ ALTER TABLE ONLY public.msip_orgsocial_persona
 
 
 --
+-- Name: sivel2_gen_caso fk_rails_7f697555c4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso
+    ADD CONSTRAINT fk_rails_7f697555c4 FOREIGN KEY (ubicacionpreprincipal_id) REFERENCES public.msip_ubicacionpre(id);
+
+
+--
 -- Name: mr519_gen_respuestafor fk_rails_805efe6935; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9588,6 +9597,7 @@ ALTER TABLE ONLY public.sivel2_gen_victimacolectiva_vinculoestado
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20241210175255'),
 ('20241119195733'),
 ('20241119180614'),
 ('20241113141404'),
