@@ -466,6 +466,7 @@ DEPENDENCIES
   coffee-rails
   color
   colorize
+  concurrent-ruby (= 1.3.4)
   csv
   cuprite
   debug
