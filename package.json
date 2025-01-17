@@ -1,6 +1,6 @@
 {
   "name": "sivel2",
-  "version": "2.1-a.1",
+  "version": "2.2",
   "private": false,
   "scripts": {
     "build": "esbuild app/javascript/*.* --preserve-symlinks --bundle --sourcemap --outdir=app/assets/builds",
