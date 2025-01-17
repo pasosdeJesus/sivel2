@@ -7,7 +7,6 @@
     "start": "node esbuild-des.config.mjs"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.14.5",
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
@@ -18,7 +17,6 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^7.1.1",
     "apexcharts": "^3.29.0",
-    "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.3.2",
     "css-loader": "^5.0.0",
     "esbuild": "^0.19.4",
@@ -45,9 +43,6 @@
     "roots": [
       "test/javascript"
     ]
-  },
-  "babel": {
-    "presets": []
   },
   "browserslist": [
     "defaults"
