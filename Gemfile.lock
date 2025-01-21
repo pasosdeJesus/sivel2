@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 81a91751111fa7e202c2651faaf55592433efdfa
+  revision: 952112e6b6507eb37bf3b3a1374ee3f4b58119d1
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta7)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 988d3c46f3cd97fa14242d346283a94467a0933a
+  revision: e992705130df6f91fb166dfcc71d9dea55b23d9d
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta7)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: ca3339d957b7f8fe702b30d1ef47411c7a071c5e
+  revision: b4936a465ada1d74d5acef9c2ec4a0932732dd03
   branch: v2.2
   specs:
     msip (2.2.0.beta7)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 7b64f25ec870570d42cbe78a75fb1c71ae3fd992
+  revision: c1fa32a7bcbacd020846ace1fbde635148ef4b42
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta7)
@@ -279,18 +279,18 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.1)
+    nokogiri (1.18.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.1-aarch64-linux-gnu)
+    nokogiri (1.18.2-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.1-arm-linux-gnu)
+    nokogiri (1.18.2-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.1-arm64-darwin)
+    nokogiri (1.18.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-darwin)
+    nokogiri (1.18.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-linux-gnu)
+    nokogiri (1.18.2-x86_64-linux-gnu)
       racc (~> 1.4)
     odf-report (0.8.1)
       mime-types
@@ -397,7 +397,7 @@ GEM
     rubocop-minitest (0.36.0)
       rubocop (>= 1.61, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rails (2.28.0)
+    rubocop-rails (2.29.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.52.0, < 2.0)
@@ -446,7 +446,8 @@ GEM
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.12.1)
+    twitter_cldr (6.13.0)
+      base64
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
