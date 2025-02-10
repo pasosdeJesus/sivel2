@@ -5,8 +5,6 @@ gem "acts_as_list"
 
 gem "apexcharts"#, git: "https://github.com/vtamara/apexcharts.rb.git", branch: :master
 
-gem "babel-transpiler"
-
 gem "bcrypt"
 
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
@@ -15,9 +13,9 @@ gem "bootsnap", require: false
 
 gem "cancancan" # Roles
 
-gem "coffee-rails" # CoffeeScript mientras reemplazamos por Javascript
-
 gem "color"
+
+gem "csv"
 
 gem "devise" # Autenticación
 
@@ -107,7 +105,7 @@ group  :development, :test do
 
   gem "bundler-audit"
 
-  #gem "code-scanning-rubocop"
+  gem "code-scanning-rubocop"
 
   gem "colorize" # Colores en terminal
 
@@ -117,27 +115,31 @@ group  :development, :test do
 
   gem "rails-erd"
 
-  #gem "rubocop-minitest"
+  gem "rubocop-minitest"
 
-  #gem "rubocop-rails"
+  gem "rubocop-rails"
+  
+  gem "rubocop-shopify"
 end
 
 group :development do
+  gem "benchmark"
+
   gem "erd"
 
   gem "puma"
-
-  gem "redis", "~> 4.0"
-
-  gem "spring" # Acelera ejecutando en fondo. 
 
   gem "web-console"
 end
 
 group :test do
-  gem "capybara"
+  gem "compare-xml"
 
-  gem "cuprite"
+  gem "minitest"
+
+  gem "minitest-reporters"
+
+  gem "rails-controller-testing"
 
   gem "simplecov"
 end
