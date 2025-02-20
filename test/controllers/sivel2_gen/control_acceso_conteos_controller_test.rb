@@ -1,15 +1,17 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 module Sivel2Gen
   class ControlAccesoConteosControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
     end
 
@@ -40,6 +42,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.conteos_genvic_path
+
       assert_response :ok
     end
 
@@ -47,6 +50,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.conteos_personas_path
+
       assert_response :ok
     end
 
@@ -54,6 +58,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.conteos_victimizaciones_path
+
       assert_response :ok
     end
 
@@ -63,6 +68,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.conteos_genvic_path
+
       assert_response :ok
     end
 
@@ -70,6 +76,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.conteos_personas_path
+
       assert_response :ok
     end
 
@@ -77,6 +84,7 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.conteos_victimizaciones_path
+
       assert_response :ok
     end
   end

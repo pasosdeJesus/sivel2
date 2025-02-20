@@ -1,13 +1,10 @@
 
-all: sintaxis-js sintaxis-ruby bundler-audit brakeman rubocop
+all: sintaxis-js sintaxis-ruby bundler-audit brakeman sintaxis-erb rubocop
 
 sintaxis-js:
-	for i in `find app/assets/javascripts/ -name "*js" -or -name "*es6"`; do \
-	node -c $$i; \
-	done
-	for i in `find app/assets/javascripts/ -name "*coffee"`; do \
-	coffee -o /tmp/ $$i; \
-	done
+	for i in `find app/assets/javascripts/ -name "*js"`; do \
+		node -c $$i; \
+	done # Falta es6
 
 sintaxis-ruby:
 	find . -name "*\.rb" -exec ruby -w -W2 -c {} ';'
@@ -46,3 +43,6 @@ c_rubocop:
 
 yard:
 	yard
+
+sintaxis-erb:
+	rake sintaxis:erb

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "acts_as_list"
 
-gem "apexcharts"#, git: "https://github.com/vtamara/apexcharts.rb.git", branch: :master
+gem "apexcharts" # , git: "https://github.com/vtamara/apexcharts.rb.git", branch: :master
 
 gem "bcrypt"
 
@@ -27,7 +29,7 @@ gem "jbuilder" # API JSON facil. Ver: https://github.com/rails/jbuilder
 
 gem "jsbundling-rails"
 
-gem "kt-paperclip",                 # Anexos
+gem "kt-paperclip", # Anexos
   git: "https://github.com/kreeti/kt-paperclip.git"
 
 gem "libxml-ruby"
@@ -40,7 +42,7 @@ gem "pg" # Postgresql
 
 gem "prawn" # Generación de PDF
 
-gem "prawnto_2",  :require => "prawnto"
+gem "prawnto_2", require: "prawnto"
 
 gem "prawn-table"
 
@@ -49,7 +51,7 @@ gem "rack", "~> 2"
 gem "rack-cors"
 
 gem "rails", "~> 7.2"
-  #git: "https://github.com/rails/rails.git", branch: "6-1-stable"
+# git: "https://github.com/rails/rails.git", branch: "6-1-stable"
 
 gem "rails-i18n"
 
@@ -61,7 +63,7 @@ gem "rubyzip"
 
 gem "sassc-rails" # Hojas de estilo con SCSS
 
-gem "simple_form" # Formularios simples 
+gem "simple_form" # Formularios simples
 
 gem "sprockets-rails"
 
@@ -75,32 +77,36 @@ gem "tzinfo" # Zonas horarias
 
 gem "will_paginate" # Listados en páginas
 
-
 #####
 # Motores que se sobrecargan vistas (a diferencia de las anteriores gemas,
 # estas ponerse en orden de apilamiento lógico y no alfabético).
 
 gem "msip", # Motor generico
-  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: "main"
-  #path: "../msip"
+  git: "https://gitlab.com/pasosdeJesus/msip.git",
+  branch: "main"
+# path: "../msip"
 
 gem "mr519_gen", # Motor de gestion de formularios y encuestas
-  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: "main"
-  #path: "../mr519_gen"
+  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git",
+  branch: "main"
+# path: "../mr519_gen"
 
-gem "heb412_gen",  # Motor de nube y llenado de plantillas
-  git: "https://gitlab.com/pasosdeJesus/heb412_gen.git", branch: "main"
-  #path: "../heb412_gen"
+gem "heb412_gen", # Motor de nube y llenado de plantillas
+  git: "https://gitlab.com/pasosdeJesus/heb412_gen.git",
+  branch: "main"
+# path: "../heb412_gen"
 
 gem "sivel2_gen", # Motor para manejo de casos
-  git: "https://gitlab.com/pasosdeJesus/sivel2_gen.git", branch: "main"
-  #path: "../sivel2_gen"
+  git: "https://gitlab.com/pasosdeJesus/sivel2_gen.git",
+  branch: "main"
+# path: "../sivel2_gen"
 
 gem "apo214", # Motor para manejo de casos
-  git: "https://gitlab.com/pasosdeJesus/apo214.git", branch: "main"
-  #path: "../apo214"
+  git: "https://gitlab.com/pasosdeJesus/apo214.git",
+  branch: "main"
+# path: "../apo214"
 
-group  :development, :test do
+group :development, :test do
   gem "brakeman"
 
   gem "bundler-audit"
@@ -118,7 +124,7 @@ group  :development, :test do
   gem "rubocop-minitest"
 
   gem "rubocop-rails"
-  
+
   gem "rubocop-shopify"
 end
 
@@ -143,7 +149,6 @@ group :test do
 
   gem "simplecov"
 end
-
 
 group :production do
   gem "unicorn" # Para despliegue

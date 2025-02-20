@@ -1,14 +1,15 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 module Msip
   class ControlAccesoRespaldo7z < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
     end
 
@@ -29,7 +30,6 @@ module Msip
         get msip.respaldo7z_path
       end
     end
-
 
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
@@ -52,6 +52,5 @@ module Msip
         get msip.respaldo7z_path
       end
     end
-
   end
 end

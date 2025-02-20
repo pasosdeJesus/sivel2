@@ -1,4 +1,6 @@
-require 'apo214/concerns/models/persona'
+# frozen_string_literal: true
+
+require "apo214/concerns/models/persona"
 
 module Msip
   class Persona < ActiveRecord::Base

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class SeparaNombresApellidos < ActiveRecord::Migration[7.0]
   def up
-    porc = Msip::Persona.where("apellidos IS NULL OR trim(apellidos)=''").
-      where("nombres IS NOT NULL AND trim(nombres)<>''")
+    porc = Msip::Persona.where("apellidos IS NULL OR trim(apellidos)=''")
+      .where("nombres IS NOT NULL AND trim(nombres)<>''")
     if porc.count > 0
       puts "Se encontrarion #{porc.count} personas por cambiar. [Enter] para continuar"
-      l= gets
+      gets
       puts "casos, id_persona, nombre_anterior, nombres, apellidos, observaciones"
       porc.each do |p|
         v = Sivel2Gen::Victima.where(persona_id: p)
@@ -26,16 +28,17 @@ class SeparaNombresApellidos < ActiveRecord::Migration[7.0]
             n = na[1]
           end
         end
-        if a != '' and n  != ''
-          p.nombres = n
-          p.apellidos = a
-          p.save
-          puts "#{numcasos.join(";")}, #{p.id}, #{nombreant}, #{n}, #{a}, #{menserror}"
-        end
+        next unless a != "" and n != ""
+
+        p.nombres = n
+        p.apellidos = a
+        p.save
+        puts "#{numcasos.join(";")}, #{p.id}, #{nombreant}, #{n}, #{a}, #{menserror}"
       end
     end
   end
+
   def down
-    #raise ActiveRecord::IrreversibleMigration
+    # raise ActiveRecord::IrreversibleMigration
   end
 end

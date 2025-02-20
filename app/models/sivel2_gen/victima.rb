@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-require 'sivel2_gen/concerns/models/victima'
+require "sivel2_gen/concerns/models/victima"
 
 module Sivel2Gen
   class Victima < ActiveRecord::Base
@@ -8,12 +9,12 @@ module Sivel2Gen
     validate :hijos_valido
 
     def hijos_valido
-      if self.hijos && (self.hijos < 0 || self.hijos > 100)
+      if hijos && (hijos < 0 || hijos > 100)
         errors.add(
-          :hijos, "El número de hijos debe estar en blanco o "\
-          "ser un número entre 0 y 100")
+          :hijos, "El número de hijos debe estar en blanco o " \
+            "ser un número entre 0 y 100"
+        )
       end
     end
-
   end
 end

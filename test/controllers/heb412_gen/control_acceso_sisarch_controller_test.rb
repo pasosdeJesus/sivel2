@@ -1,16 +1,18 @@
-require 'test_helper'
-require 'nokogiri'
+# frozen_string_literal: true
+
+require "test_helper"
+require "nokogiri"
 
 module Heb412Gen
   class ControlAccesoSisarchControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @ruta = Rails.application.config.relative_url_root
     end
 
@@ -79,6 +81,7 @@ module Heb412Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get @ruta + "/sis/arch"
+
       assert_response :ok
     end
 
@@ -87,6 +90,7 @@ module Heb412Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get heb412_gen.sisini_path
+
       assert_response :ok
     end
 
@@ -153,6 +157,7 @@ module Heb412Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get @ruta + "/sis/arch"
+
       assert_response :ok
     end
 
@@ -201,6 +206,7 @@ module Heb412Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get heb412_gen.sisini_path
+
       assert_response :ok
     end
 
@@ -219,6 +225,5 @@ module Heb412Gen
         post @ruta + "/plantillashcm/importadatos"
       end
     end
-
   end
 end

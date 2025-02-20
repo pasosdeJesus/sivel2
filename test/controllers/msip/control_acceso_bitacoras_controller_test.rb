@@ -1,13 +1,14 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 module Msip
   class ControlAccesoOrgsocialesControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
     end
 
@@ -18,7 +19,7 @@ module Msip
       params: "ejemplo params",
       modelo: "Ejemplo modelo",
       modelo_id: "1",
-      operacion: "listar"
+      operacion: "listar",
 
     }
     # No autenticado
@@ -45,11 +46,11 @@ module Msip
 
     test "sin autenticar no debe crear bitacora" do
       assert_raise CanCan::AccessDenied do
-        post msip.bitacoras_path, params: { 
-          bitacora: PRUEBA_BITACORA }
+        post msip.bitacoras_path, params: {
+          bitacora: PRUEBA_BITACORA,
+        }
       end
     end
-
 
     test "sin autenticar no debe editar bitacora" do
       @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
@@ -76,7 +77,7 @@ module Msip
     #####################################
 
     test "autenticado como operador sin grupo debe presentar listado bitacoras" do
-      skip 
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
@@ -85,7 +86,7 @@ module Msip
     end
 
     test "autenticado como operador sin grupo no debe presentar resumen bitacora" do
-      skip 
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
@@ -95,7 +96,7 @@ module Msip
     end
 
     test "autenticado como operador sin grupo no edita bitacora" do
-      skip 
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
@@ -105,7 +106,7 @@ module Msip
     end
 
     test "autenticaodo como operador no elimina bitacora" do
-      skip 
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
@@ -122,15 +123,17 @@ module Msip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get msip.bitacoras_path
+
       assert_response :ok
     end
 
     test "autenticado como analista no debe presentar resumen bitacora" do
-      skip 
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       @bitacora = Msip::Bitacora.create!(PRUEBA_BITACORA)
       get msip.bitacora_path(@bitacora.id)
+
       assert_response :ok
       @bitacora.destroy!
     end
@@ -153,8 +156,6 @@ module Msip
         delete msip.bitacora_path(@bitacora.id)
       end
       @bitacora.destroy!
-
     end
-
   end
 end

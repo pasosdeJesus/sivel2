@@ -1,11 +1,14 @@
+# frozen_string_literal: true
 
-require 'sivel2_gen/concerns/models/caso'
+require "sivel2_gen/concerns/models/caso"
 
-module Sivel2Gen 
+module Sivel2Gen
   class Caso < ActiveRecord::Base
     include Sivel2Gen::Concerns::Models::Caso
 
-    has_many :victima,  foreign_key: "caso_id", dependent: :destroy, 
-      class_name: 'Sivel2Gen::Victima', validate: true
+    has_many :victima,
+      dependent: :destroy,
+      class_name: "Sivel2Gen::Victima",
+      validate: true
   end
 end

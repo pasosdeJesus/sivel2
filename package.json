@@ -22,7 +22,6 @@
     "esbuild": "^0.19.4",
     "gridstack": "^0.6.0",
     "is-svg": "^4.2.2",
-    "jquery": "^3.7.1",
     "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1",
     "mini-css-extract-plugin": "^2.4.3",

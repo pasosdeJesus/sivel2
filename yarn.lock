@@ -2200,7 +2200,7 @@ jquery-browserify@~1.8.1:
   resolved "https://registry.yarnpkg.com/jquery-browserify/-/jquery-browserify-1.8.1.tgz#0dea9d741a4f4115ae1980c4531b22502991a015"
   integrity sha512-IDMCKuU5padhYWP21juFL10BOySPnlihoX7R1dHKeCcwl/JdeO3trDbimKQdPXtQsWIdYMwkAyxQ3+ksEj1iMQ==
 
-"jquery@^1.8 || 2 || 3", jquery@^3.7.1:
+"jquery@^1.8 || 2 || 3":
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
   integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
