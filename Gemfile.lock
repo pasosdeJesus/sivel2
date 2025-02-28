@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 8b827d6468795b76c47e09c9877fa3f588fa196e
+  revision: 0e9932f40ee78bcc3fbd0e4f2a80fe82c5014b22
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta7)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 935a3f16337a47a7aeee8a3a2ee58c1dd441b623
+  revision: 209505491a65c878c9ad6cc8742f39fdab2a815b
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta7)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 863e7af29f2e2cca4b761aeea6f08c09be53c2fa
+  revision: 6ae53f86df63705fbab7fb7d8ca3642cdb4a55ff
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta7)
@@ -386,7 +386,7 @@ GEM
     rake (13.2.1)
     rdoc (6.11.0)
       psych (>= 4.0.0)
-    redcarpet (3.6.0)
+    redcarpet (3.6.1)
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
