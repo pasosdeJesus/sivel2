@@ -4693,6 +4693,32 @@ ALTER SEQUENCE public.sivel2_gen_caso_solicitud_id_seq OWNED BY public.sivel2_ge
 
 
 --
+-- Name: sivel2_gen_caso_ubicacionpre_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_caso_ubicacionpre_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_caso_ubicacionpre; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_caso_ubicacionpre (
+    id bigint DEFAULT nextval('public.sivel2_gen_caso_ubicacionpre_id_seq'::regclass) NOT NULL,
+    caso_id integer,
+    ubicacionpre_id bigint,
+    latitud double precision,
+    longitud double precision,
+    tsitio_id integer
+);
+
+
+--
 -- Name: sivel2_gen_caso_usuario; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -7037,6 +7063,14 @@ ALTER TABLE ONLY public.sivel2_gen_caso_respuestafor
 
 ALTER TABLE ONLY public.sivel2_gen_caso_solicitud
     ADD CONSTRAINT sivel2_gen_caso_solicitud_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_caso_ubicacionpre sivel2_gen_caso_ubicacionpre_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_ubicacionpre
+    ADD CONSTRAINT sivel2_gen_caso_ubicacionpre_pkey PRIMARY KEY (id);
 
 
 --
@@ -9572,6 +9606,30 @@ ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
 
 
 --
+-- Name: sivel2_gen_caso_ubicacionpre sivel2_gen_caso_ubicacionpre_caso_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_ubicacionpre
+    ADD CONSTRAINT sivel2_gen_caso_ubicacionpre_caso_id_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_caso_ubicacionpre sivel2_gen_caso_ubicacionpre_tsitio_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_ubicacionpre
+    ADD CONSTRAINT sivel2_gen_caso_ubicacionpre_tsitio_id_fkey FOREIGN KEY (tsitio_id) REFERENCES public.msip_tsitio(id);
+
+
+--
+-- Name: sivel2_gen_caso_ubicacionpre sivel2_gen_caso_ubicacionpre_ubicacionpre_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_ubicacionpre
+    ADD CONSTRAINT sivel2_gen_caso_ubicacionpre_ubicacionpre_id_fkey FOREIGN KEY (ubicacionpre_id) REFERENCES public.msip_ubicacionpre(id);
+
+
+--
 -- Name: sivel2_gen_categoria sivel2_gen_categoria_supracategoria_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9754,6 +9812,13 @@ ALTER TABLE ONLY public.sivel2_gen_victimacolectiva_vinculoestado
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250128142614'),
+('20250128092632'),
+('20250126220100'),
+('20250126220001'),
+('20250124170451'),
+('20250124104205'),
+('20250124102756'),
 ('20241210175255'),
 ('20241119195733'),
 ('20241119180614'),

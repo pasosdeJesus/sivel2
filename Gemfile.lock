@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: d8300f47c7132af22cc704b049d130e0e7c08311
+  revision: acacda1ef1f112df134fdb7aa78ee4cc835c7a0c
   branch: main
   specs:
     heb412_gen (2.3.0.alfa4)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 7f86a9dab909fa9aeb8677fe49ce712d9c671cdd
+  revision: dd74ed6c1b28f3296703615715513304362fbbe2
   branch: main
   specs:
     mr519_gen (2.3.0.alfa4)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 294fbfdbe826628f45a17a1caadd3033c5a7f30b
+  revision: ab4f1a4276a649f97b8f107b5b7003fba3514e8e
   branch: main
   specs:
     msip (2.3.0.alfa4)
@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 3a8928e1f5f93bd01470201b349eaf65df887898
+  revision: b8e937db3f50a2340db2408e35ebd2bbdd5c9ab4
   branch: main
   specs:
     sivel2_gen (2.3.0.alfa3)
@@ -379,7 +379,7 @@ GEM
     rake (13.2.1)
     rdoc (6.12.0)
       psych (>= 4.0.0)
-    redcarpet (3.6.0)
+    redcarpet (3.6.1)
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
@@ -407,7 +407,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.1)
+    rubocop-rails (2.30.2)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -457,7 +457,7 @@ GEM
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.13.0)
+    twitter_cldr (6.14.0)
       base64
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
@@ -564,4 +564,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.4
+   2.6.5
