@@ -31,20 +31,6 @@ COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance betwe
 
 
 --
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry and geography spatial types and functions';
-
-
---
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -86,6 +72,38 @@ $_$;
 
 
 --
+-- Name: edad_de_fechanac(integer, integer, integer, date); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.edad_de_fechanac(anionac integer, mesnac integer, dianac integer, fechahecho date) RETURNS integer
+    LANGUAGE plpgsql IMMUTABLE
+    AS $$
+DECLARE
+	aniohecho INTEGER = EXTRACT(year FROM fechahecho);
+	meshecho INTEGER = EXTRACT(month FROM fechahecho);
+	diahecho INTEGER = EXTRACT(day FROM fechahecho);
+	na INTEGER;
+BEGIN
+	na = CASE WHEN anionac IS NULL OR aniohecho IS NULL THEN 
+		NULL
+	ELSE
+		aniohecho - anionac
+	END;
+	na = CASE WHEN mesnac IS NOT NULL AND meshecho IS NOT NULL AND 
+		mesnac > meshecho OR 
+		(dianac IS NOT NULL AND diahecho IS NOT NULL 
+		  AND dianac > diahecho) THEN
+		na - 1
+	ELSE
+		na
+	END;
+
+	RETURN na;
+
+END;$$;
+
+
+--
 -- Name: f_unaccent(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -94,6 +112,31 @@ CREATE FUNCTION public.f_unaccent(text) RETURNS text
     AS $_$
       SELECT public.unaccent('public.unaccent', $1)  
       $_$;
+
+
+--
+-- Name: first_element(anyarray); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.first_element(anyarray) RETURNS anyelement
+    LANGUAGE sql IMMUTABLE
+    AS $_$
+            SELECT ($1)[1] ;
+            $_$;
+
+
+--
+-- Name: first_element_state(anyarray, anyelement); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.first_element_state(anyarray, anyelement) RETURNS anyarray
+    LANGUAGE sql IMMUTABLE
+    AS $_$
+            SELECT CASE WHEN array_upper($1,1) IS NULL
+                THEN array_append($1,$2)
+                ELSE $1
+            END;
+            $_$;
 
 
 --
@@ -154,7 +197,26 @@ CREATE FUNCTION public.msip_agregar_o_remplazar_familiar_inverso() RETURNS trigg
 
 CREATE FUNCTION public.msip_edad_de_fechanac_fecharef(anionac integer, mesnac integer, dianac integer, anioref integer, mesref integer, diaref integer) RETURNS integer
     LANGUAGE sql IMMUTABLE
-    AS $$ SELECT CASE WHEN anionac IS NULL THEN NULL WHEN anioref IS NULL THEN NULL WHEN anioref < anionac THEN -1 WHEN mesnac IS NOT NULL AND mesnac > 0 AND mesref IS NOT NULL AND mesref > 0 AND mesnac >= mesref THEN CASE WHEN mesnac > mesref OR (dianac IS NOT NULL AND dianac > 0 AND diaref IS NOT NULL AND diaref > 0 AND dianac > diaref) THEN anioref-anionac-1 ELSE anioref-anionac END ELSE anioref-anionac END $$;
+    AS $$
+            SELECT CASE 
+              WHEN anionac IS NULL THEN NULL
+              WHEN anioref IS NULL THEN NULL
+              WHEN anioref < anionac THEN -1
+              WHEN mesnac IS NOT NULL AND mesnac > 0 
+                AND mesref IS NOT NULL AND mesref > 0 
+                AND mesnac >= mesref THEN
+                CASE 
+                  WHEN mesnac > mesref OR (dianac IS NOT NULL 
+                    AND dianac > 0 AND diaref IS NOT NULL 
+                    AND diaref > 0 AND dianac > diaref) THEN 
+                    anioref-anionac-1
+                  ELSE 
+                    anioref-anionac
+                END
+              ELSE
+                anioref-anionac
+            END 
+          $$;
 
 
 --
@@ -194,6 +256,170 @@ CREATE FUNCTION public.msip_nombre_vereda() RETURNS character varying
 
 
 --
+-- Name: msip_ubicacionpre_actualiza_nombre(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_actualiza_nombre() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        temp TEXT[];
+        nompais TEXT;
+        nomdep TEXT;
+        nommun TEXT;
+        nomver TEXT;
+        nomcp TEXT;
+      BEGIN
+        RAISE NOTICE 'Al comienzo new.nombre=%', new.nombre;
+        nompais := COALESCE((SELECT nombre FROM public.msip_pais WHERE id=new.pais_id LIMIT 1), '');
+        RAISE NOTICE 'nompais=%', nompais;
+        nomdep := COALESCE((SELECT nombre FROM public.msip_departamento WHERE id=new.departamento_id LIMIT 1), '');
+        RAISE NOTICE 'nomdep=%', nomdep;
+        nommun := COALESCE((SELECT nombre FROM public.msip_municipio WHERE id=new.municipio_id LIMIT 1), '');
+        RAISE NOTICE 'nommun=%', nommun;
+        nomcp := COALESCE((SELECT nombre FROM public.msip_centropoblado WHERE id=new.centropoblado_id LIMIT 1), '');
+        RAISE NOTICE 'nomcp=%', nomcp;
+        nomver := COALESCE((SELECT nombre FROM public.msip_vereda WHERE id=new.vereda_id LIMIT 1), '');
+        RAISE NOTICE 'nomver=%', nomver;
+
+        temp = public.msip_ubicacionpre_nomenclatura(nompais,
+          nomdep, nommun, nomver, nomcp, new.lugar, new.sitio);
+        new.nombre := temp[1];
+        RAISE NOTICE 'new.nombre=%', new.nombre;
+        new.nombre_sin_pais := temp[2];
+        RAISE NOTICE 'new.nombre_sin_pais=%', new.nombre_sin_pais;
+        RETURN new;
+      END
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_antes_de_eliminar_centropoblado(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_centropoblado() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        ASSERT(TG_OP = 'DELETE');
+        RAISE NOTICE 'Eliminando centropoblado';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'OLD.id = %', OLD.id;
+        RAISE NOTICE 'OLD.nombre = %', OLD.nombre;
+
+        DELETE FROM public.msip_ubicacionpre WHERE 
+          municipio_id=OLD.municipio_id
+          AND centropoblado_id=OLD.id
+          AND vereda_id IS NULL
+          AND lugar IS NULL;
+        RETURN OLD;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_antes_de_eliminar_departamento(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_departamento() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        ASSERT(TG_OP = 'DELETE');
+        RAISE NOTICE 'Eliminando departamento';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'OLD.id = %', OLD.id;
+        RAISE NOTICE 'OLD.nombre = %', OLD.nombre;
+
+        DELETE FROM public.msip_ubicacionpre WHERE pais_id=OLD.pais_id 
+          AND departamento_id=OLD.id
+          AND municipio_id IS NULL
+          AND centropoblado_id IS NULL
+          AND vereda_id IS NULL
+          AND lugar IS NULL;
+        RETURN OLD;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_antes_de_eliminar_municipio(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_municipio() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        ASSERT(TG_OP = 'DELETE');
+        RAISE NOTICE 'Eliminando municipio';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'OLD.id = %', OLD.id;
+        RAISE NOTICE 'OLD.nombre = %', OLD.nombre;
+
+        DELETE FROM public.msip_ubicacionpre WHERE 
+          departamento_id=OLD.departamento_id
+          AND municipio_id=OLD.id
+          AND centropoblado_id IS NULL
+          AND vereda_id IS NULL
+          AND lugar IS NULL;
+        RETURN OLD;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_antes_de_eliminar_pais(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_pais() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        ASSERT(TG_OP = 'DELETE');
+        RAISE NOTICE 'Eliminando país';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'OLD.id = %', OLD.id;
+        RAISE NOTICE 'OLD.nombre = %', OLD.nombre;
+
+        -- Pero no elimina en cascada
+        DELETE FROM public.msip_ubicacionpre WHERE pais_id=OLD.id
+          AND departamento_id IS NULL 
+          AND municipio_id IS NULL
+          AND centropoblado_id IS NULL
+          AND vereda_id IS NULL
+          AND lugar IS NULL
+          AND sitio IS NULL;
+
+        RETURN OLD;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_antes_de_eliminar_vereda(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_vereda() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        ASSERT(TG_OP = 'DELETE');
+        RAISE NOTICE 'Eliminando vereda';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'OLD.id = %', OLD.id;
+        RAISE NOTICE 'OLD.nombre = %', OLD.nombre;
+
+        DELETE FROM public.msip_ubicacionpre WHERE 
+          municipio_id=OLD.municipio_id
+          AND vereda_id=OLD.id
+          AND centropoblado_id IS NULL
+          AND lugar IS NULL;
+        RETURN OLD;
+      END ;
+      $$;
+
+
+--
 -- Name: msip_ubicacionpre_dpa_nomenclatura(character varying, character varying, character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -201,29 +427,32 @@ CREATE FUNCTION public.msip_ubicacionpre_dpa_nomenclatura(pais character varying
     LANGUAGE sql
     AS $$
         SELECT CASE
-        WHEN pais IS NULL OR pais = '' THEN
-          array[NULL, NULL]
-        WHEN departamento IS NULL OR departamento = '' THEN
-          array[pais, NULL]
-        WHEN municipio IS NULL OR municipio = '' THEN
-          array[departamento || ' / ' || pais, departamento]
-        WHEN (vereda IS NULL OR vereda = '') AND
-        (centropoblado IS NULL OR centropoblado = '') THEN
+        WHEN pais IS NULL OR TRIM(pais) = '' THEN
+          array['', '']
+        WHEN departamento IS NULL OR TRIM(departamento) = '' THEN
+          array[TRIM(pais), '']
+        WHEN municipio IS NULL OR TRIM(municipio) = '' THEN
+          array[TRIM(departamento) || ' / ' || TRIM(pais), TRIM(departamento)]
+        WHEN (vereda IS NULL OR TRIM(vereda) = '') AND
+        (centropoblado IS NULL OR TRIM(centropoblado) = '') THEN
           array[
-            municipio || ' / ' || departamento || ' / ' || pais,
-            municipio || ' / ' || departamento ]
-        WHEN vereda IS NOT NULL THEN
+            TRIM(municipio) || ' / ' || TRIM(departamento) || ' / ' || 
+              TRIM(pais),
+            TRIM(municipio) || ' / ' || TRIM(departamento) ]
+        WHEN (vereda IS NOT NULL AND TRIM(vereda)<>'') THEN
           array[
-            msip_nombre_vereda() || vereda || ' / ' ||
-            municipio || ' / ' || departamento || ' / ' || pais,
-            msip_nombre_vereda() || vereda || ' / ' ||
-            municipio || ' / ' || departamento ]
+            public.msip_nombre_vereda() || TRIM(vereda) || ' / ' ||
+              TRIM(municipio) || ' / ' || TRIM(departamento) || ' / ' || 
+              TRIM(pais),
+            public.msip_nombre_vereda() || TRIM(vereda) || ' / ' ||
+              TRIM(municipio) || ' / ' || TRIM(departamento) ]
         ELSE
           array[
-            centropoblado || ' / ' ||
-            municipio || ' / ' || departamento || ' / ' || pais,
-            centropoblado || ' / ' ||
-            municipio || ' / ' || departamento ]
+            TRIM(centropoblado) || ' / ' ||
+              TRIM(municipio) || ' / ' || TRIM(departamento) || ' / ' || 
+              TRIM(pais),
+            TRIM(centropoblado) || ' / ' ||
+            TRIM(municipio) || ' / ' || TRIM(departamento) ]
          END
       $$;
 
@@ -246,27 +475,606 @@ CREATE FUNCTION public.msip_ubicacionpre_id_rtablabasica() RETURNS integer
 --
 
 CREATE FUNCTION public.msip_ubicacionpre_nomenclatura(pais character varying, departamento character varying, municipio character varying, vereda character varying, centropoblado character varying, lugar character varying, sitio character varying) RETURNS text[]
-    LANGUAGE sql
+    LANGUAGE plpgsql
     AS $$
-        SELECT CASE
-        WHEN (lugar IS NULL OR lugar = '') THEN
-          msip_ubicacionpre_dpa_nomenclatura(pais, departamento,
-          municipio, vereda, centropoblado)
-        WHEN (sitio IS NULL OR sitio= '') THEN
-          array[lugar || ' / ' || 
-            (msip_ubicacionpre_dpa_nomenclatura(pais, departamento,
-              municipio, vereda, centropoblado))[0],
-          lugar || ' / ' || 
-            (msip_ubicacionpre_dpa_nomenclatura(pais, departamento,
-              municipio, vereda, centropoblado))[1] ]
+      DECLARE
+        dpa TEXT[];
+      BEGIN
+        dpa := public.msip_ubicacionpre_dpa_nomenclatura(pais, departamento,
+            municipio, vereda, centropoblado);
+        --RAISE NOTICE 'dpa[1]=%', dpa[1];
+        --RAISE NOTICE 'dpa[2]=%', dpa[2];
+        IF (lugar IS NULL OR lugar = '') THEN
+          return dpa;
+        ELSEIF (sitio IS NULL OR sitio= '') THEN
+          return array[
+              lugar || ' / ' || dpa[1],
+              lugar || ' / ' || dpa[2]
+            ];
         ELSE
-          array[sitio || ' / ' || lugar || ' / ' || 
-            (msip_ubicacionpre_dpa_nomenclatura(pais, departamento,
-              municipio, vereda, centropoblado))[0],
-          sitio || ' / ' || lugar || ' / ' || 
-            (msip_ubicacionpre_dpa_nomenclatura(pais, departamento,
-              municipio, vereda, centropoblado))[1] ]
-        END
+          return array[
+              sitio || ' / ' || lugar || ' / ' || dpa[1],
+              sitio || ' / ' || lugar || ' / ' || dpa[2] 
+          ];
+        END IF;
+      END
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_actualizar_centropoblado(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_actualizar_centropoblado() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+        mi_pais_id INTEGER;
+        mi_departamento_id INTEGER;
+        nompais TEXT;
+        nomdepartamento TEXT;
+        nommunicipio TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'UPDATE');
+        RAISE NOTICE 'Actualizando centropoblado';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'NEW.id = %', NEW.id;
+        RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+        RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+        RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+        RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+        mi_departamento_id := (SELECT departamento_id 
+          FROM public.msip_municipio
+          WHERE id=NEW.municipio_id LIMIT 1);
+        mi_pais_id := (SELECT pais_id FROM public.msip_departamento
+          WHERE id=mi_departamento_id LIMIT 1);
+        nompais := (SELECT nombre FROM public.msip_pais 
+          WHERE id=mi_pais_id LIMIT 1);
+        nomdepartamento := (SELECT nombre FROM public.msip_departamento
+          WHERE id=mi_departamento_id LIMIT 1);
+        nommunicipio := (SELECT nombre FROM public.msip_municipio
+          WHERE id=NEW.municipio_id LIMIT 1);
+
+        dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+          nompais, nomdepartamento, nommunicipio, '', NEW.nombre
+        );
+
+        UPDATE public.msip_ubicacionpre SET
+          nombre=dpa[1],
+          nombre_sin_pais=dpa[2],
+          latitud=NEW.latitud,
+          longitud=NEW.longitud,
+          updated_at=NOW()
+        WHERE pais_id=mi_pais_id
+            AND departamento_id=mi_departamento_id
+            AND municipio_id=NEW.municipio_id
+            AND centropoblado_id=NEW.id
+            AND vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL;
+
+        -- Actualizamos lo que está dentro del centropoblado en cascada (esperamos
+        -- llamada al trigger de nomenclatura para arreglar nombre_sin_pais por
+        -- ejemplo)
+        UPDATE public.msip_ubicacionpre SET
+          nombre=REPLACE(nombre, OLD.nombre, NEW.nombre),
+          updated_at=NOW()
+        WHERE pais_id=mi_pais_id
+          AND departamento_id=mi_departamento_id
+          AND municipio_id=NEW.municipio_id
+          AND centropoblado_id=NEW.id
+          AND NOT (vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL);
+
+        RETURN NULL;
+      END ;
+    $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_actualizar_departamento(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_actualizar_departamento() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE 
+        dpa TEXT[];
+        nompais TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'UPDATE');
+        RAISE NOTICE 'Actualizando departamento';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'NEW.id = %', NEW.id;
+        RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+        RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+        RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+        RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+        nompais := COALESCE((SELECT nombre FROM public.msip_pais WHERE id=new.pais_id LIMIT 1), '');
+        dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+         nompais, NEW.nombre, '', '', ''
+        );
+        UPDATE public.msip_ubicacionpre SET
+          nombre=dpa[1],
+          nombre_sin_pais=dpa[2],
+          latitud=NEW.latitud,
+          longitud=NEW.longitud,
+          updated_at=NOW()
+        WHERE pais_id=OLD.pais_id
+            AND departamento_id=OLD.id
+            AND municipio_id IS NULL
+            AND centropoblado_id IS NULL
+            AND vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL;
+
+        -- Actualizamos lo que está dentro del departamento en cascada (esperamos 
+        -- llamada al trigger de nomenclatura para arreglar nombre_sin_pais por 
+        -- ejemplo)
+        UPDATE public.msip_ubicacionpre SET
+          nombre=REPLACE(nombre, OLD.nombre, NEW.nombre),
+          updated_at=NOW()
+        WHERE pais_id=OLD.pais_id 
+          AND departamento_id=OLD.id 
+          AND NOT (municipio_id IS NULL
+            AND centropoblado_id IS NULL
+            AND vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL);
+
+        RETURN NULL;
+      END ;
+    $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_actualizar_municipio(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_actualizar_municipio() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+        mi_pais_id INTEGER;
+        nompais TEXT;
+        nomdepartamento TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'UPDATE');
+        RAISE NOTICE 'Actualizando municipio';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'NEW.id = %', NEW.id;
+        RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+        RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+        RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+        RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+        mi_pais_id := (SELECT pais_id FROM public.msip_departamento
+          WHERE id=new.departamento_id LIMIT 1);
+        nompais := (SELECT nombre FROM public.msip_pais 
+          WHERE id=mi_pais_id LIMIT 1);
+        nomdepartamento := (SELECT nombre FROM public.msip_departamento
+          WHERE id=new.departamento_id LIMIT 1);
+        dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+          nompais, nomdepartamento, NEW.nombre, '', ''
+        );
+
+        UPDATE public.msip_ubicacionpre SET
+          nombre=dpa[1],
+          nombre_sin_pais=dpa[2],
+          latitud=NEW.latitud,
+          longitud=NEW.longitud,
+          updated_at=NOW()
+        WHERE pais_id=mi_pais_id
+            AND departamento_id=OLD.departamento_id
+            AND municipio_id=OLD.id
+            AND centropoblado_id IS NULL
+            AND vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL;
+
+        -- Actualizamos lo que está dentro del departamento en cascada (esperamos
+        -- llamada al trigger de nomenclatura para arreglar nombre_sin_pais por
+        -- ejemplo)
+        UPDATE public.msip_ubicacionpre SET
+          nombre=REPLACE(nombre, OLD.nombre, NEW.nombre),
+          updated_at=NOW()
+        WHERE pais_id=mi_pais_id
+          AND departamento_id=OLD.departamento_id
+          AND municipio_id=OLD.id
+          AND NOT (centropoblado_id IS NULL
+            AND vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL);
+
+        RETURN NULL;
+      END ;
+    $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_actualizar_pais(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_actualizar_pais() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE 
+        dpa TEXT[];
+      BEGIN
+        ASSERT(TG_OP = 'UPDATE');
+        RAISE NOTICE 'Actualizando pais';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'NEW.id = %', NEW.id;
+        RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+        RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+        RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+        RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+        -- Actualizamos pais
+        dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+          NEW.nombre, '', '', '', ''
+        );
+        UPDATE public.msip_ubicacionpre SET
+          nombre=dpa[1],
+          latitud=NEW.latitud,
+          longitud=NEW.longitud,
+          updated_at=NOW()
+        WHERE pais_id=OLD.id
+            AND departamento_id IS NULL 
+            AND municipio_id IS NULL
+            AND centropoblado_id IS NULL
+            AND vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL;
+        
+        -- Actualizamos lo que está dentro del país en cascada (esperamos 
+        -- llamada al trigger de nomenclatura para arreglar nombre_sin_pais por 
+        -- ejemplo)
+        UPDATE public.msip_ubicacionpre SET
+          nombre=REPLACE(nombre, OLD.nombre, NEW.nombre),
+          updated_at=NOW()
+        WHERE pais_id=OLD.id
+            AND NOT (departamento_id IS NULL 
+            AND municipio_id IS NULL
+            AND centropoblado_id IS NULL
+            AND vereda_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL);
+
+        RETURN NULL;
+      END ;
+    $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_actualizar_vereda(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_actualizar_vereda() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+        mi_pais_id INTEGER;
+        mi_departamento_id INTEGER;
+        nompais TEXT;
+        nomdepartamento TEXT;
+        nommunicipio TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'UPDATE');
+        RAISE NOTICE 'Actualizando vereda';
+        RAISE NOTICE 'TG_OP = %', TG_OP;
+        RAISE NOTICE 'NEW.id = %', NEW.id;
+        RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+        RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+        RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+        RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+        mi_departamento_id := (SELECT departamento_id 
+          FROM public.msip_municipio
+          WHERE id=NEW.municipio_id LIMIT 1);
+        mi_pais_id := (SELECT pais_id FROM public.msip_departamento
+          WHERE id=mi_departamento_id LIMIT 1);
+        nompais := (SELECT nombre FROM public.msip_pais 
+          WHERE id=mi_pais_id LIMIT 1);
+        nomdepartamento := (SELECT nombre FROM public.msip_departamento
+          WHERE id=mi_departamento_id LIMIT 1);
+        nommunicipio := (SELECT nombre FROM public.msip_municipio
+          WHERE id=NEW.municipio_id LIMIT 1);
+
+        dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+          nompais, nomdepartamento, nommunicipio, '', NEW.nombre
+        );
+
+        UPDATE public.msip_ubicacionpre SET
+          nombre=dpa[1],
+          nombre_sin_pais=dpa[2],
+          latitud=NEW.latitud,
+          longitud=NEW.longitud,
+          updated_at=NOW()
+        WHERE pais_id=mi_pais_id
+            AND departamento_id=mi_departamento_id
+            AND municipio_id=NEW.municipio_id
+            AND vereda_id=NEW.id
+            AND centropoblado_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL;
+
+        -- Actualizamos lo que está dentro de la vereda en cascada (esperamos
+        -- llamada al trigger de nomenclatura para arreglar nombre_sin_pais por
+        -- ejemplo)
+        UPDATE public.msip_ubicacionpre SET
+          nombre=REPLACE(nombre, OLD.nombre, NEW.nombre),
+          updated_at=NOW()
+        WHERE pais_id=mi_pais_id
+          AND departamento_id=mi_departamento_id
+          AND municipio_id=NEW.municipio_id
+          AND vereda_id=NEW.id
+          AND NOT (centropoblado_id IS NULL
+            AND lugar IS NULL
+            AND sitio IS NULL);
+
+        RETURN NULL;
+      END ;
+    $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_crear_centropoblado(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_crear_centropoblado() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+        mi_pais_id INTEGER;
+        mi_departamento_id INTEGER;
+        nompais TEXT;
+        nomdepartamento TEXT;
+        nommunicipio TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'INSERT');
+        -- Los comunes se insertan manualmente con ids. diseñadas
+        IF NEW.id > 1000000 THEN
+          RAISE NOTICE 'Insertando centro poblado propio';
+          RAISE NOTICE 'TG_OP = %', TG_OP;
+          RAISE NOTICE 'NEW.id = %', NEW.id;
+          RAISE NOTICE 'NEW.municipio_id = %', NEW.municipio_id;
+          RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+          RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+          RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+          RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+          mi_departamento_id := (SELECT departamento_id 
+            FROM public.msip_municipio
+            WHERE id=NEW.municipio_id LIMIT 1);
+          mi_pais_id := (SELECT pais_id FROM public.msip_departamento
+            WHERE id=mi_departamento_id LIMIT 1);
+          nompais := (SELECT nombre FROM public.msip_pais 
+            WHERE id=mi_pais_id LIMIT 1);
+          nomdepartamento := (SELECT nombre FROM public.msip_departamento
+            WHERE id=mi_departamento_id LIMIT 1);
+          nommunicipio := (SELECT nombre FROM public.msip_municipio
+            WHERE id=NEW.municipio_id LIMIT 1);
+          dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+            nompais, nomdepartamento, nommunicipio, NEW.nombre, ''
+          );
+          INSERT INTO public.msip_ubicacionpre (nombre, pais_id,
+            departamento_id, municipio_id, centropoblado_id, vereda_id,
+            lugar, sitio, tsitio_id, latitud, longitud,
+            nombre_sin_pais, observaciones,
+            fechacreacion, fechadeshabilitacion, created_at, updated_at)
+          VALUES (dpa[1], mi_pais_id, 
+            mi_departamento_id, NEW.municipio_id, NEW.id, NULL,
+            NULL, NULL, NULL, NEW.latitud, NEW.longitud,
+            dpa[2], NULL,
+            NEW.fechacreacion, NULL, NOW(), NOW());
+        END IF;
+        RETURN NULL;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_crear_departamento(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_crear_departamento() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+        nompais TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'INSERT');
+        -- Los comunes se insertan manualmente con ids. diseñadas
+        IF NEW.id > 10000 THEN
+          RAISE NOTICE 'Insertando departamento propio';
+          RAISE NOTICE 'TG_OP = %', TG_OP;
+          RAISE NOTICE 'NEW.id = %', NEW.id;
+          RAISE NOTICE 'NEW.pais_id = %', NEW.pais_id;
+          RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+          RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+          RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+          RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+          nompais := COALESCE((SELECT nombre FROM public.msip_pais WHERE id=new.pais_id LIMIT 1), '');
+          dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+           nompais, NEW.nombre, '', '', ''
+          );
+          INSERT INTO public.msip_ubicacionpre (nombre, pais_id,
+            departamento_id, municipio_id, centropoblado_id, vereda_id,
+            lugar, sitio, tsitio_id, latitud, longitud,
+            nombre_sin_pais, observaciones,
+            fechacreacion, fechadeshabilitacion, created_at, updated_at)
+          VALUES (dpa[1], NEW.pais_id, NEW.id,
+            NULL, NULL, NULL,
+            NULL, NULL, NULL, NEW.latitud, NEW.longitud,
+            dpa[2], NULL,
+            NEW.fechacreacion, NULL, NOW(), NOW());
+        END IF;
+        RETURN NULL;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_crear_municipio(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_crear_municipio() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+        mi_pais_id INTEGER;
+        nompais TEXT;
+        nomdepartamento TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'INSERT');
+        -- Los comunes se insertan manualmente con ids. diseñadas
+        IF NEW.id > 100000 THEN
+          RAISE NOTICE 'Insertando departamento propio';
+          RAISE NOTICE 'TG_OP = %', TG_OP;
+          RAISE NOTICE 'NEW.id = %', NEW.id;
+          RAISE NOTICE 'NEW.departamento_id = %', NEW.departamento_id;
+          RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+          RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+          RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+          RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+          mi_pais_id := (SELECT pais_id FROM public.msip_departamento
+            WHERE id=new.departamento_id LIMIT 1);
+          nompais := (SELECT nombre FROM public.msip_pais 
+            WHERE id=mi_pais_id LIMIT 1);
+          nomdepartamento := (SELECT nombre FROM public.msip_departamento
+            WHERE id=new.departamento_id LIMIT 1);
+          dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+            nompais, nomdepartamento, NEW.nombre, '', ''
+          );
+          INSERT INTO public.msip_ubicacionpre (nombre, pais_id,
+            departamento_id, municipio_id, centropoblado_id, vereda_id,
+            lugar, sitio, tsitio_id, latitud, longitud,
+            nombre_sin_pais, observaciones,
+            fechacreacion, fechadeshabilitacion, created_at, updated_at)
+          VALUES (dpa[1], mi_pais_id, 
+            NEW.departamento_id, NEW.id, NULL, NULL,
+            NULL, NULL, NULL, NEW.latitud, NEW.longitud,
+            dpa[2], NULL,
+            NEW.fechacreacion, NULL, NOW(), NOW());
+        END IF;
+        RETURN NULL;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_crear_pais(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_crear_pais() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+      BEGIN
+        ASSERT(TG_OP = 'INSERT');
+        -- Los comunes se insertan manualmente con ids. diseñadas
+        IF NEW.id > 1000 THEN
+          RAISE NOTICE 'Insertando pais propio';
+          RAISE NOTICE 'TG_OP = %', TG_OP;
+          RAISE NOTICE 'NEW.id = %', NEW.id;
+          RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+          RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+          RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+          RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+          dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+           NEW.nombre, '', '', '', ''
+          );
+          INSERT INTO public.msip_ubicacionpre (nombre, pais_id,
+            departamento_id, municipio_id, centropoblado_id, vereda_id,
+            lugar, sitio, tsitio_id, latitud, longitud,
+            nombre_sin_pais, observaciones,
+            fechacreacion, fechadeshabilitacion, created_at, updated_at)
+          VALUES (dpa[1], NEW.id,
+            NULL, NULL, NULL, NULL,
+            NULL, NULL, NULL, NEW.latitud, NEW.longitud,
+            NULL, NULL,
+            NEW.fechacreacion, NULL, NOW(), NOW());
+        END IF;
+        RETURN NULL;
+      END ;
+      $$;
+
+
+--
+-- Name: msip_ubicacionpre_tras_crear_vereda(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.msip_ubicacionpre_tras_crear_vereda() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+        dpa TEXT[];
+        mi_pais_id INTEGER;
+        mi_departamento_id INTEGER;
+        nompais TEXT;
+        nomdepartamento TEXT;
+        nommunicipio TEXT;
+      BEGIN
+        ASSERT(TG_OP = 'INSERT');
+        -- Los comunes se insertan manualmente con ids. diseñadas
+        IF NEW.id > 1000000 THEN
+          RAISE NOTICE 'Insertando centro poblado propio';
+          RAISE NOTICE 'TG_OP = %', TG_OP;
+          RAISE NOTICE 'NEW.id = %', NEW.id;
+          RAISE NOTICE 'NEW.municipio_id = %', NEW.municipio_id;
+          RAISE NOTICE 'NEW.nombre = %', NEW.nombre;
+          RAISE NOTICE 'NEW.latitud = %', NEW.latitud;
+          RAISE NOTICE 'NEW.longitud = %', NEW.longitud;
+          RAISE NOTICE 'NEW.observaciones = %', NEW.observaciones;
+
+          mi_departamento_id := (SELECT departamento_id 
+            FROM public.msip_municipio
+            WHERE id=NEW.municipio_id LIMIT 1);
+          RAISE NOTICE 'mi_departamento_id = %', mi_departamento_id;
+          mi_pais_id := (SELECT pais_id FROM public.msip_departamento
+            WHERE id=mi_departamento_id LIMIT 1);
+          RAISE NOTICE 'mi_pais_id = %', mi_pais_id;
+          nompais := (SELECT nombre FROM public.msip_pais 
+            WHERE id=mi_pais_id LIMIT 1);
+          RAISE NOTICE 'nompais = %', nompais;
+          nomdepartamento := (SELECT nombre FROM public.msip_departamento
+            WHERE id=mi_departamento_id LIMIT 1);
+          RAISE NOTICE 'nomdepartamento = %', nomdepartamento;
+          nommunicipio := (SELECT nombre FROM public.msip_municipio
+            WHERE id=NEW.municipio_id LIMIT 1);
+          RAISE NOTICE 'nommunicipio = %', nommunicipio;
+          dpa := public.msip_ubicacionpre_dpa_nomenclatura(
+            nompais, nomdepartamento, nommunicipio, NEW.nombre, ''
+          );
+          RAISE NOTICE 'dpa[0] = %', dpa[0];
+          RAISE NOTICE 'dpa[1] = %', dpa[1];
+          INSERT INTO public.msip_ubicacionpre (nombre, pais_id,
+            departamento_id, municipio_id, centropoblado_id, vereda_id,
+            lugar, sitio, tsitio_id, latitud, longitud,
+            nombre_sin_pais, observaciones,
+            fechacreacion, fechadeshabilitacion, created_at, updated_at)
+          VALUES (dpa[1], mi_pais_id, 
+            mi_departamento_id, NEW.municipio_id, NULL, NEW.id,
+            NULL, NULL, NULL, NEW.latitud, NEW.longitud,
+            dpa[2], NULL,
+            NEW.fechacreacion, NULL, NOW(), NOW());
+        END IF;
+        RETURN NULL;
+      END ;
       $$;
 
 
@@ -535,15 +1343,14 @@ CREATE FUNCTION public.soundexespm(entrada text) RETURNS text
 
 
 --
--- Name: anexo_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: first(anyelement); Type: AGGREGATE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.anexo_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+CREATE AGGREGATE public.first(anyelement) (
+    SFUNC = public.first_element_state,
+    STYPE = anyarray,
+    FINALFUNC = public.first_element
+);
 
 
 SET default_tablespace = '';
@@ -1215,8 +2022,8 @@ ALTER SEQUENCE public.apo214_tipotestigo_id_seq OWNED BY public.apo214_tipotesti
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -1291,7 +2098,8 @@ CREATE TABLE public.sivel2_gen_caso (
     intervalo_id integer DEFAULT 5,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    ubicacion_id integer
+    ubicacion_id integer,
+    ubicacionpreprincipal_id integer
 );
 
 
@@ -1312,8 +2120,6 @@ CREATE SEQUENCE public.sivel2_gen_victima_id_seq
 --
 
 CREATE TABLE public.sivel2_gen_victima (
-    persona_id integer NOT NULL,
-    caso_id integer NOT NULL,
     hijos integer,
     profesion_id integer DEFAULT 22 NOT NULL,
     rangoedad_id integer DEFAULT 6 NOT NULL,
@@ -1321,8 +2127,10 @@ CREATE TABLE public.sivel2_gen_victima (
     sectorsocial_id integer DEFAULT 15 NOT NULL,
     organizacion_id integer DEFAULT 16 NOT NULL,
     vinculoestado_id integer DEFAULT 38 NOT NULL,
+    caso_id integer NOT NULL,
     organizacionarmada integer DEFAULT 35 NOT NULL,
     anotaciones character varying(1000),
+    persona_id integer NOT NULL,
     iglesia_id integer DEFAULT 1,
     orientacionsexual character(1) DEFAULT 'S'::bpchar NOT NULL,
     created_at timestamp without time zone,
@@ -1371,9 +2179,9 @@ CREATE SEQUENCE public.msip_centropoblado_id_seq
 
 CREATE TABLE public.msip_centropoblado (
     cplocal_cod integer,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     tcentropoblado_id character varying(10) DEFAULT 'CP'::character varying NOT NULL,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     latitud double precision,
     longitud double precision,
@@ -1413,8 +2221,8 @@ CREATE SEQUENCE public.msip_departamento_id_seq
 
 CREATE TABLE public.msip_departamento (
     deplocal_cod integer,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
     latitud double precision,
     longitud double precision,
@@ -1457,8 +2265,8 @@ CREATE SEQUENCE public.msip_municipio_id_seq
 
 CREATE TABLE public.msip_municipio (
     munlocal_cod integer,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
     latitud double precision,
     longitud double precision,
@@ -1500,12 +2308,12 @@ CREATE SEQUENCE public.msip_ubicacion_id_seq
 
 CREATE TABLE public.msip_ubicacion (
     id integer DEFAULT nextval('public.msip_ubicacion_id_seq'::regclass) NOT NULL,
-    lugar character varying(500) COLLATE public.es_co_utf_8,
-    sitio character varying(500) COLLATE public.es_co_utf_8,
     tsitio_id integer DEFAULT 1 NOT NULL,
     caso_id integer NOT NULL,
     latitud double precision,
     longitud double precision,
+    sitio character varying(500) COLLATE public.es_co_utf_8,
+    lugar character varying(500) COLLATE public.es_co_utf_8,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     pais_id integer,
@@ -1544,6 +2352,112 @@ CREATE VIEW public.cben2 AS
 
 
 --
+-- Name: sivel2_gen_acto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_acto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_acto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_acto (
+    presponsable_id integer NOT NULL,
+    categoria_id integer NOT NULL,
+    persona_id integer NOT NULL,
+    caso_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('public.sivel2_gen_acto_id_seq'::regclass) NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_categoria; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_categoria (
+    id integer NOT NULL,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechadeshabilitacion date,
+    pconsolidado_id integer,
+    contadaen integer,
+    tipocat character(1) DEFAULT 'I'::bpchar,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    supracategoria_id integer,
+    CONSTRAINT "$3" CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
+    CONSTRAINT categoria_tipocat_check CHECK (((tipocat = 'I'::bpchar) OR (tipocat = 'C'::bpchar) OR (tipocat = 'O'::bpchar)))
+);
+
+
+--
+-- Name: sivel2_gen_supracategoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_supracategoria_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_supracategoria; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_supracategoria (
+    codigo integer,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    tviolencia_id character varying(1) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    id integer DEFAULT nextval('public.sivel2_gen_supracategoria_id_seq'::regclass) NOT NULL,
+    CONSTRAINT supracategoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: cvt1; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.cvt1 AS
+ SELECT DISTINCT acto.caso_id,
+    acto.persona_id,
+    acto.categoria_id,
+    supracategoria.tviolencia_id,
+    categoria.nombre AS categoria,
+    ubicacion.departamento_id,
+    departamento.deplocal_cod AS departamento_divipola,
+    departamento.nombre AS departamento_nombre,
+    ubicacion.municipio_id,
+    ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod) AS municipio_divipola,
+    municipio.nombre AS municipio_nombre
+   FROM ((((((((public.sivel2_gen_acto acto
+     JOIN public.sivel2_gen_caso caso ON ((acto.caso_id = caso.id)))
+     JOIN public.sivel2_gen_categoria categoria ON ((acto.categoria_id = categoria.id)))
+     JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
+     JOIN public.sivel2_gen_victima victima ON (((victima.persona_id = acto.persona_id) AND (victima.caso_id = caso.id))))
+     JOIN public.msip_persona persona ON ((persona.id = acto.persona_id)))
+     LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
+     LEFT JOIN public.msip_departamento departamento ON ((ubicacion.departamento_id = departamento.id)))
+     LEFT JOIN public.msip_municipio municipio ON ((ubicacion.municipio_id = municipio.id)))
+  WHERE (categoria.id = ANY (ARRAY[777, 297, 197, 427, 527, 397, 776, 396, 526, 196, 426, 296, 73, 25, 35, 55, 45, 15, 65, 92, 40, 50, 67, 801, 90, 57, 16, 37, 26, 46, 80, 85, 66, 64, 703, 18, 59, 706, 28, 49, 38, 401, 501, 115, 125, 135, 904, 331, 17, 502, 231, 402, 705, 62, 503, 403, 104, 906, 713, 101, 21, 302, 11, 76, 102, 27, 902, 903, 34, 301, 14, 24, 20, 30, 10, 772, 422, 192, 292, 522, 392, 63, 93, 910, 395, 525, 295, 775, 425, 195, 714, 78, 194, 424, 294, 394, 524, 774, 89, 905, 86, 701, 68, 141, 241, 341, 715, 704, 702, 33, 23, 13, 43, 53, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 193, 393, 523, 293, 773, 423, 48, 58, 75, 69, 41, 74, 36, 56, 72, 47, 22, 12, 391, 771, 191, 421, 291, 521, 39, 77, 420, 520, 19, 29, 712]));
+
+
+--
 -- Name: heb412_gen_campohc; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1561,6 +2475,7 @@ CREATE TABLE public.heb412_gen_campohc (
 --
 
 CREATE SEQUENCE public.heb412_gen_campohc_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1592,6 +2507,7 @@ CREATE TABLE public.heb412_gen_campoplantillahcm (
 --
 
 CREATE SEQUENCE public.heb412_gen_campoplantillahcm_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1686,7 +2602,7 @@ CREATE TABLE public.heb412_gen_doc (
     updated_at timestamp without time zone NOT NULL,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
-    adjunto_file_size integer,
+    adjunto_file_size bigint,
     adjunto_updated_at timestamp without time zone,
     nombremenu character varying(127),
     vista character varying(255),
@@ -1703,6 +2619,7 @@ CREATE TABLE public.heb412_gen_doc (
 --
 
 CREATE SEQUENCE public.heb412_gen_doc_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1810,6 +2727,7 @@ CREATE TABLE public.heb412_gen_plantillahcm (
 --
 
 CREATE SEQUENCE public.heb412_gen_plantillahcm_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2141,6 +3059,7 @@ CREATE TABLE public.msip_anexo (
 --
 
 CREATE SEQUENCE public.msip_anexo_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2319,8 +3238,8 @@ CREATE SEQUENCE public.msip_etiqueta_id_seq
 CREATE TABLE public.msip_etiqueta (
     id integer DEFAULT nextval('public.msip_etiqueta_id_seq'::regclass) NOT NULL,
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    observaciones character varying(5000) NOT NULL COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -2427,9 +3346,9 @@ CREATE SEQUENCE public.msip_fuenteprensa_id_seq
 
 CREATE TABLE public.msip_fuenteprensa (
     id integer DEFAULT nextval('public.msip_fuenteprensa_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     tfuente character varying(25),
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -2458,6 +3377,7 @@ CREATE TABLE public.msip_grupo (
 --
 
 CREATE SEQUENCE public.msip_grupo_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2579,7 +3499,7 @@ ALTER SEQUENCE public.msip_municipio_histvigencia_id_seq OWNED BY public.msip_mu
 CREATE TABLE public.msip_oficina (
     id integer NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT ('now'::text)::date,
+    fechacreacion date DEFAULT CURRENT_DATE,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -2592,6 +3512,7 @@ CREATE TABLE public.msip_oficina (
 --
 
 CREATE SEQUENCE public.msip_oficina_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2764,6 +3685,7 @@ ALTER SEQUENCE public.msip_pais_histvigencia_id_seq OWNED BY public.msip_pais_hi
 --
 
 CREATE SEQUENCE public.msip_pais_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2923,8 +3845,8 @@ CREATE TABLE public.msip_solicitud_usuarionotificar (
 
 CREATE TABLE public.msip_tcentropoblado (
     id character varying(10) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -2956,6 +3878,7 @@ CREATE TABLE public.msip_tdocumento (
 --
 
 CREATE SEQUENCE public.msip_tdocumento_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3067,7 +3990,7 @@ CREATE TABLE public.msip_trelacion (
     id character(2) NOT NULL,
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     inverso character varying(2),
     created_at timestamp without time zone,
@@ -3128,8 +4051,8 @@ CREATE SEQUENCE public.msip_tsitio_id_seq
 
 CREATE TABLE public.msip_tsitio (
     id integer DEFAULT nextval('public.msip_tsitio_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -3270,6 +4193,17 @@ CREATE MATERIALIZED VIEW public.nmujeres AS
 
 
 --
+-- Name: persona_nomap; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+--
+
+CREATE MATERIALIZED VIEW public.persona_nomap AS
+ SELECT id,
+    upper(btrim(((btrim((nombres)::text) || ' '::text) || btrim((apellidos)::text)))) AS nomap
+   FROM public.msip_persona
+  WITH NO DATA;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3313,33 +4247,6 @@ ALTER SEQUENCE public.sivel2_gen_actividadoficio_id_seq OWNED BY public.sivel2_g
 
 
 --
--- Name: sivel2_gen_acto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_acto_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_acto; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_acto (
-    presponsable_id integer NOT NULL,
-    categoria_id integer NOT NULL,
-    persona_id integer NOT NULL,
-    caso_id integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    id integer DEFAULT nextval('public.sivel2_gen_acto_id_seq'::regclass) NOT NULL
-);
-
-
---
 -- Name: sivel2_gen_actocolectivo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3367,15 +4274,27 @@ CREATE TABLE public.sivel2_gen_actocolectivo (
 
 
 --
+-- Name: sivel2_gen_anexo_caso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_anexo_caso_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sivel2_gen_anexo_caso; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.sivel2_gen_anexo_caso (
-    id integer DEFAULT nextval('public.anexo_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('public.sivel2_gen_anexo_caso_id_seq'::regclass) NOT NULL,
     caso_id integer NOT NULL,
     fecha date NOT NULL,
-    fuenteprensa_id integer,
     fechaffrecuente date,
+    fuenteprensa_id integer,
     fotra_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -3401,13 +4320,13 @@ CREATE SEQUENCE public.sivel2_gen_antecedente_id_seq
 
 CREATE TABLE public.sivel2_gen_antecedente (
     id integer DEFAULT nextval('public.sivel2_gen_antecedente_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000),
-    CONSTRAINT antecedente_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+    CONSTRAINT "$1" CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion > fechacreacion)))
 );
 
 
@@ -3507,7 +4426,7 @@ CREATE TABLE public.sivel2_gen_caso_etiqueta (
     etiqueta_id integer NOT NULL,
     usuario_id integer NOT NULL,
     fecha date NOT NULL,
-    observaciones character varying(2500),
+    observaciones character varying(5000),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('public.sivel2_gen_caso_etiqueta_id_seq'::regclass) NOT NULL
@@ -3609,8 +4528,8 @@ CREATE TABLE public.sivel2_gen_caso_presponsable (
     tipo integer DEFAULT 0 NOT NULL,
     bloque character varying(50),
     frente character varying(50),
-    otro character varying(500),
     id integer DEFAULT nextval('public.sivel2_gen_caso_presponsable_id_seq'::regclass) NOT NULL,
+    otro character varying(500),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     subdivision character varying
@@ -3681,27 +4600,6 @@ CREATE TABLE public.sivel2_gen_caso_usuario (
 
 
 --
--- Name: sivel2_gen_categoria; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_categoria (
-    id integer NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
-    fechadeshabilitacion date,
-    pconsolidado_id integer,
-    contadaen integer,
-    tipocat character(1) DEFAULT 'I'::bpchar,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    supracategoria_id integer,
-    CONSTRAINT categoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
-    CONSTRAINT categoria_tipocat_check CHECK (((tipocat = 'I'::bpchar) OR (tipocat = 'C'::bpchar) OR (tipocat = 'O'::bpchar)))
-);
-
-
---
 -- Name: sivel2_gen_combatiente; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3730,6 +4628,7 @@ CREATE TABLE public.sivel2_gen_combatiente (
 --
 
 CREATE SEQUENCE public.sivel2_gen_combatiente_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3762,44 +4661,14 @@ CREATE SEQUENCE public.sivel2_gen_presponsable_id_seq
 
 CREATE TABLE public.sivel2_gen_presponsable (
     id integer DEFAULT nextval('public.sivel2_gen_presponsable_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    papa_id integer,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
+    papa_id integer,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000),
     CONSTRAINT presuntos_responsables_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
--- Name: sivel2_gen_supracategoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_supracategoria_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_supracategoria; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_supracategoria (
-    codigo integer,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
-    fechadeshabilitacion date,
-    tviolencia_id character varying(1) NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    id integer DEFAULT nextval('public.sivel2_gen_supracategoria_id_seq'::regclass) NOT NULL,
-    CONSTRAINT supracategoria_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -4040,8 +4909,8 @@ CREATE SEQUENCE public.sivel2_gen_filiacion_id_seq
 
 CREATE TABLE public.sivel2_gen_filiacion (
     id integer DEFAULT nextval('public.sivel2_gen_filiacion_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4066,7 +4935,7 @@ CREATE TABLE public.sivel2_gen_filiacion_victimacolectiva (
 
 CREATE TABLE public.sivel2_gen_fotra (
     id integer DEFAULT nextval(('sivel2_gen_fotra_id_seq'::text)::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -4102,8 +4971,8 @@ CREATE SEQUENCE public.sivel2_gen_frontera_id_seq
 
 CREATE TABLE public.sivel2_gen_frontera (
     id integer DEFAULT nextval('public.sivel2_gen_frontera_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4132,87 +5001,13 @@ CREATE TABLE public.sivel2_gen_iglesia (
     id integer DEFAULT nextval('public.sivel2_gen_iglesia_id_seq'::regclass) NOT NULL,
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     descripcion character varying(1000),
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000),
     CONSTRAINT iglesia_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
-
-
---
--- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.usuario_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: usuario; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.usuario (
-    nusuario character varying(15) NOT NULL,
-    password character varying(64) DEFAULT ''::character varying NOT NULL,
-    nombre character varying(50) COLLATE public.es_co_utf_8,
-    descripcion character varying(50),
-    rol integer DEFAULT 4,
-    idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
-    id integer DEFAULT nextval('public.usuario_id_seq'::regclass) NOT NULL,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
-    fechadeshabilitacion date,
-    email character varying(255) DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
-    sign_in_count integer DEFAULT 0 NOT NULL,
-    failed_attempts integer,
-    unlock_token character varying(64),
-    locked_at timestamp without time zone,
-    reset_password_token character varying,
-    reset_password_sent_at timestamp without time zone,
-    remember_created_at timestamp without time zone,
-    current_sign_in_at timestamp without time zone,
-    last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying,
-    last_sign_in_ip character varying,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    oficina_id integer,
-    tema_id integer,
-    observadorffechaini date,
-    observadorffechafin date,
-    CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
-    CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
-);
-
-
---
--- Name: sivel2_gen_iniciador; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.sivel2_gen_iniciador AS
- SELECT s3.caso_id,
-    s3.fechainicio,
-    s3.usuario_id,
-    usuario.nusuario
-   FROM public.usuario,
-    ( SELECT s2.caso_id,
-            s2.fechainicio,
-            min(s2.usuario_id) AS usuario_id
-           FROM public.sivel2_gen_caso_usuario s2,
-            ( SELECT f1.caso_id,
-                    min(f1.fechainicio) AS m
-                   FROM public.sivel2_gen_caso_usuario f1
-                  GROUP BY f1.caso_id) c
-          WHERE ((s2.caso_id = c.caso_id) AND (s2.fechainicio = c.m))
-          GROUP BY s2.caso_id, s2.fechainicio
-          ORDER BY s2.caso_id, s2.fechainicio) s3
-  WHERE (usuario.id = s3.usuario_id);
 
 
 --
@@ -4235,7 +5030,7 @@ CREATE TABLE public.sivel2_gen_intervalo (
     id integer DEFAULT nextval('public.sivel2_gen_intervalo_id_seq'::regclass) NOT NULL,
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     rango character varying(25) NOT NULL,
-    fechacreacion date NOT NULL,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4316,8 +5111,8 @@ CREATE SEQUENCE public.sivel2_gen_organizacion_id_seq
 
 CREATE TABLE public.sivel2_gen_organizacion (
     id integer DEFAULT nextval('public.sivel2_gen_organizacion_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4368,7 +5163,7 @@ CREATE TABLE public.sivel2_gen_pconsolidado (
     tipoviolencia character varying(25) NOT NULL,
     clasificacion character varying(25) NOT NULL,
     peso integer DEFAULT 0,
-    fechacreacion date NOT NULL,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4395,8 +5190,8 @@ CREATE SEQUENCE public.sivel2_gen_profesion_id_seq
 
 CREATE TABLE public.sivel2_gen_profesion (
     id integer DEFAULT nextval('public.sivel2_gen_profesion_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4466,7 +5261,7 @@ CREATE TABLE public.sivel2_gen_rangoedad (
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     limiteinferior integer DEFAULT 0 NOT NULL,
     limitesuperior integer DEFAULT 0 NOT NULL,
-    fechacreacion date NOT NULL,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4503,8 +5298,8 @@ CREATE SEQUENCE public.sivel2_gen_region_id_seq
 
 CREATE TABLE public.sivel2_gen_region (
     id integer DEFAULT nextval('public.sivel2_gen_region_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4533,6 +5328,7 @@ CREATE TABLE public.sivel2_gen_resagresion (
 --
 
 CREATE SEQUENCE public.sivel2_gen_resagresion_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4565,8 +5361,8 @@ CREATE SEQUENCE public.sivel2_gen_sectorsocial_id_seq
 
 CREATE TABLE public.sivel2_gen_sectorsocial (
     id integer DEFAULT nextval('public.sivel2_gen_sectorsocial_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4629,10 +5425,10 @@ CREATE SEQUENCE public.sivel2_gen_victimacolectiva_id_seq
 --
 
 CREATE TABLE public.sivel2_gen_victimacolectiva (
-    grupoper_id integer NOT NULL,
-    caso_id integer NOT NULL,
     personasaprox integer,
     organizacionarmada integer DEFAULT 35,
+    grupoper_id integer NOT NULL,
+    caso_id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     id integer DEFAULT nextval('public.sivel2_gen_victimacolectiva_id_seq'::regclass) NOT NULL
@@ -4667,13 +5463,63 @@ CREATE SEQUENCE public.sivel2_gen_vinculoestado_id_seq
 
 CREATE TABLE public.sivel2_gen_vinculoestado (
     id integer DEFAULT nextval('public.sivel2_gen_vinculoestado_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    fechacreacion date NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000),
     CONSTRAINT vinculo_estado_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.usuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: usuario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.usuario (
+    nusuario character varying(15) NOT NULL,
+    nombre character varying(50) COLLATE public.es_co_utf_8,
+    descripcion character varying(50),
+    rol integer DEFAULT 4,
+    password character varying(64) DEFAULT ''::character varying,
+    idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
+    id integer DEFAULT nextval('public.usuario_id_seq'::regclass) NOT NULL,
+    fechacreacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechadeshabilitacion date,
+    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    failed_attempts integer,
+    unlock_token character varying(64),
+    locked_at timestamp without time zone,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    oficina_id integer,
+    tema_id integer,
+    observadorffechaini date,
+    observadorffechafin date,
+    CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
+    CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
 
 
@@ -5170,22 +6016,6 @@ ALTER TABLE ONLY public.sivel2_gen_acto
 
 
 --
--- Name: sivel2_gen_acto acto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_acto
-    ADD CONSTRAINT acto_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_antecedente antecedente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_antecedente
-    ADD CONSTRAINT antecedente_pkey PRIMARY KEY (id);
-
-
---
 -- Name: apo214_asisreconocimiento apo214_asisreconocimiento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5354,35 +6184,11 @@ ALTER TABLE ONLY public.sivel2_gen_caso_etiqueta
 
 
 --
--- Name: sivel2_gen_caso_etiqueta caso_etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_etiqueta
-    ADD CONSTRAINT caso_etiqueta_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_caso caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso
-    ADD CONSTRAINT caso_pkey PRIMARY KEY (id);
-
-
---
 -- Name: sivel2_gen_caso_presponsable caso_presponsable_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
     ADD CONSTRAINT caso_presponsable_id_key UNIQUE (id);
-
-
---
--- Name: sivel2_gen_caso_presponsable caso_presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
-    ADD CONSTRAINT caso_presponsable_pkey PRIMARY KEY (id);
 
 
 --
@@ -5394,43 +6200,11 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: sivel2_gen_contexto contexto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_contexto
-    ADD CONSTRAINT contexto_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_filiacion filiacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_filiacion
-    ADD CONSTRAINT filiacion_pkey PRIMARY KEY (id);
-
-
---
 -- Name: sivel2_gen_caso_frontera frontera_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_frontera
     ADD CONSTRAINT frontera_caso_pkey PRIMARY KEY (frontera_id, caso_id);
-
-
---
--- Name: sivel2_gen_frontera frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_frontera
-    ADD CONSTRAINT frontera_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_fotra fuente_directa_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_fotra
-    ADD CONSTRAINT fuente_directa_pkey PRIMARY KEY (id);
 
 
 --
@@ -5511,22 +6285,6 @@ ALTER TABLE ONLY public.heb412_gen_plantillahcm
 
 ALTER TABLE ONLY public.heb412_gen_plantillahcr
     ADD CONSTRAINT heb412_gen_plantillahcr_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_iglesia iglesia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_iglesia
-    ADD CONSTRAINT iglesia_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_intervalo intervalo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_intervalo
-    ADD CONSTRAINT intervalo_pkey PRIMARY KEY (id);
 
 
 --
@@ -5970,51 +6728,11 @@ ALTER TABLE ONLY public.msip_vereda
 
 
 --
--- Name: sivel2_gen_organizacion organizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_organizacion
-    ADD CONSTRAINT organizacion_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_pconsolidado parametros_reporte_consolidado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_pconsolidado pconsolidado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_pconsolidado
-    ADD CONSTRAINT parametros_reporte_consolidado_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_presponsable presuntos_responsables_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_presponsable
-    ADD CONSTRAINT presuntos_responsables_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_profesion profesion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_profesion
-    ADD CONSTRAINT profesion_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_rangoedad rango_edad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_rangoedad
-    ADD CONSTRAINT rango_edad_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_region region_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_region
-    ADD CONSTRAINT region_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT pconsolidado_pkey PRIMARY KEY (id);
 
 
 --
@@ -6026,19 +6744,19 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
--- Name: sivel2_gen_sectorsocial sector_social_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_sectorsocial
-    ADD CONSTRAINT sector_social_pkey PRIMARY KEY (id);
-
-
---
 -- Name: sivel2_gen_actividadoficio sivel2_gen_actividadoficio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_actividadoficio
     ADD CONSTRAINT sivel2_gen_actividadoficio_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_acto sivel2_gen_acto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_acto
+    ADD CONSTRAINT sivel2_gen_acto_pkey PRIMARY KEY (id);
 
 
 --
@@ -6090,6 +6808,14 @@ ALTER TABLE ONLY public.sivel2_gen_antecedente_combatiente
 
 
 --
+-- Name: sivel2_gen_antecedente sivel2_gen_antecedente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_antecedente
+    ADD CONSTRAINT sivel2_gen_antecedente_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_antecedente_victima sivel2_gen_antecedente_victima_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6138,6 +6864,14 @@ ALTER TABLE ONLY public.sivel2_gen_caso_contexto
 
 
 --
+-- Name: sivel2_gen_caso_etiqueta sivel2_gen_caso_etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_etiqueta
+    ADD CONSTRAINT sivel2_gen_caso_etiqueta_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_caso_fotra sivel2_gen_caso_fotra_id_caso_nombre_fecha_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6170,6 +6904,22 @@ ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
 
 
 --
+-- Name: sivel2_gen_caso sivel2_gen_caso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso
+    ADD CONSTRAINT sivel2_gen_caso_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_caso_presponsable sivel2_gen_caso_presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
+    ADD CONSTRAINT sivel2_gen_caso_presponsable_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_caso_region sivel2_gen_caso_region_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6199,6 +6949,14 @@ ALTER TABLE ONLY public.sivel2_gen_caso_solicitud
 
 ALTER TABLE ONLY public.sivel2_gen_combatiente
     ADD CONSTRAINT sivel2_gen_combatiente_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_contexto sivel2_gen_contexto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_contexto
+    ADD CONSTRAINT sivel2_gen_contexto_pkey PRIMARY KEY (id);
 
 
 --
@@ -6242,11 +7000,51 @@ ALTER TABLE ONLY public.sivel2_gen_etnia_victimacolectiva
 
 
 --
+-- Name: sivel2_gen_filiacion sivel2_gen_filiacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_filiacion
+    ADD CONSTRAINT sivel2_gen_filiacion_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_filiacion_victimacolectiva sivel2_gen_filiacion_victimacolectiva_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_filiacion_victimacolectiva
     ADD CONSTRAINT sivel2_gen_filiacion_victimacolectiva_pkey1 PRIMARY KEY (filiacion_id, victimacolectiva_id);
+
+
+--
+-- Name: sivel2_gen_fotra sivel2_gen_fotra_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_fotra
+    ADD CONSTRAINT sivel2_gen_fotra_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_frontera sivel2_gen_frontera_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_frontera
+    ADD CONSTRAINT sivel2_gen_frontera_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_iglesia sivel2_gen_iglesia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_iglesia
+    ADD CONSTRAINT sivel2_gen_iglesia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_intervalo sivel2_gen_intervalo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_intervalo
+    ADD CONSTRAINT sivel2_gen_intervalo_pkey PRIMARY KEY (id);
 
 
 --
@@ -6258,11 +7056,35 @@ ALTER TABLE ONLY public.sivel2_gen_maternidad
 
 
 --
+-- Name: sivel2_gen_organizacion sivel2_gen_organizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_organizacion
+    ADD CONSTRAINT sivel2_gen_organizacion_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_organizacion_victimacolectiva sivel2_gen_organizacion_victimacolectiva_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_organizacion_victimacolectiva
     ADD CONSTRAINT sivel2_gen_organizacion_victimacolectiva_pkey1 PRIMARY KEY (organizacion_id, victimacolectiva_id);
+
+
+--
+-- Name: sivel2_gen_presponsable sivel2_gen_presponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_presponsable
+    ADD CONSTRAINT sivel2_gen_presponsable_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_profesion sivel2_gen_profesion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_profesion
+    ADD CONSTRAINT sivel2_gen_profesion_pkey PRIMARY KEY (id);
 
 
 --
@@ -6282,6 +7104,14 @@ ALTER TABLE ONLY public.sivel2_gen_profesion_victimacolectiva
 
 
 --
+-- Name: sivel2_gen_rangoedad sivel2_gen_rangoedad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_rangoedad
+    ADD CONSTRAINT sivel2_gen_rangoedad_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_rangoedad_victimacolectiva sivel2_gen_rangoedad_victimacolectiva_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6290,11 +7120,27 @@ ALTER TABLE ONLY public.sivel2_gen_rangoedad_victimacolectiva
 
 
 --
+-- Name: sivel2_gen_region sivel2_gen_region_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_region
+    ADD CONSTRAINT sivel2_gen_region_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sivel2_gen_resagresion sivel2_gen_resagresion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_resagresion
     ADD CONSTRAINT sivel2_gen_resagresion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_sectorsocial sivel2_gen_sectorsocial_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_sectorsocial
+    ADD CONSTRAINT sivel2_gen_sectorsocial_pkey PRIMARY KEY (id);
 
 
 --
@@ -6319,6 +7165,14 @@ ALTER TABLE ONLY public.sivel2_gen_supracategoria
 
 ALTER TABLE ONLY public.sivel2_gen_supracategoria
     ADD CONSTRAINT sivel2_gen_supracategoria_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sivel2_gen_victima sivel2_gen_victima_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT sivel2_gen_victima_pkey PRIMARY KEY (id);
 
 
 --
@@ -6351,6 +7205,14 @@ ALTER TABLE ONLY public.sivel2_gen_victimacolectiva
 
 ALTER TABLE ONLY public.sivel2_gen_victimacolectiva_vinculoestado
     ADD CONSTRAINT sivel2_gen_victimacolectiva_vinculoestado_pkey1 PRIMARY KEY (victimacolectiva_id, vinculoestado_id);
+
+
+--
+-- Name: sivel2_gen_vinculoestado sivel2_gen_vinculoestado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_vinculoestado
+    ADD CONSTRAINT sivel2_gen_vinculoestado_pkey PRIMARY KEY (id);
 
 
 --
@@ -6394,26 +7256,24 @@ ALTER TABLE ONLY public.sivel2_gen_victima
 
 
 --
--- Name: sivel2_gen_victima victima_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_victima
-    ADD CONSTRAINT victima_pkey PRIMARY KEY (id);
-
-
---
--- Name: sivel2_gen_vinculoestado vinculo_estado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_vinculoestado
-    ADD CONSTRAINT vinculo_estado_pkey PRIMARY KEY (id);
-
-
---
 -- Name: busca_sivel2_gen_conscaso; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX busca_sivel2_gen_conscaso ON public.sivel2_gen_conscaso USING gin (q);
+
+
+--
+-- Name: caso_fecha_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX caso_fecha_idx ON public.sivel2_gen_caso USING btree (fecha);
+
+
+--
+-- Name: caso_fecha_idx1; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX caso_fecha_idx1 ON public.sivel2_gen_caso USING btree (fecha);
 
 
 --
@@ -6893,6 +7753,41 @@ CREATE UNIQUE INDEX usuario_nusuario ON public.usuario USING btree (nusuario);
 
 
 --
+-- Name: msip_centropoblado msip_antes_de_eliminar_centropoblado; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_antes_de_eliminar_centropoblado BEFORE DELETE ON public.msip_centropoblado FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_centropoblado();
+
+
+--
+-- Name: msip_departamento msip_antes_de_eliminar_departamento; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_antes_de_eliminar_departamento BEFORE DELETE ON public.msip_departamento FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_departamento();
+
+
+--
+-- Name: msip_municipio msip_antes_de_eliminar_municipio; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_antes_de_eliminar_municipio BEFORE DELETE ON public.msip_municipio FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_municipio();
+
+
+--
+-- Name: msip_pais msip_antes_de_eliminar_pais; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_antes_de_eliminar_pais BEFORE DELETE ON public.msip_pais FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_pais();
+
+
+--
+-- Name: msip_vereda msip_antes_de_eliminar_vereda; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_antes_de_eliminar_vereda BEFORE DELETE ON public.msip_vereda FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_antes_de_eliminar_vereda();
+
+
+--
 -- Name: msip_persona_trelacion msip_eliminar_familiar; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -6904,6 +7799,259 @@ CREATE TRIGGER msip_eliminar_familiar AFTER DELETE ON public.msip_persona_trelac
 --
 
 CREATE TRIGGER msip_insertar_familiar AFTER INSERT OR UPDATE ON public.msip_persona_trelacion FOR EACH ROW EXECUTE FUNCTION public.msip_agregar_o_remplazar_familiar_inverso();
+
+
+--
+-- Name: msip_centropoblado msip_tras_actualizar_centropoblado; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_actualizar_centropoblado AFTER UPDATE OF nombre, latitud, longitud ON public.msip_centropoblado FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_actualizar_centropoblado();
+
+
+--
+-- Name: msip_departamento msip_tras_actualizar_departamento; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_actualizar_departamento AFTER UPDATE OF nombre, latitud, longitud ON public.msip_departamento FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_actualizar_departamento();
+
+
+--
+-- Name: msip_municipio msip_tras_actualizar_municipio; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_actualizar_municipio AFTER UPDATE OF nombre, latitud, longitud ON public.msip_municipio FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_actualizar_municipio();
+
+
+--
+-- Name: msip_pais msip_tras_actualizar_pais; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_actualizar_pais AFTER UPDATE OF nombre, latitud, longitud ON public.msip_pais FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_actualizar_pais();
+
+
+--
+-- Name: msip_vereda msip_tras_actualizar_vereda; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_actualizar_vereda AFTER UPDATE OF nombre, latitud, longitud ON public.msip_vereda FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_actualizar_vereda();
+
+
+--
+-- Name: msip_centropoblado msip_tras_crear_centropoblado; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_crear_centropoblado AFTER INSERT ON public.msip_centropoblado FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_crear_centropoblado();
+
+
+--
+-- Name: msip_departamento msip_tras_crear_departamento; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_crear_departamento AFTER INSERT ON public.msip_departamento FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_crear_departamento();
+
+
+--
+-- Name: msip_municipio msip_tras_crear_municipio; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_crear_municipio AFTER INSERT ON public.msip_municipio FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_crear_municipio();
+
+
+--
+-- Name: msip_pais msip_tras_crear_pais; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_crear_pais AFTER INSERT ON public.msip_pais FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_crear_pais();
+
+
+--
+-- Name: msip_vereda msip_tras_crear_vereda; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER msip_tras_crear_vereda AFTER INSERT ON public.msip_vereda FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_tras_crear_vereda();
+
+
+--
+-- Name: msip_ubicacionpre tras_crear_o_actualizar_ubicacionpre; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER tras_crear_o_actualizar_ubicacionpre BEFORE INSERT OR UPDATE OF pais_id, departamento_id, municipio_id, centropoblado_id, vereda_id, lugar, sitio, nombre ON public.msip_ubicacionpre FOR EACH ROW EXECUTE FUNCTION public.msip_ubicacionpre_actualiza_nombre();
+
+
+--
+-- Name: sivel2_gen_supracategoria $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_supracategoria
+    ADD CONSTRAINT "$1" FOREIGN KEY (tviolencia_id) REFERENCES public.sivel2_gen_tviolencia(id);
+
+
+--
+-- Name: sivel2_gen_victimacolectiva $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victimacolectiva
+    ADD CONSTRAINT "$1" FOREIGN KEY (organizacionarmada) REFERENCES public.sivel2_gen_presponsable(id);
+
+
+--
+-- Name: sivel2_gen_caso $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso
+    ADD CONSTRAINT "$1" FOREIGN KEY (intervalo_id) REFERENCES public.sivel2_gen_intervalo(id);
+
+
+--
+-- Name: sivel2_gen_caso_presponsable $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
+    ADD CONSTRAINT "$1" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_caso_frontera $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_frontera
+    ADD CONSTRAINT "$1" FOREIGN KEY (frontera_id) REFERENCES public.sivel2_gen_frontera(id);
+
+
+--
+-- Name: sivel2_gen_victima $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$1" FOREIGN KEY (profesion_id) REFERENCES public.sivel2_gen_profesion(id);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT "$1" FOREIGN KEY (fuenteprensa_id) REFERENCES public.msip_fuenteprensa(id);
+
+
+--
+-- Name: sivel2_gen_caso_fotra $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fotra
+    ADD CONSTRAINT "$1" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: msip_centropoblado $1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_centropoblado
+    ADD CONSTRAINT "$1" FOREIGN KEY (tcentropoblado_id) REFERENCES public.msip_tcentropoblado(id);
+
+
+--
+-- Name: sivel2_gen_caso_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
+    ADD CONSTRAINT "$2" FOREIGN KEY (presponsable_id) REFERENCES public.sivel2_gen_presponsable(id);
+
+
+--
+-- Name: sivel2_gen_caso_categoria_presponsable $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
+    ADD CONSTRAINT "$2" FOREIGN KEY (categoria_id) REFERENCES public.sivel2_gen_categoria(id);
+
+
+--
+-- Name: sivel2_gen_caso_frontera $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_frontera
+    ADD CONSTRAINT "$2" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_victima $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$2" FOREIGN KEY (rangoedad_id) REFERENCES public.sivel2_gen_rangoedad(id);
+
+
+--
+-- Name: sivel2_gen_caso_usuario $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_usuario
+    ADD CONSTRAINT "$2" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_caso_fuenteprensa $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fuenteprensa
+    ADD CONSTRAINT "$2" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_caso_fotra $2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_fotra
+    ADD CONSTRAINT "$2" FOREIGN KEY (fotra_id) REFERENCES public.sivel2_gen_fotra(id);
+
+
+--
+-- Name: sivel2_gen_victima $3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$3" FOREIGN KEY (filiacion_id) REFERENCES public.sivel2_gen_filiacion(id);
+
+
+--
+-- Name: sivel2_gen_victima $4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$4" FOREIGN KEY (sectorsocial_id) REFERENCES public.sivel2_gen_sectorsocial(id);
+
+
+--
+-- Name: sivel2_gen_victima $5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$5" FOREIGN KEY (organizacion_id) REFERENCES public.sivel2_gen_organizacion(id);
+
+
+--
+-- Name: sivel2_gen_victima $6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$6" FOREIGN KEY (vinculoestado_id) REFERENCES public.sivel2_gen_vinculoestado(id);
+
+
+--
+-- Name: sivel2_gen_victima $7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$7" FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: sivel2_gen_victima $8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_victima
+    ADD CONSTRAINT "$8" FOREIGN KEY (organizacionarmada) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -6995,19 +8143,19 @@ ALTER TABLE ONLY public.sivel2_gen_anexo_caso
 
 
 --
--- Name: sivel2_gen_antecedente_caso antecedente_caso_id_antecedente_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_antecedente_caso antecedente_caso_id_antecedente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_caso
-    ADD CONSTRAINT antecedente_caso_id_antecedente_fkey1 FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
+    ADD CONSTRAINT antecedente_caso_id_antecedente_fkey FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
 
 
 --
--- Name: sivel2_gen_antecedente_caso antecedente_caso_id_caso_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_antecedente_caso antecedente_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_caso
-    ADD CONSTRAINT antecedente_caso_id_caso_fkey1 FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+    ADD CONSTRAINT antecedente_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
 
 
 --
@@ -7027,11 +8175,11 @@ ALTER TABLE ONLY public.sivel2_gen_antecedente_combatiente
 
 
 --
--- Name: sivel2_gen_antecedente_victima antecedente_victima_id_antecedente_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_antecedente_victima antecedente_victima_id_antecedente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_antecedente_victima
-    ADD CONSTRAINT antecedente_victima_id_antecedente_fkey1 FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
+    ADD CONSTRAINT antecedente_victima_id_antecedente_fkey FOREIGN KEY (antecedente_id) REFERENCES public.sivel2_gen_antecedente(id);
 
 
 --
@@ -7067,19 +8215,27 @@ ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
 
 
 --
--- Name: sivel2_gen_caso_contexto caso_contexto_id_caso_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_contexto caso_contexto_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_contexto
-    ADD CONSTRAINT caso_contexto_id_caso_fkey1 FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+    ADD CONSTRAINT caso_contexto_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
 
 
 --
--- Name: sivel2_gen_caso_contexto caso_contexto_id_contexto_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_caso_contexto caso_contexto_id_contexto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sivel2_gen_caso_contexto
-    ADD CONSTRAINT caso_contexto_id_contexto_fkey1 FOREIGN KEY (contexto_id) REFERENCES public.sivel2_gen_contexto(id);
+    ADD CONSTRAINT caso_contexto_id_contexto_fkey FOREIGN KEY (contexto_id) REFERENCES public.sivel2_gen_contexto(id);
+
+
+--
+-- Name: sivel2_gen_caso_etiqueta caso_etiqueta_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso_etiqueta
+    ADD CONSTRAINT caso_etiqueta_id_usuario_fkey FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
 
 
 --
@@ -7147,11 +8303,11 @@ ALTER TABLE ONLY public.sivel2_gen_categoria
 
 
 --
--- Name: sivel2_gen_caso_categoria_presponsable categoria_p_responsable_caso_id_categoria_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sivel2_gen_categoria categoria_contadaen_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sivel2_gen_caso_categoria_presponsable
-    ADD CONSTRAINT categoria_p_responsable_caso_id_categoria_fkey FOREIGN KEY (categoria_id) REFERENCES public.sivel2_gen_categoria(id);
+ALTER TABLE ONLY public.sivel2_gen_categoria
+    ADD CONSTRAINT categoria_contadaen_fkey FOREIGN KEY (contadaen) REFERENCES public.sivel2_gen_categoria(id);
 
 
 --
@@ -7611,6 +8767,14 @@ ALTER TABLE ONLY public.msip_orgsocial_persona
 
 
 --
+-- Name: sivel2_gen_caso fk_rails_7f697555c4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_caso
+    ADD CONSTRAINT fk_rails_7f697555c4 FOREIGN KEY (ubicacionpreprincipal_id) REFERENCES public.msip_ubicacionpre(id);
+
+
+--
 -- Name: mr519_gen_respuestafor fk_rails_805efe6935; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8059,59 +9223,11 @@ ALTER TABLE ONLY public.msip_ubicacionpre
 
 
 --
--- Name: sivel2_gen_caso_frontera frontera_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_frontera
-    ADD CONSTRAINT frontera_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_caso_frontera frontera_caso_id_frontera_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_frontera
-    ADD CONSTRAINT frontera_caso_id_frontera_fkey FOREIGN KEY (frontera_id) REFERENCES public.sivel2_gen_frontera(id);
-
-
---
--- Name: sivel2_gen_caso_fotra fuente_directa_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_fotra
-    ADD CONSTRAINT fuente_directa_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
--- Name: sivel2_gen_caso_fotra fuente_directa_caso_id_fuente_directa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_fotra
-    ADD CONSTRAINT fuente_directa_caso_id_fuente_directa_fkey FOREIGN KEY (fotra_id) REFERENCES public.sivel2_gen_fotra(id);
-
-
---
--- Name: sivel2_gen_caso_usuario funcionario_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_caso_usuario
-    ADD CONSTRAINT funcionario_caso_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
-
-
---
 -- Name: msip_centropoblado msip_centropoblado_municipio_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.msip_centropoblado
     ADD CONSTRAINT msip_centropoblado_municipio_id_fkey FOREIGN KEY (municipio_id) REFERENCES public.msip_municipio(id);
-
-
---
--- Name: msip_centropoblado msip_centropoblado_tcentropoblado_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.msip_centropoblado
-    ADD CONSTRAINT msip_centropoblado_tcentropoblado_id_fkey FOREIGN KEY (tcentropoblado_id) REFERENCES public.msip_tcentropoblado(id);
 
 
 --
@@ -8211,6 +9327,14 @@ ALTER TABLE ONLY public.msip_persona
 
 
 --
+-- Name: sivel2_gen_presponsable presponsable_papa_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sivel2_gen_presponsable
+    ADD CONSTRAINT presponsable_papa_id_fkey FOREIGN KEY (papa_id) REFERENCES public.sivel2_gen_presponsable(id);
+
+
+--
 -- Name: sivel2_gen_caso_presponsable presuntos_responsables_caso_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8224,14 +9348,6 @@ ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
 
 ALTER TABLE ONLY public.sivel2_gen_caso_presponsable
     ADD CONSTRAINT presuntos_responsables_caso_id_p_responsable_fkey FOREIGN KEY (presponsable_id) REFERENCES public.sivel2_gen_presponsable(id);
-
-
---
--- Name: sivel2_gen_presponsable presuntos_responsables_id_papa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sivel2_gen_presponsable
-    ADD CONSTRAINT presuntos_responsables_id_papa_fkey FOREIGN KEY (papa_id) REFERENCES public.sivel2_gen_presponsable(id);
 
 
 --
@@ -8379,11 +9495,19 @@ ALTER TABLE ONLY public.sivel2_gen_supracategoria
 
 
 --
--- Name: msip_ubicacion ubicacion_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: msip_ubicacion ubicacion2_id_caso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.msip_ubicacion
-    ADD CONSTRAINT ubicacion_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+    ADD CONSTRAINT ubicacion2_id_caso_fkey FOREIGN KEY (caso_id) REFERENCES public.sivel2_gen_caso(id);
+
+
+--
+-- Name: msip_ubicacion ubicacion2_id_tipo_sitio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.msip_ubicacion
+    ADD CONSTRAINT ubicacion2_id_tipo_sitio_fkey FOREIGN KEY (tsitio_id) REFERENCES public.msip_tsitio(id);
 
 
 --
@@ -8392,14 +9516,6 @@ ALTER TABLE ONLY public.msip_ubicacion
 
 ALTER TABLE ONLY public.msip_ubicacion
     ADD CONSTRAINT ubicacion_id_pais_fkey FOREIGN KEY (pais_id) REFERENCES public.msip_pais(id);
-
-
---
--- Name: msip_ubicacion ubicacion_id_tipo_sitio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.msip_ubicacion
-    ADD CONSTRAINT ubicacion_id_tipo_sitio_fkey FOREIGN KEY (tsitio_id) REFERENCES public.msip_tsitio(id);
 
 
 --
@@ -8529,6 +9645,7 @@ ALTER TABLE ONLY public.sivel2_gen_victimacolectiva_vinculoestado
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20241210175255'),
 ('20241119195733'),
 ('20241119180614'),
 ('20241113141404'),
@@ -8536,8 +9653,15 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20241005013833'),
 ('20241005013800'),
 ('20240806082036'),
+('20240723152453'),
+('20240723140427'),
+('20240722133233'),
+('20240719195316'),
+('20240718234057'),
+('20240718234030'),
 ('20240715230510'),
 ('20240619170550'),
+('20240424122935'),
 ('20240423143517'),
 ('20240319141612'),
 ('20240312182320'),
