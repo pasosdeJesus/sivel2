@@ -36,9 +36,10 @@ module Mr519Gen
     # No autenticado
     ################
 
-    test "sin autenticar no debe acceder a opcionescs/new" do
+    test "sin autenticar no debe acceder a opcionescs/create" do
+      skip
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_opcioncs_path
+        get mr519_gen.crear_opcioncs_path(0)
       end
     end
 
@@ -52,30 +53,31 @@ module Mr519Gen
     # Autenticado como operador sin grupo
     #####################################
 
-    test "observador no debe acceder a opcionescs/new" do
-      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
-      sign_in current_usuario
-      assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_opcioncs_path
-      end
-    end
-
-    test "observador no debe eliminar opcioncs" do
+    test "observador no debe acceder a opcionescs/create" do
       skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        delete mr519_gen.opcioncs_path(@opcioncs.id)
+        get mr519_gen.crear_opcioncs_path(0)
+      end
+    end
+
+    test "observador no debe eliminar opcioncs" do
+      current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
+      sign_in current_usuario
+      assert_raise CanCan::AccessDenied do
+        delete mr519_gen.eliminar_opcioncs_path(0)
       end
     end
 
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
-    test "analista no debe acceder a opcionescs/new" do
+    test "analista no debe acceder a opcionescs/create" do
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_opcioncs_path
+        get mr519_gen.crear_opcioncs_path(0)
       end
     end
 

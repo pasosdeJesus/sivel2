@@ -18,17 +18,8 @@ GIT
       railties (>= 3.2)
 
 GIT
-  remote: https://gitlab.com/pasosdeJesus/apo214.git
-  revision: 7838400d11607065368b4fb27aa4029a09bb6e75
-  branch: main
-  specs:
-    apo214 (2.2.0.beta4)
-      msip
-      rails
-
-GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: acacda1ef1f112df134fdb7aa78ee4cc835c7a0c
+  revision: 048507c62150d643fa9c668d942bca0548cacbf3
   branch: main
   specs:
     heb412_gen (2.3.0.alfa4)
@@ -39,7 +30,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: dd74ed6c1b28f3296703615715513304362fbbe2
+  revision: 7b409706816a5f9d838bbd29bbe8fc1e432ae7b6
   branch: main
   specs:
     mr519_gen (2.3.0.alfa4)
@@ -48,7 +39,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: ab4f1a4276a649f97b8f107b5b7003fba3514e8e
+  revision: 9168e4cd45479cfc61737e3ec4ce143bc169e81c
   branch: main
   specs:
     msip (2.3.0.alfa4)
@@ -68,7 +59,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: b8e937db3f50a2340db2408e35ebd2bbdd5c9ab4
+  revision: 6b4fa0ce8a95dcaed0c9a1a01ab8563d8dd99b28
   branch: main
   specs:
     sivel2_gen (2.3.0.alfa3)
@@ -323,7 +314,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.11)
+    rack (2.2.12)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -407,7 +398,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.2)
+    rubocop-rails (2.30.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -454,9 +445,9 @@ GEM
     timeout (0.4.3)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.11)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
+    turbo-rails (2.0.13)
+      actionpack (>= 7.1.0)
+      railties (>= 7.1.0)
     twitter_cldr (6.14.0)
       base64
       camertron-eprun
@@ -503,7 +494,6 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   apexcharts
-  apo214!
   bcrypt
   benchmark
   best_in_place!

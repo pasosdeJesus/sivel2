@@ -26,9 +26,6 @@ Mr519Gen__Motor.iniciar()
 import Heb412Gen__Motor from "./controllers/heb412_gen/motor"
 window.Heb412Gen__Motor = Heb412Gen__Motor
 Heb412Gen__Motor.iniciar()
-import Apo214__Motor from "./controllers/apo214/motor"
-window.Apo214__Motor = Apo214__Motor
-Apo214__Motor.iniciar()
 import Sivel2Gen__Motor from "./controllers/sivel2_gen/motor"
 window.Sivel2Gen__Motor = Sivel2Gen__Motor
 Sivel2Gen__Motor.iniciar()

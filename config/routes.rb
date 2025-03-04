@@ -42,5 +42,4 @@ Rails.application.routes.draw do
   mount Mr519Gen::Engine, at: "/", as: "mr519_gen"
   mount Heb412Gen::Engine, at: "/", as: "heb412_gen"
   mount Sivel2Gen::Engine, at: "/", as: "sivel2_gen"
-  mount Apo214::Engine, at: "/", as: "apo214"
 end

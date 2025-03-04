@@ -61,13 +61,6 @@
           desplegable: true %>
 
       <% end %>
-      <% if Rails.configuration.x.sivel2_desaparicion &&
-           (can? :pestanadesaparicion, Sivel2Gen::Caso) %>
-        <%= despliega_abajo "Desaparición" do %>
-          <%= opcion_menu "Lugares preliminares de disposición de cadaveres", 
-            apo214.lugarespreliminares_path, desplegable: true %>
-        <% end %>
-      <% end %>
     <% end %>
   <% end %>
   <%= grupo_menus :pull => :right do %>

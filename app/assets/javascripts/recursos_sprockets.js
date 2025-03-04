@@ -11,7 +11,6 @@
 // de las directivas soportadas.
 //
 //= require best_in_place
-//= require apo214/motor
 //= require_tree .
 
 
