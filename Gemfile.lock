@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 92334bdb4099315f2841c127ba468fa5a4e145ec
+  revision: c9cbfcd8ad49e3e4051ebe58e7afb75111392d4f
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta8)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 423f7bf4a1ed6be5e3fa9397f1af7554ff6b1ada
+  revision: 4c1dfd6aaeaaafe9fc7c74e1a14c30cc68e1328e
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta8)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 7121acdc058de0d3bb5ed6140499d1090941c973
+  revision: 3236799e07d3dec84bde58f4edefe2d607b4c937
   branch: v2.2
   specs:
     msip (2.2.0.beta8)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 8eef72ac60344f7b5b759503390df26200c66e50
+  revision: 5f74394dad3cc93c9c3e0ee352ce70f876b52ded
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta8)
@@ -204,8 +204,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.12.1)
+    devise-i18n (1.13.0)
       devise (>= 4.9.0)
+      rails-i18n
     docile (1.4.1)
     dotenv (3.1.7)
     dotenv-rails (3.1.7)
@@ -334,7 +335,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.11)
+    rack (2.2.12)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -414,14 +415,14 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.2)
+    rubocop-rails (2.30.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
       rubocop (>= 1.72.1, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-shopify (2.15.1)
-      rubocop (~> 1.51)
+    rubocop-shopify (2.16.0)
+      rubocop (~> 1.62)
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
@@ -461,9 +462,9 @@ GEM
     timeout (0.4.3)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.11)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
+    turbo-rails (2.0.13)
+      actionpack (>= 7.1.0)
+      railties (>= 7.1.0)
     twitter_cldr (6.14.0)
       base64
       camertron-eprun
