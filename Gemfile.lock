@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: c9cbfcd8ad49e3e4051ebe58e7afb75111392d4f
+  revision: 772e97ee45a54c89fb83cd9dbc9ac9c6c0341c21
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta8)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 4c1dfd6aaeaaafe9fc7c74e1a14c30cc68e1328e
+  revision: e65b0b12d43dd74bb0b35385f08d7d6994145a89
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta8)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 3236799e07d3dec84bde58f4edefe2d607b4c937
+  revision: 0984afcbbb6ce76fe514b27d977eef09e76643ee
   branch: v2.2
   specs:
     msip (2.2.0.beta8)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 5f74394dad3cc93c9c3e0ee352ce70f876b52ded
+  revision: 9378b49460744d39062933e2750ce2e9da93d88f
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta8)
@@ -335,7 +335,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.12)
+    rack (2.2.13)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -572,4 +572,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.5
+   2.6.6
