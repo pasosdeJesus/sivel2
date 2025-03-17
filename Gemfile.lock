@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 772e97ee45a54c89fb83cd9dbc9ac9c6c0341c21
+  revision: 6e27d9f1be410f75de2fbf3e13ee8adfa4317b42
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta8)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e65b0b12d43dd74bb0b35385f08d7d6994145a89
+  revision: 57b38baf475a470dc4007209a732ad047ca33020
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta8)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 0984afcbbb6ce76fe514b27d977eef09e76643ee
+  revision: 3557b3821081df9f6de79db1825bdcd5351b655c
   branch: v2.2
   specs:
     msip (2.2.0.beta8)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 9378b49460744d39062933e2750ce2e9da93d88f
+  revision: 437569d474f20e701c83a5020e7a359a4b470652
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta8)
@@ -286,24 +286,24 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.3)
+    nokogiri (1.18.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.3-aarch64-linux-gnu)
+    nokogiri (1.18.4-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.3-aarch64-linux-musl)
+    nokogiri (1.18.4-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.3-arm-linux-gnu)
+    nokogiri (1.18.4-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.3-arm-linux-musl)
+    nokogiri (1.18.4-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.3-arm64-darwin)
+    nokogiri (1.18.4-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.3-x86_64-darwin)
+    nokogiri (1.18.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.3-x86_64-linux-gnu)
+    nokogiri (1.18.4-x86_64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.3-x86_64-linux-musl)
+    nokogiri (1.18.4-x86_64-linux-musl)
       racc (~> 1.4)
     odf-report (0.8.1)
       mime-types
