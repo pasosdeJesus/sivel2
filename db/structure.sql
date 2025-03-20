@@ -2438,22 +2438,13 @@ CREATE VIEW public.cvt1 AS
     acto.persona_id,
     acto.categoria_id,
     supracategoria.tviolencia_id,
-    categoria.nombre AS categoria,
-    ubicacion.departamento_id,
-    departamento.deplocal_cod AS departamento_divipola,
-    departamento.nombre AS departamento_nombre,
-    ubicacion.municipio_id,
-    ((departamento.deplocal_cod * 1000) + municipio.munlocal_cod) AS municipio_divipola,
-    municipio.nombre AS municipio_nombre
-   FROM ((((((((public.sivel2_gen_acto acto
+    categoria.nombre AS categoria
+   FROM (((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.caso_id = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.categoria_id = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.persona_id = acto.persona_id) AND (victima.caso_id = caso.id))))
      JOIN public.msip_persona persona ON ((persona.id = acto.persona_id)))
-     LEFT JOIN public.msip_ubicacion ubicacion ON ((caso.ubicacion_id = ubicacion.id)))
-     LEFT JOIN public.msip_departamento departamento ON ((ubicacion.departamento_id = departamento.id)))
-     LEFT JOIN public.msip_municipio municipio ON ((ubicacion.municipio_id = municipio.id)))
   WHERE (categoria.id = ANY (ARRAY[777, 297, 197, 427, 527, 397, 776, 396, 526, 196, 426, 296, 73, 25, 35, 55, 45, 15, 65, 92, 40, 50, 67, 801, 90, 57, 16, 37, 26, 46, 80, 85, 66, 64, 703, 18, 59, 706, 28, 49, 38, 401, 501, 115, 125, 135, 904, 331, 17, 502, 231, 402, 705, 62, 503, 403, 104, 906, 713, 101, 21, 302, 11, 76, 102, 27, 902, 903, 34, 301, 14, 24, 20, 30, 10, 772, 422, 192, 292, 522, 392, 63, 93, 910, 395, 525, 295, 775, 425, 195, 714, 78, 194, 424, 294, 394, 524, 774, 89, 905, 86, 701, 68, 141, 241, 341, 715, 704, 702, 33, 23, 13, 43, 53, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 193, 393, 523, 293, 773, 423, 48, 58, 75, 69, 41, 74, 36, 56, 72, 47, 22, 12, 391, 771, 191, 421, 291, 521, 39, 77, 420, 520, 19, 29, 712]));
 
 
