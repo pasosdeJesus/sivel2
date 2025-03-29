@@ -84,7 +84,6 @@ promesaRecursosSprocketsYDocumento.then((mensaje) => {
   Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
   Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
   Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
-  Apo214__Motor.ejecutarAlCargarDocumentoYRecursos()
   Sivel2Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
 
   var p = new URL(document.URL).pathname.split('/')
@@ -111,7 +110,6 @@ document.addEventListener('turbo:load', (e) => {
   Msip__Motor.ejecutarAlCargarPagina()
   Mr519Gen__Motor.ejecutarAlCargarPagina()
   Heb412Gen__Motor.ejecutarAlCargarPagina()
-  Apo214__Motor.ejecutarAlCargarPagina()
   Sivel2Gen__Motor.ejecutarAlCargarPagina()
 
 })
