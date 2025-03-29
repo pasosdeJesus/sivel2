@@ -52,3 +52,12 @@ app/javascript/controllers/sivel2_gen
 public/sivel2_2/
 cobertura-sistema/
 cobertura-unitarias/
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+app/assets/stylesheets/actiontext
+app/assets/stylesheets/msip
+app/assets/stylesheets/mr519_gen
+app/assets/stylesheets/heb412_gen
+app/assets/stylesheets/sivel2_gen

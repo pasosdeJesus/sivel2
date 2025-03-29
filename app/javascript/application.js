@@ -80,7 +80,6 @@ promesaRecursosSprocketsYDocumento.then((mensaje) => {
   // cache y tipicamente después de que se ha cargado la página completa 
   // y los recursos
   console.log(mensaje)
-  var window = window;
 
   Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
   Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
