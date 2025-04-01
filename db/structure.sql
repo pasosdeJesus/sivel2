@@ -879,36 +879,6 @@ CREATE TABLE public.sivel2_gen_categoria (
 
 
 --
--- Name: sivel2_gen_rangoedad_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sivel2_gen_rangoedad_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sivel2_gen_rangoedad (
-    id integer DEFAULT nextval('public.sivel2_gen_rangoedad_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    limiteinferior integer DEFAULT 0 NOT NULL,
-    limitesuperior integer DEFAULT 0 NOT NULL,
-    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000),
-    CONSTRAINT rango_edad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
-
-
---
 -- Name: sivel2_gen_supracategoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -947,17 +917,14 @@ CREATE VIEW public.cvt1 AS
     acto.id_persona,
     acto.id_categoria,
     supracategoria.id_tviolencia,
-    categoria.nombre AS categoria,
-    rangoedad.id,
-    rangoedad.nombre AS rangoedad_rango
-   FROM ((((((public.sivel2_gen_acto acto
+    categoria.nombre AS categoria
+   FROM (((((public.sivel2_gen_acto acto
      JOIN public.sivel2_gen_caso caso ON ((acto.id_caso = caso.id)))
      JOIN public.sivel2_gen_categoria categoria ON ((acto.id_categoria = categoria.id)))
      JOIN public.sivel2_gen_supracategoria supracategoria ON ((categoria.supracategoria_id = supracategoria.id)))
      JOIN public.sivel2_gen_victima victima ON (((victima.id_persona = acto.id_persona) AND (victima.id_caso = caso.id))))
      JOIN public.sip_persona persona ON ((persona.id = acto.id_persona)))
-     LEFT JOIN public.sivel2_gen_rangoedad rangoedad ON ((victima.id_rangoedad = rangoedad.id)))
-  WHERE (categoria.id = ANY (ARRAY[527, 397, 777, 297, 427, 197, 296, 396, 526, 776, 426, 196, 15, 55, 35, 73, 25, 45, 65, 92, 50, 40, 67, 801, 90, 16, 46, 57, 26, 37, 80, 85, 66, 64, 703, 59, 706, 49, 38, 18, 28, 501, 401, 125, 135, 115, 904, 231, 17, 331, 402, 502, 705, 62, 503, 403, 906, 104, 713, 101, 21, 76, 11, 302, 903, 34, 27, 902, 102, 24, 301, 14, 20, 10, 30, 392, 522, 292, 772, 422, 192, 63, 93, 910, 525, 295, 395, 425, 775, 195, 714, 78, 524, 394, 294, 774, 424, 194, 89, 905, 86, 701, 68, 341, 241, 141, 715, 704, 702, 33, 13, 53, 43, 23, 88, 98, 84, 709, 711, 707, 708, 710, 87, 97, 717, 917, 716, 916, 91, 95, 718, 523, 393, 293, 193, 423, 773, 48, 58, 75, 69, 41, 74, 56, 47, 72, 12, 36, 22, 191, 421, 771, 291, 521, 391, 29, 520, 420, 77, 19, 39, 712]));
+  WHERE (((supracategoria.id_tviolencia)::text = 'C'::text) AND (categoria.id = '-1'::integer));
 
 
 --
@@ -3806,6 +3773,36 @@ CREATE TABLE public.sivel2_gen_profesion (
 CREATE TABLE public.sivel2_gen_profesion_victimacolectiva (
     id_profesion integer NOT NULL,
     victimacolectiva_id integer NOT NULL
+);
+
+
+--
+-- Name: sivel2_gen_rangoedad_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sivel2_gen_rangoedad_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sivel2_gen_rangoedad; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sivel2_gen_rangoedad (
+    id integer DEFAULT nextval('public.sivel2_gen_rangoedad_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    limiteinferior integer DEFAULT 0 NOT NULL,
+    limitesuperior integer DEFAULT 0 NOT NULL,
+    fechacreacion date DEFAULT '2001-01-01'::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000),
+    CONSTRAINT rango_edad_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
 
@@ -7613,6 +7610,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20221118032223'),
 ('20230420155555'),
 ('20230421211837'),
+('20231120175125'),
 ('20240305165644'),
 ('20240312182320');
 
