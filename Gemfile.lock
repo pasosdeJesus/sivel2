@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: c86f75cd7b4bef44e325803cb8da6849f2d7faa4
+  revision: 8db016d35539158a3a66a8528f0e1caa0d9aff51
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta8)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: bacadc637ed8ef6da234f315a1bcbb39f0028fb3
+  revision: 57f396762a7d0acbd64ca728b1199971a09f6d66
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta8)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 57e89053a9974ba1608bb88e870e74e26da041d2
+  revision: 6685f3fa39fd871e69aa84448fbc53c266d58b98
   branch: v2.2
   specs:
     msip (2.2.0.beta8)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 7d3e3cb581749d1bb5e7f1d3edd602a3b30a91ee
+  revision: b9dbfafbaac72e324ed9127525c4b660f236ea80
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta8)
@@ -286,24 +286,24 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.6)
+    nokogiri (1.18.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.6-aarch64-linux-gnu)
+    nokogiri (1.18.7-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.6-aarch64-linux-musl)
+    nokogiri (1.18.7-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.6-arm-linux-gnu)
+    nokogiri (1.18.7-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.6-arm-linux-musl)
+    nokogiri (1.18.7-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.6-arm64-darwin)
+    nokogiri (1.18.7-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-darwin)
+    nokogiri (1.18.7-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-linux-gnu)
+    nokogiri (1.18.7-x86_64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-linux-musl)
+    nokogiri (1.18.7-x86_64-linux-musl)
       racc (~> 1.4)
     odf-report (0.8.1)
       mime-types
@@ -311,7 +311,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     parallel (1.26.3)
-    parser (3.3.7.1)
+    parser (3.3.7.4)
       ast (~> 2.4.1)
       racc
     pdf-core (0.10.0)
@@ -328,6 +328,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     prettyprint (0.2.0)
+    prism (1.4.0)
     psych (5.2.3)
       date
       stringio
@@ -398,7 +399,7 @@ GEM
     rspreadsheet (0.5.3)
       andand (>= 1.3)
       rubyzip (>= 1.3)
-    rubocop (1.73.1)
+    rubocop (1.75.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -406,20 +407,21 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      rubocop-ast (>= 1.43.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.1)
-      parser (>= 3.3.1.0)
-    rubocop-minitest (0.37.1)
+    rubocop-ast (1.43.0)
+      parser (>= 3.3.7.2)
+      prism (~> 1.4)
+    rubocop-minitest (0.38.0)
       lint_roller (~> 1.1)
-      rubocop (>= 1.72.1, < 2.0)
+      rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.3)
+    rubocop-rails (2.31.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
-      rubocop (>= 1.72.1, < 2.0)
+      rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
     rubocop-shopify (2.16.0)
       rubocop (~> 1.62)
