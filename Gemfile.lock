@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: e7f9da85b9c38aa741b66b4ac832171795b6be42
+  revision: 8ec8fce8942d1e7a1bcf25e1434a37eb272c1227
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta8)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: b72e78741cd8815e876eb47295fe68172834cb79
+  revision: 27e2c2aabfa479ddda47e224c43d10fec64ccee9
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta8)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 49d058c515ad3fd47a69fe26ff2a20888238cc94
+  revision: 2c68814e762153e722470692a8b08a03f5f968a1
   branch: v2.2
   specs:
     msip (2.2.0.beta8)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 3f94e828c2b9f9ebfa367baeadf70e147805dc54
+  revision: ad3628caa9f80b8ef262fe4da720a3dd6e694d18
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta8)
@@ -190,7 +190,7 @@ GEM
     concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     crass (1.0.6)
-    csv (3.3.3)
+    csv (3.3.4)
     cuprite (0.15.1)
       capybara (~> 3.0)
       ferrum (~> 0.15.0)
@@ -208,9 +208,9 @@ GEM
       devise (>= 4.9.0)
       rails-i18n
     docile (1.4.1)
-    dotenv (3.1.7)
-    dotenv-rails (3.1.7)
-      dotenv (= 3.1.7)
+    dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
       railties (>= 6.1)
     drb (2.2.1)
     erd (0.8.2)
@@ -574,4 +574,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.7
+   2.6.8
