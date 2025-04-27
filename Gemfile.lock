@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: bbcd6b5bbda0879d06ee5db3c90de52253a30b12
+  revision: f00143d2a8b1979d5c52331e62d11a23dafd5411
   branch: v2.2
   specs:
     heb412_gen (2.2.0.beta8)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: a094a9e8e9995b7df6cc06e97e6a2a1aab03125a
+  revision: b106ab7276ff04f77ddd16c9ab4f45bf866970d5
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta8)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 3b92048cb5e72609c098deeacc68f3b70d1c9952
+  revision: 101fd5c586c680c886d538a4f01e6d4abe677287
   branch: v2.2
   specs:
     msip (2.2.0.beta8)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 6c1180866fe5bf9d00fed462466f4c36d9d122bf
+  revision: 11274b4a8b88861d52b0ac10e9c0d9852b9fa044
   branch: v2.2
   specs:
     sivel2_gen (2.2.0.beta8)
