@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b57fc79c84b36f891c0fa37086ba8c2677e74fc1
+  revision: 285f9bb33bdd4b7583562424a86624b175b768a0
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 575d9f9d40b079edc28f23f1414f35896375331a
+  revision: 9c1ecb1c9b5f2472f165bc13f9bf883bea18b1e7
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 44c540b62d5a7e1ceb6a8ec2732ba089c1f7c424
+  revision: 461db2b33d2063c49b1ad4acd51939cb70da17d9
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 963e2d0c09bafc4c037c360f7e977eea4818976c
+  revision: 72ef63d801c8f46972054490d82000f99f2f76e9
   branch: v2.1
   specs:
     sivel2_gen (2.1.1)
@@ -318,7 +318,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     prettyprint (0.2.0)
-    psych (5.2.3)
+    psych (5.2.4)
       date
       stringio
     public_suffix (6.0.2)
@@ -393,7 +393,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.31.0)
+    selenium-webdriver (4.32.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
