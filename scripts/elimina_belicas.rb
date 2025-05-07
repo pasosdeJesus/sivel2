@@ -3,8 +3,6 @@
 
 ActiveRecord::Base.connection.execute <<-SQL
   DELETE FROM sivel2_gen_antecedente_combatiente;
-  DELETE FROM combatiente_presponsable;
-  DELETE FROM combatiente;
   DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE categoria_id IN 
     (SELECT c.id FROM  sivel2_gen_categoria AS c JOIN 
     sivel2_gen_supracategoria AS s ON c.supracategoria_id=s.id WHERE 
@@ -16,9 +14,23 @@ ActiveRecord::Base.connection.execute <<-SQL
     FROM  sivel2_gen_categoria AS c JOIN sivel2_gen_supracategoria AS s ON 
     c.supracategoria_id=s.id WHERE tviolencia_id='C');
 	DROP VIEW IF EXISTS nobelicas;
-	CREATE VIEW nobelicas AS (SELECT caso_id FROM sivel2_gen_acto) UNION 
-    (SELECT caso_id FROM sivel2_gen_actocolectivo) UNION 
-    (SELECT caso_presponsable_id/10000 FROM sivel2_gen_caso_categoria_presponsable) ORDER BY 1;
+
+  CREATE VIEW nobelicas AS
+  (SELECT caso_id FROM sivel2_gen_acto) UNION
+  (SELECT caso_id FROM sivel2_gen_actocolectivo) UNION
+  (
+    SELECT caso_id
+    FROM sivel2_gen_caso_presponsable as cp
+    JOIN sivel2_gen_caso_categoria_presponsable AS ccp
+      ON ccp.caso_presponsable_id=cp.id
+    WHERE ccp.categoria_id IN (
+      SELECT cat.id FROM sivel2_gen_categoria AS cat
+      JOIN sivel2_gen_supracategoria AS sup
+        ON sup.id=cat.supracategoria_id WHERE tviolencia_id != 'C'
+    )
+    ORDER BY 1
+  )
+;
 
   DELETE FROM sivel2_gen_caso_categoria_presponsable WHERE 
     caso_presponsable_id IN 

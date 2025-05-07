@@ -20,6 +20,9 @@ ActiveRecord::Base.connection.execute <<-SQL
   DELETE FROM msip_anexo;
   DELETE FROM sivel2_gen_fotra;
   DELETE FROM msip_bitacora;
+  DELETE FROM sivel2_gen_caso_solicitud;
+  DELETE FROM msip_solicitud_usuarionotificar;
+  DELETE FROM msip_solicitud;
   DELETE FROM msip_grupo WHERE id NOT IN (20, 21, 25);
   UPDATE usuario SET nusuario='adminexp' WHERE id=1;
   INSERT INTO usuario (id, nusuario, fechacreacion)
