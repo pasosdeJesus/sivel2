@@ -12,6 +12,7 @@ module Msip
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @gupoper = Msip::Grupoper.create!(PRUEBA_GRUPOPER)
       @ubicacionpre = Msip::Ubicacionpre.create!(PRUEBA_UBICACIONPRE)
     end

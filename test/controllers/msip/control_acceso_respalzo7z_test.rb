@@ -11,6 +11,8 @@ module Msip
       if ENV["CONFIG_HOSTS"] != "www.example.com"
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
+      Rails.application.try(:reload_routes_unless_loaded)
     end
 
     # No autenticado

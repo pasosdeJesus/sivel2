@@ -12,6 +12,7 @@ module Msip
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @caso = Sivel2Gen::Caso.create!(memo: "prueba", fecha: "2021-12-07")
     end
 

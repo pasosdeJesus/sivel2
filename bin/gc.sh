@@ -36,10 +36,10 @@ if (test "$SINAC" != "1") then {
   rer=`bundle config get path | grep ":" | head -n 1 | sed -e "s/.*\"\(.*\)\"/\1/g"`
   rubyver=`ruby -v | sed -e "s/^[^ ]* \([0-9].[0-9]\).*/\1/g"`
   rutapore="$rer/ruby/$rubyver/cache/bundler/git/"
-  if (test -d "$rutapore") then {
-    echo "Eliminando $rutapore/*"
-    rm -rf $rutapore/*
-  } fi;
+#  if (test -d "$rutapore") then {
+#    echo "Eliminando $rutapore/*"
+#    rm -rf $rutapore/*
+#  } fi;
   NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle update --conservative
   NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle update --bundler
   if (test "$?" != "0") then {
@@ -60,8 +60,8 @@ if (test "$SININS" != "1") then {
   } fi;
 
   if (test "$MSIP_API" != "1") then {
-    echo "\n== Enlaza controladores stimulus de motores =="
-    (cd $rutaap; bin/rails msip:stimulus_motores)
+    echo "\n== Enlaza controladores stimulus y hojas de estio de motores =="
+    (cd $rutaap; bin/rails msip:enlaces_motores)
     if (test "$?" != "0") then {
       exit 1;
     } fi;

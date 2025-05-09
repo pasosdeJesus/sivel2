@@ -13,6 +13,7 @@ module Mr519Gen
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @formulario = Mr519Gen::Formulario.create!(PRUEBA_FORMULARIO)
     end
 
@@ -68,6 +69,7 @@ module Mr519Gen
     #######################################################
     test "analista no debe acceder a campos/new" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
+
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post mr519_gen.crear_campo_path(index: 0), params: nil

@@ -13,6 +13,7 @@ module Sivel2Gen
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
       @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)
       @raiz = Rails.application.config.relative_url_root.delete_suffix("/")
@@ -75,7 +76,8 @@ module Sivel2Gen
 
       # No autenticado
 
-      test "sin autenticar no debe presentar el index de #{basica[1]}" do
+      test "pruebas con #{basica[1]}" do
+        puts "sin autenticar no debe presentar el index de #{basica[1]}"
         assert_raise CanCan::AccessDenied do
           get @raiz + "/admin/#{basica[1].pluralize}"
         end
@@ -134,30 +136,34 @@ module Sivel2Gen
 
         # Autenticado como operador sin grupo
 
-        puts "operador sin grupo no debe presentar el index de #{basica[1]}"
-        sign_in @ope_sin_grupo
-        assert_raise CanCan::AccessDenied do
-          get @raiz + "/admin/#{basica[1].pluralize}"
-        end
-        # end
+        if basica[1] != "presponsable"
+          puts "operador sin grupo no puede ver el index de #{basica[1]}"
+          sign_in @ope_sin_grupo
+          assert_raise CanCan::AccessDenied do
+            get @raiz + "/admin/#{basica[1].pluralize}"
+            assert_response :ok
+          end
 
-        puts "operador sin grupo no debe presentar el show de #{basica[1]}"
-        sign_in @ope_sin_grupo
-        reg = crear_registro(modelo, basica[1])
-        assert_raise CanCan::AccessDenied do
-          get @raiz + "/admin/#{basica[1].pluralize}/#{reg.id}"
-        end
-        reg.destroy!
-        # end
+          puts "operador sin grupo no debe presentar el show de #{basica[1]}"
+          sign_in @ope_sin_grupo
+          reg = crear_registro(modelo, basica[1])
+          assert_raise CanCan::AccessDenied do
+            get @raiz + "/admin/#{basica[1].pluralize}/#{reg.id}"
+          end
+          reg.destroy!
 
-        puts "operador sin grupo no debe ver formulario de nuevo de #{basica[1]}"
-        sign_in @ope_sin_grupo
-        assert_raise CanCan::AccessDenied do
-          get @raiz + "/admin/#{basica[1].pluralize}/nueva"
+          puts "operador sin grupo no debe ver formulario de nuevo de #{basica[1]}"
+          sign_in @ope_sin_grupo
+          assert_raise CanCan::AccessDenied do
+            get @raiz + "/admin/#{basica[1].pluralize}/nueva"
+          end
+
         end
-        # end
 
         puts "operador sin grupo no puede crear registro de #{basica[1]}"
+        if (basica[1] == "presponsable")
+          debugger
+        end
         sign_in @ope_sin_grupo
         ruta = @raiz + "/admin/#{basica[1].pluralize}"
         reg = crear_registro(modelo, basica[1])

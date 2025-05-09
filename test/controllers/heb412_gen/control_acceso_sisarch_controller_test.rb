@@ -13,6 +13,7 @@ module Heb412Gen
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @ruta = Rails.application.config.relative_url_root
     end
 

@@ -12,6 +12,8 @@ module Msip
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
+
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @persona2 = Msip::Persona.create!(PRUEBA_PERSONA)
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)

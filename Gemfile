@@ -91,7 +91,7 @@ gem "mr519_gen", # Motor de gestion de formularios y encuestas
 
 gem "heb412_gen", # Motor de nube y llenado de plantillas
   git: "https://gitlab.com/pasosdeJesus/heb412_gen.git", branch: "main"
-# path: "../heb412_gen"
+  #path: "../heb412_gen"
 
 gem "sivel2_gen", # Motor para manejo de casos
   git: "https://gitlab.com/pasosdeJesus/sivel2_gen.git", branch: "main"

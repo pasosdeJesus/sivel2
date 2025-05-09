@@ -13,6 +13,7 @@ module Msip
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @ope_sin_grupo = ::Usuario.find(PRUEBA_USUARIO_OP)
       @ope_analista = ::Usuario.find(PRUEBA_USUARIO_AN)

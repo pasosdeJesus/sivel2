@@ -13,6 +13,7 @@ module Mr519Gen
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @formulario = Mr519Gen::Formulario.create!(PRUEBA_FORMULARIO)
     end
 

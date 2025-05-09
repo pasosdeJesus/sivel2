@@ -12,6 +12,7 @@ module Msip
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @anexo = Msip::Anexo.create(PRUEBA_ANEXO)
       @anexo.adjunto_file_name = "ej.txt"
       @anexo.save!
