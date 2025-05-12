@@ -37,8 +37,10 @@ GIT
       msip
       rails
 
-PATH
-  remote: ../msip
+GIT
+  remote: https://gitlab.com/pasosdeJesus/msip.git
+  revision: 3357473bf2ca29eb0093549fce64fa591759eb5b
+  branch: main
   specs:
     msip (2.3.0.alfa4)
       cancancan (~> 3)
@@ -53,8 +55,10 @@ PATH
       twitter_cldr (~> 6)
       will_paginate (~> 4)
 
-PATH
-  remote: ../sivel2_gen
+GIT
+  remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
+  revision: e9788737534b8bdfc2fa22cff7a9c4deef213121
+  branch: main
   specs:
     sivel2_gen (2.3.0.alfa3)
       color
@@ -216,7 +220,7 @@ GEM
     json (2.10.2)
     kgio (2.11.4)
     language_server-protocol (3.17.0.4)
-    libxml-ruby (5.0.3)
+    libxml-ruby (5.0.4)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.24.0)
