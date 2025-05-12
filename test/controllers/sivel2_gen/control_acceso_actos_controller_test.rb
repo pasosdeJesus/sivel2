@@ -78,6 +78,8 @@ module Sivel2Gen
     #####################################
 
     test "Operados sin grupo no puede agrega acto con turbo" do
+      Rails.application.try(:reload_routes_unless_loaded)
+
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
 
@@ -89,6 +91,8 @@ module Sivel2Gen
     end
 
     test "Operador sin grupo no puede eliminar acto con turbo" do
+      Rails.application.try(:reload_routes_unless_loaded)
+
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
 

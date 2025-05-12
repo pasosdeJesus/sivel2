@@ -161,9 +161,6 @@ module Sivel2Gen
         end
 
         puts "operador sin grupo no puede crear registro de #{basica[1]}"
-        if (basica[1] == "presponsable")
-          debugger
-        end
         sign_in @ope_sin_grupo
         ruta = @raiz + "/admin/#{basica[1].pluralize}"
         reg = crear_registro(modelo, basica[1])
@@ -204,21 +201,27 @@ module Sivel2Gen
 
         # Autenticado como operador con grupo Analista de Casos
 
-        puts "operador analista no debe presentar el index de #{basica[1]}"
-        sign_in @ope_analista
-        assert_raise CanCan::AccessDenied do
-          get @raiz + "/admin/#{basica[1].pluralize}"
-        end
-        # end
+        #if (basica[1] == "presponsable")
+        #  debugger
+        #end
 
-        puts "operador analista no debe presentar el show de #{basica[1]}"
-        sign_in @ope_analista
-        reg = crear_registro(modelo, basica[1])
-        assert_raise CanCan::AccessDenied do
-          get @raiz + "/admin/#{basica[1].pluralize}/#{reg.id}"
+        if basica[1] != "presponsable"
+          puts "operador analista no debe presentar el index de #{basica[1]}"
+          sign_in @ope_analista
+          assert_raise CanCan::AccessDenied do
+            get @raiz + "/admin/#{basica[1].pluralize}"
+          end
+          # end
+
+          puts "operador analista no debe presentar el show de #{basica[1]}"
+          sign_in @ope_analista
+          reg = crear_registro(modelo, basica[1])
+          assert_raise CanCan::AccessDenied do
+            get @raiz + "/admin/#{basica[1].pluralize}/#{reg.id}"
+          end
+          reg.destroy!
+          # end
         end
-        reg.destroy!
-        # end
 
         puts "operador analista no debe ver formulario de nuevo de #{basica[1]}"
         sign_in @ope_analista

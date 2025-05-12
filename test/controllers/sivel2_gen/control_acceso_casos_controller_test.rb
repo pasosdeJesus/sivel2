@@ -240,6 +240,8 @@ module Sivel2Gen
     end
 
     test "operador sin grupo  puede acceder a fichacasovertical" do
+      Rails.application.try(:reload_routes_unless_loaded)
+
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sivel2_gen.fichacasovertical_path
@@ -264,6 +266,8 @@ module Sivel2Gen
     end
 
     test "operador sin grupo  no puede refrescar casos" do
+      Rails.application.try(:reload_routes_unless_loaded)
+
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
@@ -272,6 +276,8 @@ module Sivel2Gen
     end
 
     test "operador sin grupo no puede acceder importarrelatos casos" do
+      Rails.application.try(:reload_routes_unless_loaded)
+
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
@@ -376,6 +382,8 @@ module Sivel2Gen
     end
 
     test "operador analista puede acceder a victimascol" do
+      Rails.application.try(:reload_routes_unless_loaded)
+
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.victimascolectivas_nuevo_path
@@ -424,6 +432,8 @@ module Sivel2Gen
     end
 
     test "operador analista  puede refrescar casos" do
+      Rails.application.try(:reload_routes_unless_loaded)
+
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get sivel2_gen.casos_refresca_path

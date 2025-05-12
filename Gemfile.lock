@@ -37,10 +37,8 @@ GIT
       msip
       rails
 
-GIT
-  remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: b249b4b886d65a0b75d3b08d28c108f73acc72bb
-  branch: main
+PATH
+  remote: ../msip
   specs:
     msip (2.3.0.alfa4)
       cancancan (~> 3)
@@ -55,10 +53,8 @@ GIT
       twitter_cldr (~> 6)
       will_paginate (~> 4)
 
-GIT
-  remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 8bc2da41b7bef6065f9586642e6aa6a74be85ad4
-  branch: main
+PATH
+  remote: ../sivel2_gen
   specs:
     sivel2_gen (2.3.0.alfa3)
       color
