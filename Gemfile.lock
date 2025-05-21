@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 46e2672eb906871e84fa71824ea4ac0348f43374
+  revision: c3cb5f1d08cc2f61fdcd039dd829aa756d005664
   branch: v2.2
   specs:
-    heb412_gen (2.2.0.beta8)
+    heb412_gen (2.2.0)
       mr519_gen
       msip
       redcarpet
@@ -29,19 +29,19 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 6e8f08e36db76f4a50e12b22313a836034b7b9d1
+  revision: 47ee2caf4dc4521b56f08e5fd92489da2d291580
   branch: v2.2
   specs:
-    mr519_gen (2.2.0.beta8)
+    mr519_gen (2.2.0)
       msip
       rails
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 6e7ee561235b6ce30f37b32ad87e8acf390f23e9
+  revision: 2d1fb0e91feab9a33687507ee02e9c920e6c1afa
   branch: v2.2
   specs:
-    msip (2.2.0.beta8)
+    msip (2.2.0)
       cancancan (~> 3)
       devise (~> 4)
       devise-i18n (~> 1)
@@ -58,10 +58,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 133d77fcc6b06aecad853d0885e3ab1cc0510d59
+  revision: a76d913cc75e47370d0483a91c6c6e6177036f10
   branch: v2.2
   specs:
-    sivel2_gen (2.2.0.beta8)
+    sivel2_gen (2.2.0)
       color
       devise
       rails
@@ -154,7 +154,7 @@ GEM
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
-    bootsnap (1.18.4)
+    bootsnap (1.18.6)
       msgpack (~> 1.2)
     brakeman (7.0.2)
       racc
@@ -191,9 +191,9 @@ GEM
     connection_pool (2.5.3)
     crass (1.0.6)
     csv (3.3.4)
-    cuprite (0.15.1)
+    cuprite (0.17)
       capybara (~> 3.0)
-      ferrum (~> 0.15.0)
+      ferrum (~> 0.17.0)
     date (3.4.1)
     debug (1.10.0)
       irb (~> 1.10)
@@ -218,8 +218,9 @@ GEM
       ruby-graphviz
     erubi (1.13.1)
     execjs (2.10.0)
-    ferrum (0.15)
+    ferrum (0.17.1)
       addressable (~> 2.5)
+      base64 (~> 0.2)
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (~> 0.7)
@@ -255,7 +256,7 @@ GEM
     json (2.11.3)
     kgio (2.11.4)
     language_server-protocol (3.17.0.4)
-    libxml-ruby (5.0.3)
+    libxml-ruby (5.0.4)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.24.0)
@@ -336,7 +337,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.14)
+    rack (2.2.15)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -417,12 +418,12 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.31.0)
+    rubocop-rails (2.32.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
       rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      rubocop-ast (>= 1.44.0, < 2.0)
     rubocop-shopify (2.17.0)
       rubocop (~> 1.62)
     ruby-graphviz (1.2.5)
@@ -575,4 +576,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.8
+   2.6.9
