@@ -1,4 +1,6 @@
-require 'sivel2_gen/concerns/models/persona'
+# frozen_string_literal: true
+
+require "sivel2_gen/concerns/models/persona"
 
 module Msip
   class Persona < ActiveRecord::Base

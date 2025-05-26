@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: a76d913cc75e47370d0483a91c6c6e6177036f10
+  revision: 0afc579acb9eb94fce2bf99502f91e4adb869652
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -337,7 +337,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.15)
+    rack (2.2.16)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)

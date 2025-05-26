@@ -1,15 +1,17 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 module Msip
   class ControlAccesoPersonasControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @persona2 = Msip::Persona.create!(PRUEBA_PERSONA)
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
@@ -33,7 +35,7 @@ module Msip
 
     test "sin autenticar no debe ver formulario de nueva" do
       assert_raise CanCan::AccessDenied do
-        get msip.new_persona_path()
+        get msip.new_persona_path
       end
     end
 
@@ -45,14 +47,14 @@ module Msip
 
     test "sin autenticar no debe crear" do
       assert_raise CanCan::AccessDenied do
-        post msip.personas_path, params: { 
-          persona: { 
+        post msip.personas_path, params: {
+          persona: {
             id: nil,
             nombres: "Luis Alejandro",
             apellidos: "Cruz Ordoñez",
             sexo: "M",
-            numerodocumento: ""
-          }
+            numerodocumento: "",
+          },
         }
       end
     end
@@ -82,6 +84,7 @@ module Msip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get msip.personas_path
+
       assert_response :ok
     end
 
@@ -89,6 +92,7 @@ module Msip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get msip.persona_path(@persona.id)
+
       assert_response :ok
     end
 
@@ -123,6 +127,7 @@ module Msip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get msip.personas_path
+
       assert_response :ok
     end
 
@@ -130,6 +135,7 @@ module Msip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get msip.persona_path(@persona.id)
+
       assert_response :ok
     end
 
@@ -137,33 +143,35 @@ module Msip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get msip.edit_persona_path(@persona.id)
+
       assert_response :ok
     end
 
-
     test "operador analista no puede acceder a fichaimp" do
-      skip 
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get heb412_gen.persona_fichaimp_path(Msip::Persona.take.id)
+
       assert_response :ok
     end
 
     test "operador analista no puede acceder a fichapdf" do
-      skip 
+      skip
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       get heb412_gen.orgsocial_fichapdf_path(Msip::Orgsocial.take.id)
+
       assert_response :ok
     end
 
     test "autenticado como operador analista de casos debe acceder a personas remplazar" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      
+
       get msip.personas_remplazar_path + "?persona_id=#{@persona.id}&victima_id=#{@victima.id}&caso_id=#{@caso.id}"
+
       assert_response :ok
     end
-
   end
 end

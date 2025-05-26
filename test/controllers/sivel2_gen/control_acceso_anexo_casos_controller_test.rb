@@ -1,15 +1,17 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 module Sivel2Gen
   class ControlAccesoAnexoCasosControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @raiz = Rails.application.config.relative_url_root
@@ -21,13 +23,14 @@ module Sivel2Gen
 
     test "sin autenticar no puede agrega anexo con turbo" do
       @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoan.valid?
       anexo = Msip::Anexo.create(
-        PRUEBA_ANEXO
+        PRUEBA_ANEXO,
       )
       caso_anexo = Sivel2Gen::AnexoCaso.create(
         caso_id: @casoan.id,
-        anexo_id: anexo.id
+        anexo_id: anexo.id,
       )
       assert_raises(CanCan::AccessDenied) do
         post sivel2_gen.crear_anexo_caso_path(@casoan, caso_anexo, format: :turbo_stream)
@@ -38,17 +41,19 @@ module Sivel2Gen
 
     test "sin autenticar no puede eliminar anexo con turbo" do
       @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoan.valid?
       anexo = Msip::Anexo.create(
-        PRUEBA_ANEXO
+        PRUEBA_ANEXO,
       )
       anexo_caso = Sivel2Gen::AnexoCaso.create(
         caso_id: @caso.id,
-        anexo_id: anexo.id
+        anexo_id: anexo.id,
       )
       assert_raises(CanCan::AccessDenied) do
         delete sivel2_gen.eliminar_anexo_caso_path(
-          id: anexo_caso.id, index: 0)
+          id: anexo_caso.id, index: 0,
+        )
       end
       @caso.destroy
     end
@@ -59,15 +64,17 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoan.valid?
       anexo = Msip::Anexo.create(
-        PRUEBA_ANEXO
+        PRUEBA_ANEXO,
       )
       caso_anexo = Sivel2Gen::AnexoCaso.create(
         caso_id: @casoan.id,
-        anexo_id: anexo.id
+        anexo_id: anexo.id,
       )
       post sivel2_gen.crear_anexo_caso_path(@casoan, caso_anexo, format: :turbo_stream)
+
       assert_response :success
       @casoan.destroy
       anexo.destroy
@@ -77,16 +84,19 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoan.valid?
       anexo = Msip::Anexo.create(
-        PRUEBA_ANEXO
+        PRUEBA_ANEXO,
       )
       anexo_caso = Sivel2Gen::AnexoCaso.create(
         caso_id: @caso.id,
-        anexo_id: anexo.id
+        anexo_id: anexo.id,
       )
       delete sivel2_gen.eliminar_anexo_caso_path(
-        id: anexo_caso.id, index: 0)
+        id: anexo_caso.id, index: 0,
+      )
+
       assert_response :success
       @caso.destroy
     end
@@ -97,15 +107,17 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoan.valid?
       anexo = Msip::Anexo.create(
-        PRUEBA_ANEXO
+        PRUEBA_ANEXO,
       )
       caso_anexo = Sivel2Gen::AnexoCaso.create(
         caso_id: @casoan.id,
-        anexo_id: anexo.id
+        anexo_id: anexo.id,
       )
       post sivel2_gen.crear_anexo_caso_path(@casoan, caso_anexo, format: :turbo_stream)
+
       assert_response :success
       @casoan.destroy
       anexo.destroy
@@ -115,19 +127,21 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       @casoan = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoan.valid?
       anexo = Msip::Anexo.create(
-        PRUEBA_ANEXO
+        PRUEBA_ANEXO,
       )
       anexo_caso = Sivel2Gen::AnexoCaso.create(
         caso_id: @caso.id,
-        anexo_id: anexo.id
+        anexo_id: anexo.id,
       )
       delete sivel2_gen.eliminar_anexo_caso_path(
-        id: anexo_caso.id, index: 0)
+        id: anexo_caso.id, index: 0,
+      )
+
       assert_response :success
       @caso.destroy
     end
-
   end
 end

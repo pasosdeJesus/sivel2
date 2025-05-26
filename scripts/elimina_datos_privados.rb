@@ -1,8 +1,10 @@
-# Ejecutar con 
-# bin/rails runner -e development scripts/elimina_datos_privados.rb 
+# frozen_string_literal: true
 
-ActiveRecord::Base.connection.execute <<-SQL
-  DELETE FROM sivel2_gen_caso_etiqueta WHERE 
+# Ejecutar con
+# bin/rails runner -e development scripts/elimina_datos_privados.rb
+
+ActiveRecord::Base.connection.execute(<<-SQL)
+  DELETE FROM sivel2_gen_caso_etiqueta WHERE#{" "}
     etiqueta_id NOT IN (SELECT id FROM msip_etiqueta
     WHERE (nombre LIKE '%01%' or nombre like '%02%')
     AND NOT NOMBRE LIKE '%20%');

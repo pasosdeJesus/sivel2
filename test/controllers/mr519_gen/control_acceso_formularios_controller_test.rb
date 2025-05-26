@@ -1,22 +1,24 @@
-require 'test_helper'
-require 'nokogiri'
+# frozen_string_literal: true
+
+require "test_helper"
+require "nokogiri"
 
 module Mr519Gen
   class ControlAccesoFormulariosCOntrollerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @formulario = Mr519Gen::Formulario.create!(PRUEBA_FORMULARIO)
     end
 
     PRUEBA_FORMULARIO = {
       nombre: "formu ejemplo",
-      nombreinterno: "formueje"
+      nombreinterno: "formueje",
     }
 
     # No autenticado
@@ -67,18 +69,16 @@ module Mr519Gen
     test "sin autenticar no debe postear formularios" do
       assert_raise CanCan::AccessDenied do
         post mr519_gen.formularios_path, params: {
-          formulario: PRUEBA_FORMULARIO
+          formulario: PRUEBA_FORMULARIO,
         }
       end
     end
 
     test "sin autenticar no debe ver formulario de nuevo formulario" do
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_formulario_path()
+        get mr519_gen.new_formulario_path
       end
     end
-
-
 
     # Autenticado como operador sin grupo
     #####################################
@@ -96,17 +96,16 @@ module Mr519Gen
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post mr519_gen.formularios_path, params: {
-          formulario: PRUEBA_FORMULARIO
+          formulario: PRUEBA_FORMULARIO,
         }
       end
     end
-
 
     test "autenticado como operador sin grupo puede ver formulario de nuevo formulario" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_formulario_path()
+        get mr519_gen.new_formulario_path
       end
     end
 
@@ -174,7 +173,7 @@ module Mr519Gen
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
         post mr519_gen.formularios_path, params: {
-          formulario: PRUEBA_FORMULARIO
+          formulario: PRUEBA_FORMULARIO,
         }
       end
     end
@@ -183,7 +182,7 @@ module Mr519Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       assert_raise CanCan::AccessDenied do
-        get mr519_gen.new_formulario_path()
+        get mr519_gen.new_formulario_path
       end
     end
 

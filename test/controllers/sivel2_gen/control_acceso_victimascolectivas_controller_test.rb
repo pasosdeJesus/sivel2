@@ -1,15 +1,17 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 module Sivel2Gen
   class ControlAccesoVictimascolectivasControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @raiz = Rails.application.config.relative_url_root
@@ -21,20 +23,24 @@ module Sivel2Gen
 
     test "sin autenticar  no puede crear a victimas colectivas" do
       assert_raises(CanCan::AccessDenied) do
-        post sivel2_gen.crear_victimacolectiva_path(caso: @caso, 
-          index: @caso.victimacolectiva.size, format: :turbo_stream)
+        post sivel2_gen.crear_victimacolectiva_path(
+          caso: @caso,
+          index: @caso.victimacolectiva.size,
+          format: :turbo_stream,
+        )
       end
     end
 
     test "sin autenticar  no puede eliminar victima colectiva" do
       @casovicol = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casovicol.valid?
       grupoper = Msip::Grupoper.create(
-        PRUEBA_GRUPOPER 
+        PRUEBA_GRUPOPER,
       )
       vicol = Sivel2Gen::Victimacolectiva.create(
         grupoper_id: grupoper.id,
-        caso_id: @casovicol.id 
+        caso_id: @casovicol.id,
       )
       assert_raises(CanCan::AccessDenied) do
         delete sivel2_gen.eliminar_victimacolectiva_path(id: vicol.id, index: 0)
@@ -46,8 +52,12 @@ module Sivel2Gen
     test "operador sin grupo puede crear a victimas colectivas" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
-      post sivel2_gen.crear_victimacolectiva_path(caso: @caso, 
-        index: @caso.victimacolectiva.size, format: :turbo_stream)
+      post sivel2_gen.crear_victimacolectiva_path(
+        caso: @caso,
+        index: @caso.victimacolectiva.size,
+        format: :turbo_stream,
+      )
+
       assert_response :success
     end
 
@@ -55,15 +65,17 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @casovicol = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casovicol.valid?
       grupoper = Msip::Grupoper.create(
-        PRUEBA_GRUPOPER 
+        PRUEBA_GRUPOPER,
       )
       vicol = Sivel2Gen::Victimacolectiva.create(
         grupoper_id: grupoper.id,
-        caso_id: @casovicol.id 
+        caso_id: @casovicol.id,
       )
       delete sivel2_gen.eliminar_victimacolectiva_path(id: vicol.id, index: 0)
+
       assert_response :success
       @casovicol.destroy
     end
@@ -73,8 +85,12 @@ module Sivel2Gen
     test "Analista puede crear a victimas colectivas" do
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
-      post sivel2_gen.crear_victimacolectiva_path(caso: @caso, 
-        index: @caso.victimacolectiva.size, format: :turbo_stream)
+      post sivel2_gen.crear_victimacolectiva_path(
+        caso: @caso,
+        index: @caso.victimacolectiva.size,
+        format: :turbo_stream,
+      )
+
       assert_response :success
     end
 
@@ -82,15 +98,17 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       @casovicol = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casovicol.valid?
       grupoper = Msip::Grupoper.create(
-        PRUEBA_GRUPOPER 
+        PRUEBA_GRUPOPER,
       )
       vicol = Sivel2Gen::Victimacolectiva.create(
         grupoper_id: grupoper.id,
-        caso_id: @casovicol.id 
+        caso_id: @casovicol.id,
       )
       delete sivel2_gen.eliminar_victimacolectiva_path(id: vicol.id, index: 0)
+
       assert_response :success
       @casovicol.destroy
     end

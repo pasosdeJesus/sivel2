@@ -1,15 +1,17 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 module Sivel2Gen
   class ControlAccesoCasoFotrasControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @caso = Sivel2Gen::Caso.create!(PRUEBA_CASO)
       @persona = Msip::Persona.create!(PRUEBA_PERSONA)
       @raiz = Rails.application.config.relative_url_root
@@ -21,11 +23,12 @@ module Sivel2Gen
 
     test "sin autenticar no puede crear otras fuentes de prensa" do
       @casoofp = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoofp.valid?
       cof = Sivel2Gen::CasoFotra.create(
         caso_id: @casoofp.id,
         nombre: "otra fuente",
-        fecha: '2023-01-11',
+        fecha: "2023-01-11",
       )
       assert_raises(CanCan::AccessDenied) do
         post sivel2_gen.crear_caso_fotra_path(@casoofp, cof, format: :turbo_stream)
@@ -36,11 +39,12 @@ module Sivel2Gen
 
     test "sin autenticar  no puede eliminar otra fuente de prensa" do
       @casoofp = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoofp.valid?
       fotra = Sivel2Gen::Fotra.create(PRUEBA_FOTRA)
       caso_fotra = Sivel2Gen::CasoFotra.create(
         fotra_id: fotra.id,
-        caso_id: @casoofp.id 
+        caso_id: @casoofp.id,
       )
       assert_raises(CanCan::AccessDenied) do
         delete sivel2_gen.eliminar_caso_fotra_path(id: caso_fotra.id, index: 0)
@@ -53,14 +57,16 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @casoofp = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoofp.valid?
       cof = Sivel2Gen::CasoFotra.create(
         caso_id: @casoofp.id,
         nombre: "otra fuente",
-        fecha: '2023-01-11',
+        fecha: "2023-01-11",
       )
       post sivel2_gen.crear_caso_fotra_path(@casoofp, cof, format: :turbo_stream)
-      assert_response :success 
+
+      assert_response :success
       cof.destroy
       @casoofp.destroy
     end
@@ -69,11 +75,12 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       @casoofp = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoofp.valid?
       fotra = Sivel2Gen::Fotra.create(PRUEBA_FOTRA)
       caso_fotra = Sivel2Gen::CasoFotra.create(
         fotra_id: fotra.id,
-        caso_id: @casoofp.id 
+        caso_id: @casoofp.id,
       )
       assert_raises(CanCan::AccessDenied) do
         delete sivel2_gen.eliminar_caso_fotra_path(id: caso_fotra.id, index: 0)
@@ -86,14 +93,16 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       @casoofp = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoofp.valid?
       cof = Sivel2Gen::CasoFotra.create(
         caso_id: @casoofp.id,
         nombre: "otra fuente",
-        fecha: '2023-01-11',
+        fecha: "2023-01-11",
       )
       post sivel2_gen.crear_caso_fotra_path(@casoofp, cof, format: :turbo_stream)
-      assert_response :success 
+
+      assert_response :success
       cof.destroy
       @casoofp.destroy
     end
@@ -102,17 +111,17 @@ module Sivel2Gen
       current_usuario = ::Usuario.find(PRUEBA_USUARIO_AN)
       sign_in current_usuario
       @casoofp = Sivel2Gen::Caso.create(PRUEBA_CASO)
+
       assert @casoofp.valid?
       fotra = Sivel2Gen::Fotra.create(PRUEBA_FOTRA)
       caso_fotra = Sivel2Gen::CasoFotra.create(
         fotra_id: fotra.id,
-        caso_id: @casoofp.id 
+        caso_id: @casoofp.id,
       )
       delete sivel2_gen.eliminar_caso_fotra_path(id: caso_fotra.id, index: 0)
-      assert_response :success 
+
+      assert_response :success
       @casoofp.destroy
     end
-
-
   end
 end

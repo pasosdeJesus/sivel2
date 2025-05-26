@@ -4,7 +4,7 @@
 
 require_relative "config/environment"
 rutarel = ENV.fetch("RUTA_RELATIVA", "msip/")
-if rutarel[0] != '/'
+if rutarel[0] != "/"
   rutarel = "/" + rutarel
 end
 map rutarel do

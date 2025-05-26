@@ -1,16 +1,18 @@
-require 'test_helper'
-require 'nokogiri'
+# frozen_string_literal: true
+
+require "test_helper"
+require "nokogiri"
 
 module Mr519Gen
   class ControlAccesoOpcionescsControllerTest < ActionDispatch::IntegrationTest
-
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
-    setup  do
-      if ENV['CONFIG_HOSTS'] != 'www.example.com'
-        raise 'CONFIG_HOSTS debe ser www.example.com'
+    setup do
+      if ENV["CONFIG_HOSTS"] != "www.example.com"
+        raise "CONFIG_HOSTS debe ser www.example.com"
       end
+
       @formulario = Mr519Gen::Formulario.create!(PRUEBA_FORMULARIO)
       @campo = Mr519Gen::Campo.create!(PRUEBA_CAMPO.merge(formulario_id: @formulario.id))
       @opcioncs = Mr519Gen::Opcioncs.create!(PRUEBA_OPCIONCS.merge(campo_id: @campo.id))
@@ -18,17 +20,17 @@ module Mr519Gen
 
     PRUEBA_FORMULARIO = {
       nombre: "formu ejemplo",
-      nombreinterno: "formueje"
+      nombreinterno: "formueje",
     }
 
     PRUEBA_OPCIONCS = {
       nombre: "opcioncs eje",
-      valor: "valor"
+      valor: "valor",
     }
 
     PRUEBA_CAMPO = {
       nombre: "n",
-      nombreinterno: "nn"
+      nombreinterno: "nn",
     }
 
     # No autenticado
@@ -46,7 +48,6 @@ module Mr519Gen
         delete mr519_gen.opcioncs_path(@opcioncs.id)
       end
     end
-
 
     # Autenticado como operador sin grupo
     #####################################
@@ -68,7 +69,6 @@ module Mr519Gen
       end
     end
 
-
     # Autenticado como operador con grupo Analista de Casos
     #######################################################
     test "analista no debe acceder a opcionescs/new" do
@@ -87,6 +87,5 @@ module Mr519Gen
         delete mr519_gen.opcioncs_path(@opcioncs.id)
       end
     end
-
   end
 end

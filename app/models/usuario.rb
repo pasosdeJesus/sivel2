@@ -1,5 +1,7 @@
-require 'sivel2_gen/concerns/models/usuario'
+# frozen_string_literal: true
+
+require "sivel2_gen/concerns/models/usuario"
 
 class Usuario < ActiveRecord::Base
-    include Sivel2Gen::Concerns::Models::Usuario
+  include Sivel2Gen::Concerns::Models::Usuario
 end
