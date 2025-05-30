@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 9f23ead94e2f1332e84fb3d2a297baf6841c372a
+  revision: 253e1cf5c35ff18e74db0ab3daa5f5e6d486b776
   branch: main
   specs:
     heb412_gen (2.3.0.alfa4)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 22ff0387d1ac5199f57b651025e99bd9bfff9593
+  revision: c29f16708028101f3c605e431b8d1ebcb9f2c8e3
   branch: main
   specs:
     mr519_gen (2.3.0.alfa4)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 3357473bf2ca29eb0093549fce64fa591759eb5b
+  revision: b23831eceb7942873a341a1b76ce02256f7cd272
   branch: main
   specs:
     msip (2.3.0.alfa4)
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 3cf04b67f63a25f237073045e9ea6365bd38a806
+  revision: 3fbb90b9541ed31191f9e5f658391f1cba8fb9c0
   branch: main
   specs:
     sivel2_gen (2.3.0.alfa3)
@@ -148,10 +148,10 @@ GEM
     ast (2.4.3)
     base64 (0.2.0)
     bcrypt (3.1.20)
-    benchmark (0.4.0)
+    benchmark (0.4.1)
     bigdecimal (3.1.9)
     bindex (0.8.1)
-    bootsnap (1.18.4)
+    bootsnap (1.18.6)
       msgpack (~> 1.2)
     brakeman (7.0.2)
       racc
@@ -310,7 +310,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.14)
+    rack (2.2.16)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -395,12 +395,12 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.31.0)
+    rubocop-rails (2.32.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
       rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      rubocop-ast (>= 1.44.0, < 2.0)
     rubocop-shopify (2.17.0)
       rubocop (~> 1.62)
     ruby-graphviz (1.2.5)
@@ -534,4 +534,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.8
+   2.6.9
