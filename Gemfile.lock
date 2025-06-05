@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 35f17acbb9db92ace45ef8e788c3f3b354783d97
+  revision: a57e053244e5b06944e1aabcbf00998314da88ce
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 73bf1c108d37c5e038c486ecaa33ddfc6ff0e072
+  revision: 38ad7352293d084e6d72ee662e798b474eca89b0
   branch: v2.1
   specs:
     heb412_gen (2.1.0.beta1)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: d2f935d5e5f8b6c0c326bf06bc4fa73c48f5ebfa
+  revision: 881aa85fcbf453e22e00b533c4b4fa4c6ce8b7e0
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 0f14a3978f3c66b157f63a31c351e6fd18cf8144
+  revision: 92ec0a02253b7ddd3793852130680d14813ab396
   branch: v2.1
   specs:
     sivel2_gen (2.1.1)
@@ -154,7 +154,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     benchmark (0.4.1)
-    bigdecimal (3.2.1)
+    bigdecimal (3.2.2)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -266,7 +266,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0527)
+    mime-types-data (3.2025.0603)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.25.5)
@@ -327,7 +327,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.16)
+    rack (2.2.17)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-test (2.2.0)
