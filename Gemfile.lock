@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: aac7a830f21da527a065b00f03484d4b94a6ab23
+  revision: e2bbd94c3a2f11811432b76fb37cef8cf4fec73f
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 2cd4e40df37c92aa4ec3af69659e8688b335c737
+  revision: cce0056d8bc05e2971d22fc48c91723b96a9a1c4
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: f9bf19bd7ead19e34bedef1a3e1db03d42cd6772
+  revision: 314313f5b6110398d3ae0d9d5fb0a9d166580834
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: b00d07b62c846c21fe06a92c8cc672fab3329ea8
+  revision: 3e5097be32a9d4cc379e50ca10c546f7b72e8234
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -195,7 +195,7 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.17.0)
     date (3.4.1)
-    debug (1.10.0)
+    debug (1.11.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
     devise (4.9.4)
@@ -204,7 +204,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.13.0)
+    devise-i18n (1.14.0)
       devise (>= 4.9.0)
       rails-i18n
     docile (1.4.1)
