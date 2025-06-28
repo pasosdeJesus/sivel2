@@ -20,7 +20,12 @@ module Msip
         @anexo.id.to_i,
         @anexo.adjunto_file_name,
       )
+      ls="ls -l #{Msip.ruta_anexos.to_s}"
+      puts ls
+      puts `#{ls}`
       FileUtils.touch(n)
+      puts "Despues de touch"
+      puts `#{ls}`
     end
 
     teardown do
