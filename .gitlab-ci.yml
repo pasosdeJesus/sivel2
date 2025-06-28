@@ -1,23 +1,21 @@
 # Basado entre otros en: https://dev.to/mpressen/rails-minitest-gitlab-ci-31ap
 
-image: "ruby:3.0.2"
+image: "ruby:3.2.2"
 
 services:
   - name: vtamara/postgis-es_co:13.3-1
     alias: postgres
 
 variables:
-  RAILS_ENV: test
-  POSTGRES_ENABLED: "true"
-  POSTGRES_USER: runner
-  POSTGRES_PASSWORD: ""
-  POSTGRES_DB: sivel2gen_pru
-  POSTGRES_HOST_AUTH_METHOD: trust
-  NOKOGIRI_USE_SYSTEM_LIBRARIES: "true"
   CC_TEST_REPORTER_ID: "af8fb32f310935cd6bc8811d81e2f16682b94c340e3a47b4ebc3558f88ae656a"
-
-
-
+  CI: "Si"
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: "true"
+  POSTGRES_DB: sivel2gen_pru
+  POSTGRES_ENABLED: "true"
+  POSTGRES_HOST_AUTH_METHOD: trust
+  POSTGRES_PASSWORD: ""
+  POSTGRES_USER: runner
+  RAILS_ENV: test
 
 stages:
   - test
@@ -31,6 +29,7 @@ test:
       - vendor/bundle
   before_script:
     - uname -a
+    - cat /etc/os-release
     - whoami
     - echo "HOME=${HOME}"
     - pwd
@@ -38,29 +37,37 @@ test:
     - ruby -v
     - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
     - apt-get update -yy && apt-get install build-essential libpq-dev postgresql-client -y
-    - curl -fsSL https://deb.nodesource.com/setup_16.x | bash - # https://www.linuxcapable.com/how-to-install-node-js-14-lts-16-npm-on-debian-11-bullseye/
+    - apt install -y poppler-utils  # pdftoppm para presentar portada de anexo
+    - which pdftoppm
+    - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - # https://www.linuxcapable.com/how-to-install-node-js-14-lts-16-npm-on-debian-11-bullseye/
     - apt install -y -qq nodejs
     - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
     - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     - apt-get update -qq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -yqq yarn
-    - yarn install
-    - gem install bundler --no-document
+    - gem install bundler dotenv --no-document
+    - bundle install --jobs $(nproc) "${FLAGS[@]}"
     - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
     - chmod +x ./cc-test-reporter
+    - ./cc-test-reporter -v
     - ./cc-test-reporter before-build
-    - bundle install --jobs $(nproc) "${FLAGS[@]}"
     - cp .env.gitlab .env
     - cp db/structure.sql db/structure.sql.copia 
     - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
-    - bin/rails db:drop db:create db:setup
+    - bin/rails db:drop db:create db:setup db:seed
     - bin/rails msip:indices
+    - yarn
+    - bin/rails msip:stimulus_motores
+    - RAILS_ENV=test bin/rails assets:precompile
+    - yarn add -D puppeteer
+    - for i in `find ./test -name "*js" -type f -exec grep -l "puppeteer-core" {} ';'`; do echo "Remplazando p-c por p en $i"; sed -i -e 's/preparar,//g;importpuppeteer from \"puppeteer-core\"/import puppeteer from \"puppeteer\";\nimport {preparar} from \".\/pgitlab.mjs\";/g' $i; cat $i; done
   script:
-    - CONFIG_HOSTS=www.example.com bin/rails test
-    - ./cc-test-reporter after-build -t simplecov --exit-code $?
+    - NOPRUEBAJS=1 bin/regresion.sh
+    - export exit_code=$?
+  after_script:
+    - if (test "${exit_code}" == "") then { exit_code=0; } fi; ./cc-test-reporter after-build -t simplecov --exit-code "${exit_code}" || true
 
 
-
-sast:
-    stage: test
 include:
-- template: Security/SAST.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
