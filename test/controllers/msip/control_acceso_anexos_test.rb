@@ -20,8 +20,10 @@ module Msip
         @anexo.id.to_i,
         @anexo.adjunto_file_name,
       )
+      puts "OJO pwd"
+      puts `pwd`
       ls="ls -l #{Msip.ruta_anexos.to_s}"
-      puts ls
+      puts "OJO ls=#{ls}"
       puts `#{ls}`
       FileUtils.touch(n)
       puts "Despues de touch"
