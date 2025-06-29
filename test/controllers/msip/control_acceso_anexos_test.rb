@@ -22,6 +22,10 @@ module Msip
       )
       puts "OJO pwd"
       puts `pwd`
+      puts "OJO ls"
+      puts `ls -l`
+      puts "OJO ls archivos"
+      puts `ls -l archivos`
       ls="ls -l #{Msip.ruta_anexos.to_s}"
       puts "OJO ls=#{ls}"
       puts `#{ls}`
