@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 3231a92259003088de4cb767d90d706ae7d45d7f
+  revision: a1df072f3942e57d3b21915d9f3541098687157f
   branch: main
   specs:
     heb412_gen (2.3.0.alfa4)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: de788298ba5305073d1dd10f241038256c8714c2
+  revision: d2bf44e8df2fe232780910fc6b5d9030c252f035
   branch: main
   specs:
     mr519_gen (2.3.0.alfa4)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 50400741f5749f3074b58b87c9b37d72c00654d9
+  revision: b10207e3b4c49bff2057b9acb68bbff1486f934d
   branch: main
   specs:
     msip (2.3.0.alfa4)
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 6fce2df13e3ff1ebcda836b8d417c36fc1fd314d
+  revision: 82bede719b326a00dc4c5e6a9af84353f43e198c
   branch: main
   specs:
     sivel2_gen (2.3.0.alfa3)
@@ -166,7 +166,7 @@ GEM
     climate_control (1.2.0)
     code-scanning-rubocop (0.6.1)
       rubocop (~> 1.0)
-    color (1.8)
+    color (2.0.1)
     colorize (1.1.0)
     compare-xml (0.66)
       nokogiri (~> 1.8)

@@ -6,28 +6,9 @@
 /* Tomselect */
 @import "tom-select/dist/css/tom-select.bootstrap5.min.css";
 
-/* Fontawesome */
-@import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
-@import "@fortawesome/fontawesome-free/css/solid.min.css";
 @import "gridstack/dist/gridstack.min.css";
 @import "gridstack/dist/gridstack-extra.min.css";
 
 @import 'msip/motor.css';
 @import 'mr519_gen/motor.css';
 @import 'heb412_gen/motor.css';
-                                                                                                                                                            
-$fa-font-path:        "@fortawesome/fontawesome-free/webfonts/";
-
-@font-face {
-  font-family: 'Font Awesome 5 Free';
-  font-style: normal;
-  font-weight: 900;
-  font-display: $fa-font-display;
-  src: url('@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot');
-  src: url('@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot?#iefix') format('embedded-opentype');
-  src: url('@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2') format('woff2');
-  src: url('@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff') format('woff');
-  src: url('@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf') format('truetype');
-  src: url('@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg') format('svg');
-}
-
