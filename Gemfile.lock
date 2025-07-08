@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 417fcc398da7ac290e8a71a04cd08cae37b08b10
+  revision: fc627527af3e1312120bbe286c1fed9c6f8f038b
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 7922f488c2888df8c92618ea19dc8c8d6cdae181
+  revision: 062d13aedecabcf089daa7251db802c05f164ccd
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 8091247e8352671487c73199d980f0f6746cfeca
+  revision: 14192081e94b0fa45cec5eb61598ae0cff87c4b3
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: f3c49ac40bbbf295ccc003f3478aa643bed7a6a8
+  revision: cf323583cb12a4ad2d486985092932636f7d2fa4
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -185,7 +185,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    color (1.8)
+    color (2.0.1)
     colorize (1.1.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.3)
@@ -269,16 +269,16 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    matrix (0.4.2)
+    matrix (0.4.3)
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0610)
+    mime-types-data (3.2025.0701)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.25.5)
     msgpack (1.8.0)
-    net-imap (0.5.8)
+    net-imap (0.5.9)
       date
       net-protocol
     net-pop (0.1.2)
@@ -388,7 +388,7 @@ GEM
     rainbow (3.1.1)
     raindrops (0.20.1)
     rake (13.3.0)
-    rdoc (6.14.0)
+    rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
     redcarpet (3.6.1)
@@ -402,7 +402,7 @@ GEM
     rspreadsheet (0.5.3)
       andand (>= 1.3)
       rubyzip (>= 1.3)
-    rubocop (1.76.2)
+    rubocop (1.77.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
