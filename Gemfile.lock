@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: a1df072f3942e57d3b21915d9f3541098687157f
+  revision: c8fa45cad06ad00b687c8642a0d12435f0f19212
   branch: main
   specs:
     heb412_gen (2.3.0.alfa4)
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: d2bf44e8df2fe232780910fc6b5d9030c252f035
+  revision: 7b3d65ec2cf9aad1e8f543c450432555464b1efc
   branch: main
   specs:
     mr519_gen (2.3.0.alfa4)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: b10207e3b4c49bff2057b9acb68bbff1486f934d
+  revision: 34f6317e35ef454385a0bed55ec1d9cc09b2e6e4
   branch: main
   specs:
     msip (2.3.0.alfa4)
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 82bede719b326a00dc4c5e6a9af84353f43e198c
+  revision: 113aa023bb3bbe0329a68cac657941e092780fc5
   branch: main
   specs:
     sivel2_gen (2.3.0.alfa3)
@@ -146,10 +146,10 @@ GEM
     ansi (1.5.0)
     apexcharts (0.2.0)
     ast (2.4.3)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bcrypt (3.1.20)
     benchmark (0.4.1)
-    bigdecimal (3.1.9)
+    bigdecimal (3.2.2)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -171,7 +171,7 @@ GEM
     compare-xml (0.66)
       nokogiri (~> 1.8)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.0)
+    connection_pool (2.5.3)
     crass (1.0.6)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
@@ -194,7 +194,8 @@ GEM
     dotenv-rails (3.1.8)
       dotenv (= 3.1.8)
       railties (>= 6.1)
-    drb (2.2.1)
+    drb (2.2.3)
+    erb (5.0.1)
     erd (0.8.2)
       nokogiri
       ruby-graphviz
@@ -217,13 +218,13 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
-    json (2.10.2)
+    json (2.12.2)
     kgio (2.11.4)
-    language_server-protocol (3.17.0.4)
+    language_server-protocol (3.17.0.5)
     libxml-ruby (5.0.4)
     lint_roller (1.1.0)
     logger (1.7.0)
-    loofah (2.24.0)
+    loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -232,13 +233,13 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    matrix (0.4.2)
-    mime-types (3.6.2)
+    matrix (0.4.3)
+    mime-types (3.7.0)
       logger
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0408)
+      mime-types-data (~> 3.2025, >= 3.2025.0507)
+    mime-types-data (3.2025.0701)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
+    mini_portile2 (2.8.9)
     minitest (5.25.5)
     minitest-reporters (1.7.1)
       ansi
@@ -246,7 +247,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     msgpack (1.8.0)
-    net-imap (0.5.6)
+    net-imap (0.5.9)
       date
       net-protocol
     net-pop (0.1.2)
@@ -280,7 +281,7 @@ GEM
       nokogiri (>= 1.12.0)
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
-    parallel (1.26.3)
+    parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
@@ -304,7 +305,7 @@ GEM
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    psych (5.2.3)
+    psych (5.2.6)
       date
       stringio
     puma (6.6.0)
@@ -338,7 +339,7 @@ GEM
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
       activesupport (>= 5.0.1.rc1)
-    rails-dom-testing (2.2.0)
+    rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -363,8 +364,9 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     raindrops (0.20.1)
-    rake (13.2.1)
-    rdoc (6.13.1)
+    rake (13.3.0)
+    rdoc (6.14.2)
+      erb
       psych (>= 4.0.0)
     redcarpet (3.6.1)
     regexp_parser (2.10.0)
@@ -377,7 +379,7 @@ GEM
     rspreadsheet (0.5.3)
       andand (>= 1.3)
       rubyzip (>= 1.3)
-    rubocop (1.75.2)
+    rubocop (1.78.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -385,10 +387,10 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.44.0, < 2.0)
+      rubocop-ast (>= 1.45.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.44.1)
+    rubocop-ast (1.45.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-minitest (0.38.1)
@@ -419,7 +421,7 @@ GEM
     simplecov_json_formatter (0.1.4)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
-    stringio (3.1.6)
+    stringio (3.1.7)
     terrapin (1.1.0)
       climate_control
     thor (1.3.2)
@@ -452,12 +454,12 @@ GEM
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
     webrick (1.9.1)
-    websocket-driver (0.7.7)
+    websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (4.0.1)
-    zeitwerk (2.7.2)
+    zeitwerk (2.7.3)
 
 PLATFORMS
   aarch64-linux-gnu
