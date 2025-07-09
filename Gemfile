@@ -82,19 +82,19 @@ gem "will_paginate" # Listados en páginas
 # estas ponerse en orden de apilamiento lógico y no alfabético).
 
 gem "msip", # Motor generico
-  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: "main"
+  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: "sintema"
   #path: "../msip"
 
 gem "mr519_gen", # Motor de gestion de formularios y encuestas
-  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: "main" 
+  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: "sintema" 
   #path: "../mr519_gen"
 
 gem "heb412_gen", # Motor de nube y llenado de plantillas
-  git: "https://gitlab.com/pasosdeJesus/heb412_gen.git", branch: "main"
+  git: "https://gitlab.com/pasosdeJesus/heb412_gen.git", branch: "sintema"
   #path: "../heb412_gen"
 
 gem "sivel2_gen", # Motor para manejo de casos
-  git: "https://gitlab.com/pasosdeJesus/sivel2_gen.git", branch: "main"
+  git: "https://gitlab.com/pasosdeJesus/sivel2_gen.git", branch: "sintema"
   #path: "../sivel2_gen"
 
 group :development, :test do

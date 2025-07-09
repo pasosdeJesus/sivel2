@@ -19,8 +19,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: c8fa45cad06ad00b687c8642a0d12435f0f19212
-  branch: main
+  revision: 36a57c306b1debb27bb4a9ddb47d10648c9e5e60
+  branch: sintema
   specs:
     heb412_gen (2.3.0.alfa4)
       mr519_gen
@@ -30,8 +30,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 7b3d65ec2cf9aad1e8f543c450432555464b1efc
-  branch: main
+  revision: 5095a7edcaacb9b48b3686a3e3d77ec685ee0eb4
+  branch: sintema
   specs:
     mr519_gen (2.3.0.alfa4)
       msip
@@ -39,8 +39,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 34f6317e35ef454385a0bed55ec1d9cc09b2e6e4
-  branch: main
+  revision: d4d11d8202d29c482c4f2415d7490e5368e0a03a
+  branch: sintema
   specs:
     msip (2.3.0.alfa4)
       cancancan (~> 3)
@@ -57,8 +57,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 113aa023bb3bbe0329a68cac657941e092780fc5
-  branch: main
+  revision: de9b60ef6abbde7c93375e31d926bb71ab527963
+  branch: sintema
   specs:
     sivel2_gen (2.3.0.alfa3)
       color

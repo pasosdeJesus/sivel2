@@ -1,7 +1,6 @@
 
 /* Bootstrap */
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
 /* Tomselect */
 @import "tom-select/dist/css/tom-select.bootstrap5.min.css";
