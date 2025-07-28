@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 929486d51e06194cd6d2d5fbce1efdc71dc43dca
+  revision: 1597b9c8dfb8c9651b4ea914ed0261aad8708c40
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e5f8273271bc470c94aeb0123f6bda258ccecd0e
+  revision: 24608f1fe0d9dedb6fb3ffccaf791a4fd06c7817
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 62afa27d6c671fad26e872d843299ba6065a37f8
+  revision: c1ffbe951e6a4bcff7bc95b3232a944794ea53e5
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -317,7 +317,11 @@ GEM
       ast (~> 2.4.1)
       racc
     pdf-core (0.10.0)
-    pg (1.5.9)
+    pg (1.6.0)
+    pg (1.6.0-aarch64-linux)
+    pg (1.6.0-arm64-darwin)
+    pg (1.6.0-x86_64-darwin)
+    pg (1.6.0-x86_64-linux)
     pp (0.6.2)
       prettyprint
     prawn (2.5.0)
