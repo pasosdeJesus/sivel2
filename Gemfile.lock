@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 1597b9c8dfb8c9651b4ea914ed0261aad8708c40
+  revision: 1997835b9c88b13276fbd7acd45baea0f2ff8cfd
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 24608f1fe0d9dedb6fb3ffccaf791a4fd06c7817
+  revision: 4218f63d7673e73fff2e62feab2d23c760e337f9
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: c1ffbe951e6a4bcff7bc95b3232a944794ea53e5
+  revision: cc806f8286d12e5e04576e56ada4357d65d0c590
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: f9be723958ebb4291e4dcf14777712d40ecbab86
+  revision: 6c336cf952cd659ba44fd3d16f9b83dfc29a954e
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -257,7 +257,7 @@ GEM
     json (2.13.2)
     kgio (2.11.4)
     language_server-protocol (3.17.0.5)
-    libxml-ruby (5.0.4)
+    libxml-ruby (5.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.24.1)
@@ -339,7 +339,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (6.6.0)
+    puma (6.6.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.17)
@@ -436,7 +436,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
-    rubyzip (2.4.1)
+    rubyzip (3.0.0)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
