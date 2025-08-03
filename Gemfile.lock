@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 1997835b9c88b13276fbd7acd45baea0f2ff8cfd
+  revision: e5224943c03d7211aace4d9ecd3820b56193c601
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 6c336cf952cd659ba44fd3d16f9b83dfc29a954e
+  revision: 460b2a6e2017707e4f8e045421617cb22029ce24
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -436,7 +436,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
-    rubyzip (3.0.0)
+    rubyzip (2.4.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -569,7 +569,7 @@ DEPENDENCIES
   rubocop-minitest
   rubocop-rails
   rubocop-shopify
-  rubyzip
+  rubyzip (<= 2.4.1)
   sassc-rails
   simple_form
   simplecov
