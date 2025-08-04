@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 460b2a6e2017707e4f8e045421617cb22029ce24
+  revision: f73d396c99ffdf3372efbf0dd86aaac36a6b9244
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -317,11 +317,13 @@ GEM
       ast (~> 2.4.1)
       racc
     pdf-core (0.10.0)
-    pg (1.6.0)
-    pg (1.6.0-aarch64-linux)
-    pg (1.6.0-arm64-darwin)
-    pg (1.6.0-x86_64-darwin)
-    pg (1.6.0-x86_64-linux)
+    pg (1.6.1)
+    pg (1.6.1-aarch64-linux)
+    pg (1.6.1-aarch64-linux-musl)
+    pg (1.6.1-arm64-darwin)
+    pg (1.6.1-x86_64-darwin)
+    pg (1.6.1-x86_64-linux)
+    pg (1.6.1-x86_64-linux-musl)
     pp (0.6.2)
       prettyprint
     prawn (2.5.0)
