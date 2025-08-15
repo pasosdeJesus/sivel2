@@ -82,6 +82,9 @@ FileUtils.chdir(RAIZ_AP) do
     system! "bin/rails msip:enlaces_motores"
 
     puts "\n== Crea recursos CSS y Javascript =="
+
+    system! "yarn build:css"
+    system! "yarn build"
     system! "RAILS_ENV=#{ENV["RAILS_ENV"]} bin/rails assets:precompile --trace"
   end
 
