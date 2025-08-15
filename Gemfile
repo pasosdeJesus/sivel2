@@ -19,8 +19,6 @@ gem "color"
 
 gem "csv"
 
-gem "cssbundling-rails"
-
 gem "devise" # Autenticación
 
 gem "devise-i18n"
@@ -28,8 +26,6 @@ gem "devise-i18n"
 gem "hotwire-rails"
 
 gem "jbuilder" # API JSON facil. Ver: https://github.com/rails/jbuilder
-
-gem "jsbundling-rails"
 
 gem "kt-paperclip", # Anexos
   git: "https://github.com/kreeti/kt-paperclip.git"
@@ -48,8 +44,6 @@ gem "prawnto_2", require: "prawnto"
 
 gem "prawn-table"
 
-gem "propshaft"
-
 gem "rack", "~> 2"
 
 gem "rack-cors"
@@ -63,9 +57,11 @@ gem "redcarpet" # Markdown
 
 gem "rspreadsheet"
 
-gem "rubyzip"
+gem "rubyzip", "<= 2.4.1"
 
 gem "simple_form" # Formularios simples
+
+gem "sprockets-rails"
 
 gem "stimulus-rails"
 
@@ -82,19 +78,19 @@ gem "will_paginate" # Listados en páginas
 # estas ponerse en orden de apilamiento lógico y no alfabético).
 
 gem "msip", # Motor generico
-  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: "sintema"
+  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: "main"
   #path: "../msip"
 
 gem "mr519_gen", # Motor de gestion de formularios y encuestas
-  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: "sintema" 
+  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: "main" 
   #path: "../mr519_gen"
 
 gem "heb412_gen", # Motor de nube y llenado de plantillas
-  git: "https://gitlab.com/pasosdeJesus/heb412_gen.git", branch: "sintema"
+  git: "https://gitlab.com/pasosdeJesus/heb412_gen.git", branch: "main"
   #path: "../heb412_gen"
 
 gem "sivel2_gen", # Motor para manejo de casos
-  git: "https://gitlab.com/pasosdeJesus/sivel2_gen.git", branch: "sintema"
+  git: "https://gitlab.com/pasosdeJesus/sivel2_gen.git", branch: "main"
   #path: "../sivel2_gen"
 
 group :development, :test do
