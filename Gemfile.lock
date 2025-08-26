@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 73c9b8932779871244b6e298c807afc501828d2c
+  revision: 2bd53e29063b3f07eca1e9b0aee1e3dff009e292
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e29c992fd2aba3fc560b4488b1e80f899e908285
+  revision: 161f74c8ba0eeb059f1f96be905cf294e7c48518
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: a80a51ac7e1cabfe522865fb826c3d67c0bfcaf4
+  revision: e8843830abf55b0f957b91778e6eb4314b49db6d
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 41f5ef35ddc980821edb55dd66c42fe2441bf2e5
+  revision: 716f8811181ccd15895d0c994a80f8711b5dbeaf
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -204,7 +204,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.14.0)
+    devise-i18n (1.15.0)
       devise (>= 4.9.0)
       rails-i18n
     docile (1.4.1)
@@ -249,7 +249,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    jbuilder (2.14.0)
+    jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     jsbundling-rails (1.3.1)
@@ -427,7 +427,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.33.0)
+    rubocop-rails (2.33.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
