@@ -1,0 +1,8 @@
+coffeescript:
+  config_file: desarrollo/coffeescript.json
+
+jshint:
+  config_file: desarrollo/jshintrc
+
+ruby:
+  config_file: desarrollo/ruby.yml

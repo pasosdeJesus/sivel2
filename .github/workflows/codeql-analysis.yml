@@ -1,28 +1,28 @@
-# For most projects, this workflow file will not need changing; you simply need
-# to commit it to your repository.
+# Para la mayoriá de proyectos, este archivo de flujo no necesita ser cambiado;
+# simplemente agreguelo a su repositorio.
 #
-# You may wish to alter this file to override the set of languages analyzed,
-# or to provide custom queries or build logic.
+# Puede querer modificar este archivo para sobrecargar el conjunto de lenguajes
+# analizados o para poner consultas personalizadas o lógica de construcción.
 #
-# ******** NOTE ********
-# We have attempted to detect the languages in your repository. Please check
-# the `language` matrix defined below to confirm you have the correct set of
-# supported CodeQL languages.
+# ******** NOTA ********
+# Hemos intentando detectar los lenguajes en su respositorio.  por favor revise
+# la matriz `language` definida más abajo para confirmar que tiene el conjunto
+# correcto de lenguajes soportados por CodeQL.
 #
 name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, "v2.2" ]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ main ]
+    # Las ramas siguientes deben ser subconjunto de las ramas de arriba
+    branches: [ main, "v2.2" ]
   schedule:
-    - cron: '16 8 * * 3'
+    - cron: '28 5 * * 2'
 
 jobs:
   analyze:
-    name: Analyze
+    name: Analizar
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -33,39 +33,42 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'javascript', 'ruby' ]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
-        # Learn more:
-        # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
+        # CodeQL soporta [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
+        # Aprenda más del soporte de lenguajes de CodeQL en https://git.io/codeql-language-support
 
     steps:
-    - name: Checkout repository
+    - name: Sacar repositorio
       uses: actions/checkout@v2
 
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+    # Inicializa herramientas de CodeQL para el sondeo
+    - name: Inicializar CodeQL
+      uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        # If you wish to specify custom queries, you can do so here or in a config file.
-        # By default, queries listed here will override any specified in a config file.
-        # Prefix the list here with "+" to use these queries and those in the config file.
+        # Si quiere especificar consultas personalizadas, puede hacerlo aquí o
+        # en un archivo de configuración.
+        # Por omisión, las consultas listadas aquí sobrecargaran las 
+        # especificadas en un archivo de configuración.
+        # Agregue como prefijo a la lista de aquí un "+" para usar estas
+        # consultas y las del archivo de configuración.
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
-    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
-    # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    # Intentos de autoconstrucción para construir lenguajes compilados (C/C++, C#, o Java).
+    # Si este paso falla, entonces puede eliminarlo y ejecutar la construcción
+    # manualmente (ver más abajo)
+    - name: Autoconstrucción
+      uses: github/codeql-action/autobuild@v3
 
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 https://git.io/JvXDl
+    # Programas de la línea de ordenes para ejecutar el interprete del SO.
+    # https://git.io/JvXDl
 
-    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
-    #    and modify them (or add more) to build your code if your project
-    #    uses a compiled language
+    # Si la autoconstrucción anterior falla, eliminela y quite comentarios de
+    # las siguientes 3 líneas y modifiquelas (o añada) para construir su
+    # código si su proyecot usa un lenguaje compilado.
 
     #- run: |
     #   make bootstrap
     #   make release
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+    - name: Realizar análisis de CodeQL
+      uses: github/codeql-action/analyze@v3

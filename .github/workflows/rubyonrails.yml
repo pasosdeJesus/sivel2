@@ -1,0 +1,73 @@
+# Este flujo de trabajo emplea acciones que no están certificadas por Github.
+# Son proveidas por un tercero y están gobernadas por diferentes
+# términos de servicio, política de privacidad y documentación.
+#
+# Este flujo de trabajo instalará una versión preconstruida de Ruby,
+# instalará dependencias y ejecutará pruebas y verificadores.
+name: "IC para Ruby on Rails"
+on:
+  push:
+    branches: [ "main", "v2.2" ]
+  pull_request:
+    branches: [ "main", "v2.2" ]
+env:
+  DB_HOST: localhost
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: vtamara/postgis-es_co:13.3-1
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+          BD_CLAVE: password
+          BD_USUARIO: rails
+          BD_PRUEBA: rails_test
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+    steps:
+      - name: Sacar código fuente
+        uses: actions/checkout@v3
+      # Agregue o remplace pasos de depencicas aquí
+      - name: Instalar Ruby y gemas
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.5'
+          bundler-cache: true
+      - name: Instalar paquetes adicionales
+        run: ( sudo apt install poppler-utils)
+       #run: ( echo "es_CO.UTF-8 es_CO.utf8" | sudo tee -a /etc/locale.alias; echo "::::/etc/locale.alias::::" ;  cat /etc/locale.alias; echo "::::/etc/locale.gen::::"; cat /etc/locale.gen; sudo locale-gen es_CO.UTF-8 ;   sudo update-locale; echo "****locale -a****"; sudo dpkg-reconfigure locales; sudo locale -a; sudo apt install poppler-utils postgis postgresql-16-postgis)
+      - name: Reiniciar PostgreSQL
+        run: ( sudo service postgresql restart; sudo systemctl restart postgresql.service)
+      - name: Modificar volcados para que operen en versiones antiguas de PostgreSQL
+        run: (cp test/dummy/db/structure.sql test/dummy/db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' test/dummy/db/structure.sql.copia > test/dummy/db/structure.sql )
+      - name: Configurar esquema de base de datos
+        run: (cd test/dummy; cp .env.github .env; RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices; bin/rails msip:stimulus_motores; bin/rails assets:precompile)
+      # Agregue o remplace ejecutores de pruebas aquí
+      - name: Ejecutar pruebas
+        run: NOPRUEBAJS=1 bin/regresion.sh
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sacar código fuente
+        uses: actions/checkout@v4
+      - name: Instalar Ruby y gemas
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.5'
+          bundler-cache: true
+      - name: Generate binstubs
+        run: bundle binstubs bundler-audit brakeman rubocop
+      # Agregue o remplace verificadores 
+      - name: Verificación de seguridad a dependencias ruby
+        run: (bin/bundler-audit --update || exit_code=$?; echo "exit_code=$exit_code")
+      - name: Verificación de seguridad a código Ruby de la aplicación
+        run: (bin/brakeman -q -w2 || exit_code=$?; echo "exit_code=$exit_code")
+      - name: Verificación al formato de código Ruby
+        run: (bin/rubocop --parallel || exit_code=$?; echo "exit_code=$exit_code")

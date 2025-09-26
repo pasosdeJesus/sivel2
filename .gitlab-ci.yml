@@ -7,13 +7,12 @@ services:
     alias: postgres
 
 variables:
-  CC_TEST_REPORTER_ID: "af8fb32f310935cd6bc8811d81e2f16682b94c340e3a47b4ebc3558f88ae656a"
-  CI: "Si"
-  NOKOGIRI_USE_SYSTEM_LIBRARIES: "true"
+  CI: 'Si'
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: 'true'
   POSTGRES_DB: sivel2gen_pru
-  POSTGRES_ENABLED: "true"
+  POSTGRES_ENABLED: 'true'
   POSTGRES_HOST_AUTH_METHOD: trust
-  POSTGRES_PASSWORD: ""
+  POSTGRES_PASSWORD: ''
   POSTGRES_USER: runner
   RAILS_ENV: test
 
@@ -28,8 +27,8 @@ test:
       - node_modules
       - vendor/bundle
   before_script:
-    - uname -a
     - cat /etc/os-release
+    - uname -a
     - whoami
     - echo "HOME=${HOME}"
     - pwd
@@ -46,28 +45,29 @@ test:
     - apt-get update -qq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -yqq yarn
     - gem install bundler dotenv --no-document
     - bundle install --jobs $(nproc) "${FLAGS[@]}"
-    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-    - chmod +x ./cc-test-reporter
-    - ./cc-test-reporter -v
-    - ./cc-test-reporter before-build
+    - cd test/dummy
     - cp .env.gitlab .env
     - cp db/structure.sql db/structure.sql.copia 
-    - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
+    - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' db/structure.sql.copia > db/structure.sql 
+    - cp ../../db/datos-basicas.sql ../../db/datos-basicas.sql.copia 
+    - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' ../../db/datos-basicas.sql.copia > ../../db/datos-basicas.sql 
     - bin/rails db:drop db:create db:setup db:seed
     - bin/rails msip:indices
     - yarn
     - bin/rails msip:stimulus_motores
     - RAILS_ENV=test bin/rails assets:precompile
     - yarn add -D puppeteer
-    - for i in `find ./test -name "*js" -type f -exec grep -l "puppeteer-core" {} ';'`; do echo "Remplazando p-c por p en $i"; sed -i -e 's/preparar,//g;importpuppeteer from \"puppeteer-core\"/import puppeteer from \"puppeteer\";\nimport {preparar} from \".\/pgitlab.mjs\";/g' $i; cat $i; done
+    - for i in `find ./test -name "*js" -type f -exec grep -l "puppeteer-core" {} ';'`; do echo "Remplazando p-c por p en $i"; sed -i -e 's/preparar,//g;import puppeteer from \"puppeteer-core\"/import puppeteer from \"puppeteer\";\nimport {preparar} from \".\/pgitlab.mjs\";/g' $i; cat $i; done
+    - cd ../..
   script:
     - NOPRUEBAJS=1 bin/regresion.sh
     - export exit_code=$?
   after_script:
-    - if (test "${exit_code}" == "") then { exit_code=0; } fi; ./cc-test-reporter after-build -t simplecov --exit-code "${exit_code}" || true
+    - echo "exit_code=$exit_code"
+    - exit $exit_code
 
 
 include:
-  - template: Security/Dependency-Scanning.gitlab-ci.yml
-  - template: Security/SAST.gitlab-ci.yml
-  - template: Security/Secret-Detection.gitlab-ci.yml
+    - template: Security/Dependency-Scanning.gitlab-ci.yml
+    - template: Security/SAST.gitlab-ci.yml
+    - template: Security/Secret-Detection.gitlab-ci.yml

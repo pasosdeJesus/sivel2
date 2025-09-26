@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: fd16082dc31c688289033d5529263ecec762ecb2
+  revision: cc9642d6f50fcd40314a57df9f2eaf192473ff69
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: c774b624d2ea9ccf2362340e2afaf05069895228
+  revision: a434fff681fa5c615a7121333caaa93db3e97e26
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 97e1af9c94f6a97cf86f766bafa2bfeba6eea164
+  revision: b7b88d80d57cd366c5fa26b6720fd223b6900095
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: b19704ce53eeea81d30e3fac59437ace88d1ff6e
+  revision: f31577b538b431e7ad58a277b599056faef654ea
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -344,7 +344,7 @@ GEM
     puma (7.0.4)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.17)
+    rack (2.2.18)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
@@ -476,7 +476,7 @@ GEM
     tsort (0.2.0)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.16)
+    turbo-rails (2.0.17)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     twitter_cldr (6.14.0)

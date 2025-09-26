@@ -1,0 +1,68 @@
+plugins:
+  - rubocop-minitest
+  - rubocop-rails
+
+inherit_gem:
+    rubocop-shopify: rubocop.yml
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+    #  SafeAutoCorrect: false
+
+Minitest/AssertPredicate:
+  Enabled: false
+    # 1. Hace más largo el assert porque transforma `assert caso.valid?` en 
+    #    `assert_predicate caso, :valid?`
+    # 2. EMHO no facilita legibilidad
+    # 3. No es homogéneo, no transforma `assert_not caso.valid?`
+    # La ventaja de assert_predicate es que presenta mejor
+    # mensaje de error cuando la aserción falla.
+
+Minitest/MultipleAssertions:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/SquishedSQLHeredocs:
+  Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - lib/msip/engine.rb
+    - app/helpers/msip/*
+
+Rails/Exit:
+  Exclude:
+    - lib/generators/msip/*
+
+Rails/Output:
+  Exclude:
+    - lib/generators/msip/*
+
+# En generadores Rails.root es nil
+Rails/FilePath:
+  Exclude:
+    - lib/msip/engine.rb
+
+Lint/RedundantStringCoercion:
+  Exclude:
+    - lib/msip/engine.rb
+
+Rails/RenderInline:
+  Enabled: false
+
+Naming/AsciiIdentifiers:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+
