@@ -21,17 +21,17 @@ module Msip
         @anexo.adjunto_file_name,
       )
       puts "OJO pwd"
-      puts `pwd`
+      puts %x(pwd)
       puts "OJO ls"
-      puts `ls -l`
+      puts %x(ls -l)
       puts "OJO ls archivos"
-      puts `ls -l archivos`
-      ls="ls -l #{Msip.ruta_anexos.to_s}"
+      puts %x(ls -l archivos)
+      ls = "ls -l #{Msip.ruta_anexos}"
       puts "OJO ls=#{ls}"
-      puts `#{ls}`
+      puts %x(#{ls})
       FileUtils.touch(n)
       puts "Despues de touch"
-      puts `#{ls}`
+      puts %x(#{ls})
     end
 
     teardown do

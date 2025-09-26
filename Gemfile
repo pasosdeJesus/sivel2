@@ -127,7 +127,7 @@ group :development, :test do
   gem "rubocop-shopify"
 
   gem "thor"
-  
+
   gem "yard"
 end
 
