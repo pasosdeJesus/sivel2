@@ -45,9 +45,9 @@ jobs:
       - name: Reiniciar PostgreSQL
         run: ( sudo service postgresql restart; sudo systemctl restart postgresql.service)
       - name: Modificar volcados para que operen en versiones antiguas de PostgreSQL
-        run: (cp test/dummy/db/structure.sql test/dummy/db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' test/dummy/db/structure.sql.copia > test/dummy/db/structure.sql )
+        run: (cp db/structure.sql db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' db/structure.sql.copia > db/structure.sql )
       - name: Configurar esquema de base de datos
-        run: (cd test/dummy; cp .env.github .env; RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices; bin/rails msip:stimulus_motores; bin/rails assets:precompile)
+        run: (cp .env.github .env; RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices; bin/rails msip:stimulus_motores; bin/rails assets:precompile)
       # Agregue o remplace ejecutores de pruebas aquí
       - name: Ejecutar pruebas
         run: NOPRUEBAJS=1 bin/regresion.sh
