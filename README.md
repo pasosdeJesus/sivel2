@@ -3,7 +3,7 @@
 ## Bienvenido al código fuente de SIVeL 2.2 ##
 Sistema de Información de Violencia Política en Línea versión 2.2
 
-[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad: [![Estado Construcción en gitlab](https://gitlab.com/pasosdeJesus/sivel2/badges/v2.2/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines?page=1&scope=all&ref=v2.2) [![Integración continua github](https://github.com/pasosdeJesus/sivel2/actions/workflows/rubyonrails.yml/badge.svg?branch=v2.2)](https://github.com/pasosdeJesus/sivel2/actions/workflows/rubyonrails.yml) [![CodeQL en github](https://github.com/pasosdeJesus/sivel2/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/pasosdeJesus/sivel2/actions/workflows/codeql-analysis.yml)
+[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad: [![Estado Construcción en gitlab](https://gitlab.com/pasosdeJesus/sivel2/badges/v2.2/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines?page=1&scope=all&ref=v2.2) [![Integración continua github](https://github.com/pasosdeJesus/sivel2/actions/workflows/rubyonrails.yml/badge.svg?branch=v2.2)](https://github.com/pasosdeJesus/sivel2/actions/workflows/rubyonrails.yml) [![CodeQL](https://github.com/pasosdeJesus/sivel2/actions/workflows/github-code-scanning/codeql/badge.svg?branch=v2.2)](https://github.com/pasosdeJesus/sivel2/actions/workflows/github-code-scanning/codeql)
 
 ![Logo de sivel2_2](https://gitlab.com/pasosdeJesus/sivel2/-/raw/v2.2/app/assets/images/logo.png)
 
