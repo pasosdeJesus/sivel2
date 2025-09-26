@@ -55,7 +55,6 @@ test:
     - RAILS_ENV=test bin/rails assets:precompile
     - yarn add -D puppeteer
     - for i in `find ./test -name "*js" -type f -exec grep -l "puppeteer-core" {} ';'`; do echo "Remplazando p-c por p en $i"; sed -i -e 's/preparar,//g;import puppeteer from \"puppeteer-core\"/import puppeteer from \"puppeteer\";\nimport {preparar} from \".\/pgitlab.mjs\";/g' $i; cat $i; done
-    - cd ../..
   script:
     - NOPRUEBAJS=1 bin/regresion.sh
     - export exit_code=$?
