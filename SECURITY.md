@@ -6,8 +6,9 @@
 | Versión | Soportada          |
 | ------- | ------------------ |
 | 2.0.x y anteriores   |  :x:               |
-| 2.1.x   | :heavy_check_mark: |
-| 2.2.x   | :x: (en desarrollo)|
+| 2.1.x   | :x:               |
+| 2.2.x   | :heavy_check_mark: |
+| 2.3.x   | :x: (en desarrollo)|
 
 
 ## Reportar vulnerabilidades
@@ -26,8 +27,8 @@ Por favor sigue estos 3 pasos en ese orden:
    el reporte detallado y referenciando la solicitud de cambio.
 
 Hay una retribución monetaria para la primera falla que se reporte a la rama
-sivel2.1, ver detalles en
-<https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.1/doc/Llamado.md>
+sivel2.2, ver detalles en
+<https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.2/doc/Llamado.md>
 
 ----
 
@@ -38,8 +39,9 @@ sivel2.1, ver detalles en
 | Version | Supported          |
 | ------- | ------------------ |
 | 2.0.x and previous     |  :x:               |
-| 2.1.x   | :heavy_check_mark: |
-| 2.2.x   | :x: (en desarrollo)|
+| 2.1.x   |  :x:               |
+| 2.2.x   | :heavy_check_mark: |
+| 2.3.x   | :x: (en desarrollo)|
 
 
 ## Report vulnerabilites
@@ -58,6 +60,6 @@ Please follow the next 3 steps in that order:
    the detailed report and referring the Pull Request you created.
 
 There is an economical reward for the first person who reports a
-vulnerability in the branch `sivel2.1`, see details at
-  <https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.1/doc/Llamado.md>
+vulnerability in the branch `sivel2.2`, see details at
+  <https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.2/doc/Llamado.md>
 
