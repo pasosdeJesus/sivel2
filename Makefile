@@ -45,4 +45,4 @@ c_rubocop:
 	bin/rubocop -a
 
 yard:
-	yard
+	bundle exec yard

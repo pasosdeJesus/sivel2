@@ -3,8 +3,6 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "apexcharts"
-
 gem "babel-transpiler"
 
 gem "bcrypt"
@@ -127,6 +125,10 @@ group :development, :test do
   gem "rubocop-rails"
 
   gem "rubocop-shopify"
+
+  gem "thor"
+  
+  gem "yard"
 end
 
 group :development do
@@ -138,9 +140,11 @@ group :development do
 end
 
 group :test do
-  gem "capybara"
+  gem "minitest"
 
-  gem "cuprite"
+  gem "minitest-reporters"
+
+  gem "rails-controller-testing"
 
   gem "simplecov"
 end

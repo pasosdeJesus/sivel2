@@ -140,10 +140,8 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
     andand (1.3.3)
-    apexcharts (0.2.0)
+    ansi (1.5.0)
     ast (2.4.3)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -164,15 +162,6 @@ GEM
       thor (~> 1.0)
     camertron-eprun (1.1.1)
     cancancan (3.6.1)
-    capybara (3.40.0)
-      addressable
-      matrix
-      mini_mime (>= 0.1.3)
-      nokogiri (~> 1.11)
-      rack (>= 1.6.0)
-      rack-test (>= 0.6.3)
-      regexp_parser (>= 1.5, < 3.0)
-      xpath (~> 3.2)
     choice (0.2.0)
     cldr-plurals-runtime-rb (1.1.0)
     climate_control (1.2.0)
@@ -191,9 +180,6 @@ GEM
     connection_pool (2.5.3)
     crass (1.0.6)
     csv (3.3.5)
-    cuprite (0.17)
-      capybara (~> 3.0)
-      ferrum (~> 0.17.0)
     date (3.4.1)
     debug (1.11.0)
       irb (~> 1.10)
@@ -219,12 +205,6 @@ GEM
       ruby-graphviz
     erubi (1.13.1)
     execjs (2.10.0)
-    ferrum (0.17.1)
-      addressable (~> 2.5)
-      base64 (~> 0.2)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
     ffi (1.17.2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -277,6 +257,11 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.25.5)
+    minitest-reporters (1.7.1)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     msgpack (1.8.0)
     net-imap (0.5.9)
       date
@@ -340,7 +325,6 @@ GEM
     psych (5.2.6)
       date
       stringio
-    public_suffix (6.0.2)
     puma (7.0.4)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -368,6 +352,10 @@ GEM
       activesupport (= 7.2.2.1)
       bundler (>= 1.15.0)
       railties (= 7.2.2.1)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
@@ -506,8 +494,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (4.0.1)
-    xpath (3.2.0)
-      nokogiri (~> 1.8)
+    yard (0.9.37)
     zeitwerk (2.7.3)
 
 PLATFORMS
@@ -525,7 +512,6 @@ PLATFORMS
   x86_64-openbsd
 
 DEPENDENCIES
-  apexcharts
   babel-transpiler
   bcrypt
   benchmark
@@ -533,14 +519,12 @@ DEPENDENCIES
   brakeman
   bundler-audit
   cancancan
-  capybara
   cocoon!
   code-scanning-rubocop
   coffee-rails
   color
   colorize
   csv
-  cuprite
   debug
   devise
   devise-i18n
@@ -552,6 +536,8 @@ DEPENDENCIES
   jsbundling-rails
   kt-paperclip!
   libxml-ruby
+  minitest
+  minitest-reporters
   mr519_gen!
   msip!
   nokogiri
@@ -564,6 +550,7 @@ DEPENDENCIES
   rack (~> 2)
   rack-cors
   rails (~> 7.2)
+  rails-controller-testing
   rails-erd
   rails-i18n
   redcarpet
@@ -578,12 +565,14 @@ DEPENDENCIES
   sivel2_gen!
   sprockets-rails
   stimulus-rails
+  thor
   turbo-rails
   twitter_cldr
   tzinfo
   unicorn
   web-console
   will_paginate
+  yard
 
 BUNDLED WITH
    2.7.2
