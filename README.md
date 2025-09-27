@@ -10,5 +10,5 @@ Sistema de Información de Violencia Política en Línea versión 2.3
 ## Sobre SIVeL 2.3
 
 Esta es la versión en desarrollo de SIVeL, por favor consulte la versión
-estable en la [rama 2.2 del repositorio principal)[https://gitlab.com/pasosdeJesus/sivel2/-/tree/v2.2]
+estable en la [rama 2.2 del repositorio principal](https://gitlab.com/pasosdeJesus/sivel2/-/tree/v2.2)
 
