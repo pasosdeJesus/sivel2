@@ -4,7 +4,7 @@
 Sistema de Información de Violencia Política en Línea versión 2.2
 
 
-[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad: [![Estado Construcción](https://gitlab.com/pasosdeJesus/sivel2/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines?page=1&scope=all&ref=main) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sivel2/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sivel2)
+[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad: [![Estado Construcción en gitlab](https://gitlab.com/pasosdeJesus/sivel2/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sivel2/-/pipelines?page=1&scope=all&ref=main) [![Integración continua github](https://github.com/pasosdeJesus/sivel2/actions/workflows/rubyonrails.yml/badge.svg?branch=main)](https://github.com/pasosdeJesus/sivel2/actions/workflows/rubyonrails.yml) [![CodeQL](https://github.com/pasosdeJesus/sivel2/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/pasosdeJesus/sivel2/actions/workflows/github-code-scanning/codeql)
 
 ![Logo de sivel2_2](https://gitlab.com/pasosdeJesus/sivel2/-/raw/main/app/assets/images/logo.png)
 
