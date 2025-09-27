@@ -15,18 +15,6 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: vtamara/postgis-es_co:13.3-1
-        ports:
-          - "5432:5432"
-        env:
-          POSTGRES_DB: rails_test
-          POSTGRES_USER: rails
-          POSTGRES_PASSWORD: password
-          BD_CLAVE: password
-          BD_USUARIO: rails
-          BD_PRUEBA: rails_test
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
@@ -34,20 +22,19 @@ jobs:
       - name: Sacar código fuente
         uses: actions/checkout@v3
       # Agregue o remplace pasos de depencicas aquí
+      - name: Ambiente - paquetes e.g postgresql, postgis, base de pruebas, .env
+        run: sudo ./bin/ambiente_github.sh
       - name: Instalar Ruby y gemas
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'
           bundler-cache: true
-      - name: Instalar paquetes adicionales
-        run: ( sudo apt install poppler-utils)
-       #run: ( echo "es_CO.UTF-8 es_CO.utf8" | sudo tee -a /etc/locale.alias; echo "::::/etc/locale.alias::::" ;  cat /etc/locale.alias; echo "::::/etc/locale.gen::::"; cat /etc/locale.gen; sudo locale-gen es_CO.UTF-8 ;   sudo update-locale; echo "****locale -a****"; sudo dpkg-reconfigure locales; sudo locale -a; sudo apt install poppler-utils postgis postgresql-16-postgis)
       - name: Reiniciar PostgreSQL
         run: ( sudo service postgresql restart; sudo systemctl restart postgresql.service)
-      - name: Modificar volcados para que operen en versiones antiguas de PostgreSQL
-        run: (cp db/structure.sql db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' db/structure.sql.copia > db/structure.sql )
-      - name: Configurar esquema de base de datos
-        run: (cp .env.github .env; RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices; bin/rails msip:stimulus_motores; bin/rails assets:precompile)
+      - name: Modificar estructura BD para que operen en versiones antiguas
+        run: (export D=./; if (test -d "test/dummy") then { export D=test/dummy/; } fi; cp $D/db/structure.sql $D/db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' $D/db/structure.sql.copia > $D/db/structure.sql )
+      - name: Modificar semillas BD para que operen en versiones antiguas
+        run: (if (test -f "db/datos-basicas.sql") then { cp db/datos-basicas.sql db/datos-basicas.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' db/datos-basicas.sql.copia > db/datos-basicas.sql; } fi; )
       # Agregue o remplace ejecutores de pruebas aquí
       - name: Ejecutar pruebas
         run: NOPRUEBAJS=1 bin/regresion.sh
@@ -62,8 +49,6 @@ jobs:
         with:
           ruby-version: '3.4.5'
           bundler-cache: true
-      - name: Generate binstubs
-        run: bundle binstubs bundler-audit brakeman rubocop
       # Agregue o remplace verificadores 
       - name: Verificación de seguridad a dependencias ruby
         run: (bin/bundler-audit --update || exit_code=$?; echo "exit_code=$exit_code")

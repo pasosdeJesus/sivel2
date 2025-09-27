@@ -27,7 +27,7 @@ Por favor sigue estos 3 pasos en ese orden:
    el reporte detallado y referenciando la solicitud de cambio.
 
 Hay una retribución monetaria para la primera falla que se reporte a la rama
-v2.2, ver detalles en
+`v2.2`, ver detalles en
 <https://gitlab.com/pasosdeJesus/sivel2/-/blob/v2.2/doc/Llamado.md>
 
 ----
