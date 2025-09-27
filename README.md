@@ -19,7 +19,7 @@ refugio como las de la Red de Bancos de Datos, el Banco de Datos del
 CINEP/PPP, JRS-Colombia, CODACOP, ASOM, FASOL entre otras.
 
 Te invitamos a ver el manual de usuario en:
-<https://docs.google.com/document/d/1IZK_PTTbXGoHYRCRZgmS4CrNTITU_F1bkEyyjRTNekg/edit?usp=sharing>
+<https://docs.google.com/document/d/1O9UtOC24njbU5UZWmFcsLX96XQ8huELReG5GcTjUKLY/edit?usp=sharing>
 
 Si necesitas una instancia de SIVeL 2.2 para tu organización no gubernamental,
 o necesitas un sistema de información o incluir y adaptar SIVeL 2.2 en el
@@ -35,7 +35,7 @@ aplicación por favor revisa:
   <https://gitlab.com/pasosdeJesus/sivel2_gen/-/milestones>
 
 Si quieres desplegar tu propia instalación de SIVeL 2.2 o contribuir
-en el desarrollo mira `CONTRIBUTING.md`
+en el desarrollo mira [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Autores ✒️
 
