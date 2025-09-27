@@ -1,0 +1,58 @@
+# Este flujo de trabajo emplea acciones que no están certificadas por Github.
+# Son proveidas por un tercero y están gobernadas por diferentes
+# términos de servicio, política de privacidad y documentación.
+#
+# Este flujo de trabajo instalará una versión preconstruida de Ruby,
+# instalará dependencias y ejecutará pruebas y verificadores.
+name: "IC para Ruby on Rails"
+on:
+  push:
+    branches: [ "main", "v2.2" ]
+  pull_request:
+    branches: [ "main", "v2.2" ]
+env:
+  DB_HOST: localhost
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+    steps:
+      - name: Sacar código fuente
+        uses: actions/checkout@v3
+      # Agregue o remplace pasos de depencicas aquí
+      - name: Ambiente - paquetes e.g postgresql, postgis, base de pruebas
+        run: sudo ./bin/ambiente_github.sh
+      - name: Instalar Ruby y gemas
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.5'
+          bundler-cache: true
+      - name: Reiniciar PostgreSQL
+        run: ( sudo service postgresql restart; sudo systemctl restart postgresql.service)
+      - name: Modificar volcados para que operen en versiones antiguas de PostgreSQL
+        run: (cp db/structure.sql db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' db/structure.sql.copia > db/structure.sql )
+      - name: Preparar esquema, datos y recursos
+        run: (RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices; bin/rails msip:stimulus_motores; bin/rails assets:precompile)
+      # Agregue o remplace ejecutores de pruebas aquí
+      - name: Ejecutar pruebas
+        run: NOPRUEBAJS=1 bin/regresion.sh
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sacar código fuente
+        uses: actions/checkout@v3
+      - name: Instalar Ruby y gemas
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.5'
+          bundler-cache: true
+      # Agregue o remplace verificadores 
+      - name: Verificación de seguridad a dependencias ruby
+        run: (bin/bundler-audit --update || exit_code=$?; echo "exit_code=$exit_code")
+      - name: Verificación de seguridad a código Ruby de la aplicación
+        run: (bin/brakeman -q -w2 || exit_code=$?; echo "exit_code=$exit_code")
+      - name: Verificación al formato de código Ruby
+        run: (bin/rubocop --parallel || exit_code=$?; echo "exit_code=$exit_code")
