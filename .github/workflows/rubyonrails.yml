@@ -22,7 +22,7 @@ jobs:
       - name: Sacar código fuente
         uses: actions/checkout@v3
       # Agregue o remplace pasos de depencicas aquí
-      - name: Ambiente - paquetes e.g postgresql, postgis, base de pruebas
+      - name: Ambiente - paquetes e.g postgresql, postgis, base de pruebas, .env
         run: sudo ./bin/ambiente_github.sh
       - name: Instalar Ruby y gemas
         uses: ruby/setup-ruby@v1
@@ -31,10 +31,12 @@ jobs:
           bundler-cache: true
       - name: Reiniciar PostgreSQL
         run: ( sudo service postgresql restart; sudo systemctl restart postgresql.service)
-      - name: Modificar volcados para que operen en versiones antiguas de PostgreSQL
-        run: (cp db/structure.sql db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' db/structure.sql.copia > db/structure.sql )
+      - name: Modificar estructura BD para que operen en versiones antiguas
+        run: (export D=./; if (test -d "test/dummy") then { export D=test/dummy/; } fi; cp $D/db/structure.sql $D/db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' $D/db/structure.sql.copia > $D/db/structure.sql )
+      - name: Modificar semillas BD para que operen en versiones antiguas
+        run: (if (test -f "db/datos-basicas.sql") then { cp db/datos-basicas.sql db/structure.sql.copia; sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g;s/SET transaction_timeout.*//g' db/datos-basicas.sql.copia > db/datos-basicas.sql; } fi; )
       - name: Preparar esquema, datos y recursos
-        run: (RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices; bin/rails msip:stimulus_motores; bin/rails assets:precompile)
+        run: (if (test -d "test/dummy") then { cd test/dummy; } fi; RAILS_ENV=test bin/rails db:drop db:create db:setup db:seed msip:indices; bin/rails msip:stimulus_motores; bin/rails assets:precompile)
       # Agregue o remplace ejecutores de pruebas aquí
       - name: Ejecutar pruebas
         run: NOPRUEBAJS=1 bin/regresion.sh
@@ -43,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sacar código fuente
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Instalar Ruby y gemas
         uses: ruby/setup-ruby@v1
         with:
