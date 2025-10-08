@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 83dc8d92e63e4c360bb9f45af1cf3b63d99bed54
+  revision: 153e7dbe462de4f7f3ef42c67f95390e98e6cba7
   specs:
     kt-paperclip (7.2.2)
       activemodel (>= 4.2.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 077b6926abfdd884c54258f2303cdabe8810e4c5
+  revision: f203c3c043ff4b1f1375d7517056e7c8ac51c9aa
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 6b1486561806ec27fe4523f13de971009c22e250
+  revision: 6475b2b0be325f0d17ae5f4e279b0cc28fbfc492
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: f9f6b6ebd9569907f90e77e0bfa153daf3fd4fa4
+  revision: d11e32d01a253cd6917bea6ce4850815ac5062d2
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: b764aa997ba09172893f3ada6588a8032f6a19b8
+  revision: 1e03e55f10b262562f52e1c8e8f3976dbecf5807
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -256,7 +256,7 @@ GEM
     mime-types-data (3.2025.0722)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.25.5)
+    minitest (5.26.0)
     minitest-reporters (1.7.1)
       ansi
       builder
@@ -328,7 +328,7 @@ GEM
     puma (7.0.4)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.18)
+    rack (2.2.19)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-session (1.0.2)
