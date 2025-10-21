@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 6a0300d06685de010e5d2d10df8fb459f271e1cb
+  revision: c3e0070a3e7966b893103e7034307df33d240c4e
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 6475b2b0be325f0d17ae5f4e279b0cc28fbfc492
+  revision: ebfc3357d9f626360c6315b234cd5bcdaa0617c7
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: d11e32d01a253cd6917bea6ce4850815ac5062d2
+  revision: 85432b1759a677dc15dec5dc53f8b16ef5305cb9
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 21667e09208b0174a89063fd80f86d092eff9779
+  revision: e962c206e58bb6a032ee15a0e6d08defca36fa21
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -325,7 +325,7 @@ GEM
     psych (5.2.6)
       date
       stringio
-    puma (7.0.4)
+    puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.20)
