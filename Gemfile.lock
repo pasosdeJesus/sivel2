@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: ad180babdfbae1ac8826d1c55ee9e1bbaf6c52aa
+  revision: 194dd561a2b76a495625811f46e958ed9c99432a
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: b7b596d2f96b3a1c65a3530e5ea1f3dd6fbf0a61
+  revision: e46b768aacf394fc5cde474e5eb6e6c4918b3910
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 352d94e6b871309556f8105893dd4c51bd562c1f
+  revision: 0a8c6adacb75a003a0807aa66c94acd6d173ac65
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: a85d68a09080f74c6241202c71a61cd5101013d7
+  revision: 4b7a1147c5237fc8ef858c19611751f29a76f1e0
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -421,7 +421,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.44.0, < 2.0)
-    rubocop-shopify (2.17.1)
+    rubocop-shopify (2.18.0)
       rubocop (~> 1.62)
     ruby-graphviz (1.2.5)
       rexml
@@ -464,7 +464,7 @@ GEM
     tsort (0.2.0)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.17)
+    turbo-rails (2.0.20)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     twitter_cldr (6.14.0)
