@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: b914b3d6a9d8f1f2c62627041fb52d537a497e7c
+  revision: b496962d7754cef9c28a1be78bca2aaf7fc56363
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 5aa8fdb62bc68ce8da61e15fc89aa02896502909
+  revision: 3bac9a1de619b25eddf07f02c00871d304509146
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 4f8286cfe4fe2ec7d1dcdaa63c25e8d6819bd755
+  revision: 505adf012d069a8cc34348f37e720b95d816874d
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 052532f3045b9d4a0b9241c0e5ba49eebef83554
+  revision: a39c44fd06c4dd61b69556544e76f3bb5f80cdc8
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -154,7 +154,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.18.6)
+    bootsnap (1.19.0)
       msgpack (~> 1.2)
     brakeman (7.1.1)
       racc
@@ -421,7 +421,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.33.4)
+    rubocop-rails (2.34.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
