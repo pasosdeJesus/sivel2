@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: e302261ad32f56c7b3c8a23661fea692b56c8333
+  revision: e8c2d5b2ff1894d8081cb9a1ed3c04022f2cfceb
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 907af01b70c254b70a0831f0a958df67ee5bcd78
+  revision: c85b268626a6c150e237a8cef9346f5a6c051470
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 812b112128778fc1cc862c57c773442d8c8f110e
+  revision: 542d1d8109a13ce99da6d24a5f0850a7a982115a
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: b269282eeb47c90ef453874732b7ba3fc5f7155a
+  revision: ae58a86d0c7ff42be22f636d078ab7ac45742109
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -159,8 +159,8 @@ GEM
     brakeman (7.1.1)
       racc
     builder (3.3.0)
-    bundler-audit (0.9.2)
-      bundler (>= 1.2.0, < 3)
+    bundler-audit (0.9.3)
+      bundler (>= 1.2.0)
       thor (~> 1.0)
     camertron-eprun (1.1.1)
     cancancan (3.6.1)
@@ -421,7 +421,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.34.1)
+    rubocop-rails (2.34.2)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
