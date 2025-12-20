@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: cbebef9756e723046e619f1b473d67fea7ddd784
+  revision: c548d02fbb4c60c58c32e9f97f0a8969313a4c71
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: efce7ac9c6eb2df9b5ecf31e8f6be01fae8b252f
+  revision: ed24b9ae435138089b507de83a90d74d9b90184c
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: e3ce718b18a3446865ece61f96a4dc51cda5c9ac
+  revision: 387044e7d7060f1b568b01b4d762161eaf13eaee
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 24e22ad8805b0c6e642702ff61212ef3a20a846b
+  revision: f97a0f66edace4aa6146cb2850e90bd49105487b
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -184,7 +184,7 @@ GEM
     crass (1.0.6)
     csv (3.3.5)
     date (3.5.0)
-    debug (1.11.0)
+    debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
     devise (4.9.4)
@@ -260,7 +260,8 @@ GEM
     mime-types-data (3.2025.0924)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.27.0)
+    minitest (6.0.0)
+      prism (~> 1.5)
     minitest-reporters (1.7.1)
       ansi
       builder
