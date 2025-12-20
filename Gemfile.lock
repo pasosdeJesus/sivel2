@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: c548d02fbb4c60c58c32e9f97f0a8969313a4c71
+  revision: 37cb57dc64a859a862e2b8d3493ea221a2c4a999
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: ed24b9ae435138089b507de83a90d74d9b90184c
+  revision: 755fbb980247d90a92c32e9b6c295e57c722cf66
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 387044e7d7060f1b568b01b4d762161eaf13eaee
+  revision: 1237907ef0720451fa170c9fd57217dab96e45e3
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: f97a0f66edace4aa6146cb2850e90bd49105487b
+  revision: 6c6fd7f88f87a918adb33206a5b05ab699b5cf03
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -260,8 +260,7 @@ GEM
     mime-types-data (3.2025.0924)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.0)
-      prism (~> 1.5)
+    minitest (5.27.0)
     minitest-reporters (1.7.1)
       ansi
       builder
@@ -545,7 +544,7 @@ DEPENDENCIES
   jsbundling-rails
   kt-paperclip!
   libxml-ruby
-  minitest
+  minitest (~> 5)
   minitest-reporters
   mr519_gen!
   msip!

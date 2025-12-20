@@ -141,7 +141,7 @@ group :development do
 end
 
 group :test do
-  gem "minitest"
+  gem "minitest", "~> 5"
 
   gem "minitest-reporters"
 
