@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 10f2e17d793d814216c9eefaf1914cc313db981c
+  revision: 495f234500a21d10486067992b528699d64dc359
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 5b214f054d164696ca1c2f9645abf48227dd9f48
+  revision: 65b0a38f986fe5e3f1686fa1a622fbff0f8b351f
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 4a1595b11c207bd833712c3cf3ca352d98bc964a
+  revision: 2593894b0c98961d7f8f9cb1f726a593d8065a69
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: a6d96add90b1ff23b3c299af9940a46929eb5f44
+  revision: 7614d9ae4025168e7b5c202e2ee0ce219312b188
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -154,9 +154,9 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.20.0)
+    bootsnap (1.20.1)
       msgpack (~> 1.2)
-    brakeman (7.1.1)
+    brakeman (7.1.2)
       racc
     builder (3.3.0)
     bundler-audit (0.9.3)
