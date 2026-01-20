@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 5078ca1c33c8cb66865e6127152ac1e240b2bb0a
+  revision: cd5c4496d12894eafa218cb631c592b67c9c10a2
   specs:
     kt-paperclip (7.2.2)
       activemodel (>= 4.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 7b8df38e9791e8ac02e67a09a716fee37b1aa234
+  revision: 56fafee25392bebcee185fb52edecffeb209db7f
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -154,7 +154,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.21.0)
+    bootsnap (1.21.1)
       msgpack (~> 1.2)
     brakeman (7.1.2)
       racc
@@ -470,7 +470,7 @@ GEM
     tsort (0.2.0)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.20)
+    turbo-rails (2.0.21)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     twitter_cldr (6.14.0)
@@ -583,4 +583,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-  4.0.3
+  4.0.4
