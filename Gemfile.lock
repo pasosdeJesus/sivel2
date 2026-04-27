@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 04066c387354d7a512a995ac170eecded4f034db
+  revision: 01ceffa3440c9a709e63c2337722931433c2eb48
   specs:
-    kt-paperclip (7.3.0)
+    kt-paperclip (7.4.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (>= 1.0.1)
       mime-types
-      terrapin (>= 0.6.0, < 2.0)
+      terrapin (>= 0.6.0)
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 6cfecd75c5a03130a6929d67eb3bb626b3e2a3b5
+  revision: b8fc22b731b125b24219e21e9effe2c50d278001
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: f61f712fe935f1f3d601a7c07627a167a8e4654d
+  revision: e176e47b269dab7cbbc6d4da35ed92781482c60b
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 8cdec1cd4fb55cec999ac3152846b367fd1e0a45
+  revision: 2517f50cc91197263994995dafcae5bf7f892a36
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: e28a6f995250f0611ddb1835221c802c7fa1e486
+  revision: fa79393475d4ff55789c52ebddef73c7539dcb6c
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -154,7 +154,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.23.0)
+    bootsnap (1.24.0)
       msgpack (~> 1.2)
     brakeman (8.0.4)
       racc
@@ -330,7 +330,7 @@ GEM
     psych (5.3.1)
       date
       stringio
-    puma (8.0.0)
+    puma (8.0.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.23)
