@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 01ceffa3440c9a709e63c2337722931433c2eb48
+  revision: df454e1ed383f2b5887fed1888f1893079a0447a
   specs:
     kt-paperclip (7.4.0)
       activemodel (>= 4.2.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: b8fc22b731b125b24219e21e9effe2c50d278001
+  revision: 156964b891904921901952382ce9f1fae9257c63
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: e176e47b269dab7cbbc6d4da35ed92781482c60b
+  revision: 5d00fcede06cc7d352c34dce499d838a2704f364
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 2517f50cc91197263994995dafcae5bf7f892a36
+  revision: 43033bca786fb540137ec58458aa74ae3d96012a
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: fa79393475d4ff55789c52ebddef73c7539dcb6c
+  revision: 3bd594b86363832a46c22f695bf334b8844ca794
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -154,7 +154,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.24.0)
+    bootsnap (1.24.3)
       msgpack (~> 1.2)
     brakeman (8.0.4)
       racc
@@ -238,7 +238,7 @@ GEM
       activesupport (>= 7.0.0)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
-    json (2.19.4)
+    json (2.19.5)
     kgio (2.11.4)
     language_server-protocol (3.17.0.5)
     libxml-ruby (5.0.6)
@@ -278,24 +278,24 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.2)
+    nokogiri (1.19.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.19.2-aarch64-linux-gnu)
+    nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-aarch64-linux-musl)
+    nokogiri (1.19.3-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.19.2-arm-linux-gnu)
+    nokogiri (1.19.3-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-arm-linux-musl)
+    nokogiri (1.19.3-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.19.2-arm64-darwin)
+    nokogiri (1.19.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-darwin)
+    nokogiri (1.19.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-linux-gnu)
+    nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-linux-musl)
+    nokogiri (1.19.3-x86_64-linux-musl)
       racc (~> 1.4)
     odf-report (0.9.0)
       mime-types
@@ -584,4 +584,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-  4.0.10
+  4.0.11
