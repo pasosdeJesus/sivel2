@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: cff4e1b633fa3653def90b576945144f2e1bbfb3
+  revision: 9caa40a72df60024287df8aae1e48135f5818d32
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 4e0a277beb09b27a6503d67efa154cc0def61917
+  revision: 7afedfd250df54e399e66ffabb9565acd77857e0
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 12147f34c2ac0e70a9c20e799ce8cbd1b28d99cd
+  revision: 2d14ac4219400b7af6c71c687f2d2e47849b22fa
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: a0220e8cad0dae6d9027abda6681136f27d8c48d
+  revision: 279cdd5821d5da03b4980117865d71a5146fd603
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -253,7 +253,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.1.0)
+    marcel (1.2.1)
     matrix (0.4.3)
     mime-types (3.7.0)
       logger
@@ -422,7 +422,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.35.1)
+    rubocop-rails (2.35.2)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -502,7 +502,7 @@ GEM
     websocket-extensions (0.1.5)
     will_paginate (4.0.1)
     yard (0.9.43)
-    zeitwerk (2.8.0)
+    zeitwerk (2.8.1)
 
 PLATFORMS
   aarch64-linux
@@ -584,4 +584,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-  4.0.11
+  4.0.12
