@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: d538f70cf006943ae0e01dc052e7dfc9bb858c81
+  revision: fdbf57a3aff751fbf598ba0ee1dfffae87a9e3ef
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 4420dc797f4c0ff7be1e89375e1dff41e842d3b7
+  revision: 54c008bf760e8b3230ddaeeecc062c2615f9dcf4
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 9923e5899df9ba8da339ffc46cc2a360413b2ed0
+  revision: 2e3cbe0b92445364d542b81c99d2d3c98ad25e05
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 860db94079a642af40f3ad0a4f566da91914da67
+  revision: ee15b3fecb73487da13494a473ea3b3e2af49fd2
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -267,8 +267,8 @@ GEM
       builder
       minitest (>= 5.0, < 7)
       ruby-progressbar
-    msgpack (1.8.1)
-    net-imap (0.6.4)
+    msgpack (1.8.3)
+    net-imap (0.6.4.1)
       date
       net-protocol
     net-pop (0.1.2)
@@ -302,6 +302,7 @@ GEM
       nokogiri (>= 1.12.0)
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
+    ostruct (0.6.3)
     parallel (2.1.0)
     parser (3.3.11.1)
       ast (~> 2.4.1)
@@ -365,11 +366,11 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
-    rails-erd (1.7.2)
-      activerecord (>= 4.2)
-      activesupport (>= 4.2)
+    rails-erd (2.0.1)
+      activerecord (>= 7.0)
+      activesupport (>= 7.0)
       choice (~> 0.2.0)
-      ruby-graphviz (~> 1.2)
+      ostruct
     rails-html-sanitizer (1.7.0)
       loofah (~> 2.25)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
@@ -422,7 +423,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.35.3)
+    rubocop-rails (2.35.4)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -584,4 +585,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-  4.0.13
+  4.0.14
