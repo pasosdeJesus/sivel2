@@ -35,8 +35,8 @@ gem "jbuilder" # API JSON facil. Ver: https://github.com/rails/jbuilder
 
 gem "jsbundling-rails"
 
-gem "kt-paperclip", # Anexos
-  git: "https://github.com/kreeti/kt-paperclip.git"
+gem "kt-paperclip" # Anexos
+#  git: "https://github.com/kreeti/kt-paperclip.git"
 
 gem "libxml-ruby", "< 6.0"
 
