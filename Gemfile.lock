@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: 90284cb6fd9df48bb127b9eb89060cedff670000
+  revision: aa19015a78fbd7ccea92853ee7ede7bff033ebed
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -420,7 +420,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.35.5)
+    rubocop-rails (2.36.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
