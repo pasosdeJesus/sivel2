@@ -3024,10 +3024,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tom-select@^2.3.1:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/tom-select/-/tom-select-2.6.2.tgz#07693442309eefa5b57c6beee6005195f3f956a4"
-  integrity sha512-eiXIkk82XzzUTOVQDFpy+ZGejuqdTvMukyUyeZBQaKnqW42UoTiTZnrod/eX0rkqJEc4rZY9DZ3zdjV07i29wQ==
+tom-select@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/tom-select/-/tom-select-2.6.0.tgz#8582363389dd17157ed11692320530bcd4111fbf"
+  integrity sha512-o2ToBjhUAnrrQvW/hrY9c//TpOpAKYSlfuFnf0DIwNy+ua+mmYnsF4PxN/PpzBfUIfEFkNYAngeGBfOAZWF3tw==
   dependencies:
     "@orchidjs/sifter" "^1.1.0"
     "@orchidjs/unicode-variants" "^1.1.2"

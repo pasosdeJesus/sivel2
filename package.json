@@ -27,7 +27,7 @@
     "mini-css-extract-plugin": "^2.4.3",
     "popper.js": "^2.0.0-next.4",
     "postcss": "^8.2.10",
-    "tom-select": "^2.3.1"
+    "tom-select": "2.6.0"
   },
   "devDependencies": {
     "css-what": "^5.0.1",
