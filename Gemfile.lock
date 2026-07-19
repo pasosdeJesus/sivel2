@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/heb412_gen.git
-  revision: 928e5b413ae2ccf3c4a83e3d560f00e08d022476
+  revision: 18456f3433f30af4d96cef2e18782c7c61c84294
   branch: v2.2
   specs:
     heb412_gen (2.2.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 225965cd9e2206b983583fab7820fe6a1bfd41fe
+  revision: b2b5d9661078623a6593cfb78857b6c9f6a2916c
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 6eb39531e0c6a25080387a3d69241119dd1331c0
+  revision: b48921e3d7d230aa385991929dd61573ebf1c5a3
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/sivel2_gen.git
-  revision: b30efa9593a929960957b446f1a64955d3fa9546
+  revision: 53e8cf23626c4eb9c6796a8edf80bc02292842a6
   branch: v2.2
   specs:
     sivel2_gen (2.2.0)
@@ -444,7 +444,7 @@ GEM
     simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
-    simplecov (1.0.1)
+    simplecov (1.0.2)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
