@@ -35,6 +35,8 @@ gem "jbuilder" # API JSON facil. Ver: https://github.com/rails/jbuilder
 
 gem "jsbundling-rails"
 
+gem "json", "<3"              # Por rails  7
+
 gem "kt-paperclip" # Anexos
 #  git: "https://github.com/kreeti/kt-paperclip.git"
 
