@@ -42,7 +42,7 @@ gem "kt-paperclip" # Anexos
 
 gem "libxml-ruby", "< 6.0"
 
-gem "nokogiri"
+gem "nokogiri", "1.19.4" # Skip between 1.19.5 and 1.19.7 that use __malloc
 
 gem "odf-report" # Genera ODT
 
@@ -53,6 +53,8 @@ gem "prawn" # Generación de PDF
 gem "prawnto_2", require: "prawnto"
 
 gem "prawn-table"
+
+gem "prism", "~> 1.9" # 2.1 falla 
 
 gem "rack", "~> 2"
 
